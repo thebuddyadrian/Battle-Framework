@@ -2,5 +2,13 @@
 extends Node3D
 class_name Level
 
-# This doesn't do anything special for now,
-# but having a base class for levels will help with game archictecture later.
+@export var music  : AudioStream
+
+var audiostreamplayer = AudioStreamPlayer.new()
+
+func _ready() -> void:
+	audiostreamplayer.stream = music
+	add_child(audiostreamplayer)
+	if audiostreamplayer.stream != null && !audiostreamplayer.playing:
+		audiostreamplayer.play()
+	

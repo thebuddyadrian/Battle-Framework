@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://bm8hg8jvdgnfp"]
+[gd_scene load_steps=16 format=3 uid="uid://bm8hg8jvdgnfp"]
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_8s7ee"]
 [ext_resource type="Environment" uid="uid://gje4rk62y4yw" path="res://MAINLIGHTING.tres" id="2_5mrsh"]
 [ext_resource type="Script" uid="uid://cuvca6ikekxsy" path="res://levels/pivot.gd" id="2_gjl0y"]
 [ext_resource type="Script" uid="uid://dhrnxon6uous5" path="res://camera.gd" id="2_okxdc"]
+[ext_resource type="AudioStream" uid="uid://cgev4rjj2hi4m" path="res://assets/Audio/BGM/Emerald Beach Rock Remix.mp3" id="2_vnv7o"]
 [ext_resource type="PackedScene" uid="uid://cf2hyq1t7vfep" path="res://levels/test_level/EmCo.glb" id="3_cwqvt"]
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/Base_Player.tscn" id="5_safpt"]
 
@@ -79,6 +80,7 @@ size = Vector3(1, 0.676758, 2.18701)
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_8s7ee")
+music = ExtResource("2_vnv7o")
 
 [node name="CameraRoot" type="Node3D" parent="."]
 unique_name_in_owner = true
