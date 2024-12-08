@@ -1,0 +1,4 @@
+extends AnimationPlayer
+
+
+var states

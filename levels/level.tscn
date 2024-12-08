@@ -1,0 +1,164 @@
+[gd_scene load_steps=15 format=3 uid="uid://bm8hg8jvdgnfp"]
+
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_8s7ee"]
+[ext_resource type="Environment" uid="uid://gje4rk62y4yw" path="res://MAINLIGHTING.tres" id="2_5mrsh"]
+[ext_resource type="Script" uid="uid://cuvca6ikekxsy" path="res://levels/pivot.gd" id="2_gjl0y"]
+[ext_resource type="Script" uid="uid://dhrnxon6uous5" path="res://camera.gd" id="2_okxdc"]
+[ext_resource type="PackedScene" uid="uid://cf2hyq1t7vfep" path="res://levels/test_level/EmCo.glb" id="3_cwqvt"]
+[ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/Base_Player.tscn" id="5_safpt"]
+
+[sub_resource type="Animation" id="Animation_gjl0y"]
+resource_name = "Flip1"
+length = 0.35
+step = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraRoot/Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.610865, 0, 0), Vector3(-0.610865, 3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vnv7o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraRoot/Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.610865, 3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d5x7l"]
+resource_name = "Flip2"
+length = 0.35
+step = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraRoot/Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.610865, 3.14159, 0), Vector3(-0.610865, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtcij"]
+_data = {
+&"Flip1": SubResource("Animation_gjl0y"),
+&"Flip2": SubResource("Animation_d5x7l"),
+&"RESET": SubResource("Animation_vnv7o")
+}
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_safpt"]
+data = PackedVector3Array(10, 0, -10, -10, 0, 10, -10, 0, -10, 10, 0, -10, 10, 0, 10, -10, 0, 10, 3.9999, 0, 2, 3.9999, 2, -2, 3.9999, 2, 2, 3.9999, 0, 2, 3.9999, 0, -2, 3.9999, 2, -2, 5.9999, 0, -2, 5.9999, 2, 2, 5.9999, 2, -2, 5.9999, 0, -2, 5.9999, 0, 2, 5.9999, 2, 2, 5.9999, 0, 2, 3.9999, 2, 2, 5.9999, 2, 2, 5.9999, 0, 2, 3.9999, 0, 2, 3.9999, 2, 2, 5.9999, 2, -2, 3.9999, 2, 2, 3.9999, 2, -2, 5.9999, 2, -2, 5.9999, 2, 2, 3.9999, 2, 2, -4, 0, 5, -4, 2, 1, -4, 2, 5, -4, 0, 5, -4, 0, 1, -4, 2, 1, -2.0001, 0, 1, -2.0001, 2, 5, -2.0001, 2, 1, -2.0001, 0, 1, -2.0001, 0, 5, -2.0001, 2, 5, -2.0001, 0, 5, -4, 2, 5, -2.0001, 2, 5, -2.0001, 0, 5, -4, 0, 5, -4, 2, 5, -2.0001, 2, 1, -4, 2, 5, -4, 2, 1, -2.0001, 2, 1, -2.0001, 2, 5, -4, 2, 5, -4, 0, -2, -4, 2, -4, -4, 2, -2, -4, 0, -2, -4, 0, -4, -4, 2, -4, -2.0001, 0, -4, -2.0001, 2, -2, -2.0001, 2, -4, -2.0001, 0, -4, -2.0001, 0, -2, -2.0001, 2, -2, -2.0001, 0, -2, -4, 2, -2, -2.0001, 2, -2, -2.0001, 0, -2, -4, 0, -2, -4, 2, -2, -2.0001, 2, -4, -4, 2, -2, -4, 2, -4, -2.0001, 2, -4, -2.0001, 2, -2, -4, 2, -2, -5, 0, -4, -5, 2, -6, -5, 2, -4, -5, 0, -4, -5, 0, -6, -5, 2, -6, -1.0001, 0, -6, -1.0001, 2, -4, -1.0001, 2, -6, -1.0001, 0, -6, -1.0001, 0, -4, -1.0001, 2, -4, -3.0001, 0, -4, -5, 2, -4, -3.0001, 2, -4, -3.0001, 0, -4, -5, 0, -4, -5, 2, -4, -5, 2, -6, -3.0001, 2, -4, -5, 2, -4, -1.0001, 2, -6, -3.0001, 2, -4, -5, 2, -6, -1.0001, 2, -4, -3.0001, 2, -4, -1.0001, 2, -6, 2, 0, -6, 2, 2, -8, 2, 2, -6, 2, 0, -6, 2, 0, -8, 2, 2, -8, 8, 0, -8, 8, 2, -6, 8, 2, -8, 8, 0, -8, 8, 0, -6, 8, 2, -6, 3.9999, 0, -6, 2, 2, -6, 3.9999, 2, -6, 3.9999, 0, -6, 2, 0, -6, 2, 2, -6, 2, 2, -8, 3.9999, 2, -6, 2, 2, -6, 8, 2, -8, 3.9999, 2, -6, 2, 2, -8, 8, 2, -8, 5.9999, 2, -6, 3.9999, 2, -6, 8, 2, -6, 5.9999, 2, -6, 8, 2, -8, 8, 0, -6, 5.9999, 2, -6, 8, 2, -6, 8, 0, -6, 5.9999, 0, -6, 5.9999, 2, -6, 5.9999, 0, -6, 3.9999, 2, -6, 5.9999, 2, -6, 5.9999, 0, -6, 3.9999, 0, -6, 3.9999, 2, -6, 2, 0, 7, 2, 2, 5, 2, 2, 7, 2, 0, 7, 2, 0, 5, 2, 2, 5, 5.9999, 0, 5, 5.9999, 2, 7, 5.9999, 2, 5, 5.9999, 0, 5, 5.9999, 0, 7, 5.9999, 2, 7, 2, 0, 7, 2, 2, 7, 3.9999, 2, 7, 2, 0, 7, 3.9999, 2, 7, 5.9999, 0, 7, 5.9999, 0, 7, 3.9999, 2, 7, 5.9999, 2, 7, 3.9999, 2, 5, 2, 2, 7, 2, 2, 5, 3.9999, 2, 5, 3.9999, 2, 7, 2, 2, 7, 5.9999, 2, 5, 3.9999, 2, 7, 3.9999, 2, 5, 5.9999, 2, 5, 5.9999, 2, 7, 3.9999, 2, 7, -1.0001, 0, -4, -3.0001, 2, -4, -1.0001, 2, -4, -1.0001, 0, -4, -3.0001, 0, -4, -3.0001, 2, -4)
+
+[sub_resource type="Environment" id="Environment_5mrsh"]
+background_mode = 3
+background_energy_multiplier = 4.89
+ambient_light_source = 2
+ambient_light_color = Color(0.422047, 0.511049, 0.613212, 1)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_safpt"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_gjl0y"]
+size = Vector3(1, 0.676758, 2.18701)
+
+[node name="Level" type="Node3D"]
+script = ExtResource("1_8s7ee")
+
+[node name="CameraRoot" type="Node3D" parent="."]
+unique_name_in_owner = true
+
+[node name="PositionTarget" type="Node3D" parent="CameraRoot"]
+top_level = true
+
+[node name="RotationTarget" type="Node3D" parent="CameraRoot"]
+top_level = true
+
+[node name="Pivot" type="Node3D" parent="CameraRoot"]
+transform = Transform3D(-1, 5.01436e-08, -7.16125e-08, 0, 0.819152, 0.573576, 8.74228e-08, 0.573576, -0.819152, 0, 0, 0)
+script = ExtResource("2_gjl0y")
+
+[node name="Camera" type="Camera3D" parent="CameraRoot/Pivot"]
+transform = Transform3D(1, 0, 0, 0, 0.961262, -0.275637, 0, 0.275637, 0.961262, 0, -2.7942, 10.2632)
+environment = ExtResource("2_5mrsh")
+projection = 1
+current = true
+size = 7.43094
+script = ExtResource("2_okxdc")
+metadata/_custom_type_script = ExtResource("2_okxdc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraRoot/Pivot"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_rtcij")
+}
+
+[node name="EmCo" parent="." instance=ExtResource("3_cwqvt")]
+unique_name_in_owner = true
+
+[node name="StaticBody3D" type="StaticBody3D" parent="EmCo"]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="EmCo/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_safpt")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_5mrsh")
+
+[node name="BasePlayer" parent="." instance=ExtResource("5_safpt")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.968994, 2.00329)
+
+[node name="Floor" type="StaticBody3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+transform = Transform3D(23.1712, 0, 0, 0, 0.876795, 0, 0, 0, 25.8494, 0, -0.448711, 0)
+shape = SubResource("BoxShape3D_safpt")
+
+[node name="WallRight" type="StaticBody3D" parent="."]
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight"]
+transform = Transform3D(1, 0, 0, 0, 17.8076, 0, 0, 0, 9.6959, 10.2004, 4.8997, -0.451286)
+shape = SubResource("BoxShape3D_gjl0y")
+
+[node name="WallUp" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallUp"]
+transform = Transform3D(1, 0, 0, 0, 17.8076, 0, 0, 0, 9.6959, 10.2004, 4.8997, -0.451286)
+shape = SubResource("BoxShape3D_gjl0y")
+
+[node name="WallLeft" type="StaticBody3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft"]
+transform = Transform3D(1, 0, 0, 0, 17.8076, 0, 0, 0, 9.6959, 10.2004, 4.8997, -0.451286)
+shape = SubResource("BoxShape3D_gjl0y")
+
+[node name="WallBack" type="StaticBody3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
+metadata/_edit_lock_ = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBack"]
+transform = Transform3D(1, 0, 0, 0, 17.8076, 0, 0, 0, 9.6959, 10.2004, 4.8997, -0.451286)
+shape = SubResource("BoxShape3D_gjl0y")
+metadata/_edit_lock_ = true

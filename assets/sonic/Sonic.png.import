@@ -1,0 +1,14 @@
+[remap]
+
+importer="image"
+type="Image"
+uid="uid://da2kchrno01ui"
+path="res://.godot/imported/Sonic.png-d120c755548c01f74c59c6b9087ca4a0.image"
+
+[deps]
+
+source_file="res://assets/sonic/Sonic.png"
+dest_files=["res://.godot/imported/Sonic.png-d120c755548c01f74c59c6b9087ca4a0.image"]
+
+[params]
+
