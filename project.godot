@@ -13,7 +13,8 @@ config_version=5
 config/name="Sonic Battle Framework"
 run/main_scene="res://levels/level.tscn"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
+config/icon="uid://dcdb3dyga8r2u"
+config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
