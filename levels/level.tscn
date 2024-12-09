@@ -4,9 +4,9 @@
 [ext_resource type="Environment" uid="uid://gje4rk62y4yw" path="res://MAINLIGHTING.tres" id="2_5mrsh"]
 [ext_resource type="Script" uid="uid://cuvca6ikekxsy" path="res://levels/pivot.gd" id="2_gjl0y"]
 [ext_resource type="Script" uid="uid://dhrnxon6uous5" path="res://camera.gd" id="2_okxdc"]
-[ext_resource type="AudioStream" uid="uid://cgev4rjj2hi4m" path="res://assets/Audio/BGM/Emerald Beach Rock Remix.mp3" id="2_vnv7o"]
 [ext_resource type="PackedScene" uid="uid://cf2hyq1t7vfep" path="res://levels/test_level/EmCo.glb" id="3_cwqvt"]
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/Base_Player.tscn" id="5_safpt"]
+[ext_resource type="PackedScene" uid="uid://biq6bd0648m35" path="res://UI/HUD.tscn" id="7_vnv7o"]
 
 [sub_resource type="Animation" id="Animation_gjl0y"]
 resource_name = "Flip1"
@@ -80,7 +80,6 @@ size = Vector3(1, 0.676758, 2.18701)
 
 [node name="Level" type="Node3D"]
 script = ExtResource("1_8s7ee")
-music = ExtResource("2_vnv7o")
 
 [node name="CameraRoot" type="Node3D" parent="."]
 unique_name_in_owner = true
@@ -164,3 +163,5 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 17.8076, 0, 0, 0, 9.6959, 10.2004, 4.8997, -0.451286)
 shape = SubResource("BoxShape3D_gjl0y")
 metadata/_edit_lock_ = true
+
+[node name="Hud" parent="." instance=ExtResource("7_vnv7o")]

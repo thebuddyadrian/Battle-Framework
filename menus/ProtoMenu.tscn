@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://h1bub5xoa4rh"]
+
+[node name="ProtoMenu" type="Node2D"]
+
+[node name="ItemList" type="ItemList" parent="."]
+offset_left = 3.0
+offset_top = 20.0
+offset_right = 92.0
+offset_bottom = 155.0
+theme_override_font_sizes/font_size = 9
+item_count = 3
+max_columns = 19
+item_0/text = "EMERALD BEACH"
+item_1/text = "STICK CITY"
+item_2/text = "GIMMIE SHELTER"
