@@ -22,11 +22,11 @@ Game="*res://game.gd"
 
 [display]
 
-window/size/viewport_width=240
-window/size/viewport_height=160
-window/size/window_width_override=960
-window/size/window_height_override=640
-window/stretch/mode="canvas_items"
+window/size/viewport_width=256
+window/size/viewport_height=224
+window/size/window_width_override=1024
+window/size/window_height_override=896
+window/stretch/mode="viewport"
 
 [editor_plugins]
 
