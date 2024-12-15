@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://biq6bd0648m35"]
+[gd_scene load_steps=6 format=3 uid="uid://biq6bd0648m35"]
 
 [ext_resource type="Texture2D" uid="uid://cwc8ecd53as57" path="res://assets/ui/HPBack.png" id="1_uk570"]
 [ext_resource type="Texture2D" uid="uid://jv1bvqittpmo" path="res://assets/ui/HPFill.png" id="2_f2wx0"]
 [ext_resource type="Texture2D" uid="uid://bl45pj2rfuo7u" path="res://assets/ui/Manabarback.png" id="3_gppie"]
 [ext_resource type="Texture2D" uid="uid://dl3cxndlbkop5" path="res://assets/ui/Manabarfill.png" id="4_2ptjp"]
+[ext_resource type="Texture2D" uid="uid://ccgifx7x8mncl" path="res://assets/sonic/SonicPortraits1.png" id="5_f2wx0"]
 
 [node name="Hud" type="Control"]
 layout_mode = 3
@@ -30,3 +31,9 @@ offset_bottom = 27.0
 value = 79.0
 texture_under = ExtResource("3_gppie")
 texture_progress = ExtResource("4_2ptjp")
+
+[node name="SonicPortraits1" type="Sprite2D" parent="CanvasLayer"]
+visible = false
+position = Vector2(80, 117)
+texture = ExtResource("5_f2wx0")
+hframes = 4

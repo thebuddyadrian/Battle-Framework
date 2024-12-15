@@ -1,0 +1,522 @@
+[gd_scene load_steps=24 format=3 uid="uid://3yefhhhajnqk"]
+
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_ot3ob"]
+[ext_resource type="Texture2D" uid="uid://cdaxr0wjdfxxw" path="res://assets/ui/BattleEmblem.png" id="2_rmsp1"]
+[ext_resource type="Texture2D" uid="uid://47og8hxik4d0" path="res://assets/ui/twoDriver.png" id="4_218cn"]
+
+[sub_resource type="GDScript" id="GDScript_vp83o"]
+resource_name = "spin"
+script/source = "extends Sprite3D
+
+@export var spinspeed = 5
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	rotation.y += spinspeed * delta
+	pass
+"
+
+[sub_resource type="Shader" id="Shader_vp83o"]
+code = "shader_type spatial;
+render_mode cull_disabled, blend_add, unshaded;
+uniform float time_speed = 1.0;
+//time specifically for the wave noise texture
+uniform float surface_speed = 1.0;
+uniform float spin = 0.0; //Twisting motion of the water
+uniform float brightness = 0.6;
+uniform float color_intensity = 0.0;
+//Tiling frequency of the noise accross the mesh
+uniform float horizontal_frequency = 2.0;
+uniform float vertical_frequency = 2.0;
+//overall size muliplier
+uniform float size = 3.0;
+//affects total size
+uniform float banding_bias = 0.6;
+
+uniform sampler2D wave_texture;
+uniform sampler2D noise_texture;
+//wave height, use for ocean waves
+uniform float wave_height = 0.5;
+//water surface height variation based on the noise texture
+uniform float texture_height = 0.5;
+//preset band colors
+uniform vec4 color1 : source_color = vec4(0.59, 0.761, 1.0, 1.0);
+uniform vec4 color2 : source_color = vec4(0.274, 0.474, 0.98, 1.0);
+uniform vec4 color3 : source_color = vec4(0.059, 0.389, 0.85, 1.0);
+uniform vec4 color4 : source_color = vec4(0.0, 0.267, 1.0, 1.0);
+
+void vertex() {
+	float time = -TIME * time_speed;
+	VERTEX += NORMAL * wave_height * texture(wave_texture, vec2(UV.x + time * surface_speed, UV.y + time * surface_speed)).r;
+	VERTEX += NORMAL * texture_height * texture(noise_texture,vec2(UV.x * horizontal_frequency + spin * (time /2.0), (UV.y * vertical_frequency) + time)).r;;
+}
+
+void fragment() {
+	float time = -TIME * time_speed;
+
+// Calculate dot product of normals and combine with noise texture value
+	float normal_facing = dot(NORMAL, VIEW);
+	float noise_value = texture(noise_texture,vec2(UV.x * horizontal_frequency + spin * (time /2.0), (UV.y * vertical_frequency) + time)).r;
+	normal_facing += (noise_value -0.5 + size) * 0.3;
+
+	float band = normal_facing * 3.0 * banding_bias;
+	vec4 band_color = vec4(0,0,0,0);
+	if (band <= 1.5) {
+		discard;
+	}
+	else if(band <= 2.0){
+		band_color = mix(color1, color2, -0.01 / (band-2.01)); //Mixes the color bands to make a slight gradient
+	}
+	else if (band <= 2.5) {
+		band_color = mix(color2, color3, -0.01 / (band-2.51));
+	}
+	else if (band <= 2.9) {
+		band_color = mix(color3, color4, -0.01 / (band-2.91));
+	}
+	else if (band >= 0.0) {
+		band_color = color4;
+	}
+	//Final color adjestment
+	ALBEDO = clamp(brightness * (vec3(1.0, 1.0, 1.0) - (band_color.xyz * -color_intensity)) * band_color.xyz, vec3(0.0, 0.0, 0.0), vec3(brightness, brightness, brightness));
+}
+"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rmsp1"]
+render_priority = 0
+shader = SubResource("Shader_vp83o")
+shader_parameter/time_speed = 1.0
+shader_parameter/surface_speed = 1.0
+shader_parameter/spin = 0.0
+shader_parameter/brightness = 0.6
+shader_parameter/color_intensity = 0.0
+shader_parameter/horizontal_frequency = 2.0
+shader_parameter/vertical_frequency = 2.0
+shader_parameter/size = 7.0
+shader_parameter/banding_bias = 0.6
+shader_parameter/wave_height = 0.5
+shader_parameter/texture_height = 0.5
+shader_parameter/color1 = Color(0.59, 0.761, 1, 1)
+shader_parameter/color2 = Color(0.274, 0.474, 0.98, 1)
+shader_parameter/color3 = Color(0.059, 0.389, 0.85, 1)
+shader_parameter/color4 = Color(0, 0.267, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_lb38e"]
+lightmap_size_hint = Vector2i(14, 21)
+material = SubResource("ShaderMaterial_rmsp1")
+subdivide_width = 5
+
+[sub_resource type="GDScript" id="GDScript_rmsp1"]
+script/source = "extends MeshInstance3D
+@export var vert = 1
+@export var hori = 1
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	rotation.x = randi_range(0, 5)
+	rotation.y = randi_range(0, 5)
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	rotation.y += 0.5 * vert * delta
+	rotation.x += 0.5 * hori * delta
+	pass
+"
+
+[sub_resource type="Environment" id="Environment_218cn"]
+background_mode = 1
+background_color = Color(2.88785e-07, 0.440889, 0.71849, 1)
+background_energy_multiplier = 1.24
+ambient_light_color = Color(0.837586, 0.620264, 0.556973, 1)
+ssr_enabled = true
+ssr_fade_in = 0.689219
+ssr_depth_tolerance = 37.81
+ssao_enabled = true
+ssao_radius = 1.7
+ssao_intensity = 1.76
+ssao_power = 0.675938
+ssao_detail = 0.28
+glow_enabled = true
+glow_intensity = 2.0
+glow_bloom = 0.06
+glow_hdr_threshold = 1.09
+glow_hdr_scale = 1.36
+glow_hdr_luminance_cap = 120.47
+fog_enabled = true
+fog_light_color = Color(0.0525223, 0.179199, 0.3366, 1)
+fog_light_energy = 1.94
+fog_sky_affect = 0.632
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_vp83o"]
+
+[sub_resource type="Shader" id="Shader_218cn"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx, unshaded;
+
+uniform vec3 albedo : source_color;
+uniform sampler2D water_texture1;
+uniform sampler2D water_texture2;
+uniform sampler2D noise_texture;
+uniform vec2 scroll_speed1 = vec2(0.05, 0.0);
+uniform vec2 scroll_speed2 = vec2(-0.03, 0.0);
+uniform float blend_factor = 0.5;
+uniform vec2 scale1 = vec2(1.0, 1.0);
+uniform vec2 scale2 = vec2(1.0, 1.0);
+uniform float wave_strength = 1.0;
+uniform float wave_scale = 0.02;
+uniform int pixelation_level = 64;
+uniform float FoamSize = 0.5;
+uniform sampler2D DepthTexture : hint_depth_texture;
+uniform float WaterOpacity = 1.0;
+uniform float FoamGlowIntensity = 0.5;
+
+void vertex() {
+    vec2 global_position = (MODEL_MATRIX * vec4(VERTEX, 1.0)).xz;
+    float noise_value = texture(noise_texture, global_position * wave_scale).r;
+    float wave = sin(global_position.x * 0.2 + global_position.y * 0.2 + TIME + noise_value * 10.0) * wave_strength;
+    VERTEX.y += wave;
+}
+
+void fragment() {
+    vec2 scaledUV1 = UV * scale1;
+    vec2 scaledUV2 = UV * scale2;
+    vec2 scrolledUV1 = scaledUV1 + scroll_speed1 * TIME;
+    vec2 scrolledUV2 = scaledUV2 + scroll_speed2 * TIME;
+    scrolledUV1 = mod(scrolledUV1, vec2(1.0, 1.0));
+    scrolledUV2 = mod(scrolledUV2, vec2(1.0, 1.0));
+    scrolledUV1 = floor(scrolledUV1 * float(pixelation_level)) / float(pixelation_level);
+    scrolledUV2 = floor(scrolledUV2 * float(pixelation_level)) / float(pixelation_level);
+
+    vec4 water_color1 = texture(water_texture1, scrolledUV1);
+    vec4 water_color2 = texture(water_texture2, scrolledUV2);
+    vec4 blended_water_color = mix(water_color1, water_color2, blend_factor);
+
+    float depthValue = texture(DepthTexture, SCREEN_UV).r;
+    vec4 worldPosition = INV_PROJECTION_MATRIX * vec4(SCREEN_UV * 2.0 - 1.0, depthValue, 1.0);
+    worldPosition.xyz /= worldPosition.w;
+    float foamEffect = clamp(1.0 - smoothstep(worldPosition.z + FoamSize, worldPosition.z, VERTEX.z), 0.0, 1.0);
+    float foamOpacity = 1.0 - foamEffect;
+    float foamEffectRounded = round(foamOpacity);
+    float finalOpacity = foamEffectRounded + WaterOpacity;
+
+    ALBEDO = blended_water_color.rgb * albedo;
+    ALPHA = finalOpacity;
+    EMISSION = vec3(foamEffectRounded) * FoamGlowIntensity;
+    METALLIC = 0.0;
+    ROUGHNESS = 1.0;
+}"
+
+[sub_resource type="Gradient" id="Gradient_lb38e"]
+interpolation_mode = 2
+colors = PackedColorArray(0, 0, 0.396078, 1, 0, 0.141205, 0.999988, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_7fxis"]
+seed = 24294
+frequency = 0.303
+offset = Vector3(571.43, 0, 0)
+domain_warp_enabled = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vp83o"]
+in_3d_space = true
+color_ramp = SubResource("Gradient_lb38e")
+noise = SubResource("FastNoiseLite_7fxis")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4yyw3"]
+render_priority = 0
+shader = SubResource("Shader_218cn")
+shader_parameter/albedo = Color(0.317647, 0.792157, 1, 1)
+shader_parameter/water_texture1 = ExtResource("4_218cn")
+shader_parameter/water_texture2 = ExtResource("4_218cn")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_vp83o")
+shader_parameter/scroll_speed1 = Vector2(0.05, 0)
+shader_parameter/scroll_speed2 = Vector2(-0.03, 0)
+shader_parameter/blend_factor = 0.5
+shader_parameter/scale1 = Vector2(1, 1)
+shader_parameter/scale2 = Vector2(1, 1)
+shader_parameter/wave_strength = 3.44
+shader_parameter/wave_scale = 11.045
+shader_parameter/pixelation_level = -256
+shader_parameter/FoamSize = 18.975
+shader_parameter/WaterOpacity = 37.34
+shader_parameter/FoamGlowIntensity = 0.075
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ahxlq"]
+
+[sub_resource type="Shader" id="Shader_e2awe"]
+code = "shader_type spatial;
+render_mode unshaded;
+
+/*
+RING SHADER
+*/
+
+
+uniform vec3 ring_color: source_color = vec3(1.0);
+uniform float ring_frequency = 50.0;
+/** Portion of the visible rings. Negative values give wider rings, positive values give narrower rings*/
+uniform float ring_portion: hint_range(-0.9, 0.9, 0.1) = 0.0;
+/** Negative values move the rings outwards, positive value move the rings inwards */
+uniform float move_speed = -10.0;
+uniform bool smooth_edge = false;
+
+void fragment() {
+	float dist = distance(UV, vec2(0.5,0.5));
+	float rings = sin(dist * ring_frequency + (TIME * move_speed));
+	rings = step(ring_portion, rings);
+	float blend_alpha = smoothstep(0.5, 0.4, dist);
+	if (dist > 0.5 || rings < 1.0){
+		ALPHA = 0.0;
+	}
+	else if (rings > 0.0){
+		ALBEDO = ring_color;
+		ALPHA = smooth_edge ? blend_alpha : 1.0;
+	}
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ih3s6"]
+render_priority = 0
+shader = SubResource("Shader_e2awe")
+shader_parameter/ring_color = Color(3.46541e-06, 0.95807, 0.979613, 1)
+shader_parameter/ring_frequency = 300.0
+shader_parameter/ring_portion = 0.9
+shader_parameter/move_speed = -10.0
+shader_parameter/smooth_edge = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_rmsp1"]
+
+[sub_resource type="Shader" id="Shader_lb38e"]
+code = "shader_type spatial;
+render_mode cull_disabled, unshaded;
+
+uniform sampler2D noise_texture : hint_default_white;
+uniform float use_custom_texture : hint_range(0.0, 1.0) = 0.0;
+uniform float clouds_speed : hint_range(0.0, 20.0, 0.01) = 2.0;
+uniform float clouds_direction : hint_range(-0.5, 0.5, 0.0) = 0.2;
+uniform float clouds_scale : hint_range(0.0, 4.0, 0.01) = 1.0;
+uniform float clouds_cutoff : hint_range(0.0, 1.0, 0.01) = 0.3;
+uniform float clouds_fuzziness : hint_range(0.0, 2.0, 0.01) = 0.5;
+uniform vec3 clouds_color : source_color = vec3(1.0, 1.0, 1.0);
+uniform float edge_fade : hint_range(0.0, 1.0, 0.01) = 0.15;
+
+// Noise generation functions
+const int PRIME_X = 501125321;
+const int PRIME_Y = 1136930381;
+
+float lerp(float a, float b, float t) {
+    return a + t * (b - a);
+}
+
+float cubic_lerp(float a, float b, float c, float d, float t) {
+    float p = d - c - (a - b);
+    return t * t * t * p + t * t * (a - b - p) + t * (c - a) + b;
+}
+
+float ping_pong(float t) {
+    t -= trunc(t * 0.5) * 2.0;
+    return t < 1.0 ? t : 2.0 - t;
+}
+
+int hash(int seed, int x_primed, int y_primed) {
+    return (seed ^ x_primed ^ y_primed) * 0x27d4eb2d;
+}
+
+float val_coord(int seed, int x_primed, int y_primed) {
+    int hash = hash(seed, x_primed, y_primed);
+    hash *= hash;
+    hash ^= hash << 19;
+    return float(hash) * (1.0 / 2147483648.0);
+}
+
+float single_value_cubic(int seed, float x, float y) {
+    int x1 = int(floor(x));
+    int y1 = int(floor(y));
+
+    float xs = x - float(x1);
+    float ys = y - float(y1);
+
+    x1 *= PRIME_X;
+    y1 *= PRIME_Y;
+    int x0 = x1 - PRIME_X;
+    int y0 = y1 - PRIME_Y;
+    int x2 = x1 + PRIME_X;
+    int y2 = y1 + PRIME_Y;
+    int x3 = x1 + (PRIME_X << 1);
+    int y3 = y1 + (PRIME_Y << 1);
+
+    return cubic_lerp(
+        cubic_lerp(val_coord(seed, x0, y0), val_coord(seed, x1, y0), val_coord(seed, x2, y0), val_coord(seed, x3, y0), xs),
+        cubic_lerp(val_coord(seed, x0, y1), val_coord(seed, x1, y1), val_coord(seed, x2, y1), val_coord(seed, x3, y1), xs),
+        cubic_lerp(val_coord(seed, x0, y2), val_coord(seed, x1, y2), val_coord(seed, x2, y2), val_coord(seed, x3, y2), xs),
+        cubic_lerp(val_coord(seed, x0, y3), val_coord(seed, x1, y3), val_coord(seed, x2, y3), val_coord(seed, x3, y3), xs),
+    ys) * (1.0 / (1.5 * 1.5));
+}
+
+const float FRACTAL_BOUNDING = 1.0 / 1.75;
+const int OCTAVES = 5;
+const float PING_PONG_STRENGTH = 2.0;
+const float WEIGHTED_STRENGTH = 0.0;
+const float GAIN = 0.5;
+const float LACUNARITY = 2.0;
+
+float gen_fractal_ping_pong(vec2 pos, int seed, float frequency) {
+    float x = pos.x * frequency;
+    float y = pos.y * frequency;
+    float sum = 0.0;
+    float amp = FRACTAL_BOUNDING;
+    for (int i = 0; i < OCTAVES; i++) {
+        float noise = ping_pong((single_value_cubic(seed++, x, y) + 1.0) * PING_PONG_STRENGTH);
+        sum += (noise - 0.5) * 2.0 * amp;
+        amp *= lerp(1.0, noise, WEIGHTED_STRENGTH);
+        x *= LACUNARITY;
+        y *= LACUNARITY;
+        amp *= GAIN;
+    }
+    return sum * 0.5 + 0.5;
+}
+
+float calculate_edge_fade(vec2 uv) {
+    vec2 fade = smoothstep(vec2(0.0), vec2(edge_fade), uv) * 
+                smoothstep(vec2(0.0), vec2(edge_fade), 1.0 - uv);
+    return fade.x * fade.y;
+}
+
+void fragment() {
+    // Calculate UV coordinates for cloud movement
+    vec2 base_uv = UV * clouds_scale;
+    float time = TIME * clouds_speed * 0.01;
+    float sin_x = sin(clouds_direction * PI * 2.0);
+    float cos_y = cos(clouds_direction * PI * 2.0);
+    vec2 clouds_movement = vec2(sin_x, cos_y) * time;
+    
+    float cloud_density;
+    
+    if (use_custom_texture > 0.5) {
+        // Use custom texture
+        cloud_density = texture(noise_texture, base_uv + clouds_movement).r;
+    } else {
+        // Generate procedural cloud noise
+        float noise_top = gen_fractal_ping_pong((base_uv + clouds_movement), 0, 0.5);
+        float noise_middle = gen_fractal_ping_pong((base_uv + clouds_movement * 0.89), 1, 0.75);
+        float noise_bottom = gen_fractal_ping_pong((base_uv + clouds_movement * 0.79), 2, 1.0);
+        
+        // Combine noise layers
+        float noise_bottom_smooth = smoothstep(clouds_cutoff, clouds_cutoff + clouds_fuzziness, noise_bottom);
+        float noise_middle_smooth = smoothstep(clouds_cutoff, clouds_cutoff + clouds_fuzziness, noise_middle + noise_bottom_smooth * 0.2) * 1.1;
+        float noise_top_smooth = smoothstep(clouds_cutoff, clouds_cutoff + clouds_fuzziness, noise_top + noise_middle_smooth * 0.4) * 1.2;
+        
+        cloud_density = clamp(noise_top_smooth + noise_middle_smooth + noise_bottom_smooth, 0.0, 1.0);
+    }
+    
+    // Calculate edge fade
+    float edge_alpha = calculate_edge_fade(UV);
+    
+    // Apply cloud color and transparency with edge fade
+    ALBEDO = clouds_color;
+    ALPHA = cloud_density * edge_alpha;
+}"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vp83o"]
+seed = 400
+frequency = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7fxis"]
+in_3d_space = true
+noise = SubResource("FastNoiseLite_vp83o")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_lb38e"]
+render_priority = 0
+shader = SubResource("Shader_lb38e")
+shader_parameter/noise_texture = SubResource("NoiseTexture2D_7fxis")
+shader_parameter/use_custom_texture = 0.0
+shader_parameter/clouds_speed = 20.0
+shader_parameter/clouds_direction = -0.0580645
+shader_parameter/clouds_scale = 4.0
+shader_parameter/clouds_cutoff = 0.51
+shader_parameter/clouds_fuzziness = 0.35
+shader_parameter/clouds_color = Color(1, 1, 1, 1)
+shader_parameter/edge_fade = 0.01
+
+[node name="MainMenu" type="Node3D"]
+script = ExtResource("1_ot3ob")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+no_depth_test = true
+texture_filter = 4
+texture = ExtResource("2_rmsp1")
+script = SubResource("GDScript_vp83o")
+spinspeed = 2
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0240467, 0)
+modulate = Color(0, 0, 0, 1)
+no_depth_test = true
+texture_filter = 4
+texture = ExtResource("2_rmsp1")
+script = SubResource("GDScript_vp83o")
+spinspeed = 2
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.990816, 0.135214, 0, -0.135214, 0.990816, -0.0140379, 0.225645, 0.762764)
+keep_aspect = 0
+
+[node name="Cube1" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73348, 1.81769, -6.98987)
+cast_shadow = 0
+ignore_occlusion_culling = true
+gi_mode = 0
+mesh = SubResource("BoxMesh_lb38e")
+script = SubResource("GDScript_rmsp1")
+
+[node name="Cube2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87421, -0.111284, -7.20806)
+cast_shadow = 0
+ignore_occlusion_culling = true
+gi_mode = 0
+mesh = SubResource("BoxMesh_lb38e")
+script = SubResource("GDScript_rmsp1")
+hori = -1
+
+[node name="Cube3" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09206, -0.499802, -3.9605)
+cast_shadow = 0
+ignore_occlusion_culling = true
+gi_mode = 0
+mesh = SubResource("BoxMesh_lb38e")
+script = SubResource("GDScript_rmsp1")
+vert = -1
+hori = -1
+
+[node name="Cube4" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30547, 1.05208, -5.36364)
+cast_shadow = 0
+ignore_occlusion_culling = true
+gi_mode = 0
+mesh = SubResource("BoxMesh_lb38e")
+script = SubResource("GDScript_rmsp1")
+vert = -1
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_218cn")
+
+[node name="Bottom" type="MeshInstance3D" parent="."]
+transform = Transform3D(81.113, 0, 0, 0, 1, 0, 0, 0, 27.5445, 0, -3.78441, -23.7734)
+mesh = SubResource("PlaneMesh_vp83o")
+surface_material_override/0 = SubResource("ShaderMaterial_4yyw3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(60.7235, 0, 0, 0, -4.37114e-08, -50.1487, 0, 1, -2.19207e-06, 0, 12.8713, -47.5401)
+mesh = SubResource("PlaneMesh_ahxlq")
+surface_material_override/0 = SubResource("ShaderMaterial_ih3s6")
+
+[node name="Sky" type="MeshInstance3D" parent="."]
+transform = Transform3D(-99.9808, 0.838933, -1.77318, -1.22475, -97.3067, 23.0196, -1.5323, 23.0369, 97.2983, -10.1813, 10.2365, -58.1516)
+mesh = SubResource("PlaneMesh_rmsp1")
+surface_material_override/0 = SubResource("ShaderMaterial_lb38e")

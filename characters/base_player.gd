@@ -28,6 +28,10 @@ func _anim_switch() -> void: #Put this in a separate script when you can
 			$PlayerSprite/AnimationPlayer.play("Idle")
 
 func _physics_process(delta: float) -> void:
+	
+	setcontrols()
+	
+	
 	# Add the gravity.
 	velocity.y -= GRAVITY * delta
 
@@ -57,3 +61,16 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 	_anim_switch()
+	
+
+
+func setcontrols() -> void:
+	match PLAYER:
+		1:
+			Controlset = load("res://players/player1controls.tres")
+		2:
+			Controlset = load("res://players/player2controls.tres")
+		3:
+			Controlset = load("res://players/player2controls.tres")
+		4:
+			Controlset = load("res://players/player2controls.tres")

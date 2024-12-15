@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="MoonCastControlSettings" load_steps=2 format=3 uid="uid://c4ualnk4bnyh3"]
+
+[ext_resource type="Script" uid="uid://bjvs88myg4lbr" path="res://MoonCast/MC_control_set.gd" id="1_o40b4"]
+
+[resource]
+script = ExtResource("1_o40b4")
+direction_up = &"ui_up"
+direction_down = &"ui_down"
+direction_left = &"ui_left"
+direction_right = &"ui_right"
+action_jump = &"ui_accept"
+action_roll = &"ui_select"
+action_custom = Dictionary[StringName, StringName]({})
+camera_up = &""
+camera_down = &""
+camera_left = &""
+camera_right = &""
+metadata/_custom_type_script = ExtResource("1_o40b4")

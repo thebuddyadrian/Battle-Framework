@@ -22,10 +22,10 @@ Game="*res://game.gd"
 
 [display]
 
-window/size/viewport_width=256
-window/size/viewport_height=224
-window/size/window_width_override=1024
-window/size/window_height_override=896
+window/size/viewport_width=320
+window/size/viewport_height=240
+window/size/window_width_override=640
+window/size/window_height_override=480
 window/stretch/mode="viewport"
 
 [editor_plugins]
@@ -47,11 +47,19 @@ Flipcam={
 "events": [Object(InputEventJoypadButton,"resource_local_to_scene":false,"resource_name":"","device":-1,"button_index":10,"pressure":0.0,"pressed":false,"script":null)
 ]
 }
+null={
+"deadzone": 0.2,
+"events": []
+}
 
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
 textures/canvas_textures/default_texture_repeat=1
+rendering_device/driver="D3D12"
+rendering_device/driver.windows="d3d12"
+rendering_device/fallback_to_vulkan=false
+rendering_device/fallback_to_opengl3=false
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
 textures/lossless_compression/force_png=true

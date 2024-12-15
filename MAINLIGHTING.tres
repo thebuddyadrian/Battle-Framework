@@ -2,6 +2,10 @@
 
 [resource]
 background_mode = 1
-background_color = Color(0, 0.172549, 0.803922, 1)
+background_color = Color(0.00392157, 0, 0.733333, 1)
 ambient_light_source = 2
 ambient_light_color = Color(1, 1, 1, 1)
+glow_enabled = true
+glow_intensity = 0.12
+glow_bloom = 0.15
+glow_hdr_threshold = 0.47
