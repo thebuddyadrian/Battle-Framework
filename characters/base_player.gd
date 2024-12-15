@@ -14,6 +14,8 @@ class_name BattleCharacter
 
 @onready var Sprite = $PlayerSprite
 
+@export var camera := Camera3D
+
 func _anim_switch() -> void: #Put this in a separate script when you can
 	if !is_on_floor():
 		if JUMPFROMGROUND == true:
@@ -45,7 +47,7 @@ func _physics_process(delta: float) -> void:
 	var input_dir := Input.get_vector(Controlset.direction_left, Controlset.direction_right, Controlset.direction_up, Controlset.direction_down)
 	var input_dirVisual := Input.get_vector(Controlset.direction_left, Controlset.direction_right, Controlset.direction_down, Controlset.direction_up)
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	var camera := get_node("/root/Level/CameraRoot/Pivot")
+
 	
 	if !is_zero_approx(direction.x):
 		Sprite.flip_h = direction.x < 0

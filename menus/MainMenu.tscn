@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_ot3ob"]
 [ext_resource type="Texture2D" uid="uid://cdaxr0wjdfxxw" path="res://assets/ui/BattleEmblem.png" id="2_rmsp1"]
+[ext_resource type="Script" uid="uid://d2luikke1goi4" path="res://levels/hologram/Boxspin.tres.gd" id="3_218cn"]
 [ext_resource type="Texture2D" uid="uid://47og8hxik4d0" path="res://assets/ui/twoDriver.png" id="4_218cn"]
 
 [sub_resource type="GDScript" id="GDScript_vp83o"]
@@ -109,26 +110,6 @@ shader_parameter/color4 = Color(0, 0.267, 1, 1)
 lightmap_size_hint = Vector2i(14, 21)
 material = SubResource("ShaderMaterial_rmsp1")
 subdivide_width = 5
-
-[sub_resource type="GDScript" id="GDScript_rmsp1"]
-script/source = "extends MeshInstance3D
-@export var vert = 1
-@export var hori = 1
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	rotation.x = randi_range(0, 5)
-	rotation.y = randi_range(0, 5)
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _physics_process(delta: float) -> void:
-	rotation.y += 0.5 * vert * delta
-	rotation.x += 0.5 * hori * delta
-	pass
-"
 
 [sub_resource type="Environment" id="Environment_218cn"]
 background_mode = 1
@@ -473,7 +454,7 @@ cast_shadow = 0
 ignore_occlusion_culling = true
 gi_mode = 0
 mesh = SubResource("BoxMesh_lb38e")
-script = SubResource("GDScript_rmsp1")
+script = ExtResource("3_218cn")
 
 [node name="Cube2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87421, -0.111284, -7.20806)
@@ -481,7 +462,7 @@ cast_shadow = 0
 ignore_occlusion_culling = true
 gi_mode = 0
 mesh = SubResource("BoxMesh_lb38e")
-script = SubResource("GDScript_rmsp1")
+script = ExtResource("3_218cn")
 hori = -1
 
 [node name="Cube3" type="MeshInstance3D" parent="."]
@@ -490,7 +471,7 @@ cast_shadow = 0
 ignore_occlusion_culling = true
 gi_mode = 0
 mesh = SubResource("BoxMesh_lb38e")
-script = SubResource("GDScript_rmsp1")
+script = ExtResource("3_218cn")
 vert = -1
 hori = -1
 
@@ -500,7 +481,7 @@ cast_shadow = 0
 ignore_occlusion_culling = true
 gi_mode = 0
 mesh = SubResource("BoxMesh_lb38e")
-script = SubResource("GDScript_rmsp1")
+script = ExtResource("3_218cn")
 vert = -1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
