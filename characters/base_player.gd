@@ -13,21 +13,15 @@ class_name BattleCharacter
 @export var Controlset = MoonCastControlSettings.new()
 
 @onready var Sprite = $PlayerSprite
+@onready var animplayer = $PlayerSprite/AnimationPlayer
+@onready var state_machine = $StateMachine
 
 @export var camera := Camera3D
 
-func _anim_switch() -> void: #Put this in a separate script when you can
-	if !is_on_floor():
-		if JUMPFROMGROUND == true:
-			$PlayerSprite/AnimationPlayer.play("Jump")
-		else:
-			$PlayerSprite/AnimationPlayer.play("Falling")
-	else:
-		JUMPFROMGROUND = false
-		if velocity.x != 0 || velocity.z != 0:
-			$PlayerSprite/AnimationPlayer.play("Moving")
-		else:
-			$PlayerSprite/AnimationPlayer.play("Idle")
+
+func _ready() -> void:
+	state_machine.initialize()
+
 
 func _physics_process(delta: float) -> void:
 	
@@ -36,11 +30,6 @@ func _physics_process(delta: float) -> void:
 	
 	# Add the gravity.
 	velocity.y -= GRAVITY * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed(Controlset.action_jump) and is_on_floor():
-		velocity.y = JUMP_VELOCITY
-		JUMPFROMGROUND = true
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
@@ -62,8 +51,7 @@ func _physics_process(delta: float) -> void:
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
-	_anim_switch()
-	
+	state_machine.advance()
 
 
 func setcontrols() -> void:
