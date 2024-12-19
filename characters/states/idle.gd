@@ -9,9 +9,9 @@ func _enter(data = {}):
 
 func _step():
 	super._step()
-	if Input.is_action_pressed(root.Controlset.action_jump):
+	if InputMap.has_action(root.Controlset.action_jump) and Input.is_action_pressed(root.Controlset.action_jump):
 		parent.change_state("Jump")
-	if Input.is_action_pressed(root.Controlset.action_attack):
+	if InputMap.has_action(root.Controlset.action_attack) and Input.is_action_pressed(root.Controlset.action_attack):
 		parent.change_state("Punch1")
 	if root.velocity.x != 0 or root.velocity.z != 0:
 		parent.change_state("Move")

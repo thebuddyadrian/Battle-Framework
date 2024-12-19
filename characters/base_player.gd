@@ -33,14 +33,22 @@ func _physics_process(delta: float) -> void:
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector(Controlset.direction_left, Controlset.direction_right, Controlset.direction_up, Controlset.direction_down)
-	var input_dirVisual := Input.get_vector(Controlset.direction_left, Controlset.direction_right, Controlset.direction_down, Controlset.direction_up)
+	
+	var input_dir:Vector2 
+	var input_dirVisual:Vector2
+	if InputMap.has_action(Controlset.direction_left) and \
+	InputMap.has_action(Controlset.direction_right) and \
+	InputMap.has_action(Controlset.direction_up) and \
+	InputMap.has_action(Controlset.direction_down):
+		input_dir = Input.get_vector(Controlset.direction_left, Controlset.direction_right, Controlset.direction_up, Controlset.direction_down)
+		input_dirVisual = Input.get_vector(Controlset.direction_left, Controlset.direction_right, Controlset.direction_down, Controlset.direction_up)
+	
 	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 
 	
 	if !is_zero_approx(direction.x):
 		Sprite.flip_h = direction.x < 0
-		
+	
 	if direction:
 		var imaginary = (input_dirVisual.angle() + deg_to_rad(90)) + camera.rotation.y
 		var horizontal_velocity = Vector3(0, 0, SPEED).rotated(Vector3.UP, imaginary);	
