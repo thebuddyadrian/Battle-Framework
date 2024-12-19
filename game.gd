@@ -1,27 +1,27 @@
 extends Node
 
+const devmenu_packed_scene:PackedScene = preload("res://menus/dev_menu.tscn")
 
-var debug_mode := true
-var debug_options := {
-	"esc_quit": true,
-}
+var devmenu_gui:CanvasLayer
 
-var mouse_mode_stack := {}
+var debug_mode:bool = true
 
-var delayed_calls := {}
+var mouse_mode_stack:Dictionary[int, int] = {}
 
+var delayed_calls:Dictionary[int, Dictionary] = {}
 
-enum ERR {
-	OK,
-	VALUE,
-	TYPE,
-	NOT_FOUND,
-	DUPLICATE,
-}
-
+func inject_dev_menu() -> void:
+	if not is_instance_valid(devmenu_gui):
+		devmenu_gui = devmenu_packed_scene.instantiate()
+	
+	if not devmenu_gui.is_inside_tree():
+		var tree:SceneTree = get_tree()
+		
+		if is_instance_valid(tree.current_scene):
+			get_tree().current_scene.add_child(devmenu_gui)
 
 func begin_mouse_mode_override(mouse_mode: Input.MouseMode) -> int:
-	var key := randi()
+	var key:int = randi()
 	while key in mouse_mode_stack: key = randi()
 	mouse_mode_stack[key] = mouse_mode
 	Input.mouse_mode = mouse_mode
@@ -33,61 +33,50 @@ func end_mouse_mode_override(index: int):
 	else: Input.mouse_mode = mouse_mode_stack.values()[-1]
 	return
 
-
 ## Delay a function call.
 ## Delays by frames if `time` is int or seconds if `time` is float.
 ## Returns `err`, `key` and `data`.
 ## Set `repeat` to repeat multiple times. <0 means infinite repeats.
-func delay(function: Callable, time = 1, repeat := 0) -> Dictionary:
-	if not typeof(time) in [TYPE_INT, TYPE_FLOAT]:
-		assert(false); return {"err": ERR.TYPE}
-	var key := randi()
+func delay(function: Callable, time:float = 1, repeat:int = 0) -> Dictionary:
+	var key:int = randi()
 	while key in delayed_calls: key = randi()
-	var data := {
+	var data:Dictionary[String, Variant] = {
 		"start_time": time,
 		"time": time,
 		"function": function,
 		"repeat": repeat
 	}
 	delayed_calls[key] = data
-	return {"err": ERR.OK, "key": key, "data": data}
+	return {"err": OK, "key": key, "data": data}
 
 ## Cancel a delay and returns delay data, including `err`.
 func cancel_delay(key: int) -> Dictionary:
-	if !(key in delayed_calls.keys()): return {"err": ERR.NOT_FOUND}
-	var out := {"err": ERR.OK, "data": delayed_calls[key]}
+	if !(key in delayed_calls.keys()): return {"err": ERR_DOES_NOT_EXIST}
+	var out := {"err": OK, "data": delayed_calls[key]}
 	delayed_calls.erase(key)
 	return out
 
-
-func _process(delta):
+func _process(delta:float) -> void:
 	for key in delayed_calls.keys():
-		var val = delayed_calls[key]
+		var val:Dictionary = delayed_calls[key]
 		if !is_instance_valid(val.function.get_object()):
 			delayed_calls.erase(key)
 			continue
 		
-		val.time -= delta if typeof(val.time) == TYPE_FLOAT else 1
+		val.time -= delta
 		if val.time <= 0:
 			val.function.call()
 			if val.repeat == 0: delayed_calls.erase(key)
 			else: val.repeat -= 1; val.time = val.start_time
+	
+	inject_dev_menu() #not the most performant way of doing this, but meh
 	return
 
-
-func _notification(what):
+func _notification(what:int) -> void:
 	match what:
 		MainLoop.NOTIFICATION_APPLICATION_FOCUS_OUT:
 			Input.mouse_mode = Input.MOUSE_MODE_VISIBLE
 		MainLoop.NOTIFICATION_APPLICATION_FOCUS_IN:
 			if len(mouse_mode_stack) > 0:
 				Input.mouse_mode = mouse_mode_stack.values()[-1]
-	return
-
-
-func _input(event):
-	if debug_mode and debug_options.esc_quit:
-		if event is InputEventKey:
-			if event.keycode == KEY_ESCAPE and event.pressed:
-				get_tree().quit()
 	return
