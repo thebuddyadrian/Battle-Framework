@@ -13,6 +13,8 @@ func _step():
 		parent.change_state("Jump")
 	if Input.is_action_pressed(root.Controlset.action_attack):
 		parent.change_state("Punch1")
+	if Input.is_action_just_pressed(root.Controlset.action_dash):
+		parent.change_state("Dash")
 	if root.velocity.x != 0 or root.velocity.z != 0:
 		parent.change_state("Move")
 

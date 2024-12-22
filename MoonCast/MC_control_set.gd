@@ -16,8 +16,10 @@ class_name MoonCastControlSettings
 ##The action name for jumping.
 @export var action_jump:StringName = &"ui_accept"
 ##The action name for rolling.
-@export var action_roll:StringName = &"ui_select"
+@export var action_dash:StringName = &"dash"
 @export var action_attack:StringName = &"attack"
+@export var action_skill:StringName = &"skill"
+@export var action_heal:StringName = &"heal"
 ##Custom actions that can be bound to the player for use in MoonCastAbility nodes.
 @export var action_custom:Dictionary[StringName, StringName]
 

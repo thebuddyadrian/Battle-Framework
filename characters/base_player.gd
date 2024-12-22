@@ -3,12 +3,14 @@ extends CharacterBody3D
 class_name BattleCharacter
 
 
-@export var SPEED = 5.0
+@export var SPEED = 8.0
 @export var JUMP_VELOCITY = 4.5
+@export var DASH_SPEED = 12.0
 @export var STOCKS = 3
 @export var PLAYER = 1
 @export var GRAVITY = 5
 @export var JUMPFROMGROUND = false
+var dirget = 1
 
 @export var Controlset = MoonCastControlSettings.new()
 
@@ -41,6 +43,8 @@ func _physics_process(delta: float) -> void:
 	if !is_zero_approx(direction.x):
 		Sprite.flip_h = direction.x < 0
 		
+	if direction.x != 0:
+		dirget = direction.x
 	if direction:
 		var imaginary = (input_dirVisual.angle() + deg_to_rad(90)) + camera.rotation.y
 		var horizontal_velocity = Vector3(0, 0, SPEED).rotated(Vector3.UP, imaginary);	

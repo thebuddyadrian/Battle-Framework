@@ -1,7 +1,6 @@
-[gd_scene load_steps=21 format=3 uid="uid://cek62pjs5d0tg"]
+[gd_scene load_steps=20 format=3 uid="uid://cek62pjs5d0tg"]
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_h6std"]
-[ext_resource type="AudioStream" uid="uid://cco6bisoiwv8a" path="res://assets/Audio/BGM/Hologram.mp3" id="2_ici1a"]
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/Base_Player.tscn" id="3_h6std"]
 [ext_resource type="Resource" uid="uid://c4ualnk4bnyh3" path="res://players/player1controls.tres" id="4_4yqvt"]
 [ext_resource type="PackedScene" uid="uid://biq6bd0648m35" path="res://UI/HUD.tscn" id="4_gu3b0"]
@@ -89,7 +88,6 @@ _data = {
 
 [node name="LevelMain" type="Node3D"]
 script = ExtResource("1_h6std")
-music = ExtResource("2_ici1a")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qb02a")

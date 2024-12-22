@@ -12,6 +12,8 @@ func _step():
 		parent.change_state("Jump")
 	if root.velocity.x == 0 and root.velocity.z == 0:
 		parent.change_state("Idle")
+	if Input.is_action_just_pressed(root.Controlset.action_dash):
+		parent.change_state("Dash")
 	if root.velocity.y < 0:
 		parent.change_state("Fall")
 
