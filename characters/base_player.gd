@@ -18,7 +18,8 @@ var dirget = 1
 @onready var animplayer = $PlayerSprite/AnimationPlayer
 @onready var state_machine = $StateMachine
 
-@export var camera := Camera3D
+#This is crucial for allowing the player to move relative to the camera.
+@onready var camera = %CameraRoot/Pivot
 
 
 func _ready() -> void:
