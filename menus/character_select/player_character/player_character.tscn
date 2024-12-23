@@ -3,13 +3,15 @@
 [ext_resource type="Script" path="res://menus/character_select/player_character/player_character.gd" id="1_gu884"]
 
 [node name="PlayerCharacter" type="Control"]
+custom_minimum_size = Vector2(158, 97)
 layout_mode = 3
-anchor_right = 0.5
-anchor_bottom = 0.5
+anchor_right = 0.494
+anchor_bottom = 0.404
+offset_right = -0.0800018
+offset_bottom = 0.0399933
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 script = ExtResource("1_gu884")
 
 [node name="PlayerName" type="Label" parent="."]

@@ -11,23 +11,51 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xwnrc")
 
-[node name="Label" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="."]
 layout_mode = 0
-offset_right = 40.0
+offset_right = 97.0
 offset_bottom = 23.0
-text = "How many Humans? 2
+text = "Player Setup"
 
-How many CPUs? 2"
-
-[node name="SpinBox" type="SpinBox" parent="."]
-layout_mode = 0
-offset_left = 191.0
-offset_right = 277.562
-offset_bottom = 31.0
-
-[node name="SpinBox2" type="SpinBox" parent="."]
-layout_mode = 0
-offset_left = 165.0
+[node name="GridContainer" type="GridContainer" parent="."]
+layout_mode = 2
 offset_top = 54.0
-offset_right = 251.562
-offset_bottom = 85.0
+offset_right = 159.0
+offset_bottom = 54.0
+columns = 2
+
+[node name="HumanLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "How many Humans?"
+
+[node name="HumanSpinBox" type="SpinBox" parent="GridContainer"]
+layout_mode = 2
+max_value = 2.0
+value = 2.0
+
+[node name="CPULabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "How many CPUs?"
+
+[node name="CPUSpinBox" type="SpinBox" parent="GridContainer"]
+layout_mode = 2
+max_value = 2.0
+value = 2.0
+
+[node name="OKLabel" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -126.0
+offset_top = -24.0
+offset_right = -1.0
+offset_bottom = -1.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "OK (Press Enter)"
+
+[connection signal="value_changed" from="GridContainer/HumanSpinBox" to="." method="_on_human_spin_box_value_changed"]
+[connection signal="value_changed" from="GridContainer/CPUSpinBox" to="." method="_on_cpu_spin_box_value_changed"]

@@ -1,6 +1,5 @@
-[gd_scene load_steps=3 format=3 uid="uid://kulyqmhcf2k2"]
+[gd_scene load_steps=2 format=3 uid="uid://kulyqmhcf2k2"]
 
-[ext_resource type="PackedScene" uid="uid://dhl6gvecygwbc" path="res://menus/character_select/player_character/player_character.tscn" id="1_gk6lw"]
 [ext_resource type="Script" path="res://menus/character_select/character_select.gd" id="1_xptye"]
 
 [node name="CharacterSelect" type="Control"]
@@ -18,18 +17,3 @@ offset_top = 43.0
 offset_right = 320.0
 offset_bottom = 240.0
 columns = 2
-
-[node name="PlayerCharacter1" parent="PlayerContainer" instance=ExtResource("1_gk6lw")]
-layout_mode = 2
-
-[node name="PlayerCharacter2" parent="PlayerContainer" instance=ExtResource("1_gk6lw")]
-layout_mode = 2
-player_number = 2
-
-[node name="PlayerCharacter3" parent="PlayerContainer" instance=ExtResource("1_gk6lw")]
-layout_mode = 2
-player_number = 3
-
-[node name="PlayerCharacter4" parent="PlayerContainer" instance=ExtResource("1_gk6lw")]
-layout_mode = 2
-player_number = 4

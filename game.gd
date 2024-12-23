@@ -10,6 +10,8 @@ var mouse_mode_stack := {}
 
 var delayed_calls := {}
 
+var human_players: int = 0
+var cpu_players: int = 0
 var character_choices := {}
 
 enum ERR {
