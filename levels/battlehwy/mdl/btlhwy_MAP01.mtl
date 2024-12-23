@@ -1,0 +1,119 @@
+# MTL for btlhwy.wad, map MAP01
+# Created by Ultimate Doom Builder 3.0.0.4162
+
+newmtl WLL1
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLL1.png
+
+newmtl WLL2
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLL2.png
+
+newmtl WLL3
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLL3.png
+
+newmtl WLL4
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLL4.png
+
+newmtl WLL5
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLL5.png
+
+newmtl WLL6
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLL6.png
+
+newmtl WLL7
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLL7.png
+
+newmtl WLL8
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLL8.png
+
+newmtl 01
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\01.png
+
+newmtl 02
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\02.png
+
+newmtl 03
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\03.png
+
+newmtl 04
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\04.png
+
+newmtl 05
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\05.png
+
+newmtl 06
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\06.png
+
+newmtl 07
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\07.png
+
+newmtl 08
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\08.png
+
+newmtl 09
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\09.png
+
+newmtl 10
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\10.png
+
+newmtl 11
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\11.png
+
+newmtl 12
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\12.png
+
+newmtl 13
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\13.png
+
+newmtl 14
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\14.png
+
+newmtl 15
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\15.png
+
+newmtl 16
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\16.png
+
+newmtl BXTP
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\BXTP.png
+
+newmtl WLTP1
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLTP1.png
+
+newmtl WLTP2
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLTP2.png
+
+newmtl WLTP3
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLTP3.png
+
+newmtl WLTP4
+Kd 1.0 1.0 1.0
+map_Kd C:\Users\Hazel\Documents\GitHub\Battle-Framework\levels\battlehwy\mdl\WLTP4.png
+

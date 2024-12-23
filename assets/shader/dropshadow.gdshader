@@ -25,11 +25,11 @@ void fragment() {
 		sub = diff;
 		top = diff;
 	}
-	
+
 	if(top > 1.0){
 		top = 1.0;
 	}
-	
+
 	sub = (1.0-sub)*2.0;
 	if(sub != 2.0){
 		sub = 0.0;
@@ -40,10 +40,10 @@ void fragment() {
 	if(sub < 0.0){
 		sub = 0.0;
 	}
-	
+
 	//float final = sub*2.0+2.0;
 	float final = top*1.0;
-	
+
 	NORMAL*=-1.0;
 	ALBEDO = base_color.rgb;
 	ALPHA = sub*base_color.a;

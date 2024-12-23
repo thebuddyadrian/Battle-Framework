@@ -1,8 +1,7 @@
-[gd_scene load_steps=20 format=3 uid="uid://cek62pjs5d0tg"]
+[gd_scene load_steps=19 format=3 uid="uid://cek62pjs5d0tg"]
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_h6std"]
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/Base_Player.tscn" id="3_h6std"]
-[ext_resource type="Resource" uid="uid://c4ualnk4bnyh3" path="res://players/player1controls.tres" id="4_4yqvt"]
 [ext_resource type="PackedScene" uid="uid://biq6bd0648m35" path="res://UI/HUD.tscn" id="4_gu3b0"]
 [ext_resource type="Script" uid="uid://cuvca6ikekxsy" path="res://levels/pivot.gd" id="5_4yqvt"]
 [ext_resource type="PackedScene" uid="uid://dw2dnhnuuwhco" path="res://levels/hologram/Holomodel.tscn" id="6_ca42s"]
@@ -139,10 +138,8 @@ handle_input_locally = false
 size = Vector2i(320, 240)
 render_target_update_mode = 4
 
-[node name="BasePlayer" parent="SubViewportContainer/Level" node_paths=PackedStringArray("camera") instance=ExtResource("3_h6std")]
+[node name="BasePlayer" parent="SubViewportContainer/Level" instance=ExtResource("3_h6std")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.968994, -7.80998)
-Controlset = ExtResource("4_4yqvt")
-camera = NodePath("../CameraRoot/Pivot/Camera")
 
 [node name="blockbench_export" parent="SubViewportContainer/Level" instance=ExtResource("6_ca42s")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
