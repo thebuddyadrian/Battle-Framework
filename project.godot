@@ -19,6 +19,7 @@ config/windows_native_icon="res://icon.ico"
 [autoload]
 
 Game="*res://game.gd"
+CharacterList="*res://autoload/character_list.gd"
 
 [display]
 

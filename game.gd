@@ -10,6 +10,7 @@ var mouse_mode_stack := {}
 
 var delayed_calls := {}
 
+var character_choices := {}
 
 enum ERR {
 	OK,

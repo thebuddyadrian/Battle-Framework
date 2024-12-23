@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx64g5ph55xq5"]
+
+[ext_resource type="Script" path="res://menus/player_setup.gd" id="1_xwnrc"]
+
+[node name="PlayerSetup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xwnrc")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "How many Humans? 2
+
+How many CPUs? 2"
+
+[node name="SpinBox" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 191.0
+offset_right = 277.562
+offset_bottom = 31.0
+
+[node name="SpinBox2" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 165.0
+offset_top = 54.0
+offset_right = 251.562
+offset_bottom = 85.0
