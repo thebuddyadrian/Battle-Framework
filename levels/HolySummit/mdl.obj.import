@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://cd4dpsjjfqvxa"
+path="res://.godot/imported/mdl.obj-b32dfe092ca1ebce1a62fd85e7a550df.mesh"
+
+[deps]
+
+files=["res://.godot/imported/mdl.obj-b32dfe092ca1ebce1a62fd85e7a550df.mesh"]
+
+source_file="res://levels/HolySummit/mdl.obj"
+dest_files=["res://.godot/imported/mdl.obj-b32dfe092ca1ebce1a62fd85e7a550df.mesh", "res://.godot/imported/mdl.obj-b32dfe092ca1ebce1a62fd85e7a550df.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false

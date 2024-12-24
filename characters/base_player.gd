@@ -84,7 +84,7 @@ func move():
 	if direction.z == 0:
 		dirgetz = 0
 		
-		print_debug(str("X: ") + str(dirgetx) + str(" Z: ") + str(dirgetz))
+		#print_debug(str("X: ") + str(dirgetx) + str(" Z: ") + str(dirgetz))
 		
 	if direction && moveenabled == true:
 		var imaginary = (input_dirVisual.angle() + deg_to_rad(90)) + camera.rotation.y

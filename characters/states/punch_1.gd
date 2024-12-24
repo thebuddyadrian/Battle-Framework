@@ -22,4 +22,5 @@ func _step_frozen():
 
 
 func _exit(next_state):
+	root.animplayer.stop()
 	super._exit(next_state)
