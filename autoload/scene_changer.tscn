@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7oowes0v0tnw"]
+
+[ext_resource type="Script" path="res://autoload/scene_changer.gd" id="1_l546c"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o001a"]
+bg_color = Color(0, 0, 0, 1)
+
+[node name="SceneChanger" type="CanvasLayer"]
+layer = 3
+script = ExtResource("1_l546c")
+
+[node name="Black" type="Panel" parent="."]
+modulate = Color(1, 1, 1, 0)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 320.0
+offset_bottom = 240.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_o001a")

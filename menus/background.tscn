@@ -20,4 +20,4 @@ use_parent_material = true
 position = Vector2(160, 120)
 texture = ExtResource("1_8khw4")
 region_enabled = true
-region_rect = Rect2(0, -1223.91, 320, 240)
+region_rect = Rect2(0, -2349.46, 320, 240)

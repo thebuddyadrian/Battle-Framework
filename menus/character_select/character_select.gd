@@ -6,6 +6,7 @@ const PLAYER_CHARACTER_SCENE := preload("res://menus/character_select/player_cha
 var current_player = 1
 
 func _ready() -> void:
+	MusicPlayer.play_track(MusicPlayer.CHALLENGE_BATTLE_MODE)
 	for i in range(Game.human_players + Game.cpu_players):
 		var player_character = PLAYER_CHARACTER_SCENE.instantiate()
 		player_character.name = "PlayerContainer" + str(i + 1)
@@ -24,7 +25,7 @@ func _on_player_selection_finished():
 	Game.character_choices[current_player] = current_player_node.character
 	current_player_node.active = false
 	if current_player == Game.human_players + Game.cpu_players:
-		get_tree().change_scene_to_file("res://levels/level.tscn")
+		SceneChanger.change_scene_to_file("res://levels/level.tscn")
 		return
 	current_player += 1
 	await get_tree().process_frame

@@ -1,0 +1,38 @@
+[gd_scene load_steps=8 format=3 uid="uid://bdxoanh00d4h4"]
+
+[ext_resource type="Texture2D" uid="uid://chm74lghuyaej" path="res://assets/ui/menus/flame_icon/flame1.png" id="1_mg8m6"]
+[ext_resource type="Texture2D" uid="uid://b2wgrlcttjty8" path="res://assets/ui/menus/flame_icon/flame2.png" id="2_4ppys"]
+[ext_resource type="Texture2D" uid="uid://jcbvu2lakf5y" path="res://assets/ui/menus/flame_icon/flame3.png" id="3_axf1u"]
+[ext_resource type="Texture2D" uid="uid://edkp2s1swomf" path="res://assets/ui/menus/flame_icon/flame4.png" id="4_8ptus"]
+[ext_resource type="Texture2D" uid="uid://cl7iswl6b7iug" path="res://assets/ui/menus/flame_icon/flame5.png" id="5_rsyk5"]
+[ext_resource type="Texture2D" uid="uid://dk7x2l2pkw6rx" path="res://assets/ui/menus/flame_icon/flame6.png" id="6_oelhk"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hyn34"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_mg8m6")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_4ppys")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_axf1u")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_8ptus")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_rsyk5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_oelhk")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="FlameLogo" type="AnimatedSprite2D"]
+sprite_frames = SubResource("SpriteFrames_hyn34")
+frame_progress = 0.995207

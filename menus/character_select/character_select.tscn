@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://kulyqmhcf2k2"]
 
-[ext_resource type="Script" uid="uid://bl12xr1kfvop2" path="res://menus/character_select/character_select.gd" id="1_xptye"]
-[ext_resource type="PackedScene" path="res://menus/background.tscn" id="2_kxvnc"]
-[ext_resource type="Shader" uid="uid://b7frwxe5glvvi" path="res://menus/background.gdshader" id="3_xarbf"]
+[ext_resource type="Script" path="res://menus/character_select/character_select.gd" id="1_xptye"]
+[ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_kxvnc"]
+[ext_resource type="Shader" path="res://menus/background.gdshader" id="3_xarbf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pprmj"]
 shader = ExtResource("3_xarbf")

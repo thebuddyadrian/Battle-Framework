@@ -1,9 +1,9 @@
 [gd_scene load_steps=49 format=4 uid="uid://bm8hg8jvdgnfp"]
 
-[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_oqytu"]
-[ext_resource type="Script" uid="uid://cuvca6ikekxsy" path="res://levels/pivot.gd" id="2_vnghu"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_oqytu"]
+[ext_resource type="Script" path="res://levels/pivot.gd" id="2_vnghu"]
 [ext_resource type="Environment" uid="uid://gje4rk62y4yw" path="res://MAINLIGHTING.tres" id="3_gklsj"]
-[ext_resource type="Script" uid="uid://dhrnxon6uous5" path="res://camera.gd" id="4_i3opx"]
+[ext_resource type="Script" path="res://camera.gd" id="4_i3opx"]
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/Base_Player.tscn" id="6_emacx"]
 [ext_resource type="PackedScene" uid="uid://biq6bd0648m35" path="res://UI/HUD.tscn" id="7_jp0qm"]
 [ext_resource type="Texture2D" uid="uid://cqgif5esl31ui" path="res://levels/test_level/EmCo_EmCoG.png" id="8_pb8y7"]
@@ -941,7 +941,6 @@ surface_material_override/0 = SubResource("ShaderMaterial_u6cys")
 [node name="Sky" type="MeshInstance3D" parent="."]
 transform = Transform3D(39.171, 0, 0, 0, -44.1429, 18.6525, 0, -30.4703, -27.0221, -5.52117, 0.893673, -52.8232)
 gi_mode = 0
-gi_lightmap_texel_scale = 5.44
 mesh = SubResource("PlaneMesh_368ro")
 surface_material_override/0 = SubResource("ShaderMaterial_kogck")
 
