@@ -21,8 +21,12 @@ var dirgetz = 1
 
 #This is crucial for allowing the player to move relative to the camera.
 @onready var camera = %CameraRoot/Pivot
+@onready var hitbox: Hitbox = $Hitbox
+@onready var hurtbox: Hurtbox = $Hurtbox
 
 var moveenabled = false
+var deceleration_enabled = true
+
 func _ready() -> void:
 	state_machine.initialize()
 
@@ -62,6 +66,8 @@ func move():
 	
 	if !is_zero_approx(direction.x):
 		Sprite.flip_h = direction.x < 0
+		hitbox.scale.x = direction.x
+		
 		
 	if direction.x < 0:
 		dirgetx = -1.0
@@ -91,7 +97,7 @@ func move():
 		var horizontal_velocity = Vector3(0, 0, SPEED).rotated(Vector3.UP, imaginary);
 		velocity.x = horizontal_velocity.x
 		velocity.z = horizontal_velocity.z
-	else:
+	elif deceleration_enabled:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
@@ -101,3 +107,7 @@ func cammov():
 	velocity.x = horizontal_velocity.x
 	velocity.z = horizontal_velocity.z
 	
+
+
+func _on_hurtbox_hurt(hit_data: HitData, hitbox: Hitbox) -> void:
+	state_machine.change_state("Hurt", {hit_data = hit_data})
