@@ -29,6 +29,7 @@ var deceleration_enabled = true
 
 func _ready() -> void:
 	state_machine.initialize()
+	Sprite.billboard = true
 
 
 func _physics_process(delta: float) -> void:

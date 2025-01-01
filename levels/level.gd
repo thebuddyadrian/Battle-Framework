@@ -11,7 +11,7 @@ func _ready() -> void:
 	#add_child(audiostreamplayer)
 	#if audiostreamplayer.stream != null && !audiostreamplayer.playing:
 		#audiostreamplayer.play()
-	MusicPlayer.play_track(preload("res://assets/Audio/BGM/04. Emerald Beach.mp3"))
+	MusicPlayer.play_track(music)
 
 
 

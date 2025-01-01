@@ -10,7 +10,7 @@ func _enter(data = {}) -> void:
 	root.moveenabled = false
 	root.deceleration_enabled = false
 	root.animplayer.stop()
-	root.animplayer.play("Dash") #Temporary, replace with hurt animation later
+	root.animplayer.play("Hurt")
 	hit_data = data["hit_data"]
 	print("Hurt.gd: %s" % hit_data.knockback_direction)
 	root.velocity = hit_data.calculate_knockback_velocity()
