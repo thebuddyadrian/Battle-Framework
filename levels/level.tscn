@@ -1,6 +1,6 @@
-[gd_scene load_steps=50 format=4 uid="uid://bm8hg8jvdgnfp"]
+[gd_scene load_steps=51 format=4 uid="uid://bm8hg8jvdgnfp"]
 
-[ext_resource type="Script" path="res://levels/level.gd" id="1_oqytu"]
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_oqytu"]
 [ext_resource type="AudioStream" uid="uid://bfvbtkmvhxwqr" path="res://assets/Audio/BGM/04. Emerald Beach.mp3" id="2_hy0rb"]
 [ext_resource type="Script" path="res://levels/pivot.gd" id="2_vnghu"]
 [ext_resource type="Environment" uid="uid://gje4rk62y4yw" path="res://MAINLIGHTING.tres" id="3_gklsj"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://cqgif5esl31ui" path="res://levels/test_level/EmCo_EmCoG.png" id="8_pb8y7"]
 [ext_resource type="Texture2D" uid="uid://47og8hxik4d0" path="res://assets/ui/twoDriver.png" id="8_scoew"]
 [ext_resource type="Texture2D" uid="uid://jqxi86736p0n" path="res://levels/test_level/exwall1.png" id="9_hy0rb"]
+[ext_resource type="Script" uid="uid://ltyn74o4ixti" path="res://levels/sky_pivot.gd" id="9_mxp4k"]
 [ext_resource type="Texture2D" uid="uid://dedcjxx0q3upw" path="res://levels/test_level/EmCo_EmCoW.png" id="10_mxp4k"]
 [ext_resource type="Texture2D" uid="uid://gylkf3m8elev" path="res://levels/test_level/exwall2.png" id="11_d7v53"]
 
@@ -852,6 +853,7 @@ top_level = true
 top_level = true
 
 [node name="Pivot" type="Node3D" parent="CameraRoot"]
+unique_name_in_owner = true
 transform = Transform3D(-1, -1.45412e-06, 2.0767e-06, 0, 0.819152, 0.573576, -2.53518e-06, 0.573576, -0.819152, 0, 0, 0)
 script = ExtResource("2_vnghu")
 
@@ -940,10 +942,14 @@ visible = false
 mesh = SubResource("PlaneMesh_lh335")
 surface_material_override/0 = SubResource("ShaderMaterial_u6cys")
 
-[node name="Sky" type="MeshInstance3D" parent="."]
+[node name="SkyPivot" type="Node3D" parent="."]
+script = ExtResource("9_mxp4k")
+
+[node name="Sky" type="MeshInstance3D" parent="SkyPivot"]
 transform = Transform3D(39.171, 0, 0, 0, -44.1429, 18.6525, 0, -30.4703, -27.0221, -5.52117, 0.893673, -52.8232)
 gi_mode = 0
 mesh = SubResource("PlaneMesh_368ro")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_kogck")
 
 [node name="EmeraldBeach" type="MeshInstance3D" parent="."]
