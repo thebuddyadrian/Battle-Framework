@@ -1,0 +1,28 @@
+[remap]
+
+importer="Aseprite SpriteFrames"
+type="SpriteFrames"
+uid="uid://cl1iuibk3mjc0"
+path="res://.godot/imported/Sonic.aseprite-adcfdbb1ff5b914dce46f19416f36848.res"
+
+[deps]
+
+source_file="res://assets/sonic/Sonic.aseprite"
+dest_files=["res://.godot/imported/Sonic.aseprite-adcfdbb1ff5b914dce46f19416f36848.res"]
+
+[params]
+
+animation/default/name="default"
+animation/default/direction=0
+animation/default/repeat_count=0
+animation/autoplay_name=""
+atlas_textures/region_filter_clip_enabled=false
+middle_import_script=""
+post_import_script=""
+sprite_sheet/edges_artifacts_avoidance_method=1
+sprite_sheet/sprites_surrounding_color=Color(1, 1, 1, 0)
+sprite_sheet/layout=0
+sprite_sheet/max_cells_in_strip=8
+sprite_sheet/trim_sprites_to_overall_min_size=true
+sprite_sheet/collapse_transparent_sprites=true
+sprite_sheet/merge_duplicated_sprites=true
