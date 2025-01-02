@@ -15,8 +15,8 @@ var dirgetz = 1
 
 @export var Controlset = MoonCastControlSettings.new()
 
-@onready var Sprite = $AnimatedSprite3D
-@onready var animplayer = $AnimatedSprite3D/AnimationPlayer
+@onready var Sprite = $PlayerSprite
+@onready var animplayer = $PlayerSprite/AnimationPlayer
 @onready var state_machine = $StateMachine
 
 #This is crucial for allowing the player to move relative to the camera.
