@@ -1,0 +1,136 @@
+[gd_scene load_steps=18 format=3 uid="uid://c2tqnyliq0dwg"]
+
+[ext_resource type="Script" path="res://menus/mode_select.gd" id="1_5ovjn"]
+[ext_resource type="Texture2D" uid="uid://dqijbbv7qnwjo" path="res://sonic battle menu.png" id="2_ki0r6"]
+[ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_p6y4n"]
+[ext_resource type="Texture2D" uid="uid://bvbtspsj4y8oh" path="res://assets/ui/menus/mode_select/story.png" id="3_ij2dm"]
+[ext_resource type="Texture2D" uid="uid://ct67yxep3jie0" path="res://assets/ui/menus/arrow_left.png" id="4_4lvc0"]
+[ext_resource type="Texture2D" uid="uid://blfijwc27g7rg" path="res://assets/ui/menus/mode_select/mode_select_bg_edited.png" id="4_cne22"]
+[ext_resource type="Texture2D" uid="uid://2t54i4x36flm" path="res://assets/ui/menus/mode_select/battle.png" id="4_nuuvt"]
+[ext_resource type="Texture2D" uid="uid://c5gh7y8cww5u5" path="res://assets/ui/menus/mode_select/options.png" id="5_c4hpj"]
+[ext_resource type="Texture2D" uid="uid://dtkrwm6ppxot1" path="res://assets/ui/menus/mode_select/challenge.png" id="6_4lvc0"]
+[ext_resource type="Texture2D" uid="uid://coos7u8xni8mu" path="res://assets/ui/menus/arrow_right.png" id="6_h5q80"]
+[ext_resource type="Texture2D" uid="uid://q28r8dfmoi4r" path="res://assets/ui/menus/mode_select/training.png" id="7_5b7xw"]
+[ext_resource type="Texture2D" uid="uid://omjnld08itl3" path="res://assets/ui/menus/mode_select/mini-games.png" id="8_cne22"]
+[ext_resource type="Texture2D" uid="uid://p884uj8qq1xx" path="res://assets/ui/menus/mode_select/record.png" id="9_h5q80"]
+[ext_resource type="Texture2D" uid="uid://b63yx57cgh47o" path="res://assets/ui/menus/mode_select/mode_select.png" id="14_h5q80"]
+[ext_resource type="PackedScene" uid="uid://bdxoanh00d4h4" path="res://menus/flame_logo.tscn" id="15_j86my"]
+[ext_resource type="AudioStream" uid="uid://dl8ljyjfruc5e" path="res://assets/Audio/sfx/menu/mode_change.wav" id="16_4rtil"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_tfsul"]
+font_size = 24
+
+[node name="ModeSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5ovjn")
+
+[node name="Background" parent="." instance=ExtResource("2_p6y4n")]
+
+[node name="SonicBattleMenu" type="Sprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.368627)
+position = Vector2(0, 15)
+scale = Vector2(1.3375, 1.3375)
+texture = ExtResource("2_ki0r6")
+centered = false
+
+[node name="CurrentMode" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -160.0
+offset_top = -20.0
+offset_right = 160.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "<-- Story Mode -->"
+label_settings = SubResource("LabelSettings_tfsul")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Foreground" type="Sprite2D" parent="."]
+position = Vector2(160, 120)
+scale = Vector2(1.333, 1.333)
+texture = ExtResource("4_cne22")
+
+[node name="ArrowLeft" type="Sprite2D" parent="."]
+position = Vector2(42, 159)
+scale = Vector2(1.333, 1.333)
+texture = ExtResource("4_4lvc0")
+
+[node name="ArrowRight" type="Sprite2D" parent="."]
+position = Vector2(193, 123)
+scale = Vector2(1.333, 1.333)
+texture = ExtResource("6_h5q80")
+
+[node name="ModeSprites" type="Node2D" parent="."]
+position = Vector2(113, 143)
+scale = Vector2(1.333, 1.333)
+
+[node name="Story" type="Sprite2D" parent="ModeSprites"]
+position = Vector2(4, 1)
+texture = ExtResource("3_ij2dm")
+
+[node name="Battle" type="Sprite2D" parent="ModeSprites"]
+visible = false
+texture = ExtResource("4_nuuvt")
+
+[node name="Challenge" type="Sprite2D" parent="ModeSprites"]
+visible = false
+texture = ExtResource("6_4lvc0")
+
+[node name="Training" type="Sprite2D" parent="ModeSprites"]
+visible = false
+texture = ExtResource("7_5b7xw")
+
+[node name="MiniGames" type="Sprite2D" parent="ModeSprites"]
+visible = false
+texture = ExtResource("8_cne22")
+
+[node name="Record" type="Sprite2D" parent="ModeSprites"]
+visible = false
+texture = ExtResource("9_h5q80")
+
+[node name="Options" type="Sprite2D" parent="ModeSprites"]
+visible = false
+texture = ExtResource("5_c4hpj")
+
+[node name="ModeSelect" type="Sprite2D" parent="."]
+position = Vector2(85, 56)
+scale = Vector2(1.333, 1.333)
+texture = ExtResource("14_h5q80")
+
+[node name="NotReadyYet" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -53.0
+offset_top = 76.0
+offset_right = 57.0
+offset_bottom = 99.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Not Ready Yet"
+horizontal_alignment = 1
+
+[node name="FlameLogo" parent="." instance=ExtResource("15_j86my")]
+position = Vector2(270, 129)
+scale = Vector2(1.333, 1.333)
+frame_progress = 0.140587
+
+[node name="ModeChangeSound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_4rtil")
+bus = &"SFX"

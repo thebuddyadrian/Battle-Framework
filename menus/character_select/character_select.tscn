@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://kulyqmhcf2k2"]
+
+[ext_resource type="Script" path="res://menus/character_select/character_select.gd" id="1_xptye"]
+[ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_kxvnc"]
+[ext_resource type="Shader" path="res://menus/background.gdshader" id="3_xarbf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pprmj"]
+shader = ExtResource("3_xarbf")
+shader_parameter/h = 0.0
+shader_parameter/s = 0.788
+shader_parameter/v = 1.0
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_xptye")
+
+[node name="Background" parent="." instance=ExtResource("2_kxvnc")]
+material = SubResource("ShaderMaterial_pprmj")
+
+[node name="PlayerContainer" type="GridContainer" parent="."]
+layout_mode = 0
+offset_top = 43.0
+offset_right = 320.0
+offset_bottom = 240.0
+columns = 2

@@ -1,9 +1,9 @@
 [gd_scene load_steps=15 format=3 uid="uid://oswx21i54voy"]
 
-[ext_resource type="PackedScene" uid="uid://bm8hg8jvdgnfp" path="res://levels/level.tscn" id="1_2dyik"]
-[ext_resource type="PackedScene" uid="uid://3skao5t4re3j" path="res://characters/sonic/sonic.tscn" id="3_gidty"]
+[ext_resource type="PackedScene" uid="uid://bm8hg8jvdgnfp" path="res://levels/test_level/level.tscn" id="1_2dyik"]
+[ext_resource type="PackedScene" path="res://characters/sonic/sonic.tscn" id="3_gidty"]
 [ext_resource type="Script" uid="uid://bij63em3miwn6" path="res://players/player_controller.gd" id="4_74aw3"]
-[ext_resource type="Texture2D" uid="uid://cb6y8cgcekkwf" path="res://assets/sponge.png" id="5_adw2e"]
+[ext_resource type="Texture2D" path="res://assets/sponge.png" id="5_adw2e"]
 [ext_resource type="PackedScene" uid="uid://cf2hyq1t7vfep" path="res://levels/test_level/EmCo.glb" id="5_nvv74"]
 
 [sub_resource type="Environment" id="Environment_m5w0b"]

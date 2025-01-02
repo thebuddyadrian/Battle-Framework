@@ -1,9 +1,11 @@
-[gd_scene load_steps=24 format=3 uid="uid://3yefhhhajnqk"]
+[gd_scene load_steps=26 format=3 uid="uid://3yefhhhajnqk"]
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_ot3ob"]
+[ext_resource type="AudioStream" uid="uid://casknkjtb2gsj" path="res://assets/Audio/BGM/SUPER-REFLEX.mp3" id="2_e2awe"]
 [ext_resource type="Texture2D" uid="uid://cdaxr0wjdfxxw" path="res://assets/ui/BattleEmblem.png" id="2_rmsp1"]
 [ext_resource type="Script" uid="uid://d2luikke1goi4" path="res://levels/hologram/Boxspin.tres.gd" id="3_218cn"]
 [ext_resource type="Texture2D" uid="uid://47og8hxik4d0" path="res://assets/ui/twoDriver.png" id="4_218cn"]
+[ext_resource type="PackedScene" uid="uid://c2tqnyliq0dwg" path="res://menus/mode_select.tscn" id="6_lb38e"]
 
 [sub_resource type="GDScript" id="GDScript_vp83o"]
 resource_name = "spin"
@@ -426,6 +428,7 @@ shader_parameter/edge_fade = 0.01
 
 [node name="MainMenu" type="Node3D"]
 script = ExtResource("1_ot3ob")
+music = ExtResource("2_e2awe")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
@@ -501,3 +504,5 @@ surface_material_override/0 = SubResource("ShaderMaterial_ih3s6")
 transform = Transform3D(-99.9808, 0.838933, -1.77318, -1.22475, -97.3067, 23.0196, -1.5323, 23.0369, 97.2983, -10.1813, 10.2365, -58.1516)
 mesh = SubResource("PlaneMesh_rmsp1")
 surface_material_override/0 = SubResource("ShaderMaterial_lb38e")
+
+[node name="ModeSelect" parent="." instance=ExtResource("6_lb38e")]

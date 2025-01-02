@@ -4,16 +4,19 @@ extends BaseState
 
 func _enter(data = {}):
 	super._enter(data)
+	root.moveenabled = true
 	root.animplayer.play("Idle")
 
 
 func _step():
 	super._step()
-	if InputMap.has_action(root.Controlset.action_jump) and Input.is_action_pressed(root.Controlset.action_jump):
+	if Input.is_action_just_pressed(root.Controlset.action_jump):
 		parent.change_state("Jump")
-	if InputMap.has_action(root.Controlset.action_attack) and Input.is_action_pressed(root.Controlset.action_attack):
+	if Input.is_action_pressed(root.Controlset.action_attack) && !Input.is_action_just_pressed(root.Controlset.action_jump):
 		parent.change_state("Punch1")
-	if root.velocity.x != 0 or root.velocity.z != 0:
+	if Input.is_action_just_pressed(root.Controlset.action_dash):
+		parent.change_state("Dash")
+	if (root.velocity.x != 0 or root.velocity.z != 0) && !Input.is_action_just_pressed(root.Controlset.action_dash)&& !Input.is_action_just_pressed(root.Controlset.action_jump):
 		parent.change_state("Move")
 
 
@@ -22,4 +25,6 @@ func _step_frozen():
 
 
 func _exit(next_state):
+	root.moveenabled = false
+	root.animplayer.stop()
 	super._exit(next_state)

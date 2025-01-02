@@ -45,6 +45,11 @@ func hit_opponent(hit_def):
 	pass
 
 
+# Gets a reference to the hitdata for the player's hitbox
+func get_hit_data() -> HitData:
+	return root.hitbox.hit_data
+
+
 #Shows a warning if this State is not the child of a StateMachine
 func _get_configuration_warning():
 	var has_state = false

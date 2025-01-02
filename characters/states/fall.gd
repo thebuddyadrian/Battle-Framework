@@ -4,6 +4,7 @@ extends BaseState
 
 func _enter(data = {}):
 	super._enter(data)
+	root.moveenabled = true
 	root.animplayer.play("Falling")
 
 
@@ -17,4 +18,6 @@ func _step_frozen():
 
 
 func _exit(next_state):
+	root.animplayer.stop()
+	root.moveenabled = false
 	super._exit(next_state)
