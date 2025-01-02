@@ -1,0 +1,55 @@
+[gd_scene load_steps=2 format=3 uid="uid://w4k7yst4y0d2"]
+
+[ext_resource type="Script" uid="uid://vk22qecj71h4" path="res://menus/dev_menu.gd" id="1_12ima"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+layer = 10
+script = ExtResource("1_12ima")
+
+[node name="MainMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Options" type="VBoxContainer" parent="MainMenu"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="YouAreHere" type="Label" parent="MainMenu/Options"]
+layout_mode = 2
+text = "Sonic Battle Framework: Dev menu"
+horizontal_alignment = 1
+
+[node name="Switch Scene" type="Button" parent="MainMenu/Options"]
+layout_mode = 2
+text = "Switch Scene"
+
+[node name="Reboot" type="Button" parent="MainMenu/Options"]
+layout_mode = 2
+text = "Restart Scene"
+
+[node name="Button3" type="Button" parent="MainMenu/Options"]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="MainMenu/Options"]
+layout_mode = 2
+text = "Exit Game"
+
+[node name="FileDialog" type="FileDialog" parent="."]
+title = "Open a File"
+ok_button_text = "Open"
+file_mode = 0
+filters = PackedStringArray("*.tscn, *.scn; Godot Scenes", "")
+
+[connection signal="pressed" from="MainMenu/Options/Switch Scene" to="." method="_on_switch_scene_pressed"]
+[connection signal="pressed" from="MainMenu/Options/Reboot" to="." method="_on_reboot_pressed"]
+[connection signal="pressed" from="MainMenu/Options/Exit" to="." method="_on_exit_pressed"]
