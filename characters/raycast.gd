@@ -1,6 +1,6 @@
 extends RayCast3D
 
-@onready var Shadow = $Shadow
+@onready var Shadow = $ShadowNew
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.

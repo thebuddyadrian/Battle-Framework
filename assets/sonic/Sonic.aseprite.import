@@ -3,12 +3,11 @@
 importer="Aseprite SpriteFrames"
 type="SpriteFrames"
 uid="uid://cl1iuibk3mjc0"
-path="res://.godot/imported/Sonic.aseprite-adcfdbb1ff5b914dce46f19416f36848.res"
+valid=false
 
 [deps]
 
 source_file="res://assets/sonic/Sonic.aseprite"
-dest_files=["res://.godot/imported/Sonic.aseprite-adcfdbb1ff5b914dce46f19416f36848.res"]
 
 [params]
 
