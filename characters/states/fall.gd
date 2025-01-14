@@ -10,7 +10,9 @@ func _enter(data = {}):
 
 func _step():
 	if root.is_on_floor():
-		parent.change_state("Idle")
+		parent.change_state("Land")
+	if Input.is_action_just_pressed(root.Controlset.action_jump):
+		parent.change_state("AirDash")
 
 
 func _step_frozen():

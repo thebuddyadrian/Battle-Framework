@@ -11,7 +11,7 @@ func _enter(data = {}):
 func _step():
 	super._step()
 	if Input.is_action_just_pressed(root.Controlset.action_jump):
-		parent.change_state("Jump")
+		parent.change_state("JumpSquat")
 	if Input.is_action_pressed(root.Controlset.action_attack) && !Input.is_action_just_pressed(root.Controlset.action_jump):
 		parent.change_state("Punch1")
 	if Input.is_action_just_pressed(root.Controlset.action_dash):

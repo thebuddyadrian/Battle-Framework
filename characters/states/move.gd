@@ -14,7 +14,7 @@ func _step():
 		root.animplayer.play("Moving")
 		
 	if Input.is_action_just_pressed(root.Controlset.action_jump):
-		parent.change_state("Jump")
+		parent.change_state("JumpSquat")
 	if Input.is_action_pressed(root.Controlset.action_attack):
 		parent.change_state("Punch1")
 	if root.velocity.x == 0 and root.velocity.z == 0:

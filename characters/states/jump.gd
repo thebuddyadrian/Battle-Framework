@@ -12,7 +12,8 @@ func _enter(data = {}):
 func _step():
 	if root.velocity.y < 0 && !root.is_on_floor():
 		parent.change_state("Fall")
-
+	if parent.state_time > 5 and Input.is_action_just_pressed(root.Controlset.action_jump):
+		parent.change_state("AirDash")
 
 func _step_frozen():
 	super._step_frozen()
