@@ -1,13 +1,14 @@
-[gd_scene load_steps=37 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=40 format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" path="res://characters/base_player.gd" id="1_7xl6k"]
-[ext_resource type="Texture2D" uid="uid://cdstqfysu6cjr" path="res://assets/Shadow.png" id="2_ltlua"]
 [ext_resource type="Script" path="res://characters/raycast.gd" id="2_s2flu"]
 [ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="3_rqcha"]
 [ext_resource type="Script" path="res://components/state_machine/state_machine.gd" id="4_dnwcv"]
 [ext_resource type="Script" path="res://characters/states/idle.gd" id="5_6wnxk"]
 [ext_resource type="Script" path="res://components/state_machine/base_state.gd" id="5_dnwcv"]
 [ext_resource type="Resource" uid="uid://c4ualnk4bnyh3" path="res://players/player1controls.tres" id="6_f3uyc"]
+[ext_resource type="Shader" path="res://assets/shader/shadow_dither.gdshader" id="6_m6gva"]
+[ext_resource type="Texture2D" uid="uid://c3nutkgwrk7i7" path="res://assets/ditherpattern.png" id="7_tg5qw"]
 [ext_resource type="Script" path="res://characters/states/move.gd" id="7_wtpgs"]
 [ext_resource type="Script" path="res://characters/states/jump.gd" id="8_pfkrf"]
 [ext_resource type="Script" path="res://characters/states/fall.gd" id="9_qxn4b"]
@@ -340,6 +341,18 @@ _data = {
 &"kick2": SubResource("Animation_wtpgs")
 }
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lntm"]
+render_priority = 0
+shader = ExtResource("6_m6gva")
+shader_parameter/checkerboard = ExtResource("7_tg5qw")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ddqn7"]
+top_radius = 0.25
+bottom_radius = 0.0
+height = 0.001
+radial_segments = 16
+cap_bottom = false
+
 [sub_resource type="Resource" id="Resource_rqcha"]
 script = ExtResource("16_32b4s")
 damage = 0.0
@@ -390,11 +403,11 @@ target_position = Vector3(0, -5, 0)
 collision_mask = 2
 script = ExtResource("2_s2flu")
 
-[node name="Shadow" type="Sprite3D" parent="RayCast3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37115e-08, -1, 0, 1, -4.37115e-08, 0, -0.128539, 0)
-texture_filter = 0
-render_priority = 6
-texture = ExtResource("2_ltlua")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]
+
+[node name="Shadow" type="MeshInstance3D" parent="RayCast3D"]
+material_override = SubResource("ShaderMaterial_0lntm")
+mesh = SubResource("CylinderMesh_ddqn7")
 
 [node name="StateMachine" type="Node" parent="." groups=["network_sync"]]
 script = ExtResource("4_dnwcv")
