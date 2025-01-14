@@ -5,10 +5,14 @@ extends BaseState
 func _enter(data = {}):
 	super._enter(data)
 	root.moveenabled = true
-	root.animplayer.play("Moving")
 
 
 func _step():
+	if parent.state_time < 4:
+		root.animplayer.play("MoveTransition")
+	else:
+		root.animplayer.play("Moving")
+		
 	if Input.is_action_just_pressed(root.Controlset.action_jump):
 		parent.change_state("Jump")
 	if Input.is_action_pressed(root.Controlset.action_attack):
