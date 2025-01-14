@@ -6,13 +6,14 @@ class_name BattleCharacter
 @export var SPEED = 8.0
 @export var JUMP_VELOCITY = 4.5
 @export var DASH_SPEED = 12.5
+@export var AIR_DASH_SPEED = 15
 @export var STOCKS = 3
 @export var PLAYER = 1
 @export var GRAVITY = 25
 @export var JUMPFROMGROUND = false
 @export var DECELERATION = 1
 @export var ACCELERATION = 1
-@export var AIR_DECELERATION = 0.5
+@export var AIR_DECELERATION = 0.25
 @export var AIR_ACCELERATION = 0.5
 @export var Controlset = MoonCastControlSettings.new()
 
@@ -66,9 +67,6 @@ func move():
 	# Get the player's movement direction (relative to the camera)
 	var movement_dir := get_movement_vector()
 	
-	print("Input dir: %s" % input_dir)
-	print("Movement dir: %s" % movement_dir)
-	
 	# Set the facing direction to -1 if left, and 1 if right
 	# Used to flip the hitbox in the correct direction
 	if !is_zero_approx(movement_dir.x):
@@ -80,25 +78,30 @@ func move():
 	if !is_zero_approx(input_dir.x):
 		$PlayerSprite.flip_h = (input_dir.x < 0)
 	
-	
-
 	# Accelerate the player in the movement direction if they're moving
 	# Otherwise decelerate to a stop
 	# If movement is disabled, the player will still decelerate
-	var acceleration_vector = movement_dir * ACCELERATION
+	var acceleration_vector: Vector2
+	if is_on_floor():
+		acceleration_vector = movement_dir * ACCELERATION
+	else:
+		acceleration_vector = movement_dir * AIR_ACCELERATION
+	
+	var deceleration_current = DECELERATION if is_on_floor() else AIR_DECELERATION
+		
 	if input_dir.x != 0 and moveenabled:
 		velocity.x += acceleration_vector.x
 		if limit_speed:
 			velocity.x = clamp(velocity.x, -SPEED, SPEED)
 	elif deceleration_enabled:
-		velocity.x = move_toward(velocity.x, 0, DECELERATION)
+		velocity.x = move_toward(velocity.x, 0, deceleration_current)
 	
 	if input_dir.y != 0 and moveenabled:
 		velocity.z += acceleration_vector.y
 		if limit_speed:
 			velocity.z = clamp(velocity.z, -SPEED, SPEED)
 	elif deceleration_enabled:
-		velocity.z = move_toward(velocity.z, 0, DECELERATION)
+		velocity.z = move_toward(velocity.z, 0, deceleration_current)
 
 
 func get_input_vector() -> Vector2:
