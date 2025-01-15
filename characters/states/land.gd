@@ -6,6 +6,7 @@ extends BaseState
 func _enter(data = {}):
 	root.animplayer.play("Land")
 	root.velocity.x = 0
+	root.air_dashes_used = 0
 
 
 func _step():

@@ -11,7 +11,7 @@ func _enter(data = {}):
 func _step():
 	if root.is_on_floor():
 		parent.change_state("Land")
-	if Input.is_action_just_pressed(root.Controlset.action_jump):
+	if Input.is_action_just_pressed(root.Controlset.action_jump) and root.air_dashes_used < root.MAX_AIR_DASHES:
 		parent.change_state("AirDash")
 
 

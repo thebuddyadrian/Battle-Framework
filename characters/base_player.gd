@@ -15,13 +15,15 @@ class_name BattleCharacter
 @export var ACCELERATION = 1
 @export var AIR_DECELERATION = 0.25
 @export var AIR_ACCELERATION = 0.5
+@export var MAX_AIR_DASHES = 1
 @export var Controlset = MoonCastControlSettings.new()
 
-var facing_direction: int = 1 # 1 if facing right, -1 if facing left
+var facing_direction: Vector2 = Vector2.RIGHT # The last used nonzero move_direction
+var attack_direction: int = 1 # The direction for 2-Directional attacks
 var moveenabled = false
 var deceleration_enabled = true
 var limit_speed = true # During normal movement speed is limited, turn this off for stuff like dashing
-
+var air_dashes_used = 0
 
 @onready var Sprite = $PlayerSprite
 @onready var animplayer = $PlayerSprite/AnimationPlayer
@@ -66,12 +68,14 @@ func move():
 	var input_dir := get_input_vector()
 	# Get the player's movement direction (relative to the camera)
 	var movement_dir := get_movement_vector()
+	# The player will be facing in the last used movement direction
+	if movement_dir != Vector2.ZERO:
+		facing_direction = movement_dir
 	
-	# Set the facing direction to -1 if left, and 1 if right
-	# Used to flip the hitbox in the correct direction
-	if !is_zero_approx(movement_dir.x):
-		facing_direction = -1 if movement_dir.x < 0 else 1
-		hitbox.scale.x = facing_direction
+	# Set the direction for the hitbox and attacks
+	if !is_zero_approx(facing_direction.x):
+		attack_direction = sign(facing_direction.x)
+		hitbox.scale.x = attack_direction
 	
 	# The player sprite will be flipped using the input_direction
 	# This is because the sprite already faces the camera automatically, and doesn't need the camera's rotation

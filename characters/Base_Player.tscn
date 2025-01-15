@@ -28,6 +28,23 @@
 radius = 0.0853482
 height = 0.369509
 
+[sub_resource type="Animation" id="Animation_do57j"]
+resource_name = "AirDash"
+length = 0.500008
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [36, 37, 38, 39, 40, 41]
+}
+
 [sub_resource type="Animation" id="Animation_pfkrf"]
 resource_name = "Dash"
 length = 0.5385
@@ -129,6 +146,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [22]
+}
+
+[sub_resource type="Animation" id="Animation_tg5qw"]
+resource_name = "Land"
+length = 0.250008
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [32, 33, 34]
 }
 
 [sub_resource type="Animation" id="Animation_rqcha"]
@@ -328,40 +362,6 @@ tracks/2/keys = {
 "values": [Vector3(0.0991605, 0.011724, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_tg5qw"]
-resource_name = "Land"
-length = 0.250008
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
-"values": [32, 33, 34]
-}
-
-[sub_resource type="Animation" id="Animation_do57j"]
-resource_name = "AirDash"
-length = 0.500008
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [36, 37, 38, 39, 40, 41]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7vi1n"]
 _data = {
 &"AirDash": SubResource("Animation_do57j"),
@@ -392,7 +392,7 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_0lntm"]
+[sub_resource type="Resource" id="Resource_j5k0p"]
 script = ExtResource("16_32b4s")
 damage = 0.0
 knockback_direction = null
@@ -494,7 +494,7 @@ script = ExtResource("15_ddqn7")
 
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_0lntm")
+hit_data = SubResource("Resource_j5k0p")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

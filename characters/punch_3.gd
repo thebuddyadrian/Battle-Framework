@@ -6,7 +6,7 @@ func _enter(data = {}):
 	super._enter(data)
 	root.animplayer.play("kick2")
 	get_hit_data().damage = 10.0
-	get_hit_data().knockback_direction.x = root.facing_direction
+	get_hit_data().knockback_direction.x = sign(root.attack_direction)
 	get_hit_data().knockback_power = 10 
 	get_hit_data().knockback_angle = 20
 	get_hit_data().hit_stun = 25
