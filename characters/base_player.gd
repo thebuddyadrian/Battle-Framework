@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 class_name BattleCharacter
 
-
 @export var SPEED = 8.0
 @export var JUMP_VELOCITY = 4.5
 @export var DASH_SPEED = 12.5
@@ -16,7 +15,6 @@ class_name BattleCharacter
 @export var AIR_DECELERATION = 0.25
 @export var AIR_ACCELERATION = 0.5
 @export var MAX_AIR_DASHES = 1
-@export var Controlset = MoonCastControlSettings.new()
 
 var facing_direction: Vector2 = Vector2.RIGHT # The last used nonzero move_direction
 var attack_direction: int = 1 # The direction for 2-Directional attacks
@@ -42,8 +40,6 @@ func _ready() -> void:
 
 
 func _physics_process(delta: float) -> void:
-	setcontrols()
-	
 	# Add the gravity.
 	velocity.y -= GRAVITY * delta
 	move()
@@ -51,16 +47,16 @@ func _physics_process(delta: float) -> void:
 	state_machine.advance()
 
 
-func setcontrols() -> void:
-	match PLAYER:
-		1:
-			Controlset = load("res://players/player1controls.tres")
-		2:
-			Controlset = load("res://players/player2controls.tres")
-		3:
-			Controlset = load("res://players/player2controls.tres")
-		4:
-			Controlset = load("res://players/player2controls.tres")
+#func setcontrols() -> void:
+	#match PLAYER:
+		#1:
+			#Controlset = load("res://players/player1controls.tres")
+		#2:
+			#Controlset = load("res://players/player2controls.tres")
+		#3:
+			#Controlset = load("res://players/player2controls.tres")
+		#4:
+			#Controlset = load("res://players/player2controls.tres")
 
 
 func move():
@@ -108,14 +104,30 @@ func move():
 		velocity.z = move_toward(velocity.z, 0, deceleration_current)
 
 
+# Input helper function to get input for the current player
+# In the future this will also retrieve inputs received over the network (for online play)
+func input(action: StringName, type: String = "pressed") -> bool:
+	# Gets the correct action based on the player number (ex: attack1, attack2, attack3, etc.)
+	var player_action = action + str(PLAYER)
+	if !InputMap.has_action(player_action):
+		return false
+	if type == "pressed":
+		return Input.is_action_pressed(player_action)
+	if type == "just_pressed":
+		return Input.is_action_just_pressed(player_action)
+	if type == "just_released":
+		return Input.is_action_just_released(player_action)
+	return false
+	
+
 func get_input_vector() -> Vector2:
-	return Input.get_vector(Controlset.direction_left, Controlset.direction_right, Controlset.direction_up, Controlset.direction_down)
+	return Vector2(int(input("right")) - int(input("left")), int(input("down")) - int(input("up")))
 
 
 # Movement vector is the input but rotated relative to the camera
 # This allows the player to move in the correct direction no matter how the camera is rotated
 func get_movement_vector() -> Vector2:
-	return get_input_vector().rotated(camera.rotation.y)
+	return get_input_vector().rotated(camera.rotation.y).normalized()
 
 
 func _on_hurtbox_hurt(hit_data: HitData, hitbox: Hitbox) -> void:

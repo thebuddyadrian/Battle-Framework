@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=47 format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" path="res://characters/base_player.gd" id="1_7xl6k"]
 [ext_resource type="Script" path="res://characters/raycast.gd" id="2_s2flu"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" path="res://components/state_machine/state_machine.gd" id="4_dnwcv"]
 [ext_resource type="Script" path="res://characters/states/idle.gd" id="5_6wnxk"]
 [ext_resource type="Script" path="res://components/state_machine/base_state.gd" id="5_dnwcv"]
-[ext_resource type="Resource" uid="uid://c4ualnk4bnyh3" path="res://players/player1controls.tres" id="6_f3uyc"]
 [ext_resource type="Shader" path="res://assets/shader/shadow_dither.gdshader" id="6_m6gva"]
 [ext_resource type="Texture2D" uid="uid://c3nutkgwrk7i7" path="res://assets/ditherpattern.png" id="7_tg5qw"]
 [ext_resource type="Script" path="res://characters/states/move.gd" id="7_wtpgs"]
@@ -241,6 +240,129 @@ tracks/2/keys = {
 "values": [0.13]
 }
 
+[sub_resource type="Animation" id="Animation_h6gly"]
+resource_name = "Punch1_active"
+length = 0.3
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(7.45058e-09, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [47, 48, 49, 50]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.190346, 0.0026055, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0883124]
+}
+
+[sub_resource type="Animation" id="Animation_uxs3k"]
+resource_name = "Punch1_recovery"
+length = 0.3
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(7.45058e-09, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [47, 48, 49, 50]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.190346, 0.0026055, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.13]
+}
+
+[sub_resource type="Animation" id="Animation_j5k0p"]
+resource_name = "Punch1_startup"
+length = 0.3
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [45, 46]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.190346, 0.0026055, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.13]
+}
+
 [sub_resource type="Animation" id="Animation_dnwcv"]
 length = 0.001
 tracks/0/type = "value"
@@ -375,6 +497,9 @@ _data = {
 &"MoveTransition": SubResource("Animation_rqcha"),
 &"Moving": SubResource("Animation_7vi1n"),
 &"Punch1": SubResource("Animation_c551c"),
+&"Punch1_active": SubResource("Animation_h6gly"),
+&"Punch1_recovery": SubResource("Animation_uxs3k"),
+&"Punch1_startup": SubResource("Animation_j5k0p"),
 &"RESET": SubResource("Animation_dnwcv"),
 &"kick1": SubResource("Animation_6wnxk"),
 &"kick2": SubResource("Animation_wtpgs")
@@ -392,7 +517,7 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_j5k0p"]
+[sub_resource type="Resource" id="Resource_tg5qw"]
 script = ExtResource("16_32b4s")
 damage = 0.0
 knockback_direction = null
@@ -416,7 +541,6 @@ floor_snap_length = 0.16
 safe_margin = 0.016
 script = ExtResource("1_7xl6k")
 JUMP_VELOCITY = 10.0
-Controlset = ExtResource("6_f3uyc")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ajxej")
@@ -494,7 +618,7 @@ script = ExtResource("15_ddqn7")
 
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_j5k0p")
+hit_data = SubResource("Resource_tg5qw")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

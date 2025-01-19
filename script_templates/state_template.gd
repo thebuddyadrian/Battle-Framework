@@ -13,7 +13,7 @@ func _enter(data = {}):
 # Called every frame of the state
 func _step():
 #	This is where you can handle changing to other states, like by pressing a button
-#	if Input.is_action_pressed(root.Controlset.action_attack):
+#	if root.input("attack", "just_pressed")):
 #		parent.change_state("Punch1")
 	pass
 

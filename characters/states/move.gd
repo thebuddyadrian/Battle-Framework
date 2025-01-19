@@ -13,13 +13,13 @@ func _step():
 	else:
 		root.animplayer.play("Moving")
 		
-	if Input.is_action_just_pressed(root.Controlset.action_jump):
+	if root.input("jump", "just_pressed"):
 		parent.change_state("JumpSquat")
-	if Input.is_action_pressed(root.Controlset.action_attack):
+	if root.input("attack", "just_pressed"):
 		parent.change_state("Punch1")
 	if root.velocity.x == 0 and root.velocity.z == 0:
 		parent.change_state("Idle")
-	if Input.is_action_just_pressed(root.Controlset.action_dash):
+	if root.input("dash", "just_pressed"):
 		parent.change_state("Dash")
 	if root.velocity.y < 0:
 		parent.change_state("Fall")

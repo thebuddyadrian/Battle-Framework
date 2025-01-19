@@ -1,12 +1,16 @@
 @tool
 extends BaseState
 
+const DEFAULT_FRAMES: int = 12
+
 @export var frames: int = 12
 
 func _enter(data = {}):
 	root.animplayer.play("Land")
 	root.velocity.x = 0
+	root.velocity.z = 0
 	root.air_dashes_used = 0
+	frames = data.get("frames", DEFAULT_FRAMES)
 
 
 func _step():
