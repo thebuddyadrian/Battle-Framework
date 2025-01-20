@@ -3,10 +3,13 @@ class_name HitData
 
 # A resource that stores data a player will need when hitting opponents or getting hit by an attack
 
+enum KNOCKBACK_TYPE {WEAK, LAUNCH, UP}
+
 @export var damage: float 
 @export var knockback_direction: Vector2 = Vector2(0, 0) # The direction the player will be hit, in regards to the XZ plane
 @export var knockback_power: float = 20 # How far the player gets hit
 @export var knockback_angle: float = 30 # The angle the player will get hit upwards, in regards to the plane with its width defined by the knockback_direction and the Y axis
+@export var knockback_type: KNOCKBACK_TYPE = KNOCKBACK_TYPE.WEAK
 @export var unblockable: bool = false
 @export var hit_freeze: int = 5
 @export var hit_stun: int = 30

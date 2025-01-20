@@ -1,38 +1,30 @@
-@tool
-extends BaseState
+extends BaseAttackStandard
 
 
-func _enter(data = {}):
-	super._enter(data)
-	root.animplayer.play("Punch1")
-	get_hit_data().damage = 10.0
-	get_hit_data().knockback_direction.x = sign(root.attack_direction)
-	get_hit_data().knockback_power = 1
-	get_hit_data().knockback_angle = 0
-	get_hit_data().hit_stun = 25
+func _move_setup():
+	animation = "Punch1"
+	startup_frames = 6
+	active_frames = 3
+	recovery_frames = 15
+	damage = 10
+	knockback_power = 2
+	direction_type == DIR_TYPE.TWO_DIR
+	make_standard_attack()
+
+
+func _phase_changed():
+	if get_current_phase() == active_phase:
+		# Do stuff when the active phase starts
+		pass
 
 
 func _step():
-	# Define active frames
-	if parent.state_time == 6:
-		root.hitbox.active = true
-	if parent.state_time == 9:
-		root.hitbox.active = false
-	
-	if parent.state_time == 18:
-		parent.change_state("Idle")
-	elif parent.state_time  <= 17 && parent.state_time > 8:
+	super._step()
+	if get_current_phase_name() == "recovery":
 		if root.input("attack", "just_pressed"):
-			parent.change_state("Punch2")
-		if root.input("dash", "just_pressed"):
-			parent.change_state("Dash")
-
-
-func _step_frozen():
-	super._step_frozen()
+			change_state("Punch2")
 
 
 func _exit(next_state):
-	root.hitbox.active = false
 	root.animplayer.stop()
 	super._exit(next_state)

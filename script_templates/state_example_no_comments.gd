@@ -1,4 +1,3 @@
-@tool
 extends BaseState
 
 func _enter(data = {}):

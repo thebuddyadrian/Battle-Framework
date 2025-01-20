@@ -1,4 +1,3 @@
-@tool
 extends BaseState
 # Example state machine script to show you how the state machine should be used
 

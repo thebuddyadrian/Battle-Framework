@@ -1,6 +1,8 @@
-@tool
 extends BaseState
 
+const STOP_THRESHOLD = 6.0
+
+var turn: bool = false
 
 func _enter(data = {}):
 	super._enter(data)
@@ -12,13 +14,28 @@ func _step():
 		root.animplayer.play("MoveTransition")
 	else:
 		root.animplayer.play("Moving")
-		
+	
+	# Jumping
 	if root.input("jump", "just_pressed"):
 		parent.change_state("JumpSquat")
+	
 	if root.input("attack", "just_pressed"):
-		parent.change_state("Punch1")
-	if root.velocity.x == 0 and root.velocity.z == 0:
-		parent.change_state("Idle")
+		if root.get_input_vector() == Vector2.ZERO:
+			parent.change_state("Punch1")
+		else:
+			parent.change_state("Heavy")
+	
+	# Stopping
+	if root.get_input_vector() == Vector2.ZERO:
+		if root.velocity.length() >= STOP_THRESHOLD:
+			parent.change_state("Stopping")
+		else:
+			parent.change_state("Idle")
+	
+	# Turning
+	if root.is_turning():
+		parent.change_state("Turn")
+	
 	if root.input("dash", "just_pressed"):
 		parent.change_state("Dash")
 	if root.velocity.y < 0:

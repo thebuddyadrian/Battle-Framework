@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=60 format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" path="res://characters/base_player.gd" id="1_7xl6k"]
 [ext_resource type="Script" path="res://characters/raycast.gd" id="2_s2flu"]
@@ -13,7 +13,9 @@
 [ext_resource type="Script" path="res://characters/states/fall.gd" id="9_qxn4b"]
 [ext_resource type="Script" path="res://characters/dash.gd" id="10_0nphp"]
 [ext_resource type="Script" path="res://characters/states/punch_1.gd" id="10_3twb4"]
+[ext_resource type="Script" path="res://characters/states/stopping.gd" id="10_fv82v"]
 [ext_resource type="Script" path="res://characters/states/jump_squat.gd" id="11_m6gva"]
+[ext_resource type="Script" path="res://characters/states/turn.gd" id="11_uaf3e"]
 [ext_resource type="Script" path="res://characters/punch_2.gd" id="12_pfkrf"]
 [ext_resource type="Script" path="res://characters/states/land.gd" id="12_tg5qw"]
 [ext_resource type="Script" path="res://characters/punch_3.gd" id="13_qxn4b"]
@@ -22,6 +24,11 @@
 [ext_resource type="Script" path="res://characters/states/air_dash.gd" id="15_j5k0p"]
 [ext_resource type="Script" path="res://components/hitbox/hit_data.gd" id="16_32b4s"]
 [ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="16_obb2v"]
+[ext_resource type="Script" path="res://characters/states/heavy.gd" id="19_j5k0p"]
+[ext_resource type="Script" path="res://characters/states/upper.gd" id="20_e12xf"]
+[ext_resource type="Script" path="res://characters/states/wall_hit.gd" id="21_do57j"]
+[ext_resource type="Script" path="res://characters/states/down.gd" id="22_h6gly"]
+[ext_resource type="Script" path="res://characters/states/get_up.gd" id="23_uxs3k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ajxej"]
 radius = 0.0853482
@@ -76,6 +83,150 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [28, 29, 30, 31]
+}
+
+[sub_resource type="Animation" id="Animation_uaf3e"]
+resource_name = "GetUp"
+length = 0.666675
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [194, 195, 196, 197, 198, 199, 200, 201]
+}
+
+[sub_resource type="Animation" id="Animation_e12xf"]
+resource_name = "Heavy"
+length = 0.850005
+step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.2
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.3
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"jump",
+"time": 0.65
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45, 0.5, 0.55, 0.65, 0.7, 0.75, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [77, 78, 79, 80, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.112917, 0.00389622, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.160633]
+}
+
+[sub_resource type="Animation" id="Animation_fv82v"]
+resource_name = "HitFloor"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.08335, 0.1667, 0.25005, 0.3334, 0.41675),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [188, 189, 190, 191, 192, 193]
+}
+
+[sub_resource type="Animation" id="Animation_lgwg8"]
+resource_name = "HitUp"
+length = 0.250008
+step = 0.0833333
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"loop",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"loopend",
+"time": 0.166667
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [169, 170, 171]
+}
+
+[sub_resource type="Animation" id="Animation_uxs3k"]
+resource_name = "HitWall"
+length = 0.350005
+step = 0.05
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"Bounce",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"Wall",
+"time": 0.1
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [181, 182, 183, 184, 185, 186, 187]
 }
 
 [sub_resource type="Animation" id="Animation_m6gva"]
@@ -164,6 +315,24 @@ tracks/0/keys = {
 "values": [32, 33, 34]
 }
 
+[sub_resource type="Animation" id="Animation_h6gly"]
+resource_name = "Launch"
+length = 0.350005
+loop_mode = 1
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0166667, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [173, 174, 175, 176, 177, 178, 179, 180]
+}
+
 [sub_resource type="Animation" id="Animation_rqcha"]
 resource_name = "MoveTransition"
 length = 0.1
@@ -203,6 +372,19 @@ tracks/0/keys = {
 resource_name = "Punch1"
 length = 0.3
 step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.1
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.15
+}]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -214,129 +396,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [45, 46, 47, 48, 49, 50]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Hitbox/CollisionShape3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.190346, 0.0026055, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.13]
-}
-
-[sub_resource type="Animation" id="Animation_h6gly"]
-resource_name = "Punch1_active"
-length = 0.3
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(7.45058e-09, 0.05, 0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [47, 48, 49, 50]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Hitbox/CollisionShape3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.190346, 0.0026055, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.0883124]
-}
-
-[sub_resource type="Animation" id="Animation_uxs3k"]
-resource_name = "Punch1_recovery"
-length = 0.3
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(7.45058e-09, 0.05, 0.1, 0.15),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [47, 48, 49, 50]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Hitbox/CollisionShape3D:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0.190346, 0.0026055, 0)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [0.13]
-}
-
-[sub_resource type="Animation" id="Animation_j5k0p"]
-resource_name = "Punch1_startup"
-length = 0.3
-step = 0.0166667
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [45, 46]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -401,11 +460,107 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0.127428, 0.000781778, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:section")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["startup"]
+}
+
+[sub_resource type="Animation" id="Animation_ppktt"]
+resource_name = "Turn"
+length = 0.250008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [6, 7, 8]
+}
+
+[sub_resource type="Animation" id="Animation_j5k0p"]
+resource_name = "Upper"
+length = 0.450005
+step = 0.05
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.05
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.15
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [94, 95, 96, 97, 98, 99, 100, 101, 102]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.124367, 0.0226831, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.175767]
+}
 
 [sub_resource type="Animation" id="Animation_6wnxk"]
 resource_name = "kick1"
 length = 0.3
-step = 0.05
+step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.1
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.15
+}]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -442,11 +597,36 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0.127428, 0.000781778, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:segment")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["startup", "active", "recovery"]
+}
 
 [sub_resource type="Animation" id="Animation_wtpgs"]
 resource_name = "kick2"
 length = 0.4
-step = 0.05
+step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.1
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.15
+}]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -483,24 +663,59 @@ tracks/2/keys = {
 "update": 0,
 "values": [Vector3(0.0991605, 0.011724, 0)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("AnimationPlayer:segment")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": ["startup", "active", "recovery"]
+}
+
+[sub_resource type="Animation" id="Animation_meeb0"]
+resource_name = "Stopping"
+length = 0.200002
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [18, 19, 20, 21]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_7vi1n"]
 _data = {
 &"AirDash": SubResource("Animation_do57j"),
 &"Dash": SubResource("Animation_pfkrf"),
 &"Falling": SubResource("Animation_f3uyc"),
+&"GetUp": SubResource("Animation_uaf3e"),
+&"Heavy": SubResource("Animation_e12xf"),
+&"HitFloor": SubResource("Animation_fv82v"),
+&"HitUp": SubResource("Animation_lgwg8"),
+&"HitWall": SubResource("Animation_uxs3k"),
 &"Hurt": SubResource("Animation_m6gva"),
 &"Idle": SubResource("Animation_ajxej"),
 &"Jump": SubResource("Animation_b3yb2"),
 &"JumpSquat": SubResource("Animation_0lntm"),
 &"Land": SubResource("Animation_tg5qw"),
+&"Launch": SubResource("Animation_h6gly"),
 &"MoveTransition": SubResource("Animation_rqcha"),
 &"Moving": SubResource("Animation_7vi1n"),
 &"Punch1": SubResource("Animation_c551c"),
-&"Punch1_active": SubResource("Animation_h6gly"),
-&"Punch1_recovery": SubResource("Animation_uxs3k"),
-&"Punch1_startup": SubResource("Animation_j5k0p"),
 &"RESET": SubResource("Animation_dnwcv"),
+&"Stopping": SubResource("Animation_meeb0"),
+&"Turn": SubResource("Animation_ppktt"),
+&"Upper": SubResource("Animation_j5k0p"),
 &"kick1": SubResource("Animation_6wnxk"),
 &"kick2": SubResource("Animation_wtpgs")
 }
@@ -517,15 +732,16 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_tg5qw"]
+[sub_resource type="Resource" id="Resource_e12xf"]
 script = ExtResource("16_32b4s")
 damage = 0.0
-knockback_direction = null
-knockback_power = null
-knockback_angle = null
-unblockable = null
-hit_freeze = null
-hit_stun = null
+knockback_direction = Vector2(0, 0)
+knockback_power = 20.0
+knockback_angle = 30.0
+knockback_type = 0
+unblockable = false
+hit_freeze = 5
+hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
 radius = 0.129537
@@ -540,7 +756,6 @@ slide_on_ceiling = false
 floor_snap_length = 0.16
 safe_margin = 0.016
 script = ExtResource("1_7xl6k")
-JUMP_VELOCITY = 10.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_ajxej")
@@ -583,6 +798,12 @@ metadata/_custom_type_script = ExtResource("5_dnwcv")
 [node name="Move" type="Node" parent="StateMachine"]
 script = ExtResource("7_wtpgs")
 
+[node name="Stopping" type="Node" parent="StateMachine"]
+script = ExtResource("10_fv82v")
+
+[node name="Turn" type="Node" parent="StateMachine"]
+script = ExtResource("11_uaf3e")
+
 [node name="JumpSquat" type="Node" parent="StateMachine"]
 script = ExtResource("11_m6gva")
 
@@ -613,12 +834,29 @@ metadata/_custom_type_script = ExtResource("5_dnwcv")
 script = ExtResource("13_qxn4b")
 metadata/_custom_type_script = ExtResource("5_dnwcv")
 
+[node name="Heavy" type="Node" parent="StateMachine"]
+script = ExtResource("19_j5k0p")
+metadata/_custom_type_script = ExtResource("5_dnwcv")
+
+[node name="Upper" type="Node" parent="StateMachine"]
+script = ExtResource("20_e12xf")
+metadata/_custom_type_script = ExtResource("5_dnwcv")
+
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource("15_ddqn7")
 
+[node name="WallHit" type="Node" parent="StateMachine"]
+script = ExtResource("21_do57j")
+
+[node name="Down" type="Node" parent="StateMachine"]
+script = ExtResource("22_h6gly")
+
+[node name="GetUp" type="Node" parent="StateMachine"]
+script = ExtResource("23_uxs3k")
+
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_tg5qw")
+hit_data = SubResource("Resource_e12xf")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
@@ -633,6 +871,8 @@ root_node_path = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00156888, -0.0120921, -0.000830427)
 shape = SubResource("BoxShape3D_3twb4")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 
 [connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

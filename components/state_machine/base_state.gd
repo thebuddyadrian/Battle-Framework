@@ -4,7 +4,7 @@ extends Node
 
 const tick_time = 0.016
 
-var root
+var root: BattleCharacter
 var parent: StateMachine
 
 

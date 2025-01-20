@@ -1,4 +1,3 @@
-@tool
 extends BaseState
 
 
@@ -16,8 +15,11 @@ func _step():
 		parent.change_state("Punch1")
 	elif root.input("dash", "just_pressed"):
 		parent.change_state("Dash")
-	elif (root.velocity.x != 0 or root.velocity.z != 0):
-		parent.change_state("Move")
+	elif root.get_input_vector() != Vector2.ZERO:
+		if root.is_turning():
+			parent.change_state("Turn")
+		else:
+			parent.change_state("Move")
 
 
 func _step_frozen():

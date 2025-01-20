@@ -3,28 +3,34 @@ extends CharacterBody3D
 class_name BattleCharacter
 
 @export var SPEED = 8.0
-@export var JUMP_VELOCITY = 4.5
+@export var JUMP_VELOCITY = 11.0
 @export var DASH_SPEED = 12.5
 @export var AIR_DASH_SPEED = 15
 @export var STOCKS = 3
 @export var PLAYER = 1
-@export var GRAVITY = 25
+@export var GRAVITY = 0.5
 @export var JUMPFROMGROUND = false
-@export var DECELERATION = 1
-@export var ACCELERATION = 1
+@export var DECELERATION = 0.75
+@export var ACCELERATION = 0.8
 @export var AIR_DECELERATION = 0.25
 @export var AIR_ACCELERATION = 0.5
 @export var MAX_AIR_DASHES = 1
 
-var facing_direction: Vector2 = Vector2.RIGHT # The last used nonzero move_direction
-var attack_direction: int = 1 # The direction for 2-Directional attacks
+## The last used nonzero move_direction, used for dashing, air dashing, and four directional attacks
+## This is set automatically during movement
+var facing_direction: Vector2 = Vector2.RIGHT
+## The direction for 2-Directional attacks and for the sprite
+## This is NOT set automatically, and must be updated manually by calling "update_facing_direction_2d()"
+var facing_direction_2d: int = 1
 var moveenabled = false
 var deceleration_enabled = true
 var limit_speed = true # During normal movement speed is limited, turn this off for stuff like dashing
 var air_dashes_used = 0
+var deceleration_scale: float = 1
+var gravity_scale: float = 1
 
 @onready var Sprite = $PlayerSprite
-@onready var animplayer = $PlayerSprite/AnimationPlayer
+@onready var animplayer: AnimationPlayer = $PlayerSprite/AnimationPlayer
 @onready var state_machine = $StateMachine
 
 #This is crucial for allowing the player to move relative to the camera.
@@ -39,10 +45,11 @@ func _ready() -> void:
 	Sprite.billboard = true
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	# Add the gravity.
-	velocity.y -= GRAVITY * delta
-	move()
+	velocity.y -= GRAVITY * gravity_scale
+	_process_movement()
+	#_process_actions()
 	move_and_slide()
 	state_machine.advance()
 
@@ -58,25 +65,16 @@ func _physics_process(delta: float) -> void:
 		#4:
 			#Controlset = load("res://players/player2controls.tres")
 
-
-func move():
+#
+func _process_movement():
 	# Get the player's input direction (the direction they're pressing on keyboard/ control stick)
 	var input_dir := get_input_vector()
 	# Get the player's movement direction (relative to the camera)
 	var movement_dir := get_movement_vector()
+	
 	# The player will be facing in the last used movement direction
 	if movement_dir != Vector2.ZERO:
 		facing_direction = movement_dir
-	
-	# Set the direction for the hitbox and attacks
-	if !is_zero_approx(facing_direction.x):
-		attack_direction = sign(facing_direction.x)
-		hitbox.scale.x = attack_direction
-	
-	# The player sprite will be flipped using the input_direction
-	# This is because the sprite already faces the camera automatically, and doesn't need the camera's rotation
-	if !is_zero_approx(input_dir.x):
-		$PlayerSprite.flip_h = (input_dir.x < 0)
 	
 	# Accelerate the player in the movement direction if they're moving
 	# Otherwise decelerate to a stop
@@ -88,20 +86,46 @@ func move():
 		acceleration_vector = movement_dir * AIR_ACCELERATION
 	
 	var deceleration_current = DECELERATION if is_on_floor() else AIR_DECELERATION
-		
-	if input_dir.x != 0 and moveenabled:
+	deceleration_current *= deceleration_scale
+	
+	if !is_zero_approx(input_dir.x) and moveenabled:
 		velocity.x += acceleration_vector.x
 		if limit_speed:
 			velocity.x = clamp(velocity.x, -SPEED, SPEED)
 	elif deceleration_enabled:
 		velocity.x = move_toward(velocity.x, 0, deceleration_current)
 	
-	if input_dir.y != 0 and moveenabled:
+	if !is_zero_approx(input_dir.y) and moveenabled:
 		velocity.z += acceleration_vector.y
 		if limit_speed:
 			velocity.z = clamp(velocity.z, -SPEED, SPEED)
 	elif deceleration_enabled:
 		velocity.z = move_toward(velocity.z, 0, deceleration_current)
+
+
+# Updates the 2d direction to match the input
+# This must be called manually, because we only want to update this in specific situations, like attacking or turning around
+func update_facing_direction_2d():
+	if !is_zero_approx(get_input_vector().x):
+		# The player sprite will be flipped using the input_direction
+		# This is because the sprite already faces the camera automatically, and doesn't need the camera's rotation
+		$PlayerSprite.flip_h = (get_input_vector().x < 0)
+		
+		# Set the direction for the hitbox and attacks
+		facing_direction_2d = sign(get_movement_vector().x)
+
+
+# Force the player to face a specific direction
+func set_facing_direction_2d(direction: int):
+	# Set facing direction relative to the camera
+	var vec: Vector2 = Vector2(direction, 0).rotated(-camera.rotation.y)
+	$PlayerSprite.flip_h = (direction < 0)
+	facing_direction_2d = sign(vec.x)
+	
+
+
+func is_turning() -> bool:
+	return sign(get_movement_vector().x) != facing_direction_2d and !is_zero_approx(get_movement_vector().x)
 
 
 # Input helper function to get input for the current player

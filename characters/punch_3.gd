@@ -1,35 +1,22 @@
 @tool
-extends BaseState
+extends BaseAttackStandard
 
 
-func _enter(data = {}):
-	super._enter(data)
-	root.animplayer.play("kick2")
-	get_hit_data().damage = 10.0
-	get_hit_data().knockback_direction.x = sign(root.attack_direction)
-	get_hit_data().knockback_power = 10 
-	get_hit_data().knockback_angle = 20
-	get_hit_data().hit_stun = 25
+func _move_setup():
+	animation = "kick2"
+	startup_frames = 3
+	active_frames = 3
+	recovery_frames = 24
+	damage = 10
+	knockback_power = 2
+	make_standard_attack()
 
 
 func _step():
-	if parent.state_time == 2:
-		root.hitbox.active = true
-	if parent.state_time == 4:
-		root.hitbox.active = false
-	
-	# Define active frames
-	root.hitbox.active = parent.state_time in range(2, 3)
-	
-	if parent.state_time == 18:
-		parent.change_state("Idle")
-	elif parent.state_time  <= 17 && parent.state_time > 8:
-		if root.input("dash", "just_pressed"):
-			parent.change_state("Dash")
-
-
-func _step_frozen():
-	super._step_frozen()
+	super._step()
+	if get_current_phase_name() == "recovery":
+		if root.input("attack", "just_pressed"):
+			change_state("Heavy")
 
 
 func _exit(next_state):
