@@ -26,6 +26,7 @@ var moveenabled = false
 var deceleration_enabled = true
 var limit_speed = true # During normal movement speed is limited, turn this off for stuff like dashing
 var air_dashes_used = 0
+var acceleration_scale: float = 1
 var deceleration_scale: float = 1
 var gravity_scale: float = 1
 
@@ -81,9 +82,9 @@ func _process_movement():
 	# If movement is disabled, the player will still decelerate
 	var acceleration_vector: Vector2
 	if is_on_floor():
-		acceleration_vector = movement_dir * ACCELERATION
+		acceleration_vector = movement_dir * ACCELERATION * acceleration_scale
 	else:
-		acceleration_vector = movement_dir * AIR_ACCELERATION
+		acceleration_vector = movement_dir * AIR_ACCELERATION * acceleration_scale
 	
 	var deceleration_current = DECELERATION if is_on_floor() else AIR_DECELERATION
 	deceleration_current *= deceleration_scale

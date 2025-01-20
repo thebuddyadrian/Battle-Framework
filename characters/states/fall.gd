@@ -9,6 +9,7 @@ func _enter(data = {}):
 
 
 func _step():
+	root.update_facing_direction_2d()
 	if root.is_on_floor():
 		parent.change_state("Land")
 	if root.input("jump", "just_pressed") and root.air_dashes_used < root.MAX_AIR_DASHES:

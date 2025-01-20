@@ -810,14 +810,14 @@ script = ExtResource("11_m6gva")
 [node name="Land" type="Node" parent="StateMachine"]
 script = ExtResource("12_tg5qw")
 
-[node name="Jump" type="Node" parent="StateMachine"]
-script = ExtResource("8_pfkrf")
-
 [node name="Dash" type="Node" parent="StateMachine"]
 script = ExtResource("10_0nphp")
 
 [node name="AirDash" type="Node" parent="StateMachine"]
 script = ExtResource("15_j5k0p")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("8_pfkrf")
 
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("9_qxn4b")
