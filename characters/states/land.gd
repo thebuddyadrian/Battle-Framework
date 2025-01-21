@@ -2,8 +2,7 @@
 extends BaseState
 
 const DEFAULT_FRAMES: int = 12
-
-@export var frames: int = 12
+var frames: int = 12
 
 func _enter(data = {}):
 	root.animplayer.play("Land")

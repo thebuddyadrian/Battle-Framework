@@ -3,8 +3,7 @@ extends BaseState
 
 func _enter(data = {}):
 	root.animplayer.play("Turn")
-	root.moveenabled = true
-	root.update_facing_direction_2d()
+	root.set_actions_enabled(["move", "jump", "attack", "skill", "guard"], true)
 
 
 func _step():
@@ -13,5 +12,8 @@ func _step():
 
 
 func _exit(next_state):
-	root.moveenabled = false
+	# Don't face in the opposite direction when doing an Upper attack
+	if !next_state.name == "Upper":
+		root.flip_facing_direction_2d()
+	root.disable_all_actions()
 	super._exit(next_state)

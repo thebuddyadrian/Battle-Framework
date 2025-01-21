@@ -13,16 +13,13 @@ func _move_setup():
 
 
 func _phase_changed():
-	if get_current_phase() == active_phase:
+	if get_current_phase() == recovery_phase:
 		# Do stuff when the active phase starts
 		pass
 
 
 func _step():
 	super._step()
-	if get_current_phase_name() == "recovery":
-		if root.input("attack", "just_pressed"):
-			change_state("Punch2")
 
 
 func _exit(next_state):

@@ -71,6 +71,9 @@ func _phase_changed_internal(phase_index: int, previous_phase_index: int):
 				#get_hit_data().knockback_charge_scale = knockback_charge_scale
 				#get_hit_data().knockback_scaling_charge_scale = knockback_scaling_charge_scale
 				#get_hit_data().sound = hit_sound
+			# Player can cancel into other attacks when recovery phase starts
+			if get_current_phase() == recovery_phase:
+				root.set_action_enabled("attack", true)
 		if attack_template == AttackTemplate.MULTI:
 			if get_current_phase() != active_phase_array.back():
 				if first_attacks_ignore_damage:

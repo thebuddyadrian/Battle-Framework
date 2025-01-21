@@ -2,18 +2,26 @@
 extends BaseState
 class_name BaseAttack
 
+## TWO_DIR: Attacks that can only knock left and right (ex: jab combo)
+## FOUR_DIR: Attacks that can launch in four directions (ex: Heavy)
 enum DIR_TYPE {TWO_DIR, FOUR_DIR}
 
 const DEFAULT_STARTUP_FRAMES: int = 2
 const DEFAULT_ACTIVE_FRAMES: int = 2
 const DEFAULT_RECOVERY_FRAMES: int = 10
 
+# The state the move goes to after the last phaase
 var next_state: String = "Idle"
+# The data passed to the next state
 var next_state_data: Dictionary = {}
+## The animation used for the attack
 var animation: String = ""
+## Air animation, if left blank will use animation
 var air_animation: String = ""
+## If true, the air animation will be used in the air, otherwise only animation will be used
 var change_anim_in_air: bool = false
 
+## Not finished yet
 var charge_time: int = 0
 var current_phase_index: int = -1
 var move_contact: int = 0
@@ -23,22 +31,27 @@ var num_hits: int = 0
 var num_contacts: int = 0
 var num_blocked: int = 0
 
-# Whole Move Config
+## Whole Move Config
+
+## Go into land state when on the ground, useful for air attacks
 var land_on_touched_ground: bool = false
-#var stay_on_ground: bool = false
+## How many frames the player will be in the landing state after touching ground
 var landing_lag: int = 6
-var dash_cancel: bool = false
-var special_cancel: bool = false
-var hitfall: bool = false
+## Lets the player cancel this move into a Homing Dash on hit, used for heavy attacks
+var dash_cancel_on_hit: bool = false
+## Can be set to false to disable the animation system
 var play_animation: bool = true
+## Can be set to false to manually set the section start and end for each phase
 var use_anim_markers: bool = true
 var direction_type: DIR_TYPE = DIR_TYPE.TWO_DIR
+## Direction for the attack, which is where the opponent will be knocked/ the projectile will be shot
+var attack_direction := Vector2.RIGHT
 
-
-var _charge_effect_path: NodePath = ""
 var _use_air_animation: bool = false
+## Array of phases created for the attack
 var _phases := []
 var _phases_dict := {}
+## Used to count down to the next phase
 var _phase_timer: int = 0
 
 
@@ -68,30 +81,45 @@ class PhaseSet:
 		recovery.frames = DEFAULT_RECOVERY_FRAMES
 
 
+## Class for defining a window/phase of the attack
 class AttackPhase:
-	# NORMAL: Automatically switch to next phase when phase timer ends
-	# CHARGE: Switch to next phase when attack button released, then set charge_time
-	# JAB: If the attack button is pressed during this frame, go to next phase
-	# RAPID: If the attack button is not pressed for a few frames, switch to next phase
-	# MANUAL: Attack will not go to next phase automatically
-	# Only applies if the root is a BaseFighter
+	## NORMAL: Automatically switch to next phase when phase timer ends
+	## CHARGE: Switch to next phase when attack button released, then set charge_time
+	## JAB: If the attack button is pressed during this frame, go to next phase
+	## RAPID: If the attack button is not pressed for a few frames, switch to next phase
+	## MANUAL: Attack will not go to next phase automatically
 	enum PHASE_TYPE {NORMAL, CHARGE, JAB, RAPID, MANUAL}
-	# LAST_FRAME: Do nothing
-	# FIRST FRAME: Hold at the first frame if the animation is too short
-	# Scale: Make the animation slower or faster depending on how many frames
-	var phase_name: String = ""
 	var phase_type: int = PHASE_TYPE.NORMAL
+	
+	## The name of the phase should match the name of the marker set in the AnimationPlayer
+	var phase_name: String = ""
+	
+	## How long the phase lasts until going to the next one 
 	var frames: int = 0
+	
+	## If you want this phase to have a different animation from the one set for the whole move
 	var anim_override: String = ""
 	var air_anim_override: String = ""
+	
+	## Can be used to set a different marker than the phase name 
 	var anim_marker: String = ""
+	
+	## Can be used to manually set the section of the animation to use
 	var anim_frame_start: int = 0
 	var anim_frames: int = 0 : get = get_frames, set = set_frames
 	var anim_frame_end: int = 0
+	
+	# Ignore, carried over from my other project
 	var add_whiff_lag: bool = false
+	
+	## If true, the move will end right after this phase
 	var end_phase: bool = false
+	
+	## WIP
 	var sound_effect: String = ""
 	var sound_offset: int = 0
+	
+	## Go into land state when on the ground, useful for air attacks
 	var land_on_touched_ground: bool = false
 	var landing_frames: int = 6
 	var hitbox_active: bool = false
@@ -135,24 +163,29 @@ func _ready():
 
 
 func _enter(data := {}):
-	clear_phases()
+	_phases.clear()
 	_move_setup()
 	_check_for_end_phase()
-	#if root.is_in_group("fighter"):
-		#root.face_attack_direction()
-		#root.attack_trail.trail_state = {}
 	root.hitbox.active = true
 	#root.hitbox.rects = []
 	root.hitbox.hit_data = HitData.new()
-	root.update_facing_direction_2d()
-	if direction_type == DIR_TYPE.FOUR_DIR:
-		root.hitbox.hit_data.knockback_direction = root.facing_direction
-		root.hitbox.rotation.y = -root.facing_direction.angle()
-		print(rad_to_deg(root.facing_direction.angle()))
+	# Attack Direction can be passed in as a parameter
+	if data.has("attack_direction"):
+		attack_direction = data["attack_direction"]
+	# Otherwise, try to infer from inputs
 	else:
-		root.hitbox.hit_data.knockback_direction.x = root.facing_direction_2d
-		root.hitbox.hit_data.knockback_direction.y = 0
-		root.hitbox.rotation_degrees.y = 180 if root.facing_direction_2d == -1 else 0
+		if direction_type == DIR_TYPE.FOUR_DIR:
+			if root.facing_direction.x:
+				attack_direction.x = root.facing_direction.x
+				attack_direction.y = 0
+			elif root.facing_direction.y:
+				attack_direction.x = 0
+				attack_direction.y = root.facing_direction.y
+		else:
+			attack_direction.x = root.facing_direction_2d
+			attack_direction.y = 0
+	root.hitbox.hit_data.knockback_direction = attack_direction
+	root.hitbox.rotation.y = -attack_direction.angle()
 	#root.hitbox.hit_data.charge_percent = 0
 	num_hits = 0
 	num_contacts = 0
@@ -163,11 +196,12 @@ func _enter(data := {}):
 	change_phase(0)
 
 
-# Called when the player should set up the attack phases
+## Virual method called when the player should set up the attack phases using "add_new_phase" calls
 func _move_setup():
 	pass
 
 
+## Makes sure an end phase was set
 func _check_for_end_phase():
 	for phase in _phases:
 		if phase.end_phase:
@@ -181,7 +215,7 @@ func _step():
 			parent.change_state("Land", {landing_frames = max(get_current_phase().landing_frames, landing_lag)})
 			return
 		
-		## Charging
+		# Charging - WIP
 		#if get_current_phase().phase_type == AttackPhase.PHASE_TYPE.CHARGE:
 			#charge_time = min(charge_time + 1, 
 					#get_current_phase().max_charge)
@@ -274,8 +308,8 @@ func _get_unique_phase_name(p_phase_name: String) -> String:
 			p_phase_name += str(trailing_int + 1)
 	return p_phase_name
 
-
-func hitbox_hit(hit_data: HitData, area_hit):
+## WIP - doesn't work yet
+func _on_hitbox_hit(hit_data: HitData, area_hit):
 	num_hits += 1
 	move_hit = 1
 	num_contacts += 1
@@ -290,9 +324,8 @@ func _exit(next_state):
 	move_contact = 0
 	move_hit = 0
 	charge_time = 0
-	if root.is_in_group("fighter"):
-		root.set_barrier_collision(false)
-		root.disable_all_actions()
+	_phases.clear()
+	root.disable_all_actions()
 	#_despawn_charge_effect()
 	super._exit(next_state)
 	#if next_state.name == "Dash":
@@ -303,18 +336,7 @@ func _exit(next_state):
 	#root.attack_trail.clear_trail()
 
 
-func change_anim(new_anim: String):
-	if new_anim != "":
-		if change_anim_in_air and !root.is_on_floor():
-			root.animplayer.stop()
-			root.animplayer.play(new_anim + " Air")
-
-		else:
-			root.animplayer.stop()
-			root.animplayer.play(new_anim)
-			root.animplayer.seek(0)
-
-
+## Manually sets the phase to another one in the move, using an index
 func change_phase(phase_index: int) -> void:
 	if phase_index < 0 or phase_index > _phases.size()-1:
 		push_error("Phase out of bounds.")
@@ -324,7 +346,7 @@ func change_phase(phase_index: int) -> void:
 	# Reset phase timer
 	_phase_timer = 0
 	
-	# Make sure previous phase index is correct
+	# If we went backwards to a previous phase, previous phase index is now invalid
 	if previous_phase_index > phase_index:
 		previous_phase_index = -1
 		
@@ -334,7 +356,7 @@ func change_phase(phase_index: int) -> void:
 	root.hitbox.active = current_phase.hitbox_active
 	#root.animsprite.offset = Vector2(0,0)
 	
-	## Charging
+	# Charging - WIP
 	#if previous_phase_index > -1:
 		#if previous_phase.phase_type == AttackPhase.PHASE_TYPE.CHARGE:
 			#if charge_time >= 8:
@@ -386,11 +408,6 @@ func change_phase(phase_index: int) -> void:
 				section_end = animation.get_marker_time(end_marker)
 			else:
 				section_end = animation.length
-			print(current_phase.phase_name)
-			print("Start Marker: %s" % start_marker)
-			print("End Marker: %s" % end_marker)
-			print("Section Start: %s" % section_start)
-			print("Section End: %s" % section_end)
 		else:
 			section_start = current_phase.anim_frame_start * tick_time
 			section_end = current_phase.anim_frame_end * tick_time
@@ -402,16 +419,12 @@ func change_phase(phase_index: int) -> void:
 	_phase_changed()
 
 
-func resume_animation(animation_name: String, phase_index: int):
-	if current_phase_index != phase_index:
-		return
-	root.animplayer.play(animation_name)
-
-
 func change_phase_to(phase: AttackPhase) -> void:
 	change_phase(_phases.find(phase))
 
 
+## Call this to change to the next phase
+## Can be called manually to end the current phase before the phase timer ends
 func next_phase() -> void:
 	# Skip phase if it has 0 frames
 	if _phases[current_phase_index + 1].frames == 0:
@@ -419,6 +432,7 @@ func next_phase() -> void:
 	change_phase(current_phase_index + 1)
 
 
+## WIP - Call this to stop charging a charge attack
 func release_charge() -> void:
 	if get_current_phase().phase_type == AttackPhase.PHASE_TYPE.CHARGE:
 		next_phase()
@@ -450,6 +464,7 @@ func get_phase_by_name(p_phase_name: String) -> AttackPhase:
 	return null
 
 
+## Adds an AttackPhase object into the move at a certain index
 func add_phase(phase: AttackPhase, index: int = -1) -> void:
 	if index == -1:
 		_phases.append(phase)
@@ -457,6 +472,7 @@ func add_phase(phase: AttackPhase, index: int = -1) -> void:
 		_phases.insert(index, phase)
 
 
+## Creates a new AttackPhase object using the given name, then inserts it
 func add_new_phase(p_name: String = "", index: int = -1) -> AttackPhase:
 	var phase = AttackPhase.new(p_name)
 	add_phase(phase, index)
@@ -469,10 +485,6 @@ func remove_phase(index: int) -> void:
 
 func erase_phase(phase: AttackPhase) -> void:
 	_phases.erase(phase)
-
-
-func clear_phases() -> void:
-	_phases = []
 
 
 func get_array_idx_or_back(array: Array, index: int):
@@ -492,8 +504,8 @@ func add_standard_attack_phases(charge: bool = false, whiff_lag: bool = false) -
 	return phase_set
 
 
-# Creates multiple sets of standard phases that link into each other
-# If "jab" is true, button must be pressed repeatedly to link attacks
+## Creates multiple sets of standard phases that link into each other
+## If "jab" is true, button must be pressed repeatedly to link attacks
 func add_multi_attack_phases(attacks: int = 3, jab: bool = false, whiff_lag: bool = false) -> PhaseSetArray:
 	var phase_set_array := PhaseSetArray.new()
 	for i in range(attacks):
@@ -521,6 +533,8 @@ func add_phase_set(phase_set: PhaseSet, charge: bool = false):
 	add_phase(phase_set.active)
 	add_phase(phase_set.recovery)
 
+
+## When the player hits an opponent, the hitbox deactivates automatically, use this to reactivate it for a multi-hitting attack
 func reactivate_hitbox() -> void:
 	root.hitbox.active = true
 
@@ -543,7 +557,7 @@ func _save_state() -> Dictionary:
 		num_hits = num_hits,
 		num_contacts = num_contacts,
 		next_state = next_state,
-		charge_effect_path = _charge_effect_path,
+		#charge_effect_path = _charge_effect_path,
 		phase_timer = _phase_timer,
 	}
 	
@@ -561,4 +575,4 @@ func _load_state(state: Dictionary):
 	num_hits = state["num_hits"]
 	num_contacts = state["num_contacts"]
 	_phase_timer = state["phase_timer"]
-	_charge_effect_path = state["charge_effect_path"]
+	#_charge_effect_path = state["charge_effect_path"]

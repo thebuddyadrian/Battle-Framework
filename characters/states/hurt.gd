@@ -5,7 +5,6 @@ var hit_data: HitData
 
 
 func _enter(data = {}) -> void:
-	root.moveenabled = false
 	root.deceleration_enabled = false
 	root.animplayer.stop()
 	hit_data = data["hit_data"]
@@ -45,5 +44,4 @@ func _step():
 
 func _exit(next_state: BaseState) -> void:
 	root.gravity_scale = 1
-	root.moveenabled = true
 	root.deceleration_enabled = true

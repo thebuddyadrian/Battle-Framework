@@ -2,6 +2,7 @@ extends BaseState
 
 func _enter(data = {}):
 	var normal: Vector3 = data["normal"]
+	# Bounce off the wall using the wall's direction
 	var normal_flat: Vector2 = Vector2(normal.x, normal.z)
 	root.velocity.y = 10
 	root.velocity.z = normal.z * 2.5
