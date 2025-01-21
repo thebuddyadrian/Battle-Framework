@@ -22,11 +22,12 @@ var HEAVY_DIRECTION_INPUT_WINDOW: int = 8
 ## This is set automatically during movement
 var facing_direction: Vector2 = Vector2.RIGHT
 ## The direction for 2-Directional attacks and for the sprite
-## This is NOT set automatically, and must be updated manually by calling "update_facing_direction_2d()"
+## This is NOT set automatically, and must be updated manually by calling "update_facing_direction_2d()" and other similar functions
 var facing_direction_2d: int = 1
 var deceleration_enabled = true
 var limit_speed = true # During normal movement speed is limited, turn this off for stuff like dashing
 var air_dashes_used = 0
+## Used to temporarily make acceleration faster or slower
 var acceleration_scale: float = 1
 var deceleration_scale: float = 1
 var gravity_scale: float = 1
@@ -248,7 +249,7 @@ func direction_string_to_vector2(direction_string: String) -> Vector2:
 	return Vector2.ZERO
 
 
-## Updates the 2d direction to match the input
+## Updates the 2d direction to match the 3D direction
 ## This must be called manually, because we only want to update this in specific situations, like attacking or turning around
 func update_facing_direction_2d():
 	# Set the direction for the hitbox and attacks
@@ -263,6 +264,7 @@ func set_facing_direction_2d(direction: int):
 	facing_direction_2d = sign(vec.x)
 
 
+# Makes the player face the opposite direction
 func flip_facing_direction_2d():
 	facing_direction_2d = -facing_direction_2d
 
