@@ -6,7 +6,7 @@ var turn: bool = false
 
 func _enter(data = {}):
 	super._enter(data)
-	root.set_actions_enabled(["move", "jump", "attack", "skill", "guard"], true)
+	root.set_actions_enabled(["move", "jump", "attack", "skill", "dash", "guard"], true)
 
 
 func _step():

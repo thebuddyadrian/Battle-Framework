@@ -17,6 +17,7 @@ class_name BattleCharacter
 
 ## How many frames the player has to press the attack button after inputting a direction to do a heavy/upper attack
 var HEAVY_DIRECTION_INPUT_WINDOW: int = 8
+var UPPER_DIRECTION_INPUT_WINDOW: int = 4
 
 ## The last used nonzero move_direction, used for dashing, air dashing, and four directional attacks
 ## This is set automatically during movement
@@ -34,7 +35,10 @@ var gravity_scale: float = 1
 var actions_enabled: Array[String]
 ## A dictionary of directions that were recently pressed to input a heavy attack
 var heavy_direction_inputs: Dictionary = {}
+## Same but for upper
+var upper_direction_inputs: Dictionary = {}
 var most_recent_direction_input: String = "right"
+var VALID_ACTIONS = ["move", "jump", "dash", "air_dash", "attack", "skill", "guard", "heal"]
 
 @onready var Sprite = $PlayerSprite
 @onready var animplayer: AnimationPlayer = $PlayerSprite/AnimationPlayer
@@ -45,7 +49,7 @@ var most_recent_direction_input: String = "right"
 @onready var hitbox: Hitbox = $Hitbox
 @onready var hurtbox: Hurtbox = $Hurtbox
 
-var VALID_ACTIONS = ["move", "jump", "dash", "air_dash", "attack", "skill", "guard", "heal"]
+
 
 
 func _ready() -> void:
@@ -62,10 +66,17 @@ func _physics_process(_delta: float) -> void:
 		else:
 			heavy_direction_inputs[direction] -= 1
 	
+	for direction in upper_direction_inputs:
+		if upper_direction_inputs[direction] == 0 or !input(direction, "pressed"):
+			upper_direction_inputs.erase(direction)
+		else:
+			upper_direction_inputs[direction] -= 1
+	
 	for direction in ["left", "right", "up", "down"]:
 		if input(direction, "just_pressed"):
 			most_recent_direction_input = direction
 			heavy_direction_inputs[direction] = HEAVY_DIRECTION_INPUT_WINDOW
+			upper_direction_inputs[direction] = UPPER_DIRECTION_INPUT_WINDOW
 	
 	if camera.rotation_degrees.y >= 170:
 		$PlayerSprite.flip_h = facing_direction_2d >= 0
@@ -205,29 +216,36 @@ func _get_last_pressed_heavy_input() -> String:
 	return most_recent
 
 
+func _get_last_pressed_upper_input() -> String:
+	var most_recent: String = ""
+	var highest_value: int = -1
+	for direction in upper_direction_inputs:
+		if upper_direction_inputs[direction] > highest_value:
+			most_recent = direction
+	return most_recent
+
+
 func _check_for_heavy() -> bool:
 	if input("attack", "just_pressed"):
 		# Cancel jab into heavy
 		if state_machine.active_state.name == "Jab3":
-			var attack_direction = direction_string_to_vector2(most_recent_direction_input)
-			state_machine.change_state("Heavy", {attack_direction = attack_direction})
+			state_machine.change_state("Heavy")
 			return true
 		
-		if state_machine.active_state.name in ["Jab1", "Jab2"] or state_machine.active_state is not BaseAttack:	
+		if state_machine.active_state.name in ["Jab1", "Jab2"] or state_machine.active_state is not BaseAttack:
 			# Use a directional input if not cancelled from Jab3
 			# If there was no recent heavy input, don't go into heavy state
 			if _get_last_pressed_heavy_input() == "":
 				return false
-			var attack_direction = direction_string_to_vector2(_get_last_pressed_heavy_input())
-			state_machine.change_state("Heavy", {attack_direction = attack_direction})
+			state_machine.change_state("Heavy")
 			return true
 	return false
 
 
 func _check_for_upper() -> bool:
 	if input("attack", "just_pressed"):
-		if _get_last_pressed_heavy_input():
-			var vec = direction_string_to_vector2(_get_last_pressed_heavy_input())
+		if _get_last_pressed_upper_input():
+			var vec = direction_string_to_vector2(_get_last_pressed_upper_input())
 			if vec.x == -facing_direction_2d:
 				state_machine.change_state("Upper", {attack_direction = Vector2(facing_direction_2d, 0)})
 				return true

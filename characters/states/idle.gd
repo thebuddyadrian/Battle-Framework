@@ -2,8 +2,11 @@ extends BaseState
 
 
 func _enter(data = {}):
+	if !root.is_on_floor():
+		parent.change_state("Fall")
+		return
 	super._enter(data)
-	root.set_actions_enabled(["move", "jump", "attack", "skill", "guard"], true)
+	root.set_actions_enabled(["move", "jump", "dash", "attack", "skill", "guard"], true)
 	root.animplayer.play("Idle")
 
 

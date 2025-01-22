@@ -175,12 +175,15 @@ func _enter(data := {}):
 	# Otherwise, try to infer from inputs
 	else:
 		if direction_type == DIR_TYPE.FOUR_DIR:
-			if root.facing_direction.x:
-				attack_direction.x = root.facing_direction.x
+			if !is_zero_approx(root.get_movement_vector().x):
+				attack_direction.x = root.get_movement_vector().x
 				attack_direction.y = 0
-			elif root.facing_direction.y:
+			elif !is_zero_approx(root.get_movement_vector().y):
 				attack_direction.x = 0
-				attack_direction.y = root.facing_direction.y
+				attack_direction.y = root.get_movement_vector().y
+			else:
+				attack_direction.x = root.facing_direction_2d
+				attack_direction.y = 0
 		else:
 			attack_direction.x = root.facing_direction_2d
 			attack_direction.y = 0

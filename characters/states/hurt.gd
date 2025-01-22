@@ -13,6 +13,8 @@ func _enter(data = {}) -> void:
 		hit_stun_deceleration = 0.6
 	root.velocity = hit_data.calculate_knockback_velocity()
 	root.gravity_scale = 0.5
+	if hit_data.knockback_direction.x:
+		root.set_facing_direction_2d(-hit_data.knockback_direction.x)
 
 
 func _step():

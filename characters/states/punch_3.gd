@@ -8,6 +8,7 @@ func _move_setup():
 	recovery_frames = 24
 	damage = 10
 	knockback_power = 2
+	direction_type = DIR_TYPE.FOUR_DIR
 	make_standard_attack()
 
 
