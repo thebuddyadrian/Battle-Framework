@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7bolnmsnwlfa"
-path="res://.godot/imported/SonicArchie1.aseprite-fd565424e62a64202646db719ac54bc3.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://assets/sonic/SonicArchie1.aseprite"
-dest_files=["res://.godot/imported/SonicArchie1.aseprite-fd565424e62a64202646db719ac54bc3.ctex"]
 
 [params]
 

@@ -2,12 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://oyfiuy5a7m7y"
-valid=false
+uid="uid://dkadmd1chmfp2"
+path="res://.godot/imported/sprite.png-58dddc633f6f0a8875792e78f961b589.ctex"
+metadata={
+"vram_texture": false
+}
 
 [deps]
 
-source_file="res://assets/ditherpattern.aseprite"
+source_file="res://assets/Textures/Spawnables/BaseSpawnable/sprite.png"
+dest_files=["res://.godot/imported/sprite.png-58dddc633f6f0a8875792e78f961b589.ctex"]
 
 [params]
 
