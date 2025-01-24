@@ -1,0 +1,25 @@
+[remap]
+
+importer="wavefront_obj"
+importer_version=1
+type="Mesh"
+uid="uid://8k4paui54lxo"
+path="res://.godot/imported/EmeraldBeach.obj-76fb78f8944ce4fa1e12cf99a7628b1b.mesh"
+
+[deps]
+
+files=["res://.godot/imported/EmeraldBeach.obj-76fb78f8944ce4fa1e12cf99a7628b1b.mesh"]
+
+source_file="res://levels/emeraldbeach/EmeraldBeach.obj"
+dest_files=["res://.godot/imported/EmeraldBeach.obj-76fb78f8944ce4fa1e12cf99a7628b1b.mesh", "res://.godot/imported/EmeraldBeach.obj-76fb78f8944ce4fa1e12cf99a7628b1b.mesh"]
+
+[params]
+
+generate_tangents=true
+generate_lods=true
+generate_shadow_mesh=true
+generate_lightmap_uv2=false
+generate_lightmap_uv2_texel_size=0.2
+scale_mesh=Vector3(1, 1, 1)
+offset_mesh=Vector3(0, 0, 0)
+force_disable_mesh_compression=false
