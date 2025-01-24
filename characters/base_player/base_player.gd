@@ -1,12 +1,12 @@
 extends CharacterBody3D
-
 class_name BattleCharacter
+
 @export var SPEED = 8.0
 @export var JUMP_VELOCITY = 11.0
 @export var DASH_SPEED = 12.5
 @export var AIR_DASH_SPEED = 15
 @export var STOCKS = 3
-@export var PLAYER = 1
+@export var player_id = 1
 @export var GRAVITY = 0.5
 @export var JUMPFROMGROUND = false
 @export var DECELERATION = 0.75
@@ -45,7 +45,7 @@ var VALID_ACTIONS = ["move", "jump", "dash", "air_dash", "attack", "skill", "gua
 @onready var state_machine = $StateMachine
 
 #This is crucial for allowing the player to move relative to the camera.
-@onready var camera = %CameraRoot/Pivot
+var camera: Node3D
 @onready var hitbox: Hitbox = $Hitbox
 @onready var hurtbox: Hurtbox = $Hurtbox
 
@@ -92,7 +92,7 @@ func _physics_process(_delta: float) -> void:
 
 
 #func setcontrols() -> void:
-	#match PLAYER:
+	#match player_id:
 		#1:
 			#Controlset = load("res://players/player1controls.tres")
 		#2:
@@ -243,7 +243,7 @@ func _check_for_heavy() -> bool:
 
 
 func _check_for_upper() -> bool:
-	if input("attack", "just_pressed"):
+	if input("attack", "just_pressed") and state_machine.active_state is not BaseAttack:
 		if _get_last_pressed_upper_input():
 			var vec = direction_string_to_vector2(_get_last_pressed_upper_input())
 			if vec.x == -facing_direction_2d:
@@ -321,7 +321,7 @@ func is_action_enabled(action: String):
 ## In the future this will also retrieve inputs received over the network (for online play)
 func input(action: StringName, type: String = "pressed") -> bool:
 	# Gets the correct action based on the player number (ex: attack1, attack2, attack3, etc.)
-	var player_action = action + str(PLAYER)
+	var player_action = action + str(player_id)
 	if !InputMap.has_action(player_action):
 		return false
 	if type == "pressed":

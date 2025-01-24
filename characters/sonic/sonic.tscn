@@ -1,38 +1,13 @@
-[gd_scene load_steps=61 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=35 format=3 uid="uid://1q41upvf2gpk"]
 
-[ext_resource type="Script" path="res://characters/base_player.gd" id="1_7xl6k"]
-[ext_resource type="Script" path="res://characters/raycast.gd" id="2_s2flu"]
-[ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="3_rqcha"]
-[ext_resource type="Script" path="res://components/state_machine/state_machine.gd" id="4_dnwcv"]
-[ext_resource type="Script" path="res://characters/states/idle.gd" id="5_6wnxk"]
-[ext_resource type="Script" path="res://components/state_machine/base_state.gd" id="5_dnwcv"]
-[ext_resource type="Shader" path="res://assets/shader/shadow_dither.gdshader" id="6_m6gva"]
-[ext_resource type="Texture2D" uid="uid://c3nutkgwrk7i7" path="res://assets/ditherpattern.png" id="7_tg5qw"]
-[ext_resource type="Script" path="res://characters/states/move.gd" id="7_wtpgs"]
-[ext_resource type="Script" path="res://characters/states/jump.gd" id="8_pfkrf"]
-[ext_resource type="Script" path="res://characters/states/fall.gd" id="9_qxn4b"]
-[ext_resource type="Script" path="res://characters/states/dash.gd" id="10_0nphp"]
-[ext_resource type="Script" path="res://characters/states/punch_1.gd" id="10_3twb4"]
-[ext_resource type="Script" path="res://characters/states/stopping.gd" id="10_fv82v"]
-[ext_resource type="Script" path="res://characters/states/jump_squat.gd" id="11_m6gva"]
-[ext_resource type="Script" path="res://characters/states/turn.gd" id="11_uaf3e"]
-[ext_resource type="Script" path="res://characters/states/punch_2.gd" id="12_pfkrf"]
-[ext_resource type="Script" path="res://characters/states/land.gd" id="12_tg5qw"]
-[ext_resource type="Script" path="res://characters/states/punch_3.gd" id="13_qxn4b"]
-[ext_resource type="Script" path="res://components/hitbox/hitbox.gd" id="15_0nphp"]
-[ext_resource type="Script" path="res://characters/states/hurt.gd" id="15_ddqn7"]
-[ext_resource type="Script" path="res://characters/states/air_dash.gd" id="15_j5k0p"]
-[ext_resource type="Script" path="res://components/hitbox/hit_data.gd" id="16_32b4s"]
-[ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="16_obb2v"]
-[ext_resource type="Script" path="res://characters/states/heavy.gd" id="19_j5k0p"]
-[ext_resource type="Script" path="res://characters/states/upper.gd" id="20_e12xf"]
-[ext_resource type="Script" path="res://characters/states/wall_hit.gd" id="21_do57j"]
-[ext_resource type="Script" path="res://characters/states/down.gd" id="22_h6gly"]
-[ext_resource type="Script" path="res://characters/states/get_up.gd" id="23_uxs3k"]
-
-[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ajxej"]
-radius = 0.0853482
-height = 0.369509
+[ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
+[ext_resource type="Script" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
+[ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="2_gd83v"]
+[ext_resource type="Script" path="res://characters/sonic/states/jab_1.gd" id="3_o7udh"]
+[ext_resource type="Script" path="res://characters/sonic/states/jab_2.gd" id="4_mr5q0"]
+[ext_resource type="Script" path="res://characters/sonic/states/jab_3.gd" id="5_o7udh"]
+[ext_resource type="Script" path="res://characters/sonic/states/heavy.gd" id="6_o7udh"]
+[ext_resource type="Script" path="res://characters/sonic/states/upper.gd" id="7_lwdla"]
 
 [sub_resource type="Animation" id="Animation_do57j"]
 resource_name = "AirDash"
@@ -473,6 +448,23 @@ tracks/3/keys = {
 "values": ["startup"]
 }
 
+[sub_resource type="Animation" id="Animation_osktc"]
+resource_name = "RunTurn"
+length = 0.333342
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.252507),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [206, 207, 208, 209]
+}
+
 [sub_resource type="Animation" id="Animation_meeb0"]
 resource_name = "Stopping"
 length = 0.200002
@@ -693,24 +685,7 @@ tracks/3/keys = {
 "values": ["startup", "active", "recovery"]
 }
 
-[sub_resource type="Animation" id="Animation_osktc"]
-resource_name = "RunTurn"
-length = 0.333342
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.252507),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [206, 207, 208, 209]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7vi1n"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_axwkh"]
 _data = {
 &"AirDash": SubResource("Animation_do57j"),
 &"Dash": SubResource("Animation_pfkrf"),
@@ -738,20 +713,8 @@ _data = {
 &"kick2": SubResource("Animation_wtpgs")
 }
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lntm"]
-render_priority = 0
-shader = ExtResource("6_m6gva")
-shader_parameter/checkerboard = ExtResource("7_tg5qw")
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_ddqn7"]
-top_radius = 0.25
-bottom_radius = 0.0
-height = 0.001
-radial_segments = 16
-cap_bottom = false
-
-[sub_resource type="Resource" id="Resource_uaf3e"]
-script = ExtResource("16_32b4s")
+[sub_resource type="Resource" id="Resource_o7udh"]
+script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
 knockback_power = 20.0
@@ -761,136 +724,31 @@ unblockable = false
 hit_freeze = 5
 hit_stun = 30
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.129537
+[node name="Sonic" instance=ExtResource("1_jint7")]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_3twb4"]
-size = Vector3(0.188656, 0.317568, 0.231695)
-
-[node name="BasePlayer" type="CharacterBody3D" groups=["characters"]]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
-collision_layer = 0
-slide_on_ceiling = false
-floor_snap_length = 0.16
-safe_margin = 0.016
-script = ExtResource("1_7xl6k")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-shape = SubResource("CapsuleShape3D_ajxej")
-
-[node name="PlayerSprite" type="Sprite3D" parent="."]
-layers = 4
-texture_filter = 0
-render_priority = 10
-texture = ExtResource("3_rqcha")
-hframes = 16
-vframes = 14
+[node name="PlayerSprite" parent="." index="1"]
+texture = ExtResource("2_gd83v")
 frame = 2
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
+[node name="AnimationPlayer" parent="PlayerSprite" index="0"]
 libraries = {
-&"": SubResource("AnimationLibrary_7vi1n")
+&"": SubResource("AnimationLibrary_axwkh")
 }
-autoplay = "Idle"
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182536, 0)
-target_position = Vector3(0, -5, 0)
-collision_mask = 2
-script = ExtResource("2_s2flu")
+[node name="Jab1" parent="StateMachine" index="10"]
+script = ExtResource("3_o7udh")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]
+[node name="Jab2" parent="StateMachine" index="11"]
+script = ExtResource("4_mr5q0")
 
-[node name="Shadow" type="MeshInstance3D" parent="RayCast3D"]
-material_override = SubResource("ShaderMaterial_0lntm")
-mesh = SubResource("CylinderMesh_ddqn7")
+[node name="Jab3" parent="StateMachine" index="12"]
+script = ExtResource("5_o7udh")
 
-[node name="StateMachine" type="Node" parent="." groups=["network_sync"]]
-script = ExtResource("4_dnwcv")
-root_node_path = NodePath("..")
+[node name="Heavy" parent="StateMachine" index="13"]
+script = ExtResource("6_o7udh")
 
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("5_6wnxk")
-metadata/_custom_type_script = ExtResource("5_dnwcv")
+[node name="Upper" parent="StateMachine" index="14"]
+script = ExtResource("7_lwdla")
 
-[node name="Move" type="Node" parent="StateMachine"]
-script = ExtResource("7_wtpgs")
-
-[node name="Stopping" type="Node" parent="StateMachine"]
-script = ExtResource("10_fv82v")
-
-[node name="Turn" type="Node" parent="StateMachine"]
-script = ExtResource("11_uaf3e")
-
-[node name="JumpSquat" type="Node" parent="StateMachine"]
-script = ExtResource("11_m6gva")
-
-[node name="Land" type="Node" parent="StateMachine"]
-script = ExtResource("12_tg5qw")
-
-[node name="Dash" type="Node" parent="StateMachine"]
-script = ExtResource("10_0nphp")
-
-[node name="AirDash" type="Node" parent="StateMachine"]
-script = ExtResource("15_j5k0p")
-
-[node name="Jump" type="Node" parent="StateMachine"]
-script = ExtResource("8_pfkrf")
-
-[node name="Fall" type="Node" parent="StateMachine"]
-script = ExtResource("9_qxn4b")
-
-[node name="Jab1" type="Node" parent="StateMachine"]
-script = ExtResource("10_3twb4")
-metadata/_custom_type_script = ExtResource("5_dnwcv")
-
-[node name="Jab2" type="Node" parent="StateMachine"]
-script = ExtResource("12_pfkrf")
-metadata/_custom_type_script = ExtResource("5_dnwcv")
-
-[node name="Jab3" type="Node" parent="StateMachine"]
-script = ExtResource("13_qxn4b")
-metadata/_custom_type_script = ExtResource("5_dnwcv")
-
-[node name="Heavy" type="Node" parent="StateMachine"]
-script = ExtResource("19_j5k0p")
-metadata/_custom_type_script = ExtResource("5_dnwcv")
-
-[node name="Upper" type="Node" parent="StateMachine"]
-script = ExtResource("20_e12xf")
-metadata/_custom_type_script = ExtResource("5_dnwcv")
-
-[node name="Hurt" type="Node" parent="StateMachine"]
-script = ExtResource("15_ddqn7")
-
-[node name="WallHit" type="Node" parent="StateMachine"]
-script = ExtResource("21_do57j")
-
-[node name="Down" type="Node" parent="StateMachine"]
-script = ExtResource("22_h6gly")
-
-[node name="GetUp" type="Node" parent="StateMachine"]
-script = ExtResource("23_uxs3k")
-
-[node name="Hitbox" type="Area3D" parent="."]
-script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_uaf3e")
-root_node_path = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127428, 0.000781778, 0)
-shape = SubResource("SphereShape3D_3twb4")
-
-[node name="Hurtbox" type="Area3D" parent="."]
-script = ExtResource("16_obb2v")
-active = true
-root_node_path = NodePath("..")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00156888, -0.0120921, -0.000830427)
-shape = SubResource("BoxShape3D_3twb4")
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-
-[connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
-[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]
+[node name="Hitbox" parent="." index="4"]
+hit_data = SubResource("Resource_o7udh")

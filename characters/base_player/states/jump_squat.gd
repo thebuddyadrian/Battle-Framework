@@ -1,4 +1,3 @@
-@tool
 extends BaseState
 
 @export var frames: int = 4

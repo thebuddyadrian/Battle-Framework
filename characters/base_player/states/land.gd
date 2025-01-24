@@ -1,4 +1,3 @@
-@tool
 extends BaseState
 
 const DEFAULT_FRAMES: int = 12

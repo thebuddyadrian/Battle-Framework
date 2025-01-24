@@ -4,9 +4,9 @@ func _move_setup():
 	animation = "Heavy"
 	startup_frames = 12
 	active_frames = 6
-	recovery_frames = 34
+	recovery_frames = 26
 	damage = 10
-	knockback_power = 22
+	knockback_power = 20
 	knockback_angle = 15
 	knockback_type = HitData.KNOCKBACK_TYPE.LAUNCH
 	hit_stun = 60
