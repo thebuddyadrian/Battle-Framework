@@ -21,9 +21,10 @@ func _step():
 			parent.change_state("Stopping")
 		else:
 			parent.change_state("Idle")
+	
 	# Turning
 	if root.is_turning():
-		parent.change_state("Turn")
+		parent.change_state("Turn", {run = true})
 	
 	# Falling
 	if root.velocity.y < 0:
