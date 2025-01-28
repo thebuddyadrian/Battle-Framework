@@ -1,0 +1,180 @@
+[gd_scene load_steps=30 format=3 uid="uid://bgasgno6lr6x3"]
+
+[ext_resource type="Script" path="res://characters/base_player/base_player.gd" id="1_7xl6k"]
+[ext_resource type="Script" path="res://characters/raycast.gd" id="2_s2flu"]
+[ext_resource type="Script" path="res://components/state_machine/state_machine.gd" id="4_dnwcv"]
+[ext_resource type="Script" path="res://characters/base_player/states/idle.gd" id="5_6wnxk"]
+[ext_resource type="Script" path="res://components/state_machine/base_state.gd" id="5_dnwcv"]
+[ext_resource type="Shader" path="res://assets/shader/shadow_dither.gdshader" id="6_m6gva"]
+[ext_resource type="Texture2D" uid="uid://c3nutkgwrk7i7" path="res://assets/ditherpattern.png" id="7_tg5qw"]
+[ext_resource type="Script" path="res://characters/base_player/states/move.gd" id="7_wtpgs"]
+[ext_resource type="Script" path="res://characters/base_player/states/jump.gd" id="8_pfkrf"]
+[ext_resource type="Script" path="res://characters/base_player/states/fall.gd" id="9_qxn4b"]
+[ext_resource type="Script" path="res://characters/base_player/states/dash.gd" id="10_0nphp"]
+[ext_resource type="Script" path="res://characters/base_player/states/stopping.gd" id="10_fv82v"]
+[ext_resource type="Script" path="res://characters/base_player/states/jump_squat.gd" id="11_m6gva"]
+[ext_resource type="Script" path="res://characters/base_player/states/turn.gd" id="11_uaf3e"]
+[ext_resource type="Script" path="res://characters/base_player/states/land.gd" id="12_tg5qw"]
+[ext_resource type="Script" path="res://components/hitbox/hitbox.gd" id="15_0nphp"]
+[ext_resource type="Script" path="res://characters/base_player/states/hurt.gd" id="15_ddqn7"]
+[ext_resource type="Script" path="res://characters/base_player/states/air_dash.gd" id="15_j5k0p"]
+[ext_resource type="Script" path="res://components/hitbox/hit_data.gd" id="16_32b4s"]
+[ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="16_obb2v"]
+[ext_resource type="Script" path="res://characters/base_player/states/wall_hit.gd" id="21_do57j"]
+[ext_resource type="Script" path="res://characters/base_player/states/down.gd" id="22_h6gly"]
+[ext_resource type="Script" path="res://characters/base_player/states/get_up.gd" id="23_uxs3k"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ajxej"]
+radius = 0.0853482
+height = 0.369509
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lntm"]
+render_priority = 0
+shader = ExtResource("6_m6gva")
+shader_parameter/checkerboard = ExtResource("7_tg5qw")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_ddqn7"]
+top_radius = 0.25
+bottom_radius = 0.0
+height = 0.001
+radial_segments = 16
+cap_bottom = false
+
+[sub_resource type="Resource" id="Resource_cqbho"]
+script = ExtResource("16_32b4s")
+damage = 0.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 20.0
+knockback_angle = 30.0
+knockback_type = 0
+unblockable = false
+hit_freeze = 5
+hit_stun = 30
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
+radius = 0.129537
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3twb4"]
+size = Vector3(0.188656, 0.317568, 0.231695)
+
+[node name="BasePlayer" type="CharacterBody3D" groups=["characters"]]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+collision_layer = 0
+slide_on_ceiling = false
+floor_snap_length = 0.16
+safe_margin = 0.016
+script = ExtResource("1_7xl6k")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_ajxej")
+
+[node name="PlayerSprite" type="Sprite3D" parent="."]
+layers = 4
+texture_filter = 0
+render_priority = 10
+hframes = 16
+vframes = 14
+frame = 36
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
+autoplay = "Idle"
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182536, 0)
+target_position = Vector3(0, -5, 0)
+collision_mask = 2
+script = ExtResource("2_s2flu")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]
+
+[node name="Shadow" type="MeshInstance3D" parent="RayCast3D"]
+material_override = SubResource("ShaderMaterial_0lntm")
+mesh = SubResource("CylinderMesh_ddqn7")
+
+[node name="StateMachine" type="Node" parent="." groups=["network_sync"]]
+script = ExtResource("4_dnwcv")
+root_node_path = NodePath("..")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_6wnxk")
+metadata/_custom_type_script = ExtResource("5_dnwcv")
+
+[node name="Move" type="Node" parent="StateMachine"]
+script = ExtResource("7_wtpgs")
+
+[node name="Stopping" type="Node" parent="StateMachine"]
+script = ExtResource("10_fv82v")
+
+[node name="Turn" type="Node" parent="StateMachine"]
+script = ExtResource("11_uaf3e")
+
+[node name="JumpSquat" type="Node" parent="StateMachine"]
+script = ExtResource("11_m6gva")
+
+[node name="Land" type="Node" parent="StateMachine"]
+script = ExtResource("12_tg5qw")
+
+[node name="Dash" type="Node" parent="StateMachine"]
+script = ExtResource("10_0nphp")
+
+[node name="AirDash" type="Node" parent="StateMachine"]
+script = ExtResource("15_j5k0p")
+
+[node name="Jump" type="Node" parent="StateMachine"]
+script = ExtResource("8_pfkrf")
+
+[node name="Fall" type="Node" parent="StateMachine"]
+script = ExtResource("9_qxn4b")
+
+[node name="Jab1" type="Node" parent="StateMachine"]
+script = ExtResource("5_dnwcv")
+metadata/_custom_type_script = ExtResource("5_dnwcv")
+
+[node name="Jab2" type="Node" parent="StateMachine"]
+script = ExtResource("5_dnwcv")
+metadata/_custom_type_script = ExtResource("5_dnwcv")
+
+[node name="Jab3" type="Node" parent="StateMachine"]
+script = ExtResource("5_dnwcv")
+metadata/_custom_type_script = ExtResource("5_dnwcv")
+
+[node name="Heavy" type="Node" parent="StateMachine"]
+script = ExtResource("5_dnwcv")
+metadata/_custom_type_script = ExtResource("5_dnwcv")
+
+[node name="Upper" type="Node" parent="StateMachine"]
+script = ExtResource("5_dnwcv")
+metadata/_custom_type_script = ExtResource("5_dnwcv")
+
+[node name="Hurt" type="Node" parent="StateMachine"]
+script = ExtResource("15_ddqn7")
+
+[node name="WallHit" type="Node" parent="StateMachine"]
+script = ExtResource("21_do57j")
+
+[node name="Down" type="Node" parent="StateMachine"]
+script = ExtResource("22_h6gly")
+
+[node name="GetUp" type="Node" parent="StateMachine"]
+script = ExtResource("23_uxs3k")
+
+[node name="Hitbox" type="Area3D" parent="."]
+script = ExtResource("15_0nphp")
+hit_data = SubResource("Resource_cqbho")
+root_node_path = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127428, 0.000781778, 0)
+shape = SubResource("SphereShape3D_3twb4")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+script = ExtResource("16_obb2v")
+active = true
+root_node_path = NodePath("..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00156888, -0.0120921, -0.000830427)
+shape = SubResource("BoxShape3D_3twb4")
+
+[connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
+[connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

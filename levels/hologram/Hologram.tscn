@@ -1,13 +1,12 @@
-[gd_scene load_steps=19 format=3 uid="uid://cek62pjs5d0tg"]
+[gd_scene load_steps=18 format=3 uid="uid://cek62pjs5d0tg"]
 
-[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_h6std"]
-[ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/Base_Player.tscn" id="3_h6std"]
+[ext_resource type="Script" path="res://levels/level.gd" id="1_h6std"]
 [ext_resource type="PackedScene" uid="uid://biq6bd0648m35" path="res://UI/HUD.tscn" id="4_gu3b0"]
-[ext_resource type="Script" uid="uid://cuvca6ikekxsy" path="res://levels/pivot.gd" id="5_4yqvt"]
+[ext_resource type="Script" path="res://levels/pivot.gd" id="5_4yqvt"]
 [ext_resource type="PackedScene" uid="uid://dw2dnhnuuwhco" path="res://levels/hologram/Holomodel.tscn" id="6_ca42s"]
-[ext_resource type="Script" uid="uid://dhrnxon6uous5" path="res://camera.gd" id="6_tscyp"]
+[ext_resource type="Script" path="res://camera.gd" id="6_tscyp"]
 [ext_resource type="PackedScene" uid="uid://crdik24k161lb" path="res://levels/hologram/holosky.tscn" id="8_4yqvt"]
-[ext_resource type="Script" uid="uid://d2luikke1goi4" path="res://levels/hologram/Boxspin.tres.gd" id="9_ici1a"]
+[ext_resource type="Script" path="res://levels/hologram/Boxspin.tres.gd" id="9_ici1a"]
 [ext_resource type="PackedScene" uid="uid://c0hourbs2wtij" path="res://levels/hologram/holoskygreen.tscn" id="9_tscyp"]
 [ext_resource type="PackedScene" uid="uid://k2g5shk7kxvb" path="res://levels/hologram/holoskyblue.tscn" id="10_ici1a"]
 
@@ -85,8 +84,11 @@ _data = {
 &"RESET": SubResource("Animation_vnv7o")
 }
 
-[node name="LevelMain" type="Node3D"]
+[node name="LevelMain" type="Node3D" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "camera_pivot")]
 script = ExtResource("1_h6std")
+player_spawn_1 = NodePath("SubViewportContainer/Level/PlayerSpawn1")
+player_spawn_2 = NodePath("SubViewportContainer/Level/PlayerSpawn2")
+camera_pivot = NodePath("SubViewportContainer/Level/CameraRoot/Pivot")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_qb02a")
@@ -138,8 +140,11 @@ handle_input_locally = false
 size = Vector2i(320, 240)
 render_target_update_mode = 4
 
-[node name="BasePlayer" parent="SubViewportContainer/Level" instance=ExtResource("3_h6std")]
+[node name="PlayerSpawn1" type="Node3D" parent="SubViewportContainer/Level"]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.968994, -7.80998)
+
+[node name="PlayerSpawn2" type="Node3D" parent="SubViewportContainer/Level"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4.22732, 0.968994, -7.80998)
 
 [node name="blockbench_export" parent="SubViewportContainer/Level" instance=ExtResource("6_ca42s")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
