@@ -3,15 +3,11 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://boba61buog7nj"
-path="res://.godot/imported/exwall1.aseprite-d4d2f1e7f8c88787277db83177027335.ctex"
-metadata={
-"vram_texture": false
-}
+valid=false
 
 [deps]
 
 source_file="res://levels/test_level/exwall1.aseprite"
-dest_files=["res://.godot/imported/exwall1.aseprite-d4d2f1e7f8c88787277db83177027335.ctex"]
 
 [params]
 
