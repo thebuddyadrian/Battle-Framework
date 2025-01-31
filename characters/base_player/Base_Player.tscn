@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=31 format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" path="res://characters/base_player/base_player.gd" id="1_7xl6k"]
 [ext_resource type="Script" path="res://characters/raycast.gd" id="2_s2flu"]
@@ -20,6 +20,7 @@
 [ext_resource type="Script" path="res://characters/base_player/states/air_dash.gd" id="15_j5k0p"]
 [ext_resource type="Script" path="res://components/hitbox/hit_data.gd" id="16_32b4s"]
 [ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="16_obb2v"]
+[ext_resource type="Script" path="res://characters/base_player/states/base_attack.gd" id="17_r8feo"]
 [ext_resource type="Script" path="res://characters/base_player/states/wall_hit.gd" id="21_do57j"]
 [ext_resource type="Script" path="res://characters/base_player/states/down.gd" id="22_h6gly"]
 [ext_resource type="Script" path="res://characters/base_player/states/get_up.gd" id="23_uxs3k"]
@@ -40,7 +41,7 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_cqbho"]
+[sub_resource type="Resource" id="Resource_r8feo"]
 script = ExtResource("16_32b4s")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -52,7 +53,7 @@ hit_freeze = 5
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.129537
+radius = 0.221265
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3twb4"]
 size = Vector3(0.188656, 0.317568, 0.231695)
@@ -126,26 +127,6 @@ script = ExtResource("8_pfkrf")
 [node name="Fall" type="Node" parent="StateMachine"]
 script = ExtResource("9_qxn4b")
 
-[node name="Jab1" type="Node" parent="StateMachine"]
-script = ExtResource("5_dnwcv")
-metadata/_custom_type_script = ExtResource("5_dnwcv")
-
-[node name="Jab2" type="Node" parent="StateMachine"]
-script = ExtResource("5_dnwcv")
-metadata/_custom_type_script = ExtResource("5_dnwcv")
-
-[node name="Jab3" type="Node" parent="StateMachine"]
-script = ExtResource("5_dnwcv")
-metadata/_custom_type_script = ExtResource("5_dnwcv")
-
-[node name="Heavy" type="Node" parent="StateMachine"]
-script = ExtResource("5_dnwcv")
-metadata/_custom_type_script = ExtResource("5_dnwcv")
-
-[node name="Upper" type="Node" parent="StateMachine"]
-script = ExtResource("5_dnwcv")
-metadata/_custom_type_script = ExtResource("5_dnwcv")
-
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource("15_ddqn7")
 
@@ -158,9 +139,41 @@ script = ExtResource("22_h6gly")
 [node name="GetUp" type="Node" parent="StateMachine"]
 script = ExtResource("23_uxs3k")
 
+[node name="Jab1" type="Node" parent="StateMachine"]
+script = ExtResource("17_r8feo")
+metadata/_custom_type_script = ExtResource("17_r8feo")
+
+[node name="Jab2" type="Node" parent="StateMachine"]
+script = ExtResource("17_r8feo")
+metadata/_custom_type_script = ExtResource("17_r8feo")
+
+[node name="Jab3" type="Node" parent="StateMachine"]
+script = ExtResource("17_r8feo")
+metadata/_custom_type_script = ExtResource("17_r8feo")
+
+[node name="Heavy" type="Node" parent="StateMachine"]
+script = ExtResource("17_r8feo")
+metadata/_custom_type_script = ExtResource("17_r8feo")
+
+[node name="Upper" type="Node" parent="StateMachine"]
+script = ExtResource("17_r8feo")
+metadata/_custom_type_script = ExtResource("17_r8feo")
+
+[node name="DashAttack" type="Node" parent="StateMachine"]
+script = ExtResource("17_r8feo")
+metadata/_custom_type_script = ExtResource("17_r8feo")
+
+[node name="AirAttack" type="Node" parent="StateMachine"]
+script = ExtResource("17_r8feo")
+metadata/_custom_type_script = ExtResource("17_r8feo")
+
+[node name="GrndPow" type="Node" parent="StateMachine"]
+script = ExtResource("17_r8feo")
+metadata/_custom_type_script = ExtResource("17_r8feo")
+
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_cqbho")
+hit_data = SubResource("Resource_r8feo")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

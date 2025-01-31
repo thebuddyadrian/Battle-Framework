@@ -1,4 +1,3 @@
-@tool
 extends BaseState
 class_name BaseAttack
 
@@ -10,7 +9,9 @@ const DEFAULT_STARTUP_FRAMES: int = 2
 const DEFAULT_ACTIVE_FRAMES: int = 2
 const DEFAULT_RECOVERY_FRAMES: int = 10
 
-# The state the move goes to after the last phaase
+@export var attack_info: AttackInfo
+
+# The state the move goes to after the last phase
 var next_state: String = "Idle"
 # The data passed to the next state
 var next_state_data: Dictionary = {}
@@ -19,6 +20,10 @@ var animation: String = ""
 ## Air animation, if left blank will use animation
 var air_animation: String = ""
 ## If true, the air animation will be used in the air, otherwise only animation will be used
+var animation_right: String = ""
+## Down and up animations for four-directional moves (specials)
+var animation_down: String
+var animation_up: String
 var change_anim_in_air: bool = false
 
 ## Not finished yet
@@ -35,6 +40,8 @@ var num_blocked: int = 0
 
 ## Go into land state when on the ground, useful for air attacks
 var land_on_touched_ground: bool = false
+## Go into land state when on the ground, useful for air attacks
+var stop_on_left_ground: bool = false
 ## How many frames the player will be in the landing state after touching ground
 var landing_lag: int = 6
 ## Lets the player cancel this move into a Homing Dash on hit, used for heavy attacks
@@ -46,6 +53,12 @@ var use_anim_markers: bool = true
 var direction_type: DIR_TYPE = DIR_TYPE.TWO_DIR
 ## Direction for the attack, which is where the opponent will be knocked/ the projectile will be shot
 var attack_direction := Vector2.RIGHT
+
+# Default attack phases generated from AttackInfo
+var charge_phase: AttackPhase
+var startup_phase: AttackPhase
+var active_phase: AttackPhase
+var recovery_phase: AttackPhase
 
 var _use_air_animation: bool = false
 ## Array of phases created for the attack
@@ -164,6 +177,7 @@ func _ready():
 
 func _enter(data := {}):
 	_phases.clear()
+	_setup_from_resource()
 	_move_setup()
 	_check_for_end_phase()
 	root.hitbox.active = true
@@ -174,19 +188,15 @@ func _enter(data := {}):
 		attack_direction = data["attack_direction"]
 	# Otherwise, try to infer from inputs
 	else:
-		if direction_type == DIR_TYPE.FOUR_DIR:
-			if !is_zero_approx(root.get_movement_vector().x):
-				attack_direction.x = root.get_movement_vector().x
-				attack_direction.y = 0
-			elif !is_zero_approx(root.get_movement_vector().y):
-				attack_direction.x = 0
-				attack_direction.y = root.get_movement_vector().y
-			else:
-				attack_direction.x = root.facing_direction_2d
-				attack_direction.y = 0
+		if !is_zero_approx(root.get_movement_vector().x):
+			attack_direction.x = root.get_movement_vector().x
+			attack_direction.y = 0
+		elif !is_zero_approx(root.get_movement_vector().y):
+			attack_direction.x = 0
+			attack_direction.y = root.get_movement_vector().y
 		else:
 			attack_direction.x = root.facing_direction_2d
-			attack_direction.y = 0
+
 	root.hitbox.hit_data.knockback_direction = attack_direction
 	root.hitbox.rotation.y = -attack_direction.angle()
 	#root.hitbox.hit_data.charge_percent = 0
@@ -197,6 +207,40 @@ func _enter(data := {}):
 	charge_time = 0
 	_phase_timer = 0
 	change_phase(0)
+
+
+## Generates attack phases based on the attached AttackInfo resource
+func _setup_from_resource():
+	animation = attack_info.animation
+	air_animation = attack_info.air_animation
+	change_anim_in_air = attack_info.change_anim_in_air
+	land_on_touched_ground = attack_info.land_on_touched_ground
+	stop_on_left_ground = attack_info.stop_on_left_ground
+	landing_lag = attack_info.landing_lag
+	dash_cancel_on_hit = attack_info.dash_cancel_on_hit
+	
+	if attack_info.can_charge:
+		charge_phase = AttackPhase.new("charge")
+		charge_phase.phase_type = AttackPhase.PHASE_TYPE.CHARGE
+		charge_phase.max_charge = attack_info.max_charge
+		charge_phase.max_hold = attack_info.max_hold
+		charge_phase.use_charge_effect = true
+		add_phase(charge_phase)
+	
+	startup_phase = AttackPhase.new("startup")
+	startup_phase.frames = attack_info.startup_frames
+	add_phase(startup_phase)
+	
+	active_phase = AttackPhase.new("active")
+	active_phase.frames = attack_info.active_frames
+	active_phase.hitbox_active = true
+	active_phase.sound_effect = attack_info.attack_sound
+	add_phase(active_phase)
+	
+	recovery_phase = AttackPhase.new("recovery")
+	recovery_phase.frames = attack_info.recovery_frames
+	recovery_phase.end_phase = true
+	add_phase(recovery_phase)
 
 
 ## Virual method called when the player should set up the attack phases using "add_new_phase" calls
@@ -266,9 +310,22 @@ func _step_frozen():
 
 
 func _phase_changed_internal(phase_index: int, previous_phase_index: int):
-	#get_hit_data().ignore_damage = false
-	pass
-
+	if attack_info:
+		if get_current_phase() == active_phase:
+			get_hit_data().damage = attack_info.damage
+			get_hit_data().knockback_power = attack_info.knockback_power
+			get_hit_data().knockback_angle = attack_info.knockback_angle
+			get_hit_data().knockback_type = attack_info.knockback_type
+			get_hit_data().hit_stun = attack_info.hit_stun
+			#get_hit_data().knockback_direction = knockback_direction
+			#get_hit_data().knockback_scaling = knockback_scaling
+			#get_hit_data().damage_charge_scale = damage_charge_scale
+			#get_hit_data().knockback_charge_scale = knockback_charge_scale
+			#get_hit_data().knockback_scaling_charge_scale = knockback_scaling_charge_scale
+			#get_hit_data().sound = hit_sound
+		# Player can cancel into other attacks when recovery phase starts
+		if get_current_phase() == recovery_phase:
+			root.set_action_enabled("attack", true)
 	
 # Virtual method to run logic right when the phase is changed, including at the beginning when startup phase is entered
 func _phase_changed():
@@ -400,17 +457,18 @@ func change_phase(phase_index: int) -> void:
 		var section_end: float
 		if use_anim_markers:
 			var animation: Animation = root.animplayer.get_animation(animation_name)
-			var markers: PackedStringArray = animation.get_marker_names()
-			var start_marker: String = current_phase.anim_marker
-			var start_marker_idx: int = markers.find(start_marker)
-			var end_marker: String = ""
-			if start_marker_idx < markers.size() - 1:
-				end_marker = markers[start_marker_idx + 1]
-			section_start = animation.get_marker_time(start_marker)
-			if end_marker:
-				section_end = animation.get_marker_time(end_marker)
-			else:
-				section_end = animation.length
+			if animation:
+				var markers: PackedStringArray = animation.get_marker_names()
+				var start_marker: String = current_phase.anim_marker
+				var start_marker_idx: int = markers.find(start_marker)
+				var end_marker: String = ""
+				if start_marker_idx < markers.size() - 1:
+					end_marker = markers[start_marker_idx + 1]
+				section_start = animation.get_marker_time(start_marker)
+				if end_marker:
+					section_end = animation.get_marker_time(end_marker)
+				else:
+					section_end = animation.length
 		else:
 			section_start = current_phase.anim_frame_start * tick_time
 			section_end = current_phase.anim_frame_end * tick_time

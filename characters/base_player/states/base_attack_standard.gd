@@ -30,10 +30,6 @@ var knockback_charge_scale: int = 180
 var damage_charge_scale: int = 150
 var knockback_scaling_charge_scale: int = 180
 var auto_set_hit_data: bool = true
-var charge_phase: AttackPhase
-var startup_phase: AttackPhase
-var active_phase: AttackPhase
-var recovery_phase: AttackPhase
 
 # For multi attacks (more than one set of startup, active, recovery)
 var multi_attack_count: int = 3

@@ -9,6 +9,7 @@ func _enter(data = {}):
 	root.animplayer.play("Dash")
 	root.velocity.y = 6
 	root.limit_speed = false
+	root.set_action_enabled("attack", true)
 
 
 func _step():
@@ -25,4 +26,5 @@ func _step_frozen():
 func _exit(next_state):
 	root.limit_speed = true
 	root.animplayer.stop()
+	root.set_action_enabled("attack", false)
 	super._exit(next_state)

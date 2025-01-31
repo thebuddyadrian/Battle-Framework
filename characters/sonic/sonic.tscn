@@ -1,13 +1,17 @@
-[gd_scene load_steps=35 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=44 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
 [ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="2_gd83v"]
-[ext_resource type="Script" path="res://characters/sonic/states/jab_1.gd" id="3_o7udh"]
-[ext_resource type="Script" path="res://characters/sonic/states/jab_2.gd" id="4_mr5q0"]
-[ext_resource type="Script" path="res://characters/sonic/states/jab_3.gd" id="5_o7udh"]
+[ext_resource type="Resource" uid="uid://dttk12fa38yx0" path="res://characters/sonic/states/jab_1.tres" id="3_dsaob"]
+[ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="4_lwdla"]
+[ext_resource type="Resource" uid="uid://spkpe3bbhbk6" path="res://characters/sonic/states/jab_3.tres" id="5_wpnlk"]
 [ext_resource type="Script" path="res://characters/sonic/states/heavy.gd" id="6_o7udh"]
-[ext_resource type="Script" path="res://characters/sonic/states/upper.gd" id="7_lwdla"]
+[ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="7_6mqiq"]
+[ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="8_wpnlk"]
+[ext_resource type="Resource" uid="uid://df00kkj6hx8pc" path="res://characters/sonic/states/dash_attack.tres" id="9_6mqiq"]
+[ext_resource type="Script" path="res://characters/sonic/states/air_attack.gd" id="10_6mqiq"]
+[ext_resource type="Resource" uid="uid://cdy3tsk3tj34i" path="res://characters/sonic/states/air_attack.tres" id="11_41aki"]
 
 [sub_resource type="Animation" id="Animation_do57j"]
 resource_name = "AirDash"
@@ -41,6 +45,60 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [65, 66, 67, 68, 69, 70, 71]
+}
+
+[sub_resource type="Animation" id="Animation_dsaob"]
+resource_name = "DashAttack"
+length = 0.483335
+step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.15
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.3
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35, 0.4, 0.45),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [103, 104, 105, 106, 107, 108, 109, 110, 111, 112]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.221265]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_f3uyc"]
@@ -556,7 +614,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_6wnxk"]
 resource_name = "kick1"
 length = 0.3
-step = 0.0166667
+step = 0.05
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"startup",
@@ -685,12 +743,122 @@ tracks/3/keys = {
 "values": ["startup", "active", "recovery"]
 }
 
+[sub_resource type="Animation" id="Animation_6mqiq"]
+resource_name = "AirAttack"
+length = 0.350005
+step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.1
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.2
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [113, 114, 115, 116, 117, 118, 119]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.166883]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0940804, -0.081697, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_41aki"]
+resource_name = "GrndPowFwd"
+length = 0.400005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [134, 135, 136, 137, 138, 139, 140, 141]
+}
+
+[sub_resource type="Animation" id="Animation_fqyed"]
+resource_name = "GrndPowUp"
+length = 0.400005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [142, 143, 144, 145, 146, 147, 148, 149]
+}
+
+[sub_resource type="Animation" id="Animation_w02fn"]
+resource_name = "GrndPowDown"
+length = 0.400005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [150, 151, 152, 153, 154, 155, 156, 157]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_axwkh"]
 _data = {
+&"AirAttack": SubResource("Animation_6mqiq"),
 &"AirDash": SubResource("Animation_do57j"),
 &"Dash": SubResource("Animation_pfkrf"),
+&"DashAttack": SubResource("Animation_dsaob"),
 &"Falling": SubResource("Animation_f3uyc"),
 &"GetUp": SubResource("Animation_uaf3e"),
+&"GrndPowDown": SubResource("Animation_w02fn"),
+&"GrndPowFwd": SubResource("Animation_41aki"),
+&"GrndPowUp": SubResource("Animation_fqyed"),
 &"Heavy": SubResource("Animation_e12xf"),
 &"HitFloor": SubResource("Animation_fv82v"),
 &"HitUp": SubResource("Animation_lgwg8"),
@@ -713,7 +881,7 @@ _data = {
 &"kick2": SubResource("Animation_wtpgs")
 }
 
-[sub_resource type="Resource" id="Resource_o7udh"]
+[sub_resource type="Resource" id="Resource_41aki"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -735,20 +903,28 @@ libraries = {
 &"": SubResource("AnimationLibrary_axwkh")
 }
 
-[node name="Jab1" parent="StateMachine" index="10"]
-script = ExtResource("3_o7udh")
+[node name="Jab1" parent="StateMachine" index="14"]
+attack_info = ExtResource("3_dsaob")
 
-[node name="Jab2" parent="StateMachine" index="11"]
-script = ExtResource("4_mr5q0")
+[node name="Jab2" parent="StateMachine" index="15"]
+attack_info = ExtResource("4_lwdla")
 
-[node name="Jab3" parent="StateMachine" index="12"]
-script = ExtResource("5_o7udh")
+[node name="Jab3" parent="StateMachine" index="16"]
+attack_info = ExtResource("5_wpnlk")
 
-[node name="Heavy" parent="StateMachine" index="13"]
+[node name="Heavy" parent="StateMachine" index="17"]
 script = ExtResource("6_o7udh")
+attack_info = ExtResource("7_6mqiq")
 
-[node name="Upper" parent="StateMachine" index="14"]
-script = ExtResource("7_lwdla")
+[node name="Upper" parent="StateMachine" index="18"]
+attack_info = ExtResource("8_wpnlk")
+
+[node name="DashAttack" parent="StateMachine" index="19"]
+attack_info = ExtResource("9_6mqiq")
+
+[node name="AirAttack" parent="StateMachine" index="20"]
+script = ExtResource("10_6mqiq")
+attack_info = ExtResource("11_41aki")
 
 [node name="Hitbox" parent="." index="4"]
-hit_data = SubResource("Resource_o7udh")
+hit_data = SubResource("Resource_41aki")

@@ -177,12 +177,17 @@ func _check_for_air_dash() -> bool:
 
 
 func _check_for_attacks() -> bool:
-	if is_on_floor():
+	if _check_for_dash_attack():
+		return true
+	if is_on_floor():        
 		if _check_for_upper():
 			return true
 		if _check_for_heavy():
 			return true
 		if _check_for_jab_combo():
+			return true
+	else:
+		if _check_for_air_attack():
 			return true
 	return false
 
@@ -249,6 +254,20 @@ func _check_for_upper() -> bool:
 			if vec.x == -facing_direction_2d:
 				state_machine.change_state("Upper", {attack_direction = Vector2(facing_direction_2d, 0)})
 				return true
+	return false
+
+
+func _check_for_dash_attack() -> bool:
+	if input("attack", "just_pressed") and state_machine.active_state.name == "Dash":
+		state_machine.change_state("DashAttack")
+		return true
+	return false
+
+
+func _check_for_air_attack() -> bool:
+	if input("attack", "just_pressed"):
+		state_machine.change_state("AirAttack")
+		return true
 	return false
 
 
