@@ -7,39 +7,15 @@ class_name Level
 @export var player_spawn_1: Node3D
 @export var player_spawn_2: Node3D
 @export var camera_pivot: Node3D
+@export var camera_follows_player = false
+
+@onready var camera = camera_pivot.get_node("Camera")
+
+
 
 var audiostreamplayer = AudioStreamPlayer.new()
 
 func _ready() -> void:
-	# Convert scene to new format
-	if Engine.is_editor_hint():
-		var root = EditorInterface.get_edited_scene_root()
-		var player_spawn_1_new = Node3D.new()
-		var player_spawn_2_new = Node3D.new()
-		var base_player = root.get_node_or_null("BasePlayer")
-		var base_player2 = root.get_node_or_null("BasePlayer2")
-		if base_player and !has_node("PlayerSpawn1"):
-			root.add_child(player_spawn_1_new)
-			player_spawn_1_new.global_position = base_player.global_position
-			player_spawn_1_new.owner = root
-			player_spawn_1_new.name = "PlayerSpawn1"
-			player_spawn_1 = player_spawn_1_new
-			root.move_child(player_spawn_1, 1)
-			base_player.queue_free()
-		if base_player2 and !has_node("PlayerSpawn2"):
-			root.add_child(player_spawn_2_new)
-			player_spawn_2_new.owner = root
-			player_spawn_2_new.global_position = base_player2.global_position
-			player_spawn_2_new.name = "PlayerSpawn2"
-			root.move_child(player_spawn_2, 2)
-			base_player2.queue_free()
-		player_spawn_1 = get_node("PlayerSpawn1")
-		player_spawn_2 = get_node("PlayerSpawn2")
-		camera_pivot = get_node("CameraRoot/Pivot")
-	#audiostreamplayer.stream = music
-	#add_child(audiostreamplayer)
-	#if audiostreamplayer.stream != null && !audiostreamplayer.playing:
-		#audiostreamplayer.play()
 	MusicPlayer.play_track(music)
 	# Spawn characters
 	assert(player_spawn_1, "No spawn position has been placed for player 1")
@@ -52,12 +28,13 @@ func _ready() -> void:
 		player.camera = camera_pivot
 		player.scale = Vector3(4, 4, 4)
 		player.player_id = i + 1
+		player.name = str(player.player_id)
 		spawn_position.get_parent().add_child(player)
+	if camera_follows_player:
+		camera._dont_rotate = true
+		camera_pivot.player_to_follow = get_node("1")
+		camera_pivot.follow_player = true
 	await get_tree().process_frame
-		
-		
-			
-		
 
 
 func _physics_process(delta: float) -> void:

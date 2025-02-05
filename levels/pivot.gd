@@ -4,9 +4,16 @@ extends Node3D
 
 var taps = 0
 var taptime = 0
+var follow_player = false
+var player_to_follow: BattleCharacter : set = set_player_to_follow
+
+var _offset_from_player: Vector3
+
 
 func _ready() -> void:
 	rotation.y = 0
+	
+	
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	var rot = snappedi(rotation.y, 1.0)
@@ -29,5 +36,11 @@ func _physics_process(delta: float) -> void:
 						Anim.play("Flip2")
 				taptime = 0
 				taps = 0
-		
-	pass
+	
+	if follow_player and player_to_follow:
+		global_position = player_to_follow.global_position
+
+
+func set_player_to_follow(player: BattleCharacter):
+	player_to_follow = player
+	_offset_from_player = global_position - player_to_follow.global_position
