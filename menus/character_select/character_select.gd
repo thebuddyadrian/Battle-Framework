@@ -25,7 +25,7 @@ func _on_player_selection_finished():
 	Game.character_choices[current_player] = current_player_node.character
 	current_player_node.active = false
 	if current_player == Game.human_players + Game.cpu_players:
-		SceneChanger.change_scene_to_file("res://levels/level.tscn")
+		SceneChanger.change_scene_to_file("res://levels/emeraldbeach/emerald_beach.tscn")
 		return
 	current_player += 1
 	await get_tree().process_frame
