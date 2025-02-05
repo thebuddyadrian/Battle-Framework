@@ -1,0 +1,108 @@
+[gd_scene load_steps=10 format=3 uid="uid://cr3ot0xj2of5r"]
+
+[ext_resource type="PackedScene" uid="uid://cr5pydprtoluo" path="res://levels/City/city.glb" id="1_qakbj"]
+[ext_resource type="Script" path="res://levels/level.gd" id="2_pnmpm"]
+[ext_resource type="Script" path="res://levels/pivot.gd" id="3_p6x6q"]
+[ext_resource type="Environment" uid="uid://gje4rk62y4yw" path="res://MAINLIGHTING.tres" id="4_3debp"]
+[ext_resource type="Script" path="res://camera.gd" id="5_h2enj"]
+
+[sub_resource type="Animation" id="Animation_gjl0y"]
+resource_name = "Flip1"
+length = 0.35
+step = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraRoot/Pivot:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(0.7, 3.2),
+"update": 0,
+"values": [Vector3(-0.610865, 0, 0), Vector3(-0.610865, 3.14159, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_d5x7l"]
+resource_name = "Flip2"
+length = 0.35
+step = 0.35
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraRoot/Pivot:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(0.732043, 3.24549),
+"update": 0,
+"values": [Vector3(-0.610865, 3.14159, 0), Vector3(-0.610865, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vnv7o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CameraRoot/Pivot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.610865, 3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rtcij"]
+_data = {
+&"Flip1": SubResource("Animation_gjl0y"),
+&"Flip2": SubResource("Animation_d5x7l"),
+&"RESET": SubResource("Animation_vnv7o")
+}
+
+[node name="city" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "camera_pivot") instance=ExtResource("1_qakbj")]
+script = ExtResource("2_pnmpm")
+player_spawn_1 = NodePath("PlayerSpawn1")
+player_spawn_2 = NodePath("PlayerSpawn2")
+camera_pivot = NodePath("CameraRoot/Pivot")
+camera_follows_player = true
+
+[node name="Plane" parent="." index="0"]
+transform = Transform3D(7.45058e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, 7.45058e-08, -9.34501, 0, -9.17062)
+
+[node name="CameraRoot" type="Node3D" parent="." index="1"]
+unique_name_in_owner = true
+
+[node name="PositionTarget" type="Node3D" parent="CameraRoot" index="0"]
+top_level = true
+
+[node name="RotationTarget" type="Node3D" parent="CameraRoot" index="1"]
+top_level = true
+
+[node name="Pivot" type="Node3D" parent="CameraRoot" index="2"]
+unique_name_in_owner = true
+transform = Transform3D(-1, -1.45412e-06, 2.0767e-06, 0, 0.819152, 0.573576, -2.53518e-06, 0.573576, -0.819152, 0, 0, 0)
+script = ExtResource("3_p6x6q")
+
+[node name="Camera" type="Camera3D" parent="CameraRoot/Pivot" index="0"]
+transform = Transform3D(0.991303, 0.0428445, -0.124429, -0.0754821, 0.959638, -0.27092, 0.1078, 0.277956, 0.954526, 1.81899e-12, -3.43449, 13.2083)
+environment = ExtResource("4_3debp")
+projection = 1
+current = true
+size = 9.801
+script = ExtResource("5_h2enj")
+metadata/_custom_type_script = ExtResource("5_h2enj")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="CameraRoot/Pivot" index="1"]
+root_node = NodePath("../../..")
+libraries = {
+&"": SubResource("AnimationLibrary_rtcij")
+}
+
+[node name="PlayerSpawn1" type="Node3D" parent="." index="2"]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -19.2453, 0.958181, -9.17062)
+
+[node name="PlayerSpawn2" type="Node3D" parent="." index="3"]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -11.3791, 0.958181, -9.26332)
