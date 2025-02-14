@@ -6,6 +6,8 @@
 script = ExtResource("1_nkbxa")
 animation = "Heavy"
 air_animation = ""
+animation_down = ""
+animation_up = ""
 change_anim_in_air = false
 startup_frames = 12
 active_frames = 2
@@ -23,6 +25,7 @@ max_hold = 30
 knockback_charge_scale = 180
 damage_charge_scale = 150
 knockback_scaling_charge_scale = 180
+use_hitbox = true
 land_on_touched_ground = false
 stop_on_left_ground = false
 landing_lag = 6

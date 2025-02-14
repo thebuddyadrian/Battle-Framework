@@ -195,6 +195,8 @@ func _check_for_attacks() -> bool:
 			return true
 		if _check_for_jab_combo():
 			return true
+		if _check_for_ground_special():
+			return true
 	else:
 		if _check_for_aim_attack():
 			return true
@@ -288,6 +290,13 @@ func _check_for_aim_attack() -> bool:
 		return true
 	return false
 
+
+
+func _check_for_ground_special():
+	if input("skill", "just_pressed") and !state_machine.active_state is BaseAttack:
+		state_machine.change_state("GrndShot")
+		return true
+	return false
 
 func direction_string_to_vector2(direction_string: String) -> Vector2:
 	var vec: Vector2

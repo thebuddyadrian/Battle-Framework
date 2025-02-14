@@ -5,6 +5,8 @@ class_name AttackInfo
 @export var animation: String = ""
 ## Air animation, if left blank will use animation
 @export var air_animation: String = ""
+@export var animation_down: String = ""
+@export var animation_up: String = ""
 ## If true, the air animation will be used in the air, otherwise only animation will be used
 @export var change_anim_in_air: bool = false
 
@@ -26,6 +28,9 @@ class_name AttackInfo
 @export var damage_charge_scale: int = 150
 @export var knockback_scaling_charge_scale: int = 180
 
+
+## Can be used to disable the hitbox for projectile attacks
+@export var use_hitbox: bool = true
 ## Go into land state when on the ground, useful for air attacks
 @export var land_on_touched_ground: bool = false
 ## Go into air state when not on the ground, useful for ground only attacks

@@ -13,7 +13,20 @@ func _step():
 	if parent.state_time >= 35:
 		parent.change_state("Fall")
 		return
-	if parent.state_time <= 25:
+	
+	var opponent_position: Vector3 = root.last_hit_player.global_position
+	var opponent_is_behind: bool = false
+	
+	if root.facing_direction.x > 0 and opponent_position.x < root.global_position.x:
+		opponent_is_behind = true
+	if root.facing_direction.x < 0 and opponent_position.x > root.global_position.x:
+		opponent_is_behind = true
+	if root.facing_direction.y < 0 and opponent_position.z > root.global_position.z:
+		opponent_is_behind = true
+	if root.facing_direction.y > 0 and opponent_position.z < root.global_position.z:
+		opponent_is_behind = true
+	
+	if parent.state_time <= 25 and !opponent_is_behind:
 		var distance_x = abs(root.global_position.x - root.last_hit_player.global_position.x)
 		var distance_z = abs(root.global_position.z - root.last_hit_player.global_position.z)
 		root.velocity.x = distance_x * 3.0 * root.facing_direction.x

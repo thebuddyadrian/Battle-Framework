@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=50 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
@@ -13,6 +13,8 @@
 [ext_resource type="Script" path="res://characters/sonic/states/air_attack.gd" id="10_6mqiq"]
 [ext_resource type="Resource" uid="uid://cdy3tsk3tj34i" path="res://characters/sonic/states/air_attack.tres" id="11_41aki"]
 [ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="12_w02fn"]
+[ext_resource type="Script" path="res://characters/sonic/states/grnd_shot.gd" id="13_w02fn"]
+[ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="14_6ri6b"]
 
 [sub_resource type="Animation" id="Animation_lq7el"]
 resource_name = "AimAttack"
@@ -53,7 +55,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.166883]
+"values": [0.141148]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -65,7 +67,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0.0940804, -0.081697, 0)]
+"values": [Vector3(0.0754718, -0.0171874, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_6mqiq"]
@@ -245,9 +247,18 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_w02fn"]
-resource_name = "GrndPowDown"
+resource_name = "GrndShotDown"
 length = 0.400005
 step = 0.05
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup_loop",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active_loop",
+"time": 0.2
+}]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -262,9 +273,18 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_41aki"]
-resource_name = "GrndPowFwd"
+resource_name = "GrndShotFwd"
 length = 0.400005
 step = 0.05
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup_loop",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active_loop",
+"time": 0.2
+}]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -279,9 +299,18 @@ tracks/0/keys = {
 }
 
 [sub_resource type="Animation" id="Animation_fqyed"]
-resource_name = "GrndPowUp"
+resource_name = "GrndShotUp"
 length = 0.400005
 step = 0.05
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup_loop",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active_loop",
+"time": 0.2
+}]
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -301,20 +330,20 @@ length = 0.850005
 step = 0.0166667
 markers = [{
 "color": Color(1, 1, 1, 1),
-"name": &"startup",
-"time": 0.0
-}, {
-"color": Color(1, 1, 1, 1),
-"name": &"active",
-"time": 0.2
-}, {
-"color": Color(1, 1, 1, 1),
 "name": &"recovery",
 "time": 0.3
 }, {
 "color": Color(1, 1, 1, 1),
 "name": &"jump",
 "time": 0.65
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.2
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -601,16 +630,16 @@ length = 0.3
 step = 0.0166667
 markers = [{
 "color": Color(1, 1, 1, 1),
-"name": &"startup",
-"time": 0.0
-}, {
-"color": Color(1, 1, 1, 1),
 "name": &"active",
 "time": 0.1
 }, {
 "color": Color(1, 1, 1, 1),
 "name": &"recovery",
 "time": 0.15
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -946,9 +975,9 @@ _data = {
 &"DashAttack": SubResource("Animation_dsaob"),
 &"Falling": SubResource("Animation_f3uyc"),
 &"GetUp": SubResource("Animation_uaf3e"),
-&"GrndPowDown": SubResource("Animation_w02fn"),
-&"GrndPowFwd": SubResource("Animation_41aki"),
-&"GrndPowUp": SubResource("Animation_fqyed"),
+&"GrndShotDown": SubResource("Animation_w02fn"),
+&"GrndShotFwd": SubResource("Animation_41aki"),
+&"GrndShotUp": SubResource("Animation_fqyed"),
 &"Heavy": SubResource("Animation_e12xf"),
 &"HitFloor": SubResource("Animation_fv82v"),
 &"HitUp": SubResource("Animation_lgwg8"),
@@ -973,7 +1002,7 @@ _data = {
 &"kick2": SubResource("Animation_wtpgs")
 }
 
-[sub_resource type="Resource" id="Resource_fqyed"]
+[sub_resource type="Resource" id="Resource_6ri6b"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1021,5 +1050,9 @@ attack_info = ExtResource("11_41aki")
 [node name="AimAttack" parent="StateMachine" index="22"]
 attack_info = ExtResource("12_w02fn")
 
+[node name="GrndShot" parent="StateMachine" index="23"]
+script = ExtResource("13_w02fn")
+attack_info = ExtResource("14_6ri6b")
+
 [node name="Hitbox" parent="." index="4"]
-hit_data = SubResource("Resource_fqyed")
+hit_data = SubResource("Resource_6ri6b")

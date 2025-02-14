@@ -20,11 +20,11 @@ var animation: String = ""
 ## Air animation, if left blank will use animation
 var air_animation: String = ""
 ## If true, the air animation will be used in the air, otherwise only animation will be used
-var animation_right: String = ""
+var change_anim_in_air: bool = false
 ## Down and up animations for four-directional moves (specials)
 var animation_down: String
 var animation_up: String
-var change_anim_in_air: bool = false
+
 
 ## Not finished yet
 var charge_time: int = 0
@@ -38,6 +38,8 @@ var num_blocked: int = 0
 
 ## Whole Move Config
 
+## Can be used to disable the hitbox for projectile attacks
+var use_hitbox: bool = true
 ## Go into land state when on the ground, useful for air attacks
 var land_on_touched_ground: bool = false
 ## Go into land state when on the ground, useful for air attacks
@@ -63,12 +65,18 @@ var active_phase: AttackPhase
 var recovery_phase: AttackPhase
 
 var _use_air_animation: bool = false
+# When the player presses the dash button, it will be buffered until the move is ready to cancel
 var _dash_cancel_buffered: bool = false
 ## Array of phases created for the attack
 var _phases := []
 var _phases_dict := {}
 ## Used to count down to the next phase
 var _phase_timer: int = 0
+# Keeps tracks of variables for looping animations
+var _current_phase_loop: bool = false
+var _current_animation: String
+var _current_section_start: float
+var _current_section_end: float
 
 
 class PhaseSetArray:
@@ -183,7 +191,7 @@ func _enter(data := {}):
 	_setup_from_resource()
 	_move_setup()
 	_check_for_end_phase()
-	root.hitbox.active = true
+	root.hitbox.active = false
 	#root.hitbox.rects = []
 	root.hitbox.hit_data = HitData.new()
 	# Attack Direction can be passed in as a parameter
@@ -220,7 +228,10 @@ func _enter(data := {}):
 func _setup_from_resource():
 	animation = attack_info.animation
 	air_animation = attack_info.air_animation
+	animation_up = attack_info.animation_up
+	animation_down = attack_info.animation_down
 	change_anim_in_air = attack_info.change_anim_in_air
+	use_hitbox = attack_info.use_hitbox
 	land_on_touched_ground = attack_info.land_on_touched_ground
 	stop_on_left_ground = attack_info.stop_on_left_ground
 	landing_lag = attack_info.landing_lag
@@ -298,6 +309,16 @@ func _step():
 					root.stop_buffer_attack("pressed")
 					root.stop_buffer("special", "pressed")
 					next_phase()
+	
+	# Looping animations
+	# When the animation finishes, play it again
+	if _current_phase_loop:
+		var animation_looped = _current_animation
+		if !_current_animation.ends_with("_loop"):
+			animation_looped = _current_animation + "_loop"
+		print("looping: %s" % _current_animation)
+		print(_current_section_start)
+		root.animplayer.play_section(_current_animation, _current_section_start, _current_section_end, -1, 1)
 	
 	if _phase_timer > 0:
 		_phase_timer = max(0, _phase_timer - 1)
@@ -420,6 +441,10 @@ func change_phase(phase_index: int) -> void:
 	
 	# Reset phase timer
 	_phase_timer = 0
+	_current_phase_loop = false
+	_current_animation = ""
+	_current_section_start = -1
+	_current_section_end = -1
 	
 	# If we went backwards to a previous phase, previous phase index is now invalid
 	if previous_phase_index > phase_index:
@@ -428,7 +453,8 @@ func change_phase(phase_index: int) -> void:
 	var current_phase: AttackPhase = get_current_phase() as AttackPhase
 	var previous_phase: AttackPhase = get_phase(previous_phase_index)
 	
-	root.hitbox.active = current_phase.hitbox_active
+	if use_hitbox:
+		root.hitbox.active = current_phase.hitbox_active
 	#root.animsprite.offset = Vector2(0,0)
 	
 	# Charging - WIP
@@ -460,6 +486,11 @@ func change_phase(phase_index: int) -> void:
 		var animation_name: String = animation
 		if change_anim_in_air and !root.is_on_floor():
 			animation_name = air_animation
+		if animation_down and attack_direction == Vector2.DOWN:
+			animation_name = animation_down
+		if animation_up and attack_direction == Vector2.UP:
+			animation_name = animation_up
+			
 		if current_phase.anim_override:
 			if root.is_on_floor():
 				animation_name = current_phase.anim_override
@@ -470,27 +501,44 @@ func change_phase(phase_index: int) -> void:
 		var speed: float = 1.0
 		var section_start: float
 		var section_end: float
+		var loop: bool = false
 		if use_anim_markers:
 			var animation: Animation = root.animplayer.get_animation(animation_name)
 			if animation:
 				var markers: PackedStringArray = animation.get_marker_names()
 				var start_marker: String = current_phase.anim_marker
 				var start_marker_idx: int = markers.find(start_marker)
+				# Check if the marker is using loop
+				if start_marker_idx == -1:
+					start_marker_idx = markers.find(start_marker + "_loop")
+					# If loop marker was found
+					if start_marker_idx != -1:
+						loop = true
+						_current_phase_loop = true
+						start_marker = start_marker + "_loop"
 				var end_marker: String = ""
 				if start_marker_idx < markers.size() - 1:
 					end_marker = markers[start_marker_idx + 1]
 				section_start = animation.get_marker_time(start_marker)
 				if end_marker:
-					section_end = animation.get_marker_time(end_marker)
+					section_end = animation.get_marker_time(end_marker) - 0.001
+					# Check if the next section is the looping section
+					if end_marker == start_marker + "_loop" and !loop:
+						loop = true
+						_current_phase_loop = true
 				else:
 					section_end = animation.length
 		else:
 			section_start = current_phase.anim_frame_start * tick_time
 			section_end = current_phase.anim_frame_end * tick_time
 		var section_length = section_end - section_start
-		if not is_equal_approx(section_length, current_phase.frames * tick_time):
+		# Dont slow down animation if using loop
+		if not is_equal_approx(section_length, current_phase.frames * tick_time) and not loop:
 			speed = section_length/float(current_phase.frames * 0.016)
 		root.animplayer.play_section(animation_name, section_start, section_end, -1, speed)
+		_current_animation = animation_name
+		_current_section_start = section_start
+		_current_section_end = section_end
 	_phase_changed_internal(phase_index, previous_phase_index)
 	_phase_changed()
 
@@ -504,6 +552,9 @@ func change_phase_to(phase: AttackPhase) -> void:
 func next_phase() -> void:
 	# Skip phase if it has 0 frames
 	if _phases[current_phase_index + 1].frames == 0:
+		if _phases[current_phase_index + 1].end_phase:
+			parent.change_state(next_state, next_state_data)
+			return
 		current_phase_index += 1
 	change_phase(current_phase_index + 1)
 

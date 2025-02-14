@@ -43,7 +43,7 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_ppowo"]
+[sub_resource type="Resource" id="Resource_uam5m"]
 script = ExtResource("16_32b4s")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -176,7 +176,7 @@ metadata/_custom_type_script = ExtResource("17_r8feo")
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = ExtResource("17_r8feo")
 
-[node name="GrndPow" type="Node" parent="StateMachine"]
+[node name="GrndShot" type="Node" parent="StateMachine"]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = ExtResource("17_r8feo")
 
@@ -186,7 +186,7 @@ metadata/_custom_type_script = ExtResource("17_r8feo")
 
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_ppowo")
+hit_data = SubResource("Resource_uam5m")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
