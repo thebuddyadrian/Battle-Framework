@@ -30,11 +30,11 @@ window/size/viewport_width=320
 window/size/viewport_height=240
 window/size/window_width_override=640
 window/size/window_height_override=480
-window/stretch/mode="viewport"
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/abfi/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/nklbdev.importality/plugin.cfg")
+enabled=PackedStringArray("res://addons/abfi/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg")
 
 [input]
 
