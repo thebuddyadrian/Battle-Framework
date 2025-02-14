@@ -34,3 +34,5 @@ class_name AttackInfo
 @export var landing_lag: int = 6
 ## Lets the player cancel this move into a Homing Dash on hit, used for heavy attacks
 @export var dash_cancel_on_hit: bool = false
+## How many frames until the player can cancel into the homing dash
+@export var dash_cancel_frames: int = 24

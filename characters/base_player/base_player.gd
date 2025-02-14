@@ -8,6 +8,7 @@ class_name BattleCharacter
 @export var STOCKS = 3
 @export var player_id = 1
 @export var GRAVITY = 0.5
+@export var FALL_SPEED = 12
 @export var JUMPFROMGROUND = false
 @export var DECELERATION = 0.75
 @export var ACCELERATION = 0.8
@@ -39,6 +40,8 @@ var heavy_direction_inputs: Dictionary = {}
 var upper_direction_inputs: Dictionary = {}
 var most_recent_direction_input: String = "right"
 var VALID_ACTIONS = ["move", "jump", "dash", "air_dash", "attack", "skill", "guard", "heal"]
+# Keep track of the last player you hit
+var last_hit_player: BattleCharacter
 
 @onready var Sprite = $PlayerSprite
 @onready var animplayer: AnimationPlayer = $PlayerSprite/AnimationPlayer
@@ -84,7 +87,9 @@ func _physics_process(_delta: float) -> void:
 		$PlayerSprite.flip_h = facing_direction_2d < 0
 	
 	# Add the gravity.
-	velocity.y -= GRAVITY * gravity_scale
+	if velocity.y >  -FALL_SPEED:
+		velocity.y -= GRAVITY * gravity_scale
+	
 	_process_movement()
 	_process_actions()
 	move_and_slide()
@@ -164,6 +169,10 @@ func _check_for_jump() -> bool:
 
 func _check_for_dash() -> bool:
 	if input("dash", "just_pressed"):
+		if state_machine.active_state.name == "Heavy":
+			if state_machine.active_state.move_hit:
+				state_machine.change_state("HomingDash")
+				return true
 		state_machine.change_state("Dash")
 		return true
 	return false
@@ -187,6 +196,8 @@ func _check_for_attacks() -> bool:
 		if _check_for_jab_combo():
 			return true
 	else:
+		if _check_for_aim_attack():
+			return true
 		if _check_for_air_attack():
 			return true
 	return false
@@ -265,8 +276,15 @@ func _check_for_dash_attack() -> bool:
 
 
 func _check_for_air_attack() -> bool:
-	if input("attack", "just_pressed"):
+	if input("attack", "just_pressed") and !state_machine.active_state is BaseAttack:
 		state_machine.change_state("AirAttack")
+		return true
+	return false
+
+
+func _check_for_aim_attack() -> bool:
+	if input("attack", "just_pressed") and state_machine.active_state.name == "HomingDash":
+		state_machine.change_state("AimAttack")
 		return true
 	return false
 
@@ -364,3 +382,10 @@ func get_movement_vector() -> Vector2:
 
 func _on_hurtbox_hurt(hit_data: HitData, hitbox: Hitbox) -> void:
 	state_machine.change_state("Hurt", {hit_data = hit_data})
+
+
+func _on_hitbox_hit(hit_data: HitData, hurtbox: Hurtbox) -> void:
+	if state_machine.active_state.has_method("_on_hitbox_hit"):
+		state_machine.active_state._on_hitbox_hit(hit_data, hurtbox)
+	if hurtbox.root is BattleCharacter:
+		last_hit_player = hurtbox.root

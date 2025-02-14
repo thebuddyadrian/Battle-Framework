@@ -41,7 +41,11 @@ func _step():
 			for j in collision.get_collision_count():
 				var collider = collision.get_collider(j)
 				if collider is StaticBody3D:
-					change_state("WallHit", {normal = collision.get_normal(j)})
+					change_state("WallBounce", {normal = collision.get_normal(j)})
+	if hit_data.knockback_type == hit_data.KNOCKBACK_TYPE.DOWN:
+		if root.is_on_floor():
+			change_state("FloorBounce")
+			return
 
 
 func _exit(next_state: BaseState) -> void:

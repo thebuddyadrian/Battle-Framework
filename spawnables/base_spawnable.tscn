@@ -8,7 +8,7 @@
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mdu81"]
 
-[sub_resource type="Resource" id="Resource_oe13r"]
+[sub_resource type="Resource" id="Resource_kmo64"]
 script = ExtResource("3_kmo64")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -33,7 +33,7 @@ autoplay = "default"
 
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("2_gicut")
-hit_data = SubResource("Resource_oe13r")
+hit_data = SubResource("Resource_kmo64")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = ExtResource("2_gicut")
 

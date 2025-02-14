@@ -1,4 +1,4 @@
-extends BaseAttackStandard
+extends BaseAttack
 
 
 # Heavy attack needs some more phases, so a custom script is needed
@@ -14,3 +14,8 @@ func _phase_changed():
 		root.velocity.y = 5
 		root.velocity.x = -root.facing_direction.x * 2
 		root.velocity.z = -root.facing_direction.y * 2
+	
+
+
+func _step():
+	super._step()

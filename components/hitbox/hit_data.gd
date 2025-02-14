@@ -3,7 +3,7 @@ class_name HitData
 
 # A resource that stores data a player will need when hitting opponents or getting hit by an attack
 
-enum KNOCKBACK_TYPE {WEAK, LAUNCH, UP}
+enum KNOCKBACK_TYPE {WEAK, LAUNCH, UP, DOWN}
 
 @export var damage: float 
 @export var knockback_direction: Vector2 = Vector2(0, 0) # The direction the player will be hit, in regards to the XZ plane

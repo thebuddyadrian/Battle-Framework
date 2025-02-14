@@ -1,0 +1,17 @@
+extends BaseState
+
+func _enter(data = {}):
+	root.animplayer.play("HitFloor")
+	root.velocity.y = 17
+	root.hurtbox.active = false
+
+
+func _step():
+	if root.is_on_floor() and parent.state_time >= 4:
+		change_state("Down")
+
+
+func _exit(next_state):
+	root.deceleration_scale = 1
+	root.gravity_scale = 1
+	root.hurtbox.active = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=47 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
@@ -11,7 +11,61 @@
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="8_wpnlk"]
 [ext_resource type="Resource" uid="uid://df00kkj6hx8pc" path="res://characters/sonic/states/dash_attack.tres" id="9_6mqiq"]
 [ext_resource type="Script" path="res://characters/sonic/states/air_attack.gd" id="10_6mqiq"]
-[ext_resource type="Resource" uid="uid://cdy3tsk3tj34i" path="res://characters/sonic/states/air_attack.tres" id="11_41aki"]
+[ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="12_w02fn"]
+
+[sub_resource type="Animation" id="Animation_6mqiq"]
+resource_name = "AirAttack"
+length = 0.350005
+step = 0.05
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.1
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.2
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [113, 114, 115, 116, 117, 118, 119]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.166883]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.0940804, -0.081697, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_do57j"]
 resource_name = "AirDash"
@@ -135,6 +189,57 @@ tracks/0/keys = {
 "values": [194, 195, 196, 197, 198, 199, 200, 201]
 }
 
+[sub_resource type="Animation" id="Animation_w02fn"]
+resource_name = "GrndPowDown"
+length = 0.400005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [150, 151, 152, 153, 154, 155, 156, 157]
+}
+
+[sub_resource type="Animation" id="Animation_41aki"]
+resource_name = "GrndPowFwd"
+length = 0.400005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [134, 135, 136, 137, 138, 139, 140, 141]
+}
+
+[sub_resource type="Animation" id="Animation_fqyed"]
+resource_name = "GrndPowUp"
+length = 0.400005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [142, 143, 144, 145, 146, 147, 148, 149]
+}
+
 [sub_resource type="Animation" id="Animation_e12xf"]
 resource_name = "Heavy"
 length = 0.850005
@@ -195,8 +300,8 @@ tracks/2/keys = {
 
 [sub_resource type="Animation" id="Animation_fv82v"]
 resource_name = "HitFloor"
-length = 0.500008
-step = 0.0833333
+length = 0.416675
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -204,10 +309,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.08335, 0.1667, 0.25005, 0.3334, 0.41675),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.08335, 0.1667, 0.25005, 0.3334),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
-"values": [188, 189, 190, 191, 192, 193]
+"values": [188, 189, 190, 191, 192]
 }
 
 [sub_resource type="Animation" id="Animation_lgwg8"]
@@ -260,6 +365,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [181, 182, 183, 184, 185, 186, 187]
+}
+
+[sub_resource type="Animation" id="Animation_6ri6b"]
+resource_name = "HomingDash"
+length = 0.250005
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [120, 121, 122, 123, 124]
 }
 
 [sub_resource type="Animation" id="Animation_m6gva"]
@@ -743,9 +865,9 @@ tracks/3/keys = {
 "values": ["startup", "active", "recovery"]
 }
 
-[sub_resource type="Animation" id="Animation_6mqiq"]
-resource_name = "AirAttack"
-length = 0.350005
+[sub_resource type="Animation" id="Animation_lq7el"]
+resource_name = "AimAttack"
+length = 0.450005
 step = 0.0166667
 markers = [{
 "color": Color(1, 1, 1, 1),
@@ -753,11 +875,11 @@ markers = [{
 "time": 0.0
 }, {
 "color": Color(1, 1, 1, 1),
-"name": &"active",
-"time": 0.1
+"name": &"recovery",
+"time": 0.25
 }, {
 "color": Color(1, 1, 1, 1),
-"name": &"recovery",
+"name": &"active",
 "time": 0.2
 }]
 tracks/0/type = "value"
@@ -767,10 +889,10 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [113, 114, 115, 116, 117, 118, 119]
+"values": [125, 126, 127, 128, 129, 130, 131, 133]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -797,10 +919,10 @@ tracks/2/keys = {
 "values": [Vector3(0.0940804, -0.081697, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_41aki"]
-resource_name = "GrndPowFwd"
-length = 0.400005
-step = 0.05
+[sub_resource type="Animation" id="Animation_lci63"]
+resource_name = "OnFloor"
+length = 0.0833416
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -808,48 +930,15 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [134, 135, 136, 137, 138, 139, 140, 141]
-}
-
-[sub_resource type="Animation" id="Animation_fqyed"]
-resource_name = "GrndPowUp"
-length = 0.400005
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [142, 143, 144, 145, 146, 147, 148, 149]
-}
-
-[sub_resource type="Animation" id="Animation_w02fn"]
-resource_name = "GrndPowDown"
-length = 0.400005
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [150, 151, 152, 153, 154, 155, 156, 157]
+"values": [193]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_axwkh"]
 _data = {
+&"AimAttack": SubResource("Animation_lq7el"),
 &"AirAttack": SubResource("Animation_6mqiq"),
 &"AirDash": SubResource("Animation_do57j"),
 &"Dash": SubResource("Animation_pfkrf"),
@@ -863,6 +952,7 @@ _data = {
 &"HitFloor": SubResource("Animation_fv82v"),
 &"HitUp": SubResource("Animation_lgwg8"),
 &"HitWall": SubResource("Animation_uxs3k"),
+&"HomingDash": SubResource("Animation_6ri6b"),
 &"Hurt": SubResource("Animation_m6gva"),
 &"Idle": SubResource("Animation_ajxej"),
 &"Jump": SubResource("Animation_b3yb2"),
@@ -871,6 +961,7 @@ _data = {
 &"Launch": SubResource("Animation_h6gly"),
 &"MoveTransition": SubResource("Animation_rqcha"),
 &"Moving": SubResource("Animation_7vi1n"),
+&"OnFloor": SubResource("Animation_lci63"),
 &"Punch1": SubResource("Animation_c551c"),
 &"RESET": SubResource("Animation_dnwcv"),
 &"RunTurn": SubResource("Animation_osktc"),
@@ -903,28 +994,30 @@ libraries = {
 &"": SubResource("AnimationLibrary_axwkh")
 }
 
-[node name="Jab1" parent="StateMachine" index="14"]
+[node name="Jab1" parent="StateMachine" index="15"]
 attack_info = ExtResource("3_dsaob")
 
-[node name="Jab2" parent="StateMachine" index="15"]
+[node name="Jab2" parent="StateMachine" index="16"]
 attack_info = ExtResource("4_lwdla")
 
-[node name="Jab3" parent="StateMachine" index="16"]
+[node name="Jab3" parent="StateMachine" index="17"]
 attack_info = ExtResource("5_wpnlk")
 
-[node name="Heavy" parent="StateMachine" index="17"]
+[node name="Heavy" parent="StateMachine" index="18"]
 script = ExtResource("6_o7udh")
 attack_info = ExtResource("7_6mqiq")
 
-[node name="Upper" parent="StateMachine" index="18"]
+[node name="Upper" parent="StateMachine" index="19"]
 attack_info = ExtResource("8_wpnlk")
 
-[node name="DashAttack" parent="StateMachine" index="19"]
+[node name="DashAttack" parent="StateMachine" index="20"]
 attack_info = ExtResource("9_6mqiq")
 
-[node name="AirAttack" parent="StateMachine" index="20"]
+[node name="AirAttack" parent="StateMachine" index="21"]
 script = ExtResource("10_6mqiq")
-attack_info = ExtResource("11_41aki")
+
+[node name="AimAttack" parent="StateMachine" index="22"]
+attack_info = ExtResource("12_w02fn")
 
 [node name="Hitbox" parent="." index="4"]
 hit_data = SubResource("Resource_41aki")

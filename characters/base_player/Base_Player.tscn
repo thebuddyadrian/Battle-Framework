@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=33 format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" path="res://characters/base_player/base_player.gd" id="1_7xl6k"]
 [ext_resource type="Script" path="res://characters/raycast.gd" id="2_s2flu"]
@@ -21,8 +21,10 @@
 [ext_resource type="Script" path="res://components/hitbox/hit_data.gd" id="16_32b4s"]
 [ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="16_obb2v"]
 [ext_resource type="Script" path="res://characters/base_player/states/base_attack.gd" id="17_r8feo"]
+[ext_resource type="Script" path="res://characters/base_player/states/floor_bounce.gd" id="19_uam5m"]
 [ext_resource type="Script" path="res://characters/base_player/states/wall_hit.gd" id="21_do57j"]
 [ext_resource type="Script" path="res://characters/base_player/states/down.gd" id="22_h6gly"]
+[ext_resource type="Script" path="res://characters/base_player/states/homing_dash.gd" id="22_ppowo"]
 [ext_resource type="Script" path="res://characters/base_player/states/get_up.gd" id="23_uxs3k"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ajxej"]
@@ -41,7 +43,7 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_r8feo"]
+[sub_resource type="Resource" id="Resource_ppowo"]
 script = ExtResource("16_32b4s")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -53,7 +55,7 @@ hit_freeze = 5
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.221265
+radius = 0.166883
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3twb4"]
 size = Vector3(0.188656, 0.317568, 0.231695)
@@ -130,8 +132,11 @@ script = ExtResource("9_qxn4b")
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource("15_ddqn7")
 
-[node name="WallHit" type="Node" parent="StateMachine"]
+[node name="WallBounce" type="Node" parent="StateMachine"]
 script = ExtResource("21_do57j")
+
+[node name="FloorBounce" type="Node" parent="StateMachine"]
+script = ExtResource("19_uam5m")
 
 [node name="Down" type="Node" parent="StateMachine"]
 script = ExtResource("22_h6gly")
@@ -167,13 +172,21 @@ metadata/_custom_type_script = ExtResource("17_r8feo")
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = ExtResource("17_r8feo")
 
+[node name="AimAttack" type="Node" parent="StateMachine"]
+script = ExtResource("17_r8feo")
+metadata/_custom_type_script = ExtResource("17_r8feo")
+
 [node name="GrndPow" type="Node" parent="StateMachine"]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = ExtResource("17_r8feo")
 
+[node name="HomingDash" type="Node" parent="StateMachine"]
+script = ExtResource("22_ppowo")
+metadata/_custom_type_script = ExtResource("17_r8feo")
+
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_r8feo")
+hit_data = SubResource("Resource_ppowo")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

@@ -46,6 +46,8 @@ var stop_on_left_ground: bool = false
 var landing_lag: int = 6
 ## Lets the player cancel this move into a Homing Dash on hit, used for heavy attacks
 var dash_cancel_on_hit: bool = false
+## How many frames until the player can cancel into the homing dash
+var dash_cancel_frames: int = 24
 ## Can be set to false to disable the animation system
 var play_animation: bool = true
 ## Can be set to false to manually set the section start and end for each phase
@@ -61,6 +63,7 @@ var active_phase: AttackPhase
 var recovery_phase: AttackPhase
 
 var _use_air_animation: bool = false
+var _dash_cancel_buffered: bool = false
 ## Array of phases created for the attack
 var _phases := []
 var _phases_dict := {}
@@ -196,9 +199,12 @@ func _enter(data := {}):
 			attack_direction.y = root.get_movement_vector().y
 		else:
 			attack_direction.x = root.facing_direction_2d
+			attack_direction.y = 0
 
 	root.hitbox.hit_data.knockback_direction = attack_direction
 	root.hitbox.rotation.y = -attack_direction.angle()
+	root.facing_direction = attack_direction
+	root.update_facing_direction_2d()
 	#root.hitbox.hit_data.charge_percent = 0
 	num_hits = 0
 	num_contacts = 0
@@ -206,6 +212,7 @@ func _enter(data := {}):
 	move_hit = 0
 	charge_time = 0
 	_phase_timer = 0
+	_dash_cancel_buffered = false
 	change_phase(0)
 
 
@@ -218,6 +225,7 @@ func _setup_from_resource():
 	stop_on_left_ground = attack_info.stop_on_left_ground
 	landing_lag = attack_info.landing_lag
 	dash_cancel_on_hit = attack_info.dash_cancel_on_hit
+	dash_cancel_frames = attack_info.dash_cancel_frames
 	
 	if attack_info.can_charge:
 		charge_phase = AttackPhase.new("charge")
@@ -270,6 +278,14 @@ func _step():
 				#release_charge()
 			#if !root.input_attack("pressed"):
 				#release_charge()
+		
+		# Dash Cancel
+		if move_hit and dash_cancel_on_hit:
+			if root.input("dash", "just_pressed"):
+				_dash_cancel_buffered = true
+			if parent.state_time >= dash_cancel_frames and _dash_cancel_buffered:
+				change_state("HomingDash")
+				return
 		
 		# Jabs
 		# Cancel into next phase when attack pressed
@@ -368,8 +384,7 @@ func _get_unique_phase_name(p_phase_name: String) -> String:
 			p_phase_name += str(trailing_int + 1)
 	return p_phase_name
 
-## WIP - doesn't work yet
-func _on_hitbox_hit(hit_data: HitData, area_hit):
+func _on_hitbox_hit(hit_data: HitData, hurtbox):
 	num_hits += 1
 	move_hit = 1
 	num_contacts += 1
