@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://biq6bd0648m35"]
+[gd_scene load_steps=7 format=3 uid="uid://biq6bd0648m35"]
 
+[ext_resource type="Script" uid="uid://d6nn5mymjqxg" path="res://UI/HUD.gd" id="1_gppie"]
 [ext_resource type="Texture2D" uid="uid://cwc8ecd53as57" path="res://assets/ui/HPBack.png" id="1_uk570"]
 [ext_resource type="Texture2D" uid="uid://jv1bvqittpmo" path="res://assets/ui/HPFill.png" id="2_f2wx0"]
 [ext_resource type="Texture2D" uid="uid://bl45pj2rfuo7u" path="res://assets/ui/Manabarback.png" id="3_gppie"]
@@ -15,6 +16,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_gppie")
 
 [node name="HP" type="TextureProgressBar" parent="CanvasLayer"]
 offset_right = 128.0

@@ -14,6 +14,11 @@ func _enter(data = {}):
 func _step():
 	if parent.state_time >= frames:
 		change_state("Idle")
+	
+	if parent.state_time >= frames / 3:
+		root.set_actions_enabled(["jump"], true)
+		if root.get_input_vector() != Vector2.ZERO:
+			root.set_actions_enabled(["dash"], true)
 
 
 func _exit(next_state):

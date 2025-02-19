@@ -6,6 +6,8 @@ class_name BattleCharacter
 @export var DASH_SPEED = 12.5
 @export var AIR_DASH_SPEED = 15
 @export var STOCKS = 3
+@export var HP = 100
+@export var MP = 300
 @export var player_id = 1
 @export var GRAVITY = 0.5
 @export var FALL_SPEED = 12
@@ -15,6 +17,9 @@ class_name BattleCharacter
 @export var AIR_DECELERATION = 0.25
 @export var AIR_ACCELERATION = 0.5
 @export var MAX_AIR_DASHES = 1
+
+@export var IS_CLIENTSIDE = false
+
 
 ## How many frames the player has to press the attack button after inputting a direction to do a heavy/upper attack
 var HEAVY_DIRECTION_INPUT_WINDOW: int = 8
@@ -58,6 +63,10 @@ var camera: Node3D
 func _ready() -> void:
 	state_machine.initialize()
 	Sprite.billboard = true
+	if player_id == 1:
+		IS_CLIENTSIDE = true
+	if IS_CLIENTSIDE == true:
+		Globals.CLIENTSIDE_PLAYER = self
 
 
 func _physics_process(_delta: float) -> void:

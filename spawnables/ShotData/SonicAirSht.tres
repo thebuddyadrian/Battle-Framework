@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="SpawnableInfo" load_steps=2 format=3 uid="uid://nae51km5aw7i"]
+
+[ext_resource type="Script" uid="uid://b2bes5un3i2yl" path="res://spawnables/spawnable_info.gd" id="1_8baj6"]
+
+[resource]
+script = ExtResource("1_8baj6")
+sprite_path = "assets/Textures/Spawnables/BaseSpawnable/sprite.png"
+sprite_scale = 1.0
+has_animation = true
+has_hitbox = true
+has_hurtbox = true
+hit_start_millis = 0
+hurt_start_millis = 250
+lifetime = 40
+metadata/_custom_type_script = ExtResource("1_8baj6")

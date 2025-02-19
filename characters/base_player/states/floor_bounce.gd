@@ -2,8 +2,7 @@ extends BaseState
 
 func _enter(data = {}):
 	root.animplayer.play("HitFloor")
-	root.velocity.y = 17
-	root.hurtbox.active = false
+	root.velocity.y = 22
 
 
 func _step():

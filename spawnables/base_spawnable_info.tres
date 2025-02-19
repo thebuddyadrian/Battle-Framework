@@ -6,6 +6,10 @@
 script = ExtResource("1_js4f8")
 sprite_path = "assets/Textures/Spawnables/BaseSpawnable/sprite.png"
 sprite_scale = 1.0
-frame_durations = Array[int]([])
+has_animation = false
+has_hitbox = false
+has_hurtbox = true
+hit_start_millis = 0
+hurt_start_millis = 250
 lifetime = 10
 metadata/_custom_type_script = ExtResource("1_js4f8")

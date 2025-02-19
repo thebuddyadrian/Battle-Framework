@@ -1,6 +1,6 @@
 [gd_scene load_steps=18 format=3 uid="uid://c2tqnyliq0dwg"]
 
-[ext_resource type="Script" path="res://menus/mode_select.gd" id="1_5ovjn"]
+[ext_resource type="Script" uid="uid://cseybjtb7aloj" path="res://menus/mode_select.gd" id="1_5ovjn"]
 [ext_resource type="Texture2D" uid="uid://dqijbbv7qnwjo" path="res://sonic battle menu.png" id="2_ki0r6"]
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_p6y4n"]
 [ext_resource type="Texture2D" uid="uid://bvbtspsj4y8oh" path="res://assets/ui/menus/mode_select/story.png" id="3_ij2dm"]
