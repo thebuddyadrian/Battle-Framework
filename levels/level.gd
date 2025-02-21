@@ -3,20 +3,28 @@
 extends Node3D
 class_name Level
 
+const CAMERA_ROOT = preload("res://components/camera_root/camera_root.tscn")
+
 @export var music  : AudioStream
 @export var player_spawn_1: Node3D
 @export var player_spawn_2: Node3D
-@export var camera_pivot: Node3D
-@export var camera_follows_player = false
-
-@onready var camera = camera_pivot.get_node("Camera")
-
-
-
+@export var camera_follows_player: bool = false # For beat-em-up levels
+@export var camera_root_parent: Node = self
+var camera_pivot: Node3D
+var camera: Camera
 var audiostreamplayer = AudioStreamPlayer.new()
+
 
 func _ready() -> void:
 	MusicPlayer.play_track(music)
+	
+	# Spawn camera
+	var camera_root = CAMERA_ROOT.instantiate()
+	camera_root_parent.add_child(camera_root)
+	camera_root.name = "CameraRoot"
+	camera_pivot = camera_root.get_node("Pivot")
+	camera = camera_root.get_node("Pivot/Camera")
+	
 	# Spawn characters
 	assert(player_spawn_1, "No spawn position has been placed for player 1")
 	assert(player_spawn_2, "No spawn position has been placed for player 2")
@@ -30,6 +38,7 @@ func _ready() -> void:
 		player.player_id = i + 1
 		player.name = str(player.player_id)
 		spawn_position.get_parent().add_child(player)
+	
 	if camera_follows_player:
 		camera._dont_rotate = true
 		camera_pivot.player_to_follow = get_node("1")

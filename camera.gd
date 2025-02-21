@@ -7,9 +7,9 @@ class_name Camera
 @export var rotspeed := 5.0
 
 
-@onready var root: Node3D = %CameraRoot
-@onready var targetpos: Node3D = %CameraRoot/PositionTarget
-@onready var rotation_target: Node3D = %CameraRoot/RotationTarget
+@onready var root: Node3D = get_node("../..")
+@onready var targetpos: Node3D = get_node("../../PositionTarget")
+@onready var rotation_target: Node3D = get_node("../../RotationTarget")
 
 # Set from the level script if the camera follows the player
 var _dont_rotate = false

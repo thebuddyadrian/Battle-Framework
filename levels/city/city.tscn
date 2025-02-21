@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://cr3ot0xj2of5r"]
+
+[ext_resource type="PackedScene" uid="uid://cr5pydprtoluo" path="res://levels/city/city.glb" id="1_qakbj"]
+[ext_resource type="Script" path="res://levels/level.gd" id="2_pnmpm"]
+
+[node name="city" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "camera_root_parent") instance=ExtResource("1_qakbj")]
+script = ExtResource("2_pnmpm")
+player_spawn_1 = NodePath("PlayerSpawn1")
+player_spawn_2 = NodePath("PlayerSpawn2")
+camera_follows_player = true
+camera_root_parent = NodePath(".")
+
+[node name="Plane" parent="." index="0"]
+transform = Transform3D(7.45058e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, 7.45058e-08, -9.34501, 0, -9.17062)
+
+[node name="PlayerSpawn1" type="Node3D" parent="." index="1"]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -19.2453, 0.958181, -9.17062)
+
+[node name="PlayerSpawn2" type="Node3D" parent="." index="2"]
+transform = Transform3D(5.96046e-08, 0, -1, 0, 1, 0, 1, 0, 5.96046e-08, -11.3791, 0.958181, -9.26332)
