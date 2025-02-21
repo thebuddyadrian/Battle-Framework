@@ -17,7 +17,6 @@ func _ready() -> void:
 		
 	for player in player_container.get_children():
 		player.connect("selection_finished", Callable(self, "_on_player_selection_finished"))
-		
 
 
 func _on_player_selection_finished():
@@ -25,7 +24,7 @@ func _on_player_selection_finished():
 	Game.character_choices[current_player] = current_player_node.character
 	current_player_node.active = false
 	if current_player == Game.human_players + Game.cpu_players:
-		SceneChanger.change_scene_to_file("res://levels/emeraldbeach/emerald_beach.tscn")
+		SceneChanger.change_scene_to_file("res://levels/emeraldbeach/emeraldbeach.tscn")
 		return
 	current_player += 1
 	await get_tree().process_frame
