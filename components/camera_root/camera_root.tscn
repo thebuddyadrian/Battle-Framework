@@ -1,12 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://dgswtfbyqn45x"]
+[gd_scene load_steps=8 format=3 uid="uid://dgswtfbyqn45x"]
 
 [ext_resource type="Script" path="res://levels/pivot.gd" id="1_he7xx"]
 [ext_resource type="Environment" uid="uid://gje4rk62y4yw" path="res://MAINLIGHTING.tres" id="2_u38fi"]
 [ext_resource type="Script" path="res://components/camera_root/camera.gd" id="3_l44vk"]
-
-[sub_resource type="GDScript" id="GDScript_he7xx"]
-script/source = "extends Node3D
-"
 
 [sub_resource type="Animation" id="Animation_gjl0y"]
 resource_name = "Flip1"
@@ -65,7 +61,6 @@ _data = {
 }
 
 [node name="CameraRoot" type="Node3D"]
-script = SubResource("GDScript_he7xx")
 
 [node name="PositionTarget" type="Node3D" parent="."]
 top_level = true
@@ -75,7 +70,7 @@ top_level = true
 
 [node name="Pivot" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(-1, -1.45412e-06, 2.0767e-06, 0, 0.819152, 0.573576, -2.53518e-06, 0.573576, -0.819152, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0, 0)
 script = ExtResource("1_he7xx")
 
 [node name="Camera" type="Camera3D" parent="Pivot"]

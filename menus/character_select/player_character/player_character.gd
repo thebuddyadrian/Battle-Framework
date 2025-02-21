@@ -36,12 +36,12 @@ func set_active(p_active: bool):
 func set_character_index(p_index: int):
 	character_index = p_index
 	if character_index < 0:
-		character_index = CharacterList.characters.size() - 1
-	if character_index >= CharacterList.characters.size():
+		character_index = Lists.characters.size() - 1
+	if character_index >= Lists.characters.size():
 		character_index = 0
-	set_character(CharacterList.characters[character_index])
+	set_character(Lists.characters[character_index])
 
 
 func set_character(p_character: String):
 	character = p_character
-	character_selected.text = "Character:\n" + CharacterList.character_display_names[character]
+	character_selected.text = "Character:\n" + Lists.character_display_names[character]

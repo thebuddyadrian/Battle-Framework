@@ -17,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("1_xptye")
 
 [node name="Background" parent="." instance=ExtResource("2_kxvnc")]
@@ -28,3 +29,13 @@ offset_top = 43.0
 offset_right = 320.0
 offset_bottom = 240.0
 columns = 2
+
+[node name="StageSelect" type="OptionButton" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.083
+offset_left = 84.0
+offset_right = -72.0
+offset_bottom = 0.079998
+focus_mode = 0

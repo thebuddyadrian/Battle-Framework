@@ -13,13 +13,13 @@ signal selection_finished
 
 
 func _ready() -> void:
-	selector_component.items = CharacterList.characters
+	selector_component.items = Lists.characters
 	player_name.text = "Player " + str(player_number)
 	set_active(active)
 
 
 func _on_selector_component_selection_changed(selected: int) -> void:
-	character_selected.text = "Character:\n" + CharacterList.character_display_names[character]
+	character_selected.text = "Character:\n" + Lists.character_display_names[character]
 
 
 func set_active(p_active: bool):
