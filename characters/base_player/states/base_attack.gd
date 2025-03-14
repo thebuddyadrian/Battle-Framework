@@ -54,6 +54,8 @@ var dash_cancel_frames: int = 24
 var play_animation: bool = true
 ## Can be set to false to manually set the section start and end for each phase
 var use_anim_markers: bool = true
+## Can be set to false to disable the animation sections and just play the whole animation
+var use_sections: bool = true
 var direction_type: DIR_TYPE = DIR_TYPE.TWO_DIR
 ## Direction for the attack, which is where the opponent will be knocked/ the projectile will be shot
 var attack_direction := Vector2.RIGHT
@@ -226,11 +228,16 @@ func _enter(data := {}):
 
 ## Generates attack phases based on the attached AttackInfo resource
 func _setup_from_resource():
+	if attack_info == null:
+		return
 	animation = attack_info.animation
 	air_animation = attack_info.air_animation
 	animation_up = attack_info.animation_up
 	animation_down = attack_info.animation_down
 	change_anim_in_air = attack_info.change_anim_in_air
+	play_animation = attack_info.play_animation
+	use_anim_markers = attack_info.use_anim_markers
+	use_sections = attack_info.use_sections
 	use_hitbox = attack_info.use_hitbox
 	land_on_touched_ground = attack_info.land_on_touched_ground
 	stop_on_left_ground = attack_info.stop_on_left_ground
@@ -420,7 +427,6 @@ func _exit(next_state):
 	move_contact = 0
 	move_hit = 0
 	charge_time = 0
-	_phases.clear()
 	root.disable_all_actions()
 	#_despawn_charge_effect()
 	super._exit(next_state)
@@ -498,47 +504,58 @@ func change_phase(phase_index: int) -> void:
 				animation_name = current_phase.air_anim_override
 		
 		# Automatically speed up/slow down animations according to the phase frames
-		var speed: float = 1.0
-		var section_start: float
-		var section_end: float
-		var loop: bool = false
-		if use_anim_markers:
-			var animation: Animation = root.animplayer.get_animation(animation_name)
-			if animation:
-				var markers: PackedStringArray = animation.get_marker_names()
-				var start_marker: String = current_phase.anim_marker
-				var start_marker_idx: int = markers.find(start_marker)
-				# Check if the marker is using loop
-				if start_marker_idx == -1:
-					start_marker_idx = markers.find(start_marker + "_loop")
-					# If loop marker was found
-					if start_marker_idx != -1:
-						loop = true
-						_current_phase_loop = true
-						start_marker = start_marker + "_loop"
-				var end_marker: String = ""
-				if start_marker_idx < markers.size() - 1:
-					end_marker = markers[start_marker_idx + 1]
-				section_start = animation.get_marker_time(start_marker)
-				if end_marker:
-					section_end = animation.get_marker_time(end_marker) - 0.001
-					# Check if the next section is the looping section
-					if end_marker == start_marker + "_loop" and !loop:
-						loop = true
-						_current_phase_loop = true
-				else:
-					section_end = animation.length
+		if use_sections:
+			var speed: float = 1.0
+			var section_start: float
+			var section_end: float
+			var loop: bool = false
+			if use_anim_markers:
+				var animation: Animation = root.animplayer.get_animation(animation_name)
+				if animation:
+					var markers: PackedStringArray = animation.get_marker_names()
+					var start_marker: String = current_phase.anim_marker
+					var start_marker_idx: int = markers.find(start_marker)
+					# Check if the marker is using loop
+					if start_marker_idx == -1:
+						start_marker_idx = markers.find(start_marker + "_loop")
+						# If loop marker was found
+						if start_marker_idx != -1:
+							loop = true
+							_current_phase_loop = true
+							start_marker = start_marker + "_loop"
+					var end_marker: String = ""
+					if start_marker_idx < markers.size() - 1:
+						end_marker = markers[start_marker_idx + 1]
+					section_start = animation.get_marker_time(start_marker)
+					if end_marker:
+						section_end = animation.get_marker_time(end_marker) - 0.001
+						# Check if the next section is the looping section
+						if end_marker == start_marker + "_loop" and !loop:
+							loop = true
+							_current_phase_loop = true
+					else:
+						section_end = animation.length
+			else:
+				section_start = current_phase.anim_frame_start * tick_time
+				section_end = current_phase.anim_frame_end * tick_time
+
+			var section_length = section_end - section_start
+			# Dont slow down animation if using loop
+			if not is_equal_approx(section_length, current_phase.frames * tick_time) and not loop:
+				speed = section_length/float(current_phase.frames * 0.016)
+			if use_sections:
+				root.animplayer.play_section(animation_name, section_start, section_end, -1, speed)
+			
+			_current_animation = animation_name
+			_current_section_start = section_start
+			_current_section_end = section_end
 		else:
-			section_start = current_phase.anim_frame_start * tick_time
-			section_end = current_phase.anim_frame_end * tick_time
-		var section_length = section_end - section_start
-		# Dont slow down animation if using loop
-		if not is_equal_approx(section_length, current_phase.frames * tick_time) and not loop:
-			speed = section_length/float(current_phase.frames * 0.016)
-		root.animplayer.play_section(animation_name, section_start, section_end, -1, speed)
-		_current_animation = animation_name
-		_current_section_start = section_start
-		_current_section_end = section_end
+			root.animplayer.play(animation_name)
+			_current_animation = animation_name
+			_current_section_start = -1
+			_current_section_end = -1
+
+		
 	_phase_changed_internal(phase_index, previous_phase_index)
 	_phase_changed()
 

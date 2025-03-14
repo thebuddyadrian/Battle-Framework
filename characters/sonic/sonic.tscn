@@ -1,20 +1,23 @@
-[gd_scene load_steps=50 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=57 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
-[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
+[ext_resource type="Script" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
 [ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="2_gd83v"]
 [ext_resource type="Resource" uid="uid://dttk12fa38yx0" path="res://characters/sonic/states/jab_1.tres" id="3_dsaob"]
 [ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="4_lwdla"]
 [ext_resource type="Resource" uid="uid://spkpe3bbhbk6" path="res://characters/sonic/states/jab_3.tres" id="5_wpnlk"]
-[ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/sonic/states/heavy.gd" id="6_o7udh"]
+[ext_resource type="Script" path="res://characters/sonic/states/heavy.gd" id="6_o7udh"]
 [ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="7_6mqiq"]
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="8_wpnlk"]
 [ext_resource type="Resource" uid="uid://df00kkj6hx8pc" path="res://characters/sonic/states/dash_attack.tres" id="9_6mqiq"]
-[ext_resource type="Script" uid="uid://cxjauk8t2xkwj" path="res://characters/sonic/states/air_attack.gd" id="10_6mqiq"]
+[ext_resource type="Script" path="res://characters/sonic/states/air_attack.gd" id="10_6mqiq"]
 [ext_resource type="Resource" uid="uid://cdy3tsk3tj34i" path="res://characters/sonic/states/air_attack.tres" id="11_41aki"]
 [ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="12_w02fn"]
-[ext_resource type="Script" uid="uid://6guda7f8ly0c" path="res://characters/sonic/states/grnd_shot.gd" id="13_w02fn"]
+[ext_resource type="Script" path="res://characters/sonic/states/grnd_shot.gd" id="13_w02fn"]
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="14_6ri6b"]
+[ext_resource type="Resource" uid="uid://lscqxewn2oxm" path="res://characters/sonic/states/grnd_pow.tres" id="15_lq7el"]
+[ext_resource type="Script" path="res://characters/sonic/states/air_pow.gd" id="16_lci63"]
+[ext_resource type="Resource" uid="uid://slwg0iqcb6ry" path="res://characters/sonic/states/air_pow.tres" id="17_vuumm"]
 
 [sub_resource type="Animation" id="Animation_lq7el"]
 resource_name = "AimAttack"
@@ -427,7 +430,7 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_uxs3k"]
 resource_name = "HitWall"
-length = 0.350005
+length = 0.950005
 step = 0.05
 markers = [{
 "color": Color(1, 1, 1, 1),
@@ -435,8 +438,8 @@ markers = [{
 "time": 0.0
 }, {
 "color": Color(1, 1, 1, 1),
-"name": &"Wall",
-"time": 0.1
+"name": &"Fall",
+"time": 0.2
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -445,7 +448,7 @@ tracks/0/path = NodePath(".:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3),
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.25, 0.3, 0.35, 0.4),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [181, 182, 183, 184, 185, 186, 187]
@@ -966,15 +969,175 @@ tracks/3/keys = {
 "values": ["startup", "active", "recovery"]
 }
 
+[sub_resource type="Animation" id="Animation_vuumm"]
+resource_name = "GrndPow"
+length = 0.400005
+step = 0.05
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.25
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.3
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.3, 0.35),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [158, 159, 160, 161, 162, 163, 164, 165]
+}
+
+[sub_resource type="Animation" id="Animation_x472b"]
+resource_name = "AirPowFwd"
+length = 0.266673
+loop_mode = 1
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [210, 211, 212, 213]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.017, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.124574]
+}
+
+[sub_resource type="Animation" id="Animation_c7fke"]
+resource_name = "AirPowDown"
+length = 0.266673
+loop_mode = 1
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [214, 215, 216, 217]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.124574]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.017, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_bg1qt"]
+resource_name = "AirPowUp"
+length = 0.266673
+loop_mode = 1
+step = 0.0666667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [218, 219, 220, 221]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.017, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.124574]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_axwkh"]
 _data = {
 &"AimAttack": SubResource("Animation_lq7el"),
 &"AirAttack": SubResource("Animation_6mqiq"),
 &"AirDash": SubResource("Animation_do57j"),
+&"AirPowDown": SubResource("Animation_c7fke"),
+&"AirPowFwd": SubResource("Animation_x472b"),
+&"AirPowUp": SubResource("Animation_bg1qt"),
 &"Dash": SubResource("Animation_pfkrf"),
 &"DashAttack": SubResource("Animation_dsaob"),
 &"Falling": SubResource("Animation_f3uyc"),
 &"GetUp": SubResource("Animation_uaf3e"),
+&"GrndPow": SubResource("Animation_vuumm"),
 &"GrndShotDown": SubResource("Animation_w02fn"),
 &"GrndShotFwd": SubResource("Animation_41aki"),
 &"GrndShotUp": SubResource("Animation_fqyed"),
@@ -1002,7 +1165,7 @@ _data = {
 &"kick2": SubResource("Animation_wtpgs")
 }
 
-[sub_resource type="Resource" id="Resource_6ri6b"]
+[sub_resource type="Resource" id="Resource_vuumm"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1054,5 +1217,12 @@ attack_info = ExtResource("12_w02fn")
 script = ExtResource("13_w02fn")
 attack_info = ExtResource("14_6ri6b")
 
+[node name="GrndPow" parent="StateMachine" index="25"]
+attack_info = ExtResource("15_lq7el")
+
+[node name="AirPow" parent="StateMachine" index="26"]
+script = ExtResource("16_lci63")
+attack_info = ExtResource("17_vuumm")
+
 [node name="Hitbox" parent="." index="4"]
-hit_data = SubResource("Resource_6ri6b")
+hit_data = SubResource("Resource_vuumm")

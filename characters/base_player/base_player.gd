@@ -2,19 +2,19 @@ extends CharacterBody3D
 class_name BattleCharacter
 
 @export var SPEED = 8.0
-@export var JUMP_VELOCITY = 11.0
+@export var JUMP_VELOCITY = 13.0
 @export var DASH_SPEED = 12.5
 @export var AIR_DASH_SPEED = 15
 @export var STOCKS = 3
 @export var HP = 100
 @export var MP = 300
 @export var player_id = 1
-@export var GRAVITY = 0.5
+@export var GRAVITY = 0.65
 @export var FALL_SPEED = 12
 @export var JUMPFROMGROUND = false
 @export var DECELERATION = 0.75
 @export var ACCELERATION = 0.8
-@export var AIR_DECELERATION = 0.25
+@export var AIR_DECELERATION = 0.15
 @export var AIR_ACCELERATION = 0.5
 @export var MAX_AIR_DASHES = 1
 
@@ -211,6 +211,8 @@ func _check_for_attacks() -> bool:
 			return true
 		if _check_for_air_attack():
 			return true
+		if _check_for_air_special():
+			return true
 	return false
 
 
@@ -303,7 +305,14 @@ func _check_for_aim_attack() -> bool:
 
 func _check_for_ground_special():
 	if input("skill", "just_pressed") and !state_machine.active_state is BaseAttack:
-		state_machine.change_state("GrndShot")
+		state_machine.change_state("GrndPow")
+		return true
+	return false
+
+
+func _check_for_air_special():
+	if input("skill", "just_pressed") and !state_machine.active_state is BaseAttack:
+		state_machine.change_state("AirPow")
 		return true
 	return false
 

@@ -7,7 +7,7 @@ func _enter(data = {}):
 	# Dash in the facing direction (relative to the camera)
 	dash_direction = root.facing_direction
 	root.animplayer.play("Dash")
-	root.velocity.y = 6
+	root.velocity.y = 9
 	root.limit_speed = false
 	root.set_action_enabled("attack", true)
 
