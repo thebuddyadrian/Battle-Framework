@@ -7,3 +7,6 @@ An open source remake of Sonic Battle in the Godot engine that aims to turn it i
 
 ### Current Status
 This project is currently early in development. As of right now we have 1 playable character (Sonic) with the base Sonic Battle movement system and attack system implemented.
+
+### Godot Version
+This project is currently using Godot 4.4 Stable.
