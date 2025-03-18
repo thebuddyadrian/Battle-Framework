@@ -1,10 +1,10 @@
 [gd_scene load_steps=43 format=4 uid="uid://bm8hg8jvdgnfp"]
 
-[ext_resource type="Script" path="res://levels/level.gd" id="1_gesyx"]
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_gesyx"]
 [ext_resource type="AudioStream" uid="uid://bfvbtkmvhxwqr" path="res://assets/Audio/BGM/04. Emerald Beach.mp3" id="2_cg1b4"]
 [ext_resource type="PackedScene" uid="uid://biq6bd0648m35" path="res://UI/HUD.tscn" id="4_jh2i3"]
 [ext_resource type="Texture2D" uid="uid://47og8hxik4d0" path="res://assets/ui/twoDriver.png" id="5_f0yuc"]
-[ext_resource type="Script" path="res://levels/sky_pivot.gd" id="6_r6hsw"]
+[ext_resource type="Script" uid="uid://ltyn74o4ixti" path="res://levels/sky_pivot.gd" id="6_r6hsw"]
 [ext_resource type="Texture2D" uid="uid://cqgif5esl31ui" path="res://levels/emeraldbeach/EmCo_EmCoG.png" id="7_vtn5m"]
 [ext_resource type="Texture2D" uid="uid://jqxi86736p0n" path="res://levels/emeraldbeach/exwall1.png" id="8_u4ki1"]
 [ext_resource type="Texture2D" uid="uid://dedcjxx0q3upw" path="res://levels/emeraldbeach/EmCo_EmCoW.png" id="9_dhc5w"]
