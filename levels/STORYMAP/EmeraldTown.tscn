@@ -1,0 +1,116 @@
+[gd_scene load_steps=10 format=3 uid="uid://cl4r8q4mvcdue"]
+
+[ext_resource type="Texture2D" uid="uid://cht1iqcgp5slg" path="res://assets/MAP/EmeraldTownBottom.png" id="1_6j2f4"]
+[ext_resource type="Script" uid="uid://btlqcgt2ok15w" path="res://levels/STORYMAP/emerald_town.gd" id="1_07xxj"]
+[ext_resource type="Script" uid="uid://ca0jjkxflbkh" path="res://levels/STORYMAP/CURSOR.gd" id="2_cne7p"]
+[ext_resource type="Texture2D" uid="uid://btpj7t7w7qb2s" path="res://assets/MAP/EmeraldTownTop.png" id="2_web3d"]
+[ext_resource type="Script" uid="uid://mh4qtb5begfs" path="res://levels/STORYMAP/Cursorfollow.gd" id="4_web3d"]
+[ext_resource type="Script" uid="uid://d4cwtr5f8d8pn" path="res://addons/dialogic/Editor/dialogic_editor.gd" id="5_uri4i"]
+[ext_resource type="Theme" uid="uid://ceu8xgu1dqteq" path="res://levels/STORYMAP/Story.tres" id="7_7rh3b"]
+
+[sub_resource type="ConvexPolygonShape2D" id="ConvexPolygonShape2D_web3d"]
+points = PackedVector2Array(54.83, 0, -107.565, 0, -10.2, -97, 150.03, -97)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uri4i"]
+size = Vector2(9, 9)
+
+[node name="EmeraldTown" type="Node2D"]
+
+[node name="EmeraldTownBottom" type="Sprite2D" parent="."]
+z_index = -1
+position = Vector2(160, 120)
+texture = ExtResource("1_6j2f4")
+metadata/_edit_lock_ = true
+
+[node name="EmeraldTownTop" type="Sprite2D" parent="EmeraldTownBottom"]
+z_index = 15
+texture = ExtResource("2_web3d")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="EmeraldTownBottom"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EmeraldTownBottom/StaticBody2D"]
+position = Vector2(74, 65)
+shape = SubResource("ConvexPolygonShape2D_web3d")
+
+[node name="StaticBody2D2" type="StaticBody2D" parent="EmeraldTownBottom"]
+position = Vector2(-157, -96)
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="EmeraldTownBottom/StaticBody2D2"]
+polygon = PackedVector2Array(-19, 47, 174, 47, 237, -16, 45, -16)
+
+[node name="CollisionPolygon2D2" type="CollisionPolygon2D" parent="EmeraldTownBottom/StaticBody2D2"]
+polygon = PackedVector2Array(-99, -16, 13, -16, -67, 64, 156, 64, 62, 160, -100, 160)
+
+[node name="CollisionPolygon2D3" type="CollisionPolygon2D" parent="EmeraldTownBottom/StaticBody2D2"]
+polygon = PackedVector2Array(-100, -47, 78, -47, 190, -160, -99, -160)
+
+[node name="CollisionPolygon2D4" type="CollisionPolygon2D" parent="EmeraldTownBottom/StaticBody2D2"]
+polygon = PackedVector2Array(252, -160, 140, -48, 413, -48, 414, -160)
+
+[node name="CollisionPolygon2D5" type="CollisionPolygon2D" parent="EmeraldTownBottom/StaticBody2D2"]
+polygon = PackedVector2Array(413, 32, 398, 49, 237, 48, 306, -22, 415, -22)
+
+[node name="CollisionPolygon2D6" type="CollisionPolygon2D" parent="EmeraldTownBottom/StaticBody2D2"]
+polygon = PackedVector2Array(413, 281, 404, 277, 379, 291, 350, 295, 346, 306, 302, 305, 302, 305, 285, 288, 240, 288, 220, 274, 205, 274, 184, 258, 127, 260, 110, 273, 81, 275, 65, 290, 52, 288, 40, 282, 24, 271, 6, 272, -15, 279, -22, 289, -41, 291, -48, 292, -59, 295, -80, 301, -96, 302, -98, 302, -109, 309, -106, 362, 419, 360)
+
+[node name="CollisionPolygon2D7" type="CollisionPolygon2D" parent="EmeraldTownBottom/StaticBody2D2"]
+polygon = PackedVector2Array(109, 194, 294, 194, 281, 213, 87, 213)
+
+[node name="CollisionPolygon2D8" type="CollisionPolygon2D" parent="EmeraldTownBottom/StaticBody2D2"]
+position = Vector2(-256, 0)
+polygon = PackedVector2Array(109, 194, 294, 194, 281, 213, 87, 213)
+
+[node name="CURSOR" type="CharacterBody2D" parent="."]
+position = Vector2(122, 37)
+script = ExtResource("2_cne7p")
+
+[node name="ColorRect" type="ColorRect" parent="CURSOR"]
+offset_left = -11.0
+offset_top = -11.0
+offset_right = 12.0
+offset_bottom = 11.0
+color = Color(0, 1, 1, 1)
+
+[node name="Camera2D" type="Camera2D" parent="CURSOR"]
+limit_left = -95
+limit_top = -135
+limit_right = 416
+limit_bottom = 375
+limit_smoothed = true
+position_smoothing_enabled = true
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+editor_draw_limits = true
+editor_draw_drag_margin = true
+
+[node name="CharacterBody2D2" type="CharacterBody2D" parent="." node_paths=PackedStringArray("cursor")]
+position = Vector2(177, 100)
+script = ExtResource("4_web3d")
+cursor = NodePath("../CURSOR")
+
+[node name="ColorRect" type="ColorRect" parent="CharacterBody2D2"]
+offset_left = -12.0
+offset_top = -11.0
+offset_right = 11.0
+offset_bottom = 11.0
+color = Color(0.596078, 0.552941, 1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D2"]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_uri4i")
+
+[node name="DialogicEditor" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_uri4i")
+metadata/_custom_type_script = ExtResource("5_uri4i")
+
+[node name="Label" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0
+theme = ExtResource("7_7rh3b")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource("1_07xxj")
