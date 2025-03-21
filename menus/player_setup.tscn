@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://buw0m6frm5qum"]
 
-[ext_resource type="Script" path="res://menus/player_setup.gd" id="1_xwnrc"]
+[ext_resource type="Script" uid="uid://qrppfjmk8qd7" path="res://menus/player_setup.gd" id="1_xwnrc"]
 
 [node name="PlayerSetup" type="Control"]
 layout_mode = 3
@@ -42,7 +42,15 @@ layout_mode = 2
 max_value = 2.0
 value = 2.0
 
+[node name="StageLabel" type="Label" parent="GridContainer"]
+layout_mode = 2
+text = "Stage"
+
+[node name="StageOptionButton" type="OptionButton" parent="GridContainer"]
+layout_mode = 2
+
 [node name="OKLabel" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -57,5 +65,14 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "OK (Press Enter)"
 
+[node name="OKButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 212.0
+offset_top = 209.0
+offset_right = 319.0
+offset_bottom = 240.0
+text = "OK"
+
 [connection signal="value_changed" from="GridContainer/HumanSpinBox" to="." method="_on_human_spin_box_value_changed"]
 [connection signal="value_changed" from="GridContainer/CPUSpinBox" to="." method="_on_cpu_spin_box_value_changed"]
+[connection signal="pressed" from="OKButton" to="." method="_on_ok_button_pressed"]
