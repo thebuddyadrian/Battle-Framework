@@ -3,6 +3,8 @@ class_name BaseSpawnable
 
 var despawn_timer: Timer = Timer.new()
 var hurt_start_timer: Timer = Timer.new()
+var exist_time: float = 0.0
+var velocity: Vector3 = Vector3.ZERO
 
 var summoner: Node = null
 
@@ -22,7 +24,9 @@ func _init():
 func _ready():
 	assert (spawnable_info, "Spawnable lacks info! Spawnable: " + self.name)
 	if (self.spawnable_info.lifetime > -1): 
-		self.despawn_timer.start(self.spawnable_info.lifetime)
+		add_child(despawn_timer)
+		self.despawn_timer.wait_time = self.spawnable_info.lifetime
+		self.despawn_timer.start()
 	
 	if (self.spawnable_info.has_animation):
 		var spriteTex = load(self.spawnable_info.sprite_path)
@@ -30,8 +34,8 @@ func _ready():
 	else:
 		self.sprite.sprite_frames = load(self.spawnable_info.sprite_path)
 	
-	self.hitbox.active = self.spawnable_info.hasHitbox
-	self.hurtbox.active = self.spawnable_info.hasHurtbox && (self.spawnable_info.hurt_start_millis == 0)
+	self.hitbox.active = self.spawnable_info.has_hitbox
+	self.hurtbox.active = self.spawnable_info.has_hurtbox && (self.spawnable_info.hurt_start_millis == 0)
 	if (self.spawnable_info.hurt_start_millis > 0):
 		self.hurt_start_timer.start(float(self.spawnable_info.hurt_start_millis) * 0.001)
 	
@@ -39,19 +43,22 @@ func _ready():
 	self.hitbox.connect("hit", self._on_hit)
 	self.hurtbox.connect("hurt", self._on_hurt)
 	
-	self.hitbox.connect("grab", self.on_grab)
-	self.hurtbox.connect("grabbed", self.on_grabbed)
+	self.hitbox.connect("grab", self._on_grab)
+	self.hurtbox.connect("grabbed", self._on_grabbed)
 	
-	self.hitbox.connect("clash", self.on_clash)
-	self.hitbox.connect("blocked", self.on_blocked)
+	self.hitbox.connect("clash", self._on_clash)
+	self.hitbox.connect("blocked", self._on_blocked)
 	
-	self.hurtbox.connect("thrown", self.on_thrown)
+	self.hurtbox.connect("thrown", self._on_thrown)
 	
 	self._on_ready()
 
 # Do Not Override:tm:
 func _physics_process(delta):
+	exist_time += delta
+	global_position += velocity * delta
 	self._do_behavior(delta)
+	
 
 # Overridable functions.
 
