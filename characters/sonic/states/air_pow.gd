@@ -2,7 +2,7 @@ extends BaseAttack
 
 func _enter(data := {}):
 	super._enter(data)
-	root.velocity.y = -16
+	root.velocity.y = -24
 	root.velocity.x = clamp(root.velocity.x, -5, 5)
 	root.velocity.z = clamp(root.velocity.z, -5, 5)
 	root.deceleration_enabled = false
