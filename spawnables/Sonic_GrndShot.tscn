@@ -319,7 +319,7 @@ animations = [{
 "speed": 18.0
 }]
 
-[sub_resource type="Resource" id="Resource_hkis4"]
+[sub_resource type="Resource" id="Resource_j3baa"]
 script = ExtResource("4_8jstf")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -345,7 +345,7 @@ autoplay = "Side"
 
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("3_561xu")
-hit_data = SubResource("Resource_hkis4")
+hit_data = SubResource("Resource_j3baa")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = ExtResource("3_561xu")
 

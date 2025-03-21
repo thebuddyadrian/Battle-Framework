@@ -1,10 +1,10 @@
 [gd_scene load_steps=9 format=3 uid="uid://dtcnkbj4yen56"]
 
-[ext_resource type="Script" path="res://spawnables/base_spawnable.gd" id="1_0xo2e"]
-[ext_resource type="Script" path="res://components/hitbox/hitbox.gd" id="2_gicut"]
+[ext_resource type="Script" uid="uid://drxyik5332cmo" path="res://spawnables/base_spawnable.gd" id="1_0xo2e"]
+[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="2_gicut"]
 [ext_resource type="Resource" uid="uid://bn1sbxgcbm82q" path="res://spawnables/base_spawnable_info.tres" id="2_kmo64"]
-[ext_resource type="Script" path="res://components/hitbox/hit_data.gd" id="3_kmo64"]
-[ext_resource type="Script" path="res://components/hurtbox/hurtbox.gd" id="4_xl7by"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="3_kmo64"]
+[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="4_xl7by"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_mdu81"]
 

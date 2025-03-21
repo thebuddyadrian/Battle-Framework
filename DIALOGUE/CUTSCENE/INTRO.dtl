@@ -1,0 +1,46 @@
+[style name="MainStory"]
+FIGHT!!! WHY DON'T YOU FIGHT?!
+... ... ... ... ..... .... ....
+Damn it.... You worthless piece of junk!
+Give back that Chaos Emerald you swallowed!
+Bah! Forget it! I've created robots based on your data that can do your job tenfold! Now, begone!
+... ... ...
+[wait time="3.0"]
+This is Emerald Town...
+The place where Sonic and his friends live.
+It seems Eggman is up to his tricks again.
+The story begins on Emerald Beach, where Sonic discovers a mysterious robot...
+join Sonic (Face1) left [animation="Slide In Left" length="1.0"]
+Sonic (Face1): Man, I'm bored...
+Sonic (Face2): Hmm? What's this, a robot?
+... ... ...
+Sonic: Yo, you good?!
+... ... ...
+Sonic (Face3): Must be broken.
+Sonic: It's all covered in mud. Looks like it's been sitting there for a while... Hey! Are you alright?!
+... ...?
+Sonic (Face1): Yes!! It moved!
+Sonic (Face2): Can you walk by yourself?
+... ... ...
+Sonic (Face3): Can't you speak? Hello!...
+Sonic (Face2): I guess I'll get this thing over to Tails! I'm sure he'll know what to do!
+Sh...ow me y...our pow...er... Then... sh...all obe... manif... all... th...ings... poss...ess all thin...gs...
+Sonic (Face3): Huh?! What did you say?
+Sonic (Face4): Show my power? Like this?
+Sonic: Hahaha... Yeah, right!
+[wait time="4.0"]
+... ... ... !!!\
+... ... ... !!!
+Sonic (Face3): W-what the-?!
+Sonic: What was that?!
+I pledge alle...giance to you... never to lea...ve... never to disob... orders...
+Sonic: Ah man! I can't make out a thing you're saying! You're completely outta whack!
+Sonic: Better get it to Tails before it explodes or something.
+Sonic (Face2): Tails' house is just north of town! Follow me.
+Sonic (Face4): Heh... If you can, that is!
+leave Sonic [animation="Slide Out Left" length="1.0" wait="true"]
+[wait time="4.0"]
+I was a little late... He's already established a contract... and with that kid of all people.
+But know that I am the brilliant phantom thief, Rouge!
+I never let my prey escape!
+[end_timeline]
