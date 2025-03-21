@@ -1226,3 +1226,12 @@ attack_info = ExtResource("17_vuumm")
 
 [node name="Hitbox" parent="." index="4"]
 hit_data = SubResource("Resource_vuumm")
+
+[node name="TestLabel" type="Label3D" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272035, 0)
+billboard = 1
+no_depth_test = true
+render_priority = 4
+outline_render_priority = 3
+text = "HP: 200"
+font_size = 16

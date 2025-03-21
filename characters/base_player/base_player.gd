@@ -6,7 +6,7 @@ class_name BattleCharacter
 @export var DASH_SPEED = 12.5
 @export var AIR_DASH_SPEED = 15
 @export var STOCKS = 3
-@export var HP = 100
+@export var HP = 300
 @export var MP = 300
 @export var player_id = 1
 @export var GRAVITY = 0.65
@@ -25,6 +25,7 @@ class_name BattleCharacter
 var HEAVY_DIRECTION_INPUT_WINDOW: int = 8
 var UPPER_DIRECTION_INPUT_WINDOW: int = 4
 
+var current_hp: int = HP
 ## The last used nonzero move_direction, used for dashing, air dashing, and four directional attacks
 ## This is set automatically during movement
 var facing_direction: Vector2 = Vector2.RIGHT
@@ -95,6 +96,9 @@ func _physics_process(_delta: float) -> void:
 	else:
 		$PlayerSprite.flip_h = facing_direction_2d < 0
 	
+	# Test Hud
+	$TestLabel.text = "HP: %s" % str(current_hp)
+
 	# Add the gravity.
 	if velocity.y >  -FALL_SPEED:
 		velocity.y -= GRAVITY * gravity_scale
@@ -305,7 +309,7 @@ func _check_for_aim_attack() -> bool:
 
 func _check_for_ground_special():
 	if input("skill", "just_pressed") and !state_machine.active_state is BaseAttack:
-		state_machine.change_state("GrndPow")
+		state_machine.change_state("GrndShot")
 		return true
 	return false
 
@@ -407,7 +411,19 @@ func get_movement_vector() -> Vector2:
 	return get_input_vector().rotated(camera.rotation.y).normalized()
 
 
+
+func spawn_scene(spawnable_name: String, scene_path: String, pos: Vector3 = global_position, parent: Node = get_parent(), data: Dictionary = {}) -> Node:
+	# Scenes are loaded every time since preloading them causes issues when two of the same projectile are spawned by different players
+	# Maybe we can store it in a cache so it doesn't need to be loaded from disk every time?
+	var scene: PackedScene = load(scene_path).duplicate()
+	var node = scene.instantiate()
+	node.global_position = pos
+	parent.add_child(node)
+	return node
+
+
 func _on_hurtbox_hurt(hit_data: HitData, hitbox: Hitbox) -> void:
+	current_hp = max(current_hp - hit_data.damage, 0) # Stop HP from going below zero
 	state_machine.change_state("Hurt", {hit_data = hit_data})
 
 
