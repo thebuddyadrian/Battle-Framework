@@ -5,6 +5,7 @@ var despawn_timer: Timer = Timer.new()
 var hurt_start_timer: Timer = Timer.new()
 var exist_time: float = 0.0
 var velocity: Vector3 = Vector3.ZERO
+var direction: Vector2 = Vector2.RIGHT
 
 var summoner: Node = null
 
@@ -20,12 +21,21 @@ func _init():
 	self.hurt_start_timer.connect("timeout", self._on_hurt_start_timeout)
 	self._on_init()
 
+# Do not Override:tm:
+func _spawn(data := {}):
+	if data.has("direction"):
+		direction = data["direction"]
+	if data.has("velocity"):
+		velocity = data["velocity"]
+	hitbox.hit_data.knockback_direction = direction
+	self._on_spawn(data)
+
 # Do Not Override:tm:
 func _ready():
 	assert (spawnable_info, "Spawnable lacks info! Spawnable: " + self.name)
-	if (self.spawnable_info.lifetime > -1): 
+	if (self.spawnable_info.lifetime_millis > -1): 
 		add_child(despawn_timer)
-		self.despawn_timer.wait_time = self.spawnable_info.lifetime
+		self.despawn_timer.wait_time = self.spawnable_info.lifetime_millis/1000.0
 		self.despawn_timer.start()
 	
 	if (self.spawnable_info.has_animation):
@@ -64,6 +74,10 @@ func _physics_process(delta):
 
 ## Runs during init. Do not access @onready vars from here.
 func _on_init():
+	pass
+
+## Runs after being spawned by a player. Used to pass in data.
+func _on_spawn(data: = {}):
 	pass
 
 ## Runs after ready. Access @onready vars from here. Don't use preload() here.

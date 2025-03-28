@@ -418,7 +418,13 @@ func spawn_scene(spawnable_name: String, scene_path: String, pos: Vector3 = glob
 	var scene: PackedScene = load(scene_path).duplicate()
 	var node = scene.instantiate()
 	node.global_position = pos
+	if parent == null: # Allows user to skip defining a parent and use a default
+		parent = get_parent()
+	if node is BaseSpawnable:
+		node.summoner = self
 	parent.add_child(node)
+	if node is BaseSpawnable:
+		node._spawn(data)
 	return node
 
 

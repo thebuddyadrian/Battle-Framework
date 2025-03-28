@@ -1,9 +1,7 @@
 extends BaseSpawnable
 
-var direction: Vector2 = Vector2.RIGHT
-
-## Runs during the physics process. Has delta time as a var. Use this instead of overriding physics process.
-func _do_behavior(delta):
+func _on_spawn(data: = {}):
+	direction = data["direction"]
 	if direction == Vector2.UP:
 		$Sprite.animation = "Up"
 	if direction == Vector2.LEFT:

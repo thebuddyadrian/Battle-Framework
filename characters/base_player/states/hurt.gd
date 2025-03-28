@@ -11,6 +11,10 @@ func _enter(data = {}) -> void:
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.WEAK:
 		root.animplayer.play("Hurt")
 		hit_stun_deceleration = 0.6
+	else:
+		hit_stun_deceleration = 0.3
+	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.KNOCKDOWN:
+		root.animplayer.play("Knockdown")
 	root.velocity = hit_data.calculate_knockback_velocity()
 	root.gravity_scale = 0.7
 	if hit_data.knockback_direction.x:
@@ -18,21 +22,14 @@ func _enter(data = {}) -> void:
 
 
 func _step():
-	
-	if parent.state_time == hit_data.hit_stun:
+	if parent.state_time == hit_data.hit_stun and hit_data.knockback_type != HitData.KNOCKBACK_TYPE.KNOCKDOWN:
 		change_state("Idle")
 		return
 	root.velocity.x = move_toward(root.velocity.x, 0, hit_stun_deceleration)
 	root.velocity.z = move_toward(root.velocity.z, 0, hit_stun_deceleration)
-	
+
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.LAUNCH:
 		root.animplayer.play("Launch")
-		hit_stun_deceleration = 0.3
-	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.UP:
-		root.animplayer.play_section_with_markers("HitUp", "loop", "loopend")
-		hit_stun_deceleration = 0.3
-	
-	if hit_data.knockback_type == hit_data.KNOCKBACK_TYPE.LAUNCH:
 		if root.is_on_floor():
 			change_state("Land")
 			return
@@ -42,9 +39,19 @@ func _step():
 				var collider = collision.get_collider(j)
 				if collider is StaticBody3D:
 					change_state("WallBounce", {normal = collision.get_normal(j)})
-	if hit_data.knockback_type == hit_data.KNOCKBACK_TYPE.DOWN:
+	
+	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.UP:
+		root.animplayer.play_section_with_markers("HitUp", "loop", "loopend")
+		hit_stun_deceleration = 0.3
+		
+	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.DOWN:
 		if root.is_on_floor():
 			change_state("FloorBounce")
+			return
+	
+	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.KNOCKDOWN:
+		if root.is_on_floor():
+			change_state("Down")
 			return
 
 

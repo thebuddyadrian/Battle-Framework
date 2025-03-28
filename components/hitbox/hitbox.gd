@@ -18,6 +18,7 @@ var character_last_hit := "" # Node name of character last hit
 var character_grabbed := "" # Node name of character currently grabbed
 var initial_hit_data: Resource
 var initial_rects = []
+var player_id: int = 0
 
 @onready var root = get_node(root_node_path)
 # @onready var hit_spark_pos_node: SGFixedNode2D = get_node_or_null(hit_spark_pos_node_path)
@@ -38,6 +39,13 @@ func _ready():
 	#initial_rects = rects.duplicate(true)
 	add_to_group("network_sync")
 	add_to_group("hitbox_group")
+
+	if root is BattleCharacter:
+		player_id = root.player_id
+	if root is BaseSpawnable:
+		if root.summoner is BattleCharacter:
+			player_id = root.summoner.player_id
+	
 
 
 func reset():
@@ -72,11 +80,7 @@ func check_if_hit(hurtbox) -> bool:
 		if hurtbox.active:
 			if (hurtbox.can_be_hit and hurtbox.mode == Hurtbox.MODE.NORMAL):# or (hit_data.type == HitData.MOVE_TYPES.GRAB and hurtbox.can_be_grabbed):
 				if !(get_path_to(hurtbox.root) in nodes_already_hit):
-					#if !(hurtbox.root.is_in_group("characters")): 
-						#return true
-					#if hurtbox.root.team_no != root.team_no: 
-						#return true
-					if hurtbox.root != root:
+					if hurtbox.root != root and hurtbox.player_id != player_id:
 						return true
 	return false
 

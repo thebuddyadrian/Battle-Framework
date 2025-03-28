@@ -7,6 +7,7 @@ enum MODE {NORMAL, SHIELD}
 var grabbed_by = ""
 var initial_rects = []
 var initial_is_reflector: bool
+var player_id: int = 0 # Hitboxes cannot hit hurtboxes with the same player_no
 
 signal hurt(hit_data: HitData, hitbox: Hitbox)
 signal grabbed
@@ -32,6 +33,12 @@ func _ready():
 	add_to_group("hurtbox_group")
 	# initial_rects = rects.duplicate(true)
 	initial_is_reflector = is_reflector
+
+	if root is BattleCharacter:
+		player_id = root.player_id
+	if root is BaseSpawnable:
+		if root.summoner is BattleCharacter:
+			player_id = root.summoner.player_id
 	
 
 func _network_process(_input):

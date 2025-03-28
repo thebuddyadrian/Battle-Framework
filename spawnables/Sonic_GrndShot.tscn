@@ -321,24 +321,24 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_j3baa"]
 script = ExtResource("4_8jstf")
-damage = 0.0
+damage = 10.0
 knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
+knockback_power = 13.0
+knockback_angle = 45.0
+knockback_type = 4
 unblockable = false
 hit_freeze = 5
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_561xu"]
-radius = 0.197333
+radius = 0.51228
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_j3baa"]
 radius = 0.254871
 
-[sub_resource type="Animation" id="Animation_561xu"]
-resource_name = "Start"
-length = 0.166675
+[sub_resource type="Animation" id="Animation_ntqn7"]
+resource_name = "End"
+length = 0.500008
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -347,25 +347,10 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1]
-}
-
-[sub_resource type="Animation" id="Animation_8jstf"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
+"values": [8, 9, 10, 11, 12, 13]
 }
 
 [sub_resource type="Animation" id="Animation_xm2x0"]
@@ -386,9 +371,24 @@ tracks/0/keys = {
 "values": [2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_ntqn7"]
-resource_name = "End"
-length = 0.500008
+[sub_resource type="Animation" id="Animation_8jstf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_561xu"]
+resource_name = "Start"
+length = 0.166675
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -397,10 +397,10 @@ tracks/0/path = NodePath("Sprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [8, 9, 10, 11, 12, 13]
+"values": [0, 1]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0scby"]
@@ -416,10 +416,12 @@ script = ExtResource("1_0efh6")
 spawnable_info = ExtResource("2_j3baa")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.065, 0.318, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.00755633, -0.0873581, 0)
+offset = Vector2(0, 20)
 billboard = 1
+render_priority = 10
 sprite_frames = SubResource("SpriteFrames_mdu81")
-animation = &"Down"
+animation = &"Side"
 autoplay = "Side"
 
 [node name="Hitbox" type="Area3D" parent="."]
@@ -430,7 +432,7 @@ root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
 [node name="Shape" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.017881, -0.0577693, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
 shape = SubResource("SphereShape3D_561xu")
 debug_color = Color(0, 0.6, 0.701961, 1)
 
