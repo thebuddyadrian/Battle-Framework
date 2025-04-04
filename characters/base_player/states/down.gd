@@ -3,7 +3,7 @@ extends BaseState
 
 func _enter(data = {}):
 	root.animplayer.play("HitFloor")
-	root.velocity.y = 5
+	root.velocity.y = 3
 
 
 func _step():
@@ -14,7 +14,10 @@ func _step():
 	else:
 		root.hurtbox.active = true
 	if parent.state_time >= 35:
-		change_state("GetUp")
+		if root.current_hp <= 0:
+			change_state("Respawn")
+		else:
+			change_state("GetUp")
 
 
 func _exit(next_state: BaseState):

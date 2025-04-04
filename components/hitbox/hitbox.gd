@@ -186,9 +186,7 @@ func confirm_blocked(hurtbox):
 	nodes_already_hit.append(get_path_to(hurtbox.root))
 	hurtbox.get_hit(hit_data.duplicate(true), self)
 	character_last_hit = hurtbox.root.name
-	#emit_signal("blocked", hit_data, hurtbox)
-	if root.has_method("_hitbox_blocked"):
-		root._hitbox_blocked(hit_data, hurtbox)
+	emit_signal("blocked", hit_data, hurtbox)
 	#spawn_hit_spark_effect(hurtbox.get_global_fixed_position().x)
 
 

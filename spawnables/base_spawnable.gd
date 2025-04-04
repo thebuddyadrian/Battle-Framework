@@ -1,10 +1,9 @@
-extends Node3D
+extends CharacterBody3D
 class_name BaseSpawnable
 
 var despawn_timer: Timer = Timer.new()
 var hurt_start_timer: Timer = Timer.new()
 var exist_time: float = 0.0
-var velocity: Vector3 = Vector3.ZERO
 var direction: Vector2 = Vector2.RIGHT
 
 var summoner: Node = null
@@ -66,7 +65,7 @@ func _ready():
 # Do Not Override:tm:
 func _physics_process(delta):
 	exist_time += delta
-	global_position += velocity * delta
+	move_and_slide()
 	self._do_behavior(delta)
 	
 

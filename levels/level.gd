@@ -106,10 +106,10 @@ func _physics_process(delta: float) -> void:
 			hitbox.confirm_blocked(hurtbox)
 			clash_areas[hitbox] = []
 	
-	for hitbox in clash_areas:
-		for hurtbox in clash_areas[hitbox]:
-			hitbox.clash(hurtbox)
-			hurt_areas[hitbox] = []
+	# for hitbox in clash_areas:
+	# 	for hurtbox in clash_areas[hitbox]:
+	# 		hitbox.clash(hurtbox)
+	# 		hurt_areas[hitbox] = []
 
 	# Check for hit attacks
 	for hitbox_group in hitbox_groups:

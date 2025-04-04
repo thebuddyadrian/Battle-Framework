@@ -19,7 +19,8 @@ unblockable = false
 hit_freeze = 5
 hit_stun = 30
 
-[node name="BaseSpawnable" type="Node3D"]
+[node name="BaseSpawnable" type="CharacterBody3D"]
+collision_layer = 0
 script = ExtResource("1_0xo2e")
 spawnable_info = ExtResource("2_kmo64")
 
@@ -42,3 +43,5 @@ root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
 [node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]

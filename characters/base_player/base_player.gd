@@ -167,6 +167,8 @@ func _process_actions():
 		_check_for_air_dash()
 	if is_action_enabled("attack"):
 		_check_for_attacks()
+	if is_action_enabled("guard"):
+		_check_for_guard()
 
 
 ## The following functions check for an input, and then goes to a certain state
@@ -235,6 +237,13 @@ func _check_for_jab_combo() -> bool:
 		if state_machine.active_state is not BaseAttack:
 			state_machine.change_state("Jab1")
 			return true
+	return false
+
+
+func _check_for_guard() -> bool:
+	if input("guard", "just_pressed"):
+		state_machine.change_state("Guard")
+		return true
 	return false
 
 
@@ -428,13 +437,20 @@ func spawn_scene(spawnable_name: String, scene_path: String, pos: Vector3 = glob
 	return node
 
 
+## When the player gets hit
 func _on_hurtbox_hurt(hit_data: HitData, hitbox: Hitbox) -> void:
 	current_hp = max(current_hp - hit_data.damage, 0) # Stop HP from going below zero
 	state_machine.change_state("Hurt", {hit_data = hit_data})
 
 
+## When the player succesfully lands a hit
 func _on_hitbox_hit(hit_data: HitData, hurtbox: Hurtbox) -> void:
 	if state_machine.active_state.has_method("_on_hitbox_hit"):
 		state_machine.active_state._on_hitbox_hit(hit_data, hurtbox)
 	if hurtbox.root is BattleCharacter:
 		last_hit_player = hurtbox.root
+
+
+## When the player hits a guarding opponent
+func _on_hitbox_blocked(hit_data: HitData, hurtbox: Hurtbox) -> void:
+	state_machine.change_state("Blocked", {hit_data = hit_data})

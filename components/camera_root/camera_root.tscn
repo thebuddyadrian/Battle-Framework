@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dgswtfbyqn45x"]
 
-[ext_resource type="Script" path="res://levels/pivot.gd" id="1_he7xx"]
+[ext_resource type="Script" uid="uid://cuvca6ikekxsy" path="res://levels/pivot.gd" id="1_he7xx"]
 [ext_resource type="Environment" uid="uid://gje4rk62y4yw" path="res://MAINLIGHTING.tres" id="2_u38fi"]
-[ext_resource type="Script" path="res://components/camera_root/camera.gd" id="3_l44vk"]
+[ext_resource type="Script" uid="uid://bmsefbkmwyqoo" path="res://components/camera_root/camera.gd" id="3_l44vk"]
 
 [sub_resource type="Animation" id="Animation_gjl0y"]
 resource_name = "Flip1"
@@ -80,7 +80,7 @@ projection = 1
 current = true
 size = 9.801
 script = ExtResource("3_l44vk")
-metadata/_custom_type_script = ExtResource("3_l44vk")
+metadata/_custom_type_script = "uid://bmsefbkmwyqoo"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Pivot"]
 root_node = NodePath("../../..")

@@ -1,9 +1,10 @@
-[gd_scene load_steps=58 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=62 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
 [ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="2_gd83v"]
 [ext_resource type="Resource" uid="uid://dttk12fa38yx0" path="res://characters/sonic/states/jab_1.tres" id="3_dsaob"]
+[ext_resource type="Script" uid="uid://cj1l7t1k5eima" path="res://characters/sonic/states/blocked.gd" id="3_x472b"]
 [ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="4_lwdla"]
 [ext_resource type="Resource" uid="uid://spkpe3bbhbk6" path="res://characters/sonic/states/jab_3.tres" id="5_wpnlk"]
 [ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/sonic/states/heavy.gd" id="6_o7udh"]
@@ -270,6 +271,23 @@ tracks/2/keys = {
 "values": [0.124574]
 }
 
+[sub_resource type="Animation" id="Animation_jddj4"]
+resource_name = "Blocked"
+length = 0.800003
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [202, 203, 204]
+}
+
 [sub_resource type="Animation" id="Animation_pfkrf"]
 resource_name = "Dash"
 length = 0.5385
@@ -483,6 +501,66 @@ tracks/0/keys = {
 "values": [142, 143, 144, 145, 146, 147, 148, 149]
 }
 
+[sub_resource type="Animation" id="Animation_jn2r6"]
+resource_name = "Guard"
+length = 0.466669
+step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"guard",
+"time": 0.1
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.366667
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.366667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [42, 43, 44]
+}
+
+[sub_resource type="Animation" id="Animation_fueeq"]
+resource_name = "Heal"
+length = 0.533336
+step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"HealStart",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"HealLoop",
+"time": 0.131753
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"HealEnd",
+"time": 0.281524
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.133333, 0.2, 0.283333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [72, 73, 74, 75]
+}
+
 [sub_resource type="Animation" id="Animation_e12xf"]
 resource_name = "Heavy"
 length = 0.850005
@@ -694,6 +772,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [22]
+}
+
+[sub_resource type="Animation" id="Animation_ajyqx"]
+resource_name = "Knockdown"
+length = 0.25
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [183, 184, 185, 186, 187]
 }
 
 [sub_resource type="Animation" id="Animation_tg5qw"]
@@ -1125,23 +1220,6 @@ tracks/3/keys = {
 "values": ["startup", "active", "recovery"]
 }
 
-[sub_resource type="Animation" id="Animation_ajyqx"]
-resource_name = "Knockdown"
-length = 0.25
-step = 0.05
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
-"update": 1,
-"values": [183, 184, 185, 186, 187]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_axwkh"]
 _data = {
 &"AimAttack": SubResource("Animation_lq7el"),
@@ -1150,6 +1228,7 @@ _data = {
 &"AirPowDown": SubResource("Animation_c7fke"),
 &"AirPowFwd": SubResource("Animation_x472b"),
 &"AirPowUp": SubResource("Animation_bg1qt"),
+&"Blocked": SubResource("Animation_jddj4"),
 &"Dash": SubResource("Animation_pfkrf"),
 &"DashAttack": SubResource("Animation_dsaob"),
 &"Falling": SubResource("Animation_f3uyc"),
@@ -1158,6 +1237,8 @@ _data = {
 &"GrndShotDown": SubResource("Animation_w02fn"),
 &"GrndShotFwd": SubResource("Animation_41aki"),
 &"GrndShotUp": SubResource("Animation_fqyed"),
+&"Guard": SubResource("Animation_jn2r6"),
+&"Heal": SubResource("Animation_fueeq"),
 &"Heavy": SubResource("Animation_e12xf"),
 &"HitFloor": SubResource("Animation_fv82v"),
 &"HitUp": SubResource("Animation_lgwg8"),
@@ -1183,7 +1264,7 @@ _data = {
 &"kick2": SubResource("Animation_wtpgs")
 }
 
-[sub_resource type="Resource" id="Resource_jn2r6"]
+[sub_resource type="Resource" id="Resource_x472b"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1205,51 +1286,54 @@ libraries = {
 &"": SubResource("AnimationLibrary_axwkh")
 }
 
-[node name="Jab1" parent="StateMachine" index="15"]
+[node name="Blocked" parent="StateMachine" index="12"]
+script = ExtResource("3_x472b")
+
+[node name="Jab1" parent="StateMachine" index="18"]
 attack_info = ExtResource("3_dsaob")
 
-[node name="Jab2" parent="StateMachine" index="16"]
+[node name="Jab2" parent="StateMachine" index="19"]
 attack_info = ExtResource("4_lwdla")
 
-[node name="Jab3" parent="StateMachine" index="17"]
+[node name="Jab3" parent="StateMachine" index="20"]
 attack_info = ExtResource("5_wpnlk")
 
-[node name="Heavy" parent="StateMachine" index="18"]
+[node name="Heavy" parent="StateMachine" index="21"]
 script = ExtResource("6_o7udh")
 attack_info = ExtResource("7_6mqiq")
 
-[node name="Upper" parent="StateMachine" index="19"]
+[node name="Upper" parent="StateMachine" index="22"]
 attack_info = ExtResource("8_wpnlk")
 
-[node name="DashAttack" parent="StateMachine" index="20"]
+[node name="DashAttack" parent="StateMachine" index="23"]
 attack_info = ExtResource("9_6mqiq")
 
-[node name="AirAttack" parent="StateMachine" index="21"]
+[node name="AirAttack" parent="StateMachine" index="24"]
 script = ExtResource("10_6mqiq")
 attack_info = ExtResource("11_41aki")
 
-[node name="AimAttack" parent="StateMachine" index="22"]
+[node name="AimAttack" parent="StateMachine" index="25"]
 attack_info = ExtResource("12_w02fn")
 
-[node name="GrndShot" parent="StateMachine" index="23"]
+[node name="GrndShot" parent="StateMachine" index="26"]
 script = ExtResource("13_w02fn")
 attack_info = ExtResource("14_6ri6b")
 
-[node name="GrndPow" parent="StateMachine" index="25"]
+[node name="GrndPow" parent="StateMachine" index="28"]
 attack_info = ExtResource("15_lq7el")
 
-[node name="AirPow" parent="StateMachine" index="26"]
+[node name="AirPow" parent="StateMachine" index="29"]
 script = ExtResource("16_lci63")
 attack_info = ExtResource("17_vuumm")
 
 [node name="Hitbox" parent="." index="4"]
-hit_data = SubResource("Resource_jn2r6")
+hit_data = SubResource("Resource_x472b")
 
 [node name="TestLabel" type="Label3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272035, 0)
 billboard = 1
 no_depth_test = true
-render_priority = 4
+render_priority = 6
 outline_render_priority = 3
 text = "HP: 200"
 font_size = 16

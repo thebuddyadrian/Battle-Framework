@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://dfg6kp3mdw3p5"]
+[gd_scene load_steps=59 format=3 uid="uid://dfg6kp3mdw3p5"]
 
 [ext_resource type="Script" uid="uid://cglriergrnma0" path="res://spawnables/sonic_grnd_shot.gd" id="1_0efh6"]
 [ext_resource type="Resource" uid="uid://n2batc58o5dg" path="res://spawnables/ShotData/SonicGrndSht.tres" id="2_j3baa"]
@@ -411,7 +411,11 @@ _data = {
 &"Start": SubResource("Animation_561xu")
 }
 
-[node name="SonicGrndShot" type="Node3D"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_j3baa"]
+size = Vector3(0.70697, 1, 0.717041)
+
+[node name="SonicGrndShot" type="CharacterBody3D"]
+collision_layer = 0
 script = ExtResource("1_0efh6")
 spawnable_info = ExtResource("2_j3baa")
 
@@ -450,3 +454,7 @@ shape = SubResource("SphereShape3D_j3baa")
 libraries = {
 &"": SubResource("AnimationLibrary_0scby")
 }
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
+shape = SubResource("BoxShape3D_j3baa")

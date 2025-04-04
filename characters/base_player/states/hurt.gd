@@ -8,6 +8,11 @@ func _enter(data = {}) -> void:
 	root.deceleration_enabled = false
 	root.animplayer.stop()
 	hit_data = data["hit_data"]
+
+	# When the player is at 0 health, force a knockdown
+	if root.current_hp <= 0:
+		hit_data.knockback_type = HitData.KNOCKBACK_TYPE.KNOCKDOWN
+
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.WEAK:
 		root.animplayer.play("Hurt")
 		hit_stun_deceleration = 0.6

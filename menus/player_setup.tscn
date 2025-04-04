@@ -25,19 +25,23 @@ offset_bottom = 54.0
 columns = 2
 
 [node name="HumanLabel" type="Label" parent="GridContainer"]
+visible = false
 layout_mode = 2
 text = "How many Humans?"
 
 [node name="HumanSpinBox" type="SpinBox" parent="GridContainer"]
+visible = false
 layout_mode = 2
 max_value = 2.0
 value = 2.0
 
 [node name="CPULabel" type="Label" parent="GridContainer"]
+visible = false
 layout_mode = 2
 text = "How many CPUs?"
 
 [node name="CPUSpinBox" type="SpinBox" parent="GridContainer"]
+visible = false
 layout_mode = 2
 max_value = 2.0
 value = 2.0
@@ -48,6 +52,7 @@ text = "Stage"
 
 [node name="StageOptionButton" type="OptionButton" parent="GridContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="OKLabel" type="Label" parent="."]
 visible = false

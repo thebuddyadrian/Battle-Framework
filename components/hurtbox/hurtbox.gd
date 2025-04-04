@@ -65,13 +65,10 @@ func reset():
 
 func get_hit(hit_data, area_hurt_by: Hitbox):
 	if active and can_be_hit: 
-		emit_signal("hurt", hit_data.duplicate(true), area_hurt_by)
 		if mode == MODE.NORMAL:
-			if root.has_method("_hurtbox_hurt"):
-				emit_signal("hurt", hit_data.duplicate(true), area_hurt_by)
+			emit_signal("hurt", hit_data.duplicate(true), area_hurt_by)
 		elif mode == MODE.SHIELD:
-			if root.has_method("_hurtbox_blocked"):
-				emit_signal("blocked", hit_data.duplicate(true), area_hurt_by)
+			emit_signal("blocked", hit_data.duplicate(true), area_hurt_by)
 
 
 func get_grabbed(hit_data, area_grabbed_by: Hitbox):
