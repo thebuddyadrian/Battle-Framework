@@ -8,7 +8,7 @@ func _enter(data = {}):
 	root.play_sound_effect("land")
 	root.velocity.x = 0
 	root.velocity.z = 0
-	root.air_dashes_used = 0
+	root.air_actions_used = 0
 	frames = data.get("frames", DEFAULT_FRAMES)
 
 

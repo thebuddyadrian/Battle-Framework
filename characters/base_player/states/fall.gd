@@ -4,7 +4,7 @@ extends BaseState
 func _enter(data = {}):
 	super._enter(data)
 	root.animplayer.play("Falling")
-	root.set_actions_enabled(["move", "air_dash", "attack", "skill"], true)
+	root.set_actions_enabled(["move", "air_action", "attack", "skill"], true)
 
 
 func _step():

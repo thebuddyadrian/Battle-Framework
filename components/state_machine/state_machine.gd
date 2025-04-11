@@ -181,6 +181,7 @@ func get_active_state_name() -> String:
 		return ""
 	return active_state.name
 
+# ROLLBACK STUFF LEFTOVER FROM MY OTHER PROJECT - IGNORE - thebuddyadrian
 
 func _save_state() -> Dictionary:
 	var state = {

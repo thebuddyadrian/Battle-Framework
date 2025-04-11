@@ -4,7 +4,6 @@ class_name BattleCharacter
 @export var SPEED = 8.0
 @export var JUMP_VELOCITY = 13.0
 @export var DASH_SPEED = 12.5
-@export var AIR_DASH_SPEED = 15
 @export var STOCKS = 3
 @export var HP = 300
 @export var MP = 300
@@ -16,7 +15,7 @@ class_name BattleCharacter
 @export var ACCELERATION = 0.8
 @export var AIR_DECELERATION = 0.15
 @export var AIR_ACCELERATION = 0.5
-@export var MAX_AIR_DASHES = 1
+@export var MAX_AIR_ACTION = 1
 
 @export var IS_CLIENTSIDE = false
 
@@ -36,7 +35,7 @@ var facing_direction: Vector2 = Vector2.RIGHT
 var facing_direction_2d: int = 1
 var deceleration_enabled = true
 var limit_speed = true # During normal movement speed is limited, turn this off for stuff like dashing
-var air_dashes_used = 0
+var air_actions_used = 0
 ## Used to temporarily make acceleration faster or slower
 var acceleration_scale: float = 1
 var deceleration_scale: float = 1
@@ -47,7 +46,8 @@ var heavy_direction_inputs: Dictionary = {}
 ## Same but for upper
 var upper_direction_inputs: Dictionary = {}
 var most_recent_direction_input: String = "right"
-var VALID_ACTIONS = ["move", "jump", "dash", "air_dash", "attack", "skill", "guard", "heal"]
+# A list of actions, to make sure programmers don't acidentally enable non-existent actions in set_action_enabled
+var VALID_ACTIONS = ["move", "jump", "dash", "air_action", "attack", "skill", "guard", "heal"]
 # Keep track of the last player you hit
 var last_hit_player: BattleCharacter
 #This is crucial for allowing the player to move relative to the camera.
@@ -174,8 +174,8 @@ func _process_actions():
 		_check_for_jump()
 	if is_action_enabled("dash"):
 		_check_for_dash()
-	if is_action_enabled("air_dash"):
-		_check_for_air_dash()
+	if is_action_enabled("air_action"):
+		_check_for_air_action()
 	if is_action_enabled("attack"):
 		_check_for_attacks()
 	if is_action_enabled("guard"):
@@ -204,9 +204,9 @@ func _check_for_dash() -> bool:
 	return false
 
 
-func _check_for_air_dash() -> bool:
-	if input("jump", "just_pressed") and !is_on_floor() and air_dashes_used < MAX_AIR_DASHES:
-		state_machine.change_state("AirDash")
+func _check_for_air_action() -> bool:
+	if input("jump", "just_pressed") and !is_on_floor() and air_actions_used < MAX_AIR_ACTION:
+		state_machine.change_state("AirAction")
 		return true
 	return false
 
@@ -370,7 +370,7 @@ func set_facing_direction_2d(direction: int):
 	facing_direction_2d = sign(vec.x)
 
 
-# Makes the player face the opposite direction
+## Makes the player face the opposite direction
 func flip_facing_direction_2d():
 	facing_direction_2d = -facing_direction_2d
 
@@ -381,6 +381,8 @@ func is_turning() -> bool:
 	return sign(get_movement_vector().x) != facing_direction_2d and !is_zero_approx(get_movement_vector().x)
 
 
+## Allows/Disallows the player to perform a specific action. Check "_process_actions" to understand how it works better.
+## Usually called at the start of a state script to define what actions can be done during that state
 func set_action_enabled(action: String, enabled: bool):
 	assert(VALID_ACTIONS.has(action), "Invalid action: " + action)
 	
@@ -391,16 +393,19 @@ func set_action_enabled(action: String, enabled: bool):
 			actions_enabled.erase(action)
 
 
+## Same as "set_action_enabled" but br
 func set_actions_enabled(actions: Array[String], enabled:bool):
 	for action in actions:
 		set_action_enabled(action, enabled)
 
 
+## Disables all the actions defined in the "VALID_ACTIONS" constant
 func disable_all_actions():
 	for action in VALID_ACTIONS:
 		set_action_enabled(action, false)
 
 
+## Checks if an action is enabled
 func is_action_enabled(action: String):
 	return actions_enabled.has(action)
 
@@ -431,7 +436,7 @@ func get_movement_vector() -> Vector2:
 	return get_input_vector().rotated(camera.rotation.y).normalized()
 
 
-
+## Spawns a scene given the filepath, useful for projectiles, traps, and other spawable objects
 func spawn_scene(spawnable_name: String, scene_path: String, pos: Vector3 = global_position, parent: Node = get_parent(), data: Dictionary = {}) -> Node:
 	# Scenes are loaded every time since preloading them causes issues when two of the same projectile are spawned by different players
 	# Maybe we can store it in a cache so it doesn't need to be loaded from disk every time?
@@ -448,13 +453,13 @@ func spawn_scene(spawnable_name: String, scene_path: String, pos: Vector3 = glob
 	return node
 
 
-# Plays a sound found in the assets/audio/sfx/battle folder
+## Plays a sound found in the assets/audio/sfx/battle folder
 func play_sound_effect(sound_name: String):
 	var stream = load("assets/audio/sfx/battle/" + sound_name + ".wav")
 	SoundEffectPlayer.play_sound_effect(sound_name, stream, "SFX", global_position)
 
 
-# Plays a sound found in the assets/audio/sfx/battle folder
+## Plays a voice clip found in the assets/audio/voice/battle folder
 func play_voice_clip(voice_clip_name: String):
 	var stream = load("assets/audio/voice/battle/" + voice_clip_name + ".wav")
 	SoundEffectPlayer.play_sound_effect(voice_clip_name, stream, "Voice", global_position)
@@ -471,14 +476,14 @@ func _on_hurtbox_hurt(hit_data: HitData, hitbox: Hitbox) -> void:
 func _on_hitbox_hit(hit_data: HitData, hurtbox: Hurtbox) -> void:
 	if state_machine.active_state.has_method("_on_hitbox_hit"):
 		state_machine.active_state._on_hitbox_hit(hit_data, hurtbox)
-	# TO-DO 
+	# TO-DO - Instead of hardcoding a sound effect it should depend on the defined hit sound
 	play_sound_effect("hit_light")
 	freeze_frames = 2
 	if hurtbox.root is BattleCharacter:
 		last_hit_player = hurtbox.root
 
 
-## When the player hits a guarding opponent
+## When the player hits a guarding opponent, go to the "Blocked" state to stagger back
 func _on_hitbox_blocked(hit_data: HitData, hurtbox: Hurtbox) -> void:
 	state_machine.change_state("Blocked", {hit_data = hit_data})
 	play_sound_effect("blocked")
