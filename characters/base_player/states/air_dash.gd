@@ -8,6 +8,7 @@ func _enter(data = {}):
 	dash_direction = root.facing_direction
 	
 	root.animplayer.play("AirDash")
+	root.play_sound_effect("sonic_ballet")
 	root.velocity.y = 6
 	root.velocity.x = dash_direction.x * root.AIR_DASH_SPEED 
 	root.velocity.z = dash_direction.y * root.AIR_DASH_SPEED 

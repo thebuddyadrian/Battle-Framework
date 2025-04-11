@@ -25,6 +25,8 @@ class_name BattleCharacter
 var HEAVY_DIRECTION_INPUT_WINDOW: int = 8
 var UPPER_DIRECTION_INPUT_WINDOW: int = 4
 
+var team_id: int = 1 # For team battles
+var char_name: String = ""
 var current_hp: int = HP
 ## The last used nonzero move_direction, used for dashing, air dashing, and four directional attacks
 ## This is set automatically during movement
@@ -48,13 +50,17 @@ var most_recent_direction_input: String = "right"
 var VALID_ACTIONS = ["move", "jump", "dash", "air_dash", "attack", "skill", "guard", "heal"]
 # Keep track of the last player you hit
 var last_hit_player: BattleCharacter
+#This is crucial for allowing the player to move relative to the camera.
+var camera: Node3D
+# If active, player will not do any processing in _physics_process
+var freeze_frames: int = 0
 
 @onready var Sprite = $PlayerSprite
 @onready var animplayer: AnimationPlayer = $PlayerSprite/AnimationPlayer
 @onready var state_machine = $StateMachine
+@onready var sfx := $SFX
 
-#This is crucial for allowing the player to move relative to the camera.
-var camera: Node3D
+
 @onready var hitbox: Hitbox = $Hitbox
 @onready var hurtbox: Hurtbox = $Hurtbox
 
@@ -68,9 +74,14 @@ func _ready() -> void:
 		IS_CLIENTSIDE = true
 	if IS_CLIENTSIDE == true:
 		Globals.CLIENTSIDE_PLAYER = self
+	team_id = player_id
 
 
-func _physics_process(_delta: float) -> void:
+func _physics_process(delta: float) -> void:
+	if freeze_frames > 0:
+		_process_actions()
+		freeze_frames = max(freeze_frames - 1, 0)
+		return
 	# When buttons get pressed, save them in a dictionary to know if a heavy attack was inputted
 	# Count down every frame until the heavy input window runs out, then remove them
 	for direction in heavy_direction_inputs:
@@ -103,11 +114,10 @@ func _physics_process(_delta: float) -> void:
 	if velocity.y >  -FALL_SPEED:
 		velocity.y -= GRAVITY * gravity_scale
 	
-	_process_movement()
 	_process_actions()
+	_process_movement()
 	move_and_slide()
 	state_machine.advance()
-
 
 #func setcontrols() -> void:
 	#match player_id:
@@ -157,7 +167,8 @@ func _process_movement():
 	elif deceleration_enabled:
 		velocity.z = move_toward(velocity.z, 0, deceleration_current)
 
-
+# Check for various actions
+# First, make sure the action is enabled, then check for input and other conditions using their designated function
 func _process_actions():
 	if is_action_enabled("jump"):
 		_check_for_jump()
@@ -174,7 +185,6 @@ func _process_actions():
 ## The following functions check for an input, and then goes to a certain state
 ## They return true if the desired input was pressed
 ## They can be overridden by modders to change how actions are detected
-
 func _check_for_jump() -> bool:
 	if input("jump", "just_pressed"):
 		state_machine.change_state("JumpSquat")
@@ -184,6 +194,7 @@ func _check_for_jump() -> bool:
 
 func _check_for_dash() -> bool:
 	if input("dash", "just_pressed"):
+		# If following up from a heavy attack, do a homing dash instead
 		if state_machine.active_state.name == "Heavy":
 			if state_machine.active_state.move_hit:
 				state_machine.change_state("HomingDash")
@@ -437,16 +448,32 @@ func spawn_scene(spawnable_name: String, scene_path: String, pos: Vector3 = glob
 	return node
 
 
+# Plays a sound found in the assets/audio/sfx/battle folder
+func play_sound_effect(sound_name: String):
+	var stream = load("assets/audio/sfx/battle/" + sound_name + ".wav")
+	SoundEffectPlayer.play_sound_effect(sound_name, stream, "SFX", global_position)
+
+
+# Plays a sound found in the assets/audio/sfx/battle folder
+func play_voice_clip(voice_clip_name: String):
+	var stream = load("assets/audio/voice/battle/" + voice_clip_name + ".wav")
+	SoundEffectPlayer.play_sound_effect(voice_clip_name, stream, "Voice", global_position)
+
+
 ## When the player gets hit
 func _on_hurtbox_hurt(hit_data: HitData, hitbox: Hitbox) -> void:
 	current_hp = max(current_hp - hit_data.damage, 0) # Stop HP from going below zero
 	state_machine.change_state("Hurt", {hit_data = hit_data})
+	freeze_frames = 2
 
 
 ## When the player succesfully lands a hit
 func _on_hitbox_hit(hit_data: HitData, hurtbox: Hurtbox) -> void:
 	if state_machine.active_state.has_method("_on_hitbox_hit"):
 		state_machine.active_state._on_hitbox_hit(hit_data, hurtbox)
+	# TO-DO 
+	play_sound_effect("hit_light")
+	freeze_frames = 2
 	if hurtbox.root is BattleCharacter:
 		last_hit_player = hurtbox.root
 
@@ -454,3 +481,4 @@ func _on_hitbox_hit(hit_data: HitData, hurtbox: Hurtbox) -> void:
 ## When the player hits a guarding opponent
 func _on_hitbox_blocked(hit_data: HitData, hurtbox: Hurtbox) -> void:
 	state_machine.change_state("Blocked", {hit_data = hit_data})
+	play_sound_effect("blocked")

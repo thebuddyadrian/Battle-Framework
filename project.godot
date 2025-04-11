@@ -26,6 +26,7 @@ MusicPlayer="*res://autoload/music_player.gd"
 SceneChanger="*res://autoload/scene_changer.tscn"
 Globals="*res://autoload/Globals.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
+SoundEffectPlayer="*res://autoload/sound_effect_player.gd"
 
 [dialogic]
 

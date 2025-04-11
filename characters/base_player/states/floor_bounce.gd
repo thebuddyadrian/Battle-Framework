@@ -4,6 +4,7 @@ func _enter(data = {}):
 	root.animplayer.play("HitFloor")
 	root.velocity.y = 16
 	root.gravity_scale = 0.7
+	root.play_sound_effect("floor_hit")
 
 
 func _step():

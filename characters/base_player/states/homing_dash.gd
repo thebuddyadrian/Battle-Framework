@@ -5,6 +5,7 @@ func _enter(data = {}):
 	#root.velocity.z = clamp(root.velocity.z, -20, 20)
 	root.velocity.y = 15
 	root.animplayer.play("HomingDash")
+	root.play_sound_effect("homing_dash")
 	root.gravity_scale = 0
 	root.set_action_enabled("attack", true)
 

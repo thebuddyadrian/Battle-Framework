@@ -13,13 +13,13 @@ class_name AttackInfo
 @export var active_frames: int = 2
 @export var recovery_frames: int = 10
 # Split up the animation into the startup, active, and recovery sections
-@export var attack_sound: String = "punch_light"
+@export var attack_sound: String = "punch"
 @export var damage: int = 15
 @export var knockback_power: int = 25
 @export var knockback_angle: int = 0
 @export var knockback_type: HitData.KNOCKBACK_TYPE = HitData.KNOCKBACK_TYPE.WEAK
 @export var hit_stun: int = 30
-@export var hit_sound: String = "punch_light"
+@export var hit_sound: String = "hit"
 @export var can_charge: bool = false
 @export var max_charge: int = 30
 @export var max_hold: int = 30

@@ -9,6 +9,7 @@ func _enter(data = {}):
 	root.velocity.x = normal.x * 2.5
 	root.gravity_scale = 0.7
 	root.deceleration_scale = 0.1
+	root.play_sound_effect("wall_hit")
 
 
 func _step():

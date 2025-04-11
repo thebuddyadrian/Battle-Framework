@@ -10,6 +10,8 @@ func _move_setup():
 
 
 func _phase_changed():
+	if get_current_phase_name() == "active":
+		root.play_voice_clip("sonic_heavy")
 	if get_current_phase_name() == "jump":
 		root.velocity.y = 5
 		root.velocity.x = -root.facing_direction.x * 2

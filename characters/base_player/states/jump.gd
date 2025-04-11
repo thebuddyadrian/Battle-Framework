@@ -5,6 +5,7 @@ func _enter(data = {}):
 	super._enter(data)
 	root.set_actions_enabled(["move", "air_dash", "attack", "skill"], true)
 	root.animplayer.play("Jump")
+	root.play_sound_effect("jump")
 	root.velocity.y = root.JUMP_VELOCITY
 
 

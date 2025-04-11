@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dl8ljyjfruc5e"
-path="res://.godot/imported/mode_change.wav-f2ee4cbc47e07ddf3ad1de5a145b6f5c.sample"
+path="res://.godot/imported/mode_change.wav-54760e0407c1c1df623be5beac375c06.sample"
 
 [deps]
 
-source_file="res://assets/Audio/sfx/menu/mode_change.wav"
-dest_files=["res://.godot/imported/mode_change.wav-f2ee4cbc47e07ddf3ad1de5a145b6f5c.sample"]
+source_file="res://assets/audio/sfx/menu/mode_change.wav"
+dest_files=["res://.godot/imported/mode_change.wav-54760e0407c1c1df623be5beac375c06.sample"]
 
 [params]
 

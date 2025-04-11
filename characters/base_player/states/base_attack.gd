@@ -483,9 +483,8 @@ func change_phase(phase_index: int) -> void:
 	
 	_phase_timer = calculated_frames
 	
-	# Sound Effects
-	#if current_phase.sound_effect != "":
-	#	root.play_sound_fx("Attack/%s" % current_phase.sound_effect)
+	if current_phase.sound_effect != "":
+		root.play_sound_effect(current_phase.sound_effect)
 	
 	# Animation
 	if play_animation:

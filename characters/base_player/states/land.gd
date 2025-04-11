@@ -5,6 +5,7 @@ var frames: int = 12
 
 func _enter(data = {}):
 	root.animplayer.play("Land")
+	root.play_sound_effect("land")
 	root.velocity.x = 0
 	root.velocity.z = 0
 	root.air_dashes_used = 0

@@ -39,7 +39,7 @@ shader = ExtResource("6_m6gva")
 shader_parameter/checkerboard = ExtResource("7_tg5qw")
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ddqn7"]
-top_radius = 0.25
+top_radius = 0.15
 bottom_radius = 0.0
 height = 0.001
 radial_segments = 16

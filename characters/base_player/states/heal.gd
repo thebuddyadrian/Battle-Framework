@@ -16,6 +16,7 @@ func _step():
 		root.animplayer.play_section_with_markers("Heal", "HealLoop", "HealEnd")
 		if parent.state_time % 20  == 0:
 			root.current_hp = min(root.current_hp + 1, root.HP)
+			root.play_sound_effect("heal")
 
 		if !root.input("guard", "pressed"):
 			change_state("Idle")

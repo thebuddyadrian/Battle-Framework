@@ -37,6 +37,7 @@ func _ready() -> void:
 		player.scale = Vector3(4, 4, 4)
 		player.player_id = i + 1
 		player.name = str(player.player_id)
+		player.char_name = "sonic"
 		spawn_position.get_parent().add_child(player)
 	
 	if camera_follows_player:
