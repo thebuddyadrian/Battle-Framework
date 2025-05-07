@@ -30,7 +30,7 @@ text = "How many Players?"
 
 [node name="HumanSpinBox" type="SpinBox" parent="GridContainer"]
 layout_mode = 2
-max_value = 2.0
+max_value = 4.0
 value = 2.0
 
 [node name="CPULabel" type="Label" parent="GridContainer"]

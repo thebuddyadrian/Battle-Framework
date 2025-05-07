@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cr3ot0xj2of5r"]
 
 [ext_resource type="PackedScene" uid="uid://cr5pydprtoluo" path="res://levels/city/city.glb" id="1_qakbj"]
-[ext_resource type="Script" path="res://levels/level.gd" id="2_pnmpm"]
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="2_pnmpm"]
 
 [node name="city" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "camera_root_parent") instance=ExtResource("1_qakbj")]
 script = ExtResource("2_pnmpm")

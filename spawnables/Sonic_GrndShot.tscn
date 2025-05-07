@@ -438,7 +438,6 @@ metadata/_custom_type_script = "uid://cm6korv2sfd"
 [node name="Shape" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
 shape = SubResource("SphereShape3D_561xu")
-debug_color = Color(0, 0.6, 0.701961, 1)
 
 [node name="Hurtbox" type="Area3D" parent="."]
 visible = false
