@@ -1,10 +1,10 @@
 [gd_scene load_steps=11 format=3 uid="uid://cek62pjs5d0tg"]
 
-[ext_resource type="Script" path="res://levels/level.gd" id="1_h6std"]
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_h6std"]
 [ext_resource type="PackedScene" uid="uid://biq6bd0648m35" path="res://UI/HUD.tscn" id="4_gu3b0"]
 [ext_resource type="PackedScene" uid="uid://dw2dnhnuuwhco" path="res://levels/hologram/Holomodel.tscn" id="6_ca42s"]
 [ext_resource type="PackedScene" uid="uid://crdik24k161lb" path="res://levels/hologram/holosky.tscn" id="8_4yqvt"]
-[ext_resource type="Script" path="res://levels/hologram/Boxspin.tres.gd" id="9_ici1a"]
+[ext_resource type="Script" uid="uid://d2luikke1goi4" path="res://levels/hologram/Boxspin.tres.gd" id="9_ici1a"]
 [ext_resource type="PackedScene" uid="uid://c0hourbs2wtij" path="res://levels/hologram/holoskygreen.tscn" id="9_tscyp"]
 [ext_resource type="PackedScene" uid="uid://k2g5shk7kxvb" path="res://levels/hologram/holoskyblue.tscn" id="10_ici1a"]
 
