@@ -4,9 +4,9 @@
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
 [ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="2_gd83v"]
 [ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="3_c7fke"]
-[ext_resource type="Resource" uid="uid://dttk12fa38yx0" path="res://characters/sonic/states/jab_1.tres" id="3_dsaob"]
 [ext_resource type="Script" uid="uid://cj1l7t1k5eima" path="res://characters/sonic/states/blocked.gd" id="3_x472b"]
 [ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="4_lwdla"]
+[ext_resource type="Resource" uid="uid://bocq8pdsey1xc" path="res://characters/tails/states/jab_1.tres" id="5_bg1qt"]
 [ext_resource type="Resource" uid="uid://spkpe3bbhbk6" path="res://characters/sonic/states/jab_3.tres" id="5_wpnlk"]
 [ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/sonic/states/heavy.gd" id="6_o7udh"]
 [ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="7_6mqiq"]
@@ -1314,7 +1314,7 @@ script = ExtResource("3_c7fke")
 script = ExtResource("3_x472b")
 
 [node name="Jab1" parent="StateMachine" index="18"]
-attack_info = ExtResource("3_dsaob")
+attack_info = ExtResource("5_bg1qt")
 
 [node name="Jab2" parent="StateMachine" index="19"]
 attack_info = ExtResource("4_lwdla")
