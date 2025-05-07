@@ -30,7 +30,8 @@ func _ready() -> void:
 	assert(player_spawn_2, "No spawn position has been placed for player 2")
 	# TO-DO for now this only loads Sonic but this should load the chosen fighter
 	for i in range(2):
-		var player: BattleCharacter = load("res://characters/sonic/sonic.tscn").instantiate()
+		var character = Game.character_choices[i + 1]
+		var player: BattleCharacter = load("res://characters/%s/%s.tscn" % [character, character]).instantiate()
 		var spawn_position: Node3D = get("player_spawn_%s" % str(i + 1))
 		player.global_position = spawn_position.global_position
 		player.camera = camera_pivot

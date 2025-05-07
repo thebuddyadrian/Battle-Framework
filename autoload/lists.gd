@@ -1,7 +1,7 @@
 extends Node
 
 var characters: Array[String] = [
-	"sonic", "tails", "knuckles", "shadow", "rouge", "amy", "cream", "emerl"
+	"sonic", "tails", "knuckles"#, "shadow", "rouge", "amy", "cream", "emerl"
 ]
 
 var character_display_names: Dictionary = {

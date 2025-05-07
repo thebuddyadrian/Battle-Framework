@@ -25,12 +25,10 @@ offset_bottom = 54.0
 columns = 2
 
 [node name="HumanLabel" type="Label" parent="GridContainer"]
-visible = false
 layout_mode = 2
-text = "How many Humans?"
+text = "How many Players?"
 
 [node name="HumanSpinBox" type="SpinBox" parent="GridContainer"]
-visible = false
 layout_mode = 2
 max_value = 2.0
 value = 2.0
@@ -44,7 +42,6 @@ text = "How many CPUs?"
 visible = false
 layout_mode = 2
 max_value = 2.0
-value = 2.0
 
 [node name="StageLabel" type="Label" parent="GridContainer"]
 layout_mode = 2
