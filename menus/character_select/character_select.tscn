@@ -24,10 +24,10 @@ script = ExtResource("1_xptye")
 material = SubResource("ShaderMaterial_pprmj")
 
 [node name="PlayerContainer" type="GridContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
 offset_top = 43.0
-offset_right = 320.0
-offset_bottom = 240.0
+offset_right = 240.0
+offset_bottom = 160.0
 columns = 2
 
 [node name="StageSelect" type="OptionButton" parent="."]

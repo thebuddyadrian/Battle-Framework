@@ -19,9 +19,10 @@ func _process(delta):
 	var targetposex := Vector3.ZERO
 
 	for character: BattleCharacter in get_tree().get_nodes_in_group("characters"):
-		targetposex += character.global_position
+		if character.IS_CLIENTSIDE:
+			targetposex += character.global_position
 	
-	targetposex /= get_tree().get_node_count_in_group("characters")
+
 
 	var targetpos2 := Vector3(targetposex.x/1.3, targetposex.y/1.2, targetposex.z)
 

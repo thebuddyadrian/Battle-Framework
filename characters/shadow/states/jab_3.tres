@@ -1,0 +1,30 @@
+[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://dcg0w2804wsk7"]
+
+[ext_resource type="Script" path="res://characters/base_player/states/attack_info.gd" id="1_rumxf"]
+
+[resource]
+script = ExtResource("1_rumxf")
+animation = "kick2"
+air_animation = ""
+change_anim_in_air = false
+startup_frames = 3
+active_frames = 3
+recovery_frames = 24
+attack_sound = "punch"
+damage = 10
+knockback_power = 2
+knockback_angle = 0
+knockback_type = 0
+hit_stun = 30
+hit_sound = "punch"
+can_charge = false
+max_charge = 30
+max_hold = 30
+knockback_charge_scale = 180
+damage_charge_scale = 150
+knockback_scaling_charge_scale = 180
+land_on_touched_ground = false
+stop_on_left_ground = false
+landing_lag = 6
+dash_cancel_on_hit = false
+metadata/_custom_type_script = ExtResource("1_rumxf")

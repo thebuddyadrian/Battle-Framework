@@ -35,4 +35,5 @@ animations = [{
 
 [node name="FlameLogo" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_hyn34")
+autoplay = "default"
 frame_progress = 0.995207

@@ -27,6 +27,7 @@ SceneChanger="*res://autoload/scene_changer.tscn"
 Globals="*res://autoload/Globals.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SoundEffectPlayer="*res://autoload/sound_effect_player.gd"
+PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 
 [dialogic]
 
@@ -63,11 +64,11 @@ glossary/default_case_sensitive=true
 
 [display]
 
-window/size/viewport_width=320
-window/size/viewport_height=240
+window/size/viewport_width=240
+window/size/viewport_height=160
 window/size/window_width_override=640
 window/size/window_height_override=480
-window/stretch/mode="canvas_items"
+window/stretch/mode="viewport"
 window/stretch/aspect="keep_height"
 
 [dotnet]
@@ -76,7 +77,7 @@ project/assembly_name="Sonic Battle Framework"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/abfi/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/dialogic/plugin.cfg")
+enabled=PackedStringArray("res://addons/abfi/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [input]
 

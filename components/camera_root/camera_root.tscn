@@ -70,15 +70,16 @@ top_level = true
 
 [node name="Pivot" type="Node3D" parent="."]
 unique_name_in_owner = true
-transform = Transform3D(1, 0, 0, 0, 0.819152, 0.573576, 0, -0.573576, 0.819152, 0, 0, 0)
+transform = Transform3D(-1, -1.45412e-06, 2.0767e-06, 0, 0.819152, 0.573576, -2.53518e-06, 0.573576, -0.819152, 0, 0, 0)
 script = ExtResource("1_he7xx")
 
 [node name="Camera" type="Camera3D" parent="Pivot"]
-transform = Transform3D(1, -1.13687e-13, -2.27374e-13, 0, 0.961262, -0.275637, 4.54747e-13, 0.275637, 0.961262, 1.81899e-12, -1.84009, 10.9313)
+transform = Transform3D(1, -1.25345e-13, -4.37131e-13, -1.74801e-13, 0.781456, -0.623961, 4.19809e-13, 0.623961, 0.781456, 1.81899e-12, -0.481165, 28.0284)
 environment = ExtResource("2_u38fi")
 projection = 1
 current = true
-size = 9.801
+size = 6.285
+near = 0.002
 script = ExtResource("3_l44vk")
 metadata/_custom_type_script = "uid://bmsefbkmwyqoo"
 

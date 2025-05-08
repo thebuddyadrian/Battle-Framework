@@ -26,7 +26,7 @@ columns = 2
 
 [node name="HumanLabel" type="Label" parent="GridContainer"]
 layout_mode = 2
-text = "How many Players?"
+text = "Players"
 
 [node name="HumanSpinBox" type="SpinBox" parent="GridContainer"]
 layout_mode = 2
@@ -69,10 +69,10 @@ text = "OK (Press Enter)"
 
 [node name="OKButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 212.0
-offset_top = 209.0
-offset_right = 319.0
-offset_bottom = 240.0
+offset_left = 124.0
+offset_top = 122.0
+offset_right = 231.0
+offset_bottom = 153.0
 text = "OK"
 
 [connection signal="value_changed" from="GridContainer/HumanSpinBox" to="." method="_on_human_spin_box_value_changed"]

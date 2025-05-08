@@ -2,7 +2,7 @@ extends Control
 
 enum MODE {STORY, BATTLE, CHALLENGE, TRAINING, MINIGAMES, RECORD, OPTIONS}
 const MODE_NAMES = ["Story Mode", "Battle Mode", "Challenge Mode", "Training Mode", "Mini Games", "Battle Record", "Options"]
-const ARROW_SCALE_DEFAULT: Vector2 = Vector2(1.333, 1.333)
+const ARROW_SCALE_DEFAULT: Vector2 = Vector2(1, 1)
 var selected_mode: MODE = MODE.STORY : set = change_mode
 var current_sprite: Sprite2D
 @onready var current_mode_label: Label = $CurrentMode
@@ -68,7 +68,7 @@ func arrow_animation(arrow_node: Sprite2D):
 	var tween: Tween = get_tree().create_tween()
 	arrow_node.scale = ARROW_SCALE_DEFAULT
 	tween.set_trans(Tween.TRANS_LINEAR)
-	tween.tween_property(arrow_node, "scale", ARROW_SCALE_DEFAULT * 1.25, 0.06)
+	tween.tween_property(arrow_node, "scale", ARROW_SCALE_DEFAULT * 1.3, 0.06)
 	tween.play()
 	await tween.finished
 	tween.stop()

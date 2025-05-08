@@ -3,28 +3,26 @@
 [ext_resource type="Script" uid="uid://bpjjhnx3q5um0" path="res://menus/character_select/player_character/player_character.gd" id="1_gu884"]
 
 [node name="PlayerCharacter" type="Control"]
-custom_minimum_size = Vector2(158, 97)
 layout_mode = 3
 anchor_right = 0.494
 anchor_bottom = 0.404
-offset_right = -0.0800018
-offset_bottom = 0.0399933
+offset_top = -13.0
+offset_right = 10.44
+offset_bottom = -11.64
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 script = ExtResource("1_gu884")
-
-[node name="PlayerName" type="Label" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 23.0
-text = "Player 1"
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 1.0
+offset_top = 15.0
+offset_right = -1.0
+offset_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 border_width = 3.0
@@ -37,8 +35,10 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -104.0
-offset_top = -70.0
+offset_left = -117.0
+offset_top = -51.0
+offset_right = -13.0
+offset_bottom = -2.0
 grow_horizontal = 0
 grow_vertical = 0
 text = "Character:

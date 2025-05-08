@@ -34,13 +34,11 @@ script = ExtResource("1_5ovjn")
 [node name="SonicBattleMenu" type="Sprite2D" parent="."]
 visible = false
 modulate = Color(1, 1, 1, 0.368627)
-position = Vector2(0, 15)
-scale = Vector2(1.3375, 1.3375)
+position = Vector2(0, -1)
 texture = ExtResource("2_ki0r6")
 centered = false
 
 [node name="CurrentMode" type="Label" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -59,23 +57,19 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Foreground" type="Sprite2D" parent="."]
-position = Vector2(160, 120)
-scale = Vector2(1.333, 1.333)
+position = Vector2(120, 79)
 texture = ExtResource("4_cne22")
 
 [node name="ArrowLeft" type="Sprite2D" parent="."]
-position = Vector2(42, 159)
-scale = Vector2(1.333, 1.333)
+position = Vector2(33, 107)
 texture = ExtResource("4_4lvc0")
 
 [node name="ArrowRight" type="Sprite2D" parent="."]
-position = Vector2(193, 123)
-scale = Vector2(1.333, 1.333)
+position = Vector2(144, 79)
 texture = ExtResource("6_h5q80")
 
 [node name="ModeSprites" type="Node2D" parent="."]
-position = Vector2(113, 143)
-scale = Vector2(1.333, 1.333)
+position = Vector2(84, 94)
 
 [node name="Story" type="Sprite2D" parent="ModeSprites"]
 position = Vector2(4, 1)
@@ -106,8 +100,7 @@ visible = false
 texture = ExtResource("5_c4hpj")
 
 [node name="ModeSelect" type="Sprite2D" parent="."]
-position = Vector2(85, 56)
-scale = Vector2(1.333, 1.333)
+position = Vector2(64, 30)
 texture = ExtResource("14_h5q80")
 
 [node name="NotReadyYet" type="Label" parent="."]
@@ -118,17 +111,16 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -53.0
-offset_top = 76.0
+offset_top = 55.0
 offset_right = 57.0
-offset_bottom = 99.0
+offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
 text = "Not Ready Yet"
 horizontal_alignment = 1
 
 [node name="FlameLogo" parent="." instance=ExtResource("15_j86my")]
-position = Vector2(270, 129)
-scale = Vector2(1.333, 1.333)
+position = Vector2(200, 84)
 frame_progress = 0.140587
 
 [node name="ModeChangeSound" type="AudioStreamPlayer" parent="."]

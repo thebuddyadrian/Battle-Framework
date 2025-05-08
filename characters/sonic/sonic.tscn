@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=69 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
@@ -21,6 +21,10 @@
 [ext_resource type="Resource" uid="uid://lscqxewn2oxm" path="res://characters/sonic/states/grnd_pow.tres" id="15_lq7el"]
 [ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/sonic/states/air_pow.gd" id="16_lci63"]
 [ext_resource type="Resource" uid="uid://slwg0iqcb6ry" path="res://characters/sonic/states/air_pow.tres" id="17_vuumm"]
+[ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="22_fueeq"]
+[ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="23_tfamv"]
+[ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="24_t5h5i"]
+[ext_resource type="Texture2D" uid="uid://b4e72gl5uqhpv" path="res://assets/ui/SonicLife.png" id="25_ttio6"]
 
 [sub_resource type="Animation" id="Animation_lq7el"]
 resource_name = "AimAttack"
@@ -1285,7 +1289,7 @@ _data = {
 &"kick2": SubResource("Animation_wtpgs")
 }
 
-[sub_resource type="Resource" id="Resource_bg1qt"]
+[sub_resource type="Resource" id="Resource_fueeq"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1352,8 +1356,27 @@ script = ExtResource("16_lci63")
 attack_info = ExtResource("17_vuumm")
 
 [node name="Hitbox" parent="." index="4"]
-hit_data = SubResource("Resource_bg1qt")
+hit_data = SubResource("Resource_fueeq")
 
 [node name="TestLabel" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247459, 0)
+visible = false
 text = "HP:230"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+layer = 128
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" node_paths=PackedStringArray("character")]
+offset_left = 21.0
+offset_top = 4.0
+offset_right = 77.0
+offset_bottom = 44.0
+max_value = 300.0
+texture_under = ExtResource("22_fueeq")
+texture_progress = ExtResource("23_tfamv")
+script = ExtResource("24_t5h5i")
+character = NodePath("../..")
+
+[node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
+position = Vector2(-12, 5)
+texture = ExtResource("25_ttio6")

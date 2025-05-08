@@ -13,7 +13,7 @@ signal selection_finished
 
 
 func _ready() -> void:
-	player_name.text = "Player " + str(player_number)
+	#player_name.text = "Player " + str(player_number)
 	set_active(active)
 	set_character_index(character_index)
 

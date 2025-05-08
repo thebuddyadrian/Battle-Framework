@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://11vd21yw7fe7"]
+[gd_scene load_steps=30 format=3 uid="uid://11vd21yw7fe7"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_37tig"]
 [ext_resource type="Texture2D" uid="uid://cgq063pwiouqa" path="res://assets/knuckles/knuckles.png" id="2_5e7ij"]
@@ -23,8 +23,14 @@
 [ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/sonic/states/air_pow.gd" id="19_v6048"]
 [ext_resource type="Resource" uid="uid://slwg0iqcb6ry" path="res://characters/sonic/states/air_pow.tres" id="20_v4s0a"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="21_s1n3o"]
+[ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="24_5lf22"]
+[ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="25_0st36"]
+[ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="26_xt1s0"]
+[ext_resource type="Texture2D" uid="uid://dvuedhl2ul52y" path="res://assets/ui/KnucklesLife.png" id="27_0st36"]
 
-[sub_resource type="Resource" id="Resource_lh63m"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lh63m"]
+
+[sub_resource type="Resource" id="Resource_0st36"]
 script = ExtResource("21_s1n3o")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -46,7 +52,8 @@ frame = 2
 
 [node name="AnimationPlayer" parent="PlayerSprite" index="0"]
 libraries = {
-&"": ExtResource("3_opinu")
+&"": ExtResource("3_opinu"),
+&"GrndShotFwd": SubResource("AnimationLibrary_lh63m")
 }
 autoplay = "knuckles_animation/Idle"
 
@@ -98,16 +105,26 @@ script = ExtResource("19_v6048")
 attack_info = ExtResource("20_v4s0a")
 
 [node name="Hitbox" parent="." index="4"]
-hit_data = SubResource("Resource_lh63m")
+hit_data = SubResource("Resource_0st36")
 
-[node name="TestLabel2" type="Label3D" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272035, 0)
-billboard = 1
-no_depth_test = true
-render_priority = 6
-outline_render_priority = 3
-text = "HP: 200"
-font_size = 16
-
-[node name="TestLabel" parent="." index="7"]
+[node name="TestLabel" parent="." index="6"]
 visible = false
+texture_filter = 0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+layer = 128
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" node_paths=PackedStringArray("character")]
+offset_left = 21.0
+offset_top = 4.0
+offset_right = 77.0
+offset_bottom = 44.0
+max_value = 300.0
+texture_under = ExtResource("24_5lf22")
+texture_progress = ExtResource("25_0st36")
+script = ExtResource("26_xt1s0")
+character = NodePath("../..")
+
+[node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
+position = Vector2(-12, 5)
+texture = ExtResource("27_0st36")

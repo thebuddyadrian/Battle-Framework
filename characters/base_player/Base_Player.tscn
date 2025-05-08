@@ -1,11 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=32 format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" uid="uid://mhfes0qawdck" path="res://characters/base_player/base_player.gd" id="1_7xl6k"]
 [ext_resource type="Script" uid="uid://c8deswq6muu7v" path="res://characters/raycast.gd" id="2_s2flu"]
 [ext_resource type="Script" uid="uid://clqptntgy8bjs" path="res://components/state_machine/state_machine.gd" id="4_dnwcv"]
 [ext_resource type="Script" uid="uid://cmwhkop71rjln" path="res://characters/base_player/states/idle.gd" id="5_6wnxk"]
-[ext_resource type="Shader" uid="uid://cgh2hkif5qbvi" path="res://assets/shader/shadow_dither.gdshader" id="6_m6gva"]
-[ext_resource type="Texture2D" uid="uid://c3nutkgwrk7i7" path="res://assets/ditherpattern.png" id="7_tg5qw"]
 [ext_resource type="Script" uid="uid://bynwafnian3gd" path="res://characters/base_player/states/move.gd" id="7_wtpgs"]
 [ext_resource type="Script" uid="uid://b2w6u7ric008q" path="res://characters/base_player/states/jump.gd" id="8_pfkrf"]
 [ext_resource type="Script" uid="uid://crmqwts1iv3q2" path="res://characters/base_player/states/fall.gd" id="9_qxn4b"]
@@ -32,10 +30,8 @@
 radius = 0.0853482
 height = 0.369509
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_0lntm"]
-render_priority = 0
-shader = ExtResource("6_m6gva")
-shader_parameter/checkerboard = ExtResource("7_tg5qw")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ppowo"]
+albedo_color = Color(0.223529, 0.223529, 0.235294, 1)
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_ddqn7"]
 top_radius = 0.15
@@ -44,7 +40,7 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_kvwve"]
+[sub_resource type="Resource" id="Resource_ppowo"]
 script = ExtResource("16_32b4s")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -92,7 +88,7 @@ script = ExtResource("2_s2flu")
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]
 
 [node name="Shadow" type="MeshInstance3D" parent="RayCast3D"]
-material_override = SubResource("ShaderMaterial_0lntm")
+material_override = SubResource("StandardMaterial3D_ppowo")
 mesh = SubResource("CylinderMesh_ddqn7")
 
 [node name="StateMachine" type="Node" parent="." groups=["network_sync"]]
@@ -210,7 +206,7 @@ script = ExtResource("23_uam5m")
 
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_kvwve")
+hit_data = SubResource("Resource_ppowo")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

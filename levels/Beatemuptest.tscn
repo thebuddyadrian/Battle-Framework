@@ -1,12 +1,12 @@
-[gd_scene load_steps=27 format=3 uid="uid://bby3mtnvmewxj"]
+[gd_scene load_steps=27 format=3 uid="uid://b81vpahfjg0ut"]
 
 [ext_resource type="PackedScene" uid="uid://1q41upvf2gpk" path="res://characters/sonic/sonic.tscn" id="1_8636u"]
-[ext_resource type="Script" uid="uid://cx76kabdsngrd" path="res://levels/beatemupStage.gd" id="1_x1uab"]
+[ext_resource type="Script" path="res://levels/beatemupStage.gd" id="1_x1uab"]
 [ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="2_x1uab"]
 [ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="3_slwm5"]
 [ext_resource type="Environment" uid="uid://gje4rk62y4yw" path="res://MAINLIGHTING.tres" id="3_wsd07"]
 [ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="4_wsd07"]
-[ext_resource type="Script" uid="uid://bgdwy2xoewi8h" path="res://levels/changecamera.gd" id="7_wsd07"]
+[ext_resource type="Script" path="res://levels/changecamera.gd" id="7_wsd07"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_88v5v"]
 
