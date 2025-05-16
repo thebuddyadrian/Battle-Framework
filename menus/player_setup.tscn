@@ -43,14 +43,6 @@ visible = false
 layout_mode = 2
 max_value = 2.0
 
-[node name="StageLabel" type="Label" parent="GridContainer"]
-layout_mode = 2
-text = "Stage"
-
-[node name="StageOptionButton" type="OptionButton" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
 [node name="OKLabel" type="Label" parent="."]
 visible = false
 layout_mode = 1

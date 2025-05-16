@@ -13,10 +13,6 @@ const MAX_PLAYERS = 4
 func _ready() -> void:
 	MusicPlayer.play_track(MusicPlayer.CHALLENGE_BATTLE_MODE)
 
-	# Initialize stage select
-	for stage in Lists.battle_stages:
-		stage_option_button.add_item(stage)
-
 
 func _process(delta: float) -> void:
 	var cpu_players: int = cpu_spin_box.value
