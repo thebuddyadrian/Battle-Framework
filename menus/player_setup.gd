@@ -40,3 +40,7 @@ func _on_ok_button_pressed() -> void:
 	var human_players: int = human_spin_box.value
 	Game.cpu_players = cpu_players
 	Game.human_players = human_players
+
+
+func _on_change_controls_button_pressed() -> void:
+	SceneChanger.change_scene_to_file("res://menus/controls_settings/controls_settings_menu.tscn")

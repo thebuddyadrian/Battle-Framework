@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://c4msubmob6im5"]
+
+[ext_resource type="Texture2D" uid="uid://bisatn2ox7ndn" path="res://sonic_idle.png" id="1_qfk2h"]
+[ext_resource type="Texture2D" uid="uid://dlpflfbgbkx5f" path="res://icon.png" id="2_qmdfm"]
+
+[node name="Test" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(119, 75)
+texture = ExtResource("1_qfk2h")
+
+[node name="Window" type="Window" parent="."]
+auto_translate_mode = 1
+initial_position = 1
+size = Vector2i(240, 160)
+visible = false
+
+[node name="Sprite2D" type="Sprite2D" parent="Window"]
+position = Vector2(118, 75)
+texture = ExtResource("2_qmdfm")

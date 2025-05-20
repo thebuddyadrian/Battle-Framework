@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://5xfk0ysf13j4"]
+
+[ext_resource type="Script" uid="uid://cbiksxp6kvntq" path="res://menus/controls_settings/controls_setup_action/controls_setup_action.gd" id="1_x08qh"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_x08qh"]
+font_size = 8
+
+[node name="ControlsSetupAction" type="Control" groups=["controls_setup_action"]]
+custom_minimum_size = Vector2(240, 24)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 240.0
+offset_bottom = 10.0
+script = ExtResource("1_x08qh")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 240.0
+offset_bottom = 23.0
+theme_override_constants/separation = 5
+alignment = 1
+
+[node name="ActionLabel" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+label_settings = SubResource("LabelSettings_x08qh")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="EventButton1" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 8
+text = "---"
+
+[node name="EventButton2" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(70, 0)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 8
+text = "---"
+
+[connection signal="pressed" from="HBoxContainer/EventButton1" to="." method="_on_event_button_1_pressed"]
+[connection signal="pressed" from="HBoxContainer/EventButton2" to="." method="_on_event_button_2_pressed"]
