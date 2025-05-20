@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=68 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
@@ -746,24 +746,6 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
-[sub_resource type="Animation" id="Animation_tfamv"]
-resource_name = "Idle"
-length = 0.4615
-loop_mode = 1
-step = 0.0769231
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
 [sub_resource type="Animation" id="Animation_b3yb2"]
 resource_name = "Jump"
 length = 0.4
@@ -1270,7 +1252,6 @@ _data = {
 &"HomingDash": SubResource("Animation_6ri6b"),
 &"Hurt": SubResource("Animation_m6gva"),
 &"Idle": SubResource("Animation_ajxej"),
-&"Idle (2)": SubResource("Animation_tfamv"),
 &"Jump": SubResource("Animation_b3yb2"),
 &"JumpSquat": SubResource("Animation_0lntm"),
 &"Knockdown": SubResource("Animation_ajyqx"),
