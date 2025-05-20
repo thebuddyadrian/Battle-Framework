@@ -43,7 +43,8 @@ hit_stun = 30
 
 [node name="Shadow" instance=ExtResource("1_qnw3q")]
 script = ExtResource("2_h1jln")
-SPEED = 5.0
+SPEED = 10.0
+JUMP_VELOCITY = 14.0
 DASH_SPEED = 18.5
 
 [node name="PlayerSprite" parent="." index="1"]
