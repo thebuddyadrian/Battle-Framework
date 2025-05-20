@@ -1,8 +1,8 @@
 [gd_scene load_steps=29 format=3 uid="uid://lyfnd6of6efn"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_qnw3q"]
-[ext_resource type="Texture2D" uid="uid://b0g2ea16448ws" path="res://assets/shadow/shadow indv-Sheet.png" id="2_rq401"]
-[ext_resource type="AnimationLibrary" uid="uid://caicco3rl6eej" path="res://characters/knuckles/knuckles_animation.res" id="3_7oira"]
+[ext_resource type="Texture2D" uid="uid://dhbyatb3lkkct" path="res://assets/shadow/shadow .png" id="2_pfypo"]
+[ext_resource type="AnimationLibrary" uid="uid://2fxpsp06qdso" path="res://characters/shadow/shadow_animation.res" id="3_pfypo"]
 [ext_resource type="Script" uid="uid://bmg8gug5n5wos" path="res://characters/knuckles/states/dash.tres.gd" id="4_h2on0"]
 [ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="5_pfypo"]
 [ext_resource type="Script" uid="uid://cj1l7t1k5eima" path="res://characters/sonic/states/blocked.gd" id="6_xq7wv"]
@@ -28,7 +28,7 @@
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="26_h1jln"]
 [ext_resource type="Texture2D" uid="uid://bts0x6bqw6t3i" path="res://assets/ui/ShadowLife.png" id="27_cyjvw"]
 
-[sub_resource type="Resource" id="Resource_pfypo"]
+[sub_resource type="Resource" id="Resource_xq7wv"]
 script = ExtResource("23_0nker")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -44,14 +44,14 @@ SPEED = 5.0
 DASH_SPEED = 18.5
 
 [node name="PlayerSprite" parent="." index="1"]
-texture = ExtResource("2_rq401")
+texture = ExtResource("2_pfypo")
 hframes = 15
 vframes = 20
-frame = 2
+frame = 0
 
 [node name="AnimationPlayer" parent="PlayerSprite" index="0"]
 libraries = {
-&"": ExtResource("3_7oira")
+&"": ExtResource("3_pfypo")
 }
 autoplay = ""
 
@@ -103,7 +103,7 @@ script = ExtResource("21_dq45q")
 attack_info = ExtResource("22_sgj5a")
 
 [node name="Hitbox" parent="." index="4"]
-hit_data = SubResource("Resource_pfypo")
+hit_data = SubResource("Resource_xq7wv")
 
 [node name="TestLabel2" type="Label3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272035, 0)
