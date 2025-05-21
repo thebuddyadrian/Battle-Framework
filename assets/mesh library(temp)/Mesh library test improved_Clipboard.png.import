@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cw72spg32sqye"
-path="res://.godot/imported/Shadow Sprites.png-b02e34f0f6adac3275f97e80136b823c.ctex"
+uid="uid://kjsnbfc5y5j6"
+path.s3tc="res://.godot/imported/Mesh library test improved_Clipboard.png-a1244d7fc7225b5be7bc9168e569cfdc.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "37e3b1ce9f563fefb85b8d02ca3318cc"
 }
 
 [deps]
 
-source_file="res://assets/shadow/Shadow Sprites.png"
-dest_files=["res://.godot/imported/Shadow Sprites.png-b02e34f0f6adac3275f97e80136b823c.ctex"]
+source_file="res://assets/mesh library(temp)/Mesh library test improved_Clipboard.png"
+dest_files=["res://.godot/imported/Mesh library test improved_Clipboard.png-a1244d7fc7225b5be7bc9168e569cfdc.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

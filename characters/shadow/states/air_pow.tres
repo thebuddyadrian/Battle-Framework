@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://djeu6gxjiht1l"]
 
-[ext_resource type="Script" path="res://characters/base_player/states/attack_info.gd" id="1_uc0he"]
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_uc0he"]
 
 [resource]
 script = ExtResource("1_uc0he")
-animation = "AirPowFwd"
+animation = "Airpow"
 air_animation = ""
-animation_down = "AirPowDown"
-animation_up = "AirPowUp"
+animation_down = ""
+animation_up = ""
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = false
@@ -34,4 +34,4 @@ stop_on_left_ground = false
 landing_lag = 6
 dash_cancel_on_hit = false
 dash_cancel_frames = 24
-metadata/_custom_type_script = ExtResource("1_uc0he")
+metadata/_custom_type_script = "uid://c4gg51mb7ji23"

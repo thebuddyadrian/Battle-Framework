@@ -1,26 +1,26 @@
-[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://bpahn2gxlkad6"]
+[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://dft7nxfslpsce"]
 
-[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_l5gjb"]
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_2sqt2"]
 
 [resource]
-script = ExtResource("1_l5gjb")
-animation = "DashAttack"
+script = ExtResource("1_2sqt2")
+animation = "AirPowFwd"
 air_animation = ""
-animation_down = ""
-animation_up = ""
+animation_down = "AirPowDown"
+animation_up = "AirPowUp"
 change_anim_in_air = false
 play_animation = true
-use_anim_markers = true
+use_anim_markers = false
 use_sections = false
-startup_frames = 3
-active_frames = 4
-recovery_frames = 11
+startup_frames = 4
+active_frames = 20
+recovery_frames = 8
 attack_sound = "punch"
-damage = 15
-knockback_power = 10
-knockback_angle = 35
+damage = 4
+knockback_power = 4
+knockback_angle = 80
 knockback_type = 0
-hit_stun = 18
+hit_stun = 30
 hit_sound = "punch"
 can_charge = false
 max_charge = 30

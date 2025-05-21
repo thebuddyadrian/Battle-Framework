@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://ubts1e2d3mjh"]
+[gd_scene load_steps=16 format=3 uid="uid://ubts1e2d3mjh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
 [ext_resource type="Texture2D" uid="uid://d3gj0dnqwxm7n" path="res://assets/tails/Tails.png" id="2_asitg"]
@@ -10,9 +10,12 @@
 [ext_resource type="Resource" uid="uid://cciol0feieiui" path="res://characters/tails/states/jab_3.tres" id="5_2xg5h"]
 [ext_resource type="Resource" uid="uid://ju0slbcssgkw" path="res://characters/tails/states/heavy.tres" id="6_asitg"]
 [ext_resource type="Script" uid="uid://6guda7f8ly0c" path="res://characters/sonic/states/grnd_shot.gd" id="7_qsj83"]
+[ext_resource type="Resource" uid="uid://s8wgsn3o883p" path="res://characters/tails/states/upper.tres" id="9_uufmg"]
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="10_grehn"]
+[ext_resource type="Resource" uid="uid://d64hbxhpdsat" path="res://characters/tails/states/grnd_pow.tres" id="12_lg3ej"]
+[ext_resource type="Resource" uid="uid://dft7nxfslpsce" path="res://characters/tails/states/tails_air_pow.tres" id="13_rdag6"]
 
-[sub_resource type="Resource" id="Resource_ppohl"]
+[sub_resource type="Resource" id="Resource_lg3ej"]
 script = ExtResource("2_uaadi")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -51,9 +54,18 @@ attack_info = ExtResource("5_2xg5h")
 [node name="Heavy" parent="StateMachine" index="21"]
 attack_info = ExtResource("6_asitg")
 
+[node name="Upper" parent="StateMachine" index="22"]
+attack_info = ExtResource("9_uufmg")
+
 [node name="GrndShot" parent="StateMachine" index="26"]
 script = ExtResource("7_qsj83")
 attack_info = ExtResource("10_grehn")
 
+[node name="GrndPow" parent="StateMachine" index="28"]
+attack_info = ExtResource("12_lg3ej")
+
+[node name="AirPow" parent="StateMachine" index="29"]
+attack_info = ExtResource("13_rdag6")
+
 [node name="Hitbox" parent="." index="4"]
-hit_data = SubResource("Resource_ppohl")
+hit_data = SubResource("Resource_lg3ej")

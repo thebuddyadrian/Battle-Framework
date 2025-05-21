@@ -2,20 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b0g2ea16448ws"
-path="res://.godot/imported/shadow indv-Sheet.png-671ddc14de1ec7928ceb15dddc16eeee.ctex"
+uid="uid://cmueko33gb3bp"
+path.s3tc="res://.godot/imported/Sonic battle freedome hq_GrassText.png-b3f929134f73e6a88ec5d5a5172752a4.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "4e2e2196d7966ffdd81d974b18b0471e"
 }
 
 [deps]
 
-source_file="res://assets/shadow/shadow indv-Sheet.png"
-dest_files=["res://.godot/imported/shadow indv-Sheet.png-671ddc14de1ec7928ceb15dddc16eeee.ctex"]
+source_file="res://levels/hub_world_test/Sonic battle freedome hq_GrassText.png"
+dest_files=["res://.godot/imported/Sonic battle freedome hq_GrassText.png-b3f929134f73e6a88ec5d5a5172752a4.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
