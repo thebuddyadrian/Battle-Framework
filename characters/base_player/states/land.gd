@@ -23,4 +23,5 @@ func _step():
 
 
 func _exit(next_state):
+	root.disable_all_actions()
 	super._exit(next_state)
