@@ -6,8 +6,8 @@
 [ext_resource type="AnimationLibrary" uid="uid://2fxpsp06qdso" path="res://characters/shadow/shadow_animation.res" id="3_pfypo"]
 [ext_resource type="Script" uid="uid://bmg8gug5n5wos" path="res://characters/knuckles/states/dash.tres.gd" id="4_h2on0"]
 [ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://assets/shadow/shadows_effects-Sheet.png" id="4_xq7wv"]
-[ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="5_pfypo"]
 [ext_resource type="Script" uid="uid://cj1l7t1k5eima" path="res://characters/sonic/states/blocked.gd" id="6_xq7wv"]
+[ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/shadow/states/air_action.gd" id="7_h1jln"]
 [ext_resource type="Resource" uid="uid://spkpe3bbhbk6" path="res://characters/sonic/states/jab_3.tres" id="9_mtehn"]
 [ext_resource type="Resource" uid="uid://bqoak0odkms33" path="res://characters/shadow/states/jab_1.tres" id="9_xq7wv"]
 [ext_resource type="Resource" uid="uid://cxynbelygy8qr" path="res://characters/shadow/states/jab_2.tres" id="10_h1jln"]
@@ -62,7 +62,7 @@ libraries = {
 [node name="Effects" parent="PlayerSprite" index="1"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
-offset = Vector2(5, 0)
+offset = Vector2(-4, -1)
 billboard = 1
 texture = ExtResource("4_xq7wv")
 hframes = 11
@@ -77,7 +77,7 @@ transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0)
 script = ExtResource("4_h2on0")
 
 [node name="AirAction" parent="StateMachine" index="7"]
-script = ExtResource("5_pfypo")
+script = ExtResource("7_h1jln")
 
 [node name="Blocked" parent="StateMachine" index="12"]
 script = ExtResource("6_xq7wv")
