@@ -56,9 +56,11 @@ var camera: Node3D
 var freeze_frames: int = 0
 
 @onready var Sprite = $PlayerSprite
+@onready var effects = $PlayerSprite/Effects
 @onready var animplayer: AnimationPlayer = $PlayerSprite/AnimationPlayer
 @onready var state_machine = $StateMachine
 @onready var sfx := $SFX
+@onready var flipped_components = $FlippedComponents
 
 
 @onready var hitbox: Hitbox = $Hitbox
@@ -69,7 +71,12 @@ var freeze_frames: int = 0
 
 func _ready() -> void:
 	state_machine.initialize()
-	Sprite.billboard = true
+	Sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	effects.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	for child in flipped_components.get_children():
+		if child is Sprite3D:
+			child.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+
 	if player_id == 1:
 		IS_CLIENTSIDE = true
 	if IS_CLIENTSIDE == true:
@@ -102,11 +109,6 @@ func _physics_process(delta: float) -> void:
 			heavy_direction_inputs[direction] = HEAVY_DIRECTION_INPUT_WINDOW
 			upper_direction_inputs[direction] = UPPER_DIRECTION_INPUT_WINDOW
 	
-	if camera.rotation_degrees.y >= 170:
-		$PlayerSprite.flip_h = facing_direction_2d >= 0
-	else:
-		$PlayerSprite.flip_h = facing_direction_2d < 0
-	
 	# Test Hud
 	$TestLabel.text = "HP: %s" % str(current_hp)
 
@@ -118,6 +120,21 @@ func _physics_process(delta: float) -> void:
 	_process_movement()
 	move_and_slide()
 	state_machine.advance()
+
+	# Flip sprites and other nodes
+	if camera.rotation_degrees.y >= 170:
+		Sprite.flip_h = facing_direction_2d >= 0
+		Sprite.scale.x = -1 if facing_direction_2d >= 0  else 1
+		flipped_components.scale.x = -1 if facing_direction_2d >= 0  else 1
+	else:
+		Sprite.flip_h = facing_direction_2d < 0
+		Sprite.scale.x = -1 if facing_direction_2d >= 0  else 1
+		flipped_components.scale.x = -1 if facing_direction_2d >= 0  else 1
+	
+	effects.flip_h = Sprite.flip_h
+	for child in flipped_components.get_children():
+		if child is Sprite3D:
+			child.flip_h = Sprite.flip_h
 
 #func setcontrols() -> void:
 	#match player_id:

@@ -11,13 +11,13 @@
 [ext_resource type="Resource" uid="uid://spkpe3bbhbk6" path="res://characters/sonic/states/jab_3.tres" id="9_mtehn"]
 [ext_resource type="Resource" uid="uid://bqoak0odkms33" path="res://characters/shadow/states/jab_1.tres" id="9_xq7wv"]
 [ext_resource type="Resource" uid="uid://cxynbelygy8qr" path="res://characters/shadow/states/jab_2.tres" id="10_h1jln"]
-[ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="11_hh2a4"]
 [ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="12_gjr3y"]
 [ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/shadow/states/heavy.gd" id="12_h1jln"]
+[ext_resource type="Resource" uid="uid://di838klmp6a00" path="res://characters/shadow/states/heavy.tres" id="13_cyjvw"]
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="13_vj6v6"]
 [ext_resource type="Resource" uid="uid://bpahn2gxlkad6" path="res://characters/shadow/states/dash_attack.tres" id="15_xq7wv"]
 [ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="17_w40b4"]
-[ext_resource type="Script" uid="uid://cxjauk8t2xkwj" path="res://characters/shadow/states/air_attack.gd" id="17_xq7wv"]
+[ext_resource type="Script" uid="uid://cxjauk8t2xkwj" path="res://characters/sonic/states/air_attack.gd" id="17_xq7wv"]
 [ext_resource type="Script" uid="uid://6guda7f8ly0c" path="res://characters/sonic/states/grnd_shot.gd" id="18_0kqp1"]
 [ext_resource type="Resource" uid="uid://divyauv3t0y7w" path="res://characters/shadow/states/air_attack.tres" id="18_h1jln"]
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="19_8dlyq"]
@@ -48,6 +48,7 @@ JUMP_VELOCITY = 14.0
 DASH_SPEED = 18.5
 
 [node name="PlayerSprite" parent="." index="1"]
+billboard = 1
 texture = ExtResource("2_pfypo")
 hframes = 15
 vframes = 20
@@ -58,14 +59,19 @@ libraries = {
 &"": ExtResource("3_pfypo")
 }
 
-[node name="EffectsSprites" type="Sprite3D" parent="PlayerSprite" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.01, 0.01, 0)
+[node name="Effects" parent="PlayerSprite" index="1"]
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 visible = false
-texture_filter = 2
-render_priority = 11
+offset = Vector2(5, 0)
+billboard = 1
 texture = ExtResource("4_xq7wv")
 hframes = 11
 vframes = 10
+frame = 18
+effect_offset = Vector2(-4, -1)
+
+[node name="FlippedComponents" parent="." index="2"]
+transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0)
 
 [node name="Dash" parent="StateMachine" index="6"]
 script = ExtResource("4_h2on0")
@@ -87,7 +93,7 @@ attack_info = ExtResource("9_mtehn")
 
 [node name="Heavy" parent="StateMachine" index="21"]
 script = ExtResource("12_h1jln")
-attack_info = ExtResource("11_hh2a4")
+attack_info = ExtResource("13_cyjvw")
 
 [node name="Upper" parent="StateMachine" index="22"]
 script = ExtResource("12_gjr3y")

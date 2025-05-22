@@ -421,6 +421,7 @@ func _on_hitbox_hit(hit_data: HitData, hurtbox):
 
 func _exit(next_state):
 	root.hitbox.active = false
+	root.effects.hide()
 	#root.hitbox.rects = []
 	num_hits = 0
 	num_contacts = 0

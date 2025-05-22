@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=33 format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" uid="uid://mhfes0qawdck" path="res://characters/base_player/base_player.gd" id="1_7xl6k"]
 [ext_resource type="Script" uid="uid://c8deswq6muu7v" path="res://characters/raycast.gd" id="2_s2flu"]
+[ext_resource type="Script" uid="uid://ddgg8e7k4c0pd" path="res://characters/base_player/effects.gd" id="2_uam5m"]
 [ext_resource type="Script" uid="uid://clqptntgy8bjs" path="res://components/state_machine/state_machine.gd" id="4_dnwcv"]
 [ext_resource type="Script" uid="uid://cmwhkop71rjln" path="res://characters/base_player/states/idle.gd" id="5_6wnxk"]
 [ext_resource type="Script" uid="uid://bynwafnian3gd" path="res://characters/base_player/states/move.gd" id="7_wtpgs"]
@@ -52,7 +53,7 @@ hit_freeze = 5
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.129537
+radius = 0.175767
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3twb4"]
 size = Vector3(0.188656, 0.317568, 0.231695)
@@ -78,6 +79,13 @@ frame = 36
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 autoplay = "Idle"
+
+[node name="Effects" type="Sprite3D" parent="PlayerSprite"]
+texture_filter = 0
+render_priority = 11
+script = ExtResource("2_uam5m")
+
+[node name="FlippedComponents" type="Node3D" parent="."]
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182536, 0)
