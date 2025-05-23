@@ -3,15 +3,15 @@
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
 [ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="2_gd83v"]
-[ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="3_c7fke"]
+[ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="3_jddj4"]
 [ext_resource type="Script" uid="uid://cj1l7t1k5eima" path="res://characters/sonic/states/blocked.gd" id="3_x472b"]
 [ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="4_lwdla"]
 [ext_resource type="Resource" uid="uid://bocq8pdsey1xc" path="res://characters/tails/states/jab_1.tres" id="5_bg1qt"]
 [ext_resource type="Resource" uid="uid://spkpe3bbhbk6" path="res://characters/sonic/states/jab_3.tres" id="5_wpnlk"]
-[ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/sonic/states/heavy.gd" id="6_o7udh"]
-[ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="7_6mqiq"]
+[ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/sonic/states/heavy.gd" id="8_fueeq"]
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="8_wpnlk"]
 [ext_resource type="Resource" uid="uid://df00kkj6hx8pc" path="res://characters/sonic/states/dash_attack.tres" id="9_6mqiq"]
+[ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="9_fueeq"]
 [ext_resource type="Script" uid="uid://cxjauk8t2xkwj" path="res://characters/sonic/states/air_attack.gd" id="10_6mqiq"]
 [ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="10_c7fke"]
 [ext_resource type="Resource" uid="uid://cdy3tsk3tj34i" path="res://characters/sonic/states/air_attack.tres" id="11_41aki"]
@@ -1270,7 +1270,7 @@ _data = {
 &"kick2": SubResource("Animation_wtpgs")
 }
 
-[sub_resource type="Resource" id="Resource_fueeq"]
+[sub_resource type="Resource" id="Resource_tfamv"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1293,7 +1293,7 @@ libraries = {
 }
 
 [node name="AirAction" parent="StateMachine" index="7"]
-script = ExtResource("3_c7fke")
+script = ExtResource("3_jddj4")
 
 [node name="Blocked" parent="StateMachine" index="12"]
 script = ExtResource("3_x472b")
@@ -1308,8 +1308,8 @@ attack_info = ExtResource("4_lwdla")
 attack_info = ExtResource("5_wpnlk")
 
 [node name="Heavy" parent="StateMachine" index="21"]
-script = ExtResource("6_o7udh")
-attack_info = ExtResource("7_6mqiq")
+script = ExtResource("8_fueeq")
+attack_info = ExtResource("9_fueeq")
 
 [node name="Upper" parent="StateMachine" index="22"]
 script = ExtResource("10_c7fke")
@@ -1336,13 +1336,8 @@ attack_info = ExtResource("15_lq7el")
 script = ExtResource("16_lci63")
 attack_info = ExtResource("17_vuumm")
 
-[node name="Hitbox" parent="." index="4"]
-hit_data = SubResource("Resource_fueeq")
-
-[node name="TestLabel" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247459, 0)
-visible = false
-text = "HP:230"
+[node name="Hitbox" parent="." index="5"]
+hit_data = SubResource("Resource_tfamv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128
@@ -1361,3 +1356,8 @@ character = NodePath("../..")
 [node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
 position = Vector2(-12, 5)
 texture = ExtResource("25_ttio6")
+
+[node name="TestLabel" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247459, 0)
+visible = false
+text = "HP:230"
