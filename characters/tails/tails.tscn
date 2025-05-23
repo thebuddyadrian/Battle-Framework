@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://ubts1e2d3mjh"]
+[gd_scene load_steps=17 format=3 uid="uid://ubts1e2d3mjh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
 [ext_resource type="Texture2D" uid="uid://d3gj0dnqwxm7n" path="res://assets/tails/Tails.png" id="2_asitg"]
@@ -7,15 +7,16 @@
 [ext_resource type="Resource" uid="uid://bocq8pdsey1xc" path="res://characters/tails/states/jab_1.tres" id="3_s0kw6"]
 [ext_resource type="Resource" uid="uid://c7ar4foj551in" path="res://characters/tails/states/jab_2.tres" id="4_2xg5h"]
 [ext_resource type="Script" uid="uid://cfasn3us7ol01" path="res://characters/tails/tails_air_action.gd" id="4_qf74s"]
-[ext_resource type="Resource" uid="uid://cciol0feieiui" path="res://characters/tails/states/jab_3.tres" id="5_2xg5h"]
 [ext_resource type="Resource" uid="uid://ju0slbcssgkw" path="res://characters/tails/states/heavy.tres" id="6_asitg"]
 [ext_resource type="Script" uid="uid://6guda7f8ly0c" path="res://characters/sonic/states/grnd_shot.gd" id="7_qsj83"]
-[ext_resource type="Resource" uid="uid://s8wgsn3o883p" path="res://characters/tails/states/upper.tres" id="9_uufmg"]
+[ext_resource type="Resource" uid="uid://dcg0w2804wsk7" path="res://characters/shadow/states/jab_3.tres" id="7_rdag6"]
+[ext_resource type="Resource" uid="uid://dan5rlht4k6p5" path="res://characters/shadow/states/upper.tres" id="9_rdag6"]
+[ext_resource type="Resource" uid="uid://c511ksyj83jh1" path="res://characters/tails/states/tails_dash_attack.tres" id="10_cps4t"]
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="10_grehn"]
 [ext_resource type="Resource" uid="uid://d64hbxhpdsat" path="res://characters/tails/states/grnd_pow.tres" id="12_lg3ej"]
 [ext_resource type="Resource" uid="uid://dft7nxfslpsce" path="res://characters/tails/states/tails_air_pow.tres" id="13_rdag6"]
 
-[sub_resource type="Resource" id="Resource_lg3ej"]
+[sub_resource type="Resource" id="Resource_cps4t"]
 script = ExtResource("2_uaadi")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -49,13 +50,16 @@ attack_info = ExtResource("3_s0kw6")
 attack_info = ExtResource("4_2xg5h")
 
 [node name="Jab3" parent="StateMachine" index="20"]
-attack_info = ExtResource("5_2xg5h")
+attack_info = ExtResource("7_rdag6")
 
 [node name="Heavy" parent="StateMachine" index="21"]
 attack_info = ExtResource("6_asitg")
 
 [node name="Upper" parent="StateMachine" index="22"]
-attack_info = ExtResource("9_uufmg")
+attack_info = ExtResource("9_rdag6")
+
+[node name="DashAttack" parent="StateMachine" index="23"]
+attack_info = ExtResource("10_cps4t")
 
 [node name="GrndShot" parent="StateMachine" index="26"]
 script = ExtResource("7_qsj83")
@@ -68,4 +72,4 @@ attack_info = ExtResource("12_lg3ej")
 attack_info = ExtResource("13_rdag6")
 
 [node name="Hitbox" parent="." index="4"]
-hit_data = SubResource("Resource_lg3ej")
+hit_data = SubResource("Resource_cps4t")
