@@ -1,0 +1,144 @@
+[gd_scene load_steps=16 format=3 uid="uid://c0lnrit4vdctn"]
+
+[ext_resource type="Script" uid="uid://cglriergrnma0" path="res://spawnables/sonic_grnd_shot.gd" id="1_w1kis"]
+[ext_resource type="Resource" uid="uid://bryx7fjbw1pr2" path="res://spawnables/ShotData/ShadowGrndSht.tres" id="2_tewle"]
+[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_ana3j"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_30uhr"]
+[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_e5bp5"]
+[ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://assets/shadow/shadows_effects-Sheet.png" id="6_1ofr1"]
+
+[sub_resource type="Resource" id="Resource_ln1aa"]
+script = ExtResource("4_30uhr")
+damage = 10.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 13.0
+knockback_angle = 45.0
+knockback_type = 4
+unblockable = false
+hit_freeze = 5
+hit_stun = 30
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_f2pd6"]
+radius = 0.51228
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_yq6br"]
+radius = 0.254871
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_1t67f"]
+size = Vector3(0.70697, 1, 0.717041)
+
+[sub_resource type="Animation" id="Animation_bli4g"]
+resource_name = "End"
+length = 0.692315
+step = 0.0769231
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effect:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(5, 8), Vector2i(6, 8), Vector2i(7, 8), Vector2i(8, 8), Vector2i(9, 8), Vector2i(10, 8), Vector2i(0, 9), Vector2i(1, 9), Vector2i(2, 9)]
+}
+
+[sub_resource type="Animation" id="Animation_3f52u"]
+resource_name = "Loop"
+length = 0.461546
+loop_mode = 1
+step = 0.0769231
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effect:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(10, 7), Vector2i(0, 8), Vector2i(1, 8), Vector2i(2, 8), Vector2i(3, 8), Vector2i(4, 8)]
+}
+
+[sub_resource type="Animation" id="Animation_uubsm"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effect:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(1, 7)]
+}
+
+[sub_resource type="Animation" id="Animation_i0epl"]
+resource_name = "Start"
+length = 0.692315
+step = 0.0769231
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Effect:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(1, 7), Vector2i(2, 7), Vector2i(3, 7), Vector2i(4, 7), Vector2i(5, 7), Vector2i(6, 7), Vector2i(7, 7), Vector2i(8, 7), Vector2i(9, 7)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_w88ea"]
+_data = {
+&"End": SubResource("Animation_bli4g"),
+&"Loop": SubResource("Animation_3f52u"),
+&"RESET": SubResource("Animation_uubsm"),
+&"Start": SubResource("Animation_i0epl")
+}
+
+[node name="ShadowGrndTrap" type="CharacterBody3D"]
+script = ExtResource("1_w1kis")
+spawnable_info = ExtResource("2_tewle")
+
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
+script = ExtResource("3_ana3j")
+hit_data = SubResource("Resource_ln1aa")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://cm6korv2sfd"
+
+[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
+shape = SubResource("SphereShape3D_f2pd6")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+visible = false
+script = ExtResource("5_e5bp5")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://jk40g84p8nlf"
+
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
+shape = SubResource("SphereShape3D_yq6br")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
+shape = SubResource("BoxShape3D_1t67f")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_w88ea")
+}
+
+[node name="Effect" type="Sprite3D" parent="."]
+texture_filter = 2
+texture = ExtResource("6_1ofr1")
+hframes = 11
+vframes = 10
+frame = 78

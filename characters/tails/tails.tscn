@@ -1,7 +1,7 @@
 [gd_scene load_steps=17 format=3 uid="uid://ubts1e2d3mjh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
-[ext_resource type="Texture2D" uid="uid://d3gj0dnqwxm7n" path="res://assets/tails/Tails.png" id="2_asitg"]
+[ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://assets/tails/TailsSpritesheet.png" id="2_cps4t"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_uaadi"]
 [ext_resource type="AnimationLibrary" uid="uid://gi0u1pjxm16h" path="res://characters/tails/tails_animations.res" id="3_ppohl"]
 [ext_resource type="Resource" uid="uid://bocq8pdsey1xc" path="res://characters/tails/states/jab_1.tres" id="3_s0kw6"]
@@ -30,9 +30,9 @@ hit_stun = 30
 [node name="Tails" instance=ExtResource("1_b5y1r")]
 
 [node name="PlayerSprite" parent="." index="1"]
-texture = ExtResource("2_asitg")
+texture = ExtResource("2_cps4t")
 hframes = 15
-vframes = 20
+vframes = 21
 frame = 27
 
 [node name="AnimationPlayer" parent="PlayerSprite" index="0"]
@@ -71,5 +71,5 @@ attack_info = ExtResource("12_lg3ej")
 [node name="AirPow" parent="StateMachine" index="29"]
 attack_info = ExtResource("13_rdag6")
 
-[node name="Hitbox" parent="." index="4"]
+[node name="Hitbox" parent="." index="5"]
 hit_data = SubResource("Resource_cps4t")
