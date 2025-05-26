@@ -1,25 +1,25 @@
-[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://c7ar4foj551in"]
+[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://bscjq1fcq5uur"]
 
-[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_tk021"]
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_6vhyh"]
 
 [resource]
-script = ExtResource("1_tk021")
-animation = "kick1"
+script = ExtResource("1_6vhyh")
+animation = "AirShotFwd"
 air_animation = ""
-animation_down = ""
-animation_up = ""
+animation_down = "AirShotDown"
+animation_up = "AirShotUp"
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = true
-use_sections = true
-startup_frames = 8
+use_sections = false
+startup_frames = 35
 active_frames = 9
 recovery_frames = 9
 attack_sound = "punch"
-damage = 10
-knockback_power = 2
-knockback_angle = 0
-knockback_type = 0
+damage = 15
+knockback_power = 20
+knockback_angle = -90
+knockback_type = 3
 hit_stun = 30
 hit_sound = "punch"
 can_charge = false

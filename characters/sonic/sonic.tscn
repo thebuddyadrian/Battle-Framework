@@ -1336,13 +1336,8 @@ attack_info = ExtResource("15_lq7el")
 script = ExtResource("16_lci63")
 attack_info = ExtResource("17_vuumm")
 
-[node name="Hitbox" parent="." index="4"]
+[node name="Hitbox" parent="." index="5"]
 hit_data = SubResource("Resource_fueeq")
-
-[node name="TestLabel" parent="." index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247459, 0)
-visible = false
-text = "HP:230"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128
@@ -1361,3 +1356,8 @@ character = NodePath("../..")
 [node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
 position = Vector2(-12, 5)
 texture = ExtResource("25_ttio6")
+
+[node name="TestLabel" parent="." index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247459, 0)
+visible = false
+text = "HP:230"

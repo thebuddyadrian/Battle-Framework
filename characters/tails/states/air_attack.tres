@@ -1,24 +1,24 @@
-[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://dft7nxfslpsce"]
+[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://kwraw6lnyxic"]
 
-[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_2sqt2"]
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_raphe"]
 
 [resource]
-script = ExtResource("1_2sqt2")
-animation = "AirPowFwd"
+script = ExtResource("1_raphe")
+animation = "AirAttack"
 air_animation = ""
-animation_down = "AirPowDown"
-animation_up = "AirPowUp"
+animation_down = ""
+animation_up = ""
 change_anim_in_air = false
 play_animation = true
-use_anim_markers = false
+use_anim_markers = true
 use_sections = false
-startup_frames = 4
-active_frames = 20
-recovery_frames = 8
+startup_frames = 7
+active_frames = 21
+recovery_frames = 13
 attack_sound = "punch"
-damage = 4
-knockback_power = 4
-knockback_angle = 80
+damage = 15
+knockback_power = 8
+knockback_angle = -80
 knockback_type = 0
 hit_stun = 30
 hit_sound = "punch"

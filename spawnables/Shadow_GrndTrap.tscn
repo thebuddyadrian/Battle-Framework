@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://c0lnrit4vdctn"]
+[gd_scene load_steps=41 format=3 uid="uid://c0lnrit4vdctn"]
 
 [ext_resource type="Script" uid="uid://cglriergrnma0" path="res://spawnables/sonic_grnd_shot.gd" id="1_w1kis"]
 [ext_resource type="Resource" uid="uid://bryx7fjbw1pr2" path="res://spawnables/ShotData/ShadowGrndSht.tres" id="2_tewle"]
@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_e5bp5"]
 [ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://assets/shadow/shadows_effects-Sheet.png" id="6_1ofr1"]
 
-[sub_resource type="Resource" id="Resource_ln1aa"]
+[sub_resource type="Resource" id="Resource_w1kis"]
 script = ExtResource("4_30uhr")
 damage = 10.0
 knockback_direction = Vector2(0, 0)
@@ -102,6 +102,182 @@ _data = {
 &"Start": SubResource("Animation_i0epl")
 }
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_w1kis"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(70, 448, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tewle"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(140, 448, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ana3j"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(210, 448, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_30uhr"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(280, 448, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e5bp5"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(350, 448, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1ofr1"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(420, 448, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ln1aa"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(490, 448, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6r80o"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(560, 448, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gghjb"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(630, 448, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqoad"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(700, 448, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_usm7g"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(0, 512, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x2kmt"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(70, 512, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dm7y6"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(140, 512, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f7gxh"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(210, 512, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ahapq"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(280, 512, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6nrt4"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(350, 512, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q517c"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(420, 512, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_q60bo"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(490, 512, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dhaul"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(560, 512, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gs2ga"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(630, 512, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojaxd"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(700, 512, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3u4fb"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(0, 576, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hg7ty"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(70, 576, 70, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ve83g"]
+atlas = ExtResource("6_1ofr1")
+region = Rect2(140, 576, 70, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yoq21"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w1kis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tewle")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ana3j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_30uhr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e5bp5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1ofr1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ln1aa")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6r80o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gghjb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqoad")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_usm7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x2kmt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dm7y6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f7gxh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ahapq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6nrt4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q517c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_q60bo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dhaul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gs2ga")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojaxd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3u4fb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hg7ty")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ve83g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 14.0
+}]
+
 [node name="ShadowGrndTrap" type="CharacterBody3D"]
 script = ExtResource("1_w1kis")
 spawnable_info = ExtResource("2_tewle")
@@ -109,7 +285,7 @@ spawnable_info = ExtResource("2_tewle")
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 script = ExtResource("3_ana3j")
-hit_data = SubResource("Resource_ln1aa")
+hit_data = SubResource("Resource_w1kis")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
@@ -142,3 +318,6 @@ texture = ExtResource("6_1ofr1")
 hframes = 11
 vframes = 10
 frame = 78
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+sprite_frames = SubResource("SpriteFrames_yoq21")

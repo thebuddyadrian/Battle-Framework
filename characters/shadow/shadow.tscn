@@ -100,7 +100,6 @@ libraries = {
 
 [node name="Effects" parent="PlayerSprite" index="1"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-visible = false
 offset = Vector2(-4, -1)
 billboard = 1
 texture = ExtResource("4_xq7wv")
