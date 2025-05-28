@@ -10,6 +10,6 @@ func _phase_changed():
 			"direction": attack_direction,
 			"velocity": Vector3(attack_direction.x * 6, 0, attack_direction.y * 6)
 		}
-		var proj = root.spawn_scene("GrndShot", GRND_SHOT_PROJ_PATH, root.global_position, null, data)
+		var proj = root.spawn_scene("GrndTrap", GRND_SHOT_PROJ_PATH, root.global_position, null, data)
 		var direction = (target.position - proj.position).normalized()
 		proj.velocity = direction * proj_speed

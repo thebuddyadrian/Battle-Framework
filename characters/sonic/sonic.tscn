@@ -8,7 +8,7 @@
 [ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="4_lwdla"]
 [ext_resource type="Resource" uid="uid://bocq8pdsey1xc" path="res://characters/tails/states/jab_1.tres" id="5_bg1qt"]
 [ext_resource type="Resource" uid="uid://spkpe3bbhbk6" path="res://characters/sonic/states/jab_3.tres" id="5_wpnlk"]
-[ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/sonic/states/heavy.gd" id="8_fueeq"]
+[ext_resource type="Script" uid="uid://c214d7i75fcpb" path="res://characters/sonic/states/heavy.gd" id="8_fueeq"]
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="8_wpnlk"]
 [ext_resource type="Resource" uid="uid://df00kkj6hx8pc" path="res://characters/sonic/states/dash_attack.tres" id="9_6mqiq"]
 [ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="9_fueeq"]

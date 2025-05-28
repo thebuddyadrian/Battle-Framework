@@ -568,11 +568,11 @@ func change_phase_to(phase: AttackPhase) -> void:
 ## Can be called manually to end the current phase before the phase timer ends
 func next_phase() -> void:
 	# Skip phase if it has 0 frames
-	if _phases[current_phase_index + 1].frames == 0:
-		if _phases[current_phase_index + 1].end_phase:
-			parent.change_state(next_state, next_state_data)
-			return
-		current_phase_index += 1
+	# if _phases[current_phase_index + 1].frames == 0:
+	# 	if _phases[current_phase_index + 1].end_phase:
+	# 		parent.change_state(next_state, next_state_data)
+	# 		return
+	# 	current_phase_index += 1
 	change_phase(current_phase_index + 1)
 
 

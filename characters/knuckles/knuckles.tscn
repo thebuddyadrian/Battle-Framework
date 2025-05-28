@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_37tig"]
 [ext_resource type="Texture2D" uid="uid://cgq063pwiouqa" path="res://assets/knuckles/knuckles.png" id="2_5e7ij"]
-[ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="3_h42f8"]
 [ext_resource type="AnimationLibrary" uid="uid://caicco3rl6eej" path="res://characters/knuckles/knuckles_animation.res" id="3_opinu"]
 [ext_resource type="Script" uid="uid://cj1l7t1k5eima" path="res://characters/sonic/states/blocked.gd" id="4_kytj2"]
 [ext_resource type="Script" uid="uid://bmg8gug5n5wos" path="res://characters/knuckles/states/dash.tres.gd" id="4_lh63m"]
+[ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="5_0st36"]
 [ext_resource type="Resource" uid="uid://dttk12fa38yx0" path="res://characters/sonic/states/jab_1.tres" id="5_qcon3"]
 [ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="6_l4m8t"]
 [ext_resource type="Resource" uid="uid://spkpe3bbhbk6" path="res://characters/sonic/states/jab_3.tres" id="7_wfnlq"]
-[ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/sonic/states/heavy.gd" id="8_oggfo"]
+[ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/shadow/states/heavy.gd" id="8_oggfo"]
 [ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="9_i116v"]
 [ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="10_1ooqa"]
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="11_qawlg"]
@@ -61,7 +61,7 @@ autoplay = "knuckles_animation/Idle"
 script = ExtResource("4_lh63m")
 
 [node name="AirAction" parent="StateMachine" index="7"]
-script = ExtResource("3_h42f8")
+script = ExtResource("5_0st36")
 
 [node name="Blocked" parent="StateMachine" index="12"]
 script = ExtResource("4_kytj2")
@@ -104,12 +104,8 @@ attack_info = ExtResource("18_ns7fv")
 script = ExtResource("19_v6048")
 attack_info = ExtResource("20_v4s0a")
 
-[node name="Hitbox" parent="." index="4"]
+[node name="Hitbox" parent="." index="5"]
 hit_data = SubResource("Resource_0st36")
-
-[node name="TestLabel" parent="." index="6"]
-visible = false
-texture_filter = 0
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128
@@ -128,3 +124,7 @@ character = NodePath("../..")
 [node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
 position = Vector2(-12, 5)
 texture = ExtResource("27_0st36")
+
+[node name="TestLabel" parent="." index="8"]
+visible = false
+texture_filter = 0

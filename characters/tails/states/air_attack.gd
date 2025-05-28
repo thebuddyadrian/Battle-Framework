@@ -16,5 +16,6 @@ func _step():
 
 
 func _exit(next_state):
+	super._exit(next_state)
 	root.gravity_scale = 1
 	root.disable_all_actions()
