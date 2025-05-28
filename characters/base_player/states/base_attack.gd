@@ -192,7 +192,7 @@ func _enter(data := {}):
 	_phases.clear()
 	_setup_from_resource()
 	_move_setup()
-	_check_for_end_phase()
+	_check_for_errors()
 	root.hitbox.active = false
 	#root.hitbox.rects = []
 	root.hitbox.hit_data = HitData.new()
@@ -274,12 +274,21 @@ func _move_setup():
 	pass
 
 
-## Makes sure an end phase was set
-func _check_for_end_phase():
+## Makes sure no mistakes were made when setting up the attack
+func _check_for_errors():
+	# Make sure the attack has at least one phase
+	if _phases.is_empty():
+		assert(false, "This attack has no phases! Did you forget to attach an AttackInfo resource? If you're not using an AttackInfo resource, make sure to set up your phases manually in the _move_setup() function.")
+		return
+
+	# Make sure the attack has an end phase
+	var has_end_phase = false
 	for phase in _phases:
 		if phase.end_phase:
-			return
-	assert(false, "This attack has no end phase!")
+			has_end_phase = true
+	if !has_end_phase:
+		assert(false, "This attack has no end phase! Make sure one of your attack phases has the end_phase variable set to true.")
+		return
 
 
 func _step():
