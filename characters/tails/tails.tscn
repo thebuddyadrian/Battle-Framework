@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://ubts1e2d3mjh"]
+[gd_scene load_steps=26 format=3 uid="uid://ubts1e2d3mjh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
 [ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://assets/tails/TailsSpritesheet.png" id="2_cps4t"]
@@ -20,8 +20,12 @@
 [ext_resource type="Script" uid="uid://bbmt3n2ued7n0" path="res://characters/tails/states/air_shot.gd" id="15_infaa"]
 [ext_resource type="Resource" uid="uid://c1reyexjipb6f" path="res://characters/tails/states/grnd_shot.tres" id="15_jrwva"]
 [ext_resource type="Resource" uid="uid://bscjq1fcq5uur" path="res://characters/tails/states/air_shot.tres" id="16_jrwva"]
+[ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="21_t5o4s"]
+[ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="22_gueqa"]
+[ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="23_wv4dc"]
+[ext_resource type="Texture2D" uid="uid://bsdjsrfloxkgh" path="res://assets/ui/TailsLife.png" id="24_6dfm6"]
 
-[sub_resource type="Resource" id="Resource_jrwva"]
+[sub_resource type="Resource" id="Resource_t5o4s"]
 script = ExtResource("2_uaadi")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -86,4 +90,26 @@ script = ExtResource("13_cps4t")
 attack_info = ExtResource("12_lg3ej")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_jrwva")
+hit_data = SubResource("Resource_t5o4s")
+
+[node name="TestLabel" parent="." index="7"]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
+layer = 128
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" node_paths=PackedStringArray("character")]
+offset_left = 21.0
+offset_top = 4.0
+offset_right = 77.0
+offset_bottom = 44.0
+max_value = 300.0
+texture_under = ExtResource("21_t5o4s")
+texture_progress = ExtResource("22_gueqa")
+script = ExtResource("23_wv4dc")
+character = NodePath("../..")
+metadata/_edit_use_anchors_ = true
+
+[node name="TailsLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
+position = Vector2(-12, 5)
+texture = ExtResource("24_6dfm6")
