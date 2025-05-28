@@ -6,6 +6,7 @@ extends Sprite3D
 
 
 func _process(delta: float) -> void:
-    offset = effect_offset
-    if flip_h:
-        offset *= -1
+	offset = effect_offset
+	#AirPow offset: x=1.0 y=3.0
+	if flip_h:
+		offset *= -1

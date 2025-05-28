@@ -1270,7 +1270,7 @@ _data = {
 &"kick2": SubResource("Animation_wtpgs")
 }
 
-[sub_resource type="Resource" id="Resource_tfamv"]
+[sub_resource type="Resource" id="Resource_fueeq"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1337,7 +1337,7 @@ script = ExtResource("16_lci63")
 attack_info = ExtResource("17_vuumm")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_tfamv")
+hit_data = SubResource("Resource_fueeq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128

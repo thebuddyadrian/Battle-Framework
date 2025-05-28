@@ -95,7 +95,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_kxgsb")
 }],
 "loop": true,
-"name": &"Side",
+"name": &"new_animation",
 "speed": 12.0
 }]
 
