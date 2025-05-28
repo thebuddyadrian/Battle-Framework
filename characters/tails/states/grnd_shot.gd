@@ -13,6 +13,3 @@ func _phase_changed():
 		proj.direction = attack_direction
 		proj.velocity.x = attack_direction.x * 10
 		proj.velocity.z = attack_direction.y * 10
-		root.velocity.y = 12
-		root.velocity.x = -root.facing_direction.x * 7
-		root.velocity.z = -root.facing_direction.y * 7

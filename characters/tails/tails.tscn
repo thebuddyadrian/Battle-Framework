@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ubts1e2d3mjh"]
+[gd_scene load_steps=22 format=3 uid="uid://ubts1e2d3mjh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
 [ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://assets/tails/TailsSpritesheet.png" id="2_cps4t"]
@@ -8,19 +8,20 @@
 [ext_resource type="Resource" uid="uid://c7ar4foj551in" path="res://characters/tails/states/jab_2.tres" id="4_2xg5h"]
 [ext_resource type="Script" uid="uid://cfasn3us7ol01" path="res://characters/tails/tails_air_action.gd" id="4_qf74s"]
 [ext_resource type="Resource" uid="uid://ju0slbcssgkw" path="res://characters/tails/states/heavy.tres" id="6_asitg"]
-[ext_resource type="Script" uid="uid://6guda7f8ly0c" path="res://characters/sonic/states/grnd_shot.gd" id="7_qsj83"]
 [ext_resource type="Resource" uid="uid://dcg0w2804wsk7" path="res://characters/shadow/states/jab_3.tres" id="7_rdag6"]
 [ext_resource type="Resource" uid="uid://dan5rlht4k6p5" path="res://characters/shadow/states/upper.tres" id="9_rdag6"]
 [ext_resource type="Resource" uid="uid://c511ksyj83jh1" path="res://characters/tails/states/dash_attack.tres" id="10_cps4t"]
-[ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="10_grehn"]
 [ext_resource type="Script" uid="uid://c88giv4vr1pxp" path="res://characters/tails/states/air_attack.gd" id="11_iyier"]
 [ext_resource type="Resource" uid="uid://kwraw6lnyxic" path="res://characters/tails/states/air_attack.tres" id="12_5541g"]
 [ext_resource type="Resource" uid="uid://d64hbxhpdsat" path="res://characters/tails/states/grnd_pow.tres" id="12_lg3ej"]
 [ext_resource type="Script" uid="uid://c4dc5gm7yxf0q" path="res://characters/tails/states/grnd_pow.gd" id="13_cps4t"]
+[ext_resource type="Resource" uid="uid://bd4rncwvb76vi" path="res://characters/tails/states/aim_attack.tres" id="13_jrwva"]
+[ext_resource type="Script" uid="uid://drbk80synbgat" path="res://characters/tails/states/grnd_shot.gd" id="14_infaa"]
 [ext_resource type="Script" uid="uid://bbmt3n2ued7n0" path="res://characters/tails/states/air_shot.gd" id="15_infaa"]
+[ext_resource type="Resource" uid="uid://c1reyexjipb6f" path="res://characters/tails/states/grnd_shot.tres" id="15_jrwva"]
 [ext_resource type="Resource" uid="uid://bscjq1fcq5uur" path="res://characters/tails/states/air_shot.tres" id="16_jrwva"]
 
-[sub_resource type="Resource" id="Resource_5541g"]
+[sub_resource type="Resource" id="Resource_jrwva"]
 script = ExtResource("2_uaadi")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -69,9 +70,12 @@ attack_info = ExtResource("10_cps4t")
 script = ExtResource("11_iyier")
 attack_info = ExtResource("12_5541g")
 
+[node name="AimAttack" parent="StateMachine" index="25"]
+attack_info = ExtResource("13_jrwva")
+
 [node name="GrndShot" parent="StateMachine" index="26"]
-script = ExtResource("7_qsj83")
-attack_info = ExtResource("10_grehn")
+script = ExtResource("14_infaa")
+attack_info = ExtResource("15_jrwva")
 
 [node name="AirShot" parent="StateMachine" index="27"]
 script = ExtResource("15_infaa")
@@ -82,4 +86,4 @@ script = ExtResource("13_cps4t")
 attack_info = ExtResource("12_lg3ej")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_5541g")
+hit_data = SubResource("Resource_jrwva")

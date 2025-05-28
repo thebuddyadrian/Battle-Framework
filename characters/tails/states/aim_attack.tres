@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://bocq8pdsey1xc"]
+[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://bd4rncwvb76vi"]
 
-[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_27ht6"]
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_46usk"]
 
 [resource]
-script = ExtResource("1_27ht6")
-animation = "Punch1"
+script = ExtResource("1_46usk")
+animation = "AimAttack"
 air_animation = ""
 animation_down = ""
 animation_up = ""
@@ -12,14 +12,14 @@ change_anim_in_air = false
 play_animation = true
 use_anim_markers = true
 use_sections = true
-startup_frames = 2
-active_frames = 6
+startup_frames = 12
+active_frames = 3
 recovery_frames = 10
 attack_sound = "punch"
-damage = 10
-knockback_power = 2
-knockback_angle = 0
-knockback_type = 0
+damage = 15
+knockback_power = 20
+knockback_angle = -90
+knockback_type = 3
 hit_stun = 30
 hit_sound = "hit"
 can_charge = false

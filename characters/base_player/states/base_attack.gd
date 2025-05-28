@@ -202,13 +202,13 @@ func _enter(data := {}):
 	# Otherwise, try to infer from inputs
 	else:
 		if !is_zero_approx(root.get_movement_vector().x):
-			attack_direction.x = root.get_movement_vector().x
+			attack_direction.x = round(root.get_movement_vector().x)
 			attack_direction.y = 0
 		elif !is_zero_approx(root.get_movement_vector().y):
 			attack_direction.x = 0
-			attack_direction.y = root.get_movement_vector().y
+			attack_direction.y = round(root.get_movement_vector().y)
 		else:
-			attack_direction.x = root.facing_direction_2d
+			attack_direction.x = round(root.facing_direction_2d)
 			attack_direction.y = 0
 
 	root.hitbox.hit_data.knockback_direction = attack_direction
@@ -368,7 +368,7 @@ func _phase_changed_internal(phase_index: int, previous_phase_index: int):
 			#get_hit_data().knockback_scaling_charge_scale = knockback_scaling_charge_scale
 			#get_hit_data().sound = hit_sound
 		# Player can cancel into other attacks when recovery phase starts
-		if get_current_phase() == recovery_phase:
+		if get_current_phase() == active_phase:
 			root.set_action_enabled("attack", true)
 	
 # Virtual method to run logic right when the phase is changed, including at the beginning when startup phase is entered

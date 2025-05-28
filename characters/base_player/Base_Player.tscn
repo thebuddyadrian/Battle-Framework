@@ -53,7 +53,7 @@ hit_freeze = 5
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.175767
+radius = 0.129537
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3twb4"]
 size = Vector3(0.188656, 0.317568, 0.231695)
@@ -81,6 +81,7 @@ frame = 36
 autoplay = "Idle"
 
 [node name="Effects" type="Sprite3D" parent="PlayerSprite"]
+visible = false
 texture_filter = 0
 render_priority = 11
 script = ExtResource("2_uam5m")

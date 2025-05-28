@@ -11,7 +11,7 @@
 [ext_resource type="Resource" uid="uid://bqoak0odkms33" path="res://characters/shadow/states/jab_1.tres" id="9_xq7wv"]
 [ext_resource type="Resource" uid="uid://cxynbelygy8qr" path="res://characters/shadow/states/jab_2.tres" id="10_h1jln"]
 [ext_resource type="Resource" uid="uid://dcg0w2804wsk7" path="res://characters/shadow/states/jab_3.tres" id="11_h1jln"]
-[ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/sonic/states/heavy.gd" id="12_h1jln"]
+[ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/sonic/states/heavy.gd" id="12_gjr3y"]
 [ext_resource type="Resource" uid="uid://di838klmp6a00" path="res://characters/shadow/states/heavy.tres" id="13_cyjvw"]
 [ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="14_xq7wv"]
 [ext_resource type="Resource" uid="uid://dan5rlht4k6p5" path="res://characters/shadow/states/upper.tres" id="15_h1jln"]
@@ -130,7 +130,7 @@ attack_info = ExtResource("10_h1jln")
 attack_info = ExtResource("11_h1jln")
 
 [node name="Heavy" parent="StateMachine" index="21"]
-script = ExtResource("12_h1jln")
+script = ExtResource("12_gjr3y")
 attack_info = ExtResource("13_cyjvw")
 
 [node name="Upper" parent="StateMachine" index="22"]
