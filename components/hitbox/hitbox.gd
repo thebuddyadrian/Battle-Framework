@@ -91,7 +91,7 @@ func check_if_clash(hitbox) -> bool:
 	if hitbox.is_in_group("hitbox_group"):
 		if hitbox.active:
 			if !(hitbox.root.is_in_group("characters")): return true
-			if hitbox.root.team_id != root.team_id and !(get_path_to(hitbox.root) in nodes_already_hit):
+			if !(get_path_to(hitbox.root) in nodes_already_hit):
 				return true
 	return false
 		

@@ -1,7 +1,6 @@
-[gd_scene load_steps=41 format=3 uid="uid://c0lnrit4vdctn"]
+[gd_scene load_steps=40 format=3 uid="uid://c0lnrit4vdctn"]
 
-[ext_resource type="Script" uid="uid://cglriergrnma0" path="res://spawnables/sonic_grnd_shot.gd" id="1_w1kis"]
-[ext_resource type="Resource" uid="uid://bryx7fjbw1pr2" path="res://spawnables/ShotData/ShadowGrndSht.tres" id="2_tewle"]
+[ext_resource type="Script" uid="uid://ci1lobemlhneg" path="res://spawnables/shadow_grnd_trap.gd" id="1_c02ij"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_ana3j"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_30uhr"]
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_e5bp5"]
@@ -279,8 +278,7 @@ animations = [{
 }]
 
 [node name="ShadowGrndTrap" type="CharacterBody3D"]
-script = ExtResource("1_w1kis")
-spawnable_info = ExtResource("2_tewle")
+script = ExtResource("1_c02ij")
 
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
@@ -320,4 +318,5 @@ vframes = 10
 frame = 78
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
+visible = false
 sprite_frames = SubResource("SpriteFrames_yoq21")

@@ -1,9 +1,12 @@
 extends BaseState
 
+## Determines how high the player goes when homing in on their opponent. Useful for positioning the player so they can hit their aim attack better.
+@export var y_velocity = 15
+
 func _enter(data = {}):
 	#root.velocity.x = clamp(root.velocity.x, -20, 20)
 	#root.velocity.z = clamp(root.velocity.z, -20, 20)
-	root.velocity.y = 15
+	root.velocity.y = y_velocity
 	root.animplayer.play("HomingDash")
 	root.play_sound_effect("homing_dash")
 	root.gravity_scale = 0
