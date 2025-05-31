@@ -352,6 +352,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [8, 9, 10, 11, 12, 13]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"End"]
+}
 
 [sub_resource type="Animation" id="Animation_xm2x0"]
 resource_name = "Loop"
@@ -370,6 +382,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [2, 3, 4, 5, 6, 7]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Loop"]
+}
 
 [sub_resource type="Animation" id="Animation_8jstf"]
 length = 0.001
@@ -384,6 +408,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Start"]
 }
 
 [sub_resource type="Animation" id="Animation_561xu"]
@@ -401,6 +437,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Start"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0scby"]
@@ -425,7 +473,7 @@ offset = Vector2(0, 20)
 billboard = 1
 render_priority = 10
 sprite_frames = SubResource("SpriteFrames_mdu81")
-animation = &"Side"
+animation = &"Start"
 autoplay = "Side"
 
 [node name="Hitbox" type="Area3D" parent="."]

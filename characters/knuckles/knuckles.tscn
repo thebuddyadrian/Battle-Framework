@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://11vd21yw7fe7"]
+[gd_scene load_steps=32 format=3 uid="uid://11vd21yw7fe7"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_37tig"]
 [ext_resource type="Texture2D" uid="uid://cgq063pwiouqa" path="res://assets/knuckles/knuckles.png" id="2_5e7ij"]
 [ext_resource type="AnimationLibrary" uid="uid://caicco3rl6eej" path="res://characters/knuckles/knuckles_animation.res" id="3_opinu"]
 [ext_resource type="Script" uid="uid://cj1l7t1k5eima" path="res://characters/sonic/states/blocked.gd" id="4_kytj2"]
 [ext_resource type="Script" uid="uid://bmg8gug5n5wos" path="res://characters/knuckles/states/dash.tres.gd" id="4_lh63m"]
+[ext_resource type="Texture2D" uid="uid://ds3c6j0olh44r" path="res://assets/knuckles/Knuckles spritesheet.png" id="4_xt1s0"]
 [ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="5_0st36"]
 [ext_resource type="Resource" uid="uid://dttk12fa38yx0" path="res://characters/sonic/states/jab_1.tres" id="5_qcon3"]
 [ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="6_l4m8t"]
@@ -19,10 +20,11 @@
 [ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="15_canxq"]
 [ext_resource type="Script" uid="uid://6guda7f8ly0c" path="res://characters/sonic/states/grnd_shot.gd" id="16_qnoh7"]
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="17_paebg"]
-[ext_resource type="Resource" uid="uid://lscqxewn2oxm" path="res://characters/sonic/states/grnd_pow.tres" id="18_ns7fv"]
-[ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/sonic/states/air_pow.gd" id="19_v6048"]
-[ext_resource type="Resource" uid="uid://slwg0iqcb6ry" path="res://characters/sonic/states/air_pow.tres" id="20_v4s0a"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="21_s1n3o"]
+[ext_resource type="Script" uid="uid://chmc3a32o3eiv" path="res://characters/knuckles/grnd_pow.gd" id="21_xt1s0"]
+[ext_resource type="Resource" uid="uid://dw28vniky3lcq" path="res://characters/knuckles/states/grnd_pow.tres" id="22_1kwib"]
+[ext_resource type="Script" uid="uid://comuq04kan03g" path="res://characters/knuckles/air_pow.gd" id="23_xt1s0"]
+[ext_resource type="Resource" uid="uid://ioxxvxrf0c3u" path="res://characters/knuckles/states/air_pow.tres" id="24_1kwib"]
 [ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="24_5lf22"]
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="25_0st36"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="26_xt1s0"]
@@ -30,7 +32,7 @@
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lh63m"]
 
-[sub_resource type="Resource" id="Resource_0st36"]
+[sub_resource type="Resource" id="Resource_1kwib"]
 script = ExtResource("21_s1n3o")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -48,7 +50,7 @@ DASH_SPEED = 18.5
 [node name="PlayerSprite" parent="." index="1"]
 texture = ExtResource("2_5e7ij")
 vframes = 17
-frame = 2
+frame = 195
 
 [node name="AnimationPlayer" parent="PlayerSprite" index="0"]
 libraries = {
@@ -56,6 +58,12 @@ libraries = {
 &"GrndShotFwd": SubResource("AnimationLibrary_lh63m")
 }
 autoplay = "knuckles_animation/Idle"
+
+[node name="Effects" parent="PlayerSprite" index="1"]
+texture = ExtResource("4_xt1s0")
+hframes = 7
+vframes = 6
+frame = 27
 
 [node name="Dash" parent="StateMachine" index="6"]
 script = ExtResource("4_lh63m")
@@ -98,14 +106,18 @@ script = ExtResource("16_qnoh7")
 attack_info = ExtResource("17_paebg")
 
 [node name="GrndPow" parent="StateMachine" index="28"]
-attack_info = ExtResource("18_ns7fv")
+script = ExtResource("21_xt1s0")
+proj_offset_x = 1.0
+proj_offset_y = 1.0
+proj_offset_z = 1.0
+attack_info = ExtResource("22_1kwib")
 
 [node name="AirPow" parent="StateMachine" index="29"]
-script = ExtResource("19_v6048")
-attack_info = ExtResource("20_v4s0a")
+script = ExtResource("23_xt1s0")
+attack_info = ExtResource("24_1kwib")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_0st36")
+hit_data = SubResource("Resource_1kwib")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128

@@ -1,20 +1,20 @@
 [gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://slwg0iqcb6ry"]
 
-[ext_resource type="Script" path="res://characters/base_player/states/attack_info.gd" id="1_uc0he"]
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_uc0he"]
 
 [resource]
 script = ExtResource("1_uc0he")
-animation = "AirPowFwd"
+animation = "AirPow"
 air_animation = ""
-animation_down = "AirPowDown"
-animation_up = "AirPowUp"
+animation_down = ""
+animation_up = ""
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = false
 use_sections = false
-startup_frames = 4
-active_frames = 20
-recovery_frames = 8
+startup_frames = 1
+active_frames = 66
+recovery_frames = 12
 attack_sound = "punch"
 damage = 4
 knockback_power = 4
