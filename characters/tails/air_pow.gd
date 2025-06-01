@@ -7,7 +7,9 @@ func _step():
 	if get_current_phase() == startup_phase:
 		root.velocity = Vector3(0, 0, 0)
 	elif get_current_phase() == active_phase:
-		pass
+		root.velocity = Vector3(0, 0, 0)
+	elif get_current_phase() == recovery_phase:
+		root.velocity.y = lerp(root.velocity.y, -5.0, 0.3)
 func _phase_changed():
 	if get_current_phase() == active_phase:
 		var data = {
@@ -19,20 +21,21 @@ func _phase_changed():
 		proj.velocity = Vector3(0.0,0.0,0.0)
 		if(attack_direction == Vector2.RIGHT):
 			proj.position.z =  root.position.z
-			proj.position.y =  root.position.y
+			proj.position.y =  1
 			proj.position.x =  root.position.x + 2
 		elif (attack_direction == Vector2.LEFT):
 			proj.position.z =  root.position.z
-			proj.position.y =  root.position.y
+			proj.position.y =  1
 			proj.position.x =  root.position.x - 2
 		elif (attack_direction == Vector2.UP):
 			proj.position.z =  root.position.z - 2
-			proj.position.y =  root.position.y
+			proj.position.y =  1
 			proj.position.x =  root.position.x
 		elif (attack_direction == Vector2.DOWN):
 			proj.position.z =  root.position.z + 2
-			proj.position.y =  root.position.y
+			proj.position.y =  1
 			proj.position.x =  root.position.x
+			
 			
 func _exit(next_state):
 	pass

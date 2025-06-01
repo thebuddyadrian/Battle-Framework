@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://11vd21yw7fe7"]
+[gd_scene load_steps=34 format=3 uid="uid://11vd21yw7fe7"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_37tig"]
 [ext_resource type="Texture2D" uid="uid://cgq063pwiouqa" path="res://assets/knuckles/knuckles.png" id="2_5e7ij"]
@@ -20,9 +20,11 @@
 [ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="15_canxq"]
 [ext_resource type="Script" uid="uid://6guda7f8ly0c" path="res://characters/sonic/states/grnd_shot.gd" id="16_qnoh7"]
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="17_paebg"]
+[ext_resource type="Script" uid="uid://dsxss5rjnq68j" path="res://characters/knuckles/air_shot.gd" id="21_c10jq"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="21_s1n3o"]
 [ext_resource type="Script" uid="uid://chmc3a32o3eiv" path="res://characters/knuckles/grnd_pow.gd" id="21_xt1s0"]
 [ext_resource type="Resource" uid="uid://dw28vniky3lcq" path="res://characters/knuckles/states/grnd_pow.tres" id="22_1kwib"]
+[ext_resource type="Resource" uid="uid://oxnnmafgr24c" path="res://characters/knuckles/states/air_shot.tres" id="22_ns63g"]
 [ext_resource type="Script" uid="uid://comuq04kan03g" path="res://characters/knuckles/air_pow.gd" id="23_xt1s0"]
 [ext_resource type="Resource" uid="uid://ioxxvxrf0c3u" path="res://characters/knuckles/states/air_pow.tres" id="24_1kwib"]
 [ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="24_5lf22"]
@@ -32,7 +34,7 @@
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lh63m"]
 
-[sub_resource type="Resource" id="Resource_1kwib"]
+[sub_resource type="Resource" id="Resource_c10jq"]
 script = ExtResource("21_s1n3o")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -48,6 +50,7 @@ SPEED = 5.0
 DASH_SPEED = 18.5
 
 [node name="PlayerSprite" parent="." index="1"]
+flip_h = true
 texture = ExtResource("2_5e7ij")
 vframes = 17
 frame = 195
@@ -60,10 +63,15 @@ libraries = {
 autoplay = "knuckles_animation/Idle"
 
 [node name="Effects" parent="PlayerSprite" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177041, 0.368336, 0)
+visible = true
+offset = Vector2(-0.26, 0.11)
+flip_h = true
 texture = ExtResource("4_xt1s0")
 hframes = 7
 vframes = 6
 frame = 27
+effect_offset = Vector2(0.26, -0.11)
 
 [node name="Dash" parent="StateMachine" index="6"]
 script = ExtResource("4_lh63m")
@@ -105,6 +113,10 @@ attack_info = ExtResource("15_canxq")
 script = ExtResource("16_qnoh7")
 attack_info = ExtResource("17_paebg")
 
+[node name="AirShot" parent="StateMachine" index="27"]
+script = ExtResource("21_c10jq")
+attack_info = ExtResource("22_ns63g")
+
 [node name="GrndPow" parent="StateMachine" index="28"]
 script = ExtResource("21_xt1s0")
 proj_offset_x = 1.0
@@ -117,7 +129,7 @@ script = ExtResource("23_xt1s0")
 attack_info = ExtResource("24_1kwib")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_1kwib")
+hit_data = SubResource("Resource_c10jq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128

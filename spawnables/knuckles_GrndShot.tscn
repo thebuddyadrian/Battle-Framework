@@ -1,106 +1,14 @@
-[gd_scene load_steps=30 format=3 uid="uid://dnsctse6ueqn2"]
+[gd_scene load_steps=25 format=3 uid="uid://bnvrcptq1ybrb"]
 
-[ext_resource type="Script" uid="uid://cglriergrnma0" path="res://spawnables/sonic_grnd_shot.gd" id="1_jjt70"]
-[ext_resource type="Resource" uid="uid://bryx7fjbw1pr2" path="res://spawnables/ShotData/ShadowGrndSht.tres" id="2_l5o0q"]
-[ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://assets/shadow/shadows_effects-Sheet.png" id="3_8mw8r"]
-[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_l5o0q"]
-[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_11vx8"]
-[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_hk728"]
+[ext_resource type="Script" uid="uid://dqx58y0mu8n53" path="res://Knuckles_grndpow.gd" id="1_n410g"]
+[ext_resource type="Resource" uid="uid://oig8kf8mq7cb" path="res://spawnables/ShotData/KnucklesGrndSht.tres" id="2_1ds30"]
+[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_bgp5q"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_3pn0n"]
+[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_ximta"]
+[ext_resource type="Texture2D" uid="uid://ds3c6j0olh44r" path="res://assets/knuckles/Knuckles spritesheet.png" id="6_6a5te"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_l5o0q"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(210, 256, 70, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_11vx8"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(280, 256, 70, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hk728"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(350, 256, 70, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_4owiy"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(420, 256, 70, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_ghaik"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(490, 256, 70, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_gth0u"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(560, 256, 70, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_wpm0q"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(630, 256, 70, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_jjwrs"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(700, 256, 70, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_h07or"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(0, 320, 70, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_1s1kp"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(70, 320, 70, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_w6v3q"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(140, 320, 70, 64)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_kxgsb"]
-atlas = ExtResource("3_8mw8r")
-region = Rect2(210, 320, 70, 64)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_5bbic"]
-animations = [{
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_l5o0q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_11vx8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hk728")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_4owiy")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ghaik")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gth0u")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_wpm0q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jjwrs")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_h07or")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_1s1kp")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_w6v3q")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_kxgsb")
-}],
-"loop": true,
-"name": &"Side",
-"speed": 12.0
-}]
-
-[sub_resource type="Resource" id="Resource_8mw8r"]
-script = ExtResource("4_11vx8")
+[sub_resource type="Resource" id="Resource_n410g"]
+script = ExtResource("4_3pn0n")
 damage = 10.0
 knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
@@ -110,10 +18,10 @@ unblockable = false
 hit_freeze = 5
 hit_stun = 30
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_f2pd6"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_l8trd"]
 radius = 0.51228
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_yq6br"]
+[sub_resource type="SphereShape3D" id="SphereShape3D_r25py"]
 radius = 0.254871
 
 [sub_resource type="Animation" id="Animation_bjyxo"]
@@ -127,7 +35,7 @@ tracks/0/path = NodePath("Sprite:animation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.916667),
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [&"Side"]
@@ -232,43 +140,99 @@ _data = {
 &"Start": SubResource("Animation_561xu")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1t67f"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_wbvwd"]
 size = Vector3(0.70697, 1, 0.717041)
 
-[node name="ShadowGrndShot" type="CharacterBody3D"]
-script = ExtResource("1_jjt70")
-spawnable_info = ExtResource("2_l5o0q")
+[sub_resource type="AtlasTexture" id="AtlasTexture_jrqkh"]
+atlas = ExtResource("6_6a5te")
+region = Rect2(0, 144, 144, 144)
 
-[node name="Sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.00755633, -0.0873581, 0)
-offset = Vector2(0, 20)
-billboard = 1
-texture_filter = 2
-render_priority = 10
-sprite_frames = SubResource("SpriteFrames_5bbic")
-animation = &"Side"
-autoplay = "Side"
+[sub_resource type="AtlasTexture" id="AtlasTexture_kql3v"]
+atlas = ExtResource("6_6a5te")
+region = Rect2(144, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2u0qm"]
+atlas = ExtResource("6_6a5te")
+region = Rect2(288, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3g3r"]
+atlas = ExtResource("6_6a5te")
+region = Rect2(432, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tybjn"]
+atlas = ExtResource("6_6a5te")
+region = Rect2(576, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qwtcq"]
+atlas = ExtResource("6_6a5te")
+region = Rect2(720, 144, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ogxss"]
+atlas = ExtResource("6_6a5te")
+region = Rect2(864, 144, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3iuyc"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrqkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrqkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrqkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrqkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kql3v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2u0qm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_h3g3r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tybjn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qwtcq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ogxss")
+}],
+"loop": false,
+"name": &"Anim",
+"speed": 14.0
+}]
+
+[node name="KnucklesGrndShot" type="CharacterBody3D"]
+script = ExtResource("1_n410g")
+spawnable_info = ExtResource("2_1ds30")
 
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
-script = ExtResource("3_l5o0q")
-hit_data = SubResource("Resource_8mw8r")
+script = ExtResource("3_bgp5q")
+hit_data = SubResource("Resource_n410g")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
 [node name="Shape" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
-shape = SubResource("SphereShape3D_f2pd6")
+shape = SubResource("SphereShape3D_l8trd")
 
 [node name="Hurtbox" type="Area3D" parent="."]
 visible = false
-script = ExtResource("5_hk728")
+script = ExtResource("5_ximta")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
 [node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
-shape = SubResource("SphereShape3D_yq6br")
+shape = SubResource("SphereShape3D_r25py")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -277,4 +241,11 @@ libraries = {
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
-shape = SubResource("BoxShape3D_1t67f")
+shape = SubResource("BoxShape3D_wbvwd")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_3iuyc")
+animation = &"Side"
+autoplay = "Anim"

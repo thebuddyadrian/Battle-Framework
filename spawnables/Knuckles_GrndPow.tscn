@@ -99,7 +99,7 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="Resource" id="Resource_l5uff"]
+[sub_resource type="Resource" id="Resource_bjyxo"]
 script = ExtResource("4_vyvt2")
 damage = 10.0
 knockback_direction = Vector2(0, 0)
@@ -115,6 +115,35 @@ radius = 0.51228
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r25py"]
 radius = 0.254871
+
+[sub_resource type="Animation" id="Animation_bjyxo"]
+resource_name = "Anim"
+length = 1.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Side"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.334578, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
 
 [sub_resource type="Animation" id="Animation_ntqn7"]
 resource_name = "End"
@@ -194,35 +223,6 @@ tracks/0/keys = {
 "values": [0, 1]
 }
 
-[sub_resource type="Animation" id="Animation_bjyxo"]
-resource_name = "Anim"
-length = 1.00001
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite:animation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [&"Side"]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.334578, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0scby"]
 _data = {
 &"Anim": SubResource("Animation_bjyxo"),
@@ -235,7 +235,7 @@ _data = {
 [sub_resource type="BoxShape3D" id="BoxShape3D_wbvwd"]
 size = Vector3(0.70697, 1, 0.717041)
 
-[node name="KnucklesGrndShot" type="CharacterBody3D"]
+[node name="KnucklesGrndPow" type="CharacterBody3D"]
 script = ExtResource("1_edls8")
 spawnable_info = ExtResource("2_fojjp")
 
@@ -251,7 +251,7 @@ autoplay = "Side"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 visible = false
 script = ExtResource("3_fojjp")
-hit_data = SubResource("Resource_l5uff")
+hit_data = SubResource("Resource_bjyxo")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 

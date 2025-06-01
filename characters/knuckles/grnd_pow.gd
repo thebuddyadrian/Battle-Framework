@@ -10,7 +10,6 @@ func _enter(data := {}):
 
 
 func _step():
-	print($"../../PlayerSprite".flip_h)
 	super._step()
 	var data = {
 			"direction": attack_direction,
