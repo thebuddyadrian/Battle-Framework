@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="3_i4h3c"]
 [ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://assets/tails/Tails Effects Spritesheet.png" id="4_jgkwi"]
 
-[sub_resource type="Resource" id="Resource_ugrdt"]
+[sub_resource type="Resource" id="Resource_i4h3c"]
 script = ExtResource("2_yqcdp")
 damage = 10.0
 knockback_direction = Vector2(0, 0)
@@ -264,7 +264,7 @@ spawnable_info = ExtResource("2_i4h3c")
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 script = ExtResource("1_gh2f6")
-hit_data = SubResource("Resource_ugrdt")
+hit_data = SubResource("Resource_i4h3c")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 

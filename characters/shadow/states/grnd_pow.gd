@@ -4,6 +4,7 @@ func _enter(data := {}):
 	super._enter(data)
 func _step():
 	super._step()
+	$"../../PlayerSprite/Effects".show()
 	if get_current_phase() == startup_phase:
 		root.velocity = Vector3(0, 0, 0)
 	elif get_current_phase() == startup_phase:

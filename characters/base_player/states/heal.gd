@@ -10,6 +10,7 @@ func _enter(data = {}):
 
 
 func _step():
+	$"../../PlayerSprite/Misc_Effects".position = Vector3(0.0,0.061,00.0)
 	if parent.state_time <= startup:
 		root.animplayer.play_section_with_markers("Heal", "HealStartup", "HealLoop")
 	else:

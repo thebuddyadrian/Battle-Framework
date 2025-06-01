@@ -28,7 +28,7 @@
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="23_wv4dc"]
 [ext_resource type="Texture2D" uid="uid://bsdjsrfloxkgh" path="res://assets/ui/TailsLife.png" id="24_6dfm6"]
 
-[sub_resource type="Resource" id="Resource_wv4dc"]
+[sub_resource type="Resource" id="Resource_6dfm6"]
 script = ExtResource("2_uaadi")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -102,7 +102,7 @@ script = ExtResource("21_wv4dc")
 attack_info = ExtResource("22_6dfm6")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_wv4dc")
+hit_data = SubResource("Resource_6dfm6")
 
 [node name="TestLabel" parent="." index="7"]
 visible = false
