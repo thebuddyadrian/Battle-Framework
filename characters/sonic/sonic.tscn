@@ -1342,7 +1342,7 @@ _data = {
 &"kick2": SubResource("Animation_wtpgs")
 }
 
-[sub_resource type="Resource" id="Resource_jddj4"]
+[sub_resource type="Resource" id="Resource_fueeq"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1369,6 +1369,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26, -0.11, 0)
 
 [node name="Misc Effects" type="Sprite3D" parent="PlayerSprite" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0389612, 0.137251, 0)
+visible = false
 texture_filter = 2
 texture = ExtResource("3_fueeq")
 hframes = 10
@@ -1419,7 +1420,7 @@ attack_info = ExtResource("15_lq7el")
 script = ExtResource("16_lci63")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_jddj4")
+hit_data = SubResource("Resource_fueeq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128

@@ -4,7 +4,7 @@ extends BaseAttack
 func _enter(data={}):
 	super._enter(data)
 	root.set_action_enabled("move", true)
-	root.gravity_scale = 0
+	root.gravity_scale = 0.3
 
 
 func _step():

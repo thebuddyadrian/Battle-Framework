@@ -31,7 +31,7 @@
 [ext_resource type="Resource" uid="uid://cii1a6nml1qoa" path="res://characters/shadow/states/grnd_pow.tres" id="23_mtehn"]
 [ext_resource type="Resource" uid="uid://djeu6gxjiht1l" path="res://characters/shadow/states/air_pow.tres" id="23_xq7wv"]
 [ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="24_pfypo"]
-[ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/shadow/states/air_pow.gd" id="25_vj6v6"]
+[ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/sonic/states/air_pow.gd" id="25_vj6v6"]
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="25_xq7wv"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="26_h1jln"]
 [ext_resource type="Script" uid="uid://b50lj32f1nwfl" path="res://characters/shadow/states/grnd_trap.gd" id="26_mtehn"]
@@ -74,7 +74,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
-[sub_resource type="Resource" id="Resource_vj6v6"]
+[sub_resource type="Resource" id="Resource_w40b4"]
 script = ExtResource("23_0nker")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -104,9 +104,8 @@ libraries = {
 }
 
 [node name="Effects" parent="PlayerSprite" index="1"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-visible = true
-offset = Vector2(-4, -1)
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0489815, 0.0400156, 0)
+offset = Vector2(5, 0)
 billboard = 1
 texture = ExtResource("4_xq7wv")
 hframes = 11
@@ -116,6 +115,7 @@ effect_offset = Vector2(-4, -1)
 
 [node name="Misc_Effects" type="Sprite3D" parent="PlayerSprite" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 0.168, 0.171)
+visible = false
 texture_filter = 2
 texture = ExtResource("6_73oq7")
 hframes = 10
@@ -189,7 +189,7 @@ script = ExtResource("27_uak6g")
 attack_info = SubResource("Resource_gjr3y")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_vj6v6")
+hit_data = SubResource("Resource_w40b4")
 
 [node name="TestLabel2" type="Label3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272035, 0)

@@ -38,7 +38,7 @@
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lh63m"]
 
-[sub_resource type="Resource" id="Resource_ns63g"]
+[sub_resource type="Resource" id="Resource_psdtg"]
 script = ExtResource("21_s1n3o")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -78,6 +78,7 @@ effect_offset = Vector2(0.26, -0.11)
 
 [node name="Misc_Effects" type="Sprite3D" parent="PlayerSprite" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25736, 0.164879, 0)
+visible = false
 texture_filter = 2
 texture = ExtResource("5_j7ou5")
 hframes = 10
@@ -143,7 +144,7 @@ script = ExtResource("23_xt1s0")
 attack_info = ExtResource("24_1kwib")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_ns63g")
+hit_data = SubResource("Resource_psdtg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128

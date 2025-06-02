@@ -8,7 +8,7 @@ func _enter(data = {}):
 	dash_direction = root.facing_direction
 	root.animplayer.play("Dash")
 	root.play_sound_effect("dash")
-	root.velocity.y = 9
+	root.velocity.y = 10
 	root.limit_speed = false
 	root.set_action_enabled("attack", true)
 

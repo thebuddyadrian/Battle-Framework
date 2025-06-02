@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://ubts1e2d3mjh"]
+[gd_scene load_steps=30 format=3 uid="uid://ubts1e2d3mjh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
 [ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://assets/tails/TailsSpritesheet.png" id="2_cps4t"]
@@ -8,6 +8,7 @@
 [ext_resource type="Resource" uid="uid://c7ar4foj551in" path="res://characters/tails/states/jab_2.tres" id="4_2xg5h"]
 [ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://assets/tails/Tails Effects Spritesheet.png" id="4_my705"]
 [ext_resource type="Script" uid="uid://cfasn3us7ol01" path="res://characters/tails/tails_air_action.gd" id="4_qf74s"]
+[ext_resource type="Script" uid="uid://13qemgrco1g7" path="res://characters/tails/dash.gd" id="5_eakuc"]
 [ext_resource type="Resource" uid="uid://ju0slbcssgkw" path="res://characters/tails/states/heavy.tres" id="6_asitg"]
 [ext_resource type="Resource" uid="uid://dcg0w2804wsk7" path="res://characters/shadow/states/jab_3.tres" id="7_rdag6"]
 [ext_resource type="Resource" uid="uid://dan5rlht4k6p5" path="res://characters/shadow/states/upper.tres" id="9_rdag6"]
@@ -56,6 +57,9 @@ libraries = {
 texture = ExtResource("4_my705")
 hframes = 7
 vframes = 6
+
+[node name="Dash" parent="StateMachine" index="6"]
+script = ExtResource("5_eakuc")
 
 [node name="AirAction" parent="StateMachine" index="7"]
 script = ExtResource("4_qf74s")
