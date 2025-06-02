@@ -39,6 +39,7 @@ var air_actions_used = 0
 ## Used to temporarily make acceleration faster or slower
 var acceleration_scale: float = 1
 var deceleration_scale: float = 1
+var max_speed_scale: float = 1
 var gravity_scale: float = 1
 var actions_enabled: Array[String]
 ## A dictionary of directions that were recently pressed to input a heavy attack
@@ -169,18 +170,20 @@ func _process_movement():
 	
 	var deceleration_current = DECELERATION if is_on_floor() else AIR_DECELERATION
 	deceleration_current *= deceleration_scale
+
+	var speed_current = SPEED * max_speed_scale
 	
 	if !is_zero_approx(input_dir.x) and is_action_enabled("move"):
 		velocity.x += acceleration_vector.x
 		if limit_speed:
-			velocity.x = clamp(velocity.x, -SPEED, SPEED)
+			velocity.x = clamp(velocity.x, -speed_current, speed_current)
 	elif deceleration_enabled:
 		velocity.x = move_toward(velocity.x, 0, deceleration_current)
 	
 	if !is_zero_approx(input_dir.y) and is_action_enabled("move"):
 		velocity.z += acceleration_vector.y
 		if limit_speed:
-			velocity.z = clamp(velocity.z, -SPEED, SPEED)
+			velocity.z = clamp(velocity.z, -speed_current, speed_current)
 	elif deceleration_enabled:
 		velocity.z = move_toward(velocity.z, 0, deceleration_current)
 

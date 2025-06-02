@@ -5,6 +5,7 @@ func _enter(data={}):
 	super._enter(data)
 	root.set_action_enabled("move", true)
 	root.gravity_scale = 0
+	root.max_speed_scale = 0.5
 
 
 func _step():
@@ -18,4 +19,5 @@ func _step():
 func _exit(next_state):
 	super._exit(next_state)
 	root.gravity_scale = 1
+	root.max_speed_scale = 1
 	root.disable_all_actions()
