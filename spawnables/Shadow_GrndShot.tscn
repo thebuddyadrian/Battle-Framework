@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dnsctse6ueqn2"]
+[gd_scene load_steps=30 format=3 uid="uid://dnsctse6ueqn2"]
 
 [ext_resource type="Script" uid="uid://cglriergrnma0" path="res://spawnables/sonic_grnd_shot.gd" id="1_jjt70"]
 [ext_resource type="Resource" uid="uid://bryx7fjbw1pr2" path="res://spawnables/ShotData/ShadowGrndSht.tres" id="2_l5o0q"]
@@ -95,7 +95,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_kxgsb")
 }],
 "loop": true,
-"name": &"new_animation",
+"name": &"Side",
 "speed": 12.0
 }]
 
@@ -115,6 +115,35 @@ radius = 0.51228
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yq6br"]
 radius = 0.254871
+
+[sub_resource type="Animation" id="Animation_bjyxo"]
+resource_name = "Anim"
+length = 1.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Side"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.334578, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
 
 [sub_resource type="Animation" id="Animation_ntqn7"]
 resource_name = "End"
@@ -136,7 +165,6 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_xm2x0"]
 resource_name = "Loop"
 length = 0.500008
-loop_mode = 1
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -165,6 +193,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Side"]
+}
 
 [sub_resource type="Animation" id="Animation_561xu"]
 resource_name = "Start"
@@ -185,6 +225,7 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0scby"]
 _data = {
+&"Anim": SubResource("Animation_bjyxo"),
 &"End": SubResource("Animation_ntqn7"),
 &"Loop": SubResource("Animation_xm2x0"),
 &"RESET": SubResource("Animation_8jstf"),

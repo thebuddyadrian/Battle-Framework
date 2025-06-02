@@ -3,11 +3,12 @@
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
 [ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="2_gd83v"]
+[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="3_fueeq"]
 [ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="3_jddj4"]
 [ext_resource type="Script" uid="uid://cj1l7t1k5eima" path="res://characters/sonic/states/blocked.gd" id="3_x472b"]
 [ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="4_lwdla"]
-[ext_resource type="Resource" uid="uid://bocq8pdsey1xc" path="res://characters/tails/states/jab_1.tres" id="5_bg1qt"]
 [ext_resource type="Resource" uid="uid://spkpe3bbhbk6" path="res://characters/sonic/states/jab_3.tres" id="5_wpnlk"]
+[ext_resource type="Resource" uid="uid://dttk12fa38yx0" path="res://characters/sonic/states/jab_1.tres" id="7_ttio6"]
 [ext_resource type="Script" uid="uid://c214d7i75fcpb" path="res://characters/sonic/states/heavy.gd" id="8_fueeq"]
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="8_wpnlk"]
 [ext_resource type="Resource" uid="uid://df00kkj6hx8pc" path="res://characters/sonic/states/dash_attack.tres" id="9_6mqiq"]
@@ -20,7 +21,6 @@
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="14_6ri6b"]
 [ext_resource type="Resource" uid="uid://lscqxewn2oxm" path="res://characters/sonic/states/grnd_pow.tres" id="15_lq7el"]
 [ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/sonic/states/air_pow.gd" id="16_lci63"]
-[ext_resource type="Resource" uid="uid://slwg0iqcb6ry" path="res://characters/sonic/states/air_pow.tres" id="17_vuumm"]
 [ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="22_fueeq"]
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="23_tfamv"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="24_t5h5i"]
@@ -280,7 +280,7 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_jddj4"]
 resource_name = "Blocked"
 length = 0.800003
-step = 0.0166667
+step = 0.0666667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -292,6 +292,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [202, 203, 204]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Misc Effects:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.2, 0.333333, 0.466667, 0.6, 0.733333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(6, 3), Vector2i(7, 3), Vector2i(8, 3), Vector2i(9, 3), Vector2i(0, 4), Vector2i(1, 4), Vector2i(2, 4)]
 }
 
 [sub_resource type="Animation" id="Animation_pfkrf"]
@@ -509,8 +521,8 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_jn2r6"]
 resource_name = "Guard"
-length = 0.466669
-step = 0.0166667
+length = 0.642864
+step = 0.05
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"startup",
@@ -535,6 +547,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [42, 43, 44]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Misc Effects:frame_coords")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15, 0.2, 0.25, 0.35, 0.45, 0.55, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(6, 2), Vector2i(7, 2), Vector2i(8, 2), Vector2i(9, 2), Vector2i(0, 3), Vector2i(1, 3), Vector2i(2, 3), Vector2i(3, 3), Vector2i(4, 3), Vector2i(5, 3)]
 }
 
 [sub_resource type="Animation" id="Animation_fueeq"]
@@ -937,6 +961,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [0.13]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Misc Effects:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.1, 0.133333, 0.2, 0.233333, 0.266667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(9, 10), Vector2i(9, 10), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_dnwcv"]
 length = 0.001
@@ -987,6 +1023,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": ["startup"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Misc Effects:frame_coords")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(6, 3)]
 }
 
 [sub_resource type="Animation" id="Animation_osktc"]
@@ -1097,19 +1145,19 @@ tracks/2/keys = {
 [sub_resource type="Animation" id="Animation_6wnxk"]
 resource_name = "kick1"
 length = 0.3
-step = 0.05
+step = 0.0416667
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"startup",
 "time": 0.0
 }, {
 "color": Color(1, 1, 1, 1),
-"name": &"active",
-"time": 0.1
-}, {
-"color": Color(1, 1, 1, 1),
 "name": &"recovery",
 "time": 0.15
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.1
 }]
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -1159,11 +1207,23 @@ tracks/3/keys = {
 "update": 1,
 "values": ["startup", "active", "recovery"]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Misc Effects:frame_coords")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.0833333, 0.125, 0.166667, 0.208333, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(9, 10), Vector2i(9, 10), Vector2i(0, 0), Vector2i(1, 0), Vector2i(2, 0), Vector2i(3, 0), Vector2i(4, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_wtpgs"]
 resource_name = "kick2"
 length = 0.4
-step = 0.0166667
+step = 0.0416667
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"startup",
@@ -1224,6 +1284,18 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": ["startup", "active", "recovery"]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Misc Effects:frame_coords")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.0416667, 0.100373, 0.125, 0.166667, 0.208333, 0.25, 0.291667, 0.333333, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(9, 10), Vector2i(9, 10), Vector2i(5, 0), Vector2i(6, 0), Vector2i(7, 0), Vector2i(8, 0), Vector2i(9, 0), Vector2i(0, 1), Vector2i(1, 1), Vector2i(9, 10)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_axwkh"]
@@ -1292,6 +1364,18 @@ libraries = {
 &"": SubResource("AnimationLibrary_axwkh")
 }
 
+[node name="Effects" parent="PlayerSprite" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26, -0.11, 0)
+
+[node name="Misc Effects" type="Sprite3D" parent="PlayerSprite" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0389612, 0.137251, 0)
+visible = false
+texture_filter = 2
+texture = ExtResource("3_fueeq")
+hframes = 10
+vframes = 11
+frame = 36
+
 [node name="AirAction" parent="StateMachine" index="7"]
 script = ExtResource("3_jddj4")
 
@@ -1299,7 +1383,7 @@ script = ExtResource("3_jddj4")
 script = ExtResource("3_x472b")
 
 [node name="Jab1" parent="StateMachine" index="18"]
-attack_info = ExtResource("5_bg1qt")
+attack_info = ExtResource("7_ttio6")
 
 [node name="Jab2" parent="StateMachine" index="19"]
 attack_info = ExtResource("4_lwdla")
@@ -1334,7 +1418,6 @@ attack_info = ExtResource("15_lq7el")
 
 [node name="AirPow" parent="StateMachine" index="29"]
 script = ExtResource("16_lci63")
-attack_info = ExtResource("17_vuumm")
 
 [node name="Hitbox" parent="." index="5"]
 hit_data = SubResource("Resource_fueeq")

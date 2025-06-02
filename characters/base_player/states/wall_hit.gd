@@ -1,6 +1,8 @@
 extends BaseState
+const WALL_HIT_EFFECT_PATH = "res://spawnables/wall_hit_effect.tscn"
 
 func _enter(data = {}):
+	var proj = root.spawn_scene("WallHitEffect", WALL_HIT_EFFECT_PATH, root.global_position, null, data)
 	var normal: Vector3 = data["normal"]
 	# Bounce off the wall using the wall's direction
 	var normal_flat: Vector2 = Vector2(normal.x, normal.z)

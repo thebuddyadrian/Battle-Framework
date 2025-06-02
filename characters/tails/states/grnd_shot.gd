@@ -1,9 +1,10 @@
 extends BaseAttack
 
-const GRND_SHOT_PROJ_PATH = "res://spawnables/Sonic_GrndShot.tscn"
+const GRND_SHOT_PROJ_PATH = "res://spawnables/Tails_shot.tscn"
 
 
 func _phase_changed():
+	print(attack_direction)
 	if get_current_phase() == active_phase:
 		var data = {
 			"direction": attack_direction,
@@ -13,3 +14,14 @@ func _phase_changed():
 		proj.direction = attack_direction
 		proj.velocity.x = attack_direction.x * 10
 		proj.velocity.z = attack_direction.y * 10
+		if (attack_direction == Vector2.LEFT) or (attack_direction == Vector2.RIGHT):
+			proj.position.x = root.position.x + (1 * attack_direction.x)
+			proj.position.y = root.position.y
+		elif attack_direction == Vector2.DOWN:
+			proj.position.x = root.position.x + 0.1
+			proj.position.z = root.position.z + 2
+			proj.position.y = root.position.y
+		elif attack_direction == Vector2.UP:
+			proj.position.x = root.position.x + 0.1
+			proj.position.z = root.position.z -0
+			proj.position.y = root.position.y
