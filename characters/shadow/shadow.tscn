@@ -105,7 +105,7 @@ libraries = {
 
 [node name="Effects" parent="PlayerSprite" index="1"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0489815, 0.0400156, 0)
-offset = Vector2(5, 0)
+offset = Vector2(-4, -1)
 billboard = 1
 texture = ExtResource("4_xq7wv")
 hframes = 11
@@ -120,7 +120,7 @@ texture_filter = 2
 texture = ExtResource("6_73oq7")
 hframes = 10
 vframes = 11
-frame = 43
+frame = 109
 
 [node name="FlippedComponents" parent="." index="2"]
 transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0)

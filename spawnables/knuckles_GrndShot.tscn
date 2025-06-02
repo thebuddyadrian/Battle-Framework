@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://bnvrcptq1ybrb"]
 
-[ext_resource type="Script" uid="uid://dqx58y0mu8n53" path="res://Knuckles_grndpow.gd" id="1_n410g"]
+[ext_resource type="Script" uid="uid://dqx58y0mu8n53" path="res://spawnables/Knuckles_grndpow.gd" id="1_n410g"]
 [ext_resource type="Resource" uid="uid://oig8kf8mq7cb" path="res://spawnables/ShotData/KnucklesGrndSht.tres" id="2_1ds30"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_bgp5q"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_3pn0n"]

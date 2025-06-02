@@ -1,14 +1,14 @@
-[gd_scene load_steps=27 format=3 uid="uid://deq4msd7roqfv"]
+[gd_scene load_steps=23 format=3 uid="uid://cumb7sklep42y"]
 
-[ext_resource type="Script" uid="uid://csft5qybs31wh" path="res://spawnables/Dash_effect.gd" id="1_4omq8"]
-[ext_resource type="Resource" uid="uid://bv2edat0khvum" path="res://spawnables/ShotData/DashEffect.tres" id="2_5rud4"]
-[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_fxg5k"]
-[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_16j1f"]
-[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_mgjx6"]
-[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_ark0y"]
+[ext_resource type="Script" uid="uid://cbjprssgpwg3y" path="res://spawnables/wall_hit_effect.gd" id="1_1gnx5"]
+[ext_resource type="Resource" uid="uid://bv2edat0khvum" path="res://spawnables/ShotData/DashEffect.tres" id="2_5nrjf"]
+[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_slqx6"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_m3ivo"]
+[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_fmtqa"]
+[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_bycy1"]
 
-[sub_resource type="Resource" id="Resource_4omq8"]
-script = ExtResource("4_16j1f")
+[sub_resource type="Resource" id="Resource_stqsc"]
+script = ExtResource("4_m3ivo")
 damage = 10.0
 knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
@@ -150,93 +150,65 @@ _data = {
 &"Start": SubResource("Animation_561xu")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rpegr"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(100, 600, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw5af"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(200, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1gk57"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(200, 600, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs6k8"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(300, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_11nds"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(300, 600, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3ulj"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(400, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_udkbq"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(400, 600, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmxfl"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(500, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xv6d1"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(500, 600, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5apu"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(600, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyncn"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(600, 600, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpqyo"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(700, 100, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_qn06s"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(700, 600, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lla2f"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(800, 600, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bvlx0"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(900, 600, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hfbyk"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(0, 700, 100, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j1qu3"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnfc7"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rpegr")
+"texture": SubResource("AtlasTexture_xw5af")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1gk57")
+"texture": SubResource("AtlasTexture_xs6k8")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_11nds")
+"texture": SubResource("AtlasTexture_y3ulj")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_udkbq")
+"texture": SubResource("AtlasTexture_wmxfl")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xv6d1")
+"texture": SubResource("AtlasTexture_p5apu")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_gyncn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qn06s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lla2f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bvlx0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hfbyk")
+"texture": SubResource("AtlasTexture_rpqyo")
 }],
 "loop": false,
 "name": &"Anim",
 "speed": 12.0
 }]
 
-[node name="DashEffect" type="CharacterBody3D"]
+[node name="WallHitEffect" type="CharacterBody3D"]
 collision_layer = 0
-script = ExtResource("1_4omq8")
-spawnable_info = ExtResource("2_5rud4")
+script = ExtResource("1_1gnx5")
+spawnable_info = ExtResource("2_5nrjf")
 
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
-script = ExtResource("3_fxg5k")
-hit_data = SubResource("Resource_4omq8")
+script = ExtResource("3_slqx6")
+hit_data = SubResource("Resource_stqsc")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
@@ -246,7 +218,7 @@ shape = SubResource("SphereShape3D_fc865")
 
 [node name="Hurtbox" type="Area3D" parent="."]
 visible = false
-script = ExtResource("5_mgjx6")
+script = ExtResource("5_fmtqa")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
@@ -266,6 +238,5 @@ libraries = {
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
 texture_filter = 2
-sprite_frames = SubResource("SpriteFrames_j1qu3")
+sprite_frames = SubResource("SpriteFrames_rnfc7")
 animation = &"Start"
-autoplay = "Anim"

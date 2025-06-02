@@ -1,14 +1,14 @@
-[gd_scene load_steps=27 format=3 uid="uid://deq4msd7roqfv"]
+[gd_scene load_steps=22 format=3 uid="uid://jrcur2cf3a1p"]
 
-[ext_resource type="Script" uid="uid://csft5qybs31wh" path="res://spawnables/Dash_effect.gd" id="1_4omq8"]
-[ext_resource type="Resource" uid="uid://bv2edat0khvum" path="res://spawnables/ShotData/DashEffect.tres" id="2_5rud4"]
-[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_fxg5k"]
-[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_16j1f"]
-[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_mgjx6"]
-[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_ark0y"]
+[ext_resource type="Script" uid="uid://csft5qybs31wh" path="res://spawnables/Dash_effect.gd" id="1_78ojf"]
+[ext_resource type="Resource" uid="uid://bv2edat0khvum" path="res://spawnables/ShotData/DashEffect.tres" id="2_fed3r"]
+[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_w74qs"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_nrdg5"]
+[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_10ova"]
+[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_i8xjd"]
 
-[sub_resource type="Resource" id="Resource_4omq8"]
-script = ExtResource("4_16j1f")
+[sub_resource type="Resource" id="Resource_78ojf"]
+script = ExtResource("4_nrdg5")
 damage = 10.0
 knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
@@ -150,93 +150,58 @@ _data = {
 &"Start": SubResource("Animation_561xu")
 }
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_rpegr"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(100, 600, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nb4u"]
+atlas = ExtResource("6_i8xjd")
+region = Rect2(0, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1gk57"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(200, 600, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp1ui"]
+atlas = ExtResource("6_i8xjd")
+region = Rect2(100, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_11nds"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(300, 600, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnijb"]
+atlas = ExtResource("6_i8xjd")
+region = Rect2(200, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_udkbq"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(400, 600, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_fykes"]
+atlas = ExtResource("6_i8xjd")
+region = Rect2(300, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_xv6d1"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(500, 600, 100, 100)
+[sub_resource type="AtlasTexture" id="AtlasTexture_17hdm"]
+atlas = ExtResource("6_i8xjd")
+region = Rect2(400, 0, 100, 100)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_gyncn"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(600, 600, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_qn06s"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(700, 600, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_lla2f"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(800, 600, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_bvlx0"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(900, 600, 100, 100)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_hfbyk"]
-atlas = ExtResource("6_ark0y")
-region = Rect2(0, 700, 100, 100)
-
-[sub_resource type="SpriteFrames" id="SpriteFrames_j1qu3"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_roc7u"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_rpegr")
+"texture": SubResource("AtlasTexture_8nb4u")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1gk57")
+"texture": SubResource("AtlasTexture_dp1ui")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_11nds")
+"texture": SubResource("AtlasTexture_wnijb")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_udkbq")
+"texture": SubResource("AtlasTexture_fykes")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_xv6d1")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_gyncn")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_qn06s")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_lla2f")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bvlx0")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hfbyk")
+"texture": SubResource("AtlasTexture_17hdm")
 }],
 "loop": false,
 "name": &"Anim",
 "speed": 12.0
 }]
 
-[node name="DashEffect" type="CharacterBody3D"]
+[node name="LightHitEffect" type="CharacterBody3D"]
 collision_layer = 0
-script = ExtResource("1_4omq8")
-spawnable_info = ExtResource("2_5rud4")
+script = ExtResource("1_78ojf")
+spawnable_info = ExtResource("2_fed3r")
 
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
-script = ExtResource("3_fxg5k")
-hit_data = SubResource("Resource_4omq8")
+script = ExtResource("3_w74qs")
+hit_data = SubResource("Resource_78ojf")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
@@ -246,7 +211,7 @@ shape = SubResource("SphereShape3D_fc865")
 
 [node name="Hurtbox" type="Area3D" parent="."]
 visible = false
-script = ExtResource("5_mgjx6")
+script = ExtResource("5_10ova")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
@@ -266,6 +231,6 @@ libraries = {
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
 texture_filter = 2
-sprite_frames = SubResource("SpriteFrames_j1qu3")
+sprite_frames = SubResource("SpriteFrames_roc7u")
 animation = &"Start"
 autoplay = "Anim"

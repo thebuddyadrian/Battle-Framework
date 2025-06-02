@@ -2,8 +2,10 @@ extends BaseState
 
 var hit_stun_deceleration = 0.6
 var hit_data: HitData
-
-
+const LIGHT_HIT_EFFECT_PATH = "res://spawnables/light_hit_effect.tscn"
+const HEAVY_HIT_EFFECT_PATH = "res://spawnables/heavy_hit_effect.tscn"
+var spawned_effect: bool = false
+var proj
 func _enter(data = {}) -> void:
 	root.deceleration_enabled = false
 	root.animplayer.stop()
@@ -14,6 +16,10 @@ func _enter(data = {}) -> void:
 		hit_data.knockback_type = HitData.KNOCKBACK_TYPE.KNOCKDOWN
 
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.WEAK:
+		proj = root.spawn_scene("LightHitEffect", LIGHT_HIT_EFFECT_PATH, root.global_position, null, data)
+		proj.position = root.position
+		proj.position.y = root.position.y + 1
+		print("PROJ DIRECTION: ",proj.direction)
 		root.animplayer.play("Hurt")
 		hit_stun_deceleration = 0.6
 	else:
@@ -27,6 +33,7 @@ func _enter(data = {}) -> void:
 
 
 func _step():
+	var data = {}
 	if parent.state_time == hit_data.hit_stun and hit_data.knockback_type != HitData.KNOCKBACK_TYPE.KNOCKDOWN:
 		change_state("Idle")
 		return
@@ -35,6 +42,11 @@ func _step():
 
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.LAUNCH:
 		root.animplayer.play("Launch")
+		if !spawned_effect:
+			proj = root.spawn_scene("HeavyHitEffect", HEAVY_HIT_EFFECT_PATH, root.global_position, null, data)
+			spawned_effect = true
+		proj.position = root.position
+		proj.position.y = root.position.y + 1
 		if root.is_on_floor():
 			change_state("Land")
 			return
@@ -47,6 +59,11 @@ func _step():
 	
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.UP:
 		root.animplayer.play_section_with_markers("HitUp", "loop", "loopend")
+		if !spawned_effect:
+			proj = root.spawn_scene("HeavyHitEffect", HEAVY_HIT_EFFECT_PATH, root.global_position, null, data)
+			spawned_effect = true
+		proj.position = root.position
+		proj.position.y = root.position.y + 1
 		hit_stun_deceleration = 0.3
 		
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.DOWN:
@@ -61,5 +78,6 @@ func _step():
 
 
 func _exit(next_state: BaseState) -> void:
+	spawned_effect = false
 	root.gravity_scale = 1
 	root.deceleration_enabled = true
