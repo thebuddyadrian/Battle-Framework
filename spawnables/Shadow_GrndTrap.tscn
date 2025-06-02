@@ -6,7 +6,7 @@
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_e5bp5"]
 [ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://assets/shadow/shadows_effects-Sheet.png" id="6_1ofr1"]
 
-[sub_resource type="Resource" id="Resource_w1kis"]
+[sub_resource type="Resource" id="Resource_c02ij"]
 script = ExtResource("4_30uhr")
 damage = 10.0
 knockback_direction = Vector2(0, 0)
@@ -283,7 +283,7 @@ script = ExtResource("1_c02ij")
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 script = ExtResource("3_ana3j")
-hit_data = SubResource("Resource_w1kis")
+hit_data = SubResource("Resource_c02ij")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 

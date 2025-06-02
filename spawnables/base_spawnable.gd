@@ -2,6 +2,7 @@ extends CharacterBody3D
 class_name BaseSpawnable
 
 var despawn_timer: Timer = Timer.new()
+var hit_start_timer: Timer = Timer.new()
 var hurt_start_timer: Timer = Timer.new()
 var exist_time: float = 0.0
 var direction: Vector2 = Vector2.RIGHT
@@ -18,6 +19,7 @@ var summoner: Node = null
 func _init():
 	self.despawn_timer.connect("timeout", self._on_despawn_timeout)
 	self.hurt_start_timer.connect("timeout", self._on_hurt_start_timeout)
+	self.hit_start_timer.connect("timeout", self._on_hit_start_timeout)
 	self._on_init()
 
 # Do not Override:tm:
@@ -37,16 +39,21 @@ func _ready():
 		self.despawn_timer.wait_time = self.spawnable_info.lifetime_millis/1000.0
 		self.despawn_timer.start()
 	
+	hitbox.active = false
+	if self.spawnable_info.hit_start_millis > 0:
+		add_child(hit_start_timer)
+		self.hit_start_timer.wait_time = self.spawnable_info.hit_start_millis/1000.0
+		self.hit_start_timer.one_shot = true
+		self.hit_start_timer.start()
+	else:
+		hitbox.active = spawnable_info.has_hitbox
+
+	
 	if (self.spawnable_info.has_animation):
 		var spriteTex = load(self.spawnable_info.sprite_path)
 		self.sprite.sprite_frames.add_frame("default", spriteTex)
 	else:
 		self.sprite.sprite_frames = load(self.spawnable_info.sprite_path)
-	
-	self.hitbox.active = self.spawnable_info.has_hitbox
-	self.hurtbox.active = self.spawnable_info.has_hurtbox && (self.spawnable_info.hurt_start_millis == 0)
-	if (self.spawnable_info.hurt_start_millis > 0):
-		self.hurt_start_timer.start(float(self.spawnable_info.hurt_start_millis) * 0.001)
 	
 	
 	self.hitbox.connect("hit", self._on_hit)
@@ -88,7 +95,12 @@ func _on_despawn_timeout():
 	self.queue_free()
 
 func _on_hurt_start_timeout():
-	self.hurtbox.active = true
+	if spawnable_info.has_hurtbox:
+		self.hurtbox.active = true
+
+func _on_hit_start_timeout():
+	if spawnable_info.has_hitbox:
+		self.hitbox.active = true
 
 ## Runs during the physics process. Has delta time as a var. Use this instead of overriding physics process.
 func _do_behavior(delta):
@@ -121,3 +133,7 @@ func _on_blocked():
 ## Runs after being thrown.
 func _on_thrown():
 	pass
+
+func reactivate_hitbox():
+	hitbox.active = true
+	hitbox.nodes_already_hit.clear()

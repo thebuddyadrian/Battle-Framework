@@ -4,7 +4,6 @@ const GRND_SHOT_PROJ_PATH = "res://spawnables/Tails_shot.tscn"
 
 
 func _phase_changed():
-	print(attack_direction)
 	if get_current_phase() == active_phase:
 		var data = {
 			"direction": attack_direction,
@@ -18,10 +17,10 @@ func _phase_changed():
 			proj.position.x = root.position.x + (1 * attack_direction.x)
 			proj.position.y = root.position.y
 		elif attack_direction == Vector2.DOWN:
-			proj.position.x = root.position.x + 0.1
-			proj.position.z = root.position.z + 2
+			proj.position.x = root.position.x + 0.3 * root.facing_direction_2d
+			proj.position.z = root.position.z + 1
 			proj.position.y = root.position.y
 		elif attack_direction == Vector2.UP:
-			proj.position.x = root.position.x + 0.1
-			proj.position.z = root.position.z -0
+			proj.position.x = root.position.x + 0.3 * root.facing_direction_2d
+			proj.position.z = root.position.z - 0
 			proj.position.y = root.position.y

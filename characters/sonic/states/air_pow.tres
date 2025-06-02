@@ -4,17 +4,17 @@
 
 [resource]
 script = ExtResource("1_uc0he")
-animation = "AirPow"
+animation = "AirPowFwd"
 air_animation = ""
-animation_down = ""
-animation_up = ""
+animation_down = "AirPowDown"
+animation_up = "AirPowUp"
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = false
 use_sections = false
-startup_frames = 1
-active_frames = 66
-recovery_frames = 12
+startup_frames = 4
+active_frames = 20
+recovery_frames = 8
 attack_sound = "punch"
 damage = 4
 knockback_power = 4

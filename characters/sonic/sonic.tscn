@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=69 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
@@ -17,10 +17,11 @@
 [ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="10_c7fke"]
 [ext_resource type="Resource" uid="uid://cdy3tsk3tj34i" path="res://characters/sonic/states/air_attack.tres" id="11_41aki"]
 [ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="12_w02fn"]
-[ext_resource type="Script" uid="uid://6guda7f8ly0c" path="res://characters/sonic/states/grnd_shot.gd" id="13_w02fn"]
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="14_6ri6b"]
 [ext_resource type="Resource" uid="uid://lscqxewn2oxm" path="res://characters/sonic/states/grnd_pow.tres" id="15_lq7el"]
 [ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/sonic/states/air_pow.gd" id="16_lci63"]
+[ext_resource type="Script" uid="uid://dghxsgu1omfw3" path="res://characters/sonic/states/grnd_shot.gd" id="17_tfamv"]
+[ext_resource type="Resource" uid="uid://slwg0iqcb6ry" path="res://characters/sonic/states/air_pow.tres" id="21_tfamv"]
 [ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="22_fueeq"]
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="23_tfamv"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="24_t5h5i"]
@@ -1342,7 +1343,7 @@ _data = {
 &"kick2": SubResource("Animation_wtpgs")
 }
 
-[sub_resource type="Resource" id="Resource_fueeq"]
+[sub_resource type="Resource" id="Resource_t5h5i"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1410,7 +1411,7 @@ attack_info = ExtResource("11_41aki")
 attack_info = ExtResource("12_w02fn")
 
 [node name="GrndShot" parent="StateMachine" index="26"]
-script = ExtResource("13_w02fn")
+script = ExtResource("17_tfamv")
 attack_info = ExtResource("14_6ri6b")
 
 [node name="GrndPow" parent="StateMachine" index="28"]
@@ -1418,9 +1419,10 @@ attack_info = ExtResource("15_lq7el")
 
 [node name="AirPow" parent="StateMachine" index="29"]
 script = ExtResource("16_lci63")
+attack_info = ExtResource("21_tfamv")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_fueeq")
+hit_data = SubResource("Resource_t5h5i")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128

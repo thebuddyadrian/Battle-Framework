@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bxkpp8t57unbk"]
+[gd_scene load_steps=32 format=3 uid="uid://bnyptutmascsn"]
 
 [ext_resource type="Script" uid="uid://8adxvp4028ys" path="res://spawnables/tails_shot.gd" id="1_8v1gd"]
 [ext_resource type="Resource" uid="uid://fitdjiy0i02v" path="res://spawnables/ShotData/TailsGrndSht.tres" id="2_18bq4"]
@@ -9,9 +9,9 @@
 
 [sub_resource type="Resource" id="Resource_3u4pc"]
 script = ExtResource("5_fauv4")
-damage = 10.0
+damage = 3.0
 knockback_direction = Vector2(0, 0)
-knockback_power = 13.0
+knockback_power = 10.0
 knockback_angle = 45.0
 knockback_type = 4
 unblockable = false
@@ -290,7 +290,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
 shape = SubResource("SphereShape3D_fc865")
 
 [node name="Hurtbox" type="Area3D" parent="."]
-visible = false
 script = ExtResource("6_125df")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
@@ -306,6 +305,7 @@ shape = SubResource("BoxShape3D_voyo2")
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 texture_filter = 2
+render_priority = 10
 sprite_frames = SubResource("SpriteFrames_dub66")
 animation = &"Start"
 autoplay = "Loop"
@@ -314,3 +314,10 @@ autoplay = "Loop"
 libraries = {
 &"": SubResource("AnimationLibrary_0scby")
 }
+
+[node name="MultiHitTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.096
+autostart = true
+
+[connection signal="timeout" from="MultiHitTimer" to="." method="_on_multi_hit_timer_timeout"]

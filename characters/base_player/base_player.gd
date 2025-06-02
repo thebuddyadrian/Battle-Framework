@@ -349,7 +349,7 @@ func _check_for_aim_attack() -> bool:
 
 func _check_for_ground_special():
 	if input("skill", "just_pressed") and !state_machine.active_state is BaseAttack:
-		state_machine.change_state("GrndPow")
+		state_machine.change_state("GrndShot")
 		return true
 	return false
 

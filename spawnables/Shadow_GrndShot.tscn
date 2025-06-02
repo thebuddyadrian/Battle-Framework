@@ -236,6 +236,7 @@ _data = {
 size = Vector3(0.70697, 1, 0.717041)
 
 [node name="ShadowGrndShot" type="CharacterBody3D"]
+collision_layer = 0
 script = ExtResource("1_jjt70")
 spawnable_info = ExtResource("2_l5o0q")
 
