@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=70 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
@@ -21,7 +21,7 @@
 [ext_resource type="Resource" uid="uid://lscqxewn2oxm" path="res://characters/sonic/states/grnd_pow.tres" id="15_lq7el"]
 [ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/sonic/states/air_pow.gd" id="16_lci63"]
 [ext_resource type="Script" uid="uid://dghxsgu1omfw3" path="res://characters/sonic/states/grnd_shot.gd" id="17_tfamv"]
-[ext_resource type="Resource" uid="uid://slwg0iqcb6ry" path="res://characters/sonic/states/air_pow.tres" id="21_tfamv"]
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="21_tfamv"]
 [ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="22_fueeq"]
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="23_tfamv"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="24_t5h5i"]
@@ -1344,6 +1344,40 @@ _data = {
 }
 
 [sub_resource type="Resource" id="Resource_t5h5i"]
+script = ExtResource("21_tfamv")
+animation = "AirPowFwd"
+air_animation = ""
+animation_down = "AirPowDown"
+animation_up = "AirPowUp"
+change_anim_in_air = false
+play_animation = true
+use_anim_markers = false
+use_sections = false
+startup_frames = 4
+active_frames = 20
+recovery_frames = 8
+attack_sound = "punch"
+damage = 4
+knockback_power = 4
+knockback_angle = 80
+knockback_type = 0
+hit_stun = 30
+hit_sound = "punch"
+can_charge = false
+max_charge = 30
+max_hold = 30
+knockback_charge_scale = 180
+damage_charge_scale = 150
+knockback_scaling_charge_scale = 180
+use_hitbox = true
+land_on_touched_ground = false
+stop_on_left_ground = false
+landing_lag = 6
+dash_cancel_on_hit = false
+dash_cancel_frames = 24
+metadata/_custom_type_script = ExtResource("21_tfamv")
+
+[sub_resource type="Resource" id="Resource_tfamv"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1370,7 +1404,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26, -0.11, 0)
 
 [node name="Misc Effects" type="Sprite3D" parent="PlayerSprite" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0389612, 0.137251, 0)
-visible = false
 texture_filter = 2
 texture = ExtResource("3_fueeq")
 hframes = 10
@@ -1419,10 +1452,10 @@ attack_info = ExtResource("15_lq7el")
 
 [node name="AirPow" parent="StateMachine" index="29"]
 script = ExtResource("16_lci63")
-attack_info = ExtResource("21_tfamv")
+attack_info = SubResource("Resource_t5h5i")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_t5h5i")
+hit_data = SubResource("Resource_tfamv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128

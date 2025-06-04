@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://dqiwnnx0jhnfd"]
 
-[ext_resource type="Script" uid="uid://diwvh0uy7eee5" path="res://spawnables/knuckles_air_shot.gd" id="1_lvdyp"]
+[ext_resource type="Script" uid="uid://cl833632lmg4c" path="res://spawnables/knuckles_air_shot.gd" id="1_lvdyp"]
 [ext_resource type="Resource" uid="uid://st1e57gi8n5w" path="res://spawnables/ShotData/KnucklesAirSht.tres" id="2_fm5q5"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_tn2q5"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_lrq10"]
@@ -178,24 +178,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_7fe5r")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_7fe5r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7fe5r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7fe5r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7fe5r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7fe5r")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_7fe5r")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_nk7y3")
 }, {
 "duration": 1.0,
@@ -214,11 +196,20 @@ animations = [{
 "texture": SubResource("AtlasTexture_lp06i")
 }],
 "loop": false,
-"name": &"Anim",
+"name": &"Break",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7fe5r")
+}],
+"loop": false,
+"name": &"Throw",
 "speed": 14.0
 }]
 
 [node name="KnucklesGrndShot" type="CharacterBody3D"]
+collision_layer = 0
 script = ExtResource("1_lvdyp")
 spawnable_info = ExtResource("2_fm5q5")
 
@@ -254,7 +245,11 @@ shape = SubResource("BoxShape3D_wbvwd")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
+billboard = 1
 texture_filter = 2
+render_priority = 10
 sprite_frames = SubResource("SpriteFrames_w7ndj")
 animation = &"Side"
-autoplay = "Anim"
+autoplay = "Throw"
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

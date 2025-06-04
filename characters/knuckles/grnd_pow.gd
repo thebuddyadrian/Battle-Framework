@@ -14,8 +14,6 @@ func _step():
 	var data = {
 			"direction": attack_direction,
 		}
-	if parent.state_time % 20 == 0 and get_current_phase() == active_phase:
-		reactivate_hitbox()
 	if get_current_phase() == startup_phase:
 		root.velocity.x = lerp(0.0, attack_direction.x * 7, 0.5)
 		root.velocity.z = lerp(0.0, attack_direction.y * 7, 0.5)
@@ -45,10 +43,14 @@ func _step():
 			proj.position.z = root.position.z + 7*proj_offset_z
 			proj.position.x = root.position.x - 0.1
 	elif get_current_phase() == recovery_phase:
+		
 		root.velocity.x = lerp(attack_direction.x * 7, 0.0, 0.6)
 		root.velocity.z = lerp(attack_direction.y * 7, 0.0, 0.6)
+	
 func _phase_changed():
 	if get_current_phase() == recovery_phase:
 		explosion = false
+		proj.queue_free()
+
 func _exit(next_state):
 	pass

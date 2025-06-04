@@ -11,5 +11,5 @@ has_hitbox = true
 has_hurtbox = false
 hit_start_millis = 0
 hurt_start_millis = 250
-lifetime_millis = 1000
+lifetime_millis = 800
 metadata/_custom_type_script = ExtResource("1_qewps")

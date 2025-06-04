@@ -6,8 +6,8 @@
 script = ExtResource("1_c8w4r")
 animation = "GrndShotFwd"
 air_animation = ""
-animation_down = "GrndShotDown"
-animation_up = "GrndShotUp"
+animation_down = ""
+animation_up = ""
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = true

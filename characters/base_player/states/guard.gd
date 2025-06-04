@@ -11,8 +11,8 @@ func _enter(data = {}):
 
 func _step():
 	# When in guard frames, change hurtbox to shield mode
-	$"../../PlayerSprite/Misc_Effects".show()
-	$"../../PlayerSprite/Misc_Effects".position = Vector3(-0.039,0.137,0.0)
+	#$"../../PlayerSprite/Misc_Effects".show()
+	#$"../../PlayerSprite/Misc_Effects".position = Vector3(-0.039,0.137,0.0)
 	if parent.state_time >= startup_frames and parent.state_time < startup_frames + guard_frames:
 		root.hurtbox.mode = Hurtbox.MODE.SHIELD
 	else:
@@ -28,5 +28,5 @@ func _step():
 
 
 func _exit(next_state: BaseState):
-	$"../../PlayerSprite/Misc_Effects".hide()
+	#$"../../PlayerSprite/Misc_Effects".hide()
 	root.hurtbox.mode = Hurtbox.MODE.NORMAL

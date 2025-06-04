@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://bnvrcptq1ybrb"]
 
-[ext_resource type="Script" uid="uid://dqx58y0mu8n53" path="res://spawnables/Knuckles_grndpow.gd" id="1_n410g"]
+[ext_resource type="Script" uid="uid://ctiobp6w5h2ib" path="res://spawnables/Knuckles_grndpow.gd" id="1_n410g"]
 [ext_resource type="Resource" uid="uid://oig8kf8mq7cb" path="res://spawnables/ShotData/KnucklesGrndSht.tres" id="2_1ds30"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_bgp5q"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_3pn0n"]
@@ -178,15 +178,6 @@ animations = [{
 "texture": SubResource("AtlasTexture_jrqkh")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_jrqkh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jrqkh")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_jrqkh")
-}, {
-"duration": 1.0,
 "texture": SubResource("AtlasTexture_kql3v")
 }, {
 "duration": 1.0,
@@ -205,7 +196,15 @@ animations = [{
 "texture": SubResource("AtlasTexture_ogxss")
 }],
 "loop": false,
-"name": &"Anim",
+"name": &"Break",
+"speed": 14.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jrqkh")
+}],
+"loop": false,
+"name": &"Throw",
 "speed": 14.0
 }]
 
@@ -248,4 +247,6 @@ transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_3iuyc")
 animation = &"Side"
-autoplay = "Anim"
+autoplay = "Throw"
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

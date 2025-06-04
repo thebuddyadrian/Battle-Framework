@@ -1,6 +1,6 @@
 [gd_scene load_steps=30 format=3 uid="uid://dnsctse6ueqn2"]
 
-[ext_resource type="Script" uid="uid://cglriergrnma0" path="res://spawnables/sonic_grnd_shot.gd" id="1_jjt70"]
+[ext_resource type="Script" uid="uid://bbnnqyvvf0jkv" path="res://spawnables/shadow_grnd_shot.gd" id="1_jjt70"]
 [ext_resource type="Resource" uid="uid://bryx7fjbw1pr2" path="res://spawnables/ShotData/ShadowGrndSht.tres" id="2_l5o0q"]
 [ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://assets/shadow/shadows_effects-Sheet.png" id="3_8mw8r"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_l5o0q"]
@@ -104,8 +104,8 @@ script = ExtResource("4_11vx8")
 damage = 10.0
 knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
-knockback_angle = 45.0
-knockback_type = 4
+knockback_angle = 90.0
+knockback_type = 2
 unblockable = false
 hit_freeze = 5
 hit_stun = 30
@@ -241,7 +241,7 @@ script = ExtResource("1_jjt70")
 spawnable_info = ExtResource("2_l5o0q")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.00755633, -0.0873581, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.00755633, -0.512821, 0)
 offset = Vector2(0, 20)
 billboard = 1
 texture_filter = 2
