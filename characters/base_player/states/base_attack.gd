@@ -259,7 +259,7 @@ func _setup_from_resource():
 	
 	active_phase = AttackPhase.new("active")
 	active_phase.frames = attack_info.active_frames
-	active_phase.hitbox_active = true
+	active_phase.hitbox_active = use_hitbox
 	active_phase.sound_effect = attack_info.attack_sound
 	add_phase(active_phase)
 	
