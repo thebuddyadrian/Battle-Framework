@@ -111,7 +111,7 @@ hit_freeze = 5
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2pd6"]
-radius = 0.51228
+radius = 0.604261
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_yq6br"]
 radius = 0.254871
@@ -241,11 +241,10 @@ script = ExtResource("1_jjt70")
 spawnable_info = ExtResource("2_l5o0q")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.00755633, -0.512821, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.00755633, -0.697512, 0)
 offset = Vector2(0, 20)
 billboard = 1
 texture_filter = 2
-render_priority = 10
 sprite_frames = SubResource("SpriteFrames_5bbic")
 animation = &"Side"
 autoplay = "Side"

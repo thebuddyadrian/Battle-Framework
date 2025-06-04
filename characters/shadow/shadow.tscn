@@ -20,11 +20,11 @@
 [ext_resource type="Resource" uid="uid://bc3hct1wdh67j" path="res://characters/knuckles/states/jab_3.tres" id="15_8dlyq"]
 [ext_resource type="Resource" uid="uid://dan5rlht4k6p5" path="res://characters/shadow/states/upper.tres" id="15_h1jln"]
 [ext_resource type="Resource" uid="uid://bpahn2gxlkad6" path="res://characters/shadow/states/dash_attack.tres" id="15_xq7wv"]
-[ext_resource type="Script" uid="uid://cxjauk8t2xkwj" path="res://characters/sonic/states/air_attack.gd" id="17_hh2a4"]
 [ext_resource type="Resource" uid="uid://divyauv3t0y7w" path="res://characters/shadow/states/air_attack.tres" id="18_h1jln"]
 [ext_resource type="Script" uid="uid://vvecxl4rir4j" path="res://characters/shadow/states/aim_attack.gd" id="18_hh2a4"]
 [ext_resource type="Resource" uid="uid://kwn0emw6navq" path="res://characters/shadow/states/aim_attack.tres" id="19_gjr3y"]
 [ext_resource type="Resource" uid="uid://bsj8rns8lh1rx" path="res://characters/shadow/states/grnd_shot.tres" id="20_gjr3y"]
+[ext_resource type="Script" uid="uid://cxjauk8t2xkwj" path="res://characters/shadow/states/air_attack.gd" id="21_3o4s2"]
 [ext_resource type="Script" uid="uid://xjmvilltshhp" path="res://characters/shadow/states/grnd_pow.gd" id="22_cyjvw"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="23_0nker"]
 [ext_resource type="Resource" uid="uid://cii1a6nml1qoa" path="res://characters/shadow/states/grnd_pow.tres" id="23_mtehn"]
@@ -37,7 +37,7 @@
 [ext_resource type="Resource" uid="uid://euruuouwvid3" path="res://characters/shadow/states/grnd_trap.tres" id="27_gjr3y"]
 [ext_resource type="Script" uid="uid://bi0hhacwa7lh3" path="res://characters/shadow/states/air_trap.gd" id="27_uak6g"]
 [ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="29_vj6v6"]
-[ext_resource type="Script" uid="uid://n4othl3dcnt2" path="res://characters/shadow/states/air_pow.gd" id="29_w40b4"]
+[ext_resource type="Script" uid="uid://gcwcpubpu4qx" path="res://characters/shadow/states/air_pow.gd" id="29_w40b4"]
 
 [sub_resource type="Resource" id="Resource_3o4s2"]
 script = ExtResource("29_vj6v6")
@@ -49,14 +49,14 @@ change_anim_in_air = false
 play_animation = true
 use_anim_markers = true
 use_sections = true
-startup_frames = 40
+startup_frames = 20
 active_frames = 30
 recovery_frames = 12
 attack_sound = "punch"
-damage = 4
-knockback_power = 4
-knockback_angle = 80
-knockback_type = 0
+damage = 3
+knockback_power = 12
+knockback_angle = 90
+knockback_type = 2
 hit_stun = 30
 hit_sound = "punch"
 can_charge = false
@@ -121,7 +121,6 @@ hit_stun = 30
 [node name="Shadow" instance=ExtResource("1_qnw3q")]
 script = ExtResource("2_h1jln")
 SPEED = 10.0
-JUMP_VELOCITY = 14.0
 DASH_SPEED = 18.5
 ACCELERATION = 0.5
 
@@ -137,9 +136,10 @@ libraries = {
 }
 
 [node name="Effects" parent="PlayerSprite" index="1"]
-transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0489815, 0.0400156, 0)
-offset = Vector2(-4, -1)
+transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+offset = Vector2(5, 0)
 billboard = 1
+render_priority = 1
 texture = ExtResource("4_xq7wv")
 hframes = 11
 vframes = 10
@@ -191,7 +191,7 @@ attack_info = ExtResource("15_h1jln")
 attack_info = ExtResource("15_xq7wv")
 
 [node name="AirAttack" parent="StateMachine" index="24"]
-script = ExtResource("17_hh2a4")
+script = ExtResource("21_3o4s2")
 attack_info = ExtResource("18_h1jln")
 
 [node name="AimAttack" parent="StateMachine" index="25"]
@@ -229,7 +229,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272035, 0)
 visible = false
 billboard = 1
 no_depth_test = true
-render_priority = 6
 outline_render_priority = 3
 text = "HP: 200"
 font_size = 16

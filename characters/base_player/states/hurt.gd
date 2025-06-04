@@ -22,6 +22,8 @@ func _enter(data = {}) -> void:
 		print("PROJ DIRECTION: ",proj.direction)
 		root.animplayer.play("Hurt")
 		hit_stun_deceleration = 0.6
+	elif hit_data.knockback_type == HitData.KNOCKBACK_TYPE.LAUNCH or hit_data.knockback_type  == HitData.KNOCKBACK_TYPE.UP:
+		root.spawn_scene("HeavyHitEffect", HEAVY_HIT_EFFECT_PATH, root.global_position + Vector3.UP * 1, null, data)
 	else:
 		hit_stun_deceleration = 0.3
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.KNOCKDOWN:
@@ -42,11 +44,6 @@ func _step():
 
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.LAUNCH:
 		root.animplayer.play("Launch")
-		if !spawned_effect:
-			proj = root.spawn_scene("HeavyHitEffect", HEAVY_HIT_EFFECT_PATH, root.global_position, null, data)
-			spawned_effect = true
-		proj.position = root.position
-		proj.position.y = root.position.y + 1
 		if root.is_on_floor():
 			change_state("Land")
 			return
@@ -59,12 +56,6 @@ func _step():
 	
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.UP:
 		root.animplayer.play_section_with_markers("HitUp", "loop", "loopend")
-		if !spawned_effect:
-			proj = root.spawn_scene("HeavyHitEffect", HEAVY_HIT_EFFECT_PATH, root.global_position, null, data)
-			spawned_effect = true
-		proj.position = root.position
-		proj.position.y = root.position.y + 1
-		hit_stun_deceleration = 0.3
 		
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.DOWN:
 		if root.is_on_floor():

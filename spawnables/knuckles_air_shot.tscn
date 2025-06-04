@@ -247,7 +247,6 @@ shape = SubResource("BoxShape3D_wbvwd")
 transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
 billboard = 1
 texture_filter = 2
-render_priority = 10
 sprite_frames = SubResource("SpriteFrames_w7ndj")
 animation = &"Side"
 autoplay = "Throw"

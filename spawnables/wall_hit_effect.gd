@@ -8,3 +8,7 @@ func _on_spawn(data: = {}):
 		$Sprite.flip_h = false
 	else:
 		$Sprite.flip_h = true
+
+
+func _on_sprite_animation_finished() -> void:
+	queue_free()

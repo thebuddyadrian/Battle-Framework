@@ -19,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+scroll_vertical = 56
 
 [node name="ActionContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
@@ -81,6 +82,11 @@ text = "Attack"
 layout_mode = 2
 action = "skill"
 text = "Skill"
+
+[node name="ControlsSetupAction10" parent="ScrollContainer/ActionContainer" instance=ExtResource("1_8cmok")]
+layout_mode = 2
+action = "upper"
+text = "Upper"
 
 [node name="ControlsSetupAction9" parent="ScrollContainer/ActionContainer" instance=ExtResource("1_8cmok")]
 layout_mode = 2

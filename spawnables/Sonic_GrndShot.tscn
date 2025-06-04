@@ -471,7 +471,6 @@ spawnable_info = ExtResource("2_j3baa")
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.00755633, -0.0873581, 0)
 offset = Vector2(0, 20)
 billboard = 1
-render_priority = 10
 sprite_frames = SubResource("SpriteFrames_mdu81")
 animation = &"Start"
 autoplay = "Side"

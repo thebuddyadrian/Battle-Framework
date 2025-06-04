@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name BattleCharacter
 
 @export var SPEED = 8.0
-@export var JUMP_VELOCITY = 13.0
+@export var JUMP_VELOCITY = 14.0
 @export var DASH_SPEED = 12.5
 @export var STOCKS = 3
 @export var HP = 300
@@ -316,6 +316,9 @@ func _check_for_heavy() -> bool:
 
 
 func _check_for_upper() -> bool:
+	if input("upper", "just_pressed") and state_machine.active_state is not BaseAttack:
+		state_machine.change_state("Upper", {attack_direction = Vector2(facing_direction_2d, 0)})
+		return true
 	if input("attack", "just_pressed") and state_machine.active_state is not BaseAttack:
 		if _get_last_pressed_upper_input():
 			var vec = direction_string_to_vector2(_get_last_pressed_upper_input())
@@ -436,6 +439,7 @@ func input(action: StringName, type: String = "pressed") -> bool:
 	# Gets the correct action based on the player number (ex: attack1, attack2, attack3, etc.)
 	var player_action = action + str(player_id)
 	if !InputMap.has_action(player_action):
+		push_error("Action %s doesn't exist" % player_action)
 		return false
 	if type == "pressed":
 		return Input.is_action_pressed(player_action)

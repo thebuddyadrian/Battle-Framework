@@ -14,7 +14,7 @@ func _enter(data = {}):
 
 
 func _step():
-	var data = {}
+	var data = {"dir": root.facing_direction_2d}
 	if !spawned_dash_effect:
 		var proj = root.spawn_scene("GrndShot", GRND_SHOT_PROJ_PATH, root.global_position, null, data)
 		proj.position = root.position

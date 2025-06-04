@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_37tig"]
 [ext_resource type="Texture2D" uid="uid://cgq063pwiouqa" path="res://assets/knuckles/knuckles.png" id="2_5e7ij"]
-[ext_resource type="Script" uid="uid://rgpmcgc4cde" path="res://characters/knuckles/knuckles.gd" id="2_5tkrs"]
+[ext_resource type="Script" uid="uid://bephn00c3mpgq" path="res://characters/knuckles/knuckles.gd" id="2_5tkrs"]
 [ext_resource type="AnimationLibrary" uid="uid://caicco3rl6eej" path="res://characters/knuckles/knuckles_animation.res" id="3_opinu"]
 [ext_resource type="Script" uid="uid://cj1l7t1k5eima" path="res://characters/sonic/states/blocked.gd" id="4_kytj2"]
 [ext_resource type="Script" uid="uid://bmg8gug5n5wos" path="res://characters/knuckles/states/dash.tres.gd" id="4_lh63m"]
@@ -11,13 +11,13 @@
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="5_j7ou5"]
 [ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/shadow/states/heavy.gd" id="8_oggfo"]
 [ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="9_i116v"]
-[ext_resource type="Script" path="res://characters/knuckles/jab_1.gd" id="9_j7ou5"]
+[ext_resource type="Script" uid="uid://d1jkn6ckxjvbh" path="res://characters/knuckles/jab_1.gd" id="9_j7ou5"]
 [ext_resource type="Resource" uid="uid://j8v0s23gurj" path="res://characters/knuckles/states/jab_1.tres" id="10_0sn45"]
 [ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="10_1ooqa"]
-[ext_resource type="Script" path="res://characters/knuckles/jab_2.gd" id="11_0sn45"]
+[ext_resource type="Script" uid="uid://bb8qtsmx3t2sp" path="res://characters/knuckles/jab_2.gd" id="11_0sn45"]
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="11_qawlg"]
 [ext_resource type="Resource" uid="uid://df00kkj6hx8pc" path="res://characters/sonic/states/dash_attack.tres" id="12_6etpd"]
-[ext_resource type="Script" path="res://characters/knuckles/jab_3.gd" id="12_ay8m5"]
+[ext_resource type="Script" uid="uid://eqf838pr6os" path="res://characters/knuckles/jab_3.gd" id="12_ay8m5"]
 [ext_resource type="Resource" uid="uid://bkkd4ly2fjt1c" path="res://characters/knuckles/states/jab_2.tres" id="12_psdtg"]
 [ext_resource type="Script" uid="uid://cxjauk8t2xkwj" path="res://characters/sonic/states/air_attack.gd" id="13_krmfx"]
 [ext_resource type="Resource" uid="uid://bc3hct1wdh67j" path="res://characters/knuckles/states/jab_3.tres" id="14_5tkrs"]
@@ -39,7 +39,7 @@
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lh63m"]
 
-[sub_resource type="Resource" id="Resource_5tkrs"]
+[sub_resource type="Resource" id="Resource_psdtg"]
 script = ExtResource("21_s1n3o")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -144,7 +144,7 @@ script = ExtResource("23_xt1s0")
 attack_info = ExtResource("24_1kwib")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_5tkrs")
+hit_data = SubResource("Resource_psdtg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128

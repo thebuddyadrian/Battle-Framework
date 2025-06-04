@@ -305,7 +305,6 @@ shape = SubResource("BoxShape3D_voyo2")
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 texture_filter = 2
-render_priority = 10
 sprite_frames = SubResource("SpriteFrames_dub66")
 animation = &"Start"
 autoplay = "Loop"

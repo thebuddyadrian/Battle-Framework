@@ -72,7 +72,6 @@ shape = SubResource("CapsuleShape3D_ajxej")
 [node name="PlayerSprite" type="Sprite3D" parent="."]
 layers = 4
 texture_filter = 0
-render_priority = 10
 hframes = 16
 vframes = 14
 frame = 36
@@ -83,7 +82,6 @@ autoplay = "Idle"
 [node name="Effects" type="Sprite3D" parent="PlayerSprite"]
 visible = false
 texture_filter = 0
-render_priority = 11
 script = ExtResource("2_uam5m")
 
 [node name="FlippedComponents" type="Node3D" parent="."]
