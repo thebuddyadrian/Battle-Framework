@@ -12,7 +12,7 @@
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="8_wpnlk"]
 [ext_resource type="Resource" uid="uid://df00kkj6hx8pc" path="res://characters/sonic/states/dash_attack.tres" id="9_6mqiq"]
 [ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="9_fueeq"]
-[ext_resource type="Script" uid="uid://cxjauk8t2xkwj" path="res://characters/knuckles/states/air_attack.gd" id="10_6mqiq"]
+[ext_resource type="Script" uid="uid://cs3moofgrsq1h" path="res://characters/knuckles/states/air_attack.gd" id="10_6mqiq"]
 [ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="10_c7fke"]
 [ext_resource type="Resource" uid="uid://cdy3tsk3tj34i" path="res://characters/sonic/states/air_attack.tres" id="11_41aki"]
 [ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="12_w02fn"]

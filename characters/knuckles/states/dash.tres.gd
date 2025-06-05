@@ -21,7 +21,7 @@ func _step():
 		spawned_dash_effect = true
 	root.velocity.x = dash_direction.x * root.DASH_SPEED 
 	root.velocity.z = dash_direction.y * root.DASH_SPEED 
-	if parent.state_time > 25 :
+	if parent.state_time > 35 :
 		parent.change_state("Idle")
 
 

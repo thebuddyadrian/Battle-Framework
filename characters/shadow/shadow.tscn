@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://c2lv0otitxe6m" path="res://characters/shadow/shadow.gd" id="2_h1jln"]
 [ext_resource type="Texture2D" uid="uid://dhbyatb3lkkct" path="res://assets/shadow/shadow .png" id="2_pfypo"]
 [ext_resource type="AnimationLibrary" uid="uid://2fxpsp06qdso" path="res://characters/shadow/shadow_animation.res" id="3_pfypo"]
-[ext_resource type="Script" uid="uid://bmg8gug5n5wos" path="res://characters/knuckles/states/dash.tres.gd" id="4_h2on0"]
+[ext_resource type="Script" uid="uid://m57d41j6ing0" path="res://characters/knuckles/states/dash.tres.gd" id="4_h2on0"]
 [ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://assets/shadow/shadows_effects-Sheet.png" id="4_xq7wv"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_73oq7"]
 [ext_resource type="Script" uid="uid://ueqal43akv04" path="res://characters/shadow/states/air_action.gd" id="7_xq7wv"]
