@@ -344,6 +344,10 @@ func _step():
 				return
 			next_phase()
 	
+	# Jump cancel upper attacks
+	if name == "Upper" and move_hit:
+		root.set_action_enabled("jump", true)
+	
 func _step_frozen():
 	#Count up move_hit and move_contact
 	if move_hit > 0:
@@ -351,6 +355,7 @@ func _step_frozen():
 	
 	if move_contact > 0:
 		move_contact += 1
+
 	#root.attack_trail.trail_state = {}
 	#if root.is_in_group("fighter"):
 		#if dash_cancel and move_hit > 0 and MatchSetup.rule_set.dash_cancels == true:
