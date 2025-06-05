@@ -1329,7 +1329,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("21_tfamv")
 
-[sub_resource type="Resource" id="Resource_tfamv"]
+[sub_resource type="Resource" id="Resource_fueeq"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1408,7 +1408,7 @@ script = ExtResource("16_lci63")
 attack_info = SubResource("Resource_t5h5i")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_tfamv")
+hit_data = SubResource("Resource_fueeq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128
