@@ -13,7 +13,7 @@
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="8_wpnlk"]
 [ext_resource type="Resource" uid="uid://df00kkj6hx8pc" path="res://characters/sonic/states/dash_attack.tres" id="9_6mqiq"]
 [ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="9_fueeq"]
-[ext_resource type="Script" uid="uid://cxjauk8t2xkwj" path="res://characters/sonic/states/air_attack.gd" id="10_6mqiq"]
+[ext_resource type="Script" uid="uid://cxjauk8t2xkwj" path="res://characters/knuckles/states/air_attack.gd" id="10_6mqiq"]
 [ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="10_c7fke"]
 [ext_resource type="Resource" uid="uid://cdy3tsk3tj34i" path="res://characters/sonic/states/air_attack.tres" id="11_41aki"]
 [ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="12_w02fn"]
@@ -1329,7 +1329,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("21_tfamv")
 
-[sub_resource type="Resource" id="Resource_fueeq"]
+[sub_resource type="Resource" id="Resource_tfamv"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1408,7 +1408,7 @@ script = ExtResource("16_lci63")
 attack_info = SubResource("Resource_t5h5i")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_fueeq")
+hit_data = SubResource("Resource_tfamv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128
