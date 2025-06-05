@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://assets/shadow/shadows_effects-Sheet.png" id="4_xq7wv"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_73oq7"]
 [ext_resource type="Script" uid="uid://cj1l7t1k5eima" path="res://characters/sonic/states/blocked.gd" id="6_xq7wv"]
-[ext_resource type="Script" uid="uid://ueqal43akv04" path="res://characters/shadow/states/air_action.gd" id="7_xq7wv"]
+[ext_resource type="Script" uid="uid://qx5g0w3rmmjp" path="res://characters/shadow/states/air_action.gd" id="7_xq7wv"]
 [ext_resource type="Script" uid="uid://b0fwnp3c7icpp" path="res://characters/shadow/jab_1.gd" id="10_73oq7"]
 [ext_resource type="Script" uid="uid://52cyo3vp73rr" path="res://characters/shadow/jab_2.gd" id="11_73oq7"]
 [ext_resource type="Resource" uid="uid://j8v0s23gurj" path="res://characters/knuckles/states/jab_1.tres" id="11_w40b4"]
@@ -37,7 +37,7 @@
 [ext_resource type="Resource" uid="uid://euruuouwvid3" path="res://characters/shadow/states/grnd_trap.tres" id="27_gjr3y"]
 [ext_resource type="Script" uid="uid://bi0hhacwa7lh3" path="res://characters/shadow/states/air_trap.gd" id="27_uak6g"]
 [ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="29_vj6v6"]
-[ext_resource type="Script" uid="uid://gcwcpubpu4qx" path="res://characters/shadow/states/air_pow.gd" id="29_w40b4"]
+[ext_resource type="Script" uid="uid://chagy48ap6251" path="res://characters/shadow/states/air_pow.gd" id="29_w40b4"]
 
 [sub_resource type="Resource" id="Resource_3o4s2"]
 script = ExtResource("29_vj6v6")
@@ -107,7 +107,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
-[sub_resource type="Resource" id="Resource_djkpe"]
+[sub_resource type="Resource" id="Resource_w40b4"]
 script = ExtResource("23_0nker")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -222,7 +222,7 @@ script = ExtResource("27_uak6g")
 attack_info = SubResource("Resource_gjr3y")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_djkpe")
+hit_data = SubResource("Resource_w40b4")
 
 [node name="TestLabel2" type="Label3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272035, 0)
