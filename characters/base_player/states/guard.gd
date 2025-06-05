@@ -4,7 +4,7 @@ var startup_frames = 6
 var guard_frames = 16
 var recovery_frames = 10
 
-const HEAL_EFFECT_PATH = "res://spawnables/effects/guard_effect.tscn"
+const GUARD_EFFECT_PATH = "res://spawnables/effects/guard_effect.tscn"
 
 
 func _enter(data = {}):
@@ -13,7 +13,7 @@ func _enter(data = {}):
 
 func _step():
 	if parent.state_time == startup_frames:
-		root.spawn_scene("HealEffect", HEAL_EFFECT_PATH, root.global_position)
+		root.spawn_scene("GuardEffect", GUARD_EFFECT_PATH, root.global_position)
 
 	# When in guard frames, change hurtbox to shield mode
 	if parent.state_time >= startup_frames and parent.state_time < startup_frames + guard_frames:

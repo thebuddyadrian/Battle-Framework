@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=34 format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" uid="uid://mhfes0qawdck" path="res://characters/base_player/base_player.gd" id="1_7xl6k"]
 [ext_resource type="Script" uid="uid://c8deswq6muu7v" path="res://characters/raycast.gd" id="2_s2flu"]
@@ -16,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="15_0nphp"]
 [ext_resource type="Script" uid="uid://dlb6dqmr8fknv" path="res://characters/base_player/states/hurt.gd" id="15_ddqn7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="16_32b4s"]
+[ext_resource type="Script" uid="uid://33bi3xdwsci3" path="res://characters/base_player/states/blocked.gd" id="16_kvwve"]
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="16_obb2v"]
 [ext_resource type="Script" uid="uid://cbsbumpo5naru" path="res://characters/base_player/states/heal.gd" id="17_b01px"]
 [ext_resource type="Script" uid="uid://cftg53g7j8had" path="res://characters/base_player/states/base_attack.gd" id="17_r8feo"]
@@ -41,7 +42,7 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_uam5m"]
+[sub_resource type="Resource" id="Resource_kvwve"]
 script = ExtResource("16_32b4s")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -72,6 +73,7 @@ shape = SubResource("CapsuleShape3D_ajxej")
 [node name="PlayerSprite" type="Sprite3D" parent="."]
 layers = 4
 texture_filter = 0
+render_priority = 10
 hframes = 16
 vframes = 14
 frame = 36
@@ -139,7 +141,7 @@ script = ExtResource("21_kvwve")
 script = ExtResource("17_b01px")
 
 [node name="Blocked" type="Node" parent="StateMachine"]
-script = ExtResource("21_kvwve")
+script = ExtResource("16_kvwve")
 
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource("15_ddqn7")
@@ -213,7 +215,7 @@ script = ExtResource("23_uam5m")
 
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_uam5m")
+hit_data = SubResource("Resource_kvwve")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

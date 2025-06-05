@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://lyfnd6of6efn"]
+[gd_scene load_steps=41 format=3 uid="uid://lyfnd6of6efn"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_qnw3q"]
 [ext_resource type="Script" uid="uid://c2lv0otitxe6m" path="res://characters/shadow/shadow.gd" id="2_h1jln"]
@@ -7,8 +7,7 @@
 [ext_resource type="Script" uid="uid://bmg8gug5n5wos" path="res://characters/knuckles/states/dash.tres.gd" id="4_h2on0"]
 [ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://assets/shadow/shadows_effects-Sheet.png" id="4_xq7wv"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_73oq7"]
-[ext_resource type="Script" uid="uid://cj1l7t1k5eima" path="res://characters/sonic/states/blocked.gd" id="6_xq7wv"]
-[ext_resource type="Script" uid="uid://qx5g0w3rmmjp" path="res://characters/shadow/states/air_action.gd" id="7_xq7wv"]
+[ext_resource type="Script" uid="uid://ueqal43akv04" path="res://characters/shadow/states/air_action.gd" id="7_xq7wv"]
 [ext_resource type="Script" uid="uid://b0fwnp3c7icpp" path="res://characters/shadow/jab_1.gd" id="10_73oq7"]
 [ext_resource type="Script" uid="uid://52cyo3vp73rr" path="res://characters/shadow/jab_2.gd" id="11_73oq7"]
 [ext_resource type="Resource" uid="uid://j8v0s23gurj" path="res://characters/knuckles/states/jab_1.tres" id="11_w40b4"]
@@ -107,7 +106,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
-[sub_resource type="Resource" id="Resource_w40b4"]
+[sub_resource type="Resource" id="Resource_djkpe"]
 script = ExtResource("23_0nker")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -164,9 +163,6 @@ script = ExtResource("4_h2on0")
 [node name="AirAction" parent="StateMachine" index="7"]
 script = ExtResource("7_xq7wv")
 
-[node name="Blocked" parent="StateMachine" index="12"]
-script = ExtResource("6_xq7wv")
-
 [node name="Jab1" parent="StateMachine" index="18"]
 script = ExtResource("10_73oq7")
 attack_info = ExtResource("11_w40b4")
@@ -222,7 +218,7 @@ script = ExtResource("27_uak6g")
 attack_info = SubResource("Resource_gjr3y")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_w40b4")
+hit_data = SubResource("Resource_djkpe")
 
 [node name="TestLabel2" type="Label3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272035, 0)
