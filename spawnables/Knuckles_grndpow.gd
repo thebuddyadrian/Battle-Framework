@@ -7,12 +7,6 @@ func _on_spawn(data: = {}):
 	if direction == Vector2.LEFT:
 		$Sprite.flip_h = true
 
-
-func _physics_process(delta: float) -> void:
-	if is_on_floor():
-		destroy()
-
-
 func destroy():
 	velocity = Vector3.ZERO
 	sprite.play("Break")

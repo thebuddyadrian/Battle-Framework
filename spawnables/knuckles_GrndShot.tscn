@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_n410g"]
 script = ExtResource("4_3pn0n")
-damage = 10.0
+damage = 35.0
 knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
 knockback_angle = 45.0
@@ -18,8 +18,8 @@ unblockable = false
 hit_freeze = 5
 hit_stun = 30
 
-[sub_resource type="SphereShape3D" id="SphereShape3D_l8trd"]
-radius = 0.51228
+[sub_resource type="SphereShape3D" id="SphereShape3D_n410g"]
+radius = 1.05522
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_r25py"]
 radius = 0.254871
@@ -221,7 +221,7 @@ metadata/_custom_type_script = "uid://cm6korv2sfd"
 
 [node name="Shape" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
-shape = SubResource("SphereShape3D_l8trd")
+shape = SubResource("SphereShape3D_n410g")
 
 [node name="Hurtbox" type="Area3D" parent="."]
 visible = false

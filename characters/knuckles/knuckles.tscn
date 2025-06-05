@@ -24,7 +24,7 @@
 [ext_resource type="Script" uid="uid://dsxss5rjnq68j" path="res://characters/knuckles/air_shot.gd" id="21_c10jq"]
 [ext_resource type="Resource" uid="uid://cwvnw3fmisemh" path="res://characters/knuckles/states/air_attack.tres" id="21_psdtg"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="21_s1n3o"]
-[ext_resource type="Script" uid="uid://chmc3a32o3eiv" path="res://characters/knuckles/grnd_pow.gd" id="21_xt1s0"]
+[ext_resource type="Script" uid="uid://clo42n4idjy26" path="res://characters/knuckles/grnd_pow.gd" id="21_xt1s0"]
 [ext_resource type="Resource" uid="uid://dw28vniky3lcq" path="res://characters/knuckles/states/grnd_pow.tres" id="22_1kwib"]
 [ext_resource type="Resource" uid="uid://oxnnmafgr24c" path="res://characters/knuckles/states/air_shot.tres" id="22_ns63g"]
 [ext_resource type="Script" uid="uid://6guda7f8ly0c" path="res://characters/shadow/states/grnd_shot.gd" id="23_psdtg"]

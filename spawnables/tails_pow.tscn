@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://bmc6nnoe7pctn"]
 
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="1_gh2f6"]
-[ext_resource type="Script" path="res://spawnables/tails_pow.gd" id="1_yqcdp"]
+[ext_resource type="Script" uid="uid://w21aa4bqqpsy" path="res://spawnables/tails_pow.gd" id="1_yqcdp"]
 [ext_resource type="Resource" uid="uid://bh2rqouvrhnyp" path="res://spawnables/ShotData/TailsPow.tres" id="2_i4h3c"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_yqcdp"]
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="3_i4h3c"]
@@ -9,7 +9,7 @@
 
 [sub_resource type="Resource" id="Resource_i4h3c"]
 script = ExtResource("2_yqcdp")
-damage = 10.0
+damage = 25.0
 knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
 knockback_angle = 45.0
