@@ -12,4 +12,5 @@ func _step():
 
 
 func _exit(next_state: BaseState):
+	root.invincibility_frames = 5
 	root.hurtbox.active = true

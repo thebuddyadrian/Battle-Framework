@@ -53,6 +53,7 @@ func _step():
 				var collider = collision.get_collider(j)
 				if collider is StaticBody3D:
 					change_state("WallBounce", {normal = collision.get_normal(j)})
+					return
 	
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.UP:
 		root.animplayer.play_section_with_markers("HitUp", "loop", "loopend")

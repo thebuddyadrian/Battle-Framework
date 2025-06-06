@@ -901,6 +901,7 @@ environment = SubResource("Environment_hy0rb")
 
 [node name="Bottom" type="MeshInstance3D" parent="."]
 transform = Transform3D(81.113, 0, 0, 0, 1, 0, 0, 0, 27.5445, 0, -1.89626, 0.162338)
+visible = false
 mesh = SubResource("PlaneMesh_mxp4k")
 surface_material_override/0 = SubResource("ShaderMaterial_ta7ci")
 
@@ -911,6 +912,7 @@ mesh = SubResource("PlaneMesh_lh335")
 surface_material_override/0 = SubResource("ShaderMaterial_u6cys")
 
 [node name="SkyPivot" type="Node3D" parent="."]
+visible = false
 script = ExtResource("6_r6hsw")
 
 [node name="Sky" type="MeshInstance3D" parent="SkyPivot"]

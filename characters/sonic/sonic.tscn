@@ -1414,5 +1414,4 @@ texture = ExtResource("25_ttio6")
 
 [node name="TestLabel" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247459, 0)
-visible = false
 text = "HP:230"

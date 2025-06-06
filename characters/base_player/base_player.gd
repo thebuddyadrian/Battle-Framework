@@ -55,6 +55,10 @@ var last_hit_player: BattleCharacter
 var camera: Node3D
 # If active, player will not do any processing in _physics_process
 var freeze_frames: int = 0
+const MAX_WALL_BOUNCES = 2
+var wall_bounces = 0
+# If > 0, the player will have limited invincibility (check Hitbox.gd "check_if_hit" function)
+var invincibility_frames = 0
 
 @onready var Sprite = $PlayerSprite
 @onready var effects = $PlayerSprite/Effects
@@ -111,11 +115,14 @@ func _physics_process(delta: float) -> void:
 			upper_direction_inputs[direction] = UPPER_DIRECTION_INPUT_WINDOW
 	
 	# Test Hud
-	$TestLabel.text = "HP: %s" % str(current_hp)
+	$TestLabel.text = str(wall_bounces)
 
 	# Add the gravity.
 	if velocity.y >  -FALL_SPEED:
 		velocity.y -= GRAVITY * gravity_scale
+	
+	# Count down invincibility frames
+	invincibility_frames = max(invincibility_frames - 1, 0)
 	
 	_process_actions()
 	_process_movement()

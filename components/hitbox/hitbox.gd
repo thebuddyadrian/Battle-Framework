@@ -78,6 +78,9 @@ func check_if_hit(hurtbox) -> bool:
 		return false
 	if hurtbox.is_in_group("hurtbox_group"):
 		if hurtbox.active:
+			if hurtbox.root is BattleCharacter:
+				if hurtbox.root.invincibility_frames > 0:
+					return false
 			if (hurtbox.can_be_hit and hurtbox.mode == Hurtbox.MODE.NORMAL):# or (hit_data.type == HitData.MOVE_TYPES.GRAB and hurtbox.can_be_grabbed):
 				if !(get_path_to(hurtbox.root) in nodes_already_hit):
 					if hurtbox.root != root and hurtbox.player_id != player_id:

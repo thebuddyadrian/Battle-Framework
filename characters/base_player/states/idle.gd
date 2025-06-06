@@ -8,6 +8,8 @@ func _enter(data = {}):
 	super._enter(data)
 	root.set_actions_enabled(["move", "jump", "dash", "attack", "skill", "guard"], true)
 	root.animplayer.play("Idle")
+	# Reset wall bounces
+	root.wall_bounces = 0
 
 
 func _step():
