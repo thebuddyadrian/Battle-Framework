@@ -4,10 +4,10 @@
 
 [resource]
 script = ExtResource("1_1aobf")
-animation = "GrndPow"
+animation = "GrndPowFwd"
 air_animation = ""
-animation_down = ""
-animation_up = ""
+animation_down = "GrndPowDown"
+animation_up = "GrndPowUp"
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = true
