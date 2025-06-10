@@ -348,6 +348,12 @@ func _step():
 	if name == "Upper" and move_hit:
 		root.set_action_enabled("jump", true)
 	
+
+	if parent.state_time == 2 and name == "Heavy" and root.char_name != "shadow":
+		root.spawn_scene("HeavyEffect", "res://spawnables/effects/heavy_effect.tscn", root.global_position, root.get_parent(), {direction = root.facing_direction_2d})
+
+
+	
 func _step_frozen():
 	#Count up move_hit and move_contact
 	if move_hit > 0:

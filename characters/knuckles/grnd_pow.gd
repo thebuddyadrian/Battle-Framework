@@ -40,8 +40,8 @@ func _step():
 				else:
 					proj.position.x = root.position.x + 0.15
 			elif attack_direction == Vector2.DOWN:
-				proj.position.y = root.position.y + 4*proj_offset_y
-				proj.position.z = root.position.z + 7*proj_offset_z
+				proj.position.y = root.position.y + proj_offset_y
+				proj.position.z = root.position.z + proj_offset_z
 				proj.position.x = root.position.x - 0.1
 	elif get_current_phase() == recovery_phase:
 		

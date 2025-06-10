@@ -104,8 +104,9 @@ func check_if_blocked(hurtbox) -> bool:
 	if hit_data.unblockable: return false
 	if hurtbox.is_in_group("hurtbox_group"):
 		if hurtbox.active and hurtbox.can_be_hit and hurtbox.mode == Hurtbox.MODE.SHIELD:
-			if !(hurtbox.root.is_in_group("characters")): return true
-			if hurtbox.root.team_id != root.team_id and !(get_path_to(hurtbox.root) in nodes_already_hit):
+			#if hurtbox.root.team_id != root.team_id and !(get_path_to(hurtbox.root) in nodes_already_hit):
+				#return true
+			if !(get_path_to(hurtbox.root) in nodes_already_hit):
 				return true
 	return false
 

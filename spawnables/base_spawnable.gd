@@ -40,6 +40,7 @@ func _ready():
 		self.despawn_timer.start()
 	
 	hitbox.active = false
+	sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	if self.spawnable_info.hit_start_millis > 0:
 		add_child(hit_start_timer)
 		self.hit_start_timer.wait_time = self.spawnable_info.hit_start_millis/1000.0
@@ -127,8 +128,8 @@ func _on_clash():
 	pass
 
 ## Runs after blocked.
-func _on_blocked():
-	pass
+func _on_blocked(_hit_data, _hurtbox):
+	queue_free()
 
 ## Runs after being thrown.
 func _on_thrown():

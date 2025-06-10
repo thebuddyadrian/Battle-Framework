@@ -11,8 +11,8 @@ func _phase_changed():
 		}
 		var proj = root.spawn_scene("GrndShot", GRND_SHOT_PROJ_PATH, root.global_position, null, data)
 		proj.direction = attack_direction
-		proj.velocity.x = attack_direction.x * 10
-		proj.velocity.z = attack_direction.y * 10
+		proj.velocity.x = attack_direction.x * 7.5
+		proj.velocity.z = attack_direction.y * 7.5
 		if (attack_direction == Vector2.LEFT) or (attack_direction == Vector2.RIGHT):
 			proj.position.x = root.position.x + (1 * attack_direction.x)
 			proj.position.y = root.position.y

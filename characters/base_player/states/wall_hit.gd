@@ -1,8 +1,8 @@
 extends BaseState
 const WALL_HIT_EFFECT_PATH = "res://spawnables/wall_hit_effect.tscn"
 
-const WALL_BOUNCE_DECAY = 0.5
-const MIN_WALL_BOUNCES = 1 # Wall bounces has to be at least this amount before decay kicks in
+const WALL_BOUNCE_DECAY = 0.75
+const MIN_WALL_BOUNCES = 0 # Wall bounces has to be at least this amount before decay kicks in
 
 func _enter(data = {}):
 	var proj = root.spawn_scene("WallHitEffect", WALL_HIT_EFFECT_PATH, root.global_position, null, data)
@@ -13,10 +13,13 @@ func _enter(data = {}):
 
 	var wall_bounces_calculated = root.wall_bounces - MIN_WALL_BOUNCES
 
-	if wall_bounces_calculated > 0:
-		root.velocity.y /= 1 + wall_bounces_calculated * WALL_BOUNCE_DECAY
 	root.velocity.z = normal.z * 2.5
 	root.velocity.x = normal.x * 2.5
+
+	if wall_bounces_calculated > 0:
+		root.hurtbox.active = false
+		root.velocity /= 1 + wall_bounces_calculated * WALL_BOUNCE_DECAY
+
 	root.gravity_scale = 0.7
 	root.deceleration_scale = 0.1
 	root.wall_bounces += 1

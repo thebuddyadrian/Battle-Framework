@@ -145,6 +145,7 @@ hit_data = SubResource("Resource_psdtg")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128
+visible = false
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" node_paths=PackedStringArray("character")]
 offset_left = 21.0

@@ -52,7 +52,7 @@ startup_frames = 20
 active_frames = 30
 recovery_frames = 12
 attack_sound = "punch"
-damage = 6
+damage = 10
 knockback_power = 12
 knockback_angle = 90
 knockback_type = 2
@@ -231,6 +231,7 @@ font_size = 16
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
 layer = 128
+visible = false
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" node_paths=PackedStringArray("character")]
 offset_left = 21.0
@@ -242,6 +243,7 @@ texture_under = ExtResource("24_pfypo")
 texture_progress = ExtResource("25_xq7wv")
 script = ExtResource("26_h1jln")
 character = NodePath("../..")
+metadata/_edit_use_anchors_ = true
 
 [node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
 position = Vector2(-12, 5)

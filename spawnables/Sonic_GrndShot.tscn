@@ -321,7 +321,7 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_j3baa"]
 script = ExtResource("4_8jstf")
-damage = 30.0
+damage = 40.0
 knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
 knockback_angle = 45.0
@@ -468,9 +468,8 @@ script = ExtResource("1_0efh6")
 spawnable_info = ExtResource("2_j3baa")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.00755633, -0.0873581, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.00755633, -0.338284, 0)
 offset = Vector2(0, 20)
-billboard = 1
 sprite_frames = SubResource("SpriteFrames_mdu81")
 animation = &"Start"
 autoplay = "Side"
@@ -483,7 +482,7 @@ root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
 [node name="Shape" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.431986, 0)
 shape = SubResource("SphereShape3D_561xu")
 
 [node name="Hurtbox" type="Area3D" parent="."]

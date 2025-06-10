@@ -12,10 +12,10 @@
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="8_wpnlk"]
 [ext_resource type="Resource" uid="uid://df00kkj6hx8pc" path="res://characters/sonic/states/dash_attack.tres" id="9_6mqiq"]
 [ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="9_fueeq"]
-[ext_resource type="Script" uid="uid://cs3moofgrsq1h" path="res://characters/knuckles/states/air_attack.gd" id="10_6mqiq"]
 [ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="10_c7fke"]
 [ext_resource type="Resource" uid="uid://cdy3tsk3tj34i" path="res://characters/sonic/states/air_attack.tres" id="11_41aki"]
 [ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="12_w02fn"]
+[ext_resource type="Script" uid="uid://bnkbr41fk3o52" path="res://characters/sonic/states/air_attack.gd" id="13_fueeq"]
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="14_6ri6b"]
 [ext_resource type="Resource" uid="uid://lscqxewn2oxm" path="res://characters/sonic/states/grnd_pow.tres" id="15_lq7el"]
 [ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/sonic/states/air_pow.gd" id="16_lci63"]
@@ -1350,6 +1350,11 @@ hframes = 10
 vframes = 11
 frame = 36
 
+[node name="RayCast3D" parent="." index="3"]
+target_position = Vector3(0, -3, 0)
+debug_shape_custom_color = Color(1, 0, 0, 1)
+debug_shape_thickness = 5
+
 [node name="AirAction" parent="StateMachine" index="7"]
 script = ExtResource("3_jddj4")
 
@@ -1374,7 +1379,7 @@ attack_info = ExtResource("8_wpnlk")
 attack_info = ExtResource("9_6mqiq")
 
 [node name="AirAttack" parent="StateMachine" index="24"]
-script = ExtResource("10_6mqiq")
+script = ExtResource("13_fueeq")
 attack_info = ExtResource("11_41aki")
 
 [node name="AimAttack" parent="StateMachine" index="25"]
@@ -1396,6 +1401,7 @@ hit_data = SubResource("Resource_fueeq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128
+visible = false
 
 [node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" node_paths=PackedStringArray("character")]
 offset_left = 21.0
@@ -1414,4 +1420,5 @@ texture = ExtResource("25_ttio6")
 
 [node name="TestLabel" parent="." index="8"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247459, 0)
+visible = false
 text = "HP:230"

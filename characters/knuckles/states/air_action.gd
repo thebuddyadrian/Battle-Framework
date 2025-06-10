@@ -23,7 +23,7 @@ func _step():
 		root.animplayer.play_section_with_markers("AirAction", "loop")
 		root.velocity.x = root.facing_direction.x * 8
 		root.velocity.z = root.facing_direction.y * 8
-		root.velocity.y = -2
+		root.velocity.y = -2.5
 	if root.is_on_floor():
 		parent.change_state("Land")
 

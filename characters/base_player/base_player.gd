@@ -27,6 +27,7 @@ var UPPER_DIRECTION_INPUT_WINDOW: int = 4
 var team_id: int = 1 # For team battles
 var char_name: String = ""
 var current_hp: int = HP
+var current_stocks: int = STOCKS
 ## The last used nonzero move_direction, used for dashing, air dashing, and four directional attacks
 ## This is set automatically during movement
 var facing_direction: Vector2 = Vector2.RIGHT
@@ -123,6 +124,10 @@ func _physics_process(delta: float) -> void:
 	
 	# Count down invincibility frames
 	invincibility_frames = max(invincibility_frames - 1, 0)
+	if invincibility_frames:
+		Sprite.modulate.a = 0.5
+	else:
+		Sprite.modulate.a = 1
 	
 	_process_actions()
 	_process_movement()
@@ -481,6 +486,8 @@ func spawn_scene(spawnable_name: String, scene_path: String, pos: Vector3 = glob
 	parent.add_child(node)
 	if node is BaseSpawnable:
 		node._spawn(data)
+	elif node.has_method("_on_spawn"):
+		node._on_spawn(data)
 	return node
 
 
