@@ -16,7 +16,7 @@ var character_display_names: Dictionary = {
 }
 
 var battle_stages: Array[String] = [
-	"emeraldbeach", "amysroom", "battlehwy", "chaoruins", "hologram", "holysummit"
+	"emeraldbeach", "amysroom", "battlehwy", "chaoruins", "hologram", "holysummit", "greenhill"
 ]
 
 # Load modded characters into the "characters" array
