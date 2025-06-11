@@ -8,6 +8,7 @@ func _move_setup():
 func _enter(data := {}):
 	super._enter(data)
 	root.effects.show()
+	root.velocity = Vector3(0, 10, 0)
 
 func _phase_changed():
 	if get_current_phase_name() == "disappear":
@@ -19,9 +20,7 @@ func _phase_changed():
 
 func _step():
 	super._step()
-	if get_current_phase() == startup_phase:
-		root.velocity = Vector3(0, 12, 0)
-	elif get_current_phase_name() == "disappear":
+	if get_current_phase_name() == "disappear":
 		root.velocity = Vector3(0, -50, 0)
 	elif get_current_phase() == active_phase:
 		if parent.state_time % 4 == 0:
