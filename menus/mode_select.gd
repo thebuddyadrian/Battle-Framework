@@ -16,7 +16,6 @@ var current_sprite: Sprite2D
 
 func _ready() -> void:
 	Globals.load_controls()
-	Globals.generate_gamepad_controls()
 	change_mode(selected_mode)
 	flame_logo.play("default")
 

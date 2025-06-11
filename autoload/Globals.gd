@@ -32,23 +32,3 @@ func load_controls():
 			InputMap.action_add_event(action, event)
 
 
-# For now, it just takes the player 1 gamepad controls and add it to the other players
-# Then sets the device index to 0, 1, 2, 3, etc.
-# In the future this should be removed and players should set their gamepad controls in the settings or something
-func generate_gamepad_controls():
-	for action in InputMap.get_actions():
-		if action.ends_with("1"):
-			var gamepad_events: Array[InputEvent]
-			for event in InputMap.action_get_events(action):
-				if event is InputEventJoypadButton or event is InputEventJoypadMotion:
-					gamepad_events.append(event)
-			
-			for event in gamepad_events:
-				event.device = 0
-				for i in range(2, 5):
-					var new_event: InputEvent = event.duplicate(true)
-					new_event.device = i - 1
-					var new_action = action.trim_suffix("1") + str(i)
-					if !InputMap.has_action(new_action):
-						InputMap.add_action(new_action)
-					InputMap.action_add_event(new_action, new_event)
