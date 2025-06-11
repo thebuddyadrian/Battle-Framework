@@ -49,7 +49,7 @@ func _step():
 		root.velocity.z = lerp(attack_direction.y * 7, 0.0, 0.6)
 	
 func _phase_changed():
-	if get_current_phase() == recovery_phase:
+	if get_current_phase() == recovery_phase and proj:
 		explosion = false
 		proj.queue_free()
 
