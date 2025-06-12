@@ -9,6 +9,10 @@ func _move_setup():
 	jump_phase.end_phase = true
 
 
+
+func _enter(data: Dictionary = {}):
+	super._enter(data)
+
 func _phase_changed():
 	if get_current_phase_name() == "active":
 		root.play_voice_clip("sonic_heavy")

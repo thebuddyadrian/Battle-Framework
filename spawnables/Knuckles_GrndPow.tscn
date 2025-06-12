@@ -1,0 +1,284 @@
+[gd_scene load_steps=30 format=3 uid="uid://d0slkxrwis2ve"]
+
+[ext_resource type="Script" uid="uid://ctiobp6w5h2ib" path="res://spawnables/Knuckles_grndpow.gd" id="1_edls8"]
+[ext_resource type="Texture2D" uid="uid://ds3c6j0olh44r" path="res://assets/knuckles/Knuckles spritesheet.png" id="2_bjyxo"]
+[ext_resource type="Resource" uid="uid://by1udh43sbhjt" path="res://spawnables/ShotData/Knuckles_GrndPow_info.tres" id="2_fojjp"]
+[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_fojjp"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_vyvt2"]
+[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_4e41c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gckls"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(0, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwdgt"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(144, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_236gd"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(288, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hqt5"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(432, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2vv5"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(576, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbd6a"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(720, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppr38"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(864, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0cnr"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(0, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obkn3"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(144, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0e2f"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(288, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb3tg"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(432, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1h50"]
+atlas = ExtResource("2_bjyxo")
+region = Rect2(576, 432, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_g86sr"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gckls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwdgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_236gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hqt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2vv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbd6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppr38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0cnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obkn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0e2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb3tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1h50")
+}],
+"loop": true,
+"name": &"Side",
+"speed": 5.0
+}]
+
+[sub_resource type="Resource" id="Resource_bjyxo"]
+script = ExtResource("4_vyvt2")
+damage = 10.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 13.0
+knockback_angle = 45.0
+knockback_type = 4
+unblockable = false
+hit_freeze = 5
+hit_stun = 30
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_l8trd"]
+radius = 0.51228
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_r25py"]
+radius = 0.254871
+
+[sub_resource type="Animation" id="Animation_bjyxo"]
+resource_name = "Anim"
+length = 1.00001
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:animation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Side"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.334578, 0.416667, 0.5, 0.583333, 0.666667, 0.75, 0.833333, 0.916667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
+[sub_resource type="Animation" id="Animation_ntqn7"]
+resource_name = "End"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_xm2x0"]
+resource_name = "Loop"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_8jstf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Side"]
+}
+
+[sub_resource type="Animation" id="Animation_561xu"]
+resource_name = "Start"
+length = 0.166675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0scby"]
+_data = {
+&"Anim": SubResource("Animation_bjyxo"),
+&"End": SubResource("Animation_ntqn7"),
+&"Loop": SubResource("Animation_xm2x0"),
+&"RESET": SubResource("Animation_8jstf"),
+&"Start": SubResource("Animation_561xu")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_wbvwd"]
+size = Vector3(0.70697, 1, 0.717041)
+
+[node name="KnucklesGrndPow" type="CharacterBody3D"]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_edls8")
+spawnable_info = ExtResource("2_fojjp")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
+layers = 8
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_g86sr")
+animation = &"Side"
+autoplay = "Side"
+
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
+visible = false
+script = ExtResource("3_fojjp")
+hit_data = SubResource("Resource_bjyxo")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://cm6korv2sfd"
+
+[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
+shape = SubResource("SphereShape3D_l8trd")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+visible = false
+script = ExtResource("5_4e41c")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://jk40g84p8nlf"
+
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
+shape = SubResource("SphereShape3D_r25py")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0scby")
+}
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
+shape = SubResource("BoxShape3D_wbvwd")
+disabled = true
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

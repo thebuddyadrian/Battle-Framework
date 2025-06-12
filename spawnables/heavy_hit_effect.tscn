@@ -1,0 +1,126 @@
+[gd_scene load_steps=19 format=3 uid="uid://51yap3wm0ol"]
+
+[ext_resource type="Script" uid="uid://drcg8tfkefl6u" path="res://spawnables/Dash_effect.gd" id="1_7bg6x"]
+[ext_resource type="Resource" uid="uid://bv2edat0khvum" path="res://spawnables/ShotData/DashEffect.tres" id="2_k7seb"]
+[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_suqmk"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_ypq5o"]
+[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_cp7sr"]
+[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_8brpe"]
+
+[sub_resource type="Resource" id="Resource_7bg6x"]
+script = ExtResource("4_ypq5o")
+damage = 10.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 13.0
+knockback_angle = 45.0
+knockback_type = 4
+unblockable = false
+hit_freeze = 5
+hit_stun = 30
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fc865"]
+radius = 0.51228
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kpalt"]
+radius = 0.254871
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_voyo2"]
+size = Vector3(0.70697, 1, 0.717041)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ar4b4"]
+atlas = ExtResource("6_8brpe")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qnb2r"]
+atlas = ExtResource("6_8brpe")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p371i"]
+atlas = ExtResource("6_8brpe")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mpeis"]
+atlas = ExtResource("6_8brpe")
+region = Rect2(800, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c6iwn"]
+atlas = ExtResource("6_8brpe")
+region = Rect2(900, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7krcs"]
+atlas = ExtResource("6_8brpe")
+region = Rect2(0, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lr3f8"]
+atlas = ExtResource("6_8brpe")
+region = Rect2(100, 100, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n2o6l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ar4b4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qnb2r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p371i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mpeis")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c6iwn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7krcs")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lr3f8")
+}],
+"loop": false,
+"name": &"Anim",
+"speed": 18.0
+}]
+
+[node name="HeavyHitEffect" type="CharacterBody3D"]
+collision_layer = 0
+script = ExtResource("1_7bg6x")
+spawnable_info = ExtResource("2_k7seb")
+
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
+script = ExtResource("3_suqmk")
+hit_data = SubResource("Resource_7bg6x")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://cm6korv2sfd"
+
+[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
+shape = SubResource("SphereShape3D_fc865")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+visible = false
+script = ExtResource("5_cp7sr")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://jk40g84p8nlf"
+
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
+shape = SubResource("SphereShape3D_kpalt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
+shape = SubResource("BoxShape3D_voyo2")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_n2o6l")
+animation = &"Anim"
+autoplay = "Anim"
+frame = 6
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=59 format=3 uid="uid://dfg6kp3mdw3p5"]
 
-[ext_resource type="Script" uid="uid://cglriergrnma0" path="res://spawnables/sonic_grnd_shot.gd" id="1_0efh6"]
+[ext_resource type="Script" uid="uid://havb04m6mtwi" path="res://spawnables/sonic_grnd_shot.gd" id="1_0efh6"]
 [ext_resource type="Resource" uid="uid://n2batc58o5dg" path="res://spawnables/ShotData/SonicGrndSht.tres" id="2_j3baa"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_561xu"]
 [ext_resource type="Texture2D" uid="uid://pcyjmjo2o3yx" path="res://assets/Sub/SonicGrndShot.png" id="3_j3baa"]
@@ -321,7 +321,7 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_j3baa"]
 script = ExtResource("4_8jstf")
-damage = 10.0
+damage = 40.0
 knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
 knockback_angle = 45.0
@@ -352,6 +352,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [8, 9, 10, 11, 12, 13]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"End"]
+}
 
 [sub_resource type="Animation" id="Animation_xm2x0"]
 resource_name = "Loop"
@@ -370,6 +382,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [2, 3, 4, 5, 6, 7]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Loop"]
+}
 
 [sub_resource type="Animation" id="Animation_8jstf"]
 length = 0.001
@@ -384,6 +408,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Start"]
 }
 
 [sub_resource type="Animation" id="Animation_561xu"]
@@ -401,6 +437,18 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Start"]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0scby"]
@@ -420,12 +468,10 @@ script = ExtResource("1_0efh6")
 spawnable_info = ExtResource("2_j3baa")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.00755633, -0.0873581, 0)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.00755633, -0.338284, 0)
 offset = Vector2(0, 20)
-billboard = 1
-render_priority = 10
 sprite_frames = SubResource("SpriteFrames_mdu81")
-animation = &"Side"
+animation = &"Start"
 autoplay = "Side"
 
 [node name="Hitbox" type="Area3D" parent="."]
@@ -436,7 +482,7 @@ root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
 [node name="Shape" type="CollisionShape3D" parent="Hitbox"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.431986, 0)
 shape = SubResource("SphereShape3D_561xu")
 
 [node name="Hurtbox" type="Area3D" parent="."]

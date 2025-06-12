@@ -1,6 +1,6 @@
 extends BaseAttack
 
-const GRND_SHOT_PROJ_PATH = "res://spawnables/Sonic_GrndShot.tscn"
+const GRND_SHOT_PROJ_PATH = "res://spawnables/knuckles_GrndShot.tscn"
 
 
 func _phase_changed():
@@ -13,6 +13,6 @@ func _phase_changed():
 		proj.direction = attack_direction
 		proj.velocity.x = attack_direction.x * 6
 		proj.velocity.z = attack_direction.y * 6
-		root.velocity.y = 12
-		root.velocity.x = -root.facing_direction.x * 7
-		root.velocity.z = -root.facing_direction.y * 7
+		# root.velocity.y = 12
+		# root.velocity.x = -root.facing_direction.x * 7
+		# root.velocity.z = -root.facing_direction.y * 7

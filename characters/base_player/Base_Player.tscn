@@ -1,7 +1,8 @@
-[gd_scene load_steps=32 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=34 format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" uid="uid://mhfes0qawdck" path="res://characters/base_player/base_player.gd" id="1_7xl6k"]
 [ext_resource type="Script" uid="uid://c8deswq6muu7v" path="res://characters/raycast.gd" id="2_s2flu"]
+[ext_resource type="Script" uid="uid://ddgg8e7k4c0pd" path="res://characters/base_player/effects.gd" id="2_uam5m"]
 [ext_resource type="Script" uid="uid://clqptntgy8bjs" path="res://components/state_machine/state_machine.gd" id="4_dnwcv"]
 [ext_resource type="Script" uid="uid://cmwhkop71rjln" path="res://characters/base_player/states/idle.gd" id="5_6wnxk"]
 [ext_resource type="Script" uid="uid://bynwafnian3gd" path="res://characters/base_player/states/move.gd" id="7_wtpgs"]
@@ -15,6 +16,7 @@
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="15_0nphp"]
 [ext_resource type="Script" uid="uid://dlb6dqmr8fknv" path="res://characters/base_player/states/hurt.gd" id="15_ddqn7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="16_32b4s"]
+[ext_resource type="Script" uid="uid://33bi3xdwsci3" path="res://characters/base_player/states/blocked.gd" id="16_kvwve"]
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="16_obb2v"]
 [ext_resource type="Script" uid="uid://cbsbumpo5naru" path="res://characters/base_player/states/heal.gd" id="17_b01px"]
 [ext_resource type="Script" uid="uid://cftg53g7j8had" path="res://characters/base_player/states/base_attack.gd" id="17_r8feo"]
@@ -40,7 +42,7 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_ppowo"]
+[sub_resource type="Resource" id="Resource_kvwve"]
 script = ExtResource("16_32b4s")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -52,7 +54,7 @@ hit_freeze = 5
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.129537
+radius = 0.141148
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3twb4"]
 size = Vector3(0.188656, 0.317568, 0.231695)
@@ -71,7 +73,6 @@ shape = SubResource("CapsuleShape3D_ajxej")
 [node name="PlayerSprite" type="Sprite3D" parent="."]
 layers = 4
 texture_filter = 0
-render_priority = 10
 hframes = 16
 vframes = 14
 frame = 36
@@ -79,10 +80,17 @@ frame = 36
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 autoplay = "Idle"
 
+[node name="Effects" type="Sprite3D" parent="PlayerSprite"]
+visible = false
+texture_filter = 0
+script = ExtResource("2_uam5m")
+
+[node name="FlippedComponents" type="Node3D" parent="."]
+
 [node name="RayCast3D" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182536, 0)
 target_position = Vector3(0, -5, 0)
-collision_mask = 2
+collision_mask = 3
 script = ExtResource("2_s2flu")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]
@@ -132,7 +140,7 @@ script = ExtResource("21_kvwve")
 script = ExtResource("17_b01px")
 
 [node name="Blocked" type="Node" parent="StateMachine"]
-script = ExtResource("21_kvwve")
+script = ExtResource("16_kvwve")
 
 [node name="Hurt" type="Node" parent="StateMachine"]
 script = ExtResource("15_ddqn7")
@@ -206,7 +214,7 @@ script = ExtResource("23_uam5m")
 
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_ppowo")
+hit_data = SubResource("Resource_kvwve")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]

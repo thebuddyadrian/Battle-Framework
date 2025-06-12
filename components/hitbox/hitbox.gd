@@ -78,6 +78,9 @@ func check_if_hit(hurtbox) -> bool:
 		return false
 	if hurtbox.is_in_group("hurtbox_group"):
 		if hurtbox.active:
+			if hurtbox.root is BattleCharacter:
+				if hurtbox.root.invincibility_frames > 0:
+					return false
 			if (hurtbox.can_be_hit and hurtbox.mode == Hurtbox.MODE.NORMAL):# or (hit_data.type == HitData.MOVE_TYPES.GRAB and hurtbox.can_be_grabbed):
 				if !(get_path_to(hurtbox.root) in nodes_already_hit):
 					if hurtbox.root != root and hurtbox.player_id != player_id:
@@ -91,7 +94,7 @@ func check_if_clash(hitbox) -> bool:
 	if hitbox.is_in_group("hitbox_group"):
 		if hitbox.active:
 			if !(hitbox.root.is_in_group("characters")): return true
-			if hitbox.root.team_id != root.team_id and !(get_path_to(hitbox.root) in nodes_already_hit):
+			if !(get_path_to(hitbox.root) in nodes_already_hit):
 				return true
 	return false
 		
@@ -101,8 +104,9 @@ func check_if_blocked(hurtbox) -> bool:
 	if hit_data.unblockable: return false
 	if hurtbox.is_in_group("hurtbox_group"):
 		if hurtbox.active and hurtbox.can_be_hit and hurtbox.mode == Hurtbox.MODE.SHIELD:
-			if !(hurtbox.root.is_in_group("characters")): return true
-			if hurtbox.root.team_id != root.team_id and !(get_path_to(hurtbox.root) in nodes_already_hit):
+			#if hurtbox.root.team_id != root.team_id and !(get_path_to(hurtbox.root) in nodes_already_hit):
+				#return true
+			if !(get_path_to(hurtbox.root) in nodes_already_hit):
 				return true
 	return false
 

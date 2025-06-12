@@ -4,6 +4,8 @@ extends Node3D
 class_name Level
 
 const CAMERA_ROOT = preload("res://components/camera_root/camera_root.tscn")
+const PLAYER_WINDOW = preload("res://components/player_window/player_window.tscn")
+const PLAYER_HUD = preload("res://components/player_hud/player_hud.tscn")
 
 @export var music  : AudioStream
 @export var player_spawn_1: Node3D
@@ -12,45 +14,59 @@ const CAMERA_ROOT = preload("res://components/camera_root/camera_root.tscn")
 @export var player_spawn_4: Node3D
 @export var camera_follows_player: bool = false # For beat-em-up levels
 @export var camera_root_parent: Node = self
-var camera_pivot: Node3D
-var camera: Camera
+var camera_pivots: Dictionary[int, Node3D]
+var cameras: Dictionary[int, Camera3D]
 var audiostreamplayer = AudioStreamPlayer.new()
 
 
 func _ready() -> void:
 	MusicPlayer.play_track(music)
 	
-	# Spawn camera
-	var camera_root = CAMERA_ROOT.instantiate()
-	camera_root_parent.add_child(camera_root)
-	camera_root.name = "CameraRoot"
-	camera_pivot = camera_root.get_node("Pivot")
-	camera = camera_root.get_node("Pivot/Camera")
+	# Spawn cameras
+	for i in range(Game.human_players):
+		
+		var camera_root = CAMERA_ROOT.instantiate()
+		# For players 2-4, spawn a separate window
+		if i > 0:
+			var window = PLAYER_WINDOW.instantiate()
+			camera_root_parent.add_child(window)
+			window.add_child(camera_root)
+		else:
+			camera_root_parent.add_child(camera_root)
+		camera_root.name = "CameraRoot" + str(i + 1)
+		var camera_pivot = camera_root.get_node("Pivot")
+		var camera = camera_root.get_node("Pivot/Camera")
+		camera_pivots[i] = camera_pivot
+		cameras[i] = camera
 	
 	# Spawn characters
 	assert(player_spawn_1, "No spawn position has been placed for player 1")
 	assert(player_spawn_2, "No spawn position has been placed for player 2")
-	# TO-DO for now this only loads Sonic but this should load the chosen fighter
+	assert(player_spawn_3, "No spawn position has been placed for player 3")
+	assert(player_spawn_3, "No spawn position has been placed for player 4")
 	for i in range(Game.human_players):
-#<<<<<<< Updated upstream
 		var character = Game.character_choices[i + 1]
 		var player: BattleCharacter = load("res://characters/%s/%s.tscn" % [character, character]).instantiate()
-#=======
-
-#>>>>>>> Stashed changes
 		var spawn_position: Node3D = get("player_spawn_%s" % str(i + 1))
 		player.global_position = spawn_position.global_position
-		player.camera = camera_pivot
+		player.camera = camera_pivots[i]
 		player.scale = Vector3(4, 4, 4)
 		player.player_id = i + 1
+		cameras[i].player_id_to_track = i + 1
 		player.name = str(player.player_id)
-		player.char_name = "sonic"
+		player.char_name = character
 		spawn_position.get_parent().add_child(player)
+
+		# Spawn HUD
+		var player_hud = PLAYER_HUD.instantiate()
+		cameras[i].add_child(player_hud)
+		player_hud.track_player(player)
+
 	
-	if camera_follows_player:
-		camera._dont_rotate = true
-		camera_pivot.player_to_follow = get_node("1")
-		camera_pivot.follow_player = true
+	# if camera_follows_player:
+	# 	camera._dont_rotate = true
+	# 	camera_pivot.player_to_follow = get_node("1")
+	# 	camera_pivot.follow_player = true
 	await get_tree().process_frame
 
 

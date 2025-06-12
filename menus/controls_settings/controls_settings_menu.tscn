@@ -1,0 +1,59 @@
+[gd_scene load_steps=3 format=3 uid="uid://cmyw3ovt714rq"]
+
+[ext_resource type="Script" uid="uid://d0vvar3dohp3n" path="res://menus/controls_settings/controls_settings_menu.gd" id="1_seh2c"]
+[ext_resource type="PackedScene" uid="uid://cbkk1ut6e81c0" path="res://menus/controls_settings/controls_setup_player/controls_setup_player.tscn" id="1_y3qyo"]
+
+[node name="ControlsSettingsMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_seh2c")
+
+[node name="TabContainer" type="TabContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_bottom = -21.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_font_sizes/font_size = 8
+current_tab = 0
+
+[node name="Player 1" parent="TabContainer" instance=ExtResource("1_y3qyo")]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="Player 2" parent="TabContainer" instance=ExtResource("1_y3qyo")]
+visible = false
+layout_mode = 2
+player_no = 2
+metadata/_tab_index = 1
+
+[node name="Player 3" parent="TabContainer" instance=ExtResource("1_y3qyo")]
+visible = false
+layout_mode = 2
+player_no = 3
+metadata/_tab_index = 2
+
+[node name="Player 4" parent="TabContainer" instance=ExtResource("1_y3qyo")]
+visible = false
+layout_mode = 2
+player_no = 4
+metadata/_tab_index = 3
+
+[node name="ExitButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -8.0
+offset_right = 8.0
+grow_vertical = 0
+theme_override_font_sizes/font_size = 8
+text = "Save and Exit"
+
+[connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

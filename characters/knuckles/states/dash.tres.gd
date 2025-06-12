@@ -1,6 +1,7 @@
 extends BaseState
 var dash_direction: Vector2
-
+var spawned_dash_effect: bool = false
+const DASH_EFFECT_PATH = "res://spawnables/dash_effect.tscn"
 
 func _enter(data = {}):
 	super._enter(data)
@@ -13,9 +14,14 @@ func _enter(data = {}):
 
 
 func _step():
+	var data = {"dir": root.facing_direction_2d}
+	if !spawned_dash_effect:
+		var proj = root.spawn_scene("DashEffect", DASH_EFFECT_PATH, root.global_position, null, data)
+		proj.position = root.position
+		spawned_dash_effect = true
 	root.velocity.x = dash_direction.x * root.DASH_SPEED 
 	root.velocity.z = dash_direction.y * root.DASH_SPEED 
-	if parent.state_time > 25 :
+	if parent.state_time > 35 :
 		parent.change_state("Idle")
 
 
@@ -24,6 +30,7 @@ func _step_frozen():
 
 
 func _exit(next_state):
+	spawned_dash_effect = false
 	root.limit_speed = true
 	root.animplayer.stop()
 	root.set_action_enabled("attack", false)

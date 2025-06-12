@@ -1,23 +1,31 @@
 extends BaseAttack
 
+
+func _move_setup():
+	var disappear_phase = add_new_phase("disappear", 1)
+	disappear_phase.frames = 10
+
 func _enter(data := {}):
 	super._enter(data)
-	root.velocity.y = -24
-	root.velocity.x = clamp(root.velocity.x, -5, 5)
-	root.velocity.z = clamp(root.velocity.z, -5, 5)
-	root.deceleration_enabled = false
+	root.effects.show()
+	root.velocity = Vector3(0, 10, 0)
 
+func _phase_changed():
+	if get_current_phase_name() == "disappear":
+		root.hurtbox.active = false
+		root.hide()
+	else:
+		root.hurtbox.active = true
+		root.show()
 
 func _step():
 	super._step()
-	if root.is_on_floor():
-		root.velocity.y = 14
-		root.velocity.x = attack_direction.x * 2
-		root.velocity.z = attack_direction.y * 2
-	
-	if parent.state_time % 4 == 0 and get_current_phase() == active_phase:
-		reactivate_hitbox()
-
+	if get_current_phase_name() == "disappear":
+		root.velocity = Vector3(0, -50, 0)
+	elif get_current_phase() == active_phase:
+		if parent.state_time % 4 == 0:
+			reactivate_hitbox()
 
 func _exit(next_state):
-	root.deceleration_enabled = true
+	root.show()
+	root.effects.hide()

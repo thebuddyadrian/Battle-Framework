@@ -17,6 +17,8 @@ func _step():
 	# Allow player to follow up with an attack right when they hit the floor
 	if root.is_on_floor():
 		root.hurtbox.active = false
+		if root.invincibility_frames == 0:
+			root.invincibility_frames = 75
 	# When the player is fully down, they can no longer be hit
 	else:
 		root.hurtbox.active = true

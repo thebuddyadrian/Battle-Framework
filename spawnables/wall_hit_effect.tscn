@@ -1,0 +1,116 @@
+[gd_scene load_steps=18 format=3 uid="uid://cumb7sklep42y"]
+
+[ext_resource type="Script" uid="uid://k3u07mxgtvs6" path="res://spawnables/wall_hit_effect.gd" id="1_1gnx5"]
+[ext_resource type="Resource" uid="uid://bv2edat0khvum" path="res://spawnables/ShotData/DashEffect.tres" id="2_5nrjf"]
+[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_slqx6"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_m3ivo"]
+[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_fmtqa"]
+[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_bycy1"]
+
+[sub_resource type="Resource" id="Resource_fuwwp"]
+script = ExtResource("4_m3ivo")
+damage = 10.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 13.0
+knockback_angle = 45.0
+knockback_type = 4
+unblockable = false
+hit_freeze = 5
+hit_stun = 30
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fc865"]
+radius = 0.51228
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kpalt"]
+radius = 0.254871
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_voyo2"]
+size = Vector3(0.70697, 1, 0.717041)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw5af"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs6k8"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(300, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3ulj"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(400, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmxfl"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(500, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5apu"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(600, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpqyo"]
+atlas = ExtResource("6_bycy1")
+region = Rect2(700, 100, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_rnfc7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw5af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xs6k8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3ulj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmxfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5apu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpqyo")
+}],
+"loop": false,
+"name": &"Anim",
+"speed": 18.0
+}]
+
+[node name="WallHitEffect" type="CharacterBody3D"]
+collision_layer = 0
+script = ExtResource("1_1gnx5")
+spawnable_info = ExtResource("2_5nrjf")
+
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
+script = ExtResource("3_slqx6")
+hit_data = SubResource("Resource_fuwwp")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://cm6korv2sfd"
+
+[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
+shape = SubResource("SphereShape3D_fc865")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+visible = false
+script = ExtResource("5_fmtqa")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://jk40g84p8nlf"
+
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
+shape = SubResource("SphereShape3D_kpalt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
+shape = SubResource("BoxShape3D_voyo2")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_rnfc7")
+animation = &"Anim"
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

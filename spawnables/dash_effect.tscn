@@ -1,0 +1,273 @@
+[gd_scene load_steps=27 format=3 uid="uid://deq4msd7roqfv"]
+
+[ext_resource type="Script" uid="uid://drcg8tfkefl6u" path="res://spawnables/Dash_effect.gd" id="1_4omq8"]
+[ext_resource type="Resource" uid="uid://bv2edat0khvum" path="res://spawnables/ShotData/DashEffect.tres" id="2_5rud4"]
+[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_fxg5k"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_16j1f"]
+[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_mgjx6"]
+[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_ark0y"]
+
+[sub_resource type="Resource" id="Resource_4omq8"]
+script = ExtResource("4_16j1f")
+damage = 10.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 13.0
+knockback_angle = 45.0
+knockback_type = 4
+unblockable = false
+hit_freeze = 5
+hit_stun = 30
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fc865"]
+radius = 0.51228
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kpalt"]
+radius = 0.254871
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_voyo2"]
+size = Vector3(0.70697, 1, 0.717041)
+
+[sub_resource type="Animation" id="Animation_ntqn7"]
+resource_name = "End"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"End"]
+}
+
+[sub_resource type="Animation" id="Animation_xm2x0"]
+resource_name = "Loop"
+length = 0.500008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Loop"]
+}
+
+[sub_resource type="Animation" id="Animation_8jstf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Start"]
+}
+
+[sub_resource type="Animation" id="Animation_561xu"]
+resource_name = "Start"
+length = 0.166675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Start"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0scby"]
+_data = {
+&"End": SubResource("Animation_ntqn7"),
+&"Loop": SubResource("Animation_xm2x0"),
+&"RESET": SubResource("Animation_8jstf"),
+&"Start": SubResource("Animation_561xu")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpegr"]
+atlas = ExtResource("6_ark0y")
+region = Rect2(100, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gk57"]
+atlas = ExtResource("6_ark0y")
+region = Rect2(200, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11nds"]
+atlas = ExtResource("6_ark0y")
+region = Rect2(300, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udkbq"]
+atlas = ExtResource("6_ark0y")
+region = Rect2(400, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv6d1"]
+atlas = ExtResource("6_ark0y")
+region = Rect2(500, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyncn"]
+atlas = ExtResource("6_ark0y")
+region = Rect2(600, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn06s"]
+atlas = ExtResource("6_ark0y")
+region = Rect2(700, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lla2f"]
+atlas = ExtResource("6_ark0y")
+region = Rect2(800, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvlx0"]
+atlas = ExtResource("6_ark0y")
+region = Rect2(900, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfbyk"]
+atlas = ExtResource("6_ark0y")
+region = Rect2(0, 700, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_j1qu3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpegr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gk57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11nds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udkbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv6d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyncn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn06s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lla2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvlx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfbyk")
+}],
+"loop": false,
+"name": &"Anim",
+"speed": 15.0
+}]
+
+[node name="DashEffect" type="CharacterBody3D"]
+collision_layer = 0
+script = ExtResource("1_4omq8")
+spawnable_info = ExtResource("2_5rud4")
+
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
+script = ExtResource("3_fxg5k")
+hit_data = SubResource("Resource_4omq8")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://cm6korv2sfd"
+
+[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
+shape = SubResource("SphereShape3D_fc865")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+visible = false
+script = ExtResource("5_mgjx6")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://jk40g84p8nlf"
+
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
+shape = SubResource("SphereShape3D_kpalt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
+shape = SubResource("BoxShape3D_voyo2")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0scby")
+}
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_j1qu3")
+animation = &"Start"
+autoplay = "Anim"
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

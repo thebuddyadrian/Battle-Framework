@@ -4,17 +4,17 @@
 
 [resource]
 script = ExtResource("1_hmomj")
-animation = "AirPowFwd"
+animation = "AirPow"
 air_animation = ""
-animation_down = "AirPowDown"
-animation_up = "AirPowUp"
+animation_down = ""
+animation_up = ""
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = false
 use_sections = false
-startup_frames = 4
-active_frames = 20
-recovery_frames = 8
+startup_frames = 18
+active_frames = 51
+recovery_frames = 13
 attack_sound = "punch"
 damage = 4
 knockback_power = 4

@@ -1,0 +1,84 @@
+[gd_scene load_steps=12 format=3 uid="uid://ckuq0kar07iol"]
+
+[ext_resource type="Script" uid="uid://cx76kabdsngrd" path="res://levels/beatemupStage.gd" id="1_ub0p3"]
+[ext_resource type="PackedScene" uid="uid://1q41upvf2gpk" path="res://characters/sonic/sonic.tscn" id="2_nksto"]
+[ext_resource type="Environment" uid="uid://gje4rk62y4yw" path="res://MAINLIGHTING.tres" id="3_bu418"]
+[ext_resource type="Script" uid="uid://bd046eokvcnu2" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="4_gwblj"]
+[ext_resource type="Script" uid="uid://csjccrhj5wnx7" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_3d.gd" id="5_x155g"]
+[ext_resource type="Script" uid="uid://8umksf8e80fw" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="6_7gvix"]
+[ext_resource type="Script" uid="uid://bgdwy2xoewi8h" path="res://levels/changecamera.gd" id="7_e8xhf"]
+[ext_resource type="PackedScene" uid="uid://dlng0xdv3e5nc" path="res://levels/hub_world_test/sonic_battle_freedome_hq.tscn" id="8_llc7u"]
+
+[sub_resource type="Resource" id="Resource_chvqc"]
+script = ExtResource("6_7gvix")
+duration = 1.0
+transition = 0
+ease = 2
+
+[sub_resource type="Curve3D" id="Curve3D_jris1"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 48.1867, 0, 0),
+"tilts": PackedFloat32Array(0, 0)
+}
+point_count = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_r6q5o"]
+size = Vector3(11.2803, 12.5713, 1)
+
+[node name="Beatemuptest" type="Node3D"]
+script = ExtResource("1_ub0p3")
+
+[node name="Sonic" parent="." instance=ExtResource("2_nksto")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 26.9917, 13.243, -0.871197)
+collision_layer = 32768
+
+[node name="Camera3D" type="Camera3D" parent="."]
+physics_interpolation_mode = 1
+transform = Transform3D(1, 0, 0, 0, 0.997599, 0.0692502, 0, -0.0692502, 0.997599, 26.9917, 15.9875, 18.6653)
+environment = ExtResource("3_bu418")
+fov = 60.6
+size = 10.1137
+far = 54.29
+
+[node name="PhantomCameraHost" type="Node" parent="Camera3D"]
+process_priority = 300
+process_physics_priority = 300
+script = ExtResource("4_gwblj")
+metadata/_custom_type_script = "uid://bd046eokvcnu2"
+
+[node name="PhantomCamera3D" type="Node3D" parent="." node_paths=PackedStringArray("follow_target", "follow_path", "look_at_target")]
+transform = Transform3D(0.99999, 0, 0, 0, 0.997557, 0.0692476, 0, -0.0692473, 0.997562, 26.9917, 15.9875, 18.6653)
+top_level = true
+script = ExtResource("5_x155g")
+follow_mode = 4
+follow_target = NodePath("../Sonic")
+follow_path = NodePath("../Path3D")
+look_at_mode = 2
+look_at_target = NodePath("../Sonic")
+tween_resource = SubResource("Resource_chvqc")
+inactive_update_mode = 1
+follow_damping = true
+follow_damping_value = Vector3(0.1, 0.1, 0.5)
+look_at_offset = Vector3(0, 0, -20)
+metadata/_custom_type_script = "uid://csjccrhj5wnx7"
+
+[node name="Path3D" type="Path3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.159933, 0.987128, 0, -0.987128, 0.159933, 21.7304, 15.9875, 18.6653)
+curve = SubResource("Curve3D_jris1")
+
+[node name="Area3D" type="Area3D" parent="." node_paths=PackedStringArray("phantcam", "path1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.95248, 4.02126, -6.5715)
+collision_layer = 0
+collision_mask = 32768
+script = ExtResource("7_e8xhf")
+phantcam = NodePath("../PhantomCamera3D")
+path1 = NodePath("../Path3D")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.938965, 2.05225, -13.7969)
+shape = SubResource("BoxShape3D_r6q5o")
+
+[node name="Sonic battle freedome hq" parent="." instance=ExtResource("8_llc7u")]
+transform = Transform3D(2.98023e-08, 0, 1, 0, 1, 0, -1, 0, 2.98023e-08, 40.2244, 14.425, 1.48019)
+
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

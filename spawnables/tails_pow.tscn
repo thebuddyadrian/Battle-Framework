@@ -1,0 +1,293 @@
+[gd_scene load_steps=30 format=3 uid="uid://bmc6nnoe7pctn"]
+
+[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="1_gh2f6"]
+[ext_resource type="Script" uid="uid://w21aa4bqqpsy" path="res://spawnables/tails_pow.gd" id="1_yqcdp"]
+[ext_resource type="Resource" uid="uid://bh2rqouvrhnyp" path="res://spawnables/ShotData/TailsPow.tres" id="2_i4h3c"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_yqcdp"]
+[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="3_i4h3c"]
+[ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://assets/tails/Tails Effects Spritesheet.png" id="4_jgkwi"]
+
+[sub_resource type="Resource" id="Resource_i4h3c"]
+script = ExtResource("2_yqcdp")
+damage = 25.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 13.0
+knockback_angle = 45.0
+knockback_type = 4
+unblockable = false
+hit_freeze = 5
+hit_stun = 30
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fc865"]
+radius = 0.51228
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kpalt"]
+radius = 0.254871
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jgkwi"]
+size = Vector3(0.70697, 1.24707, 0.717041)
+
+[sub_resource type="Animation" id="Animation_ntqn7"]
+resource_name = "End"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"End"]
+}
+
+[sub_resource type="Animation" id="Animation_xm2x0"]
+resource_name = "Loop"
+length = 0.500008
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [2, 3, 4, 5, 6, 7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Loop"]
+}
+
+[sub_resource type="Animation" id="Animation_8jstf"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Start"]
+}
+
+[sub_resource type="Animation" id="Animation_561xu"]
+resource_name = "Start"
+length = 0.166675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [0, 1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite:animation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [&"Start"]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0scby"]
+_data = {
+&"End": SubResource("Animation_ntqn7"),
+&"Loop": SubResource("Animation_xm2x0"),
+&"RESET": SubResource("Animation_8jstf"),
+&"Start": SubResource("Animation_561xu")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i31w5"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1hqxr"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rtlof"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(256, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ybiuh"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(320, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sd0xw"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(384, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b6w5h"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k3e0s"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_x784x"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ariy6"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3n2vi"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(256, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3trba"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(320, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wgxpk"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(384, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b460b"]
+atlas = ExtResource("4_jgkwi")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tmv6q"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i31w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1hqxr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rtlof")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ybiuh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sd0xw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b6w5h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k3e0s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_x784x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ariy6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3n2vi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3trba")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wgxpk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b460b")
+}],
+"loop": false,
+"name": &"default",
+"speed": 12.0
+}]
+
+[node name="TailsPow" type="CharacterBody3D"]
+collision_layer = 0
+script = ExtResource("1_yqcdp")
+spawnable_info = ExtResource("2_i4h3c")
+
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
+visible = false
+script = ExtResource("1_gh2f6")
+hit_data = SubResource("Resource_i4h3c")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://cm6korv2sfd"
+
+[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
+shape = SubResource("SphereShape3D_fc865")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+visible = false
+script = ExtResource("3_i4h3c")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://jk40g84p8nlf"
+
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
+shape = SubResource("SphereShape3D_kpalt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.002, 0, -0.002)
+shape = SubResource("BoxShape3D_jgkwi")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_0scby")
+}
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_tmv6q")
+animation = &"Start"
+autoplay = "default"

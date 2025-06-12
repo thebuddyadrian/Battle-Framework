@@ -5,9 +5,13 @@ func _enter(data = {}):
 	parent.make_timer("_do_respawn", 60, self)
 	root.hurtbox.active = false
 	root.visible = false
+	root.invincibility_frames = 210
+	root.current_stocks -= 1
 
 
 func _do_respawn():
+	if root.current_stocks == 0:
+		return
 	root.current_hp = root.HP
 	change_state("Idle")
 

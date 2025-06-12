@@ -2,7 +2,7 @@ extends CharacterBody3D
 class_name BattleCharacter
 
 @export var SPEED = 8.0
-@export var JUMP_VELOCITY = 13.0
+@export var JUMP_VELOCITY = 14.0
 @export var DASH_SPEED = 12.5
 @export var STOCKS = 3
 @export var HP = 300
@@ -27,6 +27,7 @@ var UPPER_DIRECTION_INPUT_WINDOW: int = 4
 var team_id: int = 1 # For team battles
 var char_name: String = ""
 var current_hp: int = HP
+var current_stocks: int = STOCKS
 ## The last used nonzero move_direction, used for dashing, air dashing, and four directional attacks
 ## This is set automatically during movement
 var facing_direction: Vector2 = Vector2.RIGHT
@@ -39,6 +40,7 @@ var air_actions_used = 0
 ## Used to temporarily make acceleration faster or slower
 var acceleration_scale: float = 1
 var deceleration_scale: float = 1
+var max_speed_scale: float = 1
 var gravity_scale: float = 1
 var actions_enabled: Array[String]
 ## A dictionary of directions that were recently pressed to input a heavy attack
@@ -54,11 +56,17 @@ var last_hit_player: BattleCharacter
 var camera: Node3D
 # If active, player will not do any processing in _physics_process
 var freeze_frames: int = 0
+const MAX_WALL_BOUNCES = 2
+var wall_bounces = 0
+# If > 0, the player will have limited invincibility (check Hitbox.gd "check_if_hit" function)
+var invincibility_frames = 0
 
 @onready var Sprite = $PlayerSprite
+@onready var effects = $PlayerSprite/Effects
 @onready var animplayer: AnimationPlayer = $PlayerSprite/AnimationPlayer
 @onready var state_machine = $StateMachine
 @onready var sfx := $SFX
+@onready var flipped_components = $FlippedComponents
 
 
 @onready var hitbox: Hitbox = $Hitbox
@@ -69,7 +77,12 @@ var freeze_frames: int = 0
 
 func _ready() -> void:
 	state_machine.initialize()
-	Sprite.billboard = true
+	Sprite.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	effects.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+	for child in flipped_components.get_children():
+		if child is Sprite3D:
+			child.billboard = BaseMaterial3D.BILLBOARD_ENABLED
+
 	if player_id == 1:
 		IS_CLIENTSIDE = true
 	if IS_CLIENTSIDE == true:
@@ -102,22 +115,39 @@ func _physics_process(delta: float) -> void:
 			heavy_direction_inputs[direction] = HEAVY_DIRECTION_INPUT_WINDOW
 			upper_direction_inputs[direction] = UPPER_DIRECTION_INPUT_WINDOW
 	
-	if camera.rotation_degrees.y >= 170:
-		$PlayerSprite.flip_h = facing_direction_2d >= 0
-	else:
-		$PlayerSprite.flip_h = facing_direction_2d < 0
-	
 	# Test Hud
-	$TestLabel.text = "HP: %s" % str(current_hp)
+	$TestLabel.text = str(wall_bounces)
 
 	# Add the gravity.
 	if velocity.y >  -FALL_SPEED:
 		velocity.y -= GRAVITY * gravity_scale
 	
+	# Count down invincibility frames
+	invincibility_frames = max(invincibility_frames - 1, 0)
+	if invincibility_frames:
+		Sprite.modulate.a = 0.5
+	else:
+		Sprite.modulate.a = 1
+	
 	_process_actions()
 	_process_movement()
 	move_and_slide()
 	state_machine.advance()
+
+	# Flip sprites and other nodes
+	if camera.rotation_degrees.y >= 170:
+		Sprite.flip_h = facing_direction_2d >= 0
+		Sprite.scale.x = -1 if facing_direction_2d >= 0  else 1
+		flipped_components.scale.x = -1 if facing_direction_2d >= 0  else 1
+	else:
+		Sprite.flip_h = facing_direction_2d < 0
+		Sprite.scale.x = -1 if facing_direction_2d >= 0  else 1
+		flipped_components.scale.x = -1 if facing_direction_2d >= 0  else 1
+	
+	effects.flip_h = Sprite.flip_h
+	for child in flipped_components.get_children():
+		if child is Sprite3D:
+			child.flip_h = Sprite.flip_h
 
 #func setcontrols() -> void:
 	#match player_id:
@@ -152,18 +182,20 @@ func _process_movement():
 	
 	var deceleration_current = DECELERATION if is_on_floor() else AIR_DECELERATION
 	deceleration_current *= deceleration_scale
+
+	var speed_current = SPEED * max_speed_scale
 	
 	if !is_zero_approx(input_dir.x) and is_action_enabled("move"):
 		velocity.x += acceleration_vector.x
 		if limit_speed:
-			velocity.x = clamp(velocity.x, -SPEED, SPEED)
+			velocity.x = clamp(velocity.x, -speed_current, speed_current)
 	elif deceleration_enabled:
 		velocity.x = move_toward(velocity.x, 0, deceleration_current)
 	
 	if !is_zero_approx(input_dir.y) and is_action_enabled("move"):
 		velocity.z += acceleration_vector.y
 		if limit_speed:
-			velocity.z = clamp(velocity.z, -SPEED, SPEED)
+			velocity.z = clamp(velocity.z, -speed_current, speed_current)
 	elif deceleration_enabled:
 		velocity.z = move_toward(velocity.z, 0, deceleration_current)
 
@@ -296,6 +328,9 @@ func _check_for_heavy() -> bool:
 
 
 func _check_for_upper() -> bool:
+	if input("upper", "just_pressed") and state_machine.active_state is not BaseAttack:
+		state_machine.change_state("Upper", {attack_direction = Vector2(facing_direction_2d, 0)})
+		return true
 	if input("attack", "just_pressed") and state_machine.active_state is not BaseAttack:
 		if _get_last_pressed_upper_input():
 			var vec = direction_string_to_vector2(_get_last_pressed_upper_input())
@@ -416,6 +451,7 @@ func input(action: StringName, type: String = "pressed") -> bool:
 	# Gets the correct action based on the player number (ex: attack1, attack2, attack3, etc.)
 	var player_action = action + str(player_id)
 	if !InputMap.has_action(player_action):
+		push_error("Action %s doesn't exist" % player_action)
 		return false
 	if type == "pressed":
 		return Input.is_action_pressed(player_action)
@@ -450,6 +486,8 @@ func spawn_scene(spawnable_name: String, scene_path: String, pos: Vector3 = glob
 	parent.add_child(node)
 	if node is BaseSpawnable:
 		node._spawn(data)
+	elif node.has_method("_on_spawn"):
+		node._on_spawn(data)
 	return node
 
 

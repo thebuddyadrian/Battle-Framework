@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://bscjq1fcq5uur"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_6vhyh"]
+
+[resource]
+script = ExtResource("1_6vhyh")
+animation = "AirShotFwd"
+air_animation = ""
+animation_down = "AirShotDown"
+animation_up = "AirShotUp"
+change_anim_in_air = false
+play_animation = true
+use_anim_markers = true
+use_sections = false
+startup_frames = 35
+active_frames = 9
+recovery_frames = 9
+attack_sound = "punch"
+damage = 15
+knockback_power = 20
+knockback_angle = -90
+knockback_type = 3
+hit_stun = 30
+hit_sound = "punch"
+can_charge = false
+max_charge = 30
+max_hold = 30
+knockback_charge_scale = 180
+damage_charge_scale = 150
+knockback_scaling_charge_scale = 180
+use_hitbox = true
+land_on_touched_ground = false
+stop_on_left_ground = false
+landing_lag = 6
+dash_cancel_on_hit = false
+dash_cancel_frames = 24
+metadata/_custom_type_script = "uid://c4gg51mb7ji23"

@@ -192,7 +192,7 @@ func _enter(data := {}):
 	_phases.clear()
 	_setup_from_resource()
 	_move_setup()
-	_check_for_end_phase()
+	_check_for_errors()
 	root.hitbox.active = false
 	#root.hitbox.rects = []
 	root.hitbox.hit_data = HitData.new()
@@ -202,13 +202,13 @@ func _enter(data := {}):
 	# Otherwise, try to infer from inputs
 	else:
 		if !is_zero_approx(root.get_movement_vector().x):
-			attack_direction.x = root.get_movement_vector().x
+			attack_direction.x = round(root.get_movement_vector().x)
 			attack_direction.y = 0
 		elif !is_zero_approx(root.get_movement_vector().y):
 			attack_direction.x = 0
-			attack_direction.y = root.get_movement_vector().y
+			attack_direction.y = round(root.get_movement_vector().y)
 		else:
-			attack_direction.x = root.facing_direction_2d
+			attack_direction.x = round(root.facing_direction_2d)
 			attack_direction.y = 0
 
 	root.hitbox.hit_data.knockback_direction = attack_direction
@@ -259,7 +259,7 @@ func _setup_from_resource():
 	
 	active_phase = AttackPhase.new("active")
 	active_phase.frames = attack_info.active_frames
-	active_phase.hitbox_active = true
+	active_phase.hitbox_active = use_hitbox
 	active_phase.sound_effect = attack_info.attack_sound
 	add_phase(active_phase)
 	
@@ -274,12 +274,21 @@ func _move_setup():
 	pass
 
 
-## Makes sure an end phase was set
-func _check_for_end_phase():
+## Makes sure no mistakes were made when setting up the attack
+func _check_for_errors():
+	# Make sure the attack has at least one phase
+	if _phases.is_empty():
+		assert(false, "This attack has no phases! Did you forget to attach an AttackInfo resource? If you're not using an AttackInfo resource, make sure to set up your phases manually in the _move_setup() function.")
+		return
+
+	# Make sure the attack has an end phase
+	var has_end_phase = false
 	for phase in _phases:
 		if phase.end_phase:
-			return
-	assert(false, "This attack has no end phase!")
+			has_end_phase = true
+	if !has_end_phase:
+		assert(false, "This attack has no end phase! Make sure one of your attack phases has the end_phase variable set to true.")
+		return
 
 
 func _step():
@@ -335,6 +344,16 @@ func _step():
 				return
 			next_phase()
 	
+	# Jump cancel upper attacks
+	if name == "Upper" and move_hit:
+		root.set_action_enabled("jump", true)
+	
+
+	if parent.state_time == 2 and name == "Heavy" and root.char_name != "shadow":
+		root.spawn_scene("HeavyEffect", "res://spawnables/effects/heavy_effect.tscn", root.global_position, root.get_parent(), {direction = root.facing_direction_2d})
+
+
+	
 func _step_frozen():
 	#Count up move_hit and move_contact
 	if move_hit > 0:
@@ -342,6 +361,7 @@ func _step_frozen():
 	
 	if move_contact > 0:
 		move_contact += 1
+
 	#root.attack_trail.trail_state = {}
 	#if root.is_in_group("fighter"):
 		#if dash_cancel and move_hit > 0 and MatchSetup.rule_set.dash_cancels == true:
@@ -368,7 +388,7 @@ func _phase_changed_internal(phase_index: int, previous_phase_index: int):
 			#get_hit_data().knockback_scaling_charge_scale = knockback_scaling_charge_scale
 			#get_hit_data().sound = hit_sound
 		# Player can cancel into other attacks when recovery phase starts
-		if get_current_phase() == recovery_phase:
+		if get_current_phase() == active_phase:
 			root.set_action_enabled("attack", true)
 	
 # Virtual method to run logic right when the phase is changed, including at the beginning when startup phase is entered
@@ -421,6 +441,7 @@ func _on_hitbox_hit(hit_data: HitData, hurtbox):
 
 func _exit(next_state):
 	root.hitbox.active = false
+	root.effects.hide()
 	#root.hitbox.rects = []
 	num_hits = 0
 	num_contacts = 0
@@ -567,11 +588,11 @@ func change_phase_to(phase: AttackPhase) -> void:
 ## Can be called manually to end the current phase before the phase timer ends
 func next_phase() -> void:
 	# Skip phase if it has 0 frames
-	if _phases[current_phase_index + 1].frames == 0:
-		if _phases[current_phase_index + 1].end_phase:
-			parent.change_state(next_state, next_state_data)
-			return
-		current_phase_index += 1
+	# if _phases[current_phase_index + 1].frames == 0:
+	# 	if _phases[current_phase_index + 1].end_phase:
+	# 		parent.change_state(next_state, next_state_data)
+	# 		return
+	# 	current_phase_index += 1
 	change_phase(current_phase_index + 1)
 
 

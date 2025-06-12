@@ -43,13 +43,12 @@ visible = false
 layout_mode = 2
 max_value = 2.0
 
-[node name="StageLabel" type="Label" parent="GridContainer"]
+[node name="ChangeControlsButton" type="Button" parent="."]
 layout_mode = 2
-text = "Stage"
-
-[node name="StageOptionButton" type="OptionButton" parent="GridContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
+offset_top = 122.0
+offset_right = 136.0
+offset_bottom = 153.0
+text = "Change Controls"
 
 [node name="OKLabel" type="Label" parent="."]
 visible = false
@@ -69,12 +68,13 @@ text = "OK (Press Enter)"
 
 [node name="OKButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 124.0
+offset_left = 134.0
 offset_top = 122.0
-offset_right = 231.0
+offset_right = 241.0
 offset_bottom = 153.0
 text = "OK"
 
 [connection signal="value_changed" from="GridContainer/HumanSpinBox" to="." method="_on_human_spin_box_value_changed"]
 [connection signal="value_changed" from="GridContainer/CPUSpinBox" to="." method="_on_cpu_spin_box_value_changed"]
+[connection signal="pressed" from="ChangeControlsButton" to="." method="_on_change_controls_button_pressed"]
 [connection signal="pressed" from="OKButton" to="." method="_on_ok_button_pressed"]

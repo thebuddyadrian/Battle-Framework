@@ -11,8 +11,15 @@ func _phase_changed():
 		}
 		var proj = root.spawn_scene("GrndShot", GRND_SHOT_PROJ_PATH, root.global_position, null, data)
 		proj.direction = attack_direction
-		proj.velocity.x = attack_direction.x * 6
-		proj.velocity.z = attack_direction.y * 6
+		proj.velocity.x = attack_direction.x * 10
+		proj.velocity.z = attack_direction.y * 10
 		root.velocity.y = 12
 		root.velocity.x = -root.facing_direction.x * 7
 		root.velocity.z = -root.facing_direction.y * 7
+
+
+func _step():
+	super._step()
+	if get_current_phase() == active_phase or get_current_phase() == recovery_phase:
+		if root.is_on_floor() and root.velocity.y < 0:
+			parent.change_state("Land")

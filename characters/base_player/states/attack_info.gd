@@ -1,14 +1,22 @@
 extends Resource
 class_name AttackInfo
 
-@export var animation: String = "" ## The animation used for the attack, or the Forward animation for multi-direction animations (specials)
-@export var air_animation: String = "" ## Air animation, if left blank will use regular animation
-@export var animation_down: String = "" ## Down facing animation, for multi-direction attacks (specials)
-@export var animation_up: String = "" ## Up facing animation, for multi-direction attacks (specials)
-@export var change_anim_in_air: bool = false ## If true, the air animation will be used in the air, otherwise only animation will be used
-@export var play_animation: bool = true ## Can be set to false to disable the animation system
-@export var use_anim_markers: bool = true ## Can be set to false to manually set the section start and end for each phase, if sections aren't specified the whole animation will be played normally
-@export var use_sections: bool = true ## Can be set to false to disable the animation sections and just play the whole animation
+## The animation used for the attack, or the Forward animation for multi-direction animations (specials)
+@export var animation: String = "" 
+## Air animation, if left blank will use regular animation
+@export var air_animation: String = "" 
+## Down facing animation, for multi-direction attacks (specials)
+@export var animation_down: String = "" 
+## Up facing animation, for multi-direction attacks (specials)
+@export var animation_up: String = "" 
+## If true, the air animation will be used in the air, otherwise only animation will be used
+@export var change_anim_in_air: bool = false
+## Can be set to false to disable the animation system
+@export var play_animation: bool = true
+## Can be set to false to manually set the section start and end for each phase, if sections aren't specified the whole animation will be played normally
+@export var use_anim_markers: bool = true 
+## Can be set to false to disable the animation sections and just play the whole animation
+@export var use_sections: bool = true 
 @export var startup_frames: int = 2
 @export var active_frames: int = 2
 @export var recovery_frames: int = 10

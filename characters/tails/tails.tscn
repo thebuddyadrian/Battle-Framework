@@ -1,0 +1,132 @@
+[gd_scene load_steps=30 format=3 uid="uid://ubts1e2d3mjh"]
+
+[ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
+[ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://assets/tails/TailsSpritesheet.png" id="2_cps4t"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_uaadi"]
+[ext_resource type="AnimationLibrary" uid="uid://gi0u1pjxm16h" path="res://characters/tails/tails_animations.res" id="3_ppohl"]
+[ext_resource type="Resource" uid="uid://bocq8pdsey1xc" path="res://characters/tails/states/jab_1.tres" id="3_s0kw6"]
+[ext_resource type="Resource" uid="uid://c7ar4foj551in" path="res://characters/tails/states/jab_2.tres" id="4_2xg5h"]
+[ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://assets/tails/Tails Effects Spritesheet.png" id="4_my705"]
+[ext_resource type="Script" uid="uid://cfasn3us7ol01" path="res://characters/tails/tails_air_action.gd" id="4_qf74s"]
+[ext_resource type="Script" uid="uid://13qemgrco1g7" path="res://characters/tails/dash.gd" id="5_eakuc"]
+[ext_resource type="Resource" uid="uid://ju0slbcssgkw" path="res://characters/tails/states/heavy.tres" id="6_asitg"]
+[ext_resource type="Resource" uid="uid://dcg0w2804wsk7" path="res://characters/shadow/states/jab_3.tres" id="7_rdag6"]
+[ext_resource type="Resource" uid="uid://dan5rlht4k6p5" path="res://characters/shadow/states/upper.tres" id="9_rdag6"]
+[ext_resource type="Resource" uid="uid://c511ksyj83jh1" path="res://characters/tails/states/dash_attack.tres" id="10_cps4t"]
+[ext_resource type="Script" uid="uid://c88giv4vr1pxp" path="res://characters/tails/states/air_attack.gd" id="11_iyier"]
+[ext_resource type="Resource" uid="uid://kwraw6lnyxic" path="res://characters/tails/states/air_attack.tres" id="12_5541g"]
+[ext_resource type="Resource" uid="uid://d64hbxhpdsat" path="res://characters/tails/states/grnd_pow.tres" id="12_lg3ej"]
+[ext_resource type="Script" uid="uid://c4dc5gm7yxf0q" path="res://characters/tails/states/grnd_pow.gd" id="13_cps4t"]
+[ext_resource type="Resource" uid="uid://bd4rncwvb76vi" path="res://characters/tails/states/aim_attack.tres" id="13_jrwva"]
+[ext_resource type="Script" uid="uid://drbk80synbgat" path="res://characters/tails/states/grnd_shot.gd" id="14_infaa"]
+[ext_resource type="Script" uid="uid://bbmt3n2ued7n0" path="res://characters/tails/states/air_shot.gd" id="15_infaa"]
+[ext_resource type="Resource" uid="uid://c1reyexjipb6f" path="res://characters/tails/states/grnd_shot.tres" id="15_jrwva"]
+[ext_resource type="Resource" uid="uid://bscjq1fcq5uur" path="res://characters/tails/states/air_shot.tres" id="16_jrwva"]
+[ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="21_t5o4s"]
+[ext_resource type="Script" uid="uid://dvclyodfr67fc" path="res://characters/tails/air_pow.gd" id="21_wv4dc"]
+[ext_resource type="Resource" uid="uid://dft7nxfslpsce" path="res://characters/tails/states/air_pow.tres" id="22_6dfm6"]
+[ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="22_gueqa"]
+[ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="23_wv4dc"]
+[ext_resource type="Texture2D" uid="uid://bsdjsrfloxkgh" path="res://assets/ui/TailsLife.png" id="24_6dfm6"]
+
+[sub_resource type="Resource" id="Resource_eakuc"]
+script = ExtResource("2_uaadi")
+damage = 0.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 20.0
+knockback_angle = 30.0
+knockback_type = 0
+unblockable = false
+hit_freeze = 5
+hit_stun = 30
+
+[node name="Tails" instance=ExtResource("1_b5y1r")]
+
+[node name="PlayerSprite" parent="." index="1"]
+texture = ExtResource("2_cps4t")
+hframes = 15
+vframes = 21
+frame = 27
+
+[node name="AnimationPlayer" parent="PlayerSprite" index="0"]
+libraries = {
+&"": ExtResource("3_ppohl")
+}
+
+[node name="Effects" parent="PlayerSprite" index="1"]
+texture = ExtResource("4_my705")
+hframes = 7
+vframes = 6
+
+[node name="Dash" parent="StateMachine" index="6"]
+script = ExtResource("5_eakuc")
+
+[node name="AirAction" parent="StateMachine" index="7"]
+script = ExtResource("4_qf74s")
+
+[node name="Jab1" parent="StateMachine" index="18"]
+attack_info = ExtResource("3_s0kw6")
+
+[node name="Jab2" parent="StateMachine" index="19"]
+attack_info = ExtResource("4_2xg5h")
+
+[node name="Jab3" parent="StateMachine" index="20"]
+attack_info = ExtResource("7_rdag6")
+
+[node name="Heavy" parent="StateMachine" index="21"]
+attack_info = ExtResource("6_asitg")
+
+[node name="Upper" parent="StateMachine" index="22"]
+attack_info = ExtResource("9_rdag6")
+
+[node name="DashAttack" parent="StateMachine" index="23"]
+attack_info = ExtResource("10_cps4t")
+
+[node name="AirAttack" parent="StateMachine" index="24"]
+script = ExtResource("11_iyier")
+attack_info = ExtResource("12_5541g")
+
+[node name="AimAttack" parent="StateMachine" index="25"]
+attack_info = ExtResource("13_jrwva")
+
+[node name="GrndShot" parent="StateMachine" index="26"]
+script = ExtResource("14_infaa")
+attack_info = ExtResource("15_jrwva")
+
+[node name="AirShot" parent="StateMachine" index="27"]
+script = ExtResource("15_infaa")
+attack_info = ExtResource("16_jrwva")
+
+[node name="GrndPow" parent="StateMachine" index="28"]
+script = ExtResource("13_cps4t")
+attack_info = ExtResource("12_lg3ej")
+
+[node name="AirPow" parent="StateMachine" index="29"]
+script = ExtResource("21_wv4dc")
+attack_info = ExtResource("22_6dfm6")
+
+[node name="Hitbox" parent="." index="5"]
+hit_data = SubResource("Resource_eakuc")
+
+[node name="TestLabel" parent="." index="7"]
+visible = false
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
+layer = 128
+visible = false
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" node_paths=PackedStringArray("character")]
+offset_left = 21.0
+offset_top = 4.0
+offset_right = 77.0
+offset_bottom = 44.0
+max_value = 300.0
+texture_under = ExtResource("21_t5o4s")
+texture_progress = ExtResource("22_gueqa")
+script = ExtResource("23_wv4dc")
+character = NodePath("../..")
+metadata/_edit_use_anchors_ = true
+
+[node name="TailsLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
+position = Vector2(-12, 5)
+texture = ExtResource("24_6dfm6")

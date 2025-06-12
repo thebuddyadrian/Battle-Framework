@@ -64,6 +64,9 @@ func reset():
 
 
 func get_hit(hit_data, area_hurt_by: Hitbox):
+	if root is BattleCharacter:
+		if root.invincibility_frames > 0:
+			return
 	if active and can_be_hit: 
 		if mode == MODE.NORMAL:
 			emit_signal("hurt", hit_data.duplicate(true), area_hurt_by)

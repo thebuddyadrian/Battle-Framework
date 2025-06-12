@@ -1,0 +1,112 @@
+[gd_scene load_steps=17 format=3 uid="uid://jrcur2cf3a1p"]
+
+[ext_resource type="Script" uid="uid://drcg8tfkefl6u" path="res://spawnables/Dash_effect.gd" id="1_78ojf"]
+[ext_resource type="Resource" uid="uid://bv2edat0khvum" path="res://spawnables/ShotData/DashEffect.tres" id="2_fed3r"]
+[ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_w74qs"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_nrdg5"]
+[ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_10ova"]
+[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_i8xjd"]
+
+[sub_resource type="Resource" id="Resource_78ojf"]
+script = ExtResource("4_nrdg5")
+damage = 10.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 13.0
+knockback_angle = 45.0
+knockback_type = 4
+unblockable = false
+hit_freeze = 5
+hit_stun = 30
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_fc865"]
+radius = 0.51228
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_kpalt"]
+radius = 0.254871
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_voyo2"]
+size = Vector3(0.70697, 1, 0.717041)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nb4u"]
+atlas = ExtResource("6_i8xjd")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp1ui"]
+atlas = ExtResource("6_i8xjd")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnijb"]
+atlas = ExtResource("6_i8xjd")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fykes"]
+atlas = ExtResource("6_i8xjd")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17hdm"]
+atlas = ExtResource("6_i8xjd")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_roc7u"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nb4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp1ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnijb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fykes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17hdm")
+}],
+"loop": false,
+"name": &"Anim",
+"speed": 18.0
+}]
+
+[node name="LightHitEffect" type="CharacterBody3D"]
+collision_layer = 0
+script = ExtResource("1_78ojf")
+spawnable_info = ExtResource("2_fed3r")
+
+[node name="Hitbox" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
+script = ExtResource("3_w74qs")
+hit_data = SubResource("Resource_78ojf")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://cm6korv2sfd"
+
+[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
+shape = SubResource("SphereShape3D_fc865")
+
+[node name="Hurtbox" type="Area3D" parent="."]
+visible = false
+script = ExtResource("5_10ova")
+root_node_path = NodePath("..")
+metadata/_custom_type_script = "uid://jk40g84p8nlf"
+
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
+shape = SubResource("SphereShape3D_kpalt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
+shape = SubResource("BoxShape3D_voyo2")
+
+[node name="Sprite" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
+texture_filter = 2
+sprite_frames = SubResource("SpriteFrames_roc7u")
+animation = &"Anim"
+autoplay = "Anim"
+frame = 4
+frame_progress = 1.0
+
+[connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

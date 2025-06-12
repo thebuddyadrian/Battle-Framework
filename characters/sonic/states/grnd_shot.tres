@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://dwedimbmp6yue"]
 
-[ext_resource type="Script" path="res://characters/base_player/states/attack_info.gd" id="1_c8w4r"]
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_c8w4r"]
 
 [resource]
 script = ExtResource("1_c8w4r")
@@ -9,9 +9,12 @@ air_animation = ""
 animation_down = "GrndShotDown"
 animation_up = "GrndShotUp"
 change_anim_in_air = false
-startup_frames = 30
-active_frames = 35
-recovery_frames = 0
+play_animation = true
+use_anim_markers = true
+use_sections = true
+startup_frames = 35
+active_frames = 20
+recovery_frames = 10
 attack_sound = "punch"
 damage = 15
 knockback_power = 25

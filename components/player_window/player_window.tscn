@@ -1,0 +1,9 @@
+[gd_scene format=3 uid="uid://dhw76smlt6230"]
+
+[node name="PlayerWindow" type="Window"]
+anisotropic_filtering_level = 0
+initial_position = 2
+size = Vector2i(720, 480)
+content_scale_size = Vector2i(240, 160)
+content_scale_mode = 2
+content_scale_aspect = 1
