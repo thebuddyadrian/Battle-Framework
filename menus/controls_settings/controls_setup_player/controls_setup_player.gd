@@ -33,9 +33,13 @@ func _input_event_requested(controls_setup_node, event_index):
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed():
+		if event.keycode == KEY_DELETE:
+			input_pressed.emit(null)
+			return
 		input_pressed.emit(event)
 	if event is InputEventJoypadMotion:
-		input_pressed.emit(event)
+		if abs(event.axis_value) > 0.75:
+			input_pressed.emit(event)
 	if event is InputEventJoypadButton and event.is_pressed():
 		input_pressed.emit(event)
 
