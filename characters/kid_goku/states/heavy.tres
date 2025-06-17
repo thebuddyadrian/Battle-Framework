@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://di4bfiaa2cwao"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_u1coy"]
+
+[resource]
+script = ExtResource("1_u1coy")
+animation = "Heavy"
+air_animation = ""
+animation_down = ""
+animation_up = ""
+change_anim_in_air = false
+play_animation = true
+use_anim_markers = true
+use_sections = true
+startup_frames = 18
+active_frames = 6
+recovery_frames = 30
+attack_sound = "punch"
+damage = 25
+knockback_power = 25
+knockback_angle = 20
+knockback_type = 1
+hit_stun = 45
+hit_sound = "punch"
+can_charge = false
+max_charge = 30
+max_hold = 30
+knockback_charge_scale = 180
+damage_charge_scale = 150
+knockback_scaling_charge_scale = 180
+use_hitbox = true
+land_on_touched_ground = false
+stop_on_left_ground = false
+landing_lag = 6
+dash_cancel_on_hit = true
+dash_cancel_frames = 24
+metadata/_custom_type_script = ExtResource("1_u1coy")

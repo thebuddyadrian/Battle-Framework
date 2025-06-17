@@ -5,18 +5,18 @@
 [ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="2_gd83v"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="3_fueeq"]
 [ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="3_jddj4"]
-[ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="4_lwdla"]
-[ext_resource type="Resource" uid="uid://spkpe3bbhbk6" path="res://characters/sonic/states/jab_3.tres" id="5_wpnlk"]
-[ext_resource type="Resource" uid="uid://dttk12fa38yx0" path="res://characters/sonic/states/jab_1.tres" id="7_ttio6"]
+[ext_resource type="Resource" uid="uid://br5v34ftitnna" path="res://characters/kid_goku/states/jab_1.tres" id="5_fueeq"]
+[ext_resource type="Resource" uid="uid://bxbcecxra87eq" path="res://characters/kid_goku/states/jab_2.tres" id="6_tfamv"]
+[ext_resource type="Resource" uid="uid://dlbtm4kow1d8g" path="res://characters/kid_goku/states/jab_3.tres" id="7_t5h5i"]
 [ext_resource type="Script" uid="uid://c214d7i75fcpb" path="res://characters/sonic/states/heavy.gd" id="8_fueeq"]
 [ext_resource type="Resource" uid="uid://78oiv8xgresv" path="res://characters/sonic/states/upper.tres" id="8_wpnlk"]
 [ext_resource type="Resource" uid="uid://df00kkj6hx8pc" path="res://characters/sonic/states/dash_attack.tres" id="9_6mqiq"]
-[ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="9_fueeq"]
+[ext_resource type="Resource" uid="uid://di4bfiaa2cwao" path="res://characters/kid_goku/states/heavy.tres" id="9_fueeq"]
 [ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="10_c7fke"]
 [ext_resource type="Resource" uid="uid://cdy3tsk3tj34i" path="res://characters/sonic/states/air_attack.tres" id="11_41aki"]
-[ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="12_w02fn"]
 [ext_resource type="Script" uid="uid://bnkbr41fk3o52" path="res://characters/sonic/states/air_attack.gd" id="13_fueeq"]
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="14_6ri6b"]
+[ext_resource type="Resource" uid="uid://dy6rk041ul1aa" path="res://characters/kid_goku/states/aim_attack.tres" id="15_fueeq"]
 [ext_resource type="Resource" uid="uid://lscqxewn2oxm" path="res://characters/sonic/states/grnd_pow.tres" id="15_lq7el"]
 [ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/sonic/states/air_pow.gd" id="16_lci63"]
 [ext_resource type="Script" uid="uid://dghxsgu1omfw3" path="res://characters/sonic/states/grnd_shot.gd" id="17_tfamv"]
@@ -1316,7 +1316,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("21_tfamv")
 
-[sub_resource type="Resource" id="Resource_fueeq"]
+[sub_resource type="Resource" id="Resource_tfamv"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1330,6 +1330,7 @@ hit_stun = 30
 [node name="Sonic" instance=ExtResource("1_jint7")]
 
 [node name="PlayerSprite" parent="." index="1"]
+billboard = 1
 texture = ExtResource("2_gd83v")
 frame = 2
 
@@ -1359,13 +1360,13 @@ debug_shape_thickness = 5
 script = ExtResource("3_jddj4")
 
 [node name="Jab1" parent="StateMachine" index="18"]
-attack_info = ExtResource("7_ttio6")
+attack_info = ExtResource("5_fueeq")
 
 [node name="Jab2" parent="StateMachine" index="19"]
-attack_info = ExtResource("4_lwdla")
+attack_info = ExtResource("6_tfamv")
 
 [node name="Jab3" parent="StateMachine" index="20"]
-attack_info = ExtResource("5_wpnlk")
+attack_info = ExtResource("7_t5h5i")
 
 [node name="Heavy" parent="StateMachine" index="21"]
 script = ExtResource("8_fueeq")
@@ -1383,7 +1384,7 @@ script = ExtResource("13_fueeq")
 attack_info = ExtResource("11_41aki")
 
 [node name="AimAttack" parent="StateMachine" index="25"]
-attack_info = ExtResource("12_w02fn")
+attack_info = ExtResource("15_fueeq")
 
 [node name="GrndShot" parent="StateMachine" index="26"]
 script = ExtResource("17_tfamv")
@@ -1397,7 +1398,7 @@ script = ExtResource("16_lci63")
 attack_info = SubResource("Resource_t5h5i")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_fueeq")
+hit_data = SubResource("Resource_tfamv")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128

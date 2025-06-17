@@ -1,0 +1,669 @@
+[gd_scene load_steps=30 format=3 uid="uid://bk8l31xotv0uh"]
+
+[ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_rh622"]
+[ext_resource type="Texture2D" uid="uid://cunqr1diarnpg" path="res://assets/goku/goku.png" id="2_5o8ea"]
+[ext_resource type="Script" uid="uid://btuv3t200miku" path="res://characters/kid_goku/states/air_action.gd" id="3_5o8ea"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="3_cf8eq"]
+[ext_resource type="Script" uid="uid://cus84bg8otbr4" path="res://characters/kid_goku/states/dash.gd" id="3_i6jmp"]
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="5_f36mb"]
+[ext_resource type="Resource" uid="uid://di4bfiaa2cwao" path="res://characters/kid_goku/states/heavy.tres" id="5_i6jmp"]
+[ext_resource type="Resource" uid="uid://dy6rk041ul1aa" path="res://characters/kid_goku/states/aim_attack.tres" id="7_f36mb"]
+
+[sub_resource type="Animation" id="Animation_rh622"]
+resource_name = "Idle"
+length = 0.666675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_cf8eq"]
+resource_name = "Moving"
+length = 0.666675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_5o8ea"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.560499]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.115967, 0.0198834, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_i6jmp"]
+resource_name = "RunTurn"
+length = 0.0833416
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [34]
+}
+
+[sub_resource type="Animation" id="Animation_xjpqm"]
+resource_name = "Jump"
+length = 0.333342
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [16, 17, 18, 19]
+}
+
+[sub_resource type="Animation" id="Animation_f36mb"]
+resource_name = "Falling"
+length = 0.166675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_fauqd"]
+resource_name = "Land"
+length = 0.250008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [22, 23, 24]
+}
+
+[sub_resource type="Animation" id="Animation_vu3g6"]
+resource_name = "JumpSquat"
+length = 0.250008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [24]
+}
+
+[sub_resource type="Animation" id="Animation_48xwo"]
+resource_name = "AirAction"
+length = 0.500008
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [25, 26, 27, 28, 29, 30]
+}
+
+[sub_resource type="Animation" id="Animation_4okh4"]
+resource_name = "Dash"
+length = 0.166675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [31, 32]
+}
+
+[sub_resource type="Animation" id="Animation_qt8k1"]
+resource_name = "Heavy"
+length = 0.666675
+step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.25
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.416667
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [63, 64, 65, 66, 67, 68, 69, 70]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.560499]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.115967, 0.0198834, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_jcbuc"]
+resource_name = "HomingDash"
+length = 0.166675
+loop_mode = 1
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [31, 32]
+}
+
+[sub_resource type="Animation" id="Animation_ffwpx"]
+resource_name = "Jab1"
+length = 0.333342
+step = 0.0833333
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startuo",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.0807434
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.156677
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [40, 41, 42]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.12026]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.08847, 0.0160888, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_42h0w"]
+resource_name = "Jab2"
+length = 0.750008
+step = 0.0833333
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.166667
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.25
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [45, 46, 47, 48, 50, 51, 52, 53]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.12026]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.167916, 0.0112739, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_fc5mr"]
+resource_name = "Jab3"
+length = 0.750008
+step = 0.0833333
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.166667
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.333333
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [54, 55, 56, 57, 58, 59, 60, 61, 62]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.154767]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.117359, 0.00565647, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_lmsxh"]
+resource_name = "AimAttack"
+length = 0.600002
+step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.25
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.333333
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [71, 72, 73, 74, 75, 76, 77]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.227392]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.17584, 0.00221643, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cf8eq"]
+_data = {
+&"AimAttack": SubResource("Animation_lmsxh"),
+&"AirAction": SubResource("Animation_48xwo"),
+&"Dash": SubResource("Animation_4okh4"),
+&"Falling": SubResource("Animation_f36mb"),
+&"Heavy": SubResource("Animation_qt8k1"),
+&"HomingDash": SubResource("Animation_jcbuc"),
+&"Idle": SubResource("Animation_rh622"),
+&"Jab1": SubResource("Animation_ffwpx"),
+&"Jab2": SubResource("Animation_42h0w"),
+&"Jab3": SubResource("Animation_fc5mr"),
+&"Jump": SubResource("Animation_xjpqm"),
+&"JumpSquat": SubResource("Animation_vu3g6"),
+&"Land": SubResource("Animation_fauqd"),
+&"Moving": SubResource("Animation_cf8eq"),
+&"RESET": SubResource("Animation_5o8ea"),
+&"RunTurn": SubResource("Animation_i6jmp")
+}
+
+[sub_resource type="Resource" id="Resource_fauqd"]
+script = ExtResource("5_f36mb")
+animation = "Jab1"
+air_animation = ""
+animation_down = ""
+animation_up = ""
+change_anim_in_air = false
+play_animation = true
+use_anim_markers = true
+use_sections = true
+startup_frames = 6
+active_frames = 4
+recovery_frames = 10
+attack_sound = "punch"
+damage = 10
+knockback_power = 2
+knockback_angle = 0
+knockback_type = 0
+hit_stun = 30
+hit_sound = "hit"
+can_charge = false
+max_charge = 30
+max_hold = 30
+knockback_charge_scale = 180
+damage_charge_scale = 150
+knockback_scaling_charge_scale = 180
+use_hitbox = true
+land_on_touched_ground = false
+stop_on_left_ground = false
+landing_lag = 6
+dash_cancel_on_hit = false
+dash_cancel_frames = 24
+metadata/_custom_type_script = ExtResource("5_f36mb")
+
+[sub_resource type="Resource" id="Resource_vu3g6"]
+script = ExtResource("5_f36mb")
+animation = "Jab2"
+air_animation = ""
+animation_down = ""
+animation_up = ""
+change_anim_in_air = false
+play_animation = true
+use_anim_markers = true
+use_sections = true
+startup_frames = 6
+active_frames = 3
+recovery_frames = 15
+attack_sound = "punch"
+damage = 10
+knockback_power = 2
+knockback_angle = 0
+knockback_type = 0
+hit_stun = 30
+hit_sound = "punch"
+can_charge = false
+max_charge = 30
+max_hold = 30
+knockback_charge_scale = 180
+damage_charge_scale = 150
+knockback_scaling_charge_scale = 180
+use_hitbox = true
+land_on_touched_ground = false
+stop_on_left_ground = false
+landing_lag = 6
+dash_cancel_on_hit = false
+dash_cancel_frames = 24
+metadata/_custom_type_script = ExtResource("5_f36mb")
+
+[sub_resource type="Resource" id="Resource_xjpqm"]
+script = ExtResource("5_f36mb")
+animation = "Jab3"
+air_animation = ""
+animation_down = ""
+animation_up = ""
+change_anim_in_air = false
+play_animation = true
+use_anim_markers = true
+use_sections = true
+startup_frames = 6
+active_frames = 6
+recovery_frames = 24
+attack_sound = "punch"
+damage = 12
+knockback_power = 2
+knockback_angle = 0
+knockback_type = 0
+hit_stun = 30
+hit_sound = "punch"
+can_charge = false
+max_charge = 30
+max_hold = 30
+knockback_charge_scale = 180
+damage_charge_scale = 150
+knockback_scaling_charge_scale = 180
+use_hitbox = true
+land_on_touched_ground = false
+stop_on_left_ground = false
+landing_lag = 6
+dash_cancel_on_hit = false
+dash_cancel_frames = 24
+metadata/_custom_type_script = ExtResource("5_f36mb")
+
+[sub_resource type="Resource" id="Resource_f36mb"]
+script = ExtResource("3_cf8eq")
+damage = 0.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 20.0
+knockback_angle = 30.0
+knockback_type = 0
+unblockable = false
+hit_freeze = 5
+hit_stun = 30
+
+[node name="KidGoku" instance=ExtResource("1_rh622")]
+
+[node name="PlayerSprite" parent="." index="1"]
+texture = ExtResource("2_5o8ea")
+vframes = 5
+frame = 6
+
+[node name="AnimationPlayer" parent="PlayerSprite" index="0"]
+libraries = {
+&"": SubResource("AnimationLibrary_cf8eq")
+}
+
+[node name="Dash" parent="StateMachine" index="6"]
+script = ExtResource("3_i6jmp")
+
+[node name="AirAction" parent="StateMachine" index="7"]
+script = ExtResource("3_5o8ea")
+
+[node name="Jab1" parent="StateMachine" index="18"]
+attack_info = SubResource("Resource_fauqd")
+
+[node name="Jab2" parent="StateMachine" index="19"]
+attack_info = SubResource("Resource_vu3g6")
+
+[node name="Jab3" parent="StateMachine" index="20"]
+attack_info = SubResource("Resource_xjpqm")
+
+[node name="Heavy" parent="StateMachine" index="21"]
+attack_info = ExtResource("5_i6jmp")
+
+[node name="AimAttack" parent="StateMachine" index="25"]
+attack_info = ExtResource("7_f36mb")
+
+[node name="Hitbox" parent="." index="5"]
+hit_data = SubResource("Resource_f36mb")
+
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115967, 0.0198834, 0)
+
+[node name="TestLabel" parent="." index="7"]
+visible = false

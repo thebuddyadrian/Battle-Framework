@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="5_j7ou5"]
 [ext_resource type="Script" uid="uid://dwjg3k38adtu6" path="res://characters/shadow/states/heavy.gd" id="8_oggfo"]
 [ext_resource type="Script" uid="uid://dlb2r74f5rqx2" path="res://characters/knuckles/states/air_action.gd" id="8_psdtg"]
-[ext_resource type="Resource" uid="uid://786pcnve3m61" path="res://characters/sonic/states/heavy.tres" id="9_i116v"]
 [ext_resource type="Script" uid="uid://bv8s0ya73dxhn" path="res://characters/knuckles/jab_1.gd" id="9_j7ou5"]
 [ext_resource type="Resource" uid="uid://j8v0s23gurj" path="res://characters/knuckles/states/jab_1.tres" id="10_0sn45"]
 [ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="10_1ooqa"]
@@ -19,7 +18,7 @@
 [ext_resource type="Script" uid="uid://bankb5ihayx4u" path="res://characters/knuckles/jab_3.gd" id="12_ay8m5"]
 [ext_resource type="Resource" uid="uid://bkkd4ly2fjt1c" path="res://characters/knuckles/states/jab_2.tres" id="12_psdtg"]
 [ext_resource type="Resource" uid="uid://bc3hct1wdh67j" path="res://characters/knuckles/states/jab_3.tres" id="14_5tkrs"]
-[ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="15_canxq"]
+[ext_resource type="Resource" uid="uid://di4bfiaa2cwao" path="res://characters/kid_goku/states/heavy.tres" id="16_psdtg"]
 [ext_resource type="Script" uid="uid://cs3moofgrsq1h" path="res://characters/knuckles/states/air_attack.gd" id="20_ay8m5"]
 [ext_resource type="Script" uid="uid://dsxss5rjnq68j" path="res://characters/knuckles/air_shot.gd" id="21_c10jq"]
 [ext_resource type="Resource" uid="uid://cwvnw3fmisemh" path="res://characters/knuckles/states/air_attack.tres" id="21_psdtg"]
@@ -27,6 +26,7 @@
 [ext_resource type="Script" uid="uid://clo42n4idjy26" path="res://characters/knuckles/grnd_pow.gd" id="21_xt1s0"]
 [ext_resource type="Resource" uid="uid://dw28vniky3lcq" path="res://characters/knuckles/states/grnd_pow.tres" id="22_1kwib"]
 [ext_resource type="Resource" uid="uid://oxnnmafgr24c" path="res://characters/knuckles/states/air_shot.tres" id="22_ns63g"]
+[ext_resource type="Resource" uid="uid://dy6rk041ul1aa" path="res://characters/kid_goku/states/aim_attack.tres" id="22_psdtg"]
 [ext_resource type="Script" uid="uid://6guda7f8ly0c" path="res://characters/shadow/states/grnd_shot.gd" id="23_psdtg"]
 [ext_resource type="Script" uid="uid://w50byjutarh3" path="res://characters/knuckles/air_pow.gd" id="23_xt1s0"]
 [ext_resource type="Resource" uid="uid://ioxxvxrf0c3u" path="res://characters/knuckles/states/air_pow.tres" id="24_1kwib"]
@@ -105,7 +105,7 @@ attack_info = ExtResource("14_5tkrs")
 
 [node name="Heavy" parent="StateMachine" index="21"]
 script = ExtResource("8_oggfo")
-attack_info = ExtResource("9_i116v")
+attack_info = ExtResource("16_psdtg")
 
 [node name="Upper" parent="StateMachine" index="22"]
 script = ExtResource("10_1ooqa")
@@ -119,7 +119,7 @@ script = ExtResource("20_ay8m5")
 attack_info = ExtResource("21_psdtg")
 
 [node name="AimAttack" parent="StateMachine" index="25"]
-attack_info = ExtResource("15_canxq")
+attack_info = ExtResource("22_psdtg")
 
 [node name="GrndShot" parent="StateMachine" index="26"]
 script = ExtResource("23_psdtg")

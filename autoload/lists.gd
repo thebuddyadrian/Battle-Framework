@@ -1,7 +1,7 @@
 extends Node
 
 var characters: Array[String] = [
-	"sonic", "tails", "knuckles", "shadow"#, "rouge", "amy", "cream", "emerl"
+	"sonic", "tails", "knuckles", "shadow", "kid_goku",#, "rouge", "amy", "cream", "emerl"
 ]
 
 var character_display_names: Dictionary = {
@@ -13,6 +13,7 @@ var character_display_names: Dictionary = {
 	"amy": "Amy",
 	"cream": "Cream",
 	"emerl": "Emerl",
+	"kid_goku": "Kid Goku",
 }
 
 var battle_stages: Array[String] = [

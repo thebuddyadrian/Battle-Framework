@@ -16,6 +16,8 @@ func track_player(player: BattleCharacter):
 		icon.texture = preload("res://assets/ui/ShadowLife.png")
 	if player.char_name == "knuckles":
 		icon.texture = preload("res://assets/ui/KnucklesLife.png")
+	if player.char_name == "kid_goku":
+		icon.texture = preload("res://assets/ui/KidGokuLife.png")
 	lifebar.max_value = player.HP
 	player_tracking = player
 
