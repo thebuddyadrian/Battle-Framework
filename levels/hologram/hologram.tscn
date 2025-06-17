@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cek62pjs5d0tg"]
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_h6std"]
-[ext_resource type="PackedScene" uid="uid://biq6bd0648m35" path="res://UI/HUD.tscn" id="4_gu3b0"]
+[ext_resource type="AudioStream" uid="uid://cco6bisoiwv8a" path="res://assets/audio/bgm/Hologram.mp3" id="2_aw566"]
 [ext_resource type="PackedScene" uid="uid://dw2dnhnuuwhco" path="res://levels/hologram/Holomodel.tscn" id="6_ca42s"]
 [ext_resource type="PackedScene" uid="uid://crdik24k161lb" path="res://levels/hologram/holosky.tscn" id="8_4yqvt"]
 [ext_resource type="Script" uid="uid://d2luikke1goi4" path="res://levels/hologram/Boxspin.tres.gd" id="9_ici1a"]
@@ -15,14 +15,12 @@ size = Vector3(1, 0.676758, 2.18701)
 
 [node name="LevelMain" type="Node3D" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent")]
 script = ExtResource("1_h6std")
+music = ExtResource("2_aw566")
 player_spawn_1 = NodePath("SubViewportContainer/Level/LevelRoot/PlayerSpawn1")
 player_spawn_2 = NodePath("SubViewportContainer/Level/LevelRoot/PlayerSpawn2")
 player_spawn_3 = NodePath("SubViewportContainer/Level/LevelRoot/PlayerSpawn3")
 player_spawn_4 = NodePath("SubViewportContainer/Level/LevelRoot/PlayerSpawn4")
 camera_root_parent = NodePath("SubViewportContainer/Level/LevelRoot")
-
-[node name="Hud" parent="." instance=ExtResource("4_gu3b0")]
-visible = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -128
