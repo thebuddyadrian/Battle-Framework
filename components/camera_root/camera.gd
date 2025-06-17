@@ -3,8 +3,8 @@ extends Camera3D
 class_name BattleCamera
 
 
-@export var movespeed := 5.0
-@export var rotspeed := 5.0
+@export var movespeed := 3.5
+@export var rotspeed := 3.5
 
 
 @onready var root: Node3D = get_node("../..")
