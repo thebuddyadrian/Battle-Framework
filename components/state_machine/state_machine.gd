@@ -72,8 +72,10 @@ func _setup_states():
 
 
 func change_state(new_state, data := {}):
-	#If the state doesn't exist, show an error.
-	assert(states.has(new_state), "State not found: " + new_state)
+	#If the state doesn't exist, push an error.
+	if !states.has(new_state):
+		push_error("State not found: " + new_state)
+		return
 	
 	is_changing_state = true
 	frame_changed_state = 0#SyncManager.current_tick
