@@ -11,7 +11,7 @@ func _enter(data := {}):
 func _step():
 	super._step()
 	if root.is_on_floor():
-		root.velocity.y = 14
+		root.velocity.y = 17
 		root.velocity.x = attack_direction.x * 2
 		root.velocity.z = attack_direction.y * 2
 	

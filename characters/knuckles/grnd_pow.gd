@@ -54,4 +54,4 @@ func _phase_changed():
 		proj.queue_free()
 
 func _exit(next_state):
-	pass
+	super._exit(next_state)

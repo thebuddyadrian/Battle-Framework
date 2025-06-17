@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=72 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
@@ -758,6 +758,60 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5]
 }
 
+[sub_resource type="Animation" id="Animation_tfamv"]
+resource_name = "Jab1"
+length = 0.500008
+step = 0.0166667
+markers = [{
+"color": Color(1, 1, 1, 1),
+"name": &"startup",
+"time": 0.0
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"active",
+"time": 0.166667
+}, {
+"color": Color(1, 1, 1, 1),
+"name": &"recovery",
+"time": 0.25
+}]
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [45, 46, 47, 48, 49, 50]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.102887]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.182386, 0.00401023, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_b3yb2"]
 resource_name = "Jump"
 length = 0.4
@@ -899,7 +953,7 @@ tracks/0/keys = {
 [sub_resource type="Animation" id="Animation_c551c"]
 resource_name = "Punch1"
 length = 0.3
-step = 0.0166667
+step = 0.05
 markers = [{
 "color": Color(1, 1, 1, 1),
 "name": &"active",
@@ -1238,6 +1292,10 @@ tracks/2/keys = {
 "values": [Vector3(0.0991605, 0.011724, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_t5h5i"]
+resource_name = "jab1"
+step = 0.0166667
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_axwkh"]
 _data = {
 &"AimAttack": SubResource("Animation_lq7el"),
@@ -1264,6 +1322,7 @@ _data = {
 &"HomingDash": SubResource("Animation_6ri6b"),
 &"Hurt": SubResource("Animation_m6gva"),
 &"Idle": SubResource("Animation_ajxej"),
+&"Jab1": SubResource("Animation_tfamv"),
 &"Jump": SubResource("Animation_b3yb2"),
 &"JumpSquat": SubResource("Animation_0lntm"),
 &"Knockdown": SubResource("Animation_ajyqx"),
@@ -1278,6 +1337,7 @@ _data = {
 &"Stopping": SubResource("Animation_meeb0"),
 &"Turn": SubResource("Animation_ppktt"),
 &"Upper": SubResource("Animation_j5k0p"),
+&"jab1": SubResource("Animation_t5h5i"),
 &"kick1": SubResource("Animation_6wnxk"),
 &"kick2": SubResource("Animation_wtpgs")
 }
@@ -1316,7 +1376,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("21_tfamv")
 
-[sub_resource type="Resource" id="Resource_tfamv"]
+[sub_resource type="Resource" id="Resource_fueeq"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1327,10 +1387,12 @@ unblockable = false
 hit_freeze = 5
 hit_stun = 30
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_nx0o7"]
+radius = 0.129537
+
 [node name="Sonic" instance=ExtResource("1_jint7")]
 
 [node name="PlayerSprite" parent="." index="1"]
-billboard = 1
 texture = ExtResource("2_gd83v")
 frame = 2
 
@@ -1398,7 +1460,10 @@ script = ExtResource("16_lci63")
 attack_info = SubResource("Resource_t5h5i")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_tfamv")
+hit_data = SubResource("Resource_fueeq")
+
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource("SphereShape3D_nx0o7")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128

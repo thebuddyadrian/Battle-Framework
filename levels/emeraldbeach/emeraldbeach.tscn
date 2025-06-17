@@ -815,16 +815,16 @@ player_spawn_4 = NodePath("PlayerSpawn4")
 camera_root_parent = NodePath(".")
 
 [node name="PlayerSpawn1" type="Node3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.968994, 2.00329)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -8.92693, 2.69922, -9.65395)
 
 [node name="PlayerSpawn2" type="Node3D" parent="."]
-transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 1.99387, 0.968994, 1.75406)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 9.30635, 5.66534, -10.2118)
 
 [node name="PlayerSpawn3" type="Node3D" parent="."]
-transform = Transform3D(3.20217, 2.3971, 0, -2.3971, 3.20217, 0, 0, 0, 4, -2.18748, 2.26496, 5.06997)
+transform = Transform3D(3.20217, 2.3971, 0, -2.3971, 3.20217, 0, 0, 0, 4, -8.70595, 2.26496, 8.39971)
 
 [node name="PlayerSpawn4" type="Node3D" parent="."]
-transform = Transform3D(3.20217, 2.3971, 0, -2.3971, 3.20217, 0, 0, 0, 4, 4.12091, 2.26496, 5.97161)
+transform = Transform3D(3.20217, 2.3971, 0, -2.3971, 3.20217, 0, 0, 0, 4, 10.0738, 2.26496, 8.72588)
 
 [node name="Floor" type="StaticBody3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
