@@ -1,6 +1,6 @@
 ## The main camera found in levels.
 extends Camera3D
-class_name Camera
+class_name BattleCamera
 
 
 @export var movespeed := 5.0
