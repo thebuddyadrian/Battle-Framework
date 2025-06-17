@@ -69,6 +69,8 @@ var recovery_phase: AttackPhase
 var _use_air_animation: bool = false
 # When the player presses the dash button, it will be buffered until the move is ready to cancel
 var _dash_cancel_buffered: bool = false
+# When the player presses the attack button, it will be buffered until the move is ready to cancel
+var _attack_cancel_buffered: bool = false
 ## Array of phases created for the attack
 var _phases := []
 var _phases_dict := {}
@@ -223,6 +225,7 @@ func _enter(data := {}):
 	charge_time = 0
 	_phase_timer = 0
 	_dash_cancel_buffered = false
+	_attack_cancel_buffered = false
 	change_phase(0)
 
 
@@ -314,17 +317,22 @@ func _step():
 				change_state("HomingDash")
 				return
 		
-		# Jabs
-		# Cancel into next phase when attack pressed
-		if get_current_phase().phase_type == AttackPhase.PHASE_TYPE.JAB:
-			var transition_offset = get_current_phase().jab_transition_offset
-			if move_contact == 0:
-				transition_offset = get_current_phase().jab_transition_offset_whiff
-			if _phase_timer <= get_current_phase().frames - transition_offset or _phase_timer <= 2:
-				if root.input_attack("pressed"):
-					root.stop_buffer_attack("pressed")
-					root.stop_buffer("special", "pressed")
-					next_phase()
+		# Jab Buffer
+		if parent.state_time > 2 and root.input("attack", "just_pressed"):
+			_attack_cancel_buffered = true
+
+		# OLD JAB CODE
+		# # Jabs
+		# # Cancel into next phase when attack pressed
+		# if get_current_phase().phase_type == AttackPhase.PHASE_TYPE.JAB:
+		# 	var transition_offset = get_current_phase().jab_transition_offset
+		# 	if move_contact == 0:
+		# 		transition_offset = get_current_phase().jab_transition_offset_whiff
+		# 	if _phase_timer <= get_current_phase().frames - transition_offset or _phase_timer <= 2:
+		# 		if root.input_attack("pressed"):
+		# 			root.stop_buffer_attack("pressed")
+		# 			root.stop_buffer("special", "pressed")
+		# 			next_phase()
 	
 	# Looping animations
 	# When the animation finishes, play it again
@@ -387,8 +395,9 @@ func _phase_changed_internal(phase_index: int, previous_phase_index: int):
 			#get_hit_data().knockback_charge_scale = knockback_charge_scale
 			#get_hit_data().knockback_scaling_charge_scale = knockback_scaling_charge_scale
 			#get_hit_data().sound = hit_sound
+
 		# Player can cancel into other attacks when recovery phase starts
-		if get_current_phase() == active_phase:
+		if get_current_phase() == recovery_phase:
 			root.set_action_enabled("attack", true)
 	
 # Virtual method to run logic right when the phase is changed, including at the beginning when startup phase is entered

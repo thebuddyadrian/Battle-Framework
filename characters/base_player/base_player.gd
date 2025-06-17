@@ -268,7 +268,7 @@ func _check_for_attacks() -> bool:
 # Modders can override this function to change the combo route
 # Not the most user-friendly method, but it works for now until I found an easier way to make customizable jab combos
 func _check_for_jab_combo() -> bool:
-	if input("attack", "just_pressed"):
+	if input("attack", "just_pressed") or (state_machine.active_state is BaseAttack and state_machine.active_state._attack_cancel_buffered):
 		# Cancelling from other jabs
 		if state_machine.active_state.name == "Jab2": 
 			state_machine.change_state("Jab3")
@@ -311,7 +311,7 @@ func _get_last_pressed_upper_input() -> String:
 
 
 func _check_for_heavy() -> bool:
-	if input("attack", "just_pressed"):
+	if input("attack", "just_pressed") or (state_machine.active_state is BaseAttack and state_machine.active_state._attack_cancel_buffered):
 		# Cancel jab into heavy
 		if state_machine.active_state.name == "Jab3":
 			state_machine.change_state("Heavy")
