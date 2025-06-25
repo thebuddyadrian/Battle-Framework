@@ -1,0 +1,85 @@
+[gd_scene load_steps=9 format=3 uid="uid://cifkfj62fb1ho"]
+
+[ext_resource type="Texture2D" uid="uid://bj6axr24xky2n" path="res://assets/ui/menus/pause/BG.png" id="1_dsdkx"]
+[ext_resource type="Script" uid="uid://dc4nsrbr5die4" path="res://UI/pause.gd" id="1_y8g20"]
+[ext_resource type="Texture2D" uid="uid://cnu7ok1q3rl8e" path="res://assets/ui/menus/pause/continue.png" id="2_y8g20"]
+[ext_resource type="Texture2D" uid="uid://ccabq12tiiljp" path="res://assets/ui/menus/pause/options.png" id="3_ww0nq"]
+[ext_resource type="Texture2D" uid="uid://bx8uihkqaobbi" path="res://assets/ui/menus/pause/Quit.png" id="4_scvpf"]
+
+[sub_resource type="Animation" id="Animation_y8g20"]
+resource_name = "Highlighted"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.8, 0.8), Vector2(1.15, 1.15)]
+}
+
+[sub_resource type="Animation" id="Animation_ww0nq"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_scvpf"]
+_data = {
+&"Highlighted": SubResource("Animation_y8g20"),
+&"RESET": SubResource("Animation_ww0nq")
+}
+
+[node name="Pause" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_y8g20")
+
+[node name="Bg" type="Sprite2D" parent="."]
+position = Vector2(122, 76)
+texture = ExtResource("1_dsdkx")
+
+[node name="Continue" type="Sprite2D" parent="."]
+position = Vector2(121, 65)
+texture = ExtResource("2_y8g20")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Continue"]
+libraries = {
+&"": SubResource("AnimationLibrary_scvpf")
+}
+autoplay = "Highlighted"
+
+[node name="Options" type="Sprite2D" parent="."]
+position = Vector2(121, 89)
+texture = ExtResource("3_ww0nq")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Options"]
+libraries = {
+&"": SubResource("AnimationLibrary_scvpf")
+}
+
+[node name="Quit" type="Sprite2D" parent="."]
+position = Vector2(121, 113)
+texture = ExtResource("4_scvpf")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Quit"]
+libraries = {
+&"": SubResource("AnimationLibrary_scvpf")
+}

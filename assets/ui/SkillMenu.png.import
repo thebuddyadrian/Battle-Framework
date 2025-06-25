@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bmenap3og50iv"
-path="res://.godot/imported/TailsSpritesheet.png-6b1879268c2b9855151f5669346f8c00.ctex"
+uid="uid://gn7p8p6ftpxc"
+path="res://.godot/imported/SkillMenu.png-d5a07da8019d72aba8ea2ded33ed6e94.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tails/TailsSpritesheet.png"
-dest_files=["res://.godot/imported/TailsSpritesheet.png-6b1879268c2b9855151f5669346f8c00.ctex"]
+source_file="res://assets/ui/SkillMenu.png"
+dest_files=["res://.godot/imported/SkillMenu.png-d5a07da8019d72aba8ea2ded33ed6e94.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
