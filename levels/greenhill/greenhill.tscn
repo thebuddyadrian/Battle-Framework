@@ -1,8 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://csyxqjepcm26t"]
+[gd_scene load_steps=3 format=3 uid="uid://csyxqjepcm26t"]
 
 [ext_resource type="PackedScene" uid="uid://bnhp0im0m7jn4" path="res://levels/greenhill/greenhill.glb" id="1_lo584"]
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="2_w524a"]
-[ext_resource type="PackedScene" uid="uid://dgswtfbyqn45x" path="res://components/camera_root/camera_root.tscn" id="3_x2y4a"]
 
 [node name="greenhill" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent") instance=ExtResource("1_lo584")]
 script = ExtResource("2_w524a")
@@ -30,32 +29,3 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.91482, 1.89115, 5.78095)
 
 [node name="PlayerSpawn4" type="Node3D" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.91479, 1.89115, 5.40834)
-
-[node name="Window" type="Window" parent="." index="5"]
-initial_position = 1
-size = Vector2i(240, 160)
-content_scale_size = Vector2i(240, 160)
-content_scale_mode = 2
-content_scale_aspect = 1
-
-[node name="CameraRoot" parent="Window" index="0" instance=ExtResource("3_x2y4a")]
-
-[node name="Window2" type="Window" parent="." index="6"]
-auto_translate_mode = 1
-initial_position = 1
-size = Vector2i(240, 160)
-content_scale_size = Vector2i(240, 160)
-content_scale_mode = 2
-content_scale_aspect = 1
-
-[node name="CameraRoot" parent="Window2" index="0" instance=ExtResource("3_x2y4a")]
-
-[node name="Window3" type="Window" parent="." index="7"]
-auto_translate_mode = 1
-initial_position = 1
-size = Vector2i(240, 160)
-content_scale_size = Vector2i(240, 160)
-content_scale_mode = 2
-content_scale_aspect = 1
-
-[node name="CameraRoot" parent="Window3" index="0" instance=ExtResource("3_x2y4a")]
