@@ -7,7 +7,7 @@ const CAMERA_ROOT = preload("res://components/camera_root/camera_root.tscn")
 const PLAYER_WINDOW = preload("res://components/player_window/player_window.tscn")
 const PLAYER_HUD = preload("res://components/player_hud/player_hud.tscn")
 
-@export var music  : AudioStream
+@export var stage_info: StageInfo
 @export var player_spawn_1: Node3D
 @export var player_spawn_2: Node3D
 @export var player_spawn_3: Node3D
