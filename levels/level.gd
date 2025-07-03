@@ -20,7 +20,9 @@ var audiostreamplayer = AudioStreamPlayer.new()
 
 
 func _ready() -> void:
-	MusicPlayer.play_track(music)
+	if stage_info:
+		if stage_info.music_file_path:
+			MusicPlayer.play_track(load(stage_info.music_file_path))
 	
 	# Spawn cameras
 	for i in range(Game.human_players):
