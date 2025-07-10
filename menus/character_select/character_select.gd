@@ -21,12 +21,23 @@ func _ready() -> void:
 	for stage in Lists.battle_stages:
 		$StageSelect.add_item(stage)
 
+	for stage in Lists.modded_battle_stages:
+		$StageSelect.add_item(stage + " (MOD)")
+
 func _on_player_selection_finished():
 	var current_player_node = player_container.get_child(current_player - 1)
 	Game.character_choices[current_player] = current_player_node.character
 	current_player_node.active = false
+
+	var selected_stage: String
+	# If the current selected index is greater than the amount of base stages, it must be a modded stage
+	if $StageSelect.selected > Lists.battle_stages.size() - 1:
+		selected_stage = Lists.modded_battle_stages[$StageSelect.selected - Lists.battle_stages.size()]
+	else:
+		selected_stage = Lists.battle_stages[$StageSelect.selected]
+
 	if current_player == Game.human_players + Game.cpu_players:
-		SceneChanger.change_scene_to_file("res://levels/%s/%s.tscn" % [$StageSelect.text, $StageSelect.text])
+		SceneChanger.change_scene_to_file("res://levels/%s/%s.tscn" % [selected_stage, selected_stage])
 		return
 	current_player += 1
 	await get_tree().process_frame
