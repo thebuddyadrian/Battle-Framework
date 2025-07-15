@@ -199,8 +199,10 @@ func do_export_as_mod_pck():
 	var packer = PCKPacker.new()
 	packer.pck_start("res://mod_export/%s.pck" % internal_name)
 	for file_path in get_file_list(folder_path):
+		print("Adding file %s to mod PCK" % file_path)
 		packer.add_file(file_path, file_path)
 	var err = packer.flush(true)
-	print(err)
-	#ResourceSaver.save(packer, "%s.pck" % internal_name)
+	if err != OK:
+		print("Failed to save mod PCK :(")
+	
 	
