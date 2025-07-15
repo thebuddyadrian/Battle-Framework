@@ -14,6 +14,7 @@ const PLAYER_HUD = preload("res://components/player_hud/player_hud.tscn")
 @export var player_spawn_4: Node3D
 @export var camera_follows_player: bool = false # For beat-em-up levels
 @export var camera_root_parent: Node = self
+@export var test_characters: Array[String] = ["sonic", "tails"]
 var camera_pivots: Dictionary[int, Node3D]
 var cameras: Dictionary[int, Camera3D]
 var audiostreamplayer = AudioStreamPlayer.new()
@@ -22,9 +23,17 @@ var audiostreamplayer = AudioStreamPlayer.new()
 
 
 func _ready() -> void:
+	# Get music track
 	if stage_info:
 		if stage_info.music_file_path:
+			print("Loading music track %s" % stage_info.music_file_path)
 			MusicPlayer.play_track(load(stage_info.music_file_path))
+	
+	# If no characters have been selected, use test characters
+	if Game.character_choices.is_empty():
+		Game.human_players = test_characters.size()
+		for i in range(test_characters.size()):
+			Game.character_choices[i + 1] = test_characters[i]
 	
 	# Spawn cameras
 	for i in range(Game.human_players):
