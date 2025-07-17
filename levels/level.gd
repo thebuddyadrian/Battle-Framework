@@ -194,7 +194,7 @@ func do_export_as_mod_pck():
 	print("Exporting stage %s as mod..." % internal_name)
 	var folder_path = "res://levels/%s" % internal_name
 	# Create the folder to export mod if it doesn't exist
-	DirAccess.make_dir_recursive_absolute("res://mod_export")
+	DirAccess.make_dir_recursive_absolute("res://mod_export/stages")
 	# Create a PCKPacker instance and add all the stage files to the Mod PCK
 	var packer = PCKPacker.new()
 	packer.pck_start("res://mod_export/%s.pck" % internal_name)
