@@ -1,6 +1,7 @@
-[gd_scene load_steps=34 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=35 format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" uid="uid://mhfes0qawdck" path="res://characters/base_player/base_player.gd" id="1_7xl6k"]
+[ext_resource type="Script" uid="uid://cyjpv2h7kqytk" path="res://components/battle_sprite/battle_sprite.gd" id="2_b01px"]
 [ext_resource type="Script" uid="uid://c8deswq6muu7v" path="res://characters/raycast.gd" id="2_s2flu"]
 [ext_resource type="Script" uid="uid://ddgg8e7k4c0pd" path="res://characters/base_player/effects.gd" id="2_uam5m"]
 [ext_resource type="Script" uid="uid://clqptntgy8bjs" path="res://components/state_machine/state_machine.gd" id="4_dnwcv"]
@@ -42,7 +43,7 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_kvwve"]
+[sub_resource type="Resource" id="Resource_b01px"]
 script = ExtResource("16_32b4s")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -76,6 +77,7 @@ texture_filter = 0
 hframes = 16
 vframes = 14
 frame = 36
+script = ExtResource("2_b01px")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
 autoplay = "Idle"
@@ -84,6 +86,9 @@ autoplay = "Idle"
 visible = false
 texture_filter = 0
 script = ExtResource("2_uam5m")
+flipped = null
+default_cull_layer = null
+flipped_cull_layer = null
 
 [node name="FlippedComponents" type="Node3D" parent="."]
 
@@ -214,7 +219,7 @@ script = ExtResource("23_uam5m")
 
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_kvwve")
+hit_data = SubResource("Resource_b01px")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
@@ -235,6 +240,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.250755, 0)
 text = "HP: 100"
 font_size = 16
 
+[connection signal="frame_changed" from="PlayerSprite" to="PlayerSprite" method="_on_frame_changed"]
+[connection signal="texture_changed" from="PlayerSprite" to="PlayerSprite" method="_on_texture_changed"]
 [connection signal="blocked" from="Hitbox" to="." method="_on_hitbox_blocked"]
 [connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

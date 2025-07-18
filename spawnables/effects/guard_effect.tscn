@@ -87,9 +87,13 @@ script = ExtResource("1_k4w3s")
 [node name="SpriteHolder" type="Node3D" parent="."]
 
 [node name="Sprite" type="AnimatedSprite3D" parent="SpriteHolder"]
-transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, -0.203126, 0.407662, 0)
+transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
+offset = Vector2(-4.06, 8.176)
+billboard = 1
 texture_filter = 0
 sprite_frames = SubResource("SpriteFrames_3i7sb")
 autoplay = "default"
+frame = 9
+frame_progress = 1.0
 
 [connection signal="animation_finished" from="SpriteHolder/Sprite" to="." method="_on_sprite_animation_finished"]

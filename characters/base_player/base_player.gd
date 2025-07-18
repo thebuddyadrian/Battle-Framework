@@ -23,7 +23,8 @@ class_name BattleCharacter
 ## How many frames the player has to press the attack button after inputting a direction to do a heavy/upper attack
 var HEAVY_DIRECTION_INPUT_WINDOW: int = 8
 var UPPER_DIRECTION_INPUT_WINDOW: int = 4
-
+var taps = 0
+var taptime = 0
 var team_id: int = 1 # For team battles
 var char_name: String = ""
 var current_hp: int = HP
@@ -117,7 +118,33 @@ func _physics_process(delta: float) -> void:
 	
 	# Test Hud
 	$TestLabel.text = str(wall_bounces)
-
+	
+	if taptime > 0:
+		taptime -= 1
+	else:
+		taps = 0
+	
+	if input("guard", "just_pressed"):
+		taps += 1
+		print_debug(taps)
+		
+		match taps:
+			1:
+				taptime = 20
+			2:
+				if camera.rotation_degrees.y == 0:
+					var rottween = create_tween()
+					rottween.set_trans(Tween.TRANS_CUBIC)
+					rottween.set_ease(Tween.EASE_OUT)
+					rottween.tween_property(camera,"rotation_degrees:y",180,.5)
+				if camera.rotation_degrees.y == 180:
+					var rottween = create_tween()
+					rottween.set_trans(Tween.TRANS_CUBIC)
+					rottween.set_ease(Tween.EASE_OUT)
+					rottween.tween_property(camera,"rotation_degrees:y",0,.5)
+				taptime = 0
+				taps = 0
+	
 	# Add the gravity.
 	if velocity.y >  -FALL_SPEED:
 		velocity.y -= GRAVITY * gravity_scale
@@ -134,16 +161,20 @@ func _physics_process(delta: float) -> void:
 	move_and_slide()
 	state_machine.advance()
 
-	# Flip sprites and other nodes
-	if camera.rotation_degrees.y >= 170:
-		Sprite.flip_h = facing_direction_2d >= 0
-		Sprite.scale.x = -1 if facing_direction_2d >= 0  else 1
-		flipped_components.scale.x = -1 if facing_direction_2d >= 0  else 1
-	else:
-		Sprite.flip_h = facing_direction_2d < 0
-		Sprite.scale.x = -1 if facing_direction_2d >= 0  else 1
-		flipped_components.scale.x = -1 if facing_direction_2d >= 0  else 1
-	
+	Sprite.flipped = facing_direction_2d <= 0
+	Sprite.scale.x = 1 if facing_direction_2d <= 0  else 1
+	flipped_components.scale.x = -1 if facing_direction_2d <= 0  else 1
+
+	## Flip sprites and other nodes
+	#if camera.rotation_degrees.y >= 170:
+		#Sprite.flip_h = facing_direction_2d >= 0
+		#Sprite.scale.x = -1 if facing_direction_2d >= 0  else 1
+		#
+	#else:
+		#Sprite.flip_h = facing_direction_2d < 0
+		#Sprite.scale.x = -1 if facing_direction_2d >= 0  else 1
+		#flipped_components.scale.x = -1 if facing_direction_2d >= 0  else 1
+	#
 	effects.flip_h = Sprite.flip_h
 	for child in flipped_components.get_children():
 		if child is Sprite3D:

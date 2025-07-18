@@ -1,6 +1,13 @@
 extends Node3D
 
+# Determines which layers correspond to regular sprites and which ones correspond to flipped sprites
+# Cull mask will be changed depending on the camera's rotation
+# See components/battle_sprite/battle_sprite.gd for more info
+const SPRITE_DEFAULT_VISUAL_LAYER: int = 7
+const SPRITE_FLIPPED_VISUAL_LAYER: int = 8
+
 @onready var Anim = $AnimationPlayer
+@onready var camera = $Camera
 
 var taps = 0
 var taptime = 0
@@ -39,6 +46,14 @@ func _physics_process(delta: float) -> void:
 	
 	if follow_player and player_to_follow:
 		global_position = player_to_follow.global_position
+	
+	if rotation_degrees.y >= 90:
+		camera.set_cull_mask_value(SPRITE_DEFAULT_VISUAL_LAYER + 1, false)
+		camera.set_cull_mask_value(SPRITE_FLIPPED_VISUAL_LAYER + 1, true)
+	else:
+		camera.set_cull_mask_value(SPRITE_DEFAULT_VISUAL_LAYER + 1, true)
+		camera.set_cull_mask_value(SPRITE_FLIPPED_VISUAL_LAYER + 1, false)
+		
 
 
 func set_player_to_follow(player: BattleCharacter):
