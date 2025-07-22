@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://cek62pjs5d0tg"]
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_h6std"]
-[ext_resource type="AudioStream" uid="uid://cco6bisoiwv8a" path="res://assets/audio/bgm/Hologram.mp3" id="2_aw566"]
+[ext_resource type="Resource" uid="uid://dgt30oe8ecklk" path="res://levels/hologram/hologram.tres" id="2_261r3"]
 [ext_resource type="PackedScene" uid="uid://dw2dnhnuuwhco" path="res://levels/hologram/Holomodel.tscn" id="6_ca42s"]
 [ext_resource type="PackedScene" uid="uid://crdik24k161lb" path="res://levels/hologram/holosky.tscn" id="8_4yqvt"]
 [ext_resource type="Script" uid="uid://d2luikke1goi4" path="res://levels/hologram/Boxspin.tres.gd" id="9_ici1a"]
@@ -15,7 +15,7 @@ size = Vector3(1, 0.676758, 2.18701)
 
 [node name="LevelMain" type="Node3D" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent")]
 script = ExtResource("1_h6std")
-music = ExtResource("2_aw566")
+stage_info = ExtResource("2_261r3")
 player_spawn_1 = NodePath("SubViewportContainer/Level/LevelRoot/PlayerSpawn1")
 player_spawn_2 = NodePath("SubViewportContainer/Level/LevelRoot/PlayerSpawn2")
 player_spawn_3 = NodePath("SubViewportContainer/Level/LevelRoot/PlayerSpawn3")
@@ -32,7 +32,7 @@ offset_bottom = 512.0
 
 [node name="BG" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(240, 160)
+size = Vector2i(320, 240)
 render_target_update_mode = 0
 
 [node name="HologramSkybox" parent="CanvasLayer/SubViewportContainer/BG" instance=ExtResource("8_4yqvt")]
@@ -64,7 +64,7 @@ offset_bottom = 40.0
 [node name="Level" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(240, 160)
+size = Vector2i(320, 240)
 render_target_update_mode = 4
 
 [node name="LevelRoot" type="Node3D" parent="SubViewportContainer/Level"]

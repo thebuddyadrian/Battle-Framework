@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StageInfo" load_steps=2 format=3 uid="uid://qcpabd861my0"]
+
+[ext_resource type="Script" uid="uid://bh7hc4po624b3" path="res://levels/stage_info.gd" id="1_hr1co"]
+
+[resource]
+script = ExtResource("1_hr1co")
+display_name = "Holy Summit"
+music_file_path = ""
+metadata/_custom_type_script = "uid://bh7hc4po624b3"
