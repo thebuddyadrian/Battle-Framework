@@ -3,6 +3,7 @@ extends CanvasLayer
 @onready var lifebar: TextureProgressBar = $Lifebar
 @onready var icon: Sprite2D = $Lifebar/Icon
 @onready var stock_label: Label = $StockLabel
+@onready var pause_menu: Control = $Pause
 
 var player_tracking: BattleCharacter
 
@@ -20,6 +21,7 @@ func track_player(player: BattleCharacter):
 		icon.texture = preload("res://assets/ui/KidGokuLife.png")
 	lifebar.max_value = player.HP
 	player_tracking = player
+	pause_menu.player_id = player.player_id
 
 
 func _process(delta):
