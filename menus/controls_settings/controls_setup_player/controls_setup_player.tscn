@@ -92,3 +92,8 @@ text = "Upper"
 layout_mode = 2
 action = "guard"
 text = "Guard"
+
+[node name="Pause" parent="ScrollContainer/ActionContainer" instance=ExtResource("1_8cmok")]
+layout_mode = 2
+action = "pause"
+text = "Pause"
