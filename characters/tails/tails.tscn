@@ -1,16 +1,17 @@
-[gd_scene load_steps=31 format=3 uid="uid://ubts1e2d3mjh"]
+[gd_scene load_steps=32 format=3 uid="uid://ubts1e2d3mjh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
-[ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://assets/tails/TailsSpritesheet.png" id="2_cps4t"]
+[ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://characters/tails/sprites/TailsSpritesheet.png" id="2_cps4t"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_uaadi"]
 [ext_resource type="AnimationLibrary" uid="uid://gi0u1pjxm16h" path="res://characters/tails/tails_animations.res" id="3_ppohl"]
-[ext_resource type="Resource" uid="uid://c7ar4foj551in" path="res://characters/tails/states/jab_2.tres" id="4_2xg5h"]
-[ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://assets/tails/Tails Effects Spritesheet.png" id="4_my705"]
-[ext_resource type="Script" uid="uid://cfasn3us7ol01" path="res://characters/tails/tails_air_action.gd" id="4_qf74s"]
-[ext_resource type="Script" uid="uid://13qemgrco1g7" path="res://characters/tails/dash.gd" id="5_eakuc"]
+[ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://characters/tails/sprites/Tails Effects Spritesheet.png" id="4_my705"]
+[ext_resource type="Script" uid="uid://cfasn3us7ol01" path="res://characters/tails/states/tails_air_action.gd" id="4_qf74s"]
+[ext_resource type="Script" uid="uid://13qemgrco1g7" path="res://characters/tails/states/dash.gd" id="5_eakuc"]
 [ext_resource type="Resource" uid="uid://ju0slbcssgkw" path="res://characters/tails/states/heavy.tres" id="6_asitg"]
 [ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="7_eakuc"]
 [ext_resource type="Resource" uid="uid://dcg0w2804wsk7" path="res://characters/shadow/states/jab_3.tres" id="7_rdag6"]
+[ext_resource type="Script" uid="uid://vt7nkvkcml5e" path="res://characters/tails/states/jab_2.gd" id="8_eakuc"]
+[ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="9_phocd"]
 [ext_resource type="Resource" uid="uid://dan5rlht4k6p5" path="res://characters/shadow/states/upper.tres" id="9_rdag6"]
 [ext_resource type="Resource" uid="uid://c511ksyj83jh1" path="res://characters/tails/states/dash_attack.tres" id="10_cps4t"]
 [ext_resource type="Script" uid="uid://c88giv4vr1pxp" path="res://characters/tails/states/air_attack.gd" id="11_iyier"]
@@ -23,11 +24,11 @@
 [ext_resource type="Resource" uid="uid://c1reyexjipb6f" path="res://characters/tails/states/grnd_shot.tres" id="15_jrwva"]
 [ext_resource type="Resource" uid="uid://bscjq1fcq5uur" path="res://characters/tails/states/air_shot.tres" id="16_jrwva"]
 [ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="21_t5o4s"]
-[ext_resource type="Script" uid="uid://dvclyodfr67fc" path="res://characters/tails/air_pow.gd" id="21_wv4dc"]
+[ext_resource type="Script" uid="uid://dvclyodfr67fc" path="res://characters/tails/states/air_pow.gd" id="21_wv4dc"]
 [ext_resource type="Resource" uid="uid://dft7nxfslpsce" path="res://characters/tails/states/air_pow.tres" id="22_6dfm6"]
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="22_gueqa"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="23_wv4dc"]
-[ext_resource type="Texture2D" uid="uid://bsdjsrfloxkgh" path="res://assets/ui/TailsLife.png" id="24_6dfm6"]
+[ext_resource type="Texture2D" uid="uid://bsdjsrfloxkgh" path="res://characters/tails/sprites/TailsLife.png" id="24_6dfm6"]
 
 [sub_resource type="Resource" id="Resource_phocd"]
 script = ExtResource("7_eakuc")
@@ -63,7 +64,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
-[sub_resource type="Resource" id="Resource_eakuc"]
+[sub_resource type="Resource" id="Resource_weptr"]
 script = ExtResource("2_uaadi")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -102,7 +103,8 @@ script = ExtResource("4_qf74s")
 attack_info = SubResource("Resource_phocd")
 
 [node name="Jab2" parent="StateMachine" index="19"]
-attack_info = ExtResource("4_2xg5h")
+script = ExtResource("8_eakuc")
+attack_info = ExtResource("9_phocd")
 
 [node name="Jab3" parent="StateMachine" index="20"]
 attack_info = ExtResource("7_rdag6")
@@ -140,7 +142,7 @@ script = ExtResource("21_wv4dc")
 attack_info = ExtResource("22_6dfm6")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_eakuc")
+hit_data = SubResource("Resource_weptr")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190346, 0.0026055, 0)

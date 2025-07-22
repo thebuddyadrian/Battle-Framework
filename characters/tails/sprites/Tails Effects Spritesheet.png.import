@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b4e72gl5uqhpv"
-path="res://.godot/imported/SonicLife.png-78ca38e6a6fc69818bfada6d5f692116.ctex"
+uid="uid://cykdoo1fptjrl"
+path="res://.godot/imported/Tails Effects Spritesheet.png-b4ecaa247116042ed853699e78be983d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/SonicLife.png"
-dest_files=["res://.godot/imported/SonicLife.png-78ca38e6a6fc69818bfada6d5f692116.ctex"]
+source_file="res://characters/tails/sprites/Tails Effects Spritesheet.png"
+dest_files=["res://.godot/imported/Tails Effects Spritesheet.png-b4ecaa247116042ed853699e78be983d.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

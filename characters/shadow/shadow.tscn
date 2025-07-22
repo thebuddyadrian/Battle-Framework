@@ -2,15 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_qnw3q"]
 [ext_resource type="Script" uid="uid://c2lv0otitxe6m" path="res://characters/shadow/shadow.gd" id="2_h1jln"]
-[ext_resource type="Texture2D" uid="uid://dhbyatb3lkkct" path="res://assets/shadow/shadow .png" id="2_pfypo"]
+[ext_resource type="Texture2D" uid="uid://dhbyatb3lkkct" path="res://characters/shadow/sprites/shadow .png" id="2_pfypo"]
 [ext_resource type="AnimationLibrary" uid="uid://2fxpsp06qdso" path="res://characters/shadow/shadow_animation.res" id="3_pfypo"]
 [ext_resource type="Script" uid="uid://m57d41j6ing0" path="res://characters/knuckles/states/dash.tres.gd" id="4_h2on0"]
-[ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://assets/shadow/shadows_effects-Sheet.png" id="4_xq7wv"]
+[ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://characters/shadow/sprites/shadows_effects-Sheet.png" id="4_xq7wv"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_73oq7"]
 [ext_resource type="Script" uid="uid://ueqal43akv04" path="res://characters/shadow/states/air_action.gd" id="7_xq7wv"]
-[ext_resource type="Script" uid="uid://b0fwnp3c7icpp" path="res://characters/shadow/jab_1.gd" id="10_73oq7"]
-[ext_resource type="Script" uid="uid://52cyo3vp73rr" path="res://characters/shadow/jab_2.gd" id="11_73oq7"]
-[ext_resource type="Script" uid="uid://blfv8c5qkube3" path="res://characters/shadow/jab_3.gd" id="12_73oq7"]
+[ext_resource type="Script" uid="uid://b0fwnp3c7icpp" path="res://characters/shadow/states/jab_1.gd" id="10_73oq7"]
+[ext_resource type="Script" uid="uid://52cyo3vp73rr" path="res://characters/shadow/states/jab_2.gd" id="11_73oq7"]
+[ext_resource type="Script" uid="uid://blfv8c5qkube3" path="res://characters/shadow/states/jab_3.gd" id="12_73oq7"]
 [ext_resource type="Script" uid="uid://dwjg3k38adtu6" path="res://characters/shadow/states/heavy.gd" id="12_gjr3y"]
 [ext_resource type="Resource" uid="uid://di838klmp6a00" path="res://characters/shadow/states/heavy.tres" id="13_cyjvw"]
 [ext_resource type="Resource" uid="uid://cciol0feieiui" path="res://characters/tails/states/jab_3.tres" id="13_vj6v6"]
@@ -30,7 +30,7 @@
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="25_xq7wv"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="26_h1jln"]
 [ext_resource type="Script" uid="uid://b50lj32f1nwfl" path="res://characters/shadow/states/grnd_trap.gd" id="26_mtehn"]
-[ext_resource type="Texture2D" uid="uid://bts0x6bqw6t3i" path="res://assets/ui/ShadowLife.png" id="27_cyjvw"]
+[ext_resource type="Texture2D" uid="uid://bts0x6bqw6t3i" path="res://characters/shadow/sprites/ShadowLife.png" id="27_cyjvw"]
 [ext_resource type="Resource" uid="uid://euruuouwvid3" path="res://characters/shadow/states/grnd_trap.tres" id="27_gjr3y"]
 [ext_resource type="Script" uid="uid://bi0hhacwa7lh3" path="res://characters/shadow/states/air_trap.gd" id="27_uak6g"]
 [ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="29_vj6v6"]
@@ -202,8 +202,7 @@ libraries = {
 
 [node name="Effects" parent="PlayerSprite" index="1"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-visible = true
-offset = Vector2(-4, 0)
+offset = Vector2(-4, -1)
 billboard = 1
 render_priority = 1
 texture = ExtResource("4_xq7wv")

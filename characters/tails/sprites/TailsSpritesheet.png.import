@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dhbyatb3lkkct"
-path="res://.godot/imported/shadow .png-51758d75a9a6013b1c2c4b8a72a56053.ctex"
+uid="uid://bmenap3og50iv"
+path="res://.godot/imported/TailsSpritesheet.png-0f08a7905e6b93651cabd2f2c42b0f65.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/shadow/shadow .png"
-dest_files=["res://.godot/imported/shadow .png-51758d75a9a6013b1c2c4b8a72a56053.ctex"]
+source_file="res://characters/tails/sprites/TailsSpritesheet.png"
+dest_files=["res://.godot/imported/TailsSpritesheet.png-0f08a7905e6b93651cabd2f2c42b0f65.ctex"]
 
 [params]
 

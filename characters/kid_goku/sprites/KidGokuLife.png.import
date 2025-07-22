@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bts0x6bqw6t3i"
-path="res://.godot/imported/ShadowLife.png-4f2a178b148a1408ef4e8b29c8b2b89d.ctex"
+uid="uid://lnxeeqqfd7kl"
+path="res://.godot/imported/KidGokuLife.png-229985e8ad44f085788c017e8ebb9da6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/ShadowLife.png"
-dest_files=["res://.godot/imported/ShadowLife.png-4f2a178b148a1408ef4e8b29c8b2b89d.ctex"]
+source_file="res://characters/kid_goku/sprites/KidGokuLife.png"
+dest_files=["res://.godot/imported/KidGokuLife.png-229985e8ad44f085788c017e8ebb9da6.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lnxeeqqfd7kl"
-path="res://.godot/imported/KidGokuLife.png-c08974fd89afad5deb12efb527d201ca.ctex"
+uid="uid://da2kchrno01ui"
+path="res://.godot/imported/Sonic.png-905844990169af26dab6b6e940d157da.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/ui/KidGokuLife.png"
-dest_files=["res://.godot/imported/KidGokuLife.png-c08974fd89afad5deb12efb527d201ca.ctex"]
+source_file="res://characters/sonic/sprites/Sonic.png"
+dest_files=["res://.godot/imported/Sonic.png-905844990169af26dab6b6e940d157da.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

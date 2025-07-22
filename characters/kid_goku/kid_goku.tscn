@@ -1,7 +1,7 @@
 [gd_scene load_steps=30 format=3 uid="uid://bk8l31xotv0uh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_rh622"]
-[ext_resource type="Texture2D" uid="uid://cunqr1diarnpg" path="res://assets/goku/goku.png" id="2_5o8ea"]
+[ext_resource type="Texture2D" uid="uid://cunqr1diarnpg" path="res://characters/kid_goku/sprites/goku.png" id="2_5o8ea"]
 [ext_resource type="Script" uid="uid://btuv3t200miku" path="res://characters/kid_goku/states/air_action.gd" id="3_5o8ea"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="3_cf8eq"]
 [ext_resource type="Script" uid="uid://cus84bg8otbr4" path="res://characters/kid_goku/states/dash.gd" id="3_i6jmp"]

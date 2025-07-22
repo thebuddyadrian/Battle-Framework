@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
-[ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="2_gd83v"]
+[ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://characters/sonic/sprites/Sonic.png" id="2_gd83v"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="3_fueeq"]
 [ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="3_jddj4"]
 [ext_resource type="Resource" uid="uid://br5v34ftitnna" path="res://characters/kid_goku/states/jab_1.tres" id="5_fueeq"]
@@ -24,7 +24,7 @@
 [ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="22_fueeq"]
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="23_tfamv"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="24_t5h5i"]
-[ext_resource type="Texture2D" uid="uid://b4e72gl5uqhpv" path="res://assets/ui/SonicLife.png" id="25_ttio6"]
+[ext_resource type="Texture2D" uid="uid://b4e72gl5uqhpv" path="res://characters/sonic/sprites/SonicLife.png" id="25_ttio6"]
 
 [sub_resource type="Animation" id="Animation_lq7el"]
 resource_name = "AimAttack"
@@ -1172,6 +1172,10 @@ tracks/2/keys = {
 "values": [0.175767]
 }
 
+[sub_resource type="Animation" id="Animation_t5h5i"]
+resource_name = "jab1"
+step = 0.0166667
+
 [sub_resource type="Animation" id="Animation_6wnxk"]
 resource_name = "kick1"
 length = 0.3
@@ -1292,10 +1296,6 @@ tracks/2/keys = {
 "values": [Vector3(0.0991605, 0.011724, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_t5h5i"]
-resource_name = "jab1"
-step = 0.0166667
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_axwkh"]
 _data = {
 &"AimAttack": SubResource("Animation_lq7el"),
@@ -1393,6 +1393,7 @@ radius = 0.129537
 [node name="Sonic" instance=ExtResource("1_jint7")]
 
 [node name="PlayerSprite" parent="." index="1"]
+billboard = 1
 texture = ExtResource("2_gd83v")
 frame = 2
 

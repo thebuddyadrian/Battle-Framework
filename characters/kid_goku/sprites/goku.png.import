@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cji083mubvbl2"
-path="res://.godot/imported/Tails.png-79cccfbac47ab0f22845b0575a09e10b.ctex"
+uid="uid://cunqr1diarnpg"
+path="res://.godot/imported/goku.png-3ea4c1c19369f21b0f6edfb767231074.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Tails/Tails.png"
-dest_files=["res://.godot/imported/Tails.png-79cccfbac47ab0f22845b0575a09e10b.ctex"]
+source_file="res://characters/kid_goku/sprites/goku.png"
+dest_files=["res://.godot/imported/goku.png-3ea4c1c19369f21b0f6edfb767231074.ctex"]
 
 [params]
 
@@ -21,7 +21,7 @@ compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=true
+mipmaps/generate=false
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

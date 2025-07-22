@@ -2,20 +2,21 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cgq063pwiouqa"
-path="res://.godot/imported/knuckles.png-bc21c6efc79d56d42f7775e2f16e8c2e.ctex"
+uid="uid://ds3c6j0olh44r"
+path.s3tc="res://.godot/imported/Knuckles spritesheet.png-9cbc06bf4414e9e240d3e0c555107ffa.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 
 [deps]
 
-source_file="res://assets/knuckles/knuckles.png"
-dest_files=["res://.godot/imported/knuckles.png-bc21c6efc79d56d42f7775e2f16e8c2e.ctex"]
+source_file="res://characters/knuckles/sprites/Knuckles spritesheet.png"
+dest_files=["res://.godot/imported/Knuckles spritesheet.png-9cbc06bf4414e9e240d3e0c555107ffa.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1

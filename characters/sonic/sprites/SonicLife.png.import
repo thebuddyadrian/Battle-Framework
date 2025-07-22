@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cunqr1diarnpg"
-path="res://.godot/imported/goku.png-f43e3e4697737cbdf155423976f44bac.ctex"
+uid="uid://b4e72gl5uqhpv"
+path="res://.godot/imported/SonicLife.png-2af4889c53f8d27edd544ed578fb1c1f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/goku/goku.png"
-dest_files=["res://.godot/imported/goku.png-f43e3e4697737cbdf155423976f44bac.ctex"]
+source_file="res://characters/sonic/sprites/SonicLife.png"
+dest_files=["res://.godot/imported/SonicLife.png-2af4889c53f8d27edd544ed578fb1c1f.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

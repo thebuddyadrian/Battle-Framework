@@ -2,21 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ds3c6j0olh44r"
-path.s3tc="res://.godot/imported/Knuckles spritesheet.png-8c909425fe800a2fe183eb29ef0737c7.s3tc.ctex"
+uid="uid://cji083mubvbl2"
+path="res://.godot/imported/Tails.png-eedbde6da6c7e1d5ce19db878de35856.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
+"vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/knuckles/Knuckles spritesheet.png"
-dest_files=["res://.godot/imported/Knuckles spritesheet.png-8c909425fe800a2fe183eb29ef0737c7.s3tc.ctex"]
+source_file="res://characters/tails/sprites/Tails.png"
+dest_files=["res://.godot/imported/Tails.png-eedbde6da6c7e1d5ce19db878de35856.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=0
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
