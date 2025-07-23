@@ -14,6 +14,10 @@ var human_players: int = 0
 var cpu_players: int = 0
 var character_choices := {}
 
+var CurrentVersion:int = 0
+var CurrentSubVersion:int = 1
+var CurrentMinorVersion:int = 1
+
 enum ERR {
 	OK,
 	VALUE,

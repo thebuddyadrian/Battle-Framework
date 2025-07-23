@@ -20,6 +20,7 @@ config/windows_native_icon="res://icon.ico"
 
 [autoload]
 
+ModLoaderMaster="*res://ModLoader/Mod_Loader_Master.gd"
 Game="*res://game.gd"
 Lists="*res://autoload/lists.gd"
 MusicPlayer="*res://autoload/music_player.gd"

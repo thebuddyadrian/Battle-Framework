@@ -1,0 +1,7 @@
+{
+	"test":true,
+	"disabled_mods":["testmodQ"],
+	"disabled_per_mods":[],
+	"mods-folder":"user://mods",
+	"temp-folder":"user://modstemp"
+}

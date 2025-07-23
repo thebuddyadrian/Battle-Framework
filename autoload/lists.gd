@@ -4,6 +4,10 @@ var characters: Array[String] = [
 	"sonic", "tails", "knuckles", "shadow",# "kid_goku", "rouge", "amy", "cream", "emerl"
 ]
 
+var modded_characters: Array[String] = [
+	
+]
+
 var character_display_names: Dictionary = {
 	"sonic": "Sonic",
 	"tails": "Tails",
@@ -14,6 +18,14 @@ var character_display_names: Dictionary = {
 	"cream": "Cream",
 	"emerl": "Emerl",
 	"kid_goku": "Kid Goku",
+}
+
+var modded_char_display_names:Dictionary = {
+	
+}
+#referenced for spawning characters from different Directories
+var modded_character_dir:Dictionary = {
+	
 }
 
 var battle_stages: Array[String] = [

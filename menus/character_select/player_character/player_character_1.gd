@@ -19,7 +19,7 @@ func _ready() -> void:
 
 
 func _on_selector_component_selection_changed(selected: int) -> void:
-	character_selected.text = "Character:\n" + Lists.character_display_names[character]
+	character_selected.text = "Character:\n" + (Lists.character_display_names.merged(Lists.modded_char_display_names))[character]
 
 
 func set_active(p_active: bool):
