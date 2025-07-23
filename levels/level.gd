@@ -59,9 +59,7 @@ func _ready() -> void:
 	assert(player_spawn_3, "No spawn position has been placed for player 4")
 	for i in range(Game.human_players):
 		var character = Game.character_choices[i + 1]
-		var character_path = "res://characters/%s/%s.tscn" % [character, character]
-		if(Lists.modded_character_dir.has(character)): character_path = Lists.modded_character_dir[character]
-		var player: BattleCharacter = load(character_path).instantiate()
+		var player: BattleCharacter = load("res://characters/%s/%s.tscn" % [character, character]).instantiate()
 		var spawn_position: Node3D = get("player_spawn_%s" % str(i + 1))
 		player.global_position = spawn_position.global_position
 		player.camera = camera_pivots[i]
@@ -199,12 +197,13 @@ func do_export_as_mod_pck():
 	DirAccess.make_dir_recursive_absolute("res://mod_export/stages")
 	# Create a PCKPacker instance and add all the stage files to the Mod PCK
 	var packer = PCKPacker.new()
-	packer.pck_start("res://mod_export/%s.pck" % internal_name)
+	packer.pck_start("res://mod_export/levels/%s.pck" % internal_name)
 	for file_path in get_file_list(folder_path):
 		print("Adding file %s to mod PCK" % file_path)
 		packer.add_file(file_path, file_path)
-	var err = packer.flush(true)
+	var err = packer.flush()
 	if err != OK:
 		print("Failed to save mod PCK :(")
-	
+	else:
+		print("Mod export successful!")
 	

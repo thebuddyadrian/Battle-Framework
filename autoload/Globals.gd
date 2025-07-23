@@ -4,7 +4,7 @@ var CLIENTSIDE_PLAYER = null
 
 var CONTROLS_FILE_PATH = "user://controls.tres"
 var saved_input_map := {}
-var action_list = ["left", "right", "up", "down", "jump", "attack", "upper", "skill", "guard", "dash"]
+var action_list = ["left", "right", "up", "down", "jump", "attack", "upper", "skill", "guard", "dash", "pause"]
 
 
 func save_controls():
