@@ -1,0 +1,13 @@
+{
+	"Author":"Brian",
+	"Name":"Test",
+	"Preview-Image":"test.png",
+
+	"Game-Version":0,
+	"Game-Sub-Version":1,
+	"Game-Minor-Version":1,
+
+	"Mod-Version":1,
+	
+	"Mod-Dependencies":[]
+}

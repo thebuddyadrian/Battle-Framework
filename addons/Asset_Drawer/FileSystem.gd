@@ -106,5 +106,3 @@ func FilesToBottom() -> void:
 	remove_control_from_docks(FileDock)
 	add_control_to_bottom_panel(FileDock, "File System")
 	filesBottom = true
-
-

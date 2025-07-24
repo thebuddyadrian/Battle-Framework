@@ -78,7 +78,7 @@ project/assembly_name="Sonic Battle Framework"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/abfi/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/ModLoaderControls/plugin.cfg", "res://addons/abfi/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [importer_defaults]
 

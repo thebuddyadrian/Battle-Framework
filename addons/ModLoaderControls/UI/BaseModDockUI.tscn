@@ -1,0 +1,185 @@
+[gd_scene load_steps=5 format=3 uid="uid://cvbjojneaf7l0"]
+
+[ext_resource type="Script" uid="uid://cml2i0plxe8xq" path="res://addons/ModLoaderControls/UI/ModdingToolUIControl.gd" id="1_jxlfg"]
+[ext_resource type="JSON" path="res://ModLoader/Defaults/DefaultCharacterMod.json" id="2_e6cl3"]
+[ext_resource type="JSON" path="res://ModLoader/Defaults/DefaultMapMod.json" id="3_dfhi5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxlfg"]
+bg_color = Color(0, 0, 0, 0.784314)
+
+[node name="BaseModDockUi" type="Control" node_paths=PackedStringArray("ModFileList", "SubFileList", "ModCreationButton", "SubCreationButton", "ExportType")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_jxlfg")
+ModFileList = NodePath("Panel/BaseArea/HSplitContainer/ModContainer/Tree")
+SubFileList = NodePath("Panel/BaseArea/HSplitContainer/SubContainer/Tree")
+ModCreationButton = NodePath("Panel/BaseArea/HSplitContainer/ModContainer/ModCreationMenu")
+SubCreationButton = NodePath("Panel/BaseArea/HSplitContainer/SubContainer/SubCreationMenu")
+ExportType = NodePath("Panel/BaseArea/HSplitContainer/TabContainer/Item Info/HSplitContainer/OptionButton")
+ExportTypeFiles = Array[Resource]([ExtResource("2_e6cl3"), ExtResource("3_dfhi5")])
+
+[node name="Panel" type="Panel" parent="."]
+custom_minimum_size = Vector2(0, 160)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jxlfg")
+
+[node name="BaseArea" type="Control" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = 4.0
+offset_right = -4.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HSplitContainer" type="HBoxContainer" parent="Panel/BaseArea"]
+clip_contents = true
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TabContainer" type="TabContainer" parent="Panel/BaseArea/HSplitContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+current_tab = 0
+
+[node name="Item Info" type="VBoxContainer" parent="Panel/BaseArea/HSplitContainer/TabContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+metadata/_tab_index = 0
+
+[node name="Panel" type="Panel" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="SpinBox" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="HSplitContainer" type="HSplitContainer" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info"]
+layout_mode = 2
+
+[node name="Export" type="Button" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/HSplitContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Export Item to Mod"
+alignment = 0
+clip_text = true
+
+[node name="OptionButton" type="OptionButton" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/HSplitContainer"]
+layout_mode = 2
+selected = 0
+item_count = 3
+popup/item_0/text = "Character"
+popup/item_0/id = 0
+popup/item_1/text = "Map"
+popup/item_1/id = 1
+popup/item_2/text = "Projectile"
+popup/item_2/id = 2
+
+[node name="Mod Info" type="VBoxContainer" parent="Panel/BaseArea/HSplitContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="Panel" type="Panel" parent="Panel/BaseArea/HSplitContainer/TabContainer/Mod Info"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="TextEdit" type="TextEdit" parent="Panel/BaseArea/HSplitContainer/TabContainer/Mod Info/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModContainer" type="VBoxContainer" parent="Panel/BaseArea/HSplitContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Tree" type="ItemList" parent="Panel/BaseArea/HSplitContainer/ModContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+item_count = 4
+item_0/text = "Test2"
+item_1/text = "TestMod1"
+item_2/text = "_OLD"
+item_3/text = "New"
+
+[node name="ModCreationMenu" type="HSplitContainer" parent="Panel/BaseArea/HSplitContainer/ModContainer"]
+visible = false
+clip_contents = true
+layout_mode = 2
+
+[node name="TextEdit" type="LineEdit" parent="Panel/BaseArea/HSplitContainer/ModContainer/ModCreationMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Insert Mod Name"
+
+[node name="Button" type="Button" parent="Panel/BaseArea/HSplitContainer/ModContainer/ModCreationMenu"]
+layout_mode = 2
+text = "Create"
+
+[node name="SubContainer" type="VBoxContainer" parent="Panel/BaseArea/HSplitContainer"]
+clip_contents = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Tree" type="ItemList" parent="Panel/BaseArea/HSplitContainer/SubContainer"]
+custom_minimum_size = Vector2(32, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+item_count = 2
+item_0/text = "Brian"
+item_1/text = "New"
+
+[node name="SubCreationMenu" type="HSplitContainer" parent="Panel/BaseArea/HSplitContainer/SubContainer"]
+visible = false
+clip_contents = true
+layout_mode = 2
+
+[node name="TextEdit" type="LineEdit" parent="Panel/BaseArea/HSplitContainer/SubContainer/SubCreationMenu"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Insert Sub Name"
+
+[node name="Button" type="Button" parent="Panel/BaseArea/HSplitContainer/SubContainer/SubCreationMenu"]
+layout_mode = 2
+text = "Create"
+
+[connection signal="pressed" from="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/HSplitContainer/Export" to="." method="ExportAsset"]
+[connection signal="item_selected" from="Panel/BaseArea/HSplitContainer/ModContainer/Tree" to="." method="ModSelectedF"]
+[connection signal="pressed" from="Panel/BaseArea/HSplitContainer/ModContainer/ModCreationMenu/Button" to="." method="ModFolderCreate"]
+[connection signal="item_selected" from="Panel/BaseArea/HSplitContainer/SubContainer/Tree" to="." method="SubSelectedF"]
+[connection signal="pressed" from="Panel/BaseArea/HSplitContainer/SubContainer/SubCreationMenu/Button" to="." method="SubFolderCreate"]

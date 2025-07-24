@@ -1,3 +1,4 @@
+@tool
 extends Node
 class_name Mod_Loader_Base
 
@@ -45,12 +46,13 @@ static func WriteFullJsonData(_file="user://temp.json", _dict:Dictionary = {}) -
 		return true
 	return false
 	
-static func GetAllModFiles(_path="") -> Dictionary:
+static func GetAllModFiles(_path="", _include_emptys:bool = false) -> Dictionary:
 	var M_Dict = {}
 	var ModFolders = GetAllFoldersFromDir(_path)
 	for _mod:String in ModFolders:
 		var SubModFolders = GetAllFoldersFromDir(_path+"/"+_mod)
 		print("S ",_mod)
+		if(_include_emptys): M_Dict.get_or_add(_mod,[])
 		for _submod in SubModFolders:
 			var AbRefPath = _path+"/"+_mod+"/"+_submod
 			#Check if Mod Has JSON

@@ -1,9 +1,10 @@
+@tool
 extends Node
 class_name Mod_Loader_Preferences
 
 static var ModPreferencesDirectory = "user://mods/preferences"
 static var LoadedModPrefs:Dictionary = {}
-static var DefaultPreferences = (preload("res://ModLoader/DefaultPreferences.json").data)
+static var DefaultPreferences = (preload("res://ModLoader/Defaults/DefaultPreferences.json").data)
 
 static func LoadModLoaderPreferences() -> Dictionary:
 	var ModPrefFileDir = ModPreferencesDirectory+"/ModLoaderPrefs.json"

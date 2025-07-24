@@ -1,0 +1,9 @@
+{
+	"test":true,
+	"Type":"Character",
+	"Name":"E",
+	"Dialogue-Icon":"NULL.png",
+	"Preview-Image":"NULL.png",
+	"Mod-Dependencies":[],
+	"Dependencies":[]
+}
