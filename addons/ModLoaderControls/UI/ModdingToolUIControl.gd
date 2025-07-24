@@ -26,7 +26,11 @@ var ModDirectory:String = ""
 var CurrentSubName:String = ""
 var CurrentModName:String = ""
 
+var ItemFileContentSection
+
 var NewFileInfo = ExportTypeFiles[ExportType.selected].data
+
+var QueuedFunctionToQ:String = ""
 
 func _enter_tree() -> void:
 	ItemTypeSelected(0)
@@ -50,6 +54,8 @@ func _enter_tree() -> void:
 	pass
 	
 func UpdateModRefs() -> void:
+	ItemFileContentSection = $"Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel/VBoxContainer/FileScroll/FileContents"
+	
 	FileItems = Mod_Loader_Base.GetAllModFiles(ModDirectory, true)
 	
 	ModFileList.clear()
@@ -88,6 +94,11 @@ func SubSelectedF(index: int) -> void:
 	SubCreationButton.visible = index >= SubFileList.item_count - 1
 	if(index < SubFileList.item_count-1):
 		CurrentSubName = SubFileList.get_item_text(index)
+		
+		var CurrentDir = ModDirectory + "/" + CurrentModName + "/" + CurrentSubName + "/" + CurrentSubName +".json"
+		if(FileAccess.file_exists(CurrentDir)):
+			var CurrentRef = Mod_Loader_Base.ReadFullJsonData(CurrentDir,true)
+			SetTypeSelected(CurrentRef)
 	else:
 		CurrentSubName = ""
 	ExportButton.disabled = CurrentSubName == "" || CurrentModName == ""
@@ -115,18 +126,23 @@ func SubFolderCreate() -> void:
 		SubFile["Name"] = CurrentTextM.text
 		Mod_Loader_Base.HasOrCreateFile(SubDir+"/"+CurrentTextM.text+".json",JSON.stringify(SubFile))
 		UpdateModRefs()
+		ItemTypeSelected(0)
 	pass # Replace with function body.
 	
 func ExportAsset() -> void: # Export button function
 	if(CurrentSubName == "" || CurrentModName == ""): return
+	CallPopUp("ExportProcess")
+
+func ExportProcess() -> void:
 	var SubDir = ModDirectory + "/" + CurrentModName + "/" + CurrentSubName + "/" + CurrentSubName +".json"
 	var TmFile = Mod_Loader_Base.HasOrCreateFile(SubDir,"{}")
 	if(TmFile):
-		var FileDetails = Mod_Loader_Base.ReadFullJsonData(SubDir)
-		for _v in FileDetails.keys():
-			if(NewFileInfo.has(_v)): NewFileInfo[_v] = FileDetails[_v]
-		NewFileInfo["Type"] = ExportType.get_item_text(ExportType.selected)
-		Mod_Loader_Base.WriteFullJsonData(SubDir,NewFileInfo)
+		#var FileDetails = Mod_Loader_Base.ReadFullJsonData(SubDir)
+		#for _v in FileDetails.keys():
+			#if(NewFileInfo.has(_v)): NewFileInfo[_v] = FileDetails[_v]
+		var ConvText = JSON.parse_string(ItemFileContentSection.text)
+		ConvText["Type"] = ExportType.get_item_text(ExportType.selected)
+		Mod_Loader_Base.WriteFullJsonData(SubDir,ConvText)
 		#Export scene to file set local stuff simaltaniously
 		var CurrentExportScene = EditorInterface.get_edited_scene_root()
 		Mod_Exporter_Tool.ExportFullSceneToModAsset(CurrentExportScene,SubDir.get_basename()+".tscn")
@@ -135,7 +151,32 @@ func ExportAsset() -> void: # Export button function
 
 
 func ItemTypeSelected(index: int) -> void:
-	var FileContentSection = $"Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel/VBoxContainer/FileScroll/FileContents"
 	NewFileInfo = ExportTypeFiles[index].data
-	FileContentSection.text = JSON.stringify(NewFileInfo, "\t")
+	ItemFileContentSection.text = JSON.stringify(NewFileInfo, "\t")
+	pass # Replace with function body.
+	
+func SetTypeSelected(_s:Dictionary) -> void:
+	NewFileInfo = _s
+	ItemFileContentSection.text = JSON.stringify(NewFileInfo, "\t")
+
+
+func SaveEditedItemInfo() -> void:
+	var DataAdress = ModDirectory + "/" + CurrentModName + "/" + CurrentSubName + "/" + CurrentSubName +".json"
+	var RawDataP:Dictionary = JSON.parse_string(ItemFileContentSection.text)
+	if(RawDataP != null):
+		var FMT = Mod_Loader_Base.WriteFullJsonData(DataAdress,RawDataP)
+		
+	pass # Replace with function body.
+
+func CallPopUp(_Command = "fart") -> void:
+	QueuedFunctionToQ = _Command
+	$AreYouSure.position = get_window().position + (get_window().size/2) - ($AreYouSure.size/2)
+	$AreYouSure.visible = true
+
+func QuickPopUpClick(index: int) -> void:
+	$AreYouSure.visible = false
+	if(index == 1):
+		call_deferred(QueuedFunctionToQ)
+	else:
+		return
 	pass # Replace with function body.

@@ -26,8 +26,8 @@ static func GetAllFoldersFromDir(_path="G:/Something/Something") -> Array:
 	return FFD
 	
 #Reads All json data to Dict
-static func ReadFullJsonData(_file="user://temp.json") -> Dictionary:
-	if(TempJSONCache.has(_file)): return TempJSONCache[_file]
+static func ReadFullJsonData(_file="user://temp.json",_override:bool = false) -> Dictionary:
+	if(TempJSONCache.has(_file) && !_override): return TempJSONCache[_file]
 	if(FileAccess.file_exists(_file)):
 		var TempFile = FileAccess.open(_file,FileAccess.READ)
 		var JOut = JSON.parse_string(TempFile.get_as_text())

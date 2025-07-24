@@ -82,14 +82,27 @@ grow_vertical = 2
 [node name="Button" type="SpinBox" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel/VBoxContainer"]
 layout_mode = 2
 
+[node name="Save" type="Button" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Save"
+
 [node name="FileScroll" type="ScrollContainer" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="FileContents" type="Label" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel/VBoxContainer/FileScroll"]
+[node name="FileContents" type="TextEdit" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel/VBoxContainer/FileScroll"]
 layout_mode = 2
 size_flags_horizontal = 3
-clip_text = true
+size_flags_vertical = 3
+text = "{
+	\"Dependencies\": [],
+	\"Dialogue-Icon\": \"NULL.png\",
+	\"Mod-Dependencies\": [],
+	\"Name\": \"Tails Copy\",
+	\"Preview-Image\": \"NULL.png\",
+	\"Type\": \"Character\",
+	\"test\": true
+}"
 
 [node name="HSplitContainer" type="HSplitContainer" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info"]
 layout_mode = 2
@@ -187,9 +200,25 @@ placeholder_text = "Insert Sub Name"
 layout_mode = 2
 text = "Create"
 
+[node name="AreYouSure" type="PopupMenu" parent="."]
+size = Vector2i(296, 100)
+item_count = 3
+item_0/text = "Are you sure you want to export?"
+item_0/id = 0
+item_0/disabled = true
+item_0/separator = true
+item_1/text = "Yes"
+item_1/checkable = 2
+item_1/id = 1
+item_2/text = "NO"
+item_2/checkable = 2
+item_2/id = 2
+
+[connection signal="pressed" from="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel/VBoxContainer/Save" to="." method="SaveEditedItemInfo"]
 [connection signal="pressed" from="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/HSplitContainer/Export" to="." method="ExportAsset"]
 [connection signal="item_selected" from="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/HSplitContainer/OptionButton" to="." method="ItemTypeSelected"]
 [connection signal="item_selected" from="Panel/BaseArea/HSplitContainer/ModContainer/Tree" to="." method="ModSelectedF"]
 [connection signal="pressed" from="Panel/BaseArea/HSplitContainer/ModContainer/ModCreationMenu/Button" to="." method="ModFolderCreate"]
 [connection signal="item_selected" from="Panel/BaseArea/HSplitContainer/SubContainer/Tree" to="." method="SubSelectedF"]
 [connection signal="pressed" from="Panel/BaseArea/HSplitContainer/SubContainer/SubCreationMenu/Button" to="." method="SubFolderCreate"]
+[connection signal="index_pressed" from="AreYouSure" to="." method="QuickPopUpClick"]
