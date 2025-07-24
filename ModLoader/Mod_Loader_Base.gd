@@ -52,7 +52,7 @@ static func GetAllModFiles(_path="", _include_emptys:bool = false) -> Dictionary
 	for _mod:String in ModFolders:
 		var SubModFolders = GetAllFoldersFromDir(_path+"/"+_mod)
 		print("S ",_mod)
-		if(_include_emptys): M_Dict.get_or_add(_mod,[])
+		if(_include_emptys && FileAccess.file_exists(_path+"/"+_mod+"/"+_mod+".json")): M_Dict.get_or_add(_mod,[])
 		for _submod in SubModFolders:
 			var AbRefPath = _path+"/"+_mod+"/"+_submod
 			#Check if Mod Has JSON

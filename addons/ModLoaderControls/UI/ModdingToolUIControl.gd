@@ -17,6 +17,8 @@ var FileItems:Dictionary = {}
 
 @export var ExportTypeFiles:Array[Resource] = []
 
+@export var ExportButton:Button
+
 var DefaultModFile:Dictionary = preload("res://ModLoader/Defaults/DefaultMod.json").data
 var DefaultSubFile:Dictionary = preload("res://ModLoader/Defaults/DefaultSubMod.json").data
 var ModDirectory:String = ""
@@ -40,6 +42,8 @@ func _enter_tree() -> void:
 	ModSelectedF(0)
 	SubSelectedF(0)
 	
+	ExportButton.disabled = true
+	
 	pass
 	
 func UpdateModRefs() -> void:
@@ -57,6 +61,7 @@ func UpdateModRefs() -> void:
 	
 	ModCreationButton.visible = false
 	SubCreationButton.visible = false
+	
 
 func ModSelectedF(index: int) -> void:
 	ModCreationButton.visible = index >= ModFileList.item_count - 1
@@ -66,12 +71,14 @@ func ModSelectedF(index: int) -> void:
 	else:
 		CurrentModName = ""
 		SubFileList.clear()
+	ExportButton.disabled = CurrentSubName == "" || CurrentModName == ""
 	pass # Replace with function body.
 
 func UpdateSubMenuToMod(_current = "") -> void:
 	SubFileList.clear()
-	for _sub in FileItems[_current]:
-		SubFileList.add_item(_sub.get_file().get_basename())
+	if(_current != ""):
+		for _sub in FileItems[_current]:
+			SubFileList.add_item(_sub.get_file().get_basename())
 	SubFileList.add_item("New")
 
 func SubSelectedF(index: int) -> void:
@@ -80,6 +87,7 @@ func SubSelectedF(index: int) -> void:
 		CurrentSubName = SubFileList.get_item_text(index)
 	else:
 		CurrentSubName = ""
+	ExportButton.disabled = CurrentSubName == "" || CurrentModName == ""
 	pass # Replace with function body.
 
 
@@ -92,6 +100,7 @@ func ModFolderCreate() -> void:
 		UpFile["Name"] = CurrentTextM.text
 		Mod_Loader_Base.HasOrCreateFile(ModDir+"/"+CurrentTextM.text+".json",JSON.stringify(UpFile))
 		UpdateModRefs()
+		UpdateSubMenuToMod(ModFileList.get_item_text(0))
 	pass # Replace with function body.
 
 func SubFolderCreate() -> void:
@@ -115,6 +124,5 @@ func ExportAsset() -> void:
 		for _v in FileDetails.keys():
 			if(NewFile.has(_v)): NewFile[_v] = FileDetails[_v]
 		NewFile["Type"] = ExportType.get_item_text(ExportType.selected)
-		print_debug("F ",NewFile)
 		Mod_Loader_Base.WriteFullJsonData(SubDir,NewFile)
 		pass

@@ -7,7 +7,7 @@
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jxlfg"]
 bg_color = Color(0, 0, 0, 0.784314)
 
-[node name="BaseModDockUi" type="Control" node_paths=PackedStringArray("ModFileList", "SubFileList", "ModCreationButton", "SubCreationButton", "ExportType")]
+[node name="BaseModDockUi" type="Control" node_paths=PackedStringArray("ModFileList", "SubFileList", "ModCreationButton", "SubCreationButton", "ExportType", "ExportButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +23,7 @@ ModCreationButton = NodePath("Panel/BaseArea/HSplitContainer/ModContainer/ModCre
 SubCreationButton = NodePath("Panel/BaseArea/HSplitContainer/SubContainer/SubCreationMenu")
 ExportType = NodePath("Panel/BaseArea/HSplitContainer/TabContainer/Item Info/HSplitContainer/OptionButton")
 ExportTypeFiles = Array[Resource]([ExtResource("2_e6cl3"), ExtResource("3_dfhi5")])
+ExportButton = NodePath("Panel/BaseArea/HSplitContainer/TabContainer/Item Info/HSplitContainer/Export")
 
 [node name="Panel" type="Panel" parent="."]
 custom_minimum_size = Vector2(0, 160)
@@ -95,13 +96,11 @@ clip_text = true
 [node name="OptionButton" type="OptionButton" parent="Panel/BaseArea/HSplitContainer/TabContainer/Item Info/HSplitContainer"]
 layout_mode = 2
 selected = 0
-item_count = 3
+item_count = 2
 popup/item_0/text = "Character"
 popup/item_0/id = 0
 popup/item_1/text = "Map"
 popup/item_1/id = 1
-popup/item_2/text = "Projectile"
-popup/item_2/id = 2
 
 [node name="Mod Info" type="VBoxContainer" parent="Panel/BaseArea/HSplitContainer/TabContainer"]
 visible = false
@@ -130,11 +129,10 @@ custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-item_count = 4
+item_count = 3
 item_0/text = "Test2"
 item_1/text = "TestMod1"
-item_2/text = "_OLD"
-item_3/text = "New"
+item_2/text = "New"
 
 [node name="ModCreationMenu" type="HSplitContainer" parent="Panel/BaseArea/HSplitContainer/ModContainer"]
 visible = false
