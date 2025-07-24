@@ -59,7 +59,9 @@ func _ready() -> void:
 	assert(player_spawn_3, "No spawn position has been placed for player 4")
 	for i in range(Game.human_players):
 		var character = Game.character_choices[i + 1]
-		var player: BattleCharacter = load("res://characters/%s/%s.tscn" % [character, character]).instantiate()
+		var character_path = "res://characters/%s/%s.tscn" % [character, character]
+		if(Lists.modded_character_dir.has(character)): character_path = Lists.modded_character_dir[character]
+		var player: BattleCharacter = load(character_path).instantiate()
 		var spawn_position: Node3D = get("player_spawn_%s" % str(i + 1))
 		player.global_position = spawn_position.global_position
 		player.camera = camera_pivots[i]

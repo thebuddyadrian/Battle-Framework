@@ -26,7 +26,10 @@ var ModDirectory:String = ""
 var CurrentSubName:String = ""
 var CurrentModName:String = ""
 
+var NewFileInfo = ExportTypeFiles[ExportType.selected].data
+
 func _enter_tree() -> void:
+	ItemTypeSelected(0)
 	
 	ExportType.clear()
 	for _Ex in ExportTypeFiles:
@@ -114,15 +117,25 @@ func SubFolderCreate() -> void:
 		UpdateModRefs()
 	pass # Replace with function body.
 	
-func ExportAsset() -> void:
+func ExportAsset() -> void: # Export button function
 	if(CurrentSubName == "" || CurrentModName == ""): return
 	var SubDir = ModDirectory + "/" + CurrentModName + "/" + CurrentSubName + "/" + CurrentSubName +".json"
 	var TmFile = Mod_Loader_Base.HasOrCreateFile(SubDir,"{}")
 	if(TmFile):
 		var FileDetails = Mod_Loader_Base.ReadFullJsonData(SubDir)
-		var NewFile = ExportTypeFiles[ExportType.selected].data
 		for _v in FileDetails.keys():
-			if(NewFile.has(_v)): NewFile[_v] = FileDetails[_v]
-		NewFile["Type"] = ExportType.get_item_text(ExportType.selected)
-		Mod_Loader_Base.WriteFullJsonData(SubDir,NewFile)
+			if(NewFileInfo.has(_v)): NewFileInfo[_v] = FileDetails[_v]
+		NewFileInfo["Type"] = ExportType.get_item_text(ExportType.selected)
+		Mod_Loader_Base.WriteFullJsonData(SubDir,NewFileInfo)
+		#Export scene to file set local stuff simaltaniously
+		var CurrentExportScene = EditorInterface.get_edited_scene_root()
+		Mod_Exporter_Tool.ExportFullSceneToModAsset(CurrentExportScene,SubDir.get_basename()+".tscn")
+		
 		pass
+
+
+func ItemTypeSelected(index: int) -> void:
+	var FileContentSection = $"Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel/VBoxContainer/FileScroll/FileContents"
+	NewFileInfo = ExportTypeFiles[index].data
+	FileContentSection.text = JSON.stringify(NewFileInfo, "\t")
+	pass # Replace with function body.
