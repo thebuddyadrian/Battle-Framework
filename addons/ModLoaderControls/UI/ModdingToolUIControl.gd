@@ -26,11 +26,15 @@ var ModDirectory:String = ""
 var CurrentSubName:String = ""
 var CurrentModName:String = ""
 
+var ModFileContentSection
 var ItemFileContentSection
 
 var NewFileInfo = ExportTypeFiles[ExportType.selected].data
+var NewModInfo = DefaultModFile.data
 
 var QueuedFunctionToQ:String = ""
+
+var PrefDetails:Dictionary
 
 func _enter_tree() -> void:
 	ItemTypeSelected(0)
@@ -39,8 +43,9 @@ func _enter_tree() -> void:
 	for _Ex in ExportTypeFiles:
 		ExportType.add_item(_Ex.data["Type"])
 	
-	var PrefDetails:Dictionary = Mod_Loader_Preferences.LoadModLoaderPreferences()
+	PrefDetails = Mod_Loader_Preferences.LoadModLoaderPreferences()
 	ModDirectory = PrefDetails["mods-folder"]
+	$Panel/BaseArea/HSplitContainer/TabContainer/Settings/LineEdit.text = ModDirectory
 	UpdateModRefs()
 	
 	ModFileList.select(0)
@@ -55,6 +60,7 @@ func _enter_tree() -> void:
 	
 func UpdateModRefs() -> void:
 	ItemFileContentSection = $"Panel/BaseArea/HSplitContainer/TabContainer/Item Info/Panel/VBoxContainer/FileScroll/FileContents"
+	ModFileContentSection = $"Panel/BaseArea/HSplitContainer/TabContainer/Mod Info/Panel/VBoxContainer/FileScroll/FileContents"
 	
 	FileItems = Mod_Loader_Base.GetAllModFiles(ModDirectory, true)
 	
@@ -81,6 +87,11 @@ func ModSelectedF(index: int) -> void:
 		CurrentModName = ""
 		SubFileList.clear()
 	ExportButton.disabled = CurrentSubName == "" || CurrentModName == ""
+	
+	var CurrentFileDir = ModDirectory + "/" + CurrentModName + "/" + CurrentModName +".json"
+	NewModInfo = Mod_Loader_Base.ReadFullJsonData(CurrentFileDir,true)
+	ModFileContentSection.text = JSON.stringify(NewModInfo, "\t")
+	
 	pass # Replace with function body.
 
 func UpdateSubMenuToMod(_current = "") -> void:
@@ -159,6 +170,11 @@ func SetTypeSelected(_s:Dictionary) -> void:
 	NewFileInfo = _s
 	ItemFileContentSection.text = JSON.stringify(NewFileInfo, "\t")
 
+func SaveEditedModInfo() -> void:
+	var ModDataAdress = ModDirectory + "/" + CurrentModName + "/" + CurrentModName +".json"
+	var RawModP:Dictionary = JSON.parse_string(ModFileContentSection.text)
+	if(RawModP != null):
+		var FMT = Mod_Loader_Base.WriteFullJsonData(ModDataAdress,RawModP)
 
 func SaveEditedItemInfo() -> void:
 	var DataAdress = ModDirectory + "/" + CurrentModName + "/" + CurrentSubName + "/" + CurrentSubName +".json"
@@ -179,4 +195,11 @@ func QuickPopUpClick(index: int) -> void:
 		call_deferred(QueuedFunctionToQ)
 	else:
 		return
+	pass # Replace with function body.
+
+
+func SubmittedNewModFolder(new_text: String) -> void:
+	PrefDetails["mods-folder"] = new_text
+	ModDirectory = PrefDetails["mods-folder"]
+	Mod_Loader_Preferences.SaveFromToPreferences(PrefDetails)
 	pass # Replace with function body.

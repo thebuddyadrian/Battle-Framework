@@ -16,3 +16,10 @@ static func LoadModLoaderPreferences() -> Dictionary:
 		LoadedModPrefs = FullDictJson
 		
 	return LoadedModPrefs
+	
+static func SaveFromToPreferences(_dict:Dictionary) -> bool:
+	LoadedModPrefs = _dict
+	var ModPrefFileDir = ModPreferencesDirectory+"/ModLoaderPrefs.json"
+	Mod_Loader_Base.HasOrCreateFile(ModPrefFileDir,JSON.stringify(DefaultPreferences,"\t"))
+	Mod_Loader_Base.WriteFullJsonData(ModPrefFileDir,_dict)
+	return false
