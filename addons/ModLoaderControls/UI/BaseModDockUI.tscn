@@ -165,13 +165,14 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "{
-	\"Dependencies\": [],
-	\"Dialogue-Icon\": \"NULL.png\",
+	\"Author\": \"Test Mod\",
+	\"Game-Minor-Version\": 1.0,
+	\"Game-Sub-Version\": 1.0,
+	\"Game-Version\": 0.0,
 	\"Mod-Dependencies\": [],
-	\"Name\": \"Brian Fox\",
-	\"Preview-Image\": \"NULL.png\",
-	\"Type\": \"Character\",
-	\"test\": true
+	\"Mod-Version\": 1.0,
+	\"Name\": \"Test2\",
+	\"Preview-Image\": \"test.png\"
 }"
 syntax_highlighter = SubResource("CodeHighlighter_5vuxt")
 
@@ -182,6 +183,7 @@ metadata/_tab_index = 2
 
 [node name="LineEdit" type="LineEdit" parent="Panel/BaseArea/HSplitContainer/TabContainer/Settings"]
 layout_mode = 2
+text = "G:/Godot Projects/Battle-Framework-mods"
 placeholder_text = "Mod Directory"
 
 [node name="ModContainer" type="VBoxContainer" parent="Panel/BaseArea/HSplitContainer"]
