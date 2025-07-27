@@ -13,7 +13,7 @@ static func ExportFullSceneToModAsset(_scene:Node,_path="G:/mods/modtest") -> vo
 	CurrentModReferencePool = {}
 	#Save base scene to file
 	var PackedSceneRef = PackedScene.new()
-	PackedSceneRef.pack(_scene)
+	PackedSceneRef.pack(_scene.duplicate(DUPLICATE_SIGNALS | DUPLICATE_SCRIPTS | DUPLICATE_GROUPS | DUPLICATE_USE_INSTANTIATION))
 	#New Scene Instance
 	var SceneCopy = PackedSceneRef.instantiate()
 	

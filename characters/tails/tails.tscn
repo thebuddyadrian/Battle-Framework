@@ -1,7 +1,6 @@
 [gd_scene load_steps=31 format=3 uid="uid://ubts1e2d3mjh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
-[ext_resource type="Texture2D" path="./TailsSpritesheet.png" id="2_my705"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_uaadi"]
 [ext_resource type="AnimationLibrary" uid="uid://gi0u1pjxm16h" path="res://characters/tails/tails_animations.res" id="3_ppohl"]
 [ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://assets/Tails/Tails Effects Spritesheet.png" id="4_my705"]
@@ -21,6 +20,9 @@
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="22_gueqa"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="23_wv4dc"]
 [ext_resource type="Texture2D" uid="uid://bsdjsrfloxkgh" path="res://assets/ui/TailsLife.png" id="24_6dfm6"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ptlbi"]
+load_path = "res://.godot/imported/TailsSpritesheet.png-6b1879268c2b9855151f5669346f8c00.ctex"
 
 [sub_resource type="GDScript" id="GDScript_b1baa"]
 script/source = "extends BaseState
@@ -329,7 +331,7 @@ hit_stun = 30
 [node name="Tails" instance=ExtResource("1_b5y1r")]
 
 [node name="PlayerSprite" parent="." index="1"]
-texture = ExtResource("2_my705")
+texture = SubResource("CompressedTexture2D_ptlbi")
 hframes = 15
 vframes = 21
 frame = 27
