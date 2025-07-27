@@ -68,10 +68,16 @@ static func CalculateActiveMods(_M_Dict:Dictionary, _MFolder_Path:String, _Disab
 		if(!_DisabledMods.has(_mod)):
 			for _submod in _M_Dict[_mod]:
 				var RelPath = _submod.substr(_MFolder_Path.length()+1,_submod.length())
-				if(!_DisabledSubs.has(RelPath)):
+				if(!_DisabledSubs.has(RelPath) && IsModSafe(RelPath)):
 					var TM = A_M_Dict.get_or_add(_mod,[_submod])
 					if(!TM.has(_submod)): TM.push_back(_submod)
 	return A_M_Dict
+	
+static func IsModSafe(_subpath="") -> bool:
+	var FullPath = ModLoaderMaster.ModFolderDirectory + "/"+_subpath
+	#var LoadedAsset:PackedScene = load(FullPath+"/"+FullPath.get_file()+".tscn")
+	#print("Mod Checking ", ScriptRefA)
+	return true
 	
 static func CalculateModTypes(_M_Dict:Dictionary, _ModFolder="") -> Dictionary:
 	var R_Dict = {}

@@ -21,6 +21,7 @@ var FileItems:Dictionary = {}
 
 var DefaultModFile:Dictionary = preload("res://ModLoader/Defaults/DefaultMod.json").data
 var DefaultSubFile:Dictionary = preload("res://ModLoader/Defaults/DefaultSubMod.json").data
+var DefaultReferenceFile:String = preload("res://ModLoader/Defaults/DefaultResourcePool.json").get_parsed_text()
 var ModDirectory:String = ""
 
 var CurrentSubName:String = ""
@@ -124,6 +125,7 @@ func ModFolderCreate() -> void:
 		var UpFile = DefaultModFile.duplicate()
 		UpFile["Name"] = CurrentTextM.text
 		Mod_Loader_Base.HasOrCreateFile(ModDir+"/"+CurrentTextM.text+".json",JSON.stringify(UpFile))
+		Mod_Loader_Base.HasOrCreateFile(ModDir+"/_References.json",DefaultReferenceFile)
 		UpdateModRefs()
 		UpdateSubMenuToMod(ModFileList.get_item_text(0))
 	pass # Replace with function body.

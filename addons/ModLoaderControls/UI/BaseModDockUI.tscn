@@ -105,9 +105,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "{
 	\"Dependencies\": [],
-	\"Dialogue-Icon\": \"NULL.png\",
 	\"Mod-Dependencies\": [],
-	\"Name\": \"Brian Fox\",
+	\"Name\": \"Knuck Copy\",
 	\"Preview-Image\": \"NULL.png\",
 	\"Type\": \"Character\",
 	\"test\": true
@@ -165,13 +164,13 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 text = "{
-	\"Author\": \"Test Mod\",
+	\"Author\": \"Brian\",
 	\"Game-Minor-Version\": 1.0,
 	\"Game-Sub-Version\": 1.0,
 	\"Game-Version\": 0.0,
 	\"Mod-Dependencies\": [],
 	\"Mod-Version\": 1.0,
-	\"Name\": \"Test2\",
+	\"Name\": \"Knuc1\",
 	\"Preview-Image\": \"test.png\"
 }"
 syntax_highlighter = SubResource("CodeHighlighter_5vuxt")
@@ -196,10 +195,11 @@ custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-item_count = 3
-item_0/text = "Test2"
-item_1/text = "TestMod1"
-item_2/text = "New"
+item_count = 4
+item_0/text = "Knuc1"
+item_1/text = "Test2"
+item_2/text = "TestMod1"
+item_3/text = "New"
 
 [node name="ModCreationMenu" type="HSplitContainer" parent="Panel/BaseArea/HSplitContainer/ModContainer"]
 visible = false
@@ -225,10 +225,9 @@ custom_minimum_size = Vector2(32, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-item_count = 3
-item_0/text = "Brian"
-item_1/text = "Tails Copy"
-item_2/text = "New"
+item_count = 2
+item_0/text = "Char1"
+item_1/text = "New"
 
 [node name="SubCreationMenu" type="HSplitContainer" parent="Panel/BaseArea/HSplitContainer/SubContainer"]
 visible = false
