@@ -4,7 +4,7 @@ class_name Mod_Exporter_Tool
 
 static var NonExportItems:Dictionary = {MultiplayerAPI:true}
 
-static var NonExportFolders:Array = ["res://components","res://characters/base_player","res://ModLoader"]
+static var NonExportFolders:Array = ["res://components","res://characters/base_player","res://ModLoader","res://characters/mini_bar.gd"]
 
 static var CurrentModReferencePool:Dictionary = {}
 

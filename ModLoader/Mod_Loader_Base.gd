@@ -100,7 +100,7 @@ static func FixSelectedMods(_modPaths:Array) -> void:
 		for _path:String in _subs:
 			var ModdedAssetDir = _path.get_basename()+"/"+_path.get_file().get_basename() + ".tscn"
 			if(FileAccess.file_exists(ModdedAssetDir)):
-				Mod_Loader_Base.FixAtGunPoint(ModdedAssetDir)
+				Mod_Loader_Base.FixAtNerfPoint(ModdedAssetDir)
 
 #Might move later useful for texture refresh
 static func SetDefaultImageTemp(_path:String, _vars=[]) -> bool:
@@ -114,6 +114,43 @@ static func GetDefaultImageTemplate(_path="",_vars=[]) -> String:
 	var ConvertWithV = text.get_as_text() % _vars
 	text.close()
 	return ConvertWithV
+
+static func FixAtNerfPoint(_modpath:String) -> void: #Drop in replacement for force at Gun point that uses a _reference file
+	var RefPath = GetReferencesFromModPath(_modpath)
+	print("Test Ref ",RefPath)
+	var LoadReference = ReadFullJsonData(RefPath,true)
+	
+	var tscn_file = FileAccess.open(_modpath, FileAccess.READ_WRITE)
+	var tscn_file_Raw = tscn_file.get_as_text()
+	var tscn_file_lines:Array = tscn_file_Raw.split('\n')
+	var OutNewTscnFile:String = ""
+	if(!LoadReference["Update-Lines"].has(_modpath.get_file().get_basename())) : return
+	var PathPoints:Array = [
+		LoadReference["Update-Lines"][_modpath.get_file().get_basename()]["start_line"],
+		LoadReference["Update-Lines"][_modpath.get_file().get_basename()]["end_line"]
+	]
+	for _l in range(tscn_file_lines.size()):
+		if(_l >= PathPoints[0] || _l < PathPoints[1]):
+			var PointofP = tscn_file_lines[_l].find("path=")
+			if(PointofP >= 0):
+				var pointE = tscn_file_lines[_l].findn("\"",PointofP+6)
+				var OriginalFileDir = tscn_file_lines[_l].substr(PointofP+6,(pointE)-(PointofP+6))
+				if(!OriginalFileDir.begins_with("res://")):
+					print("OGMR ",OriginalFileDir)
+					OriginalFileDir = _modpath.get_base_dir()+"/"+OriginalFileDir.get_file()
+					#Generate texture ref
+					if(OriginalFileDir.contains(".png")):
+						var NewUID = str(ResourceUID.create_id())
+						SetDefaultImageTemp(OriginalFileDir+".import",[NewUID,OriginalFileDir])
+						ResourceLoader.load(OriginalFileDir,"",ResourceLoader.CACHE_MODE_REPLACE)
+						#print("IMAGE ",DefaultLoadedTextureImport)
+					
+				var NewL = tscn_file_lines[_l].substr(0,PointofP+6)+ OriginalFileDir + tscn_file_lines[_l].substr(pointE,tscn_file_lines[_l].length()-pointE)
+				tscn_file_lines[_l] = NewL
+		OutNewTscnFile += tscn_file_lines[_l] + '\n'
+	tscn_file.store_string(OutNewTscnFile)
+	tscn_file.close()
+	pass
 
 #Quick File fixer
 static func FixAtGunPoint(_modpath:String) -> void: #Force File at gun point to change directory for resource to local or watch its children cry in fear, (yesh.. thats dark)
@@ -149,3 +186,6 @@ static func FixAtGunPoint(_modpath:String) -> void: #Force File at gun point to 
 		NewFileOut += _line + "\n"
 	tscn_file.store_string(NewFileOut)
 	tscn_file.close()
+
+static func GetReferencesFromModPath(_path:String) -> String:
+	return _path.get_base_dir().get_base_dir()+"/_References.json"
