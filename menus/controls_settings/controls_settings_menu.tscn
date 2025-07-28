@@ -22,6 +22,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_font_sizes/font_size = 8
 current_tab = 0
+tab_focus_mode = 0
 
 [node name="Player 1" parent="TabContainer" instance=ExtResource("1_y3qyo")]
 layout_mode = 2
@@ -53,6 +54,7 @@ anchor_bottom = 1.0
 offset_top = -8.0
 offset_right = 8.0
 grow_vertical = 0
+focus_mode = 0
 theme_override_font_sizes/font_size = 8
 text = "Save and Exit"
 

@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bsemd68skb2c1"]
+[gd_scene load_steps=7 format=3 uid="uid://bsemd68skb2c1"]
 
 [ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="1_a4w2u"]
 [ext_resource type="Script" uid="uid://qa1ulecic7dd" path="res://components/player_hud/player_hud.gd" id="1_dgf6l"]
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="2_dgf6l"]
 [ext_resource type="Texture2D" uid="uid://bts0x6bqw6t3i" path="res://assets/ui/ShadowLife.png" id="4_233co"]
+[ext_resource type="PackedScene" uid="uid://cifkfj62fb1ho" path="res://UI/Pause.tscn" id="5_dgf6l"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_a4w2u"]
 font_size = 12
@@ -35,3 +36,5 @@ offset_right = 13.0
 offset_bottom = 37.0
 text = "3"
 label_settings = SubResource("LabelSettings_a4w2u")
+
+[node name="Pause" parent="." instance=ExtResource("5_dgf6l")]
