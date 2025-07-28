@@ -4,10 +4,20 @@ extends Control
 var active: bool = false: set = set_active
 var character_index: int = 0 : set = set_character_index
 var character: String : set = set_character
+
 @export var player_number: int = 1
 @onready var character_selected: Label = $CharacterSelected
 @onready var reference_rect: ReferenceRect = $ReferenceRect
 @onready var player_name: Label = $PlayerName
+@onready var character_portrait: TextureRect = $Portrait_Manager/Characters
+@onready var pixelate: AnimationPlayer = $Portrait_Manager/pixelate
+@export var portrait_texture : Dictionary = {
+	"sonic": preload("res://assets/sonic/Sonic Portrait.png"),
+	"tails": preload("res://assets/Tails/Tails Portrait.png"),
+	"knuckles": preload("res://assets/knuckles/Knuckles Portrait.png"),
+	"shadow": preload("res://assets/shadow/Shadow Portrait.png")
+	}
+
 
 signal selection_finished
 
@@ -16,6 +26,7 @@ func _ready() -> void:
 	#player_name.text = "Player " + str(player_number)
 	set_active(active)
 	set_character_index(character_index)
+	
 
 
 func _process(delta: float) -> void:
@@ -45,3 +56,6 @@ func set_character_index(p_index: int):
 func set_character(p_character: String):
 	character = p_character
 	character_selected.text = "Character:\n" + Lists.character_display_names[character]
+	pixelate.play("pixelate")
+	await get_tree().create_timer(0.4).timeout
+	character_portrait.texture = portrait_texture[character]
