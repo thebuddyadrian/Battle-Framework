@@ -158,9 +158,21 @@ func ExportProcess() -> void:
 		Mod_Loader_Base.WriteFullJsonData(SubDir,ConvText)
 		#Export scene to file set local stuff simaltaniously
 		var CurrentExportScene = EditorInterface.get_edited_scene_root()
-		Mod_Exporter_Tool.ExportSceneToModAsset(CurrentExportScene,SubDir.get_basename()+".tscn")
+		var DupC = CurrentExportScene.duplicate()
+		
+		#var TextureReCalb = Node.new()
+		#TextureReCalb.name = "Texture Fixer"
+		#TextureReCalb.set_script(load("res://ModLoader/Mis/Mod_TextureReassigner.gd"))
+		#DupC.add_child(TextureReCalb) # Add texture recalabrate Node
+		#TextureReCalb.owner = DupC
+		#await get_tree().process_frame
+		call_deferred("QuickExportF",CurrentExportScene,SubDir.get_basename()+".tscn")
+		#Mod_Exporter_Tool.ExportSceneToModAsset(DupC,SubDir.get_basename()+".tscn")
 		
 		pass
+		
+func QuickExportF(_Node:Node, _path:String) -> void:
+	Mod_Exporter_Tool.ExportSceneToModAsset(_Node,_path)
 
 
 func ItemTypeSelected(index: int) -> void:

@@ -58,8 +58,6 @@ static func GetAllModFiles(_path="", _include_emptys:bool = false) -> Dictionary
 			#Check if Mod Has JSON
 			var ModJsonData = ReadFullJsonData(AbRefPath + "/"+_submod+".json")
 			var ModdedAssetDir = AbRefPath + "/"+_submod+".tscn"
-			if(FileAccess.file_exists(ModdedAssetDir)):
-				Mod_Loader_Base.FixAtGunPoint(ModdedAssetDir)
 			if(ModJsonData.has("Type")):
 				var TM = M_Dict.get_or_add(_mod,[AbRefPath])
 				if(!TM.has(AbRefPath)): TM.push_back(AbRefPath)
@@ -97,23 +95,57 @@ static func GetQuickJson(_path ="") -> String:
 
 #Uses Relative Path
 
+static func FixSelectedMods(_modPaths:Array) -> void:
+	for _subs in _modPaths:
+		for _path:String in _subs:
+			var ModdedAssetDir = _path.get_basename()+"/"+_path.get_file().get_basename() + ".tscn"
+			if(FileAccess.file_exists(ModdedAssetDir)):
+				Mod_Loader_Base.FixAtGunPoint(ModdedAssetDir)
+
+#Might move later useful for texture refresh
+static func SetDefaultImageTemp(_path:String, _vars=[]) -> bool:
+	HasOrCreateFile(_path,"")
+	var RefFile = FileAccess.open(_path, FileAccess.WRITE)
+	var File = GetDefaultImageTemplate("res://ModLoader/Defaults/DefaultImageTemplate.txt",_vars)
+	RefFile.store_string(File)
+	return false
+static func GetDefaultImageTemplate(_path="",_vars=[]) -> String:
+	var text = FileAccess.open(_path, FileAccess.READ)
+	var ConvertWithV = text.get_as_text() % _vars
+	text.close()
+	return ConvertWithV
+
 #Quick File fixer
 static func FixAtGunPoint(_modpath:String) -> void: #Force File at gun point to change directory for resource to local or watch its children cry in fear, (yesh.. thats dark)
 	var tscn_file = FileAccess.open(_modpath, FileAccess.READ_WRITE)
 	var tscn_file_Raw = tscn_file.get_as_text()
 	var tscn_file_lines = tscn_file_Raw.split('\n')
 	var NewFileOut = ""
-	for _line in tscn_file_lines:
+	var EngagedFiles:bool = false
+	var _lCount:int = 0
+	for _line:String in tscn_file_lines:
 		if(_line.contains("path=")):
 			var PointofP = _line.find("path=")
 			if(PointofP >= 0):
+				EngagedFiles = true
 				var pointE = _line.findn("\"",PointofP+6)
-				var OriginalFileDir = _line.substr(PointofP+6,pointE)
+				var OriginalFileDir = _line.substr(PointofP+6,(pointE)-(PointofP+6))
 				if(!OriginalFileDir.begins_with("res://")):
+					print("OGMR ",OriginalFileDir)
 					OriginalFileDir = _modpath.get_base_dir()+"/"+OriginalFileDir.get_file()
-				var NewL = _line.substr(0,PointofP+6)+ OriginalFileDir# + _line.substr(pointE,_line)
-				print("GUN ", NewL)
+					#Generate texture ref
+					if(OriginalFileDir.contains(".png")):
+						var NewUID = str(ResourceUID.create_id())
+						SetDefaultImageTemp(OriginalFileDir+".import",[NewUID,OriginalFileDir])
+						ResourceLoader.load(OriginalFileDir,"",ResourceLoader.CACHE_MODE_REPLACE)
+						#print("IMAGE ",DefaultLoadedTextureImport)
+					
+				var NewL = _line.substr(0,PointofP+6)+ OriginalFileDir + _line.substr(pointE,_line.length()-pointE)
 				_line = NewL
+		else:
+			if(EngagedFiles):
+				pass # Were break would happen if file could be override for just new lines
+				
 		NewFileOut += _line + "\n"
 	tscn_file.store_string(NewFileOut)
 	tscn_file.close()

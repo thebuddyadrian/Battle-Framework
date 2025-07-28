@@ -4,7 +4,7 @@ class_name Mod_Exporter_Tool
 
 static var NonExportItems:Dictionary = {MultiplayerAPI:true}
 
-static var NonExportFolders:Array = ["res://components","res://characters/base_player"]
+static var NonExportFolders:Array = ["res://components","res://characters/base_player","res://ModLoader"]
 
 static var CurrentModReferencePool:Dictionary = {}
 
@@ -69,12 +69,22 @@ static func CopyResourceIndiviual(_N:Node, Dirmap: Dictionary, _modpath:String) 
 				var res: Resource = value
 				var old_path = res.resource_path
 				if Dirmap.has(old_path):
-					var new_res = load(_modpath.get_base_dir()+"/"+Dirmap[old_path])  # assumes the resource is in the export root
+					var TargetFilePath:String = _modpath.get_base_dir()+Dirmap[old_path].substr(1,Dirmap[old_path].length()-1)
+					var new_res = load(TargetFilePath)  # assumes the resource is in the export root
+					if(TargetFilePath.ends_with(".png")):
+						_N.set_meta("HAS_IMAGE",true)
+						var TestM = name
+						var RelAdress = TargetFilePath.substr(_modpath.get_base_dir().get_base_dir().get_base_dir().length()+1)
+						_N.set_meta(TestM, RelAdress)
 					if new_res:
-						#print("SHOULD REL ", Dirmap[old_path])
 						# Would set resource path here but godot literally wouldnt include in export, so me :-(
 						#new_res.resource_path = Dirmap[old_path]
 						_N.set(name, new_res)
+					else:
+						if(TargetFilePath.ends_with(".png")):
+							var TempTexture = Texture2D.new()
+							TempTexture.resource_path = TargetFilePath
+							_N.set(name, TempTexture)
 	for _child in _N.get_children():
 		if _child is Node:
 			CopyResourceIndiviual(_child, Dirmap,_modpath)

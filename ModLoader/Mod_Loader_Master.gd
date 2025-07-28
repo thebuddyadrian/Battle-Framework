@@ -22,6 +22,8 @@ func _ready() -> void:
 		Mod_Loader_Preferences.LoadedModPrefs["disabled_mods"],
 		Mod_Loader_Preferences.LoadedModPrefs["disabled_per_mods"]
 	)
+	#Always call for new mods
+	Mod_Loader_Base.FixSelectedMods(ActiveModsDirs.values())
 	ActiveModCategories = Mod_Loader_Base.CalculateModTypes(ActiveModsDirs, ModFolderDirectory)
 	#Load Character listing from ActiveModCategories
 	Mod_Character_Loader.LoadCharactersFromCatagoryList(ActiveModCategories)
