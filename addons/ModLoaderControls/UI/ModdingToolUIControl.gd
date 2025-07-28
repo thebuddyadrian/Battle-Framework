@@ -21,7 +21,6 @@ var FileItems:Dictionary = {}
 
 var DefaultModFile:Dictionary = preload("res://ModLoader/Defaults/DefaultMod.json").data
 var DefaultSubFile:Dictionary = preload("res://ModLoader/Defaults/DefaultSubMod.json").data
-var DefaultReferenceFile:String = preload("res://ModLoader/Defaults/DefaultResourcePool.json").get_parsed_text()
 var ModDirectory:String = ""
 
 var CurrentSubName:String = ""
@@ -125,7 +124,7 @@ func ModFolderCreate() -> void:
 		var UpFile = DefaultModFile.duplicate()
 		UpFile["Name"] = CurrentTextM.text
 		Mod_Loader_Base.HasOrCreateFile(ModDir+"/"+CurrentTextM.text+".json",JSON.stringify(UpFile))
-		Mod_Loader_Base.HasOrCreateFile(ModDir+"/_References.json",DefaultReferenceFile)
+		Mod_Loader_Base.HasOrCreateFile(ModDir+"/_References.json",Mod_Exporter_Tool.DefaultReferenceFile)
 		UpdateModRefs()
 		UpdateSubMenuToMod(ModFileList.get_item_text(0))
 	pass # Replace with function body.
@@ -158,7 +157,6 @@ func ExportProcess() -> void:
 		Mod_Loader_Base.WriteFullJsonData(SubDir,ConvText)
 		#Export scene to file set local stuff simaltaniously
 		var CurrentExportScene = EditorInterface.get_edited_scene_root()
-		var DupC = CurrentExportScene.duplicate()
 		
 		#var TextureReCalb = Node.new()
 		#TextureReCalb.name = "Texture Fixer"
@@ -166,44 +164,41 @@ func ExportProcess() -> void:
 		#DupC.add_child(TextureReCalb) # Add texture recalabrate Node
 		#TextureReCalb.owner = DupC
 		#await get_tree().process_frame
+		
+		#Add extra nodes
+		var ClearLater = Mod_Texture_Reassigner.new()
+		CurrentExportScene.add_child(ClearLater)
+		ClearLater.name = "Mod Fix"
+		ClearLater.owner = CurrentExportScene
+		#Save for mod fixes
+		EditorInterface.save_scene()
+			
 		call_deferred("QuickExportF",CurrentExportScene,SubDir.get_basename()+".tscn")
+		
+		call_deferred("QuickRemoveObjects", CurrentExportScene,[ClearLater])
 		#Mod_Exporter_Tool.ExportSceneToModAsset(DupC,SubDir.get_basename()+".tscn")
 		
 		pass
 		
+func QuickRemoveObjects(_scene:Node, _nodes:Array) -> void:
+	for _n in _nodes:
+		_scene.remove_child(_n)
+		_n.queue_free()
+		EditorInterface.save_scene()
+		
 func QuickExportF(_Node:Node, _path:String) -> void:
 	Mod_Exporter_Tool.ExportSceneToModAsset(_Node,_path)
+	#Mod_Export_Scene_Object.new().Export(_Node,_path)
 	var ModFolder = _path.get_base_dir().get_base_dir()
 	var ModFolderReferences = ModFolder+"/_References.json"
-	var RefsExist = Mod_Loader_Base.HasOrCreateFile(ModFolderReferences,DefaultReferenceFile)
+	var RefsExist = Mod_Loader_Base.HasOrCreateFile(ModFolderReferences,Mod_Exporter_Tool.DefaultReferenceFile)
 	var FCRef:Dictionary = Mod_Loader_Base.ReadFullJsonData(ModFolderReferences)
-	var NewPerFileRef:Dictionary = CalculateActivePathLines(_path)
+	var NewPerFileRef:Dictionary = Mod_Exporter_Tool.CalculateActivePathLines(_path)
 	FCRef["Update-Lines"][_path.get_file().get_basename()] = NewPerFileRef
 	print("Ball A ", FCRef, " | ", NewPerFileRef)
 	Mod_Loader_Base.WriteFullJsonData(ModFolderReferences,FCRef)
+	
 
-#Used to find lines in a newly created scene that have relative path references
-func CalculateActivePathLines(_path:String) -> Dictionary:
-	var OutDir:Dictionary = {"start_line":0,"end_line":0}
-	var tscn_file = FileAccess.open(_path, FileAccess.READ)
-	var tscn_file_Raw = tscn_file.get_as_text()
-	var tscn_file_lines = tscn_file_Raw.split('\n')
-	tscn_file.close()
-	var NewFileOut = ""
-	var EngagedFiles:bool = false
-	for _i in range(tscn_file_lines.size()):
-		if(tscn_file_lines[_i].contains("path=")):
-			var PointofP = tscn_file_lines[_i].find("path=")
-			if(PointofP >= 0):
-				if(!EngagedFiles):
-					OutDir["start_line"] = _i
-				EngagedFiles = true
-		else:
-			if(EngagedFiles):
-				OutDir["end_line"] = _i
-				EngagedFiles = false
-				return OutDir
-	return OutDir
 
 
 func ItemTypeSelected(index: int) -> void:

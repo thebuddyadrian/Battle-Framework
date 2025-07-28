@@ -5,6 +5,7 @@ class_name Mod_Exporter_Tool
 static var NonExportItems:Dictionary = {MultiplayerAPI:true}
 
 static var NonExportFolders:Array = ["res://components","res://characters/base_player","res://ModLoader","res://characters/mini_bar.gd"]
+static var DefaultReferenceFile:String = preload("res://ModLoader/Defaults/DefaultResourcePool.json").get_parsed_text()
 
 static var CurrentModReferencePool:Dictionary = {}
 
@@ -88,6 +89,39 @@ static func CopyResourceIndiviual(_N:Node, Dirmap: Dictionary, _modpath:String) 
 	for _child in _N.get_children():
 		if _child is Node:
 			CopyResourceIndiviual(_child, Dirmap,_modpath)
+			
+static func SortExportResource(_path:String) -> void:
+	var ModFolder = _path.get_base_dir().get_base_dir()
+	var ModFolderReferences = ModFolder+"/_References.json"
+	var RefsExist = Mod_Loader_Base.HasOrCreateFile(ModFolderReferences, DefaultReferenceFile)
+	var FCRef:Dictionary = Mod_Loader_Base.ReadFullJsonData(ModFolderReferences)
+	var NewPerFileRef:Dictionary = CalculateActivePathLines(_path)
+	FCRef["Update-Lines"][_path.get_file().get_basename()] = NewPerFileRef
+	print("Ball A ", FCRef, " | ", NewPerFileRef)
+	Mod_Loader_Base.WriteFullJsonData(ModFolderReferences,FCRef)
+	
+#Used to find lines in a newly created scene that have relative path references
+static func CalculateActivePathLines(_path:String) -> Dictionary:
+	var OutDir:Dictionary = {"start_line":0,"end_line":0}
+	var tscn_file = FileAccess.open(_path, FileAccess.READ)
+	var tscn_file_Raw = tscn_file.get_as_text()
+	var tscn_file_lines = tscn_file_Raw.split('\n')
+	tscn_file.close()
+	var NewFileOut = ""
+	var EngagedFiles:bool = false
+	for _i in range(tscn_file_lines.size()):
+		if(tscn_file_lines[_i].contains("path=")):
+			var PointofP = tscn_file_lines[_i].find("path=")
+			if(PointofP >= 0):
+				if(!EngagedFiles):
+					OutDir["start_line"] = _i
+				EngagedFiles = true
+		else:
+			if(EngagedFiles):
+				OutDir["end_line"] = _i
+				EngagedFiles = false
+				return OutDir
+	return OutDir
 	
 
 static func ExportFullSceneToModAsset(_scene:Node,_path="G:/mods/modtest") -> void:

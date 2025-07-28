@@ -1,4 +1,5 @@
 extends Node #If you find in your scene do not remove it fixes moded assets textures
+class_name Mod_Texture_Reassigner
 
 func _ready() -> void:
 	RecursiveTs(get_parent())
