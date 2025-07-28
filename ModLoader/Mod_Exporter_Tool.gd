@@ -13,7 +13,7 @@ static func ExportSceneToModAsset(_scene:Node,_path="G:/mods/modtest") -> void:
 	var ExportFolder = _path.get_base_dir()
 	var ResourceMap:Dictionary = {}
 	for res_path in OriginalResources:
-		if(!InExcludedPath(res_path)):
+		if(!InExcludedPath(res_path)): # Store copyed files into buffer resources, also add pathing in a Resource Dicy
 			var filename = res_path.get_file()
 			var out_file_path = filename
 			var in_file := FileAccess.open(res_path, FileAccess.READ)
@@ -25,16 +25,17 @@ static func ExportSceneToModAsset(_scene:Node,_path="G:/mods/modtest") -> void:
 				out_file.store_buffer(data)
 				out_file.close()
 				
-				ResourceMap[res_path] = "./"+out_file_path  # Just filename ,relative 
+				ResourceMap[res_path] = "./"+out_file_path  # Just filename , relative 
 	
 	var NewRef = CopyResourcesWhereApp(_scene, ResourceMap,_path)
+	NewRef.name = _path.get_file().get_basename()
 	for _R in ResourceMap.keys():
 		print("Resources ", _R , " | ", ResourceMap[_R])
 	
 	var PackedSceneRef = PackedScene.new()
 	PackedSceneRef.pack(NewRef.duplicate(DUPLICATE_SIGNALS | DUPLICATE_SCRIPTS | DUPLICATE_GROUPS | DUPLICATE_USE_INSTANTIATION))
-	ResourceSaver.save(PackedSceneRef,_path)
-	
+	ResourceSaver.save(PackedSceneRef,_path,ResourceSaver.FLAG_NONE)
+	Mod_Loader_Base.FixAtGunPoint(_path)
 	
 static func GetAllResourcesInNode(_N:Node) -> Array:
 	var RefArray = []
@@ -70,7 +71,9 @@ static func CopyResourceIndiviual(_N:Node, Dirmap: Dictionary, _modpath:String) 
 				if Dirmap.has(old_path):
 					var new_res = load(_modpath.get_base_dir()+"/"+Dirmap[old_path])  # assumes the resource is in the export root
 					if new_res:
-						new_res.resource_path = Dirmap[old_path]
+						#print("SHOULD REL ", Dirmap[old_path])
+						# Would set resource path here but godot literally wouldnt include in export, so me :-(
+						#new_res.resource_path = Dirmap[old_path]
 						_N.set(name, new_res)
 	for _child in _N.get_children():
 		if _child is Node:

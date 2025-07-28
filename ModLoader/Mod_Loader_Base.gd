@@ -57,6 +57,9 @@ static func GetAllModFiles(_path="", _include_emptys:bool = false) -> Dictionary
 			var AbRefPath = _path+"/"+_mod+"/"+_submod
 			#Check if Mod Has JSON
 			var ModJsonData = ReadFullJsonData(AbRefPath + "/"+_submod+".json")
+			var ModdedAssetDir = AbRefPath + "/"+_submod+".tscn"
+			if(FileAccess.file_exists(ModdedAssetDir)):
+				Mod_Loader_Base.FixAtGunPoint(ModdedAssetDir)
 			if(ModJsonData.has("Type")):
 				var TM = M_Dict.get_or_add(_mod,[AbRefPath])
 				if(!TM.has(AbRefPath)): TM.push_back(AbRefPath)
@@ -93,3 +96,24 @@ static func GetQuickJson(_path ="") -> String:
 	return _path+"/"+_path.get_file()+".json"
 
 #Uses Relative Path
+
+#Quick File fixer
+static func FixAtGunPoint(_modpath:String) -> void: #Force File at gun point to change directory for resource to local or watch its children cry in fear, (yesh.. thats dark)
+	var tscn_file = FileAccess.open(_modpath, FileAccess.READ_WRITE)
+	var tscn_file_Raw = tscn_file.get_as_text()
+	var tscn_file_lines = tscn_file_Raw.split('\n')
+	var NewFileOut = ""
+	for _line in tscn_file_lines:
+		if(_line.contains("path=")):
+			var PointofP = _line.find("path=")
+			if(PointofP >= 0):
+				var pointE = _line.findn("\"",PointofP+6)
+				var OriginalFileDir = _line.substr(PointofP+6,pointE)
+				if(!OriginalFileDir.begins_with("res://")):
+					OriginalFileDir = _modpath.get_base_dir()+"/"+OriginalFileDir.get_file()
+				var NewL = _line.substr(0,PointofP+6)+ OriginalFileDir# + _line.substr(pointE,_line)
+				print("GUN ", NewL)
+				_line = NewL
+		NewFileOut += _line + "\n"
+	tscn_file.store_string(NewFileOut)
+	tscn_file.close()
