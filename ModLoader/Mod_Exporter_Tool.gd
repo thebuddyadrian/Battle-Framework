@@ -8,10 +8,80 @@ static var NonExportFolders:Array = ["res://components","res://characters/base_p
 
 static var CurrentModReferencePool:Dictionary = {}
 
+static func ExportSceneToModAsset(_scene:Node,_path="G:/mods/modtest") -> void:
+	var OriginalResources = GetAllResourcesInNode(_scene)
+	var ExportFolder = _path.get_base_dir()
+	var ResourceMap:Dictionary = {}
+	for res_path in OriginalResources:
+		if(!InExcludedPath(res_path)):
+			var filename = res_path.get_file()
+			var out_file_path = filename
+			var in_file := FileAccess.open(res_path, FileAccess.READ)
+			if in_file:
+				var data = in_file.get_buffer(in_file.get_length())
+				in_file.close()
+
+				var out_file := FileAccess.open(ExportFolder+"/"+out_file_path, FileAccess.WRITE)
+				out_file.store_buffer(data)
+				out_file.close()
+				
+				ResourceMap[res_path] = "./"+out_file_path  # Just filename ,relative 
+	
+	var NewRef = CopyResourcesWhereApp(_scene, ResourceMap,_path)
+	for _R in ResourceMap.keys():
+		print("Resources ", _R , " | ", ResourceMap[_R])
+	
+	var PackedSceneRef = PackedScene.new()
+	PackedSceneRef.pack(NewRef.duplicate(DUPLICATE_SIGNALS | DUPLICATE_SCRIPTS | DUPLICATE_GROUPS | DUPLICATE_USE_INSTANTIATION))
+	ResourceSaver.save(PackedSceneRef,_path)
+	
+	
+static func GetAllResourcesInNode(_N:Node) -> Array:
+	var RefArray = []
+	GetRecurseResource(_N,RefArray)
+	return RefArray
+	
+static func GetRecurseResource(_N:Node,_R:Array) -> void:
+	for _p in _N.get_property_list():
+		if(_p.has("type") && _p.has("name")):
+			var n = _p["name"]
+			var value = _N.get(n)
+			if typeof(value) == TYPE_OBJECT && value is Resource:
+				var res:Resource = value as Resource
+				if res.resource_path != "" && !_R.has(res.resource_path):
+					_R.append(res.resource_path)
+					
+	for _C in _N.get_children():
+		GetRecurseResource(_C,_R)
+		
+static func CopyResourcesWhereApp(_N:Node, Dirmap: Dictionary, _modpath:String) -> Node:
+	var Cloned = _N.duplicate(DUPLICATE_USE_INSTANTIATION)
+	CopyResourceIndiviual(Cloned,Dirmap,_modpath)
+	return Cloned
+	
+static func CopyResourceIndiviual(_N:Node, Dirmap: Dictionary, _modpath:String) -> void:
+	for _prop in _N.get_property_list():
+		if _prop.has("name") && _prop.has("type"):
+			var name = _prop["name"]
+			var value = _N.get(name)
+			if typeof(value) == TYPE_OBJECT && value is Resource:
+				var res: Resource = value
+				var old_path = res.resource_path
+				if Dirmap.has(old_path):
+					var new_res = load(_modpath.get_base_dir()+"/"+Dirmap[old_path])  # assumes the resource is in the export root
+					if new_res:
+						new_res.resource_path = Dirmap[old_path]
+						_N.set(name, new_res)
+	for _child in _N.get_children():
+		if _child is Node:
+			CopyResourceIndiviual(_child, Dirmap,_modpath)
+	
+
 static func ExportFullSceneToModAsset(_scene:Node,_path="G:/mods/modtest") -> void:
 	var Assets:Dictionary = {"OBJ":{},"RES":{}}
 	CurrentModReferencePool = {}
 	#Save base scene to file
+	
 	var PackedSceneRef = PackedScene.new()
 	PackedSceneRef.pack(_scene.duplicate(DUPLICATE_SIGNALS | DUPLICATE_SCRIPTS | DUPLICATE_GROUPS | DUPLICATE_USE_INSTANTIATION))
 	#New Scene Instance
@@ -19,11 +89,11 @@ static func ExportFullSceneToModAsset(_scene:Node,_path="G:/mods/modtest") -> vo
 	
 	var ModFolder = _path.get_base_dir().get_base_dir()
 	CurrentModReferencePool = Mod_Loader_Base.ReadFullJsonData(ModFolder+"/_References.json")
-	print("Assets : ", JSON.stringify(GetSceneResources(SceneCopy,_path),"\t"))
+	#print("Assets : ", JSON.stringify(GetSceneResources(SceneCopy,_path),"\t"))
 	
 	
 	PackedSceneRef.pack(SceneCopy)
-	# Useful flags  | ResourceSaver.FLAG_BUNDLE_RESOURCES
+	#Useful flags  | ResourceSaver.FLAG_BUNDLE_RESOURCES
 	var sc_err = ResourceSaver.save(PackedSceneRef,_path,ResourceSaver.FLAG_RELATIVE_PATHS | ResourceSaver.FLAG_REPLACE_SUBRESOURCE_PATHS | ResourceSaver.FLAG_CHANGE_PATH)
 	SceneCopy.queue_free()
 	if sc_err != OK: # Quick Scene Error check
@@ -58,7 +128,7 @@ static func GetNodeRResource(_node:Node, _resources:Array, _path:String) -> void
 			#Export texture
 			if(_p_value is Texture2D && !NonExportItems.has(_prop.type)):
 				var ResTexture:Texture2D = _p_value
-				print("Texture Out : " + ResTexture.property_path)
+				print("Texture Out : " + _p_value.property_path)
 				pass
 				
 	for _child in _node.get_children():
@@ -68,3 +138,11 @@ static func GetNodeRResource(_node:Node, _resources:Array, _path:String) -> void
 static func ExportSceneWithFiles(_path="G:/mods/modtest",_submod="TestChar",_modProfile:Dictionary = {}) -> void:
 	
 	pass
+			
+static func InExcludedPath(_path ="") -> bool:
+	for _pp in NonExportFolders:
+		if(_path.begins_with(_pp)) : 
+			#print("Contains ", _pp, " | ", NonExportFolders) 
+			return true
+	#print("Does not Contains") 
+	return false

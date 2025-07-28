@@ -158,7 +158,7 @@ func ExportProcess() -> void:
 		Mod_Loader_Base.WriteFullJsonData(SubDir,ConvText)
 		#Export scene to file set local stuff simaltaniously
 		var CurrentExportScene = EditorInterface.get_edited_scene_root()
-		Mod_Exporter_Tool.ExportFullSceneToModAsset(CurrentExportScene,SubDir.get_basename()+".tscn")
+		Mod_Exporter_Tool.ExportSceneToModAsset(CurrentExportScene,SubDir.get_basename()+".tscn")
 		
 		pass
 
