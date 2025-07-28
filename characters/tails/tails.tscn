@@ -1,109 +1,33 @@
 [gd_scene load_steps=31 format=3 uid="uid://ubts1e2d3mjh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
+[ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://assets/Tails/TailsSpritesheet.png" id="2_cps4t"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_uaadi"]
 [ext_resource type="AnimationLibrary" uid="uid://gi0u1pjxm16h" path="res://characters/tails/tails_animations.res" id="3_ppohl"]
+[ext_resource type="Resource" uid="uid://c7ar4foj551in" path="res://characters/tails/states/jab_2.tres" id="4_2xg5h"]
 [ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://assets/Tails/Tails Effects Spritesheet.png" id="4_my705"]
-[ext_resource type="Resource" path="./jab_2.tres" id="6_n5iwi"]
+[ext_resource type="Script" uid="uid://cfasn3us7ol01" path="res://characters/tails/tails_air_action.gd" id="4_qf74s"]
+[ext_resource type="Script" uid="uid://13qemgrco1g7" path="res://characters/tails/dash.gd" id="5_eakuc"]
+[ext_resource type="Resource" uid="uid://ju0slbcssgkw" path="res://characters/tails/states/heavy.tres" id="6_asitg"]
 [ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="7_eakuc"]
-[ext_resource type="Resource" path="./jab_3.tres" id="7_tnpge"]
-[ext_resource type="Resource" path="./heavy.tres" id="8_t5o4s"]
-[ext_resource type="Resource" path="./upper.tres" id="9_gueqa"]
-[ext_resource type="Resource" path="./dash_attack.tres" id="10_wv4dc"]
-[ext_resource type="Resource" path="./air_attack.tres" id="11_6dfm6"]
-[ext_resource type="Resource" path="./aim_attack.tres" id="12_eakuc"]
-[ext_resource type="Resource" path="./grnd_shot.tres" id="13_phocd"]
-[ext_resource type="Resource" path="./air_shot.tres" id="14_weptr"]
-[ext_resource type="Resource" path="./grnd_pow.tres" id="15_dlpnr"]
-[ext_resource type="Resource" path="./air_pow.tres" id="16_hshge"]
-[ext_resource type="Texture2D" path="./MainHealth1.png" id="18_jfvsm"]
+[ext_resource type="Resource" uid="uid://dcg0w2804wsk7" path="res://characters/shadow/states/jab_3.tres" id="7_rdag6"]
+[ext_resource type="Resource" uid="uid://dan5rlht4k6p5" path="res://characters/shadow/states/upper.tres" id="9_rdag6"]
+[ext_resource type="Resource" uid="uid://c511ksyj83jh1" path="res://characters/tails/states/dash_attack.tres" id="10_cps4t"]
+[ext_resource type="Script" uid="uid://c88giv4vr1pxp" path="res://characters/tails/states/air_attack.gd" id="11_iyier"]
+[ext_resource type="Resource" uid="uid://kwraw6lnyxic" path="res://characters/tails/states/air_attack.tres" id="12_5541g"]
+[ext_resource type="Resource" uid="uid://d64hbxhpdsat" path="res://characters/tails/states/grnd_pow.tres" id="12_lg3ej"]
+[ext_resource type="Script" uid="uid://c4dc5gm7yxf0q" path="res://characters/tails/states/grnd_pow.gd" id="13_cps4t"]
+[ext_resource type="Resource" uid="uid://bd4rncwvb76vi" path="res://characters/tails/states/aim_attack.tres" id="13_jrwva"]
+[ext_resource type="Script" uid="uid://drbk80synbgat" path="res://characters/tails/states/grnd_shot.gd" id="14_infaa"]
+[ext_resource type="Script" uid="uid://bbmt3n2ued7n0" path="res://characters/tails/states/air_shot.gd" id="15_infaa"]
+[ext_resource type="Resource" uid="uid://c1reyexjipb6f" path="res://characters/tails/states/grnd_shot.tres" id="15_jrwva"]
+[ext_resource type="Resource" uid="uid://bscjq1fcq5uur" path="res://characters/tails/states/air_shot.tres" id="16_jrwva"]
+[ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="21_t5o4s"]
+[ext_resource type="Script" uid="uid://dvclyodfr67fc" path="res://characters/tails/air_pow.gd" id="21_wv4dc"]
+[ext_resource type="Resource" uid="uid://dft7nxfslpsce" path="res://characters/tails/states/air_pow.tres" id="22_6dfm6"]
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="22_gueqa"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="23_wv4dc"]
 [ext_resource type="Texture2D" uid="uid://bsdjsrfloxkgh" path="res://assets/ui/TailsLife.png" id="24_6dfm6"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ptlbi"]
-load_path = "res://.godot/imported/TailsSpritesheet.png-6b1879268c2b9855151f5669346f8c00.ctex"
-
-[sub_resource type="GDScript" id="GDScript_b1baa"]
-script/source = "extends BaseState
-var dash_direction: Vector2
-var spawned_dash_effect: bool = false
-const GRND_SHOT_PROJ_PATH = \"res://spawnables/dash_effect.tscn\"
-func _enter(data = {}):
-	super._enter(data)
-	# Dash in the facing direction (relative to the camera)
-	dash_direction = root.facing_direction
-	root.animplayer.play(\"Dash\")
-	root.play_sound_effect(\"dash\")
-	root.velocity.y = 10
-	root.limit_speed = false
-	root.set_action_enabled(\"attack\", true)
-
-
-func _step():
-	var data = {\"dir\": root.facing_direction_2d}
-	if !spawned_dash_effect:
-		var proj = root.spawn_scene(\"GrndShot\", GRND_SHOT_PROJ_PATH, root.global_position, null, data)
-		proj.position = root.position
-		spawned_dash_effect = true
-	root.velocity.x = dash_direction.x * root.DASH_SPEED 
-	root.velocity.z = dash_direction.y * root.DASH_SPEED 
-	if parent.state_time > 5 && root.is_on_floor():
-		parent.change_state(\"Land\")
-
-
-func _step_frozen():
-	super._step_frozen()
-
-
-func _exit(next_state):
-	spawned_dash_effect = false
-	root.limit_speed = true
-	root.animplayer.stop()
-	root.set_action_enabled(\"attack\", false)
-	super._exit(next_state)
-"
-
-[sub_resource type="GDScript" id="GDScript_h734r"]
-script/source = "extends BaseState
-
-var dash_direction: Vector2
-
-func _enter(data = {}):
-	super._enter(data)
-	# Dash in the facing direction (relative to the camera)
-	dash_direction = root.facing_direction
-	
-	root.animplayer.play(\"AirAction\")
-	# Sonic dashes in the facing their direction
-	root.gravity_scale = 0
-	# Make sure to increment the amount of air actions used, to limit the amount of times they can do it until the touch the ground
-	root.air_actions_used += 1
-	root.velocity.y = -3
-	root.velocity.x = 5 * root.facing_direction.x
-	root.velocity.z = 5 * root.facing_direction.y
-
-
-func _step():
-	if parent.state_time < 20:
-		root.velocity.y += 0.3
-		root.deceleration_enabled = false
-	if parent.state_time > 10:
-		root.set_action_enabled(\"move\", true)
-	if parent.state_time > 40:
-		parent.change_state(\"Fall\")
-		return
-	if root.is_on_floor():
-		parent.change_state(\"Land\")
-
-
-func _exit(next_state):
-	root.limit_speed = true
-	root.animplayer.stop()
-	root.gravity_scale = 1
-	root.deceleration_enabled = true
-	super._exit(next_state)
-"
 
 [sub_resource type="Resource" id="Resource_phocd"]
 script = ExtResource("7_eakuc")
@@ -139,185 +63,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
-[sub_resource type="GDScript" id="GDScript_22wve"]
-script/source = "extends BaseAttack
-
-
-func _enter(data={}):
-	super._enter(data)
-	root.set_action_enabled(\"move\", true)
-	root.gravity_scale = 0.3
-
-
-func _step():
-	super._step()
-	if get_current_phase() == active_phase:
-		root.velocity.y = 2
-	if parent.state_time % 8 == 0 and get_current_phase() == active_phase:
-		reactivate_hitbox()
-
-
-func _exit(next_state):
-	super._exit(next_state)
-	root.gravity_scale = 1
-	root.max_speed_scale = 1
-	root.disable_all_actions()
-"
-
-[sub_resource type="GDScript" id="GDScript_b60s8"]
-script/source = "extends BaseAttack
-
-const GRND_SHOT_PROJ_PATH = \"res://spawnables/Tails_shot.tscn\"
-
-
-func _phase_changed():
-	if get_current_phase() == active_phase:
-		var data = {
-			\"direction\": attack_direction,
-			\"velocity\": Vector3(attack_direction.x * 6, 0, attack_direction.y * 6)
-		}
-		var proj = root.spawn_scene(\"GrndShot\", GRND_SHOT_PROJ_PATH, root.global_position, null, data)
-		proj.direction = attack_direction
-		proj.velocity.x = attack_direction.x * 7.5
-		proj.velocity.z = attack_direction.y * 7.5
-		if (attack_direction == Vector2.LEFT) or (attack_direction == Vector2.RIGHT):
-			proj.position.x = root.position.x + (1 * attack_direction.x)
-			proj.position.y = root.position.y
-		elif attack_direction == Vector2.DOWN:
-			proj.position.x = root.position.x + 0.3 * root.facing_direction_2d
-			proj.position.z = root.position.z + 1
-			proj.position.y = root.position.y
-		elif attack_direction == Vector2.UP:
-			proj.position.x = root.position.x + 0.3 * root.facing_direction_2d
-			proj.position.z = root.position.z - 0
-			proj.position.y = root.position.y
-"
-
-[sub_resource type="GDScript" id="GDScript_p60x4"]
-script/source = "extends BaseAttack
-const GRND_SHOT_PROJ_PATH = \"res://spawnables/Tails_shot.tscn\"
-func _enter(data := {}):
-	super._enter(data)
-	root.velocity = Vector3(0,0,0)
-
-
-func _step():
-	super._step()
-	root.velocity.y = 0.5
-
-
-func _phase_changed():
-	if get_current_phase() == active_phase:
-		var data = {
-			\"direction\": attack_direction,
-			\"velocity\": Vector3(attack_direction.x * 6, 0, attack_direction.y * 6)
-		}
-		var proj = root.spawn_scene(\"GrndShot\", GRND_SHOT_PROJ_PATH, root.global_position, null, data)
-		proj.direction = attack_direction
-		proj.velocity.y = -7
-		if (attack_direction == Vector2.LEFT) or (attack_direction == Vector2.RIGHT):
-			proj.velocity.x = root.facing_direction.x * 7
-			proj.position.y =  root.position.y
-			proj.position.x =  root.position.x
-		elif attack_direction == Vector2.DOWN or attack_direction == Vector2.UP:
-			proj.velocity.x = 0
-			proj.velocity.z = root.facing_direction.y * 11
-			
-
-func _exit(next_state):
-	root.deceleration_enabled = true
-"
-
-[sub_resource type="GDScript" id="GDScript_anjg4"]
-script/source = "extends BaseAttack
-const GRND_POW_PROJ_PATH = \"res://spawnables/tails_pow.tscn\"
-func _enter(data := {}):
-	super._enter(data)
-func _step():
-	super._step()
-	if get_current_phase() == startup_phase:
-		root.velocity = Vector3(0, 0, 0)
-	elif get_current_phase() == active_phase:
-		pass
-func _phase_changed():
-	if get_current_phase() == active_phase:
-		var data = {
-			\"direction\": attack_direction,
-			\"velocity\": Vector3(attack_direction.x * 6, 0, attack_direction.y * 6)
-		}
-		var proj = root.spawn_scene(\"GrndShot\", GRND_POW_PROJ_PATH, root.global_position, null, data)
-		proj.direction = attack_direction
-		proj.velocity = Vector3(0.0,0.0,0.0)
-		if(attack_direction == Vector2.RIGHT):
-			proj.position.z =  root.position.z
-			proj.position.y =  root.position.y
-			proj.position.x =  root.position.x + 2
-		elif (attack_direction == Vector2.LEFT):
-			proj.position.z =  root.position.z
-			proj.position.y =  root.position.y
-			proj.position.x =  root.position.x - 2
-		elif (attack_direction == Vector2.UP):
-			proj.position.z =  root.position.z - 2
-			proj.position.y =  root.position.y
-			proj.position.x =  root.position.x
-		elif (attack_direction == Vector2.DOWN):
-			proj.position.z =  root.position.z + 2
-			proj.position.y =  root.position.y
-			proj.position.x =  root.position.x
-			
-func _exit(next_state):
-	pass
-"
-
-[sub_resource type="GDScript" id="GDScript_t7egh"]
-script/source = "extends BaseAttack
-const GRND_POW_PROJ_PATH = \"res://spawnables/tails_pow.tscn\"
-func _enter(data := {}):
-	super._enter(data)
-	root.velocity.y = 12
-
-func _step():
-	super._step()
-	# if get_current_phase() == startup_phase:
-	# 	root.velocity = Vector3(0, 0, 0)
-	# elif get_current_phase() == active_phase:
-	# 	root.velocity = Vector3(0, 0, 0)
-	# elif get_current_phase() == recovery_phase:
-	# 	root.velocity.y = lerp(root.velocity.y, -5.0, 0.3)
-	pass
-
-func _phase_changed():
-	if get_current_phase() == active_phase:
-		var data = {
-			\"direction\": attack_direction,
-			\"velocity\": Vector3(attack_direction.x * 6, 0, attack_direction.y * 6)
-		}
-		var proj = root.spawn_scene(\"GrndPow\", GRND_POW_PROJ_PATH, root.global_position, null, data)
-		proj.direction = attack_direction
-		proj.velocity = Vector3(0.0,0.0,0.0)
-		if(attack_direction == Vector2.RIGHT):
-			proj.position.z =  root.position.z
-			proj.position.y =  1
-			proj.position.x =  root.position.x
-		elif (attack_direction == Vector2.LEFT):
-			proj.position.z =  root.position.z
-			proj.position.y =  1
-			proj.position.x =  root.position.x
-		elif (attack_direction == Vector2.UP):
-			proj.position.z =  root.position.z
-			proj.position.y =  1
-			proj.position.x =  root.position.x
-		elif (attack_direction == Vector2.DOWN):
-			proj.position.z =  root.position.z
-			proj.position.y =  1
-			proj.position.x =  root.position.x
-			
-			
-func _exit(next_state):
-	pass
-"
-
-[sub_resource type="Resource" id="Resource_kkg2q"]
+[sub_resource type="Resource" id="Resource_eakuc"]
 script = ExtResource("2_uaadi")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -331,7 +77,7 @@ hit_stun = 30
 [node name="Tails" instance=ExtResource("1_b5y1r")]
 
 [node name="PlayerSprite" parent="." index="1"]
-texture = SubResource("CompressedTexture2D_ptlbi")
+texture = ExtResource("2_cps4t")
 hframes = 15
 vframes = 21
 frame = 27
@@ -350,54 +96,54 @@ default_cull_layer = 7
 flipped_cull_layer = 8
 
 [node name="Dash" parent="StateMachine" index="6"]
-script = SubResource("GDScript_b1baa")
+script = ExtResource("5_eakuc")
 
 [node name="AirAction" parent="StateMachine" index="7"]
-script = SubResource("GDScript_h734r")
+script = ExtResource("4_qf74s")
 
 [node name="Jab1" parent="StateMachine" index="18"]
 attack_info = SubResource("Resource_phocd")
 
 [node name="Jab2" parent="StateMachine" index="19"]
-attack_info = ExtResource("6_n5iwi")
+attack_info = ExtResource("4_2xg5h")
 
 [node name="Jab3" parent="StateMachine" index="20"]
-attack_info = ExtResource("7_tnpge")
+attack_info = ExtResource("7_rdag6")
 
 [node name="Heavy" parent="StateMachine" index="21"]
-attack_info = ExtResource("8_t5o4s")
+attack_info = ExtResource("6_asitg")
 
 [node name="Upper" parent="StateMachine" index="22"]
-attack_info = ExtResource("9_gueqa")
+attack_info = ExtResource("9_rdag6")
 
 [node name="DashAttack" parent="StateMachine" index="23"]
-attack_info = ExtResource("10_wv4dc")
+attack_info = ExtResource("10_cps4t")
 
 [node name="AirAttack" parent="StateMachine" index="24"]
-script = SubResource("GDScript_22wve")
-attack_info = ExtResource("11_6dfm6")
+script = ExtResource("11_iyier")
+attack_info = ExtResource("12_5541g")
 
 [node name="AimAttack" parent="StateMachine" index="25"]
-attack_info = ExtResource("12_eakuc")
+attack_info = ExtResource("13_jrwva")
 
 [node name="GrndShot" parent="StateMachine" index="26"]
-script = SubResource("GDScript_b60s8")
-attack_info = ExtResource("13_phocd")
+script = ExtResource("14_infaa")
+attack_info = ExtResource("15_jrwva")
 
 [node name="AirShot" parent="StateMachine" index="27"]
-script = SubResource("GDScript_p60x4")
-attack_info = ExtResource("14_weptr")
+script = ExtResource("15_infaa")
+attack_info = ExtResource("16_jrwva")
 
 [node name="GrndPow" parent="StateMachine" index="28"]
-script = SubResource("GDScript_anjg4")
-attack_info = ExtResource("15_dlpnr")
+script = ExtResource("13_cps4t")
+attack_info = ExtResource("12_lg3ej")
 
 [node name="AirPow" parent="StateMachine" index="29"]
-script = SubResource("GDScript_t7egh")
-attack_info = ExtResource("16_hshge")
+script = ExtResource("21_wv4dc")
+attack_info = ExtResource("22_6dfm6")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_kkg2q")
+hit_data = SubResource("Resource_eakuc")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190346, 0.0026055, 0)
@@ -415,7 +161,7 @@ offset_top = 4.0
 offset_right = 77.0
 offset_bottom = 44.0
 max_value = 300.0
-texture_under = ExtResource("18_jfvsm")
+texture_under = ExtResource("21_t5o4s")
 texture_progress = ExtResource("22_gueqa")
 script = ExtResource("23_wv4dc")
 character = NodePath("../..")

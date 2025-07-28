@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://cs3moofgrsq1h" path="res://characters/knuckles/states/air_attack.gd" id="20_ay8m5"]
 [ext_resource type="Script" uid="uid://dsxss5rjnq68j" path="res://characters/knuckles/air_shot.gd" id="21_c10jq"]
 [ext_resource type="Resource" uid="uid://cwvnw3fmisemh" path="res://characters/knuckles/states/air_attack.tres" id="21_psdtg"]
+[ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="21_s1n3o"]
 [ext_resource type="Script" uid="uid://clo42n4idjy26" path="res://characters/knuckles/grnd_pow.gd" id="21_xt1s0"]
 [ext_resource type="Resource" uid="uid://dw28vniky3lcq" path="res://characters/knuckles/states/grnd_pow.tres" id="22_1kwib"]
 [ext_resource type="Resource" uid="uid://oxnnmafgr24c" path="res://characters/knuckles/states/air_shot.tres" id="22_ns63g"]
@@ -29,43 +30,16 @@
 [ext_resource type="Script" uid="uid://6guda7f8ly0c" path="res://characters/shadow/states/grnd_shot.gd" id="23_psdtg"]
 [ext_resource type="Script" uid="uid://w50byjutarh3" path="res://characters/knuckles/air_pow.gd" id="23_xt1s0"]
 [ext_resource type="Resource" uid="uid://ioxxvxrf0c3u" path="res://characters/knuckles/states/air_pow.tres" id="24_1kwib"]
+[ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="24_5lf22"]
 [ext_resource type="Resource" uid="uid://bycxxl7hhlgp0" path="res://characters/knuckles/states/grnd_shot.tres" id="24_5tkrs"]
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="25_0st36"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="26_xt1s0"]
 [ext_resource type="Texture2D" uid="uid://dvuedhl2ul52y" path="res://assets/ui/KnucklesLife.png" id="27_0st36"]
-[ext_resource type="Texture2D" path="./MainHealth1.png" id="31_ay8m5"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_lh63m"]
 
-[sub_resource type="GDScript" id="GDScript_xjbkb"]
-script/source = "extends Resource
-class_name HitData
-
-# A resource that stores data a player will need when hitting opponents or getting hit by an attack
-
-enum KNOCKBACK_TYPE {WEAK, LAUNCH, UP, DOWN, KNOCKDOWN}
-
-@export var damage: float 
-@export var knockback_direction: Vector2 = Vector2(0, 0) # The direction the player will be hit, in regards to the XZ plane
-@export var knockback_power: float = 20 # How far the player gets hit
-@export var knockback_angle: float = 30 # The angle the player will get hit upwards, in regards to the plane with its width defined by the knockback_direction and the Y axis
-@export var knockback_type: KNOCKBACK_TYPE = KNOCKBACK_TYPE.WEAK
-@export var unblockable: bool = false
-@export var hit_freeze: int = 5
-@export var hit_stun: int = 30
-
-
-func calculate_knockback_velocity() -> Vector3:
-	var vec: Vector3
-	var angle_rad = deg_to_rad(knockback_angle)
-	vec.y = knockback_power * sin(angle_rad)
-	vec.x = knockback_power * cos(angle_rad) * knockback_direction.x 
-	vec.z = knockback_power * cos(angle_rad) * knockback_direction.y
-	return vec
-"
-
 [sub_resource type="Resource" id="Resource_psdtg"]
-script = SubResource("GDScript_xjbkb")
+script = ExtResource("21_s1n3o")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
 knockback_power = 20.0
@@ -80,6 +54,7 @@ script = ExtResource("2_5tkrs")
 DASH_SPEED = 16.0
 
 [node name="PlayerSprite" parent="." index="1"]
+flip_h = true
 texture = ExtResource("2_5e7ij")
 vframes = 17
 frame = 2
@@ -100,9 +75,6 @@ hframes = 7
 vframes = 6
 frame = 34
 effect_offset = Vector2(0.26, -0.11)
-flipped = false
-default_cull_layer = 7
-flipped_cull_layer = 8
 
 [node name="Misc_Effects" type="Sprite3D" parent="PlayerSprite" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25736, 0.164879, 0)
@@ -181,7 +153,7 @@ offset_top = 4.0
 offset_right = 77.0
 offset_bottom = 44.0
 max_value = 300.0
-texture_under = ExtResource("31_ay8m5")
+texture_under = ExtResource("24_5lf22")
 texture_progress = ExtResource("25_0st36")
 script = ExtResource("26_xt1s0")
 character = NodePath("../..")
