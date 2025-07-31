@@ -13,8 +13,9 @@ static func ExportSceneToModAsset(_scene:Node,_path="G:/mods/modtest") -> void:
 	var OriginalResources = GetAllResourcesInNode(_scene)
 	var ExportFolder = _path.get_base_dir()
 	var ResourceMap:Dictionary = {}
+	print(" DEBUG 1 ", OriginalResources)
 	for res_path in OriginalResources:
-		if(!InExcludedPath(res_path)): # Store copyed files into buffer resources, also add pathing in a Resource Dicy
+		if(!InExcludedPath(res_path)): # Store copyed files into buffer resources, also add pathing in a Resource Dic
 			var filename = res_path.get_file()
 			var out_file_path = filename
 			var in_file := FileAccess.open(res_path, FileAccess.READ)
@@ -48,16 +49,31 @@ static func GetRecurseResource(_N:Node,_R:Array) -> void:
 		if(_p.has("type") && _p.has("name")):
 			var n = _p["name"]
 			var value = _N.get(n)
-			if typeof(value) == TYPE_OBJECT && value is Resource:
-				var res:Resource = value as Resource
-				if res.resource_path != "" && !_R.has(res.resource_path):
-					_R.append(res.resource_path)
+			print("EMA ",value)
+			
+			#Array
+			if (value is Array):
+				for _i in range(value.size()):
+					SingleResourceDetect(value[_i],_R)
+			#Dictionary
+			elif (value is Dictionary):
+				for _D in range(value.size()):
+					SingleResourceDetect(value.keys().get(_D),_R)
+					SingleResourceDetect(value.values().get(_D),_R)
+			else: # Normal variables
+				SingleResourceDetect(value,_R)
 					
 	for _C in _N.get_children():
 		GetRecurseResource(_C,_R)
 		
+static func SingleResourceDetect(_value, _R:Array) -> void:
+	if (typeof(_value) == TYPE_OBJECT && _value is Resource):
+		var res:Resource = _value as Resource
+		if res.resource_path != "" && !_R.has(res.resource_path):
+			_R.append(res.resource_path)
+		
 static func CopyResourcesWhereApp(_N:Node, Dirmap: Dictionary, _modpath:String) -> Node:
-	var Cloned = _N.duplicate(DUPLICATE_USE_INSTANTIATION)
+	var Cloned = _N.duplicate(DUPLICATE_GROUPS | DUPLICATE_SCRIPTS | DUPLICATE_USE_INSTANTIATION)
 	CopyResourceIndiviual(Cloned,Dirmap,_modpath)
 	return Cloned
 	
@@ -66,29 +82,56 @@ static func CopyResourceIndiviual(_N:Node, Dirmap: Dictionary, _modpath:String) 
 		if _prop.has("name") && _prop.has("type"):
 			var name = _prop["name"]
 			var value = _N.get(name)
-			if typeof(value) == TYPE_OBJECT && value is Resource:
-				var res: Resource = value
-				var old_path = res.resource_path
-				if Dirmap.has(old_path):
-					var TargetFilePath:String = _modpath.get_base_dir()+Dirmap[old_path].substr(1,Dirmap[old_path].length()-1)
-					var new_res = load(TargetFilePath)  # assumes the resource is in the export root
-					if(TargetFilePath.ends_with(".png")):
-						_N.set_meta("HAS_IMAGE",true)
-						var TestM = name
-						var RelAdress = TargetFilePath.substr(_modpath.get_base_dir().get_base_dir().get_base_dir().length()+1)
-						_N.set_meta(TestM, RelAdress)
-					if new_res:
-						# Would set resource path here but godot literally wouldnt include in export, so me :-(
-						#new_res.resource_path = Dirmap[old_path]
-						_N.set(name, new_res)
-					else:
-						if(TargetFilePath.ends_with(".png")):
-							var TempTexture = Texture2D.new()
-							TempTexture.resource_path = TargetFilePath
-							_N.set(name, TempTexture)
+			
+			#Array
+			if (value is Array):
+				for _i in range(value.size()):
+					CopyResourceIndiviualIsntF(value[_i],_N,name,[value,_i],Dirmap,_modpath)
+			#Dictionary
+			elif (value is Dictionary):
+				for _D in range(value.size()):
+					#CopyResourceIndiviualIsntF(value.keys()[_D],_N,name,[TempDict,0_D],Dirmap,_modpath)
+					CopyResourceIndiviualIsntF(value.values()[_D],_N,name,[value,1,value.keys()[_D]],Dirmap,_modpath)
+			else: # Normal variables
+				CopyResourceIndiviualIsntF(value,_N,name,[],Dirmap,_modpath)
+			
 	for _child in _N.get_children():
 		if _child is Node:
 			CopyResourceIndiviual(_child, Dirmap,_modpath)
+			
+static func CopyResourceIndiviualIsntF(value,_N:Node,_name:String,_key,_Dirmap:Dictionary,_modpath:String) -> void:
+	if typeof(value) == TYPE_OBJECT && value is Resource:
+		var res: Resource = value
+		var old_path = res.resource_path
+		if _Dirmap.has(old_path):
+			var TargetFilePath:String = _modpath.get_base_dir()+_Dirmap[old_path].substr(1,_Dirmap[old_path].length()-1)
+			var new_res = load(TargetFilePath)  # assumes the resource is in the export root
+			if(TargetFilePath.ends_with(".png")):
+				_N.set_meta("HAS_IMAGE",true)
+				var TestM = _name
+				var RelAdress = TargetFilePath.substr(_modpath.get_base_dir().get_base_dir().get_base_dir().length()+1)
+				_N.set_meta(TestM, RelAdress)
+			if new_res:
+				# Would set resource path here but godot literally wouldnt include in export, so me :-(
+				#new_res.resource_path = Dirmap[old_path]
+				if(_key != []):
+					if(_key[0] is Array):
+						_key[0][_key[1]] = new_res
+						_N.set(_name, _key[0])
+						#TempHold[]
+					elif(_key[0] is Dictionary):
+						if(_key[1] == 0):
+							_key[0].get_or_add(new_res,"")
+						if(_key[1] == 1):
+							_key[0][_key[2]] = new_res
+						_N.set(_name, _key[0])
+				else:
+					_N.set(_name, new_res)
+			else:
+				if(TargetFilePath.ends_with(".png")):
+					var TempTexture = Texture2D.new()
+					TempTexture.resource_path = TargetFilePath
+					_N.set(_name, TempTexture)
 			
 static func SortExportResource(_path:String) -> void:
 	var ModFolder = _path.get_base_dir().get_base_dir()

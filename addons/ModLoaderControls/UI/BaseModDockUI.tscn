@@ -106,7 +106,7 @@ size_flags_vertical = 3
 text = "{
 	\"Dependencies\": [],
 	\"Mod-Dependencies\": [],
-	\"Name\": \"Knuck Copy\",
+	\"Name\": \"Tails Copy\",
 	\"Preview-Image\": \"NULL.png\",
 	\"Type\": \"Character\",
 	\"test\": true

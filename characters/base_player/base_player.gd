@@ -509,12 +509,13 @@ func spawn_scene(spawnable_name: String, scene_path: String, pos: Vector3 = glob
 	# Maybe we can store it in a cache so it doesn't need to be loaded from disk every time?
 	var scene: PackedScene = load(scene_path).duplicate()
 	var node = scene.instantiate()
-	node.global_position = pos
 	if parent == null: # Allows user to skip defining a parent and use a default
-		parent = get_parent()
+		parent = get_tree().current_scene
+	parent.add_child(node)
+	
+	node.global_position = pos
 	if node is BaseSpawnable:
 		node.summoner = self
-	parent.add_child(node)
 	if node is BaseSpawnable:
 		node._spawn(data)
 	elif node.has_method("_on_spawn"):

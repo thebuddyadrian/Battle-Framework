@@ -136,7 +136,6 @@ static func FixAtNerfPoint(_modpath:String) -> void: #Drop in replacement for fo
 				var pointE = tscn_file_lines[_l].findn("\"",PointofP+6)
 				var OriginalFileDir = tscn_file_lines[_l].substr(PointofP+6,(pointE)-(PointofP+6))
 				if(!OriginalFileDir.begins_with("res://")):
-					print("OGMR ",OriginalFileDir)
 					OriginalFileDir = _modpath.get_base_dir()+"/"+OriginalFileDir.get_file()
 					#Generate texture ref
 					if(OriginalFileDir.contains(".png")):
@@ -168,7 +167,6 @@ static func FixAtGunPoint(_modpath:String) -> void: #Force File at gun point to 
 				var pointE = _line.findn("\"",PointofP+6)
 				var OriginalFileDir = _line.substr(PointofP+6,(pointE)-(PointofP+6))
 				if(!OriginalFileDir.begins_with("res://")):
-					print("OGMR ",OriginalFileDir)
 					OriginalFileDir = _modpath.get_base_dir()+"/"+OriginalFileDir.get_file()
 					#Generate texture ref
 					if(OriginalFileDir.contains(".png")):
