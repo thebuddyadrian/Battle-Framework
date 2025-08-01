@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_2rewn")
 display_name = "Amy's Room"
-music_file_path = ""
+music_file_path = "uid://16nyrnonjdyo"
 metadata/_custom_type_script = "uid://bh7hc4po624b3"
