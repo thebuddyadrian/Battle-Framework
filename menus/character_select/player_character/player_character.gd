@@ -26,6 +26,8 @@ func _ready() -> void:
 	#player_name.text = "Player " + str(player_number)
 	set_active(active)
 	set_character_index(character_index)
+	# Make sure the shader material isn't shared between characters
+	character_portrait.material = character_portrait.material.duplicate()
 	
 
 
