@@ -152,7 +152,7 @@ static func FixAtNerfPoint(_modpath:String) -> void: #Drop in replacement for fo
 	pass
 
 #Quick File fixer
-static func FixAtGunPoint(_modpath:String) -> void: #Force File at gun point to change directory for resource to local or watch its children cry in fear, (yesh.. thats dark)
+static func FixAtGunPoint(_modpath:String, _QuickChanges:Dictionary = {}) -> void: #Force File at gun point to change directory for resource to local or watch its children cry in fear, (yesh.. thats dark)
 	var tscn_file = FileAccess.open(_modpath, FileAccess.READ_WRITE)
 	var tscn_file_Raw = tscn_file.get_as_text()
 	var tscn_file_lines = tscn_file_Raw.split('\n')
@@ -180,7 +180,9 @@ static func FixAtGunPoint(_modpath:String) -> void: #Force File at gun point to 
 		else:
 			if(EngagedFiles):
 				pass # Were break would happen if file could be override for just new lines
-				
+		for _LT in _QuickChanges.keys():
+			if(_line.contains(_LT)):
+				_line = _line.replace(_LT,_QuickChanges[_LT])
 		NewFileOut += _line + "\n"
 	tscn_file.store_string(NewFileOut)
 	tscn_file.close()

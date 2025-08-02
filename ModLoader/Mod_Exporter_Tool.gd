@@ -7,13 +7,16 @@ static var NonExportItems:Dictionary = {MultiplayerAPI:true}
 static var NonExportFolders:Array = ["res://components","res://characters/base_player","res://ModLoader","res://characters/mini_bar.gd"]
 static var DefaultReferenceFile:String = preload("res://ModLoader/Defaults/DefaultResourcePool.json").get_parsed_text()
 
+static var CustomResourceOrder:Array = [".tscn",".gd",".tres",".res",".png",".jepg"]
 static var CurrentModReferencePool:Dictionary = {}
+
+static var ScriptSwapQueue:Dictionary = {} #Avoid having to store and reassign all values for node after script change, change in .tscn file
 
 static func ExportSceneToModAsset(_scene:Node,_path="G:/mods/modtest") -> void:
 	var OriginalResources = GetAllResourcesInNode(_scene)
+	OriginalResources.sort_custom(SortResFile)
 	var ExportFolder = _path.get_base_dir()
 	var ResourceMap:Dictionary = {}
-	print(" DEBUG 1 ", OriginalResources)
 	for res_path in OriginalResources:
 		if(!InExcludedPath(res_path)): # Store copyed files into buffer resources, also add pathing in a Resource Dic
 			var filename = res_path.get_file()
@@ -36,20 +39,25 @@ static func ExportSceneToModAsset(_scene:Node,_path="G:/mods/modtest") -> void:
 	
 	var PackedSceneRef = PackedScene.new()
 	PackedSceneRef.pack(NewRef.duplicate(DUPLICATE_SIGNALS | DUPLICATE_SCRIPTS | DUPLICATE_GROUPS | DUPLICATE_USE_INSTANTIATION))
+	NewRef.queue_free()
 	ResourceSaver.save(PackedSceneRef,_path,ResourceSaver.FLAG_NONE)
-	Mod_Loader_Base.FixAtGunPoint(_path)
+	Mod_Loader_Base.FixAtGunPoint(_path,ScriptSwapQueue)
+	
+static func SortResFile(a,b) -> bool:
+	if(CustomResourceOrder.find(a.get_extension()) < CustomResourceOrder.find(b.get_extension())):
+		return true
+	else: return false
 	
 static func GetAllResourcesInNode(_N:Node) -> Array:
 	var RefArray = []
-	GetRecurseResource(_N,RefArray)
+	GetRecurseResource(_N,RefArray,0,0)
 	return RefArray
 	
-static func GetRecurseResource(_N:Node,_R:Array) -> void:
+static func GetRecurseResource(_N:Node,_R:Array,_Dep:int,_Index:int) -> void:
 	for _p in _N.get_property_list():
 		if(_p.has("type") && _p.has("name")):
 			var n = _p["name"]
 			var value = _N.get(n)
-			print("EMA ",value)
 			
 			#Array
 			if (value is Array):
@@ -63,8 +71,8 @@ static func GetRecurseResource(_N:Node,_R:Array) -> void:
 			else: # Normal variables
 				SingleResourceDetect(value,_R)
 					
-	for _C in _N.get_children():
-		GetRecurseResource(_C,_R)
+	for _C in range(_N.get_children().size()):
+		GetRecurseResource(_N.get_child(_C),_R,_Dep+1,_Index+_C)
 		
 static func SingleResourceDetect(_value, _R:Array) -> void:
 	if (typeof(_value) == TYPE_OBJECT && _value is Resource):
@@ -73,45 +81,57 @@ static func SingleResourceDetect(_value, _R:Array) -> void:
 			_R.append(res.resource_path)
 		
 static func CopyResourcesWhereApp(_N:Node, Dirmap: Dictionary, _modpath:String) -> Node:
-	var Cloned = _N.duplicate(DUPLICATE_GROUPS | DUPLICATE_SCRIPTS | DUPLICATE_USE_INSTANTIATION)
-	CopyResourceIndiviual(Cloned,Dirmap,_modpath)
+	ScriptSwapQueue.clear()
+	var Cloned = _N.duplicate(DUPLICATE_SIGNALS | DUPLICATE_GROUPS | DUPLICATE_SCRIPTS | DUPLICATE_USE_INSTANTIATION)
+	_N.get_parent().add_child(Cloned)
+	Cloned.owner = _N.get_parent()
+	CopyResourceIndiviual(Cloned,_N,Dirmap,_modpath,0,0)
 	return Cloned
 	
-static func CopyResourceIndiviual(_N:Node, Dirmap: Dictionary, _modpath:String) -> void:
+static func CopyResourceIndiviual(_N:Node,_Original:Node, Dirmap: Dictionary, _modpath:String, _Dep:int, _Index:int) -> void:
+	#print("N F ", _N.name, " | ",_Dep)
+	#print("Lord Forquad ", LastResourceFol[[_Original.name,_Dep,_Index]])
 	for _prop in _N.get_property_list():
 		if _prop.has("name") && _prop.has("type"):
 			var name = _prop["name"]
 			var value = _N.get(name)
-			
 			#Array
 			if (value is Array):
 				for _i in range(value.size()):
 					CopyResourceIndiviualIsntF(value[_i],_N,name,[value,_i],Dirmap,_modpath)
 			#Dictionary
 			elif (value is Dictionary):
-				for _D in range(value.size()):
+				for _k in value.keys():
 					#CopyResourceIndiviualIsntF(value.keys()[_D],_N,name,[TempDict,0_D],Dirmap,_modpath)
-					CopyResourceIndiviualIsntF(value.values()[_D],_N,name,[value,1,value.keys()[_D]],Dirmap,_modpath)
+					CopyResourceIndiviualIsntF(value[_k],_N,name,[value,1,_k],Dirmap,_modpath)
 			else: # Normal variables
 				CopyResourceIndiviualIsntF(value,_N,name,[],Dirmap,_modpath)
 			
-	for _child in _N.get_children():
-		if _child is Node:
-			CopyResourceIndiviual(_child, Dirmap,_modpath)
+	for _CI in range(_N.get_children().size()):
+		if _N.get_child(_CI) is Node:
+			var ChildRef = _N.get_child(_CI)
+			CopyResourceIndiviual(ChildRef,_Original.get_node(ChildRef.get_path()), Dirmap,_modpath,_Dep+1,_Index+_CI)
 			
 static func CopyResourceIndiviualIsntF(value,_N:Node,_name:String,_key,_Dirmap:Dictionary,_modpath:String) -> void:
 	if typeof(value) == TYPE_OBJECT && value is Resource:
 		var res: Resource = value
 		var old_path = res.resource_path
 		if _Dirmap.has(old_path):
+			#Create target path remove "." from "./" here aswell
 			var TargetFilePath:String = _modpath.get_base_dir()+_Dirmap[old_path].substr(1,_Dirmap[old_path].length()-1)
-			var new_res = load(TargetFilePath)  # assumes the resource is in the export root
+			
+			var new_res = null  # assumes the resource is in the export root
+			if !(res is GDScript): new_res = load(TargetFilePath)
+			else: ScriptSwapQueue[old_path] = TargetFilePath
+			
 			if(TargetFilePath.ends_with(".png")):
 				_N.set_meta("HAS_IMAGE",true)
 				var TestM = _name
 				var RelAdress = TargetFilePath.substr(_modpath.get_base_dir().get_base_dir().get_base_dir().length()+1)
 				_N.set_meta(TestM, RelAdress)
-			if new_res:
+			#if(new_res is GDScript):
+				#_N.get(_name).resource_path = TargetFilePath
+			if new_res && new_res != null:
 				# Would set resource path here but godot literally wouldnt include in export, so me :-(
 				#new_res.resource_path = Dirmap[old_path]
 				if(_key != []):
