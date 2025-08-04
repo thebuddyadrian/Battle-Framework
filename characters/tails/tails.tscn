@@ -63,7 +63,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
-[sub_resource type="Resource" id="Resource_weptr"]
+[sub_resource type="Resource" id="Resource_eakuc"]
 script = ExtResource("2_uaadi")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -143,7 +143,7 @@ script = ExtResource("21_wv4dc")
 attack_info = ExtResource("22_6dfm6")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_weptr")
+hit_data = SubResource("Resource_eakuc")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190346, 0.0026055, 0)

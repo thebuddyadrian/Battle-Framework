@@ -1,0 +1,65 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfymnh44ku2k4"]
+
+[ext_resource type="Texture2D" uid="uid://b4e72gl5uqhpv" path="res://assets/ui/SonicLife.png" id="1_hty7j"]
+
+[node name="SubModEntry" type="Control"]
+custom_minimum_size = Vector2(0, 28)
+layout_mode = 3
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -14.0
+offset_bottom = 14.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubModButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_right = -32.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="SubModButton"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -16.0
+offset_right = 36.0
+offset_bottom = 16.0
+grow_vertical = 2
+texture = ExtResource("1_hty7j")
+
+[node name="ItemName" type="Label" parent="SubModButton"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -12.0
+offset_right = 120.0
+offset_bottom = 11.0
+grow_vertical = 2
+text = "Char 1"
+
+[node name="CheckButton" type="CheckBox" parent="SubModButton"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -26.0
+offset_top = -12.0
+offset_right = -2.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+button_pressed = true

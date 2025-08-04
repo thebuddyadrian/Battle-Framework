@@ -1,0 +1,67 @@
+[gd_scene load_steps=3 format=3 uid="uid://biynqhkdjb8pk"]
+
+[ext_resource type="Texture2D" uid="uid://b4e72gl5uqhpv" path="res://assets/ui/SonicLife.png" id="1_lnd86"]
+[ext_resource type="Script" uid="uid://bd6t63wxd482" path="res://ModLoader/UI/ModEntryScriptBase.gd" id="1_ukrwt"]
+
+[node name="ModEntry" type="VBoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -15.0
+offset_bottom = 49.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ukrwt")
+
+[node name="ModTab" type="Button" parent="."]
+custom_minimum_size = Vector2(0, 32)
+layout_mode = 2
+alignment = 0
+
+[node name="TextureRect" type="TextureRect" parent="ModTab"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -16.0
+offset_right = 36.0
+offset_bottom = 16.0
+grow_vertical = 2
+texture = ExtResource("1_lnd86")
+
+[node name="Label" type="Label" parent="ModTab"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 40.0
+offset_top = -12.0
+offset_right = 120.0
+offset_bottom = 11.0
+grow_vertical = 2
+text = "TEST MOD"
+
+[node name="CheckButton" type="CheckButton" parent="ModTab"]
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -46.0
+offset_top = -12.0
+offset_right = -2.0
+offset_bottom = 12.0
+grow_horizontal = 0
+grow_vertical = 2
+button_pressed = true
+
+[node name="SubContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[connection signal="pressed" from="ModTab" to="." method="ToggleMenu"]
