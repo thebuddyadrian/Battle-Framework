@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene load_steps=36 format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" uid="uid://mhfes0qawdck" path="res://characters/base_player/base_player.gd" id="1_7xl6k"]
 [ext_resource type="Script" uid="uid://cyjpv2h7kqytk" path="res://components/battle_sprite/battle_sprite.gd" id="2_b01px"]
@@ -22,6 +22,7 @@
 [ext_resource type="Script" uid="uid://cbsbumpo5naru" path="res://characters/base_player/states/heal.gd" id="17_b01px"]
 [ext_resource type="Script" uid="uid://cftg53g7j8had" path="res://characters/base_player/states/base_attack.gd" id="17_r8feo"]
 [ext_resource type="Script" uid="uid://b1u20jy6k4m5j" path="res://characters/base_player/states/floor_bounce.gd" id="19_uam5m"]
+[ext_resource type="Script" uid="uid://cyfsv02j71h0f" path="res://characters/base_player/states/wall_tech.gd" id="20_wyd30"]
 [ext_resource type="Script" uid="uid://bormpit51yu27" path="res://characters/base_player/states/wall_hit.gd" id="21_do57j"]
 [ext_resource type="Script" uid="uid://dvkf7fsxfklpo" path="res://characters/base_player/states/guard.gd" id="21_kvwve"]
 [ext_resource type="Script" uid="uid://blv27bp3h8srh" path="res://characters/base_player/states/down.gd" id="22_h6gly"]
@@ -43,7 +44,7 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_b01px"]
+[sub_resource type="Resource" id="Resource_wyd30"]
 script = ExtResource("16_32b4s")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -55,7 +56,7 @@ hit_freeze = 5
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.295955
+radius = 0.158813
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3twb4"]
 size = Vector3(0.188656, 0.317568, 0.231695)
@@ -86,9 +87,6 @@ autoplay = "Idle"
 visible = false
 texture_filter = 0
 script = ExtResource("2_uam5m")
-flipped = null
-default_cull_layer = null
-flipped_cull_layer = null
 
 [node name="FlippedComponents" type="Node3D" parent="."]
 
@@ -152,6 +150,9 @@ script = ExtResource("15_ddqn7")
 
 [node name="WallBounce" type="Node" parent="StateMachine"]
 script = ExtResource("21_do57j")
+
+[node name="WallTech" type="Node" parent="StateMachine"]
+script = ExtResource("20_wyd30")
 
 [node name="FloorBounce" type="Node" parent="StateMachine"]
 script = ExtResource("19_uam5m")
@@ -219,7 +220,7 @@ script = ExtResource("23_uam5m")
 
 [node name="Hitbox" type="Area3D" parent="."]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_b01px")
+hit_data = SubResource("Resource_wyd30")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
