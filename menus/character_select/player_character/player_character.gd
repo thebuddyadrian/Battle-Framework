@@ -58,6 +58,7 @@ func set_character_index(p_index: int):
 func set_character(p_character: String):
 	character = p_character
 	character_selected.text = "Character:\n" + Lists.character_display_names[character]
+	pixelate.stop()
 	pixelate.play("pixelate")
 	await get_tree().create_timer(0.4).timeout
 	character_portrait.texture = portrait_texture[character]
