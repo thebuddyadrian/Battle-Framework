@@ -6,6 +6,7 @@ class_name Level
 const CAMERA_ROOT = preload("res://components/camera_root/camera_root.tscn")
 const PLAYER_WINDOW = preload("res://components/player_window/player_window.tscn")
 const PLAYER_HUD = preload("res://components/player_hud/player_hud.tscn")
+const PAUSE_MENU = preload("uid://cifkfj62fb1ho")
 
 @export var stage_info: StageInfo
 @export var player_spawn_1: Node3D
