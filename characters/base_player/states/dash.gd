@@ -30,6 +30,9 @@ func _step_frozen():
 
 
 func _exit(next_state):
+	if next_state is BaseAttack and parent.state_time < 2:
+		root.velocity.x = 0
+		root.velocity.z = 0
 	spawned_dash_effect = false
 	root.limit_speed = true
 	root.animplayer.stop()
