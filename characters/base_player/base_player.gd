@@ -436,11 +436,13 @@ func set_facing_direction_2d(direction: int):
 	# Set facing direction relative to the camera
 	var vec: Vector2 = Vector2(direction, 0).rotated(-camera.rotation.y)
 	facing_direction_2d = sign(vec.x)
+	facing_direction.x = facing_direction_2d
 
 
 ## Makes the player face the opposite direction
 func flip_facing_direction_2d():
 	facing_direction_2d = -facing_direction_2d
+	facing_direction.x = facing_direction_2d
 
 
 ## Check whether the player should turn to face the correct direction
