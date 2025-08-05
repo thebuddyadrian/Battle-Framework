@@ -1,0 +1,29 @@
+[gd_scene load_steps=4 format=3 uid="uid://gbxi3w87mkcc"]
+
+[ext_resource type="PackedScene" uid="uid://v3edfdhjiea3" path="res://levels/zavokland/zavokland.glb" id="1_j06v3"]
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="2_dkvtr"]
+[ext_resource type="Resource" uid="uid://d4i5xoy711sl3" path="res://levels/zavokland/zavokland.tres" id="3_j06v3"]
+
+[node name="zavokland" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent") instance=ExtResource("1_j06v3")]
+script = ExtResource("2_dkvtr")
+stage_info = ExtResource("3_j06v3")
+player_spawn_1 = NodePath("PlayerSpawn1")
+player_spawn_2 = NodePath("PlayerSpawn2")
+player_spawn_3 = NodePath("PlayerSpawn3")
+player_spawn_4 = NodePath("PlayerSpawn4")
+camera_root_parent = NodePath(".")
+
+[node name="Stage" parent="." index="0"]
+transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
+
+[node name="PlayerSpawn1" type="Node3D" parent="." index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49222, 0.92334, -9.6947)
+
+[node name="PlayerSpawn2" type="Node3D" parent="." index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.81981, 0.92334, -9.6947)
+
+[node name="PlayerSpawn3" type="Node3D" parent="." index="3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.49222, 0.92334, 10.2458)
+
+[node name="PlayerSpawn4" type="Node3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15428, 0.92334, 8.02917)
