@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://ubts1e2d3mjh"]
+[gd_scene load_steps=33 format=3 uid="uid://ubts1e2d3mjh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
 [ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://characters/tails/sprites/TailsSpritesheet.png" id="2_cps4t"]
@@ -75,6 +75,9 @@ unblockable = false
 hit_freeze = 5
 hit_stun = 30
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
+radius = 0.129537
+
 [node name="Tails" instance=ExtResource("1_b5y1r")]
 
 [node name="PlayerSprite" parent="." index="1"]
@@ -99,45 +102,45 @@ script = ExtResource("5_eakuc")
 [node name="AirAction" parent="StateMachine" index="7"]
 script = ExtResource("4_qf74s")
 
-[node name="Jab1" parent="StateMachine" index="18"]
+[node name="Jab1" parent="StateMachine" index="19"]
 attack_info = SubResource("Resource_phocd")
 
-[node name="Jab2" parent="StateMachine" index="19"]
+[node name="Jab2" parent="StateMachine" index="20"]
 script = ExtResource("8_eakuc")
 attack_info = ExtResource("9_phocd")
 
-[node name="Jab3" parent="StateMachine" index="20"]
+[node name="Jab3" parent="StateMachine" index="21"]
 attack_info = ExtResource("7_rdag6")
 
-[node name="Heavy" parent="StateMachine" index="21"]
+[node name="Heavy" parent="StateMachine" index="22"]
 attack_info = ExtResource("6_asitg")
 
-[node name="Upper" parent="StateMachine" index="22"]
+[node name="Upper" parent="StateMachine" index="23"]
 attack_info = ExtResource("9_rdag6")
 
-[node name="DashAttack" parent="StateMachine" index="23"]
+[node name="DashAttack" parent="StateMachine" index="24"]
 attack_info = ExtResource("10_cps4t")
 
-[node name="AirAttack" parent="StateMachine" index="24"]
+[node name="AirAttack" parent="StateMachine" index="25"]
 script = ExtResource("11_iyier")
 attack_info = ExtResource("12_5541g")
 
-[node name="AimAttack" parent="StateMachine" index="25"]
+[node name="AimAttack" parent="StateMachine" index="26"]
 attack_info = ExtResource("13_jrwva")
 
-[node name="GrndShot" parent="StateMachine" index="26"]
+[node name="GrndShot" parent="StateMachine" index="27"]
 script = ExtResource("14_infaa")
 attack_info = ExtResource("15_jrwva")
 
-[node name="AirShot" parent="StateMachine" index="27"]
+[node name="AirShot" parent="StateMachine" index="28"]
 script = ExtResource("15_infaa")
 attack_info = ExtResource("16_jrwva")
 
-[node name="GrndPow" parent="StateMachine" index="28"]
+[node name="GrndPow" parent="StateMachine" index="29"]
 script = ExtResource("13_cps4t")
 attack_info = ExtResource("12_lg3ej")
 
-[node name="AirPow" parent="StateMachine" index="29"]
+[node name="AirPow" parent="StateMachine" index="30"]
 script = ExtResource("21_wv4dc")
 attack_info = ExtResource("22_6dfm6")
 
@@ -145,7 +148,8 @@ attack_info = ExtResource("22_6dfm6")
 hit_data = SubResource("Resource_weptr")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.190346, 0.0026055, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0242278, -0.0212343, 0)
+shape = SubResource("SphereShape3D_3twb4")
 
 [node name="TestLabel" parent="." index="7"]
 visible = false
