@@ -89,51 +89,51 @@ script = ExtResource("4_lh63m")
 [node name="AirAction" parent="StateMachine" index="7"]
 script = ExtResource("8_psdtg")
 
-[node name="Jab1" parent="StateMachine" index="18"]
+[node name="Jab1" parent="StateMachine" index="19"]
 script = ExtResource("9_j7ou5")
 attack_info = ExtResource("10_0sn45")
 
-[node name="Jab2" parent="StateMachine" index="19"]
+[node name="Jab2" parent="StateMachine" index="20"]
 script = ExtResource("11_0sn45")
 attack_info = ExtResource("12_psdtg")
 
-[node name="Jab3" parent="StateMachine" index="20"]
+[node name="Jab3" parent="StateMachine" index="21"]
 script = ExtResource("12_ay8m5")
 attack_info = ExtResource("14_5tkrs")
 
-[node name="Heavy" parent="StateMachine" index="21"]
+[node name="Heavy" parent="StateMachine" index="22"]
 script = ExtResource("8_oggfo")
 attack_info = ExtResource("16_psdtg")
 
-[node name="Upper" parent="StateMachine" index="22"]
+[node name="Upper" parent="StateMachine" index="23"]
 script = ExtResource("10_1ooqa")
 attack_info = ExtResource("11_qawlg")
 
-[node name="DashAttack" parent="StateMachine" index="23"]
+[node name="DashAttack" parent="StateMachine" index="24"]
 attack_info = ExtResource("12_6etpd")
 
-[node name="AirAttack" parent="StateMachine" index="24"]
+[node name="AirAttack" parent="StateMachine" index="25"]
 script = ExtResource("20_ay8m5")
 attack_info = ExtResource("21_psdtg")
 
-[node name="AimAttack" parent="StateMachine" index="25"]
+[node name="AimAttack" parent="StateMachine" index="26"]
 attack_info = ExtResource("22_psdtg")
 
-[node name="GrndShot" parent="StateMachine" index="26"]
+[node name="GrndShot" parent="StateMachine" index="27"]
 script = ExtResource("23_psdtg")
 attack_info = ExtResource("24_5tkrs")
 
-[node name="AirShot" parent="StateMachine" index="27"]
+[node name="AirShot" parent="StateMachine" index="28"]
 script = ExtResource("21_c10jq")
 
-[node name="GrndPow" parent="StateMachine" index="28"]
+[node name="GrndPow" parent="StateMachine" index="29"]
 script = ExtResource("21_xt1s0")
 proj_offset_x = 1.0
 proj_offset_y = 1.0
 proj_offset_z = 1.0
 attack_info = ExtResource("22_1kwib")
 
-[node name="AirPow" parent="StateMachine" index="29"]
+[node name="AirPow" parent="StateMachine" index="30"]
 script = ExtResource("28_0sn45")
 attack_info = ExtResource("24_1kwib")
 

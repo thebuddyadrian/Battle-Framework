@@ -52,6 +52,18 @@ func _step():
 			for j in collision.get_collision_count():
 				var collider = collision.get_collider(j)
 				if collider is StaticBody3D:
+					var normal = collision.get_normal()
+					var normal_flat = Vector2(normal.x, normal.z)
+					var teched: bool = false
+					if abs(normal_flat.x) > abs(normal_flat.y):
+						if sign(root.get_input_vector().x) == sign(normal_flat.x) and root.get_input_vector().x != 0:
+							teched = true
+					else:
+						if sign(root.get_input_vector().y) == sign(normal_flat.y) and root.get_input_vector().y != 0:
+							teched = true
+					if teched:
+						change_state("WallTech", {normal = collision.get_normal(j)})
+						return
 					change_state("WallBounce", {normal = collision.get_normal(j)})
 					return
 	

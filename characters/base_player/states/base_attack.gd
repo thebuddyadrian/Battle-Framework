@@ -314,7 +314,7 @@ func _step():
 			if root.input("dash", "just_pressed"):
 				_dash_cancel_buffered = true
 			if parent.state_time >= dash_cancel_frames and _dash_cancel_buffered:
-				change_state("HomingDash")
+				change_state("HomingDash", {"opponent": root.last_hit_player})
 				return
 		
 		# Jab Buffer

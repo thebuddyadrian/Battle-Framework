@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=73 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
@@ -1172,6 +1172,23 @@ tracks/2/keys = {
 "values": [0.175767]
 }
 
+[sub_resource type="Animation" id="Animation_ttio6"]
+resource_name = "WallTech"
+length = 0.1
+step = 0.08
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [205]
+}
+
 [sub_resource type="Animation" id="Animation_t5h5i"]
 resource_name = "jab1"
 step = 0.0166667
@@ -1337,6 +1354,7 @@ _data = {
 &"Stopping": SubResource("Animation_meeb0"),
 &"Turn": SubResource("Animation_ppktt"),
 &"Upper": SubResource("Animation_j5k0p"),
+&"WallTech": SubResource("Animation_ttio6"),
 &"jab1": SubResource("Animation_t5h5i"),
 &"kick1": SubResource("Animation_6wnxk"),
 &"kick2": SubResource("Animation_wtpgs")
@@ -1422,41 +1440,41 @@ debug_shape_thickness = 5
 [node name="AirAction" parent="StateMachine" index="7"]
 script = ExtResource("3_jddj4")
 
-[node name="Jab1" parent="StateMachine" index="18"]
+[node name="Jab1" parent="StateMachine" index="19"]
 attack_info = ExtResource("5_fueeq")
 
-[node name="Jab2" parent="StateMachine" index="19"]
+[node name="Jab2" parent="StateMachine" index="20"]
 attack_info = ExtResource("6_tfamv")
 
-[node name="Jab3" parent="StateMachine" index="20"]
+[node name="Jab3" parent="StateMachine" index="21"]
 attack_info = ExtResource("7_t5h5i")
 
-[node name="Heavy" parent="StateMachine" index="21"]
+[node name="Heavy" parent="StateMachine" index="22"]
 script = ExtResource("8_fueeq")
 attack_info = ExtResource("9_fueeq")
 
-[node name="Upper" parent="StateMachine" index="22"]
+[node name="Upper" parent="StateMachine" index="23"]
 script = ExtResource("10_c7fke")
 attack_info = ExtResource("8_wpnlk")
 
-[node name="DashAttack" parent="StateMachine" index="23"]
+[node name="DashAttack" parent="StateMachine" index="24"]
 attack_info = ExtResource("9_6mqiq")
 
-[node name="AirAttack" parent="StateMachine" index="24"]
+[node name="AirAttack" parent="StateMachine" index="25"]
 script = ExtResource("13_fueeq")
 attack_info = ExtResource("11_41aki")
 
-[node name="AimAttack" parent="StateMachine" index="25"]
+[node name="AimAttack" parent="StateMachine" index="26"]
 attack_info = ExtResource("15_fueeq")
 
-[node name="GrndShot" parent="StateMachine" index="26"]
+[node name="GrndShot" parent="StateMachine" index="27"]
 script = ExtResource("17_tfamv")
 attack_info = ExtResource("14_6ri6b")
 
-[node name="GrndPow" parent="StateMachine" index="28"]
+[node name="GrndPow" parent="StateMachine" index="29"]
 attack_info = ExtResource("15_lq7el")
 
-[node name="AirPow" parent="StateMachine" index="29"]
+[node name="AirPow" parent="StateMachine" index="30"]
 script = ExtResource("16_lci63")
 attack_info = SubResource("Resource_t5h5i")
 

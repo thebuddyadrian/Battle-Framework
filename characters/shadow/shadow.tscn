@@ -229,50 +229,50 @@ script = ExtResource("4_h2on0")
 [node name="AirAction" parent="StateMachine" index="7"]
 script = ExtResource("7_xq7wv")
 
-[node name="Jab1" parent="StateMachine" index="18"]
+[node name="Jab1" parent="StateMachine" index="19"]
 script = ExtResource("10_73oq7")
 attack_info = SubResource("Resource_73oq7")
 
-[node name="Jab2" parent="StateMachine" index="19"]
+[node name="Jab2" parent="StateMachine" index="20"]
 script = ExtResource("11_73oq7")
 attack_info = SubResource("Resource_djkpe")
 
-[node name="Jab3" parent="StateMachine" index="20"]
+[node name="Jab3" parent="StateMachine" index="21"]
 script = ExtResource("12_73oq7")
 attack_info = ExtResource("13_vj6v6")
 
-[node name="Heavy" parent="StateMachine" index="21"]
+[node name="Heavy" parent="StateMachine" index="22"]
 script = ExtResource("12_gjr3y")
 attack_info = ExtResource("13_cyjvw")
 
-[node name="Upper" parent="StateMachine" index="22"]
+[node name="Upper" parent="StateMachine" index="23"]
 script = ExtResource("14_gjr3y")
 attack_info = ExtResource("15_h1jln")
 
-[node name="DashAttack" parent="StateMachine" index="23"]
+[node name="DashAttack" parent="StateMachine" index="24"]
 attack_info = ExtResource("15_xq7wv")
 
-[node name="AirAttack" parent="StateMachine" index="24"]
+[node name="AirAttack" parent="StateMachine" index="25"]
 script = ExtResource("21_3o4s2")
 attack_info = ExtResource("18_h1jln")
 
-[node name="AimAttack" parent="StateMachine" index="25"]
+[node name="AimAttack" parent="StateMachine" index="26"]
 script = ExtResource("18_hh2a4")
 attack_info = ExtResource("19_gjr3y")
 
-[node name="GrndShot" parent="StateMachine" index="26"]
+[node name="GrndShot" parent="StateMachine" index="27"]
 script = ExtResource("25_w40b4")
 attack_info = ExtResource("20_gjr3y")
 
-[node name="GrndPow" parent="StateMachine" index="28"]
+[node name="GrndPow" parent="StateMachine" index="29"]
 script = ExtResource("22_cyjvw")
 attack_info = ExtResource("23_mtehn")
 
-[node name="AirPow" parent="StateMachine" index="29"]
+[node name="AirPow" parent="StateMachine" index="30"]
 script = ExtResource("29_w40b4")
 attack_info = SubResource("Resource_3o4s2")
 
-[node name="HomingDash" parent="StateMachine" index="30"]
+[node name="HomingDash" parent="StateMachine" index="31"]
 y_velocity = 20
 
 [node name="GrndTrap" type="Node" parent="StateMachine" index="32"]

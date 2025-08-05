@@ -53,6 +53,8 @@ var most_recent_direction_input: String = "right"
 var VALID_ACTIONS = ["move", "jump", "dash", "air_action", "attack", "skill", "guard", "heal"]
 # Keep track of the last player you hit
 var last_hit_player: BattleCharacter
+# Keep track of the last player who hit you
+var last_player_hit_by: BattleCharacter
 #This is crucial for allowing the player to move relative to the camera.
 var camera: Node3D
 # If active, player will not do any processing in _physics_process
@@ -260,7 +262,7 @@ func _check_for_dash() -> bool:
 		# If following up from a heavy attack, do a homing dash instead
 		if state_machine.active_state.name == "Heavy":
 			if state_machine.active_state.move_hit:
-				state_machine.change_state("HomingDash")
+				state_machine.change_state("HomingDash", {"opponent": last_hit_player})
 				return true
 		state_machine.change_state("Dash")
 		return true
@@ -535,21 +537,23 @@ func play_voice_clip(voice_clip_name: String):
 
 
 ## When the player gets hit
-func _on_hurtbox_hurt(hit_data: HitData, hitbox: Hitbox) -> void:
+func _on_hurtbox_hurt(hit_data: HitData, attacker_hitbox: Hitbox) -> void:
 	current_hp = max(current_hp - hit_data.damage, 0) # Stop HP from going below zero
 	state_machine.change_state("Hurt", {hit_data = hit_data})
 	freeze_frames = 2
+	if attacker_hitbox.root is BattleCharacter:
+		last_player_hit_by = attacker_hitbox.root
 
 
 ## When the player succesfully lands a hit
-func _on_hitbox_hit(hit_data: HitData, hurtbox: Hurtbox) -> void:
+func _on_hitbox_hit(hit_data: HitData, opponent_hurtbox: Hurtbox) -> void:
 	if state_machine.active_state.has_method("_on_hitbox_hit"):
 		state_machine.active_state._on_hitbox_hit(hit_data, hurtbox)
 	# TO-DO - Instead of hardcoding a sound effect it should depend on the defined hit sound
 	play_sound_effect("hit_light")
 	freeze_frames = 2
-	if hurtbox.root is BattleCharacter:
-		last_hit_player = hurtbox.root
+	if opponent_hurtbox.root is BattleCharacter:
+		last_hit_player = opponent_hurtbox.root
 
 
 ## When the player hits a guarding opponent, go to the "Blocked" state to stagger back
