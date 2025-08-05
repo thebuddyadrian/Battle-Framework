@@ -4,16 +4,27 @@
 [ext_resource type="PackedScene" uid="uid://15coxxqw12kr" path="res://characters/Portraits/characters.tscn" id="2_fq4xj"]
 
 [node name="PlayerCharacter" type="Control"]
-custom_minimum_size = Vector2(129, 53)
+custom_minimum_size = Vector2(120, 80)
 layout_mode = 3
 anchor_right = 0.5375
 anchor_bottom = 0.33125
+offset_right = -9.0
+offset_bottom = 27.0
 size_flags_horizontal = 3
 script = ExtResource("1_gu884")
 metadata/_edit_use_anchors_ = true
 
+[node name="Portrait_Manager" parent="." instance=ExtResource("2_fq4xj")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
+
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,21 +46,3 @@ text = "Character:
 Sonic"
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Portrait_Manager" parent="." instance=ExtResource("2_fq4xj")]
-layout_mode = 1
-offset_left = 5.0
-offset_top = -3.0
-offset_right = 5.0
-offset_bottom = -3.0
-
-[node name="battlemode_HUD_BG" parent="Portrait_Manager" index="0"]
-offset_left = 4.0
-offset_right = 4.0
-scale = Vector2(0.88, 1)
-
-[node name="Characters" parent="Portrait_Manager" index="1"]
-offset_left = 36.0
-offset_right = 123.0
-
-[editable path="Portrait_Manager"]

@@ -19,14 +19,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-scroll_vertical = 56
 
 [node name="ActionContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
 theme_override_constants/separation = 0
 
 [node name="InputDevice" type="HBoxContainer" parent="ScrollContainer/ActionContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="ScrollContainer/ActionContainer/InputDevice"]

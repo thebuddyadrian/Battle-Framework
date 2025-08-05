@@ -39,6 +39,7 @@ tracks/1/keys = {
 [sub_resource type="Animation" id="Animation_pq8p7"]
 resource_name = "pixelate"
 length = 0.6
+step = 0.0166667
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -73,15 +74,17 @@ _data = {
 [node name="Portrait_Manager" type="Control"]
 layout_mode = 3
 anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 80.0
 
 [node name="battlemode_HUD_BG" parent="." instance=ExtResource("1_xectl")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.0
 anchor_bottom = 0.0
-offset_top = 16.0
+offset_top = 14.0
 offset_right = 0.0
-offset_bottom = 16.0
+offset_bottom = 14.0
 grow_horizontal = 1
 grow_vertical = 1
 
@@ -90,9 +93,9 @@ material = SubResource("ShaderMaterial_cl634")
 layout_mode = 1
 anchors_preset = -1
 offset_left = 32.0
-offset_top = 8.0
+offset_top = 6.0
 offset_right = 119.0
-offset_bottom = 79.0
+offset_bottom = 77.0
 texture = ExtResource("2_pq8p7")
 flip_h = true
 
