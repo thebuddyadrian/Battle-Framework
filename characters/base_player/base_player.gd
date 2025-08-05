@@ -445,6 +445,10 @@ func flip_facing_direction_2d():
 	facing_direction.x = facing_direction_2d
 
 
+func match_facing_direction_to_movement():
+	facing_direction = get_movement_vector()
+
+
 ## Check whether the player should turn to face the correct direction
 ## Used in "Idle" and "Move" states to change to the "Turn" state
 func is_turning() -> bool:

@@ -9,6 +9,7 @@ func _enter(data = {}):
 	var normal: Vector3 = data["normal"]
 	# Bounce off the wall using the wall's direction
 	normal_flat = Vector2(normal.x, normal.z)
+	root.match_facing_direction_to_movement()
 	root.update_facing_direction_2d()
 
 	root.animplayer.play("WallTech")
