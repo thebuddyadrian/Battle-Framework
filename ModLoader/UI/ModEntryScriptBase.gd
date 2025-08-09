@@ -10,7 +10,7 @@ func _ready() -> void:
 	pass
 	
 func UpdateSubEntries(_subs:Array) -> void:
-	for _child in $ModMenuArea/ScrollContainer/VBoxContainer.get_children():
+	for _child in $SubContainer.get_children():
 		_child.queue_free()
 	for _sub in _subs:
 		var SubEntry = SubModEntryObject.instantiate()
