@@ -25,6 +25,7 @@ Lists="*res://autoload/lists.gd"
 MusicPlayer="*res://autoload/music_player.gd"
 SceneChanger="*res://autoload/scene_changer.tscn"
 Globals="*res://autoload/Globals.gd"
+ControlsSettings="*res://autoload/controls_settings.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SoundEffectPlayer="*res://autoload/sound_effect_player.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
@@ -32,7 +33,7 @@ PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_came
 [dialogic]
 
 directories/dch_directory={
-"Sonic": "res://assets/sonic/Sonic.dch"
+"Sonic": "res://assets/sonic_story_portraits/Sonic.dch"
 }
 directories/dtl_directory={
 "INTRO": "res://DIALOGUE/CUTSCENE/INTRO.dtl"
@@ -68,7 +69,6 @@ window/size/viewport_width=240
 window/size/viewport_height=160
 window/size/window_width_override=640
 window/size/window_height_override=480
-window/subwindows/embed_subwindows=false
 window/stretch/mode="viewport"
 
 [dotnet]
@@ -206,39 +206,42 @@ pause1={
 }
 left2={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":65,"key_label":0,"unicode":97,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
 right2={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":68,"key_label":0,"unicode":100,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
 up2={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":87,"key_label":0,"unicode":119,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
 down2={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":83,"key_label":0,"unicode":115,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
 attack2={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":82,"key_label":0,"unicode":114,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
 jump2={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":70,"key_label":0,"unicode":102,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
 dash2={
 "deadzone": 0.2,
-"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":84,"key_label":0,"unicode":116,"location":0,"echo":false,"script":null)
-]
+"events": []
 }
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://addons/maaacks_input_remapping/base/translations/menus_translations.en.translation", "res://addons/maaacks_input_remapping/base/translations/menus_translations.fr.translation")
+
+[maaacks_input_remapping]
+
+disable_update_check=false
+disable_install_wizard=true
+copy_path="res://input_remap"
 
 [rendering]
 

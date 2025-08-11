@@ -24,6 +24,9 @@ var audiostreamplayer = AudioStreamPlayer.new()
 
 
 func _ready() -> void:
+	# Make sure subwindows aren't embedded, or else multiple windows wont spawn
+	get_viewport().gui_embed_subwindows = false
+
 	# Get music track
 	if stage_info:
 		if stage_info.music_file_path:

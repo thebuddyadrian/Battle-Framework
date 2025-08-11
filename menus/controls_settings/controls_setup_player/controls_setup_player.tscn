@@ -19,6 +19,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+follow_focus = true
 
 [node name="ActionContainer" type="VBoxContainer" parent="ScrollContainer"]
 layout_mode = 2
@@ -30,16 +31,25 @@ layout_mode = 2
 [node name="Label" type="Label" parent="ScrollContainer/ActionContainer/InputDevice"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 8
 text = "Input Device"
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="DeviceDropdown" type="OptionButton" parent="ScrollContainer/ActionContainer/InputDevice"]
 layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 8
 selected = 0
 item_count = 1
 popup/item_0/text = "Keyboard"
 popup/item_0/id = 0
+
+[node name="DetectButton" type="Button" parent="ScrollContainer/ActionContainer/InputDevice"]
+visible = false
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Detect"
 
 [node name="Left" parent="ScrollContainer/ActionContainer" instance=ExtResource("1_8cmok")]
 layout_mode = 2
@@ -95,3 +105,7 @@ text = "Guard"
 layout_mode = 2
 action = "pause"
 text = "Pause"
+
+[connection signal="item_selected" from="ScrollContainer/ActionContainer/InputDevice/DeviceDropdown" to="." method="_on_device_dropdown_item_selected"]
+[connection signal="pressed" from="ScrollContainer/ActionContainer/InputDevice/DeviceDropdown" to="." method="_on_device_dropdown_pressed"]
+[connection signal="pressed" from="ScrollContainer/ActionContainer/InputDevice/DetectButton" to="." method="_on_detect_button_pressed"]
