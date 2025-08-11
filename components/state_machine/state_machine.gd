@@ -80,19 +80,19 @@ func change_state(new_state, data := {}):
 	is_changing_state = true
 	frame_changed_state = 0#SyncManager.current_tick
 	
-	#Reset state variables
-	state_time = 0
-	sub_state = ""
-	sub_state_time = 0
-	
-	state_id += 1
-	
 	#If the current state is not null, end the state
 	if active_state != null:
 		previous_state = active_state
 		active_state._exit(states[new_state])
 		active_state._end()
 		active_state = null
+	
+	#Reset state variables
+	state_time = 0
+	sub_state = ""
+	sub_state_time = 0
+	
+	state_id += 1
 	
 	#Set up the new state
 	active_state = states[new_state]
