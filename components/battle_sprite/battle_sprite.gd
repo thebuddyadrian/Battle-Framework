@@ -15,15 +15,17 @@ func _ready():
 	if !Engine.is_editor_hint():
 		layers = 1 << default_cull_layer
 		flipped_sprite = Sprite3D.new()
-		flipped_sprite.texture = texture
-		flipped_sprite.frame = frame
-		flipped_sprite.billboard = billboard
-		flipped_sprite.texture_filter = texture_filter
-		flipped_sprite.hframes = hframes
-		flipped_sprite.vframes = vframes
+		for property in flipped_sprite.get_property_list():
+			var property_name: StringName = property["name"]
+			if property_name == "script":
+				continue
+			flipped_sprite.set(property_name, get(property_name))
 		add_child(flipped_sprite)
 		flipped_sprite.layers = 1 << flipped_cull_layer
+		texture_changed.connect(_on_texture_changed)
+		frame_changed.connect(_on_frame_changed)
 	set_flipped(flipped)
+
 
 
 func set_flipped(p_flipped: bool):
