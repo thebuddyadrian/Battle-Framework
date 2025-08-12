@@ -24,6 +24,7 @@ func load_controls():
 		if FileAccess.file_exists(CONTROLS_FILE_PATH):
 			var controls_file = FileAccess.open(CONTROLS_FILE_PATH, FileAccess.READ)
 			saved_input_map = controls_file.get_var(true)
+			player_device_indicies = controls_file.get_var(true)
 	
 	for action in saved_input_map:
 		if !InputMap.has_action(action):
