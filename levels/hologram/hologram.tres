@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_kj2wx")
 display_name = "Hologram"
-music_file_path = ""
+music_file_path = "uid://cco6bisoiwv8a"
 metadata/_custom_type_script = "uid://bh7hc4po624b3"
