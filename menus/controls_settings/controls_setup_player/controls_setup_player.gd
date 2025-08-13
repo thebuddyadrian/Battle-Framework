@@ -16,13 +16,15 @@ signal input_pressed
 
 
 func _ready() -> void:
+	initialize()
+
+
+func initialize():
 	update_device_dropdown()
 	load_from_input_map()
 	for controls_setup_action in action_container.get_children():
 		if controls_setup_action.is_in_group("controls_setup_action"):
 			controls_setup_action.connect("request_input_event", _input_event_requested)
-
-
 
 func _set_all_event_buttons_disabled(p_disabled: bool):
 	for controls_setup_action in get_all_control_setup_nodes():
