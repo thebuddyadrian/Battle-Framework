@@ -12,6 +12,7 @@ var flipped_sprite: AnimatedSprite3D
 # Create child flipped_sprite, which is a copy of the current sprite
 func _ready():
 	await get_tree().physics_frame
+	billboard = BaseMaterial3D.BILLBOARD_ENABLED
 	if !Engine.is_editor_hint():
 		layers = 1 << default_cull_layer
 		flipped_sprite = AnimatedSprite3D.new()

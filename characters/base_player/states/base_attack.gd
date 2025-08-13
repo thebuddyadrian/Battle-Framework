@@ -358,7 +358,7 @@ func _step():
 	
 
 	if parent.state_time == 2 and name == "Heavy" and root.char_name != "shadow":
-		root.spawn_scene("HeavyEffect", "res://spawnables/effects/heavy_effect.tscn", root.global_position, root.get_parent(), {direction = root.facing_direction_2d})
+		root.spawn_scene("HeavyEffect", "res://effects/heavy_effect.tscn", root.global_position, root.get_parent(), {direction = root.facing_direction_2d})
 
 
 	

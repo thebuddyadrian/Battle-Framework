@@ -518,6 +518,7 @@ func spawn_scene(spawnable_name: String, scene_path: String, pos: Vector3 = glob
 	var scene: PackedScene = load(scene_path).duplicate()
 	var node = scene.instantiate()
 	node.global_position = pos
+	data["dir"] = facing_direction_2d
 	if parent == null: # Allows user to skip defining a parent and use a default
 		parent = get_parent()
 	if node is BaseSpawnable:

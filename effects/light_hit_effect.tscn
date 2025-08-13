@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://isxjyw6sj7a8"]
+
+[ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_wd54e"]
+[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="2_edu5d"]
+[ext_resource type="Script" uid="uid://d0127k12xvws" path="res://components/battle_sprite/battle_animated_sprite.gd" id="3_kpvm4"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8nb4u"]
+atlas = ExtResource("2_edu5d")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dp1ui"]
+atlas = ExtResource("2_edu5d")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wnijb"]
+atlas = ExtResource("2_edu5d")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fykes"]
+atlas = ExtResource("2_edu5d")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_17hdm"]
+atlas = ExtResource("2_edu5d")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tkvyt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8nb4u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dp1ui")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wnijb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fykes")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_17hdm")
+}],
+"loop": false,
+"name": &"Anim",
+"speed": 18.0
+}]
+
+[node name="LightHitEffect" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_wd54e")
+animated_sprite = NodePath("BattleAnimatedSprite3D")
+metadata/_custom_type_script = "uid://dw8sbuf2itowu"
+
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_tkvyt")
+animation = &"Anim"
+autoplay = "Anim"
+script = ExtResource("3_kpvm4")
+metadata/_custom_type_script = "uid://d0127k12xvws"

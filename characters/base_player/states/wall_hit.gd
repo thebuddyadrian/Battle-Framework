@@ -1,5 +1,5 @@
 extends BaseState
-const WALL_HIT_EFFECT_PATH = "res://spawnables/wall_hit_effect.tscn"
+const WALL_HIT_EFFECT_PATH = "res://effects/wall_hit_effect.tscn"
 
 
 func _enter(data = {}):

@@ -4,7 +4,7 @@ var startup_frames = 6
 var guard_frames = 16
 var recovery_frames = 10
 
-const GUARD_EFFECT_PATH = "res://spawnables/effects/guard_effect.tscn"
+const GUARD_EFFECT_PATH = "res://effects/guard_effect.tscn"
 
 
 func _enter(data = {}):

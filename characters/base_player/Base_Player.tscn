@@ -56,7 +56,7 @@ hit_freeze = 5
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.158813
+radius = 0.295955
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_3twb4"]
 size = Vector3(0.188656, 0.317568, 0.231695)

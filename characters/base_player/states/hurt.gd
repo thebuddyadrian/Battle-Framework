@@ -2,10 +2,9 @@ extends BaseState
 
 var hit_stun_deceleration = 0.6
 var hit_data: HitData
-const LIGHT_HIT_EFFECT_PATH = "res://spawnables/light_hit_effect.tscn"
-const HEAVY_HIT_EFFECT_PATH = "res://spawnables/heavy_hit_effect.tscn"
+const LIGHT_HIT_EFFECT_PATH = "res://effects/light_hit_effect.tscn"
+const HEAVY_HIT_EFFECT_PATH = "res://effects/heavy_hit_effect.tscn"
 var spawned_effect: bool = false
-var proj
 func _enter(data = {}) -> void:
 	root.deceleration_enabled = false
 	root.animplayer.stop()
@@ -16,10 +15,9 @@ func _enter(data = {}) -> void:
 		hit_data.knockback_type = HitData.KNOCKBACK_TYPE.KNOCKDOWN
 
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.WEAK:
-		proj = root.spawn_scene("LightHitEffect", LIGHT_HIT_EFFECT_PATH, root.global_position, null, data)
-		proj.position = root.position
-		proj.position.y = root.position.y + 1
-		print("PROJ DIRECTION: ",proj.direction)
+		var effect = root.spawn_scene("LightHitEffect", LIGHT_HIT_EFFECT_PATH, root.global_position, null)
+		effect.position = root.position
+		effect.position.y = root.position.y + 1
 		root.animplayer.play("Hurt")
 		hit_stun_deceleration = 0.6
 	elif hit_data.knockback_type == HitData.KNOCKBACK_TYPE.LAUNCH or hit_data.knockback_type  == HitData.KNOCKBACK_TYPE.UP:

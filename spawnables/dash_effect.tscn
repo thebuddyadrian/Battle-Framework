@@ -1,6 +1,6 @@
-[gd_scene load_steps=27 format=3 uid="uid://deq4msd7roqfv"]
+[gd_scene load_steps=27 format=3 uid="uid://di45gjwwfbnhq"]
 
-[ext_resource type="Script" uid="uid://drcg8tfkefl6u" path="res://spawnables/Dash_effect.gd" id="1_4omq8"]
+[ext_resource type="Script" path="res://spawnables/Dash_effect.gd" id="1_4omq8"]
 [ext_resource type="Resource" uid="uid://bv2edat0khvum" path="res://spawnables/ShotData/DashEffect.tres" id="2_5rud4"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_fxg5k"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_16j1f"]

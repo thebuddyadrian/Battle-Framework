@@ -1,7 +1,8 @@
-[gd_scene load_steps=14 format=3 uid="uid://c0oivotpokfcb"]
+[gd_scene load_steps=15 format=3 uid="uid://c0oivotpokfcb"]
 
-[ext_resource type="Script" uid="uid://dr8648ls3dr28" path="res://spawnables/effects/heavy_effect.gd" id="1_rbopo"]
+[ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_v8ew1"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="2_rbsx6"]
+[ext_resource type="Script" uid="uid://d0127k12xvws" path="res://components/battle_sprite/battle_animated_sprite.gd" id="3_v8ew1"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vl8yi"]
 atlas = ExtResource("2_rbsx6")
@@ -81,12 +82,11 @@ animations = [{
 "speed": 13.0
 }]
 
-[node name="HeavyEffect" type="Node3D"]
-script = ExtResource("1_rbopo")
+[node name="HeavyEffect" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_v8ew1")
+animated_sprite = NodePath("BattleAnimatedSprite3D")
 
-[node name="SpriteHolder" type="Node3D" parent="."]
-
-[node name="Sprite" type="AnimatedSprite3D" parent="SpriteHolder"]
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -0.0367724, 0)
 billboard = 1
 texture_filter = 0
@@ -95,5 +95,6 @@ sprite_frames = SubResource("SpriteFrames_d888b")
 autoplay = "default"
 frame = 9
 frame_progress = 1.0
+script = ExtResource("3_v8ew1")
 
-[connection signal="animation_finished" from="SpriteHolder/Sprite" to="." method="_on_sprite_animation_finished"]
+[connection signal="animation_finished" from="BattleAnimatedSprite3D" to="." method="_on_sprite_animation_finished"]

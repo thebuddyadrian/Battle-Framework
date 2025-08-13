@@ -1,0 +1,72 @@
+[gd_scene load_steps=11 format=3 uid="uid://gmq84gow8j5w"]
+
+[ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_ob7he"]
+[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="2_6hhh3"]
+[ext_resource type="Script" uid="uid://d0127k12xvws" path="res://components/battle_sprite/battle_animated_sprite.gd" id="3_y0kwb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xw5af"]
+atlas = ExtResource("2_6hhh3")
+region = Rect2(200, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xs6k8"]
+atlas = ExtResource("2_6hhh3")
+region = Rect2(300, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_y3ulj"]
+atlas = ExtResource("2_6hhh3")
+region = Rect2(400, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wmxfl"]
+atlas = ExtResource("2_6hhh3")
+region = Rect2(500, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p5apu"]
+atlas = ExtResource("2_6hhh3")
+region = Rect2(600, 100, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpqyo"]
+atlas = ExtResource("2_6hhh3")
+region = Rect2(700, 100, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ob7he"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xw5af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xs6k8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_y3ulj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wmxfl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p5apu")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpqyo")
+}],
+"loop": false,
+"name": &"Anim",
+"speed": 18.0
+}]
+
+[node name="WallHitEffect" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_ob7he")
+animated_sprite = NodePath("BattleAnimatedSprite3D")
+metadata/_custom_type_script = "uid://dw8sbuf2itowu"
+
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_ob7he")
+animation = &"Anim"
+autoplay = "Anim"
+frame = 5
+frame_progress = 1.0
+script = ExtResource("3_y0kwb")
+metadata/_custom_type_script = "uid://d0127k12xvws"
