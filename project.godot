@@ -69,6 +69,7 @@ window/size/viewport_width=240
 window/size/viewport_height=160
 window/size/window_width_override=640
 window/size/window_height_override=480
+window/subwindows/embed_subwindows=false
 window/stretch/mode="viewport"
 
 [dotnet]
