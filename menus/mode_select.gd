@@ -20,6 +20,7 @@ func _ready() -> void:
 	ControlsSettings.load_controls()
 	change_mode(selected_mode)
 	flame_logo.play("default")
+	MusicPlayer.play_track(MusicPlayer.MAIN_MENU)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_left"):
@@ -33,8 +34,7 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		_next_menu()
-	if Input.is_action_just_pressed("ui_cancel"):
-		MusicPlayer.play_track(MusicPlayer.MAIN_MENU)
+		
 
 
 func _next_menu():
