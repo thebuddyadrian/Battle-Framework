@@ -27,6 +27,8 @@ func _ready() -> void:
 	# Make sure subwindows aren't embedded, or else multiple windows wont spawn
 	get_viewport().gui_embed_subwindows = false
 
+	Game.match_results.clear()
+
 	# Get music track
 	if stage_info:
 		if stage_info.music_file_path:
@@ -72,6 +74,7 @@ func _ready() -> void:
 		cameras[i].player_id_to_track = i + 1
 		player.name = str(player.player_id)
 		player.char_name = character
+		player.kod.connect(_on_player_kod)
 		spawn_position.get_parent().add_child(player)
 
 		# Spawn HUD
@@ -79,12 +82,6 @@ func _ready() -> void:
 		cameras[i].add_child(player_hud)
 		player_hud.track_player(player)
 
-	
-	# if camera_follows_player:
-	# 	camera._dont_rotate = true
-	# 	camera_pivot.player_to_follow = get_node("1")
-	# 	camera_pivot.follow_player = true
-	await get_tree().process_frame
 
 
 func _physics_process(delta: float) -> void:
@@ -162,6 +159,31 @@ func _physics_process(delta: float) -> void:
 	for hitbox in hurt_areas:
 		for hurtbox in hurt_areas[hitbox]:
 			hitbox.do_hit(hurtbox)
+
+
+func _get_alive_player_count():
+	var count: int = 0
+	for player in get_tree().get_nodes_in_group("characters"):
+		if player is BattleCharacter:
+			if player.current_stocks > 0:
+				count += 1
+	return count
+
+
+func _on_player_kod(player: BattleCharacter):
+	# Your placement depends on how many players were alive when you got KO'd
+	Game.match_results[player.player_id] = _get_alive_player_count() + 1
+	if _get_alive_player_count() <= 1:
+		# Add the winner player
+		for remaining_player in get_tree().get_nodes_in_group("characters"):
+			if remaining_player is BattleCharacter:
+				if remaining_player.current_stocks > 0:
+					Game.match_results[remaining_player.player_id] = 1
+		_go_to_results_screen()
+
+
+func _go_to_results_screen():
+	SceneChanger.change_scene_to_file("res://menus/results_screen/results_screen.tscn")
 
 
 # --- MOD EXPORTING STUFF ---

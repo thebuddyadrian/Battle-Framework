@@ -75,6 +75,8 @@ var invincibility_frames = 0
 @onready var hitbox: Hitbox = $Hitbox
 @onready var hurtbox: Hurtbox = $Hurtbox
 
+# Emitted when the player runs out of lives, see "respawn.gd"
+signal kod 
 
 
 

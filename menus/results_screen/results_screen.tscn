@@ -1,0 +1,51 @@
+[gd_scene load_steps=3 format=3 uid="uid://bgo5wk5qgm4co"]
+
+[ext_resource type="Script" uid="uid://bx7yck6inujd7" path="res://menus/results_screen/results_screen.gd" id="1_im8n6"]
+[ext_resource type="Texture2D" uid="uid://doi3o74wjlh3u" path="res://characters/sonic/sprites/Sonic Portrait.png" id="2_t68mw"]
+
+[node name="ResultsScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_im8n6")
+
+[node name="Winner" type="Label" parent="."]
+layout_mode = 0
+offset_right = 240.0
+offset_bottom = 23.0
+text = "Winner"
+
+[node name="BackButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 134.0
+offset_right = 239.0
+offset_bottom = 159.0
+theme_override_font_sizes/font_size = 12
+text = "Back to Menu"
+
+[node name="WinnerPortrait" type="TextureRect" parent="."]
+layout_mode = 0
+offset_top = 23.0
+offset_right = 87.0
+offset_bottom = 94.0
+texture = ExtResource("2_t68mw")
+
+[node name="WinnerInfo" type="Label" parent="."]
+layout_mode = 0
+offset_left = 87.0
+offset_top = 23.0
+offset_right = 235.0
+offset_bottom = 83.0
+
+[node name="OtherPlayerInfo" type="Label" parent="."]
+layout_mode = 0
+offset_top = 98.0
+offset_right = 240.0
+offset_bottom = 147.0
+theme_override_font_sizes/font_size = 8
+
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
