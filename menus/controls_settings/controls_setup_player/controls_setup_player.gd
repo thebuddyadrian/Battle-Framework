@@ -36,7 +36,7 @@ func _input_event_requested(controls_setup_node, event_index):
 	_set_all_event_buttons_disabled(true)
 			
 	# Wait for an input to be pressed
-	controls_setup_node.get_event_button(event_index).text = "Listening... (DEL to Reset)"
+	controls_setup_node.get_event_button(event_index).text = "Listening... (DEL to Clear)"
 	var input_event = await input_pressed
 	controls_setup_node.set_input_event(input_event, event_index)
 	
@@ -45,10 +45,12 @@ func _input_event_requested(controls_setup_node, event_index):
 	
 
 func _input(event: InputEvent) -> void:
-	if event is InputEventKey and event.is_pressed() and device_type == "keyboard":
+	# For deleting binds
+	if event is InputEventKey:
 		if event.keycode == KEY_DELETE:
 			input_pressed.emit(null)
 			return
+	if event is InputEventKey and event.is_pressed() and device_type == "keyboard":
 		input_pressed.emit(event)
 	if device_type == "gamepad":
 		if event is InputEventJoypadMotion:
