@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/15_-_Chao_Ruins.mp3-dda49bb6f34673462272247a2
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

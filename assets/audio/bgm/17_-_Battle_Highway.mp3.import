@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/17_-_Battle_Highway.mp3-a5fd8f4939dc1e99e4249
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

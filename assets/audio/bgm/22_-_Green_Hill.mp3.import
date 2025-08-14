@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/22_-_Green_Hill.mp3-6e206d8aa007c68eb4f7c1d43
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0
