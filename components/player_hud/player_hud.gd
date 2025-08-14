@@ -4,6 +4,7 @@ extends CanvasLayer
 @onready var icon: Sprite2D = $Lifebar/Icon
 @onready var stock_label: Label = $StockLabel
 @onready var pause_menu: Control = $Pause
+@onready var player_id_label: Label = $PlayerIDLabel
 
 var player_tracking: BattleCharacter
 
@@ -22,6 +23,7 @@ func track_player(player: BattleCharacter):
 	lifebar.max_value = player.HP
 	player_tracking = player
 	pause_menu.player_id = player.player_id
+	player_id_label.text = "P" + str(player.player_id)
 
 
 func _process(delta):
