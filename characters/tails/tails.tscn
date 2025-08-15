@@ -76,7 +76,7 @@ hit_freeze = 5
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.129537
+radius = 0.149445
 
 [node name="Tails" instance=ExtResource("1_b5y1r")]
 
@@ -148,7 +148,7 @@ attack_info = ExtResource("22_6dfm6")
 hit_data = SubResource("Resource_weptr")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0242278, -0.0212343, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172591, -0.139195, 0)
 shape = SubResource("SphereShape3D_3twb4")
 
 [node name="TestLabel" parent="." index="7"]
