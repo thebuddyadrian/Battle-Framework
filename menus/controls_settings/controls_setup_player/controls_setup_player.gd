@@ -17,6 +17,7 @@ signal input_pressed
 
 func _ready() -> void:
 	initialize()
+	Input.joy_connection_changed.connect(_on_joy_connection_changed)
 
 
 func initialize():
@@ -53,6 +54,8 @@ func _input(event: InputEvent) -> void:
 	if event is InputEventKey and event.is_pressed() and device_type == "keyboard":
 		input_pressed.emit(event)
 	if device_type == "gamepad":
+		if event.device != device_index:
+			return
 		if event is InputEventJoypadMotion:
 			if abs(event.axis_value) > 0.75:
 				input_pressed.emit(event)
@@ -60,6 +63,10 @@ func _input(event: InputEvent) -> void:
 		if event is InputEventJoypadButton:
 			input_pressed.emit(event)
 			return
+
+
+func _on_joy_connection_changed(_device, _connected):
+	update_device_dropdown()
 
 
 func load_from_input_map():
