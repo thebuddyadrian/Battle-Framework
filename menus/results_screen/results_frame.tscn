@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://05h8siy11cn"]
+
+[ext_resource type="Texture2D" uid="uid://lu8c8h4rqvnb" path="res://assets/ui/results/results.png" id="1_jum1d"]
+[ext_resource type="Script" uid="uid://crsnh8m8y8le2" path="res://menus/results_screen/results_frame.gd" id="2_na8yj"]
+
+[node name="results_frame" type="TextureRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -48.0
+offset_bottom = -104.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_jum1d")
+expand_mode = 1
+script = ExtResource("2_na8yj")
