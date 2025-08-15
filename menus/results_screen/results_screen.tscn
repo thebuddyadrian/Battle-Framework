@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bx7yck6inujd7" path="res://menus/results_screen/results_screen.gd" id="1_im8n6"]
 [ext_resource type="Texture2D" uid="uid://doi3o74wjlh3u" path="res://characters/sonic/sprites/Sonic Portrait.png" id="2_t68mw"]
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_u448v"]
-[ext_resource type="PackedScene" uid="uid://05h8siy11cn" path="res://menus/results_screen/results_frame.tscn" id="3_ot5hy"]
+[ext_resource type="PackedScene" path="res://menus/results_screen/results_frame.tscn" id="3_ot5hy"]
 
 [node name="ResultsScreen" type="Control"]
 layout_mode = 3
@@ -15,8 +15,10 @@ grow_vertical = 2
 script = ExtResource("1_im8n6")
 
 [node name="Background" parent="." instance=ExtResource("2_u448v")]
+visible = false
 
 [node name="results_frame" parent="." instance=ExtResource("3_ot5hy")]
+visible = false
 layout_mode = 1
 offset_left = 48.0
 offset_right = 0.0
