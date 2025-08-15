@@ -16,6 +16,7 @@ class_name BattleCharacter
 @export var AIR_DECELERATION = 0.15
 @export var AIR_ACCELERATION = 0.5
 @export var MAX_AIR_ACTION = 1
+@export var MAX_AIR_SKILL = 1
 
 @export var IS_CLIENTSIDE = false
 
@@ -63,6 +64,8 @@ const MAX_WALL_BOUNCES = 2
 var wall_bounces = 0
 # If > 0, the player will have limited invincibility (check Hitbox.gd "check_if_hit" function)
 var invincibility_frames = 0
+# To stop the player from spamming air skill
+var air_skills_used: int = 0
 
 @onready var Sprite = $PlayerSprite
 @onready var effects = $PlayerSprite/Effects
@@ -405,7 +408,9 @@ func _check_for_ground_special():
 
 
 func _check_for_air_special():
-	if input("skill", "just_pressed") and !state_machine.active_state is BaseAttack:
+	if input("skill", "just_pressed") and !state_machine.active_state is BaseAttack and air_skills_used < MAX_AIR_SKILL:
+		# Count the amount of air skills used in the air. Will be reset in idle.gd
+		air_skills_used += 1
 		state_machine.change_state("AirPow")
 		return true
 	return false

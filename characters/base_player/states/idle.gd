@@ -10,6 +10,9 @@ func _enter(data = {}):
 	root.animplayer.play("Idle")
 	# Reset wall bounces
 	root.wall_bounces = 0
+	# Reset air skills and actions
+	root.air_actions_used = 0
+	root.air_skills_used = 0
 
 
 func _step():
