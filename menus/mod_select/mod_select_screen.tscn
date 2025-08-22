@@ -1,0 +1,95 @@
+[gd_scene load_steps=6 format=3 uid="uid://ua815roeqime"]
+
+[ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="1_fc2bp"]
+[ext_resource type="Script" uid="uid://cv4bt16u5n542" path="res://menus/mod_select/mod_select_menu.gd" id="1_wu6xq"]
+[ext_resource type="PackedScene" uid="uid://cxtlc1erx2ms7" path="res://ModLoader/UI/Mod_Menu_UI_Base.tscn" id="2_syn2y"]
+[ext_resource type="Shader" uid="uid://b7frwxe5glvvi" path="res://menus/background.gdshader" id="2_wu6xq"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ymjx6"]
+shader = ExtResource("2_wu6xq")
+shader_parameter/h = 0.135
+shader_parameter/s = 0.788
+shader_parameter/v = 1.0
+
+[node name="mod_select_screen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_wu6xq")
+
+[node name="Background" parent="." instance=ExtResource("1_fc2bp")]
+material = SubResource("ShaderMaterial_ymjx6")
+
+[node name="Menus" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuSelect" type="Control" parent="Menus"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModMenu" type="Button" parent="Menus/MenuSelect"]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 4.0
+offset_top = -76.0
+offset_right = -4.0
+offset_bottom = -45.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "MODS"
+
+[node name="Exit" type="Button" parent="Menus/MenuSelect"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 4.0
+offset_top = -34.0
+offset_right = 49.0
+offset_bottom = -3.0
+grow_vertical = 0
+text = "Back"
+
+[node name="ModList" type="Control" parent="Menus"]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ModMenuUIBase" parent="Menus/ModList" instance=ExtResource("2_syn2y")]
+layout_mode = 1
+offset_top = 20.0
+
+[node name="BackButton" type="Button" parent="Menus/ModList"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 4.0
+offset_top = 2.0
+offset_right = -4.0
+offset_bottom = 22.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 8
+text = "BACK"
+
+[connection signal="pressed" from="Menus/MenuSelect/ModMenu" to="." method="SelectMenu" binds= [&"ModList"]]
+[connection signal="pressed" from="Menus/MenuSelect/Exit" to="." method="BackToMainMenu"]
+[connection signal="pressed" from="Menus/ModList/BackButton" to="." method="SelectMenu" binds= [&"MenuSelect"]]

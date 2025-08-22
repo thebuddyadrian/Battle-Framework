@@ -20,11 +20,22 @@ var character_display_names: Dictionary = {
 	"kid_goku": "Kid Goku",
 }
 
+var Character_Portrait_texture: Dictionary ={
+	"sonic": preload("res://characters/sonic/sprites/Sonic Portrait.png"),
+	"tails": preload("res://characters/tails/sprites/Tails Portrait.png"),
+	"knuckles": preload("res://characters/knuckles/sprites/Knuckles Portrait.png"),
+	"shadow": preload("res://characters/shadow/sprites/Shadow Portrait.png")
+}
+
 var modded_char_display_names:Dictionary = {
 	
 }
 #referenced for spawning characters from different Directories
 var modded_character_dir:Dictionary = {
+	
+}
+
+var modded_Char_Portrait_texture:Dictionary ={
 	
 }
 

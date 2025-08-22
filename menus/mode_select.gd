@@ -1,7 +1,8 @@
 extends Control
 
-enum MODE {STORY, BATTLE, CHALLENGE, TRAINING, MINIGAMES, RECORD, OPTIONS}
-const MODE_NAMES = ["Story Mode", "Battle Mode", "Challenge Mode", "Training Mode", "Mini Games", "Battle Record", "Options"]
+enum MODE {STORY, BATTLE, CHALLENGE, TRAINING, MINIGAMES, RECORD, OPTIONS, MODS}
+const MODE_NAMES = ["Story Mode", "Battle Mode", "Challenge Mode", "Training Mode", "Mini Games", "Battle Record", "Options","MODS"]
+const ACTIVE_MODES = [MODE.BATTLE,MODE.MODS]
 const ARROW_SCALE_DEFAULT: Vector2 = Vector2(1, 1)
 var selected_mode: MODE = MODE.STORY : set = change_mode
 var current_sprite: Sprite2D
@@ -38,8 +39,11 @@ func _process(delta: float) -> void:
 
 
 func _next_menu():
-	if selected_mode == MODE.BATTLE:
-		SceneChanger.change_scene_to_file("res://menus/player_setup.tscn")
+	match(selected_mode):
+		MODE.BATTLE:
+			SceneChanger.change_scene_to_file("res://menus/player_setup.tscn")
+		MODE.MODS:
+			SceneChanger.change_scene_to_file("res://menus/mod_select/mod_select_screen.tscn")
 
 
 func change_mode(p_mode):
@@ -64,7 +68,7 @@ func change_mode(p_mode):
 	fade_in.play()
 	fade_in.tween_property(current_sprite, "modulate:a", 1, 0.2)
 	#current_mode_label.text = "<--" + MODE_NAMES[selected_mode] + "-->"
-	not_ready_yet.visible = (selected_mode != MODE.BATTLE)
+	not_ready_yet.visible = (!ACTIVE_MODES.has(selected_mode))
 
 
 func arrow_animation(arrow_node: Sprite2D):

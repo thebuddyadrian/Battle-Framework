@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c2tqnyliq0dwg"]
+[gd_scene load_steps=19 format=3 uid="uid://c2tqnyliq0dwg"]
 
 [ext_resource type="Script" uid="uid://cseybjtb7aloj" path="res://menus/mode_select.gd" id="1_5ovjn"]
 [ext_resource type="Texture2D" uid="uid://dqijbbv7qnwjo" path="res://sonic battle menu.png" id="2_ki0r6"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://omjnld08itl3" path="res://assets/ui/menus/mode_select/mini-games.png" id="8_cne22"]
 [ext_resource type="Texture2D" uid="uid://p884uj8qq1xx" path="res://assets/ui/menus/mode_select/record.png" id="9_h5q80"]
 [ext_resource type="Texture2D" uid="uid://b63yx57cgh47o" path="res://assets/ui/menus/mode_select/mode_select.png" id="14_h5q80"]
+[ext_resource type="Texture2D" uid="uid://brark42gbt2hm" path="res://assets/ui/menus/mode_select/ModsIcon.png" id="14_rufb7"]
 [ext_resource type="PackedScene" uid="uid://bdxoanh00d4h4" path="res://menus/flame_logo.tscn" id="15_j86my"]
 [ext_resource type="AudioStream" uid="uid://dl8ljyjfruc5e" path="res://assets/audio/sfx/menu/mode_change.wav" id="16_4rtil"]
 
@@ -98,6 +99,10 @@ texture = ExtResource("9_h5q80")
 [node name="Options" type="Sprite2D" parent="ModeSprites"]
 visible = false
 texture = ExtResource("5_c4hpj")
+
+[node name="Mods" type="Sprite2D" parent="ModeSprites"]
+visible = false
+texture = ExtResource("14_rufb7")
 
 [node name="ModeSelect" type="Sprite2D" parent="."]
 position = Vector2(64, 30)

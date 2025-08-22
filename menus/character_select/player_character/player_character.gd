@@ -11,12 +11,7 @@ var character: String : set = set_character
 @onready var player_name: Label = $PlayerName
 @onready var character_portrait: TextureRect = $Portrait_Manager/Characters
 @onready var pixelate: AnimationPlayer = $Portrait_Manager/pixelate
-@export var portrait_texture : Dictionary = {
-	"sonic": preload("res://characters/sonic/sprites/Sonic Portrait.png"),
-	"tails": preload("res://characters/tails/sprites/Tails Portrait.png"),
-	"knuckles": preload("res://characters/knuckles/sprites/Knuckles Portrait.png"),
-	"shadow": preload("res://characters/shadow/sprites/Shadow Portrait.png")
-	}
+@export var Empty_Portait_Texture:Texture2D = preload("res://characters/base_player/sprites/UnkownPortrait.png")
 
 
 signal selection_finished
@@ -48,17 +43,24 @@ func set_active(p_active: bool):
 
 func set_character_index(p_index: int):
 	character_index = p_index
+	#Reference character List
+	var RefCharacters = Lists.characters + Lists.modded_characters
+	
 	if character_index < 0:
-		character_index = Lists.characters.size() - 1
-	if character_index >= Lists.characters.size():
+		character_index = RefCharacters.size() - 1
+	if character_index >= RefCharacters.size():
 		character_index = 0
-	set_character(Lists.characters[character_index])
+	set_character(RefCharacters[character_index])
 
 
 func set_character(p_character: String):
 	character = p_character
-	character_selected.text = "Character:\n" + Lists.character_display_names[character]
+	character_selected.text = "Character:\n" + (Lists.character_display_names.merged(Lists.modded_char_display_names))[character]
 	pixelate.stop()
 	pixelate.play("pixelate")
 	await get_tree().create_timer(0.4).timeout
-	character_portrait.texture = portrait_texture[character]
+	var PortraitList = Lists.Character_Portrait_texture.merged(Lists.modded_Char_Portrait_texture)
+	if(PortraitList.has(character)):
+		character_portrait.texture = Lists.Character_Portrait_texture.merged(Lists.modded_Char_Portrait_texture)[character]
+	else:
+		character_portrait.texture = Empty_Portait_Texture

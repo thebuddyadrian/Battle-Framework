@@ -12,6 +12,7 @@ func _ready() -> void:
 func UpdateModEntries() -> void:
 	for _child in $ModMenuArea/ScrollContainer/VBoxContainer.get_children():
 		_child.queue_free()
+	$ModMenuArea/NoMods.visible = ModLoaderMaster.ModsByDir.size() <= 0
 	for _mod in ModLoaderMaster.ModsByDir:
 		var CurrentModEntry = BaseModEntry.instantiate()
 		CurrentModEntry.get_node("ModTab/Label").text = _mod.get_file().get_basename()

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bfymnh44ku2k4"]
 
-[ext_resource type="Texture2D" uid="uid://b4e72gl5uqhpv" path="res://assets/ui/SonicLife.png" id="1_hty7j"]
+[ext_resource type="Texture2D" uid="uid://b4e72gl5uqhpv" path="res://characters/sonic/sprites/SonicLife.png" id="1_hty7j"]
 
 [node name="SubModEntry" type="Control"]
 custom_minimum_size = Vector2(0, 28)
