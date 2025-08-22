@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_hr1co")
 display_name = "Holy Summit"
-music_file_path = ""
+music_file_path = "uid://2lvoh4183uko"
 metadata/_custom_type_script = "uid://bh7hc4po624b3"

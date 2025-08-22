@@ -43,6 +43,7 @@ func _physics_process(delta: float) -> void:
 				it3.play("Highlighted")
 				if input("jump", "just_pressed"):
 					get_tree().paused = false
+					get_viewport().gui_embed_subwindows = false
 					get_tree().change_scene_to_file("res://menus/mode_select.tscn")
 	
 		if input("pause", "just_pressed"):

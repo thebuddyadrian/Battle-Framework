@@ -13,6 +13,9 @@ var delayed_calls := {}
 var human_players: int = 0
 var cpu_players: int = 0
 var character_choices := {}
+var match_results = {
+	#<player_id>: <ranking number>
+} # Stores the player ranking for the victory screen
 
 var CurrentVersion:int = 0
 var CurrentSubVersion:int = 1

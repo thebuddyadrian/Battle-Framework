@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_5e1sv")
 display_name = "Battle Highway"
-music_file_path = ""
+music_file_path = "uid://cay1jl2pv1bmx"
 metadata/_custom_type_script = "uid://bh7hc4po624b3"

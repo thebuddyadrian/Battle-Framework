@@ -16,6 +16,7 @@ class_name BattleCharacter
 @export var AIR_DECELERATION = 0.15
 @export var AIR_ACCELERATION = 0.5
 @export var MAX_AIR_ACTION = 1
+@export var MAX_AIR_SKILL = 1
 
 @export var IS_CLIENTSIDE = false
 
@@ -53,6 +54,8 @@ var most_recent_direction_input: String = "right"
 var VALID_ACTIONS = ["move", "jump", "dash", "air_action", "attack", "skill", "guard", "heal"]
 # Keep track of the last player you hit
 var last_hit_player: BattleCharacter
+# Keep track of the last player who hit you
+var last_player_hit_by: BattleCharacter
 #This is crucial for allowing the player to move relative to the camera.
 var camera: Node3D
 # If active, player will not do any processing in _physics_process
@@ -61,6 +64,8 @@ const MAX_WALL_BOUNCES = 2
 var wall_bounces = 0
 # If > 0, the player will have limited invincibility (check Hitbox.gd "check_if_hit" function)
 var invincibility_frames = 0
+# To stop the player from spamming air skill
+var air_skills_used: int = 0
 
 @onready var Sprite = $PlayerSprite
 @onready var effects = $PlayerSprite/Effects
@@ -73,6 +78,8 @@ var invincibility_frames = 0
 @onready var hitbox: Hitbox = $Hitbox
 @onready var hurtbox: Hurtbox = $Hurtbox
 
+# Emitted when the player runs out of lives, see "respawn.gd"
+signal kod 
 
 
 
@@ -260,7 +267,7 @@ func _check_for_dash() -> bool:
 		# If following up from a heavy attack, do a homing dash instead
 		if state_machine.active_state.name == "Heavy":
 			if state_machine.active_state.move_hit:
-				state_machine.change_state("HomingDash")
+				state_machine.change_state("HomingDash", {"opponent": last_hit_player})
 				return true
 		state_machine.change_state("Dash")
 		return true
@@ -401,7 +408,9 @@ func _check_for_ground_special():
 
 
 func _check_for_air_special():
-	if input("skill", "just_pressed") and !state_machine.active_state is BaseAttack:
+	if input("skill", "just_pressed") and !state_machine.active_state is BaseAttack and air_skills_used < MAX_AIR_SKILL:
+		# Count the amount of air skills used in the air. Will be reset in idle.gd
+		air_skills_used += 1
 		state_machine.change_state("AirPow")
 		return true
 	return false
@@ -434,11 +443,17 @@ func set_facing_direction_2d(direction: int):
 	# Set facing direction relative to the camera
 	var vec: Vector2 = Vector2(direction, 0).rotated(-camera.rotation.y)
 	facing_direction_2d = sign(vec.x)
+	facing_direction.x = facing_direction_2d
 
 
 ## Makes the player face the opposite direction
 func flip_facing_direction_2d():
 	facing_direction_2d = -facing_direction_2d
+	facing_direction.x = facing_direction_2d
+
+
+func match_facing_direction_to_movement():
+	facing_direction = get_movement_vector()
 
 
 ## Check whether the player should turn to face the correct direction
@@ -509,13 +524,13 @@ func spawn_scene(spawnable_name: String, scene_path: String, pos: Vector3 = glob
 	# Maybe we can store it in a cache so it doesn't need to be loaded from disk every time?
 	var scene: PackedScene = load(scene_path).duplicate()
 	var node = scene.instantiate()
-	if parent == null: # Allows user to skip defining a parent and use a default
-		parent = get_tree().current_scene
-	parent.add_child(node)
-	
 	node.global_position = pos
+	data["dir"] = facing_direction_2d
+	if parent == null: # Allows user to skip defining a parent and use a default
+		parent = get_parent()
 	if node is BaseSpawnable:
 		node.summoner = self
+	parent.add_child(node)
 	if node is BaseSpawnable:
 		node._spawn(data)
 	elif node.has_method("_on_spawn"):
@@ -536,21 +551,23 @@ func play_voice_clip(voice_clip_name: String):
 
 
 ## When the player gets hit
-func _on_hurtbox_hurt(hit_data: HitData, hitbox: Hitbox) -> void:
+func _on_hurtbox_hurt(hit_data: HitData, attacker_hitbox: Hitbox) -> void:
 	current_hp = max(current_hp - hit_data.damage, 0) # Stop HP from going below zero
 	state_machine.change_state("Hurt", {hit_data = hit_data})
 	freeze_frames = 2
+	if attacker_hitbox.root is BattleCharacter:
+		last_player_hit_by = attacker_hitbox.root
 
 
 ## When the player succesfully lands a hit
-func _on_hitbox_hit(hit_data: HitData, hurtbox: Hurtbox) -> void:
+func _on_hitbox_hit(hit_data: HitData, opponent_hurtbox: Hurtbox) -> void:
 	if state_machine.active_state.has_method("_on_hitbox_hit"):
 		state_machine.active_state._on_hitbox_hit(hit_data, hurtbox)
 	# TO-DO - Instead of hardcoding a sound effect it should depend on the defined hit sound
 	play_sound_effect("hit_light")
 	freeze_frames = 2
-	if hurtbox.root is BattleCharacter:
-		last_hit_player = hurtbox.root
+	if opponent_hurtbox.root is BattleCharacter:
+		last_hit_player = opponent_hurtbox.root
 
 
 ## When the player hits a guarding opponent, go to the "Blocked" state to stagger back

@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://c0oivotpokfcb"]
+
+[ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_v8ew1"]
+[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="2_rbsx6"]
+[ext_resource type="Script" uid="uid://d0127k12xvws" path="res://components/battle_sprite/battle_animated_sprite.gd" id="3_v8ew1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vl8yi"]
+atlas = ExtResource("2_rbsx6")
+region = Rect2(100, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5bot3"]
+atlas = ExtResource("2_rbsx6")
+region = Rect2(200, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_47wma"]
+atlas = ExtResource("2_rbsx6")
+region = Rect2(300, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vdpvm"]
+atlas = ExtResource("2_rbsx6")
+region = Rect2(400, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uii26"]
+atlas = ExtResource("2_rbsx6")
+region = Rect2(500, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g0toq"]
+atlas = ExtResource("2_rbsx6")
+region = Rect2(600, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_35pvj"]
+atlas = ExtResource("2_rbsx6")
+region = Rect2(700, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_w0lxi"]
+atlas = ExtResource("2_rbsx6")
+region = Rect2(800, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ibo0p"]
+atlas = ExtResource("2_rbsx6")
+region = Rect2(900, 500, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kybps"]
+atlas = ExtResource("2_rbsx6")
+region = Rect2(0, 600, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d888b"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vl8yi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5bot3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_47wma")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vdpvm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uii26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g0toq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_35pvj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_w0lxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ibo0p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kybps")
+}],
+"loop": false,
+"name": &"default",
+"speed": 13.0
+}]
+
+[node name="HeavyEffect" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_v8ew1")
+animated_sprite = NodePath("BattleAnimatedSprite3D")
+
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, -0.0367724, 0)
+billboard = 1
+texture_filter = 0
+render_priority = 1
+sprite_frames = SubResource("SpriteFrames_d888b")
+autoplay = "default"
+frame = 9
+frame_progress = 1.0
+script = ExtResource("3_v8ew1")
+
+[connection signal="animation_finished" from="BattleAnimatedSprite3D" to="." method="_on_sprite_animation_finished"]

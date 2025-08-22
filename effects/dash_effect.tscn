@@ -1,0 +1,100 @@
+[gd_scene load_steps=15 format=3 uid="uid://bdxfk31w51e67"]
+
+[ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_0omtl"]
+[ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="2_uev4b"]
+[ext_resource type="Script" uid="uid://d0127k12xvws" path="res://components/battle_sprite/battle_animated_sprite.gd" id="3_spv8d"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rpegr"]
+atlas = ExtResource("2_uev4b")
+region = Rect2(100, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gk57"]
+atlas = ExtResource("2_uev4b")
+region = Rect2(200, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_11nds"]
+atlas = ExtResource("2_uev4b")
+region = Rect2(300, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_udkbq"]
+atlas = ExtResource("2_uev4b")
+region = Rect2(400, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xv6d1"]
+atlas = ExtResource("2_uev4b")
+region = Rect2(500, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gyncn"]
+atlas = ExtResource("2_uev4b")
+region = Rect2(600, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qn06s"]
+atlas = ExtResource("2_uev4b")
+region = Rect2(700, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lla2f"]
+atlas = ExtResource("2_uev4b")
+region = Rect2(800, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bvlx0"]
+atlas = ExtResource("2_uev4b")
+region = Rect2(900, 600, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hfbyk"]
+atlas = ExtResource("2_uev4b")
+region = Rect2(0, 700, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0omtl"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rpegr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gk57")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_11nds")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_udkbq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xv6d1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gyncn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qn06s")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lla2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bvlx0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hfbyk")
+}],
+"loop": false,
+"name": &"Anim",
+"speed": 15.0
+}]
+
+[node name="DashEffect" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_0omtl")
+animated_sprite = NodePath("BattleAnimatedSprite3D")
+metadata/_custom_type_script = "uid://dw8sbuf2itowu"
+
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_0omtl")
+animation = &"Anim"
+autoplay = "Anim"
+frame = 9
+frame_progress = 1.0
+script = ExtResource("3_spv8d")
+metadata/_custom_type_script = "uid://d0127k12xvws"

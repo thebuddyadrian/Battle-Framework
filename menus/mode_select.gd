@@ -15,9 +15,12 @@ var current_sprite: Sprite2D
 
 
 func _ready() -> void:
-	Globals.load_controls()
+	# The game might have been changed to disable embedding subwindows in-game, this will change it back
+	get_viewport().gui_embed_subwindows = true
+	ControlsSettings.load_controls()
 	change_mode(selected_mode)
 	flame_logo.play("default")
+	MusicPlayer.play_track(MusicPlayer.MAIN_MENU)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_left"):
@@ -31,8 +34,7 @@ func _process(delta: float) -> void:
 		
 	if Input.is_action_just_pressed("ui_accept"):
 		_next_menu()
-	if Input.is_action_just_pressed("ui_cancel"):
-		MusicPlayer.play_track(MusicPlayer.MAIN_MENU)
+		
 
 
 func _next_menu():

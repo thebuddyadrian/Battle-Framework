@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_g5g0e")
 display_name = "Chao Ruins"
-music_file_path = ""
+music_file_path = "uid://5g2iwiaxee16"
 metadata/_custom_type_script = "uid://bh7hc4po624b3"

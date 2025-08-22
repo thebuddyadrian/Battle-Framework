@@ -1,0 +1,39 @@
+[gd_scene load_steps=3 format=3 uid="uid://r8ajlj5l5ifb"]
+
+[ext_resource type="Texture2D" uid="uid://b78ci8jhbqgon" path="res://assets/ui/menus/mode_select/misc/battlemodeHUDholder.png" id="1_d3vfk"]
+[ext_resource type="Texture2D" uid="uid://c1ufet2gs1gv3" path="res://assets/ui/menus/mode_select/misc/battlemodeHUDblue.png" id="2_5dob8"]
+
+[node name="battlemode_HUD_BG" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 8.0
+offset_right = -122.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="1" type="TextureRect" parent="."]
+modulate = Color(1, 1, 1, 0.568627)
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.121
+anchor_bottom = -0.121
+offset_left = 2.0
+offset_top = 10.534
+offset_right = 120.0
+offset_bottom = 66.534
+texture = ExtResource("1_d3vfk")
+expand_mode = 1
+
+[node name="2" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = -0.136
+anchor_bottom = -0.136
+offset_left = 3.0
+offset_top = 23.344
+offset_right = 118.0
+offset_bottom = 65.344
+texture = ExtResource("2_5dob8")

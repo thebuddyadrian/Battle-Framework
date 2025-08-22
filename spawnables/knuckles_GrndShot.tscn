@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_bgp5q"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_3pn0n"]
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_ximta"]
-[ext_resource type="Texture2D" uid="uid://ds3c6j0olh44r" path="res://assets/knuckles/Knuckles spritesheet.png" id="6_6a5te"]
+[ext_resource type="Texture2D" uid="uid://ds3c6j0olh44r" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="6_6a5te"]
 
 [sub_resource type="Resource" id="Resource_n410g"]
 script = ExtResource("4_3pn0n")

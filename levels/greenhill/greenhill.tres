@@ -5,5 +5,5 @@
 [resource]
 script = ExtResource("1_37uyw")
 display_name = "Green Hill"
-music_file_path = ""
+music_file_path = "uid://rr4qiitydhis"
 metadata/_custom_type_script = "uid://bh7hc4po624b3"

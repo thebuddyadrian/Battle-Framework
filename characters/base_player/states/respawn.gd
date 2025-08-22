@@ -11,6 +11,7 @@ func _enter(data = {}):
 
 func _do_respawn():
 	if root.current_stocks == 0:
+		root.kod.emit(root)
 		return
 	root.current_hp = root.HP
 	change_state("Idle")

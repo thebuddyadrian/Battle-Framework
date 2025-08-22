@@ -1,0 +1,105 @@
+[gd_scene load_steps=8 format=3 uid="uid://15coxxqw12kr"]
+
+[ext_resource type="Shader" uid="uid://cog3k73gsqffj" path="res://pixelate.gdshader" id="1_pq8p7"]
+[ext_resource type="PackedScene" uid="uid://r8ajlj5l5ifb" path="res://UI/battlemode_hud_bg.tscn" id="1_xectl"]
+[ext_resource type="Texture2D" uid="uid://doi3o74wjlh3u" path="res://characters/sonic/sprites/Sonic Portrait.png" id="2_pq8p7"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_cl634"]
+shader = ExtResource("1_pq8p7")
+shader_parameter/resolution = 256.0
+shader_parameter/enabled = false
+
+[sub_resource type="Animation" id="Animation_xectl"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Characters:material:shader_parameter/resolution")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [256.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Characters:material:shader_parameter/enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_pq8p7"]
+resource_name = "pixelate"
+length = 0.6
+step = 0.0166667
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Characters:material:shader_parameter/resolution")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.3, 0.6),
+"transitions": PackedFloat32Array(1, -2, -2, 1),
+"update": 0,
+"values": [64.0, 4.0, 4.0, 64.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Characters:material:shader_parameter/enabled")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cl634"]
+_data = {
+&"RESET": SubResource("Animation_xectl"),
+&"pixelate": SubResource("Animation_pq8p7")
+}
+
+[node name="Portrait_Manager" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 120.0
+offset_bottom = 80.0
+
+[node name="battlemode_HUD_BG" parent="." instance=ExtResource("1_xectl")]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_top = 14.0
+offset_right = 0.0
+offset_bottom = 14.0
+grow_horizontal = 1
+grow_vertical = 1
+
+[node name="Characters" type="TextureRect" parent="."]
+material = SubResource("ShaderMaterial_cl634")
+layout_mode = 1
+anchors_preset = -1
+offset_left = 32.0
+offset_top = 6.0
+offset_right = 119.0
+offset_bottom = 77.0
+texture = ExtResource("2_pq8p7")
+flip_h = true
+
+[node name="pixelate" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_cl634")
+}

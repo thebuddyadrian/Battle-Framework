@@ -32,7 +32,7 @@ offset_bottom = 512.0
 
 [node name="BG" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
 handle_input_locally = false
-size = Vector2i(320, 240)
+size = Vector2i(240, 160)
 render_target_update_mode = 0
 
 [node name="HologramSkybox" parent="CanvasLayer/SubViewportContainer/BG" instance=ExtResource("8_4yqvt")]
@@ -64,7 +64,8 @@ offset_bottom = 40.0
 [node name="Level" type="SubViewport" parent="SubViewportContainer"]
 transparent_bg = true
 handle_input_locally = false
-size = Vector2i(320, 240)
+audio_listener_enable_3d = true
+size = Vector2i(240, 160)
 render_target_update_mode = 4
 
 [node name="LevelRoot" type="Node3D" parent="SubViewportContainer/Level"]

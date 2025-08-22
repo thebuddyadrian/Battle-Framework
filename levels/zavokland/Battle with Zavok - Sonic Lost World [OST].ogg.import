@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://tyynsnojcgg1"
+path="res://.godot/imported/Battle with Zavok - Sonic Lost World [OST].ogg-8c0500c568b816a4a701e823898e390b.oggvorbisstr"
+
+[deps]
+
+source_file="res://levels/zavokland/Battle with Zavok - Sonic Lost World [OST].ogg"
+dest_files=["res://.godot/imported/Battle with Zavok - Sonic Lost World [OST].ogg-8c0500c568b816a4a701e823898e390b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

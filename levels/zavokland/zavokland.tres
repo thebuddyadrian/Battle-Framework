@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="StageInfo" load_steps=2 format=3 uid="uid://d4i5xoy711sl3"]
+
+[ext_resource type="Script" uid="uid://bh7hc4po624b3" path="res://levels/stage_info.gd" id="1_igwk0"]
+
+[resource]
+script = ExtResource("1_igwk0")
+display_name = "ZavokLand"
+music_file_path = "uid://tyynsnojcgg1"
+metadata/_custom_type_script = "uid://bh7hc4po624b3"

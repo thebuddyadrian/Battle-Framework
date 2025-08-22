@@ -12,7 +12,7 @@ dest_files=["res://.godot/imported/challenge_battle_mode.mp3-d57a8d84e895ec63d75
 
 [params]
 
-loop=false
+loop=true
 loop_offset=0
 bpm=0
 beat_count=0

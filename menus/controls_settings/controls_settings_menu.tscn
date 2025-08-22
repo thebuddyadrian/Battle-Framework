@@ -58,4 +58,19 @@ focus_mode = 0
 theme_override_font_sizes/font_size = 8
 text = "Save and Exit"
 
+[node name="ResetButton" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 170.0
+offset_top = -21.0
+offset_right = 242.0
+offset_bottom = -1.0
+grow_vertical = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 8
+text = "Reset To Default"
+
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="ResetButton" to="." method="_on_reset_button_pressed"]

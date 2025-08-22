@@ -1,15 +1,28 @@
-[gd_scene load_steps=2 format=3 uid="uid://dhl6gvecygwbc"]
+[gd_scene load_steps=3 format=3 uid="uid://dhl6gvecygwbc"]
 
 [ext_resource type="Script" uid="uid://bpjjhnx3q5um0" path="res://menus/character_select/player_character/player_character.gd" id="1_gu884"]
+[ext_resource type="PackedScene" uid="uid://15coxxqw12kr" path="res://characters/Portraits/characters.tscn" id="2_fq4xj"]
 
 [node name="PlayerCharacter" type="Control"]
-custom_minimum_size = Vector2(129, 53)
+custom_minimum_size = Vector2(120, 80)
 layout_mode = 3
 anchor_right = 0.5375
 anchor_bottom = 0.33125
+offset_right = -9.0
+offset_bottom = 27.0
 size_flags_horizontal = 3
 script = ExtResource("1_gu884")
 metadata/_edit_use_anchors_ = true
+
+[node name="Portrait_Manager" parent="." instance=ExtResource("2_fq4xj")]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 0.0
+offset_bottom = 0.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ReferenceRect" type="ReferenceRect" parent="."]
 layout_mode = 1
@@ -22,6 +35,7 @@ border_width = 3.0
 editor_only = false
 
 [node name="CharacterSelected" type="Label" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

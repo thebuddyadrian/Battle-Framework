@@ -1,16 +1,17 @@
-[gd_scene load_steps=41 format=3 uid="uid://lyfnd6of6efn"]
+[gd_scene load_steps=42 format=3 uid="uid://lyfnd6of6efn"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_qnw3q"]
 [ext_resource type="Script" uid="uid://c2lv0otitxe6m" path="res://characters/shadow/shadow.gd" id="2_h1jln"]
-[ext_resource type="Texture2D" uid="uid://dhbyatb3lkkct" path="res://assets/shadow/shadow .png" id="2_pfypo"]
+[ext_resource type="Texture2D" uid="uid://dhbyatb3lkkct" path="res://characters/shadow/sprites/shadow .png" id="2_pfypo"]
 [ext_resource type="AnimationLibrary" uid="uid://2fxpsp06qdso" path="res://characters/shadow/shadow_animation.res" id="3_pfypo"]
 [ext_resource type="Script" uid="uid://m57d41j6ing0" path="res://characters/knuckles/states/dash.tres.gd" id="4_h2on0"]
-[ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://assets/shadow/shadows_effects-Sheet.png" id="4_xq7wv"]
+[ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://characters/shadow/sprites/shadows_effects-Sheet.png" id="4_xq7wv"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_73oq7"]
+[ext_resource type="Script" uid="uid://cyjpv2h7kqytk" path="res://components/battle_sprite/battle_sprite.gd" id="7_73oq7"]
 [ext_resource type="Script" uid="uid://ueqal43akv04" path="res://characters/shadow/states/air_action.gd" id="7_xq7wv"]
-[ext_resource type="Script" uid="uid://b0fwnp3c7icpp" path="res://characters/shadow/jab_1.gd" id="10_73oq7"]
-[ext_resource type="Script" uid="uid://52cyo3vp73rr" path="res://characters/shadow/jab_2.gd" id="11_73oq7"]
-[ext_resource type="Script" uid="uid://blfv8c5qkube3" path="res://characters/shadow/jab_3.gd" id="12_73oq7"]
+[ext_resource type="Script" uid="uid://b0fwnp3c7icpp" path="res://characters/shadow/states/jab_1.gd" id="10_73oq7"]
+[ext_resource type="Script" uid="uid://52cyo3vp73rr" path="res://characters/shadow/states/jab_2.gd" id="11_73oq7"]
+[ext_resource type="Script" uid="uid://blfv8c5qkube3" path="res://characters/shadow/states/jab_3.gd" id="12_73oq7"]
 [ext_resource type="Script" uid="uid://dwjg3k38adtu6" path="res://characters/shadow/states/heavy.gd" id="12_gjr3y"]
 [ext_resource type="Resource" uid="uid://di838klmp6a00" path="res://characters/shadow/states/heavy.tres" id="13_cyjvw"]
 [ext_resource type="Resource" uid="uid://cciol0feieiui" path="res://characters/tails/states/jab_3.tres" id="13_vj6v6"]
@@ -30,7 +31,7 @@
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="25_xq7wv"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="26_h1jln"]
 [ext_resource type="Script" uid="uid://b50lj32f1nwfl" path="res://characters/shadow/states/grnd_trap.gd" id="26_mtehn"]
-[ext_resource type="Texture2D" uid="uid://bts0x6bqw6t3i" path="res://assets/ui/ShadowLife.png" id="27_cyjvw"]
+[ext_resource type="Texture2D" uid="uid://bts0x6bqw6t3i" path="res://characters/shadow/sprites/ShadowLife.png" id="27_cyjvw"]
 [ext_resource type="Resource" uid="uid://euruuouwvid3" path="res://characters/shadow/states/grnd_trap.tres" id="27_gjr3y"]
 [ext_resource type="Script" uid="uid://bi0hhacwa7lh3" path="res://characters/shadow/states/air_trap.gd" id="27_uak6g"]
 [ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="29_vj6v6"]
@@ -172,7 +173,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
-[sub_resource type="Resource" id="Resource_vj6v6"]
+[sub_resource type="Resource" id="Resource_w40b4"]
 script = ExtResource("23_0nker")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -202,8 +203,6 @@ libraries = {
 
 [node name="Effects" parent="PlayerSprite" index="1"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-visible = true
-offset = Vector2(-4, 0)
 billboard = 1
 render_priority = 1
 texture = ExtResource("4_xq7wv")
@@ -220,6 +219,7 @@ texture = ExtResource("6_73oq7")
 hframes = 10
 vframes = 11
 frame = 109
+script = ExtResource("7_73oq7")
 
 [node name="FlippedComponents" parent="." index="2"]
 transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0)
@@ -230,50 +230,50 @@ script = ExtResource("4_h2on0")
 [node name="AirAction" parent="StateMachine" index="7"]
 script = ExtResource("7_xq7wv")
 
-[node name="Jab1" parent="StateMachine" index="18"]
+[node name="Jab1" parent="StateMachine" index="19"]
 script = ExtResource("10_73oq7")
 attack_info = SubResource("Resource_73oq7")
 
-[node name="Jab2" parent="StateMachine" index="19"]
+[node name="Jab2" parent="StateMachine" index="20"]
 script = ExtResource("11_73oq7")
 attack_info = SubResource("Resource_djkpe")
 
-[node name="Jab3" parent="StateMachine" index="20"]
+[node name="Jab3" parent="StateMachine" index="21"]
 script = ExtResource("12_73oq7")
 attack_info = ExtResource("13_vj6v6")
 
-[node name="Heavy" parent="StateMachine" index="21"]
+[node name="Heavy" parent="StateMachine" index="22"]
 script = ExtResource("12_gjr3y")
 attack_info = ExtResource("13_cyjvw")
 
-[node name="Upper" parent="StateMachine" index="22"]
+[node name="Upper" parent="StateMachine" index="23"]
 script = ExtResource("14_gjr3y")
 attack_info = ExtResource("15_h1jln")
 
-[node name="DashAttack" parent="StateMachine" index="23"]
+[node name="DashAttack" parent="StateMachine" index="24"]
 attack_info = ExtResource("15_xq7wv")
 
-[node name="AirAttack" parent="StateMachine" index="24"]
+[node name="AirAttack" parent="StateMachine" index="25"]
 script = ExtResource("21_3o4s2")
 attack_info = ExtResource("18_h1jln")
 
-[node name="AimAttack" parent="StateMachine" index="25"]
+[node name="AimAttack" parent="StateMachine" index="26"]
 script = ExtResource("18_hh2a4")
 attack_info = ExtResource("19_gjr3y")
 
-[node name="GrndShot" parent="StateMachine" index="26"]
+[node name="GrndShot" parent="StateMachine" index="27"]
 script = ExtResource("25_w40b4")
 attack_info = ExtResource("20_gjr3y")
 
-[node name="GrndPow" parent="StateMachine" index="28"]
+[node name="GrndPow" parent="StateMachine" index="29"]
 script = ExtResource("22_cyjvw")
 attack_info = ExtResource("23_mtehn")
 
-[node name="AirPow" parent="StateMachine" index="29"]
+[node name="AirPow" parent="StateMachine" index="30"]
 script = ExtResource("29_w40b4")
 attack_info = SubResource("Resource_3o4s2")
 
-[node name="HomingDash" parent="StateMachine" index="30"]
+[node name="HomingDash" parent="StateMachine" index="31"]
 y_velocity = 20
 
 [node name="GrndTrap" type="Node" parent="StateMachine" index="32"]
@@ -285,7 +285,7 @@ script = ExtResource("27_uak6g")
 attack_info = SubResource("Resource_gjr3y")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_vj6v6")
+hit_data = SubResource("Resource_w40b4")
 
 [node name="TestLabel2" type="Label3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272035, 0)
