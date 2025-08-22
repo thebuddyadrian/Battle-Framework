@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://ua815roeqime"]
+[gd_scene load_steps=14 format=3 uid="uid://ua815roeqime"]
 
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="1_fc2bp"]
 [ext_resource type="Script" uid="uid://cv4bt16u5n542" path="res://menus/mod_select/mod_select_menu.gd" id="1_wu6xq"]
@@ -10,6 +10,188 @@ shader = ExtResource("2_wu6xq")
 shader_parameter/h = 0.135
 shader_parameter/s = 0.788
 shader_parameter/v = 1.0
+
+[sub_resource type="Animation" id="Animation_75fmc"]
+resource_name = "Open"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 0.6),
+"transitions": PackedFloat32Array(0.5, 1),
+"update": 0,
+"values": [Vector2(104, 72), Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.6),
+"transitions": PackedFloat32Array(1, 0.5, 1),
+"update": 0,
+"values": [Vector2(0.1, 0.1), Vector2(0.1, 0.1), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_ypas1"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="Animation" id="Animation_l65mb"]
+resource_name = "Close"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1.5, 0.5),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(118, 72)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.9),
+"transitions": PackedFloat32Array(1.5, 0.5),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.01, 0.01)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.9, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_tskwb"]
+_data = {
+&"Close": SubResource("Animation_l65mb"),
+&"Open": SubResource("Animation_75fmc"),
+&"RESET": SubResource("Animation_ypas1")
+}
+
+[sub_resource type="Animation" id="Animation_wu6xq"]
+resource_name = "Open"
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(0.2, 3, 1),
+"update": 0,
+"values": [Vector2(0, 160), Vector2(0, 0), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ymjx6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_7pxvu"]
+resource_name = "Close"
+length = 0.6
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(2.5, 0.2),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 160)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_75fmc"]
+_data = {
+&"Close": SubResource("Animation_7pxvu"),
+&"Open": SubResource("Animation_wu6xq"),
+&"RESET": SubResource("Animation_ymjx6")
+}
 
 [node name="mod_select_screen" type="Control"]
 layout_mode = 3
@@ -65,8 +247,12 @@ offset_bottom = -3.0
 grow_vertical = 0
 text = "Back"
 
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menus/MenuSelect"]
+libraries = {
+&"": SubResource("AnimationLibrary_tskwb")
+}
+
 [node name="ModList" type="Control" parent="Menus"]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -89,6 +275,11 @@ offset_bottom = 22.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 8
 text = "BACK"
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Menus/ModList"]
+libraries = {
+&"": SubResource("AnimationLibrary_75fmc")
+}
 
 [connection signal="pressed" from="Menus/MenuSelect/ModMenu" to="." method="SelectMenu" binds= [&"ModList"]]
 [connection signal="pressed" from="Menus/MenuSelect/Exit" to="." method="BackToMainMenu"]

@@ -189,3 +189,19 @@ static func FixAtGunPoint(_modpath:String, _QuickChanges:Dictionary = {}) -> voi
 
 static func GetReferencesFromModPath(_path:String) -> String:
 	return _path.get_base_dir().get_base_dir()+"/_References.json"
+	
+static func GetModIcons(_Mods:Dictionary) -> Dictionary:
+	var OutIcons:Dictionary = {}
+	for _M in _Mods.keys():
+		OutIcons[_M] = {}
+		for _S:String in _Mods[_M]:
+			var DataC:Dictionary = ReadFullJsonData(_S.get_basename()+"/"+_S.get_file()+".json")
+			var ImageDir:String = _S+"/"+DataC["Preview-Image"]
+			var HasPreview:bool = FileAccess.file_exists(ImageDir)
+			if(HasPreview):
+				var I:Image = Image.load_from_file(ImageDir)
+				var IT:ImageTexture = ImageTexture.create_from_image(I)
+				OutIcons[_M][_S] = (IT)
+			else:
+				OutIcons[_M][_S] = null #load("res://ModLoader/assets/QuestionMark.png")
+	return OutIcons

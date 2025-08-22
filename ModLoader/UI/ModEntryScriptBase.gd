@@ -17,6 +17,11 @@ func UpdateSubEntries(_subs:Array) -> void:
 		SubEntry.get_node("SubModButton/ItemName").text = _sub.get_file().get_basename()
 		$SubContainer.add_child(SubEntry)
 		
+		var IconBaseDir:String = _sub.get_base_dir().get_file()
+		if(ModLoaderMaster.SubsIcons[IconBaseDir].has(_sub)):
+			if(ModLoaderMaster.SubsIcons[IconBaseDir][_sub] != null):
+				SubEntry.get_node("SubModButton/TextureRect").texture = ModLoaderMaster.SubsIcons[IconBaseDir][_sub]
+		
 		
 	SubEntries = _subs
 

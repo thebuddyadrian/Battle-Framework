@@ -4,6 +4,7 @@
 	"Name":"E",
 	"Dialogue-Icon":"NULL.png",
 	"Preview-Image":"NULL.png",
+	"Select-Image":"NULL.png",
 	"Mod-Dependencies":[],
 	"Dependencies":[]
 }

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://biynqhkdjb8pk"]
 
-[ext_resource type="Texture2D" uid="uid://b4e72gl5uqhpv" path="res://assets/ui/SonicLife.png" id="1_lnd86"]
+[ext_resource type="Texture2D" uid="uid://b4e72gl5uqhpv" path="res://characters/sonic/sprites/SonicLife.png" id="1_lnd86"]
 [ext_resource type="Script" uid="uid://bd6t63wxd482" path="res://ModLoader/UI/ModEntryScriptBase.gd" id="1_ukrwt"]
 
 [node name="ModEntry" type="VBoxContainer"]
