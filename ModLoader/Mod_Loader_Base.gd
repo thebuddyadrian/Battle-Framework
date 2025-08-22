@@ -192,14 +192,26 @@ static func GetReferencesFromModPath(_path:String) -> String:
 	
 static func GetModIcons(_Mods:Dictionary) -> Dictionary:
 	var OutIcons:Dictionary = {}
-	for _M in _Mods.keys():
+	for _M:String in _Mods.keys():
 		OutIcons[_M] = {}
+		#Mod Icon
+		var DataM:Dictionary = ReadFullJsonData(ModLoaderMaster.ModFolderDirectory + "/"+ _M.get_basename()+"/"+_M.get_file()+".json")
+		var Mod_ImageDir:String = ModLoaderMaster.ModFolderDirectory + "/"+_M+"/"+DataM["Preview-Image"]
+		var Mod_HasPreview:bool = FileAccess.file_exists(Mod_ImageDir)
+		if(Mod_HasPreview):
+			var I:Image = Image.load_from_file(Mod_ImageDir)
+			var IT:ImageTexture = ImageTexture.create_from_image(I)
+			OutIcons[_M]["Icon"] = IT
+		else:
+			OutIcons[_M]["Icon"] = null
+		
+		#Sub Icon
 		for _S:String in _Mods[_M]:
 			var DataC:Dictionary = ReadFullJsonData(_S.get_basename()+"/"+_S.get_file()+".json")
-			var ImageDir:String = _S+"/"+DataC["Preview-Image"]
-			var HasPreview:bool = FileAccess.file_exists(ImageDir)
-			if(HasPreview):
-				var I:Image = Image.load_from_file(ImageDir)
+			var Sub_ImageDir:String = _S+"/"+DataC["Preview-Image"]
+			var Sub_HasPreview:bool = FileAccess.file_exists(Sub_ImageDir)
+			if(Sub_HasPreview):
+				var I:Image = Image.load_from_file(Sub_ImageDir)
 				var IT:ImageTexture = ImageTexture.create_from_image(I)
 				OutIcons[_M][_S] = (IT)
 			else:

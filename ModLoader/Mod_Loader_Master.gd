@@ -8,7 +8,6 @@ static var ActiveModsDirs:Dictionary = {}
 static var ActiveModCategories:Dictionary = {}
 
 static var ModsIcons:Dictionary = {}
-static var SubsIcons:Dictionary = {}
 
 func _ready() -> void:
 	#Load Mod Loader Preferences
@@ -30,7 +29,8 @@ func _ready() -> void:
 	ActiveModCategories = Mod_Loader_Base.CalculateModTypes(ActiveModsDirs, ModFolderDirectory)
 	
 	#create display assets icons
-	SubsIcons = Mod_Loader_Base.GetModIcons(ModsByDir)
+	ModsIcons = Mod_Loader_Base.GetModIcons(ModsByDir)
+	print("FF 2 ", ModsIcons)
 	
 	#Load Character listing from ActiveModCategories
 	Mod_Character_Loader.LoadCharactersFromCatagoryList(ActiveModCategories)
