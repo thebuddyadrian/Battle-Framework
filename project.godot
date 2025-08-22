@@ -29,6 +29,7 @@ ControlsSettings="*res://autoload/controls_settings.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SoundEffectPlayer="*res://autoload/sound_effect_player.gd"
 PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
+PlayerInput="*res://autoload/player_input.gd"
 
 [dialogic]
 
