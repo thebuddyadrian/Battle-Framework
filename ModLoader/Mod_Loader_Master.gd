@@ -34,6 +34,7 @@ func _ready() -> void:
 	
 	#Load Character listing from ActiveModCategories
 	Mod_Character_Loader.LoadCharactersFromCatagoryList(ActiveModCategories)
+	Mod_Level_Loader.LoadMapFromCatagoryList(ActiveModCategories)
 	print("Temp Dict ",ActiveModCategories)
 	
 	pass

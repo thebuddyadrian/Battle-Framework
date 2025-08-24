@@ -29,15 +29,20 @@ func _on_player_selection_finished():
 	Game.character_choices[current_player] = current_player_node.character
 	current_player_node.active = false
 
-	var selected_stage: String
+	var selected_stage_name:String = ($StageSelect.get_item_text($StageSelect.selected))
+	var selected_stage_location: String = ""
+	var ModNameLength:int = " (MOD)".length()
+	if(selected_stage_name.ends_with(" (MOD)")):
+		selected_stage_name = selected_stage_name.left(-(ModNameLength))
 	# If the current selected index is greater than the amount of base stages, it must be a modded stage
-	if $StageSelect.selected > Lists.battle_stages.size() - 1:
-		selected_stage = Lists.modded_battle_stages[$StageSelect.selected - Lists.battle_stages.size()]
+	if Lists.modded_battle_stages.has(selected_stage_name):
+		selected_stage_location = Lists.modded_battle_stages[selected_stage_name]
+		print("NMT ", selected_stage_location)
 	else:
-		selected_stage = Lists.battle_stages[$StageSelect.selected]
+		selected_stage_location = ("res://levels/"+Lists.battle_stages[selected_stage_name]+"/"+Lists.battle_stages[selected_stage_name]+".tscn")
 
 	if current_player == Game.human_players + Game.cpu_players:
-		SceneChanger.change_scene_to_file("res://levels/%s/%s.tscn" % [selected_stage, selected_stage])
+		SceneChanger.change_scene_to_file(selected_stage_location)
 		return
 	current_player += 1
 	await get_tree().process_frame

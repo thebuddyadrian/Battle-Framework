@@ -4,7 +4,7 @@ class_name Mod_Exporter_Tool
 
 static var NonExportItems:Dictionary = {MultiplayerAPI:true}
 
-static var NonExportFolders:Array = ["res://components","res://characters/base_player","res://ModLoader","res://characters/mini_bar.gd"]
+static var NonExportFolders:Array = ["res://components","res://characters/base_player","res://ModLoader","res://characters/mini_bar.gd","res://levels/BaseLevel","res://levels/level.gd","res://levels/pivot.gd"]
 static var DefaultReferenceFile:String = preload("res://ModLoader/Defaults/DefaultResourcePool.json").get_parsed_text()
 
 static var CustomResourceOrder:Array = [".tscn",".gd",".tres",".res",".png",".jepg"]
