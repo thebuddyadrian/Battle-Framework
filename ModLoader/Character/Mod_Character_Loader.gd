@@ -9,6 +9,7 @@ static func LoadCharactersFromCatagoryList(_dict:Dictionary) -> void:
 	Lists.modded_Char_Portrait_texture.clear()
 	Lists.modded_Char_Portrait_texture = {}
 	
+	if(!_dict.has("Character")): return
 	#New
 	for _char in _dict["Character"]:
 		var _char_file = Mod_Loader_Base.GetQuickJson(_char)

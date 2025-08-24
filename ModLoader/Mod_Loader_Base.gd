@@ -138,7 +138,7 @@ static func FixAtNerfPoint(_modpath:String) -> void: #Drop in replacement for fo
 				if(!OriginalFileDir.begins_with("res://")):
 					OriginalFileDir = _modpath.get_base_dir()+"/"+OriginalFileDir.get_file()
 					#Generate texture ref
-					if(OriginalFileDir.contains(".png")):
+					if(OriginalFileDir.contains(".png") || OriginalFileDir.contains(".jpg") || OriginalFileDir.contains(".jpeg")):
 						var NewUID = str(ResourceUID.create_id())
 						SetDefaultImageTemp(OriginalFileDir+".import",[NewUID,OriginalFileDir])
 						ResourceLoader.load(OriginalFileDir,"",ResourceLoader.CACHE_MODE_REPLACE)
@@ -169,7 +169,7 @@ static func FixAtGunPoint(_modpath:String, _QuickChanges:Dictionary = {}) -> voi
 				if(!OriginalFileDir.begins_with("res://")):
 					OriginalFileDir = _modpath.get_base_dir()+"/"+OriginalFileDir.get_file()
 					#Generate texture ref
-					if(OriginalFileDir.contains(".png")):
+					if(OriginalFileDir.contains(".png") || OriginalFileDir.contains(".jpg") || OriginalFileDir.contains(".jpeg")):
 						var NewUID = str(ResourceUID.create_id())
 						SetDefaultImageTemp(OriginalFileDir+".import",[NewUID,OriginalFileDir])
 						ResourceLoader.load(OriginalFileDir,"",ResourceLoader.CACHE_MODE_REPLACE)

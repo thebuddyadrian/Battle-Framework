@@ -7,7 +7,7 @@ static var NonExportItems:Dictionary = {MultiplayerAPI:true}
 static var NonExportFolders:Array = ["res://components","res://characters/base_player","res://ModLoader","res://characters/mini_bar.gd","res://levels/BaseLevel","res://levels/level.gd","res://levels/pivot.gd"]
 static var DefaultReferenceFile:String = preload("res://ModLoader/Defaults/DefaultResourcePool.json").get_parsed_text()
 
-static var CustomResourceOrder:Array = [".tscn",".gd",".tres",".res",".png",".jepg"]
+static var CustomResourceOrder:Array = [".tscn",".gd",".tres",".res",".png",".jpg",".jepg"]
 static var CurrentModReferencePool:Dictionary = {}
 
 static var ScriptSwapQueue:Dictionary = {} #Avoid having to store and reassign all values for node after script change, change in .tscn file
@@ -124,7 +124,7 @@ static func CopyResourceIndiviualIsntF(value,_N:Node,_name:String,_key,_Dirmap:D
 			if !(res is GDScript): new_res = load(TargetFilePath)
 			else: ScriptSwapQueue[old_path] = TargetFilePath
 			
-			if(TargetFilePath.ends_with(".png")):
+			if(TargetFilePath.ends_with(".png")||TargetFilePath.contains(".jpg") || TargetFilePath.contains(".jpeg")):
 				_N.set_meta("HAS_IMAGE",true)
 				var TestM = _name
 				var RelAdress = TargetFilePath.substr(_modpath.get_base_dir().get_base_dir().get_base_dir().length()+1)
@@ -148,7 +148,7 @@ static func CopyResourceIndiviualIsntF(value,_N:Node,_name:String,_key,_Dirmap:D
 				else:
 					_N.set(_name, new_res)
 			else:
-				if(TargetFilePath.ends_with(".png")):
+				if(TargetFilePath.ends_with(".png")||TargetFilePath.contains(".jpg") || TargetFilePath.contains(".jpeg")):
 					var TempTexture = Texture2D.new()
 					TempTexture.resource_path = TargetFilePath
 					_N.set(_name, TempTexture)

@@ -17,7 +17,7 @@ func RecursiveTs(_N:Node) -> void:
 				#_N.set(name,Convert)
 				pass
 			if(_N.has_meta(name)): # Texture through meta
-				if(_N.get_meta(name).ends_with(".png")):
+				if(_N.get_meta(name).ends_with(".png") || _N.get_meta(name).ends_with(".jpg") ||  _N.get_meta(name).ends_with(".jpeg")):
 					var I_T = Image.load_from_file(ModLoaderMaster.ModFolderDirectory + "/"+ _N.get_meta(name,""))
 					var Convert = ImageTexture.create_from_image(I_T)
 					print("Test ", )

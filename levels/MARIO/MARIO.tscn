@@ -27,7 +27,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 2.7, -1)
 [node name="CameraRoot" parent="." index="4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.561524, 0)
 
-[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." index="5"]
+[node name="Pivot" parent="CameraRoot" index="2"]
+transform = Transform3D(-1, -1.45412e-06, 2.0767e-06, 0, 0.819152, 0.573576, -2.53518e-06, 0.573576, -0.819152, 0, 0, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+
+[node name="CSGCombiner3D" type="CSGCombiner3D" parent="." index="6"]
 use_collision = true
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGCombiner3D" index="0"]

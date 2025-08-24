@@ -6,6 +6,7 @@ static func LoadMapFromCatagoryList(_dict:Dictionary) -> void:
 	Lists.modded_battle_stages = {}
 	
 	#New
+	if(!_dict.has("Map")): return
 	for _level in _dict["Map"]:
 		var _level_file = Mod_Loader_Base.GetQuickJson(_level)
 		var LevelData = Mod_Loader_Base.ReadFullJsonData(_level_file)
