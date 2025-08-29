@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://lscqxewn2oxm"]
 
-[ext_resource type="Script" path="res://characters/base_player/states/attack_info.gd" id="1_c8w4r"]
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_c8w4r"]
 
 [resource]
 script = ExtResource("1_c8w4r")
@@ -8,7 +8,13 @@ animation = "GrndPow"
 air_animation = ""
 animation_down = ""
 animation_up = ""
+animation_down_start_frame = -1
+animation_up_start_frame = -1
+animation_flip_offset_frame_start = 0
 change_anim_in_air = false
+play_animation = true
+use_anim_markers = true
+use_sections = true
 startup_frames = 16
 active_frames = 2
 recovery_frames = 14

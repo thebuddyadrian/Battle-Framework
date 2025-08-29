@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://lyfnd6of6efn"]
+[gd_scene load_steps=43 format=3 uid="uid://lyfnd6of6efn"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_qnw3q"]
 [ext_resource type="Script" uid="uid://c2lv0otitxe6m" path="res://characters/shadow/shadow.gd" id="2_h1jln"]
@@ -43,6 +43,9 @@ animation = "Punch1"
 air_animation = ""
 animation_down = ""
 animation_up = ""
+animation_down_start_frame = -1
+animation_up_start_frame = -1
+animation_flip_offset_frame_start = 0
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = true
@@ -77,6 +80,9 @@ animation = "kick1"
 air_animation = ""
 animation_down = ""
 animation_up = ""
+animation_down_start_frame = -1
+animation_up_start_frame = -1
+animation_flip_offset_frame_start = 0
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = true
@@ -111,6 +117,9 @@ animation = "Airpow"
 air_animation = ""
 animation_down = ""
 animation_up = ""
+animation_down_start_frame = -1
+animation_up_start_frame = -1
+animation_flip_offset_frame_start = 0
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = true
@@ -145,6 +154,9 @@ animation = "AirTrap"
 air_animation = ""
 animation_down = ""
 animation_up = ""
+animation_down_start_frame = -1
+animation_up_start_frame = -1
+animation_flip_offset_frame_start = 0
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = true
@@ -184,6 +196,9 @@ unblockable = false
 hit_freeze = 5
 hit_stun = 30
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
+radius = 0.120461
+
 [node name="Shadow" instance=ExtResource("1_qnw3q")]
 script = ExtResource("2_h1jln")
 SPEED = 10.0
@@ -203,7 +218,7 @@ libraries = {
 
 [node name="Effects" parent="PlayerSprite" index="1"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-offset = Vector2(-4, 0)
+offset = Vector2(-4, -1)
 billboard = 1
 render_priority = 1
 texture = ExtResource("4_xq7wv")
@@ -287,6 +302,9 @@ attack_info = SubResource("Resource_gjr3y")
 
 [node name="Hitbox" parent="." index="5"]
 hit_data = SubResource("Resource_w40b4")
+
+[node name="CollisionShape3D" parent="Hitbox" index="0"]
+shape = SubResource("SphereShape3D_3twb4")
 
 [node name="TestLabel2" type="Label3D" parent="." index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272035, 0)

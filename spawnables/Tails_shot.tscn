@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://8adxvp4028ys" path="res://spawnables/tails_shot.gd" id="1_8v1gd"]
 [ext_resource type="Resource" uid="uid://fitdjiy0i02v" path="res://spawnables/ShotData/TailsGrndSht.tres" id="2_18bq4"]
-[ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://assets/tails/Tails Effects Spritesheet.png" id="3_juhy2"]
+[ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://characters/tails/sprites/Tails Effects Spritesheet.png" id="3_juhy2"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="4_y8id4"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="5_fauv4"]
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="6_125df"]

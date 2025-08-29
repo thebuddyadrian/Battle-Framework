@@ -20,4 +20,5 @@ func _step():
 
 
 func _exit(next_state):
+	super._exit(next_state)
 	root.deceleration_enabled = true

@@ -24,7 +24,10 @@ var change_anim_in_air: bool = false
 ## Down and up animations for four-directional moves (specials)
 var animation_down: String
 var animation_up: String
-
+var animation_down_start_frame: int = 0
+var animation_up_start_frame: int = 0
+var animation_flip_offset_frame_start: int = 0
+var _flipped_frame_offset: int  = 0
 
 ## Not finished yet
 var charge_time: int = 0
@@ -226,6 +229,7 @@ func _enter(data := {}):
 	_phase_timer = 0
 	_dash_cancel_buffered = false
 	_attack_cancel_buffered = false
+	_flipped_frame_offset = 0
 	change_phase(0)
 
 
@@ -237,6 +241,9 @@ func _setup_from_resource():
 	air_animation = attack_info.air_animation
 	animation_up = attack_info.animation_up
 	animation_down = attack_info.animation_down
+	animation_down_start_frame = attack_info.animation_down_start_frame
+	animation_up_start_frame = attack_info.animation_up_start_frame
+	animation_flip_offset_frame_start = attack_info.animation_flip_offset_frame_start
 	change_anim_in_air = attack_info.change_anim_in_air
 	play_animation = attack_info.play_animation
 	use_anim_markers = attack_info.use_anim_markers
@@ -292,6 +299,13 @@ func _check_for_errors():
 	if !has_end_phase:
 		assert(false, "This attack has no end phase! Make sure one of your attack phases has the end_phase variable set to true.")
 		return
+	
+	# Make sure up and down start frames are set when up and down animations are used.
+	if animation_down != "" and animation_down_start_frame == -1:
+		assert(false)
+	
+	if animation_up != "" and animation_up_start_frame == -1:
+		assert(false)
 
 
 func _step():
@@ -344,6 +358,13 @@ func _step():
 		print(_current_section_start)
 		root.animplayer.play_section(_current_animation, _current_section_start, _current_section_end, -1, 1)
 	
+
+	# Apply sprite flip offset
+	if (root.animplayer.current_animation_position*60) >= animation_flip_offset_frame_start:
+		root.Sprite.flipped_frame_offset = _flipped_frame_offset
+	else:
+		root.Sprite.flipped_frame_offset = 0
+
 	if _phase_timer > 0:
 		_phase_timer = max(0, _phase_timer - 1)
 		if _phase_timer == 0:
@@ -458,6 +479,7 @@ func _exit(next_state):
 	move_hit = 0
 	charge_time = 0
 	root.disable_all_actions()
+	root.Sprite.flipped_frame_offset = 0
 	#_despawn_charge_effect()
 	super._exit(next_state)
 	#if next_state.name == "Dash":
@@ -583,6 +605,16 @@ func change_phase(phase_index: int) -> void:
 			_current_animation = animation_name
 			_current_section_start = -1
 			_current_section_end = -1
+		
+		# Calculate flipped frame offset, for attacks with up and down directions
+		var offset: int
+		if animation_name == animation_up:
+			offset = animation_down_start_frame - animation_up_start_frame
+		if animation_name == animation_down:
+			offset = animation_up_start_frame - animation_down_start_frame
+		
+		_flipped_frame_offset = offset
+	
 
 		
 	_phase_changed_internal(phase_index, previous_phase_index)

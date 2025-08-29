@@ -36,6 +36,9 @@ animation = "Punch1"
 air_animation = ""
 animation_down = ""
 animation_up = ""
+animation_down_start_frame = -1
+animation_up_start_frame = -1
+animation_flip_offset_frame_start = 0
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = true
@@ -76,7 +79,7 @@ hit_freeze = 5
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.149445
+radius = 0.180334
 
 [node name="Tails" instance=ExtResource("1_b5y1r")]
 

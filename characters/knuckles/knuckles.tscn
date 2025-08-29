@@ -132,9 +132,6 @@ attack_info = ExtResource("26_psdtg")
 
 [node name="GrndPow" parent="StateMachine" index="29"]
 script = ExtResource("21_xt1s0")
-proj_offset_x = 1.0
-proj_offset_y = 1.0
-proj_offset_z = 1.0
 attack_info = ExtResource("22_1kwib")
 
 [node name="AirPow" parent="StateMachine" index="30"]
