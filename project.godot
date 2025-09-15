@@ -235,6 +235,10 @@ dash2={
 "deadzone": 0.2,
 "events": []
 }
+pause2={
+"deadzone": 0.2,
+"events": []
+}
 
 [internationalization]
 
