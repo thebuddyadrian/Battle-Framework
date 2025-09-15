@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://dhl6gvecygwbc"]
 
 [ext_resource type="Script" uid="uid://bpjjhnx3q5um0" path="res://menus/character_select/player_character/player_character.gd" id="1_gu884"]
-[ext_resource type="PackedScene" uid="uid://15coxxqw12kr" path="res://characters/Portraits/characters.tscn" id="2_fq4xj"]
+[ext_resource type="PackedScene" uid="uid://15coxxqw12kr" path="res://menus/character_select/portraits/portrait_manager.tscn" id="2_fq4xj"]
 
 [node name="PlayerCharacter" type="Control"]
 custom_minimum_size = Vector2(120, 80)

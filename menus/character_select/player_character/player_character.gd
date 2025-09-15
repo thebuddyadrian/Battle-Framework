@@ -63,4 +63,3 @@ func set_character(p_character: String):
 	await get_tree().create_timer(0.4).timeout
 	var character_info: CharacterInfo = GameData.get_character_info(character)
 	character_portrait.texture = load(character_info.portrait_path)
-
