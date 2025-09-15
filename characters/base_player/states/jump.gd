@@ -7,7 +7,7 @@ func _enter(data = {}):
 	root.animplayer.play("Jump")
 	root.play_sound_effect("jump")
 	root.move_and_collide(Vector3.UP * 0.01) # Move upward slightly to prevent using ground attacks in the air on first frame of jump
-	root.velocity.y = root.JUMP_VELOCITY
+	root.velocity.y = root.jump_velocity
 
 
 func _step():

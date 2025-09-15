@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://ubts1e2d3mjh"]
+[gd_scene load_steps=34 format=3 uid="uid://cy4wfekiel3v1"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
 [ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://characters/tails/sprites/TailsSpritesheet.png" id="2_cps4t"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_uaadi"]
+[ext_resource type="Resource" uid="uid://856l10vlkiyr" path="res://characters/tails/tails.tres" id="2_weptr"]
 [ext_resource type="AnimationLibrary" uid="uid://gi0u1pjxm16h" path="res://characters/tails/tails_animations.res" id="3_ppohl"]
 [ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://characters/tails/sprites/Tails Effects Spritesheet.png" id="4_my705"]
 [ext_resource type="Script" uid="uid://cfasn3us7ol01" path="res://characters/tails/states/tails_air_action.gd" id="4_qf74s"]
@@ -67,7 +68,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
-[sub_resource type="Resource" id="Resource_weptr"]
+[sub_resource type="Resource" id="Resource_hshge"]
 script = ExtResource("2_uaadi")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -82,6 +83,7 @@ hit_stun = 30
 radius = 0.180334
 
 [node name="Tails" instance=ExtResource("1_b5y1r")]
+character_info = ExtResource("2_weptr")
 
 [node name="PlayerSprite" parent="." index="1"]
 texture = ExtResource("2_cps4t")
@@ -148,7 +150,7 @@ script = ExtResource("21_wv4dc")
 attack_info = ExtResource("22_6dfm6")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_weptr")
+hit_data = SubResource("Resource_hshge")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172591, -0.139195, 0)

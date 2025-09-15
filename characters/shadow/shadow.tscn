@@ -1,8 +1,9 @@
-[gd_scene load_steps=43 format=3 uid="uid://lyfnd6of6efn"]
+[gd_scene load_steps=44 format=3 uid="uid://lyfnd6of6efn"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_qnw3q"]
 [ext_resource type="Script" uid="uid://c2lv0otitxe6m" path="res://characters/shadow/shadow.gd" id="2_h1jln"]
 [ext_resource type="Texture2D" uid="uid://dhbyatb3lkkct" path="res://characters/shadow/sprites/shadow .png" id="2_pfypo"]
+[ext_resource type="Resource" uid="uid://d1yjnnlayrwwa" path="res://characters/shadow/shadow.tres" id="3_djkpe"]
 [ext_resource type="AnimationLibrary" uid="uid://2fxpsp06qdso" path="res://characters/shadow/shadow_animation.res" id="3_pfypo"]
 [ext_resource type="Script" uid="uid://m57d41j6ing0" path="res://characters/knuckles/states/dash.tres.gd" id="4_h2on0"]
 [ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://characters/shadow/sprites/shadows_effects-Sheet.png" id="4_xq7wv"]
@@ -201,9 +202,7 @@ radius = 0.120461
 
 [node name="Shadow" instance=ExtResource("1_qnw3q")]
 script = ExtResource("2_h1jln")
-SPEED = 10.0
-DASH_SPEED = 18.5
-ACCELERATION = 0.5
+character_info = ExtResource("3_djkpe")
 
 [node name="PlayerSprite" parent="." index="1"]
 texture = ExtResource("2_pfypo")

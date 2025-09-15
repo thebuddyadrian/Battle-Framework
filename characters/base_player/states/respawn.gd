@@ -13,7 +13,7 @@ func _do_respawn():
 	if root.current_stocks == 0:
 		root.kod.emit(root)
 		return
-	root.current_hp = root.HP
+	root.current_hp = root.max_hp
 	change_state("Idle")
 
 

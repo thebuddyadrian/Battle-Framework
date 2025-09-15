@@ -22,7 +22,7 @@ func _ready() -> void:
 	
 	var winner_player_id = player_order.pop_front() # Removes the winner from the array
 	var winner_character = Game.character_choices[winner_player_id]
-	var winner_character_display_name = Lists.character_display_names[winner_character]
+	var winner_character_display_name =  GameData.get_character_info(winner_character).display_name
 	winner_info.text = "1st\nPlayer %s - %s" % [winner_player_id, winner_character_display_name]
 
 	# TO-DO, once each character has a CharacterInfo resource, grab portraits from that instead

@@ -10,6 +10,7 @@ animation_down = ""
 animation_up = ""
 animation_down_start_frame = -1
 animation_up_start_frame = -1
+animation_flip_offset_frame_start = 0
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = true

@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
 [ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://characters/sonic/sprites/Sonic.png" id="2_gd83v"]
+[ext_resource type="Resource" uid="uid://clgp623tj36p8" path="res://characters/sonic/sonic.tres" id="2_tfamv"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="3_fueeq"]
 [ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="3_jddj4"]
 [ext_resource type="Resource" uid="uid://br5v34ftitnna" path="res://characters/kid_goku/states/jab_1.tres" id="5_fueeq"]
@@ -17,7 +18,6 @@
 [ext_resource type="Script" uid="uid://bnkbr41fk3o52" path="res://characters/sonic/states/air_attack.gd" id="13_fueeq"]
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="14_6ri6b"]
 [ext_resource type="Resource" uid="uid://lscqxewn2oxm" path="res://characters/sonic/states/grnd_pow.tres" id="15_lq7el"]
-[ext_resource type="Script" uid="uid://c6gku4eu6o6r2" path="res://characters/sonic/states/aim_attack.gd" id="15_tfamv"]
 [ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/sonic/states/air_pow.gd" id="16_lci63"]
 [ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="16_t5h5i"]
 [ext_resource type="Script" uid="uid://dghxsgu1omfw3" path="res://characters/sonic/states/grnd_shot.gd" id="17_tfamv"]
@@ -1398,7 +1398,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("21_tfamv")
 
-[sub_resource type="Resource" id="Resource_tfamv"]
+[sub_resource type="Resource" id="Resource_fueeq"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1413,6 +1413,7 @@ hit_stun = 30
 radius = 0.129537
 
 [node name="Sonic" instance=ExtResource("1_jint7")]
+character_info = ExtResource("2_tfamv")
 
 [node name="PlayerSprite" parent="." index="1"]
 billboard = 1
@@ -1469,7 +1470,6 @@ script = ExtResource("13_fueeq")
 attack_info = ExtResource("11_41aki")
 
 [node name="AimAttack" parent="StateMachine" index="26"]
-script = ExtResource("15_tfamv")
 attack_info = ExtResource("16_t5h5i")
 
 [node name="GrndShot" parent="StateMachine" index="27"]
@@ -1484,7 +1484,7 @@ script = ExtResource("16_lci63")
 attack_info = SubResource("Resource_t5h5i")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_tfamv")
+hit_data = SubResource("Resource_fueeq")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 shape = SubResource("SphereShape3D_nx0o7")

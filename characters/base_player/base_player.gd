@@ -1,35 +1,32 @@
 extends CharacterBody3D
 class_name BattleCharacter
 
-@export var SPEED = 8.0
-@export var JUMP_VELOCITY = 14.0
-@export var DASH_SPEED = 12.5
-@export var STOCKS = 3
-@export var HP = 300
-@export var MP = 300
-@export var player_id = 1
-@export var GRAVITY = 0.65
-@export var FALL_SPEED = 12
-@export var JUMPFROMGROUND = false
-@export var DECELERATION = 0.75
-@export var ACCELERATION = 0.8
-@export var AIR_DECELERATION = 0.15
-@export var AIR_ACCELERATION = 0.5
-@export var MAX_AIR_ACTION = 1
-@export var MAX_AIR_SKILL = 1
-
+@export var character_info: CharacterInfo
 @export var IS_CLIENTSIDE = false
 
+# Character stats, will be set from character_info resource
+var max_hp: float
+var move_speed: float 
+var jump_velocity: float 
+var gravity: float
+var fall_speed: float
+var acceleration: float
+var deceleration: float
+var air_acceleration: float
+var air_deceleration: float
+var max_air_actions: float
+var max_air_skills: float
 
 ## How many frames the player has to press the attack button after inputting a direction to do a heavy/upper attack
 var HEAVY_DIRECTION_INPUT_WINDOW: int = 8
 var UPPER_DIRECTION_INPUT_WINDOW: int = 4
 var taps = 0
 var taptime = 0
+var player_id: int = 1
 var team_id: int = 1 # For team battles
 var char_name: String = ""
-var current_hp: int = HP
-var current_stocks: int = STOCKS
+var current_hp: int = 0
+var current_stocks: int = 0
 ## The last used nonzero move_direction, used for dashing, air dashing, and four directional attacks
 ## This is set automatically during movement
 var facing_direction: Vector2 = Vector2.RIGHT
@@ -37,7 +34,7 @@ var facing_direction: Vector2 = Vector2.RIGHT
 ## This is NOT set automatically, and must be updated manually by calling "update_facing_direction_2d()" and other similar functions
 var facing_direction_2d: int = 1
 var deceleration_enabled = true
-var limit_speed = true # During normal movement speed is limited, turn this off for stuff like dashing
+var limit_speed = true # During normal movement move_speed is limited, turn this off for stuff like dashing
 var air_actions_used = 0
 ## Used to temporarily make acceleration faster or slower
 var acceleration_scale: float = 1
@@ -96,6 +93,22 @@ func _ready() -> void:
 	if IS_CLIENTSIDE == true:
 		Globals.CLIENTSIDE_PLAYER = self
 	team_id = player_id
+	_load_stats()
+	current_hp = max_hp
+
+
+func _load_stats():
+	assert(character_info != null, "This character doesn't have a CharacterInfo resource! Make sure to set one in the inspector.")
+	max_hp = float(character_info.max_hp)
+	move_speed = float(character_info.move_speed) / 1000.0
+	jump_velocity = float(character_info.jump_velocity) / 1000.0
+	gravity = float(character_info.gravity) / 1000.0
+	fall_speed = float(character_info.fall_speed) / 1000.0
+	acceleration = float(character_info.acceleration) / 1000.0
+	deceleration = float(character_info.deceleration) / 1000.0
+	air_acceleration = float(character_info.air_acceleration) / 1000.0 
+	air_deceleration = float(character_info.air_deceleration) / 1000.0
+	max_air_actions = float(character_info.max_air_actions)
 
 
 func _physics_process(delta: float) -> void:
@@ -153,8 +166,8 @@ func _physics_process(delta: float) -> void:
 				taps = 0
 	
 	# Add the gravity.
-	if velocity.y >  -FALL_SPEED:
-		velocity.y -= GRAVITY * gravity_scale
+	if velocity.y >  -fall_speed:
+		velocity.y -= gravity * gravity_scale
 	
 	# Count down invincibility frames
 	invincibility_frames = max(invincibility_frames - 1, 0)
@@ -214,14 +227,14 @@ func _process_movement():
 	# If movement is disabled, the player will still decelerate
 	var acceleration_vector: Vector2
 	if is_on_floor():
-		acceleration_vector = movement_dir * ACCELERATION * acceleration_scale
+		acceleration_vector = movement_dir * acceleration * acceleration_scale
 	else:
-		acceleration_vector = movement_dir * AIR_ACCELERATION * acceleration_scale
+		acceleration_vector = movement_dir * air_acceleration * acceleration_scale
 	
-	var deceleration_current = DECELERATION if is_on_floor() else AIR_DECELERATION
+	var deceleration_current = deceleration if is_on_floor() else air_deceleration
 	deceleration_current *= deceleration_scale
 
-	var speed_current = SPEED * max_speed_scale
+	var speed_current = move_speed * max_speed_scale
 	
 	if !is_zero_approx(input_dir.x) and is_action_enabled("move"):
 		velocity.x += acceleration_vector.x
@@ -275,7 +288,7 @@ func _check_for_dash() -> bool:
 
 
 func _check_for_air_action() -> bool:
-	if input("jump", "just_pressed") and !is_on_floor() and air_actions_used < MAX_AIR_ACTION:
+	if input("jump", "just_pressed") and !is_on_floor() and air_actions_used < max_air_actions:
 		state_machine.change_state("AirAction")
 		return true
 	return false
@@ -408,7 +421,7 @@ func _check_for_ground_special():
 
 
 func _check_for_air_special():
-	if input("skill", "just_pressed") and !state_machine.active_state is BaseAttack and air_skills_used < MAX_AIR_SKILL:
+	if input("skill", "just_pressed") and !state_machine.active_state is BaseAttack and air_skills_used < max_air_skills:
 		# Count the amount of air skills used in the air. Will be reset in idle.gd
 		air_skills_used += 1
 		state_machine.change_state("AirPow")

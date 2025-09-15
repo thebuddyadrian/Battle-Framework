@@ -44,7 +44,7 @@ func _step():
 
 
 func _exit(next_state: BaseState):
-	root.velocity.x = clamp(root.velocity.x, -root.SPEED, root.SPEED)
-	root.velocity.z = clamp(root.velocity.z, -root.SPEED, root.SPEED)
+	root.velocity.x = clamp(root.velocity.x, -root.move_speed, root.move_speed)
+	root.velocity.z = clamp(root.velocity.z, -root.move_speed, root.move_speed)
 	root.gravity_scale = 1
 	root.set_action_enabled("attack", false)

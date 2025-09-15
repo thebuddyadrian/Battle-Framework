@@ -19,8 +19,8 @@ func _step():
 		var proj = root.spawn_scene("GrndShot", GRND_SHOT_PROJ_PATH, root.global_position, null, data)
 		proj.position = root.position
 		spawned_dash_effect = true
-	root.velocity.x = dash_direction.x * root.DASH_SPEED 
-	root.velocity.z = dash_direction.y * root.DASH_SPEED 
+	root.velocity.x = dash_direction.x * 12.5
+	root.velocity.z = dash_direction.y * 12.5
 	if parent.state_time > 5 && root.is_on_floor():
 		parent.change_state("Land")
 

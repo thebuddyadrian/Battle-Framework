@@ -15,7 +15,7 @@ func _step():
 	else:
 		root.animplayer.play_section_with_markers("Heal", "HealLoop", "HealEnd")
 		if parent.state_time % 12  == 0:
-			root.current_hp = min(root.current_hp + 1, root.HP)
+			root.current_hp = min(root.current_hp + 1, root.max_hp)
 			root.play_sound_effect("heal")
 
 		if !root.input("guard", "pressed"):

@@ -1,8 +1,9 @@
-[gd_scene load_steps=39 format=3 uid="uid://11vd21yw7fe7"]
+[gd_scene load_steps=40 format=3 uid="uid://11vd21yw7fe7"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_37tig"]
 [ext_resource type="Texture2D" uid="uid://cgq063pwiouqa" path="res://characters/knuckles/sprites/knuckles.png" id="2_5e7ij"]
 [ext_resource type="Script" uid="uid://bephn00c3mpgq" path="res://characters/knuckles/knuckles.gd" id="2_5tkrs"]
+[ext_resource type="Resource" uid="uid://dhippg1pyutqc" path="res://characters/knuckles/knuckles.tres" id="3_5tkrs"]
 [ext_resource type="AnimationLibrary" uid="uid://caicco3rl6eej" path="res://characters/knuckles/knuckles_animation.res" id="3_opinu"]
 [ext_resource type="Script" uid="uid://m57d41j6ing0" path="res://characters/knuckles/states/dash.tres.gd" id="4_lh63m"]
 [ext_resource type="Texture2D" uid="uid://cubjp7dxe8bi8" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="4_xt1s0"]
@@ -54,7 +55,7 @@ radius = 0.175755
 
 [node name="Knuckles" instance=ExtResource("1_37tig")]
 script = ExtResource("2_5tkrs")
-DASH_SPEED = 16.0
+character_info = ExtResource("3_5tkrs")
 
 [node name="PlayerSprite" parent="." index="1"]
 texture = ExtResource("2_5e7ij")
