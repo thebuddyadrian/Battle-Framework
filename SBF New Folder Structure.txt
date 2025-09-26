@@ -1,0 +1,95 @@
+addons/ # Third party addons and EditorPlugins, required by godot
+
+engine/ # Core engine code that the game will build off of
+    assets/ # Raw assets used throughout the game
+        environment/
+            battle_style_environment.tres
+        fonts/
+        shaders/
+    autoload/ # Autoloaded scripts
+        game_data.gd
+    bases/ # Base classes/scenes for characters, stages, and other game content
+        battle_actor.gd # Base class for 2.5D Sonic Battle-style gameplay actors
+        battle_character/ # Base class for playable fighters
+            states/
+                idle.gd
+                move.gd
+                ...
+                base_attack.gd # Base class for creating an attack state using attack "phases"/"windows", Rivals of Aether style
+            battle_character.gd
+            battle_character.tscn # Base scene that can be inherited to create new fighters
+        battle_spawnable.gd # Base class for spawnable objects, can be extended to create custom spawnable types that don't fit under projectile or trap.
+        battle_projectile.gd # Base class for simple projectiles that move in a direction and hit players. Extends from BattleSpawnable
+        battle_trap.gd # Base class for spawnables that stay in place until activate. Extends from BattleSpawnable
+        battle_effect.gd # Base class for visual effects that can be spawned
+        battle_stage.gd # Base class for battle stages
+    common/ # Custom node types that will be used throughout the project
+        battle_animated_sprite_3d.gd  # Custom AnimatedSprite3D class that can display a different image based on the rotation of the camera viewing it.
+        battle_sprite_3d.gd # Same as above, but for plain Sprite3D
+        custom_timers.gd # Custom class to create rollback-safe timers (might be removed since the rollback addon has something similar)
+        hitbox.gd # Custom Area2D class that can damage hurtboxes
+        hurtbox.gd # Custom Area2D class that can be damaged by hitboxes
+        player_camera/ # Camera scene that will track the player and can be rotated by the player.
+            player_camera.tscn
+            player_camera.gd
+        player_window.tscn # A scene that defines the configuration for a player sub-window
+        state_machine/
+            state_machine.gd # Node that handles processing states defined by child State nodes
+            state.gd # Base class for creating a StateMachine state
+    resource_types/ # Custom resource classes to hold info for various types of game content
+        attack_info.gd # Resource class to define attack properties like frame data, animation, etc.
+        hit_info.gd # Resource class to define the properties of a hitbox
+        character_info.gd # Resource class to define character info like display name, stats, etc.
+        stage_info.gd # Resource class to define stage info
+        projectile_info.gd # Resource class to define a simple battle-styl
+        data_list.gd # Base class for a list of game content, simply holds a PackedStringArray (used by character_list.tres and stage_list.tres in data/)
+    game/ # Scene where battle gameplay happens. Loads stage and characters, and manages the flow of the game.
+        game.gd
+        game.tscn
+    ui/
+        player_hud/
+        pause_screen/
+        skill_select/
+        controls_settings/
+    script_templates/ # Templates for creating new scripts like Character scripts, Attack scripts, State scripts, etc.
+
+# The rest of the folders are game content that will be specific to each game made with the SB Framework.
+# SBF will include base game characters and stages in these folders
+characters/ # Playable characters that will be created using the BattleCharacter class
+    sonic/
+        sonic.tscn # Character scene
+        sonic_animation.tscn # Scene containing only animation-related nodes, 
+                             # to show sprites in results screen and skill select menu
+        sonic.tres # CharacterInfo resource defining display name, stats, etc.
+        sonic.gd # Character script
+        sprites/ # Character sprites
+            sonic_sprite_sheet.png
+            sonic_portrait.png
+            sonic_life_icon.png
+            sonic_effects.png
+        audio/ # Character-specific sound effects and voice clips. Universal sounds will be in engine/assets/audio
+            sound/ 
+            voice/
+        states/ # Character-specific movement states like air action and dash. 
+                # Can also override general states like Idle and Move for custom behaviour.
+            air_action.gd
+            dash.gd
+        attacks/
+            jab_1.tres # AttackInfo resource defining an attack, will be attached to a BaseAttack state node.
+            jab_2.tres
+            jab_3.tres
+            heavy.tres 
+            heavy.gd # Some attacks may also have a custom script, but its not required.
+    tails/
+    knuckles/
+    shadow/
+data/ # Contains data about this specific game, such as the list of characters/stages
+    character_list.tres # List of string identifiers for characters ("sonic", "tails", "knuckles", "shadow")
+    stage_list.tres # List of string identifiers for stages
+effects/ # Visuals effects that will be spawned by characters
+menus/ # Game menus like Title Screen, Mode Select, Character Select, etc.
+    _common/
+mod_export/ # Where mods will be exported as PCK
+music/ # Stores BGM used in the game
+spawnables/ # For spawnable objects like projectiles and traps.
+stages/ # Battle stages that will be created by importing a model and attaching a BattleStage script to it.
