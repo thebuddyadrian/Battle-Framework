@@ -46,14 +46,6 @@ cap_bottom = false
 
 [sub_resource type="Resource" id="Resource_wyd30"]
 script = ExtResource("16_32b4s")
-damage = 0.0
-knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
-unblockable = false
-hit_freeze = 5
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
 radius = 0.295955
@@ -90,15 +82,15 @@ script = ExtResource("2_uam5m")
 
 [node name="FlippedComponents" type="Node3D" parent="."]
 
-[node name="RayCast3D" type="RayCast3D" parent="."]
+[node name="ShadowRayCast" type="RayCast3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182536, 0)
 target_position = Vector3(0, -5, 0)
 collision_mask = 3
 script = ExtResource("2_s2flu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="RayCast3D"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ShadowRayCast"]
 
-[node name="Shadow" type="MeshInstance3D" parent="RayCast3D"]
+[node name="Shadow" type="MeshInstance3D" parent="ShadowRayCast"]
 material_override = SubResource("StandardMaterial3D_ppowo")
 mesh = SubResource("CylinderMesh_ddqn7")
 
