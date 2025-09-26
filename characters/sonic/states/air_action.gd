@@ -6,6 +6,9 @@ func _enter(data = {}):
 	super._enter(data)
 	# Dash in the facing direction (relative to the camera)
 	dash_direction = root.facing_direction
+
+	# Spawn Effect
+	root.spawn_scene("SonicBalletEffect", "res://effects/sonic_ballet_effect.tscn", root.global_position)
 	
 	root.animplayer.play("AirAction")
 	root.play_sound_effect("sonic_ballet")
