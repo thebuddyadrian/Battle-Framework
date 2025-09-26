@@ -564,6 +564,28 @@ func play_voice_clip(voice_clip_name: String):
 	SoundEffectPlayer.play_sound_effect(voice_clip_name, stream, "Voice", global_position)
 
 
+# Gets the position of the ground beneath the player. Used for certain spawnables like Tails AirPow
+# Starts at the player's position by default, but can be offset to check in front of the player for example
+func get_ground_position(offset: Vector3 = Vector3.ZERO):
+	# Get the space state
+	var space_state := get_world_3d().direct_space_state
+	# Apply offset
+	var ray_cast_position: Vector3 = global_position + offset
+	# Setup the raycast
+	var start: Vector3 = ray_cast_position
+	# Ray goes downwards
+	var end: Vector3 = ray_cast_position + Vector3.DOWN * 10
+
+	var query := PhysicsRayQueryParameters3D.create(start, end)
+	var result := space_state.intersect_ray(query)
+
+	# Return the position the ray collided with
+	if result:
+		return result.position
+	# Return the bottom of the raycast as a fallback
+	return end
+
+
 ## When the player gets hit
 func _on_hurtbox_hurt(hit_data: HitData, attacker_hitbox: Hitbox) -> void:
 	current_hp = max(current_hp - hit_data.damage, 0) # Stop HP from going below zero
