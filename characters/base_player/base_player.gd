@@ -109,6 +109,7 @@ func _load_stats():
 	air_acceleration = float(character_info.air_acceleration) / 1000.0 
 	air_deceleration = float(character_info.air_deceleration) / 1000.0
 	max_air_actions = float(character_info.max_air_actions)
+	max_air_skills = float(character_info.max_air_skills)
 
 
 func _physics_process(delta: float) -> void:
