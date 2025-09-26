@@ -25,6 +25,7 @@ func _phase_changed():
 		var proj = root.spawn_scene("GrndPow", GRND_POW_PROJ_PATH, root.global_position, null, data)
 		proj.direction = attack_direction
 		proj.velocity = Vector3(0.0,0.0,0.0)
+		# Spawn projectile on floor below tails
 		proj.global_position = root.get_ground_position() + Vector3.UP * 0.5
 			
 func _exit(next_state):
