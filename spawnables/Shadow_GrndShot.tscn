@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://dnsctse6ueqn2"]
+[gd_scene load_steps=29 format=3 uid="uid://dnsctse6ueqn2"]
 
 [ext_resource type="Script" uid="uid://bbnnqyvvf0jkv" path="res://spawnables/shadow_grnd_shot.gd" id="1_jjt70"]
 [ext_resource type="Resource" uid="uid://bryx7fjbw1pr2" path="res://spawnables/ShotData/ShadowGrndSht.tres" id="2_l5o0q"]
@@ -102,13 +102,9 @@ animations = [{
 [sub_resource type="Resource" id="Resource_8mw8r"]
 script = ExtResource("4_11vx8")
 damage = 55.0
-knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
 knockback_angle = 90.0
 knockback_type = 2
-unblockable = false
-hit_freeze = 5
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2pd6"]
 radius = 0.604261
@@ -232,9 +228,6 @@ _data = {
 &"Start": SubResource("Animation_561xu")
 }
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_1t67f"]
-size = Vector3(0.70697, 1, 0.717041)
-
 [node name="ShadowGrndShot" type="CharacterBody3D"]
 collision_layer = 0
 script = ExtResource("1_jjt70")
@@ -274,7 +267,3 @@ shape = SubResource("SphereShape3D_yq6br")
 libraries = {
 &"": SubResource("AnimationLibrary_0scby")
 }
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
-shape = SubResource("BoxShape3D_1t67f")
