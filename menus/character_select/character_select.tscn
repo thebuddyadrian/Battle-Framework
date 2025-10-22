@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://kulyqmhcf2k2"]
+[gd_scene load_steps=6 format=3 uid="uid://kulyqmhcf2k2"]
 
 [ext_resource type="Script" uid="uid://bl12xr1kfvop2" path="res://menus/character_select/character_select.gd" id="1_xptye"]
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_kxvnc"]
 [ext_resource type="Shader" uid="uid://b7frwxe5glvvi" path="res://menus/background.gdshader" id="3_xarbf"]
+[ext_resource type="PackedScene" uid="uid://bu74bh1pcju6h" path="res://menus/character_select/cursor_arrows.tscn" id="4_xarbf"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pprmj"]
 shader = ExtResource("3_xarbf")
@@ -23,23 +24,89 @@ script = ExtResource("1_xptye")
 [node name="Background" parent="." instance=ExtResource("2_kxvnc")]
 material = SubResource("ShaderMaterial_pprmj")
 
-[node name="PlayerContainer" type="GridContainer" parent="."]
+[node name="MAPSELECT" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="StageSelect" type="OptionButton" parent="MAPSELECT"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 0.083
+offset_left = 104.0
+offset_top = 72.0
+offset_right = 104.0
+offset_bottom = 89.72
+grow_horizontal = 2
+grow_vertical = 2
+focus_mode = 0
+
+[node name="CSS" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="PlayerContainer" type="GridContainer" parent="CSS"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = 100.0
+offset_top = 60.0
+offset_right = 100.0
+offset_bottom = 60.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 2
 
-[node name="StageSelect" type="OptionButton" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.0
-anchor_bottom = 0.083
-offset_bottom = 17.72
-focus_mode = 0
+[node name="CursorArrows" parent="CSS" instance=ExtResource("4_xarbf")]
+layout_mode = 0
+offset_top = 39.0
+offset_bottom = 39.0
+
+[node name="RULESELECT" type="Control" parent="."]
+visible = false
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="RULESELECT"]
+layout_mode = 0
+offset_left = 56.0
+offset_top = 64.0
+offset_right = 188.0
+offset_bottom = 113.0
+text = "Placeholder!
+Check back later!"
+
+[node name="MapSelectButton" type="Button" parent="."]
+layout_mode = 0
+offset_right = 52.0
+offset_bottom = 31.0
+text = "MAPS"
+
+[node name="RuleSelectButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 184.0
+offset_right = 241.0
+offset_bottom = 31.0
+text = "RULES"
+
+[node name="CSSSelectButton" type="Button" parent="."]
+visible = false
+layout_mode = 0
+offset_right = 60.0
+offset_bottom = 31.0
+text = "CHARS"
+
+[connection signal="pressed" from="MapSelectButton" to="." method="_on_map_select_button_pressed"]
+[connection signal="pressed" from="RuleSelectButton" to="." method="_on_rule_select_button_pressed"]
+[connection signal="pressed" from="CSSSelectButton" to="." method="_on_css_select_button_pressed"]
+
+[editable path="CSS/CursorArrows"]
