@@ -5,6 +5,7 @@ func _enter(data = {}):
 	root.velocity.y = 16
 	root.gravity_scale = 0.7
 	root.play_sound_effect("floor_hit")
+	root.spawn_scene("FloorBounceEffect", "uid://c5rdpe83b2q8o", root.global_position)
 
 
 func _step():
