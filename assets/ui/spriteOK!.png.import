@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vtjwvywp8p5g"
-path="res://.godot/imported/sbf_logo.png-01499ac5ecda11bd32b95ba7bca14329.ctex"
+uid="uid://c1gqehpccugqc"
+path="res://.godot/imported/spriteOK!.png-d5d56ebd1dbdec4c0bd0fe630041d809.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sbf_logo.png"
-dest_files=["res://.godot/imported/sbf_logo.png-01499ac5ecda11bd32b95ba7bca14329.ctex"]
+source_file="res://assets/ui/spriteOK!.png"
+dest_files=["res://.godot/imported/spriteOK!.png-d5d56ebd1dbdec4c0bd0fe630041d809.ctex"]
 
 [params]
 
@@ -37,4 +37,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=1
+detect_3d/compress_to=0
