@@ -23,7 +23,6 @@ func _ready() -> void:
 		CursorArrows.visible = false
 	
 	MusicPlayer.play_track(MusicPlayer.CHALLENGE_BATTLE_MODE)
-	var p1node
 	for i in range(Game.get_total_players()):
 		print(i)
 		var player_character = PLAYER_CHARACTER_SCENE.instantiate()
@@ -32,11 +31,10 @@ func _ready() -> void:
 		player_container.add_child(player_character)
 		if i == 0 and Game.is_playing_solo():
 			player_character.active = true
-			p1node = player_character
 			#print(GameData.get_character_info("sonic"))
 		elif !Game.is_playing_solo():
 			player_character.active = true
-		#CSSCursorTweenToPlayer(p1node.global_position)
+		#CSSCursorTweenToPlayer(p1_player_character.global_position)
 	
 	for player in player_container.get_children():
 		player.connect("selection_finished", Callable(self, "_on_player_selection_finished"))
