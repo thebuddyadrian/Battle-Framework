@@ -29,8 +29,6 @@ func _ready() -> void:
 	# Make sure the shader material isn't shared between characters
 	character_portrait.material = character_portrait.material.duplicate()
 
-	# The game kept crashing if i didnt wait 1 frame before hiding the arrows, idk why
-	await get_tree().process_frame
 	if Game.is_playing_solo():
 		cursor_arrows.visible = false
 
