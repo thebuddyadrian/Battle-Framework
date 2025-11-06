@@ -16,6 +16,9 @@ func _ready() -> void:
 	MusicPlayer.play_track(MusicPlayer.CHALLENGE_BATTLE_MODE)
 	for i in range(Game.get_total_players()):
 		var player_character = PLAYER_CHARACTER_SCENE.instantiate()
+		# If this index is above the amount of human players, it must be a CPU
+		if i >= Game.human_players:
+			player_character.is_cpu = true
 		player_character.name = "PlayerContainer" + str(i + 1)
 		player_character.player_number = i + 1
 		player_container.add_child(player_character)

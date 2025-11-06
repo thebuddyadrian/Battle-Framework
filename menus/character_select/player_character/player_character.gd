@@ -4,6 +4,7 @@ signal request_cursor_anim(anim_name)
 
 # If there's a player selecting a character using this node
 var active: bool = false: set = set_active
+var is_cpu: bool = false
 var character_index: int = 0 : set = set_character_index
 var character: String : set = set_character
 
@@ -37,16 +38,22 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !active:
 		return
-	if PlayerInput.player_action_just_pressed("left", player_number):
+	if get_input("left"):
 		character_index -= 1
 		play_cursor_anim("ArrowBumpLeft")
-	if PlayerInput.player_action_just_pressed("right", player_number):
+	if get_input("right"):
 		character_index += 1
 		play_cursor_anim("ArrowRightBump")
-	if PlayerInput.player_action_just_pressed("attack", player_number):
+	if get_input("attack"):
 		selection_finished.emit()
 		confirm_sprite.visible = true
 		cursor_arrows.visible = false
+
+
+func get_input(action: String) -> bool:
+	# If this is a CPU player, use player 1 controls
+	var input_player_number: int = player_number if !is_cpu else 1
+	return PlayerInput.player_action_just_pressed(action, input_player_number)
 
 
 func play_cursor_anim(anim):
