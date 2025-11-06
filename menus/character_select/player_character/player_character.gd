@@ -10,7 +10,6 @@ var character: String : set = set_character
 
 @export var player_number: int = 1
 
-@onready var isLocalMultiplayer = get_parent().get_parent().get_parent().localMultiplayer
 @onready var character_selected: Label = $CharacterSelected
 @onready var reference_rect: ReferenceRect = $ReferenceRect
 @onready var player_name: Label = $PlayerName
@@ -36,12 +35,12 @@ func _ready() -> void:
 	# Make sure the shader material isn't shared between characters
 	character_portrait.material = character_portrait.material.duplicate()
 	
-	if !isLocalMultiplayer:
+	if Game.is_playing_solo():
 		cursorarrows.visible = false
 
 
 func _process(delta: float) -> void:
-	if active and isLocalMultiplayer:
+	if active and Game.is_playing_solo():
 		if PlayerInput.player_action_just_pressed("left", player_number):
 			character_index -= 1
 			localMultiplayerPlayCursorAnim("ArrowBumpLeft")
@@ -52,7 +51,7 @@ func _process(delta: float) -> void:
 			selection_finished.emit()
 			confirmSprite.visible = true
 			cursorarrows.visible = false
-	elif active and !isLocalMultiplayer:
+	elif active and !Game.is_playing_solo():
 		if Input.is_action_just_pressed("left1"):
 			character_index -= 1
 			emit_signal("RequestCursorAnim", "ArrowBumpLeft")

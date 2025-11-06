@@ -3,10 +3,9 @@ extends Control
 const PLAYER_CHARACTER_SCENE := preload("res://menus/character_select/player_character/player_character.tscn")
 
 @onready var player_container: GridContainer = $CSS/PlayerContainer
+# Arrows for selecting characters in solo play and selecting CPU characters
 @onready var CursorArrows : Control = $CSS/CursorArrows
 var current_player = 1
-
-var localMultiplayer : bool = false
 
 
 
@@ -20,8 +19,7 @@ var localMultiplayer : bool = false
 
 
 func _ready() -> void:
-	if Game.human_players >= 2:
-		localMultiplayer = true
+	if Game.cpu_players > 0:
 		CursorArrows.visible = false
 	
 	MusicPlayer.play_track(MusicPlayer.CHALLENGE_BATTLE_MODE)
@@ -32,11 +30,11 @@ func _ready() -> void:
 		player_character.name = "PlayerContainer" + str(i + 1)
 		player_character.player_number = i + 1
 		player_container.add_child(player_character)
-		if i == 0 and !localMultiplayer:
+		if i == 0 and Game.is_playing_solo():
 			player_character.active = true
 			p1node = player_character
 			#print(GameData.get_character_info("sonic"))
-		elif localMultiplayer:
+		elif !Game.is_playing_solo():
 			player_character.active = true
 		#CSSCursorTweenToPlayer(p1node.global_position)
 	
