@@ -15,7 +15,7 @@ config/description="No Description"
 run/main_scene="res://menus/mode_select.tscn"
 config/features=PackedStringArray("4.5", "Forward Plus")
 run/max_fps=60
-config/icon="uid://dcdb3dyga8r2u"
+config/icon="uid://dlpflfbgbkx5f"
 config/windows_native_icon="res://icon.ico"
 
 [autoload]
