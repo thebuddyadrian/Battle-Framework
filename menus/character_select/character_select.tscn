@@ -89,6 +89,7 @@ Check back later!"
 layout_mode = 0
 offset_right = 52.0
 offset_bottom = 31.0
+focus_mode = 0
 text = "MAPS"
 
 [node name="RuleSelectButton" type="Button" parent="."]
@@ -96,6 +97,7 @@ layout_mode = 0
 offset_left = 184.0
 offset_right = 241.0
 offset_bottom = 31.0
+focus_mode = 0
 text = "RULES"
 
 [node name="CSSSelectButton" type="Button" parent="."]
