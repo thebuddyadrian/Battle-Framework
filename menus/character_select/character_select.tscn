@@ -110,5 +110,3 @@ text = "CHARS"
 [connection signal="pressed" from="MapSelectButton" to="." method="_on_map_select_button_pressed"]
 [connection signal="pressed" from="RuleSelectButton" to="." method="_on_rule_select_button_pressed"]
 [connection signal="pressed" from="CSSSelectButton" to="." method="_on_css_select_button_pressed"]
-
-[editable path="CSS/CursorArrows"]

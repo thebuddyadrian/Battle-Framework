@@ -1,6 +1,6 @@
 extends Control
 
-signal RequestCursorAnim(str)
+signal request_cursor_anim(anim_name)
 
 # If there's a player selecting a character using this node
 var active: bool = false: set = set_active
@@ -12,18 +12,11 @@ var character: String : set = set_character
 
 @onready var character_selected: Label = $CharacterSelected
 @onready var reference_rect: ReferenceRect = $ReferenceRect
-@onready var player_name: Label = $PlayerName
 @onready var character_portrait: TextureRect = $Portrait_Manager/Characters
 @onready var pixelate: AnimationPlayer = $Portrait_Manager/pixelate
-@onready var confirmSprite : TextureRect = $ConfirmSprite
-@onready var cursorarrows: Control = $CursorArrows
-#@export var portrait_texture : Dictionary = {
-	#"sonic": preload("res://characters/sonic/sprites/Sonic Portrait.png"),
-	#"tails": preload("res://characters/tails/sprites/Tails Portrait.png"),
-	#"knuckles": preload("res://characters/knuckles/sprites/Knuckles Portrait.png"),
-	#"shadow": preload("res://characters/shadow/sprites/Shadow Portrait.png")
-	#}
-
+@onready var confirm_sprite : TextureRect = $ConfirmSprite
+@onready var cursor_arrows: Control = $CursorArrows
+@onready var cursor_arrows_animplayer: AnimationPlayer = $CursorArrows/AnimationPlayer
 
 signal selection_finished
 
@@ -34,43 +27,36 @@ func _ready() -> void:
 	set_character_index(character_index)
 	# Make sure the shader material isn't shared between characters
 	character_portrait.material = character_portrait.material.duplicate()
-	
+
+	# The game kept crashing if i didnt wait 1 frame before hiding the arrows, idk why
+	await get_tree().process_frame
 	if Game.is_playing_solo():
-		cursorarrows.visible = false
+		cursor_arrows.visible = false
 
 
 func _process(delta: float) -> void:
-	if active and Game.is_playing_solo():
-		if PlayerInput.player_action_just_pressed("left", player_number):
-			character_index -= 1
-			localMultiplayerPlayCursorAnim("ArrowBumpLeft")
-		if PlayerInput.player_action_just_pressed("right", player_number):
-			character_index += 1
-			localMultiplayerPlayCursorAnim("ArrowRightBump")
-		if PlayerInput.player_action_just_pressed("attack", player_number):
-			selection_finished.emit()
-			confirmSprite.visible = true
-			cursorarrows.visible = false
-	elif active and !Game.is_playing_solo():
-		if Input.is_action_just_pressed("left1"):
-			character_index -= 1
-			emit_signal("RequestCursorAnim", "ArrowBumpLeft")
-		if Input.is_action_just_pressed("right1"):
-			character_index += 1
-			emit_signal("RequestCursorAnim", "ArrowRightBump")
-		if Input.is_action_just_pressed("attack1"):
-			selection_finished.emit()
-			confirmSprite.visible = true
-			
+	if !active:
+		return
+	if PlayerInput.player_action_just_pressed("left", player_number):
+		character_index -= 1
+		play_cursor_anim("ArrowBumpLeft")
+	if PlayerInput.player_action_just_pressed("right", player_number):
+		character_index += 1
+		play_cursor_anim("ArrowRightBump")
+	if PlayerInput.player_action_just_pressed("attack", player_number):
+		selection_finished.emit()
+		confirm_sprite.visible = true
+		cursor_arrows.visible = false
 
 
-func localMultiplayerPlayCursorAnim(anim):
-	var animplayer = cursorarrows.get_node("AnimationPlayer")
-	if animplayer.is_playing():
+func play_cursor_anim(anim):
+	if Game.is_playing_solo():
+		request_cursor_anim.emit(anim)
+	else:
+		var animplayer = cursor_arrows.get_node("AnimationPlayer")
 		animplayer.stop()
 		animplayer.play(anim)
-	else:
-		animplayer.play(anim)
+
 
 func set_active(p_active: bool):
 	active = p_active
@@ -91,7 +77,6 @@ func set_character(p_character: String):
 	character_selected.text = "Character:\n" + GameData.get_character_info(character).display_name
 	pixelate.stop()
 	pixelate.play("pixelate")
-	print(p_character)
 	await get_tree().create_timer(0.4).timeout
 	var character_info: CharacterInfo = GameData.get_character_info(character)
 	character_portrait.texture = load(character_info.portrait_path)

@@ -27,11 +27,11 @@ enum ERR {
 
 
 func get_total_players() -> int:
-	return human_players + cpu_players
+	return (human_players + cpu_players)
 
 
 func is_playing_solo() -> bool:
-	return human_players == 1
+	return (human_players == 1)
 
 
 func begin_mouse_mode_override(mouse_mode: Input.MouseMode) -> int:

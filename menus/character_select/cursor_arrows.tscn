@@ -4,6 +4,45 @@
 [ext_resource type="Texture2D" uid="uid://coos7u8xni8mu" path="res://assets/ui/menus/arrow_right.png" id="2_5u6ae"]
 [ext_resource type="AudioStream" uid="uid://dl8ljyjfruc5e" path="res://assets/audio/sfx/menu/mode_change.wav" id="3_kkhke"]
 
+[sub_resource type="Animation" id="Animation_rxcab"]
+resource_name = "ArrowBumpLeft"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ArrowLeft:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(16, 48), Vector2(8, 40), Vector2(8, 40), Vector2(16, 48)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("ArrowLeft:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(40, 32), Vector2(48, 40), Vector2(48, 40), Vector2(40, 32)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("AudioStreamPlayer:playing")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_5ce87"]
 resource_name = "ArrowRightBump"
 tracks/0/type = "value"
@@ -104,45 +143,6 @@ tracks/4/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(40, 32)]
-}
-
-[sub_resource type="Animation" id="Animation_rxcab"]
-resource_name = "ArrowBumpLeft"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("ArrowLeft:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(16, 48), Vector2(8, 40), Vector2(8, 40), Vector2(16, 48)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("ArrowLeft:size")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.10000001, 0.20000002, 0.3),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 0,
-"values": [Vector2(40, 32), Vector2(48, 40), Vector2(48, 40), Vector2(40, 32)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("AudioStreamPlayer:playing")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_5lsro"]

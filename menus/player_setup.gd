@@ -8,7 +8,7 @@ const MAX_PLAYERS = 4
 @onready var human_spin_box: SpinBox = $GridContainer/HumanSpinBox
 @onready var cpu_spin_box: SpinBox = $GridContainer/CPUSpinBox
 @onready var cpu_label : Label = $GridContainer/CPULabel
-@onready var stage_option_button: OptionButton = $GridContainer/StageOptionButton
+#@onready var stage_option_button: OptionButton = $GridContainer/StageOptionButton
 
 
 func _ready() -> void:
