@@ -26,6 +26,10 @@ enum ERR {
 }
 
 
+func get_total_players() -> int:
+	return human_players + cpu_players
+
+
 func begin_mouse_mode_override(mouse_mode: Input.MouseMode) -> int:
 	var key := randi()
 	while key in mouse_mode_stack: key = randi()

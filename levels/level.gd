@@ -43,8 +43,7 @@ func _ready() -> void:
 			Game.character_choices[i + 1] = test_characters[i]
 	
 	# Spawn cameras
-	for i in range(Game.human_players):
-		
+	for i in range(Game.get_total_players()):
 		var camera_root = CAMERA_ROOT.instantiate()
 		# For players 2-4, spawn a separate window
 		if i > 0:
@@ -64,7 +63,7 @@ func _ready() -> void:
 	assert(player_spawn_2, "No spawn position has been placed for player 2")
 	assert(player_spawn_3, "No spawn position has been placed for player 3")
 	assert(player_spawn_3, "No spawn position has been placed for player 4")
-	for i in range(Game.human_players):
+	for i in range(Game.get_total_players()):
 		var character = Game.character_choices[i + 1]
 		var player: BattleCharacter = ResourceLoader.load("res://characters/%s/%s.tscn" % [character, character]).instantiate()
 		var spawn_position: Node3D = get("player_spawn_%s" % str(i + 1))

@@ -8,14 +8,14 @@ extends Control
 
 func _ready() -> void:
 	# If no players are present, inject fake results and character choices
-	if Game.human_players == 0:
+	if Game.get_total_players() == 0:
 		for i in range(test_players.size()):
 			Game.match_results[i + 1] = i + 1
 			Game.character_choices[i + 1] = test_players[i]
 		Game.human_players = test_players.size()
 
 	var player_order: Array[int]
-	player_order.resize(Game.human_players) # This must be changed later when CPUs are added
+	player_order.resize(Game.get_total_players()) # This must be changed later when CPUs are added
 	for player_id in Game.match_results.keys():
 		var rank: int = Game.match_results[player_id]
 		player_order[rank - 1] = player_id

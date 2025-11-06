@@ -26,7 +26,7 @@ func _ready() -> void:
 	
 	MusicPlayer.play_track(MusicPlayer.CHALLENGE_BATTLE_MODE)
 	var p1node
-	for i in range(Game.human_players + Game.cpu_players):
+	for i in range(Game.get_total_players()):
 		print(i)
 		var player_character = PLAYER_CHARACTER_SCENE.instantiate()
 		player_character.name = "PlayerContainer" + str(i + 1)
