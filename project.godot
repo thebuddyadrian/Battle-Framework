@@ -243,10 +243,6 @@ pause2={
 "events": []
 }
 
-[internationalization]
-
-locale/translations=PackedStringArray("res://addons/maaacks_input_remapping/base/translations/menus_translations.en.translation", "res://addons/maaacks_input_remapping/base/translations/menus_translations.fr.translation")
-
 [maaacks_input_remapping]
 
 disable_update_check=false
