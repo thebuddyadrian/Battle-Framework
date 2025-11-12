@@ -78,10 +78,21 @@ func set_character_index(p_index: int):
 
 
 func set_character(p_character: String):
+	# Load texture for already selected character, in case the last transition was interrupted
+	if character != "":
+		var old_character_info: CharacterInfo = GameData.get_character_info(character)
+		if character_portrait.texture.resource_path != old_character_info.portrait_path:
+			character_portrait.texture = load(old_character_info.portrait_path)
+
 	character = p_character
 	character_selected.text = "Character:\n" + GameData.get_character_info(character).display_name
+	var character_info: CharacterInfo = GameData.get_character_info(character)
 	pixelate.stop()
 	pixelate.play("pixelate")
 	await get_tree().create_timer(0.4).timeout
-	var character_info: CharacterInfo = GameData.get_character_info(character)
+	character_portrait.texture = load(character_info.portrait_path)
+
+
+func load_character_portrait(p_character: String):
+	var character_info: CharacterInfo = GameData.get_character_info(p_character)
 	character_portrait.texture = load(character_info.portrait_path)
