@@ -15,7 +15,6 @@ var state_time := 0 #Counts how many ticks the current state has been active
 var sub_state := "" #Used to have states inside of states
 var sub_state_time := 0
 var is_changing_state = false
-var frame_changed_state := -1
 
 # Persistent data that is needed by states
 var data := {}
@@ -78,7 +77,7 @@ func change_state(new_state, data := {}):
 		return
 	
 	is_changing_state = true
-	frame_changed_state = 0#SyncManager.current_tick
+	# frame_changed_state = 0#SyncManager.current_tick
 	
 	#If the current state is not null, end the state
 	if active_state != null:
@@ -117,8 +116,6 @@ func change_state(new_state, data := {}):
 
 
 func advance():
-	#if frame_changed_state == SyncManager.current_tick:
-		#return
 	if active_state != null and !is_changing_state:
 		active_state._step()
 		state_time += 1 #+ int(Global.fps_30)
@@ -192,7 +189,6 @@ func _save_state() -> Dictionary:
 		sub_state = sub_state,
 		sub_state_time = sub_state_time,
 		is_changing_state = is_changing_state,
-		frame_changed_state = frame_changed_state,
 		timer_state = custom_timers._save_state().duplicate(true),
 		data = data.duplicate(true),
 	}
@@ -240,6 +236,5 @@ func _load_state(state: Dictionary):
 	sub_state = state["sub_state"]
 	sub_state_time = state["sub_state_time"]
 	is_changing_state = state["is_changing_state"]
-	frame_changed_state = state["frame_changed_state"]
 	custom_timers._load_state(state["timer_state"])
 	data = state["data"].duplicate(true)
