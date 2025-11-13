@@ -181,6 +181,7 @@ func _physics_process(delta: float) -> void:
 	_process_movement()
 	move_and_slide()
 	state_machine.advance()
+	animplayer.advance(delta)
 
 	Sprite.flipped = facing_direction_2d <= 0
 	Sprite.scale.x = 1 if facing_direction_2d <= 0  else 1
@@ -590,7 +591,8 @@ func get_ground_position(offset: Vector3 = Vector3.ZERO):
 func _on_hurtbox_hurt(hit_data: HitData, attacker_hitbox: Hitbox) -> void:
 	current_hp = max(current_hp - hit_data.damage, 0) # Stop HP from going below zero
 	state_machine.change_state("Hurt", {hit_data = hit_data})
-	freeze_frames = 2
+	freeze_frames = hit_data.get_hit_freeze()
+	animplayer.advance(0) # Play the first frame of hurt animation
 	if attacker_hitbox.root is BattleCharacter:
 		last_player_hit_by = attacker_hitbox.root
 
@@ -601,7 +603,7 @@ func _on_hitbox_hit(hit_data: HitData, opponent_hurtbox: Hurtbox) -> void:
 		state_machine.active_state._on_hitbox_hit(hit_data, hurtbox)
 	# TO-DO - Instead of hardcoding a sound effect it should depend on the defined hit sound
 	play_sound_effect("hit_light")
-	freeze_frames = 2
+	freeze_frames = hit_data.get_hit_freeze()
 	if opponent_hurtbox.root is BattleCharacter:
 		last_hit_player = opponent_hurtbox.root
 
