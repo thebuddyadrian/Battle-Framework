@@ -7,7 +7,7 @@ const PLAYER_CHARACTER_SCENE := preload("res://menus/character_select/player_cha
 @onready var cursor_arrows : Control = $CSS/CursorArrows
 var current_player = 1
 
-
+var active_player_nodes = []
 
 func _ready() -> void:
 	if !Game.is_playing_solo():
@@ -38,32 +38,32 @@ func _ready() -> void:
 	for stage in Lists.modded_battle_stages:
 		$MAPSELECT/StageSelect.add_item(stage + " (MOD)")
 
-func _on_player_selection_finished():
-	var current_player_node = player_container.get_child(current_player - 1)
-	Game.character_choices[current_player] = current_player_node.character
+func _on_player_selection_finished(plrnum):
+	var current_player_node = player_container.get_child(plrnum - 1)
+	Game.character_choices[plrnum] = current_player_node.character
 	current_player_node.active = false
+	current_player_node.css_ready = true
 	
-	# broke this out into two functions to make it easier to read, sorry 
+	#changed how it works, i apologize
 	
-	css_iterate_players(current_player_node)
+	css_check_for_players_ready()
+	
+	css_iterate_cpu_players(current_player_node, plrnum)
 
-func css_iterate_players(node):
-	if css_check_for_players_active() == true:
-		if current_player == Game.human_players + Game.cpu_players:
-			css_scene_transition()
-			return
+func css_iterate_cpu_players(node, num):
+	print(node, num)
 	
-	current_player += 1
+	num += 1
 	await get_tree().process_frame
 	
-	if current_player > Game.human_players + Game.cpu_players:
+	if num > Game.human_players + Game.cpu_players:
 		pass
 	else:
-		node = player_container.get_child(current_player - 1)
+		node = player_container.get_child(num - 1)
 		#assume that if it is already active, it's another player, not cpu
 		if node.active == true:
 			# iterate again until you get OOB for the player count.
-			css_iterate_players(node)
+			css_iterate_cpu_players(node, num)
 		else:
 			node.active = true
 			css_cursor_tween_to_player(node.global_position)
@@ -75,24 +75,20 @@ func css_scene_transition():
 		selected_stage = Lists.modded_battle_stages[$MAPSELECT/StageSelect.selected - Lists.battle_stages.size()]
 	else:
 		selected_stage = Lists.battle_stages[$MAPSELECT/StageSelect.selected]
+	
+	SceneChanger.change_scene_to_file("res://levels/%s/%s.tscn" % [selected_stage, selected_stage])
 
-	if current_player == Game.human_players + Game.cpu_players:
-		SceneChanger.change_scene_to_file("res://levels/%s/%s.tscn" % [selected_stage, selected_stage])
-		return
-
-func css_check_for_players_active():
+func css_check_for_players_ready():
 	#this function needs to iterate when fired across all the players
 	#then determine if there is still an active player. 
 	#if there are no active players, return true for transition.
 	#if there isn't, dont do anything. we'll check again when a player gets selected.
 	var player_nodes = player_container.get_children()
-	print(player_nodes)
-	var active_player_nodes = []
 	for i in player_nodes:
-		if i.active:
+		if i.css_ready:
 			active_player_nodes.append(i)
-			if active_player_nodes.size() == Game.human_players + Game.cpu_players:
-				return true
+			if active_player_nodes.size() == player_nodes.size():
+				css_scene_transition()
 			else:
 				print("not enough players")
 				return false
