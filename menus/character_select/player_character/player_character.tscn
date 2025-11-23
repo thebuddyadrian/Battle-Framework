@@ -1,7 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://dhl6gvecygwbc"]
+[gd_scene load_steps=5 format=3 uid="uid://dhl6gvecygwbc"]
 
 [ext_resource type="Script" uid="uid://bpjjhnx3q5um0" path="res://menus/character_select/player_character/player_character.gd" id="1_gu884"]
-[ext_resource type="PackedScene" uid="uid://15coxxqw12kr" path="res://characters/Portraits/characters.tscn" id="2_fq4xj"]
+[ext_resource type="PackedScene" uid="uid://15coxxqw12kr" path="res://menus/character_select/portraits/portrait_manager.tscn" id="2_fq4xj"]
+[ext_resource type="Texture2D" uid="uid://c1gqehpccugqc" path="res://assets/ui/spriteOK!.png" id="3_816r1"]
+[ext_resource type="PackedScene" uid="uid://bu74bh1pcju6h" path="res://menus/character_select/cursor_arrows.tscn" id="4_ofnyx"]
 
 [node name="PlayerCharacter" type="Control"]
 custom_minimum_size = Vector2(120, 80)
@@ -31,8 +33,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-border_width = 3.0
-editor_only = false
 
 [node name="CharacterSelected" type="Label" parent="."]
 visible = false
@@ -46,3 +46,17 @@ text = "Character:
 Sonic"
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="ConfirmSprite" type="TextureRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 9.0
+offset_top = 38.0
+offset_right = 59.0
+offset_bottom = 78.0
+texture = ExtResource("3_816r1")
+
+[node name="CursorArrows" parent="." instance=ExtResource("4_ofnyx")]
+layout_mode = 0
+
+[editable path="CursorArrows"]

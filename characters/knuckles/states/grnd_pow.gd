@@ -1,8 +1,8 @@
 extends BaseAttack
 const GRND_POW_PROJ_PATH = "res://spawnables/Knuckles_GrndPow.tscn"
-@export var proj_offset_x: float = 1
-@export var proj_offset_y: float = 1
-@export var proj_offset_z: float = 1
+var proj_offset_x: float = 1.5
+var proj_offset_y: float = 1.5
+var proj_offset_z: float = 1.5
 var explosion: bool = false
 var proj
 func _enter(data := {}):
@@ -26,23 +26,20 @@ func _step():
 		if is_instance_valid(proj):
 			if attack_direction == Vector2.RIGHT:
 				proj.position.x = root.position.x + proj_offset_x
-				proj.position.y = root.position.y + proj_offset_y
-				proj.position.z = root.position.z + proj_offset_z
+				proj.position.y = root.position.y
+				proj.position.z = root.position.z
 			elif attack_direction == Vector2.LEFT:
 				proj.position.x = root.position.x - proj_offset_x
-				proj.position.y = root.position.y + proj_offset_y
-				proj.position.z = root.position.z + proj_offset_z
+				proj.position.y = root.position.y
+				proj.position.z = root.position.z
 			elif attack_direction == Vector2.UP:
-				proj.position.y = root.position.y + proj_offset_y
+				proj.position.x = root.position.x
+				proj.position.y = root.position.y 
 				proj.position.z = root.position.z - proj_offset_z
-				if $"../../PlayerSprite".flip_h:
-					proj.position.x = root.position.x - 0.1
-				else:
-					proj.position.x = root.position.x + 0.15
 			elif attack_direction == Vector2.DOWN:
-				proj.position.y = root.position.y + proj_offset_y
+				proj.position.y = root.position.y 
 				proj.position.z = root.position.z + proj_offset_z
-				proj.position.x = root.position.x - 0.1
+				proj.position.x = root.position.x
 	elif get_current_phase() == recovery_phase:
 		
 		root.velocity.x = lerp(attack_direction.x * 7, 0.0, 0.6)

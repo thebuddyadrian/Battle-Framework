@@ -9,6 +9,12 @@ class_name AttackInfo
 @export var animation_down: String = "" 
 ## Up facing animation, for multi-direction attacks (specials)
 @export var animation_up: String = "" 
+## The first frame of the sprite sheet displayed for the down animation. Required to make sure the right animation plays when camera flips.
+@export var animation_down_start_frame: int = -1
+## The first frame of the sprite sheet displayed for the up animation. Required to make sure the right animation plays when camera flips.
+@export var animation_up_start_frame: int = -1
+## The first frame where the flip offset will be applied
+@export var animation_flip_offset_frame_start: int = 0
 ## If true, the air animation will be used in the air, otherwise only animation will be used
 @export var change_anim_in_air: bool = false
 ## Can be set to false to disable the animation system

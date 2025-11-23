@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterInfo" load_steps=2 format=3 uid="uid://d1yjnnlayrwwa"]
+
+[ext_resource type="Script" uid="uid://2a2htk5lwmcm" path="res://characters/base_player/character_info.gd" id="1_8t3cr"]
+
+[resource]
+script = ExtResource("1_8t3cr")
+display_name = "Shadow"
+portrait_path = "uid://42f0le5o585c"
+life_icon_path = "uid://bts0x6bqw6t3i"
+max_hp = 300
+move_speed = 8500
+jump_velocity = 14000
+gravity = 650
+fall_speed = 12000
+acceleration = 800
+deceleration = 750
+air_acceleration = 500
+air_deceleration = 150
+max_air_actions = 1
+max_air_skills = 1
+metadata/_custom_type_script = "uid://2a2htk5lwmcm"

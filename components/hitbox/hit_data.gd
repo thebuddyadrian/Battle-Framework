@@ -11,7 +11,7 @@ enum KNOCKBACK_TYPE {WEAK, LAUNCH, UP, DOWN, KNOCKDOWN}
 @export var knockback_angle: float = 30 # The angle the player will get hit upwards, in regards to the plane with its width defined by the knockback_direction and the Y axis
 @export var knockback_type: KNOCKBACK_TYPE = KNOCKBACK_TYPE.WEAK
 @export var unblockable: bool = false
-@export var hit_freeze: int = 5
+@export var hit_freeze_override: int = -1
 @export var hit_stun: int = 30
 
 
@@ -22,3 +22,9 @@ func calculate_knockback_velocity() -> Vector3:
 	vec.x = knockback_power * cos(angle_rad) * knockback_direction.x 
 	vec.z = knockback_power * cos(angle_rad) * knockback_direction.y
 	return vec
+
+
+func get_hit_freeze() -> int:
+	if hit_freeze_override > -1:
+		return hit_freeze_override
+	return ceil(damage/4)

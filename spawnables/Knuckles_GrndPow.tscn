@@ -1,9 +1,10 @@
-[gd_scene load_steps=30 format=3 uid="uid://d0slkxrwis2ve"]
+[gd_scene load_steps=31 format=3 uid="uid://d0slkxrwis2ve"]
 
 [ext_resource type="Script" uid="uid://ctiobp6w5h2ib" path="res://spawnables/Knuckles_grndpow.gd" id="1_edls8"]
-[ext_resource type="Texture2D" uid="uid://ds3c6j0olh44r" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="2_bjyxo"]
+[ext_resource type="Texture2D" uid="uid://cubjp7dxe8bi8" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="2_bjyxo"]
 [ext_resource type="Resource" uid="uid://by1udh43sbhjt" path="res://spawnables/ShotData/Knuckles_GrndPow_info.tres" id="2_fojjp"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_fojjp"]
+[ext_resource type="Script" uid="uid://d0127k12xvws" path="res://components/battle_sprite/battle_animated_sprite.gd" id="4_fojjp"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_vyvt2"]
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_4e41c"]
 
@@ -244,10 +245,14 @@ spawnable_info = ExtResource("2_fojjp")
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 layers = 8
+offset = Vector2(0, 5)
+billboard = 1
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_g86sr")
 animation = &"Side"
 autoplay = "Side"
+script = ExtResource("4_fojjp")
+metadata/_custom_type_script = "uid://d0127k12xvws"
 
 [node name="Hitbox" type="Area3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)

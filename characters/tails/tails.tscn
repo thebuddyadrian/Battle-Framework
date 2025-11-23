@@ -1,8 +1,9 @@
-[gd_scene load_steps=33 format=3 uid="uid://ubts1e2d3mjh"]
+[gd_scene load_steps=34 format=3 uid="uid://cy4wfekiel3v1"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
 [ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://characters/tails/sprites/TailsSpritesheet.png" id="2_cps4t"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_uaadi"]
+[ext_resource type="Resource" uid="uid://856l10vlkiyr" path="res://characters/tails/tails.tres" id="2_weptr"]
 [ext_resource type="AnimationLibrary" uid="uid://gi0u1pjxm16h" path="res://characters/tails/tails_animations.res" id="3_ppohl"]
 [ext_resource type="Texture2D" uid="uid://cykdoo1fptjrl" path="res://characters/tails/sprites/Tails Effects Spritesheet.png" id="4_my705"]
 [ext_resource type="Script" uid="uid://cfasn3us7ol01" path="res://characters/tails/states/tails_air_action.gd" id="4_qf74s"]
@@ -33,52 +34,21 @@
 [sub_resource type="Resource" id="Resource_phocd"]
 script = ExtResource("7_eakuc")
 animation = "Punch1"
-air_animation = ""
-animation_down = ""
-animation_up = ""
-change_anim_in_air = false
-play_animation = true
-use_anim_markers = true
-use_sections = true
 startup_frames = 4
 active_frames = 6
-recovery_frames = 10
-attack_sound = "punch"
 damage = 10
 knockback_power = 2
-knockback_angle = 0
-knockback_type = 0
 hit_stun = 10
-hit_sound = "hit"
-can_charge = false
-max_charge = 30
-max_hold = 30
-knockback_charge_scale = 180
-damage_charge_scale = 150
-knockback_scaling_charge_scale = 180
-use_hitbox = true
-land_on_touched_ground = false
-stop_on_left_ground = false
-landing_lag = 6
-dash_cancel_on_hit = false
-dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
 [sub_resource type="Resource" id="Resource_weptr"]
 script = ExtResource("2_uaadi")
-damage = 0.0
-knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
-unblockable = false
-hit_freeze = 5
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.149445
+radius = 0.18033385
 
 [node name="Tails" instance=ExtResource("1_b5y1r")]
+character_info = ExtResource("2_weptr")
 
 [node name="PlayerSprite" parent="." index="1"]
 texture = ExtResource("2_cps4t")
@@ -148,7 +118,7 @@ attack_info = ExtResource("22_6dfm6")
 hit_data = SubResource("Resource_weptr")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172591, -0.139195, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1725913, -0.13919544, 0)
 shape = SubResource("SphereShape3D_3twb4")
 
 [node name="TestLabel" parent="." index="7"]

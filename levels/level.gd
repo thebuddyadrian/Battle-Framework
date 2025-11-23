@@ -27,6 +27,7 @@ func _ready() -> void:
 	# Make sure subwindows aren't embedded, or else multiple windows wont spawn
 	get_viewport().gui_embed_subwindows = false
 
+	ControlsSettings.load_controls()
 	Game.match_results.clear()
 
 	# Get music track
@@ -42,8 +43,7 @@ func _ready() -> void:
 			Game.character_choices[i + 1] = test_characters[i]
 	
 	# Spawn cameras
-	for i in range(Game.human_players):
-		
+	for i in range(Game.get_total_players()):
 		var camera_root = CAMERA_ROOT.instantiate()
 		# For players 2-4, spawn a separate window
 		if i > 0:
@@ -63,9 +63,9 @@ func _ready() -> void:
 	assert(player_spawn_2, "No spawn position has been placed for player 2")
 	assert(player_spawn_3, "No spawn position has been placed for player 3")
 	assert(player_spawn_3, "No spawn position has been placed for player 4")
-	for i in range(Game.human_players):
+	for i in range(Game.get_total_players()):
 		var character = Game.character_choices[i + 1]
-		var player: BattleCharacter = load("res://characters/%s/%s.tscn" % [character, character]).instantiate()
+		var player: BattleCharacter = ResourceLoader.load("res://characters/%s/%s.tscn" % [character, character]).instantiate()
 		var spawn_position: Node3D = get("player_spawn_%s" % str(i + 1))
 		player.global_position = spawn_position.global_position
 		player.camera = camera_pivots[i]

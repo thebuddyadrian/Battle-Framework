@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterInfo" load_steps=2 format=3 uid="uid://clgp623tj36p8"]
+
+[ext_resource type="Script" uid="uid://2a2htk5lwmcm" path="res://characters/base_player/character_info.gd" id="1_7la24"]
+
+[resource]
+script = ExtResource("1_7la24")
+display_name = "Sonic"
+portrait_path = "uid://doi3o74wjlh3u"
+life_icon_path = "uid://b4e72gl5uqhpv"
+max_hp = 300
+move_speed = 8000
+jump_velocity = 14000
+gravity = 650
+fall_speed = 12000
+acceleration = 800
+deceleration = 750
+air_acceleration = 500
+air_deceleration = 150
+max_air_actions = 1
+max_air_skills = 1
+metadata/_custom_type_script = "uid://2a2htk5lwmcm"

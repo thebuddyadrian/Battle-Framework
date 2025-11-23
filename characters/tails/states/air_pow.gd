@@ -1,5 +1,7 @@
 extends BaseAttack
 const GRND_POW_PROJ_PATH = "res://spawnables/tails_pow.tscn"
+
+
 func _enter(data := {}):
 	super._enter(data)
 	root.velocity.y = 12
@@ -23,23 +25,8 @@ func _phase_changed():
 		var proj = root.spawn_scene("GrndPow", GRND_POW_PROJ_PATH, root.global_position, null, data)
 		proj.direction = attack_direction
 		proj.velocity = Vector3(0.0,0.0,0.0)
-		if(attack_direction == Vector2.RIGHT):
-			proj.position.z =  root.position.z
-			proj.position.y =  1
-			proj.position.x =  root.position.x
-		elif (attack_direction == Vector2.LEFT):
-			proj.position.z =  root.position.z
-			proj.position.y =  1
-			proj.position.x =  root.position.x
-		elif (attack_direction == Vector2.UP):
-			proj.position.z =  root.position.z
-			proj.position.y =  1
-			proj.position.x =  root.position.x
-		elif (attack_direction == Vector2.DOWN):
-			proj.position.z =  root.position.z
-			proj.position.y =  1
-			proj.position.x =  root.position.x
-			
+		# Spawn projectile on floor below tails
+		proj.global_position = root.get_ground_position() + Vector3.UP * 0.5
 			
 func _exit(next_state):
 	pass

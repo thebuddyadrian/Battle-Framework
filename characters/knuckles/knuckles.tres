@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="CharacterInfo" load_steps=2 format=3 uid="uid://dhippg1pyutqc"]
+
+[ext_resource type="Script" uid="uid://2a2htk5lwmcm" path="res://characters/base_player/character_info.gd" id="1_7sg41"]
+
+[resource]
+script = ExtResource("1_7sg41")
+display_name = "Knuckles"
+portrait_path = "uid://ciu2eda5yyu62"
+life_icon_path = "uid://dvuedhl2ul52y"
+max_hp = 300
+move_speed = 5000
+jump_velocity = 14000
+gravity = 650
+fall_speed = 12000
+acceleration = 800
+deceleration = 750
+air_acceleration = 500
+air_deceleration = 150
+max_air_actions = 1
+max_air_skills = 1
+metadata/_custom_type_script = "uid://2a2htk5lwmcm"

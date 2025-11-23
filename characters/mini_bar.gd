@@ -10,7 +10,7 @@ func _ready():
 	camera = get_viewport().get_camera_3d()
 	
 	# Set the initial value to a placeholder (e.g., full health)
-	max_value = character.HP
+	max_value = character.max_hp
 
 func _process(delta):
 	value = character.current_hp

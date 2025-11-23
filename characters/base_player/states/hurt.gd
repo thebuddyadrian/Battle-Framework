@@ -4,25 +4,29 @@ var hit_stun_deceleration = 0.6
 var hit_data: HitData
 const LIGHT_HIT_EFFECT_PATH = "res://effects/light_hit_effect.tscn"
 const HEAVY_HIT_EFFECT_PATH = "res://effects/heavy_hit_effect.tscn"
-var spawned_effect: bool = false
+
+
 func _enter(data = {}) -> void:
 	root.deceleration_enabled = false
 	root.animplayer.stop()
 	hit_data = data["hit_data"]
+
+	root.animplayer.play("Hurt")
 
 	# When the player is at 0 health, force a knockdown
 	if root.current_hp <= 0:
 		hit_data.knockback_type = HitData.KNOCKBACK_TYPE.KNOCKDOWN
 
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.WEAK:
-		var effect = root.spawn_scene("LightHitEffect", LIGHT_HIT_EFFECT_PATH, root.global_position, null)
-		effect.position = root.position
-		effect.position.y = root.position.y + 1
-		root.animplayer.play("Hurt")
+		var spawn_position: Vector3 = root.global_position + Vector3(0, 1, 0)
+		var effect = root.spawn_scene("LightHitEffect", LIGHT_HIT_EFFECT_PATH, spawn_position, null)
 		hit_stun_deceleration = 0.6
-	elif hit_data.knockback_type == HitData.KNOCKBACK_TYPE.LAUNCH or hit_data.knockback_type  == HitData.KNOCKBACK_TYPE.UP:
+	elif hit_data.knockback_type == HitData.KNOCKBACK_TYPE.LAUNCH:
 		root.spawn_scene("HeavyHitEffect", HEAVY_HIT_EFFECT_PATH, root.global_position + Vector3.UP * 1, null, data)
+		hit_stun_deceleration = 0.6
 	else:
+		var spawn_position: Vector3 = root.global_position + Vector3(0, 1, 0)
+		var effect = root.spawn_scene("LightHitEffect", LIGHT_HIT_EFFECT_PATH, spawn_position, null)
 		hit_stun_deceleration = 0.3
 	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.KNOCKDOWN:
 		root.animplayer.play("Knockdown")
@@ -80,6 +84,5 @@ func _step():
 
 
 func _exit(next_state: BaseState) -> void:
-	spawned_effect = false
 	root.gravity_scale = 1
 	root.deceleration_enabled = true

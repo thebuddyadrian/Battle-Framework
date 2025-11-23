@@ -1,8 +1,9 @@
-[gd_scene load_steps=73 format=3 uid="uid://1q41upvf2gpk"]
+[gd_scene load_steps=74 format=3 uid="uid://1q41upvf2gpk"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_jint7"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="2_a2uvc"]
 [ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://characters/sonic/sprites/Sonic.png" id="2_gd83v"]
+[ext_resource type="Resource" uid="uid://clgp623tj36p8" path="res://characters/sonic/sonic.tres" id="2_tfamv"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="3_fueeq"]
 [ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="3_jddj4"]
 [ext_resource type="Resource" uid="uid://br5v34ftitnna" path="res://characters/kid_goku/states/jab_1.tres" id="5_fueeq"]
@@ -16,9 +17,9 @@
 [ext_resource type="Resource" uid="uid://cdy3tsk3tj34i" path="res://characters/sonic/states/air_attack.tres" id="11_41aki"]
 [ext_resource type="Script" uid="uid://bnkbr41fk3o52" path="res://characters/sonic/states/air_attack.gd" id="13_fueeq"]
 [ext_resource type="Resource" uid="uid://dwedimbmp6yue" path="res://characters/sonic/states/grnd_shot.tres" id="14_6ri6b"]
-[ext_resource type="Resource" uid="uid://dy6rk041ul1aa" path="res://characters/kid_goku/states/aim_attack.tres" id="15_fueeq"]
 [ext_resource type="Resource" uid="uid://lscqxewn2oxm" path="res://characters/sonic/states/grnd_pow.tres" id="15_lq7el"]
 [ext_resource type="Script" uid="uid://bxynu507si7x3" path="res://characters/sonic/states/air_pow.gd" id="16_lci63"]
+[ext_resource type="Resource" uid="uid://bsamhai8ayxav" path="res://characters/sonic/states/aim_attack.tres" id="16_t5h5i"]
 [ext_resource type="Script" uid="uid://dghxsgu1omfw3" path="res://characters/sonic/states/grnd_shot.gd" id="17_tfamv"]
 [ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="21_tfamv"]
 [ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="22_fueeq"]
@@ -1366,6 +1367,9 @@ animation = "AirPowFwd"
 air_animation = ""
 animation_down = "AirPowDown"
 animation_up = "AirPowUp"
+animation_down_start_frame = 214
+animation_up_start_frame = 218
+animation_flip_offset_frame_start = 0
 change_anim_in_air = false
 play_animation = true
 use_anim_markers = false
@@ -1394,7 +1398,7 @@ dash_cancel_on_hit = false
 dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("21_tfamv")
 
-[sub_resource type="Resource" id="Resource_fueeq"]
+[sub_resource type="Resource" id="Resource_tfamv"]
 script = ExtResource("2_a2uvc")
 damage = 0.0
 knockback_direction = Vector2(0, 0)
@@ -1402,13 +1406,14 @@ knockback_power = 20.0
 knockback_angle = 30.0
 knockback_type = 0
 unblockable = false
-hit_freeze = 5
+hit_freeze_override = -1
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nx0o7"]
 radius = 0.129537
 
 [node name="Sonic" instance=ExtResource("1_jint7")]
+character_info = ExtResource("2_tfamv")
 
 [node name="PlayerSprite" parent="." index="1"]
 billboard = 1
@@ -1431,11 +1436,6 @@ texture = ExtResource("3_fueeq")
 hframes = 10
 vframes = 11
 frame = 36
-
-[node name="RayCast3D" parent="." index="3"]
-target_position = Vector3(0, -3, 0)
-debug_shape_custom_color = Color(1, 0, 0, 1)
-debug_shape_thickness = 5
 
 [node name="AirAction" parent="StateMachine" index="7"]
 script = ExtResource("3_jddj4")
@@ -1465,7 +1465,7 @@ script = ExtResource("13_fueeq")
 attack_info = ExtResource("11_41aki")
 
 [node name="AimAttack" parent="StateMachine" index="26"]
-attack_info = ExtResource("15_fueeq")
+attack_info = ExtResource("16_t5h5i")
 
 [node name="GrndShot" parent="StateMachine" index="27"]
 script = ExtResource("17_tfamv")
@@ -1479,7 +1479,7 @@ script = ExtResource("16_lci63")
 attack_info = SubResource("Resource_t5h5i")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_fueeq")
+hit_data = SubResource("Resource_tfamv")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 shape = SubResource("SphereShape3D_nx0o7")

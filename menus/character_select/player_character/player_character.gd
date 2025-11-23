@@ -1,23 +1,23 @@
 extends Control
 
+signal request_cursor_anim(anim_name)
+
 # If there's a player selecting a character using this node
 var active: bool = false: set = set_active
+var is_cpu: bool = false
 var character_index: int = 0 : set = set_character_index
 var character: String : set = set_character
 
+
 @export var player_number: int = 1
+
 @onready var character_selected: Label = $CharacterSelected
 @onready var reference_rect: ReferenceRect = $ReferenceRect
-@onready var player_name: Label = $PlayerName
 @onready var character_portrait: TextureRect = $Portrait_Manager/Characters
 @onready var pixelate: AnimationPlayer = $Portrait_Manager/pixelate
-@export var portrait_texture : Dictionary = {
-	"sonic": preload("res://characters/sonic/sprites/Sonic Portrait.png"),
-	"tails": preload("res://characters/tails/sprites/Tails Portrait.png"),
-	"knuckles": preload("res://characters/knuckles/sprites/Knuckles Portrait.png"),
-	"shadow": preload("res://characters/shadow/sprites/Shadow Portrait.png")
-	}
-
+@onready var confirm_sprite : TextureRect = $ConfirmSprite
+@onready var cursor_arrows: Control = $CursorArrows
+@onready var cursor_arrows_animplayer: AnimationPlayer = $CursorArrows/AnimationPlayer
 
 signal selection_finished
 
@@ -28,17 +28,39 @@ func _ready() -> void:
 	set_character_index(character_index)
 	# Make sure the shader material isn't shared between characters
 	character_portrait.material = character_portrait.material.duplicate()
-	
+
+	if Game.is_playing_solo():
+		cursor_arrows.visible = false
 
 
 func _process(delta: float) -> void:
-	if active:
-		if Input.is_action_just_pressed("ui_left"):
-			character_index -= 1
-		if Input.is_action_just_pressed("ui_right"):
-			character_index += 1
-		if Input.is_action_just_pressed("ui_accept"):
-			selection_finished.emit()
+	if !active:
+		return
+	if get_input("left"):
+		character_index -= 1
+		play_cursor_anim("ArrowBumpLeft")
+	if get_input("right"):
+		character_index += 1
+		play_cursor_anim("ArrowRightBump")
+	if get_input("attack"):
+		selection_finished.emit()
+		confirm_sprite.visible = true
+		cursor_arrows.visible = false
+
+
+func get_input(action: String) -> bool:
+	# If this is a CPU player, use player 1 controls
+	var input_player_number: int = player_number if !is_cpu else 1
+	return PlayerInput.player_action_just_pressed(action, input_player_number)
+
+
+func play_cursor_anim(anim):
+	if Game.is_playing_solo():
+		request_cursor_anim.emit(anim)
+	else:
+		var animplayer = cursor_arrows.get_node("AnimationPlayer")
+		animplayer.stop()
+		animplayer.play(anim)
 
 
 func set_active(p_active: bool):
@@ -56,9 +78,21 @@ func set_character_index(p_index: int):
 
 
 func set_character(p_character: String):
+	# Load texture for already selected character, in case the last transition was interrupted
+	if character != "":
+		var old_character_info: CharacterInfo = GameData.get_character_info(character)
+		if character_portrait.texture.resource_path != old_character_info.portrait_path:
+			character_portrait.texture = load(old_character_info.portrait_path)
+
 	character = p_character
-	character_selected.text = "Character:\n" + Lists.character_display_names[character]
+	character_selected.text = "Character:\n" + GameData.get_character_info(character).display_name
+	var character_info: CharacterInfo = GameData.get_character_info(character)
 	pixelate.stop()
 	pixelate.play("pixelate")
 	await get_tree().create_timer(0.4).timeout
-	character_portrait.texture = portrait_texture[character]
+	character_portrait.texture = load(character_info.portrait_path)
+
+
+func load_character_portrait(p_character: String):
+	var character_info: CharacterInfo = GameData.get_character_info(p_character)
+	character_portrait.texture = load(character_info.portrait_path)

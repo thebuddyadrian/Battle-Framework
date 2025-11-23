@@ -10,19 +10,12 @@ func _phase_changed():
 		}
 		var proj = root.spawn_scene("GrndShot", GRND_SHOT_PROJ_PATH, root.global_position, null, data)
 		proj.direction = attack_direction
-		if (attack_direction == Vector2.LEFT) or (attack_direction == Vector2.RIGHT):
-			proj.position.x = root.position.x + (1 * attack_direction.x)
-			proj.position.y = root.position.y
-		elif attack_direction == Vector2.DOWN:
-			proj.position.x = root.position.x
-			proj.position.z = root.position.z + 1
-			proj.position.y = root.position.y
-		elif attack_direction == Vector2.UP:
-			proj.position.x = root.position.x
-			proj.position.z = root.position.z - 1
-			proj.position.y = root.position.y
-		# proj.velocity.x = attack_direction.x * 6
-		# proj.velocity.z = attack_direction.y * 6
-		# root.velocity.y = 12
-		# root.velocity.x = -root.facing_direction.x * 7
-		# root.velocity.z = -root.facing_direction.y * 7
+		# Spawn projectile in front of Shadow using the attack direction
+		var proj_spawn_offset: Vector3 = Vector3(attack_direction.x, 0, attack_direction.y)		
+		proj.global_position = root.global_position + proj_spawn_offset
+		
+		# Check for collision in front of shadow, moving the raycast upward to check for any platforms
+		var ground_pos_y_in_front: float = root.get_ground_position(proj_spawn_offset + Vector3.UP * 5).y
+		# If there's a platform in front of shadow (ground position is higher than original spawn point), move the projectile upwards
+		if ground_pos_y_in_front > proj.global_position.y + 1:
+			proj.global_position.y = ground_pos_y_in_front + 0.5

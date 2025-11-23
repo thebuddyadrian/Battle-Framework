@@ -19,8 +19,8 @@ func _step():
 		var proj = root.spawn_scene("DashEffect", DASH_EFFECT_PATH, root.global_position, null, data)
 		proj.position = root.position
 		spawned_dash_effect = true
-	root.velocity.x = dash_direction.x * root.DASH_SPEED 
-	root.velocity.z = dash_direction.y * root.DASH_SPEED 
+	root.velocity.x = dash_direction.x * 16 
+	root.velocity.z = dash_direction.y * 16
 	if parent.state_time > 35 :
 		parent.change_state("Idle")
 

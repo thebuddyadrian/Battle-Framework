@@ -56,16 +56,11 @@ func _physics_process(delta: float) -> void:
 
 
 ## Input helper function to get input for the current player
-## In the future this will also retrieve inputs received over the network (for online play)
 func input(action: StringName, type: String = "pressed") -> bool:
-	var player_action = action + str(player_id)
-	if !InputMap.has_action(player_action):
-		push_error("Action %s doesn't exist" % player_action)
-		return false
 	if type == "pressed":
-		return Input.is_action_pressed(player_action)
+		return PlayerInput.player_action_pressed(action, player_id)
 	if type == "just_pressed":
-		return Input.is_action_just_pressed(player_action)
+		return PlayerInput.player_action_just_pressed(action, player_id)
 	if type == "just_released":
-		return Input.is_action_just_released(player_action)
+		return PlayerInput.player_action_just_released(action, player_id)
 	return false
