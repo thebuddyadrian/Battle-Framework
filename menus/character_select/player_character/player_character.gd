@@ -29,7 +29,7 @@ func _ready() -> void:
 	# Make sure the shader material isn't shared between characters
 	character_portrait.material = character_portrait.material.duplicate()
 
-	if Game.is_playing_solo():
+	if Game.is_playing_solo() or is_cpu:
 		cursor_arrows.visible = false
 
 
