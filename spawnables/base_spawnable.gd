@@ -6,6 +6,7 @@ var hit_start_timer: Timer = Timer.new()
 var hurt_start_timer: Timer = Timer.new()
 var exist_time: float = 0.0
 var direction: Vector2 = Vector2.RIGHT
+var freeze_frames: int = 0
 
 var summoner: Node = null
 
@@ -72,6 +73,9 @@ func _ready():
 
 # Do Not Override:tm:
 func _physics_process(delta):
+	if freeze_frames > 0:
+		freeze_frames -= 1
+		return
 	exist_time += delta
 	move_and_slide()
 	self._do_behavior(delta)
@@ -111,6 +115,7 @@ func _do_behavior(delta):
 func _on_hit(hit_data: HitData, hurtbox: Hurtbox):
 	# TO-DO - Instead of hardcoding a sound effect it should depend on the defined hit sound
 	play_sound_effect("hit_light")
+	freeze_frames = hit_data.get_hit_freeze()
 
 ## Runs after object is hit.
 func _on_hurt(hit_data: HitData, hitbox: Hitbox):
