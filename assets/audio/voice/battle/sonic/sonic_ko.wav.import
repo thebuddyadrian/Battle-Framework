@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://dfkubcclcrvob"
-path="res://.godot/imported/sonic_ko.wav-49a433514667e1440e810fd177591ead.sample"
+path="res://.godot/imported/sonic_ko.wav-f9652541432b88d9b732b19e6489aae1.sample"
 
 [deps]
 
-source_file="res://assets/audio/voice/battle/sonic_ko.wav"
-dest_files=["res://.godot/imported/sonic_ko.wav-49a433514667e1440e810fd177591ead.sample"]
+source_file="res://assets/audio/voice/battle/sonic/sonic_ko.wav"
+dest_files=["res://.godot/imported/sonic_ko.wav-f9652541432b88d9b732b19e6489aae1.sample"]
 
 [params]
 

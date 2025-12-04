@@ -15,6 +15,7 @@ func _enter(data = {}):
 	root.velocity.y = -3
 	root.velocity.x = 5 * root.facing_direction.x
 	root.velocity.z = 5 * root.facing_direction.y
+	root.play_sound_effect("tails/tails_air_action")
 
 
 func _step():

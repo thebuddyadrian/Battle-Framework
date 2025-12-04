@@ -109,7 +109,8 @@ func _do_behavior(delta):
 
 ## Runs after a hit.
 func _on_hit(hit_data: HitData, hurtbox: Hurtbox):
-	pass
+	# TO-DO - Instead of hardcoding a sound effect it should depend on the defined hit sound
+	play_sound_effect("hit_light")
 
 ## Runs after object is hit.
 func _on_hurt(hit_data: HitData, hitbox: Hitbox):
@@ -138,3 +139,8 @@ func _on_thrown():
 func reactivate_hitbox():
 	hitbox.active = true
 	hitbox.nodes_already_hit.clear()
+
+## Plays a sound found in the assets/audio/sfx/battle folder
+func play_sound_effect(sound_name: String):
+	var stream = load("assets/audio/sfx/battle/" + sound_name + ".wav")
+	SoundEffectPlayer.play_sound_effect(sound_name, stream, "SFX", global_position)

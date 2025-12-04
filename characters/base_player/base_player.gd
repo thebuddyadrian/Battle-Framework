@@ -95,6 +95,8 @@ func _ready() -> void:
 	team_id = player_id
 	_load_stats()
 	current_hp = max_hp
+	# TO-DO there should be 
+	current_stocks = 3
 
 
 func _load_stats():

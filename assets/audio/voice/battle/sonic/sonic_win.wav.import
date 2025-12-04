@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://d37e15gdtpnv"
-path="res://.godot/imported/sonic_win.wav-0176397c00d157b6534e592ac5731a2a.sample"
+path="res://.godot/imported/sonic_win.wav-100f297ddcd34787471724e3779a2cc6.sample"
 
 [deps]
 
-source_file="res://assets/audio/voice/battle/sonic_win.wav"
-dest_files=["res://.godot/imported/sonic_win.wav-0176397c00d157b6534e592ac5731a2a.sample"]
+source_file="res://assets/audio/voice/battle/sonic/sonic_win.wav"
+dest_files=["res://.godot/imported/sonic_win.wav-100f297ddcd34787471724e3779a2cc6.sample"]
 
 [params]
 

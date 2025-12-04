@@ -28,6 +28,7 @@ class_name AttackInfo
 @export var recovery_frames: int = 10
 # Split up the animation into the startup, active, and recovery sections
 @export var attack_sound: String = "punch"
+@export var attack_voice: String = ""
 @export var damage: int = 15
 @export var knockback_power: int = 25
 @export var knockback_angle: int = 0

@@ -1378,6 +1378,7 @@ startup_frames = 4
 active_frames = 20
 recovery_frames = 8
 attack_sound = "punch"
+attack_voice = ""
 damage = 6
 knockback_power = 4
 knockback_angle = 80

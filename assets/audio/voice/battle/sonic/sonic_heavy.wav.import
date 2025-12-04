@@ -3,12 +3,12 @@
 importer="wav"
 type="AudioStreamWAV"
 uid="uid://cdtorqxjl7r0m"
-path="res://.godot/imported/sonic_heavy.wav-7e98355b2cb51b8658c8ebbb03eb74b5.sample"
+path="res://.godot/imported/sonic_heavy.wav-49084b98f362dfcc1e6a36b9f3402e3d.sample"
 
 [deps]
 
-source_file="res://assets/audio/voice/battle/sonic_heavy.wav"
-dest_files=["res://.godot/imported/sonic_heavy.wav-7e98355b2cb51b8658c8ebbb03eb74b5.sample"]
+source_file="res://assets/audio/voice/battle/sonic/sonic_heavy.wav"
+dest_files=["res://.godot/imported/sonic_heavy.wav-49084b98f362dfcc1e6a36b9f3402e3d.sample"]
 
 [params]
 

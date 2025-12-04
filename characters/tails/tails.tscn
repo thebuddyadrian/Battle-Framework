@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://cy4wfekiel3v1"]
+[gd_scene load_steps=35 format=3 uid="uid://cy4wfekiel3v1"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
 [ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://characters/tails/sprites/TailsSpritesheet.png" id="2_cps4t"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" uid="uid://c88giv4vr1pxp" path="res://characters/tails/states/air_attack.gd" id="11_iyier"]
 [ext_resource type="Resource" uid="uid://kwraw6lnyxic" path="res://characters/tails/states/air_attack.tres" id="12_5541g"]
 [ext_resource type="Resource" uid="uid://d64hbxhpdsat" path="res://characters/tails/states/grnd_pow.tres" id="12_lg3ej"]
+[ext_resource type="Script" uid="uid://mmdglfkn35bj" path="res://characters/tails/states/heavy.gd" id="12_weptr"]
 [ext_resource type="Script" uid="uid://c4dc5gm7yxf0q" path="res://characters/tails/states/grnd_pow.gd" id="13_cps4t"]
 [ext_resource type="Resource" uid="uid://bd4rncwvb76vi" path="res://characters/tails/states/aim_attack.tres" id="13_jrwva"]
 [ext_resource type="Script" uid="uid://drbk80synbgat" path="res://characters/tails/states/grnd_shot.gd" id="14_infaa"]
@@ -34,18 +35,54 @@
 [sub_resource type="Resource" id="Resource_phocd"]
 script = ExtResource("7_eakuc")
 animation = "Punch1"
+air_animation = ""
+animation_down = ""
+animation_up = ""
+animation_down_start_frame = -1
+animation_up_start_frame = -1
+animation_flip_offset_frame_start = 0
+change_anim_in_air = false
+play_animation = true
+use_anim_markers = true
+use_sections = true
 startup_frames = 4
 active_frames = 6
+recovery_frames = 10
+attack_sound = "punch"
+attack_voice = ""
 damage = 10
 knockback_power = 2
+knockback_angle = 0
+knockback_type = 0
 hit_stun = 10
+hit_sound = "hit"
+can_charge = false
+max_charge = 30
+max_hold = 30
+knockback_charge_scale = 180
+damage_charge_scale = 150
+knockback_scaling_charge_scale = 180
+use_hitbox = true
+land_on_touched_ground = false
+stop_on_left_ground = false
+landing_lag = 6
+dash_cancel_on_hit = false
+dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
-[sub_resource type="Resource" id="Resource_weptr"]
+[sub_resource type="Resource" id="Resource_dlpnr"]
 script = ExtResource("2_uaadi")
+damage = 0.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 20.0
+knockback_angle = 30.0
+knockback_type = 0
+unblockable = false
+hit_freeze_override = -1
+hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.18033385
+radius = 0.180334
 
 [node name="Tails" instance=ExtResource("1_b5y1r")]
 character_info = ExtResource("2_weptr")
@@ -83,6 +120,7 @@ attack_info = ExtResource("9_phocd")
 attack_info = ExtResource("7_rdag6")
 
 [node name="Heavy" parent="StateMachine" index="22"]
+script = ExtResource("12_weptr")
 attack_info = ExtResource("6_asitg")
 
 [node name="Upper" parent="StateMachine" index="23"]
@@ -115,10 +153,10 @@ script = ExtResource("21_wv4dc")
 attack_info = ExtResource("22_6dfm6")
 
 [node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_weptr")
+hit_data = SubResource("Resource_dlpnr")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1725913, -0.13919544, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172591, -0.139195, 0)
 shape = SubResource("SphereShape3D_3twb4")
 
 [node name="TestLabel" parent="." index="7"]

@@ -1,6 +1,9 @@
 extends BaseAttack
 
 
+func _phase_changed():
+	if get_current_phase_name() == "active":
+		root.play_voice_clip("shadow/shadow_heavy")
 
 func _step():
 	if get_current_phase() == active_phase:

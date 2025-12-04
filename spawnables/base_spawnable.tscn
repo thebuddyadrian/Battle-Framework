@@ -16,7 +16,7 @@ knockback_power = 20.0
 knockback_angle = 30.0
 knockback_type = 0
 unblockable = false
-hit_freeze = 5
+hit_freeze_override = -1
 hit_stun = 30
 
 [node name="BaseSpawnable" type="CharacterBody3D"]
@@ -45,3 +45,5 @@ metadata/_custom_type_script = "uid://jk40g84p8nlf"
 [node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+
+[connection signal="hit" from="Hitbox" to="." method="_on_hit"]

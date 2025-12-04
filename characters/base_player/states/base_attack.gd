@@ -146,9 +146,11 @@ class AttackPhase:
 	## If true, the move will end right after this phase
 	var end_phase: bool = false
 	
-	## WIP
+	## Sounds
 	var sound_effect: String = ""
 	var sound_offset: int = 0
+	var voice_clip: String = ""
+	var voice_offset: int = 0
 	
 	## Go into land state when on the ground, useful for air attacks
 	var land_on_touched_ground: bool = false
@@ -271,6 +273,7 @@ func _setup_from_resource():
 	active_phase.frames = attack_info.active_frames
 	active_phase.hitbox_active = use_hitbox
 	active_phase.sound_effect = attack_info.attack_sound
+	active_phase.voice_clip = attack_info.attack_voice
 	add_phase(active_phase)
 	
 	recovery_phase = AttackPhase.new("recovery")
@@ -537,6 +540,8 @@ func change_phase(phase_index: int) -> void:
 	
 	if current_phase.sound_effect != "":
 		root.play_sound_effect(current_phase.sound_effect)
+	if current_phase.voice_clip != "":
+		root.play_voice_clip(current_phase.voice_clip)
 	
 	# Animation
 	if play_animation:

@@ -7,7 +7,7 @@ func _enter(data = {}):
 
 	# When the 
 	if root.current_hp <= 0:
-		root.play_voice_clip("%s_ko" % root.char_name)
+		root.play_voice_clip("%s/%s_ko" % [root.char_name, root.char_name])
 
 
 func _step():
