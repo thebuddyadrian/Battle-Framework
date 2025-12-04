@@ -327,7 +327,7 @@ knockback_power = 13.0
 knockback_angle = 45.0
 knockback_type = 4
 unblockable = false
-hit_freeze = 5
+hit_freeze_override = -1
 hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_561xu"]
@@ -468,7 +468,7 @@ script = ExtResource("1_0efh6")
 spawnable_info = ExtResource("2_j3baa")
 
 [node name="Sprite" type="AnimatedSprite3D" parent="."]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0.00755633, -0.338284, 0)
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.00755633, -0.168776, 0)
 offset = Vector2(0, 20)
 sprite_frames = SubResource("SpriteFrames_mdu81")
 animation = &"Start"
@@ -478,7 +478,10 @@ autoplay = "Side"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 script = ExtResource("3_561xu")
 hit_data = SubResource("Resource_j3baa")
+active = false
 root_node_path = NodePath("..")
+is_static = false
+total_area = 0.0
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
 [node name="Shape" type="CollisionShape3D" parent="Hitbox"]
@@ -488,7 +491,13 @@ shape = SubResource("SphereShape3D_561xu")
 [node name="Hurtbox" type="Area3D" parent="."]
 visible = false
 script = ExtResource("5_xm2x0")
+mode = 0
+active = false
+can_be_grabbed = true
+can_be_hit = true
 root_node_path = NodePath("..")
+hit_pause_override = -1
+is_reflector = false
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
 [node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
