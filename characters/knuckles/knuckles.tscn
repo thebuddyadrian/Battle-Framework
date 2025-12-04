@@ -8,7 +8,6 @@
 [ext_resource type="Script" uid="uid://m57d41j6ing0" path="res://characters/knuckles/states/dash.tres.gd" id="4_lh63m"]
 [ext_resource type="Texture2D" uid="uid://cubjp7dxe8bi8" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="4_xt1s0"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="5_j7ou5"]
-[ext_resource type="Script" uid="uid://dwjg3k38adtu6" path="res://characters/shadow/states/heavy.gd" id="8_oggfo"]
 [ext_resource type="Script" uid="uid://dlb2r74f5rqx2" path="res://characters/knuckles/states/air_action.gd" id="8_psdtg"]
 [ext_resource type="Script" uid="uid://bv8s0ya73dxhn" path="res://characters/knuckles/states/jab_1.gd" id="9_j7ou5"]
 [ext_resource type="Resource" uid="uid://j8v0s23gurj" path="res://characters/knuckles/states/jab_1.tres" id="10_0sn45"]
@@ -19,7 +18,8 @@
 [ext_resource type="Script" uid="uid://bankb5ihayx4u" path="res://characters/knuckles/states/jab_3.gd" id="12_ay8m5"]
 [ext_resource type="Resource" uid="uid://bkkd4ly2fjt1c" path="res://characters/knuckles/states/jab_2.tres" id="12_psdtg"]
 [ext_resource type="Resource" uid="uid://bc3hct1wdh67j" path="res://characters/knuckles/states/jab_3.tres" id="14_5tkrs"]
-[ext_resource type="Resource" uid="uid://di4bfiaa2cwao" path="res://characters/kid_goku/states/heavy.tres" id="16_psdtg"]
+[ext_resource type="Script" uid="uid://bfq7d138pp7bi" path="res://characters/knuckles/states/heavy.gd" id="16_5tkrs"]
+[ext_resource type="Resource" uid="uid://copaiov6la4j8" path="res://characters/knuckles/states/heavy.tres" id="17_wham0"]
 [ext_resource type="Script" uid="uid://cs3moofgrsq1h" path="res://characters/knuckles/states/air_attack.gd" id="20_ay8m5"]
 [ext_resource type="Script" uid="uid://dsxss5rjnq68j" path="res://characters/knuckles/states/air_shot.gd" id="21_c10jq"]
 [ext_resource type="Resource" uid="uid://cwvnw3fmisemh" path="res://characters/knuckles/states/air_attack.tres" id="21_psdtg"]
@@ -41,9 +41,17 @@
 
 [sub_resource type="Resource" id="Resource_5tkrs"]
 script = ExtResource("21_s1n3o")
+damage = 0.0
+knockback_direction = Vector2(0, 0)
+knockback_power = 20.0
+knockback_angle = 30.0
+knockback_type = 0
+unblockable = false
+hit_freeze_override = -1
+hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.1757549
+radius = 0.175755
 
 [node name="Knuckles" instance=ExtResource("1_37tig")]
 script = ExtResource("2_5tkrs")
@@ -98,8 +106,8 @@ script = ExtResource("12_ay8m5")
 attack_info = ExtResource("14_5tkrs")
 
 [node name="Heavy" parent="StateMachine" index="22"]
-script = ExtResource("8_oggfo")
-attack_info = ExtResource("16_psdtg")
+script = ExtResource("16_5tkrs")
+attack_info = ExtResource("17_wham0")
 
 [node name="Upper" parent="StateMachine" index="23"]
 script = ExtResource("10_1ooqa")
@@ -133,9 +141,19 @@ attack_info = ExtResource("24_1kwib")
 
 [node name="Hitbox" parent="." index="5"]
 hit_data = SubResource("Resource_5tkrs")
+active = false
+is_static = false
+total_area = 0.0
 
 [node name="CollisionShape3D" parent="Hitbox" index="0"]
 shape = SubResource("SphereShape3D_3twb4")
+
+[node name="Hurtbox" parent="." index="6"]
+mode = 0
+can_be_grabbed = true
+can_be_hit = true
+hit_pause_override = -1
+is_reflector = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 layer = 128
