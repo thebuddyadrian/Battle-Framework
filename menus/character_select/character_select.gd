@@ -5,11 +5,15 @@ const PLAYER_CHARACTER_SCENE := preload("res://menus/character_select/player_cha
 @onready var player_container: GridContainer = $CSS/PlayerContainer
 # Arrows for selecting characters in solo play and selecting CPU characters
 @onready var cursor_arrows : Control = $CSS/CursorArrows
+@onready var map_select : Control = $MAPSELECT
+
 var current_player = 1
 
 var active_player_nodes = []
 
 func _ready() -> void:
+	map_select.process_mode = Node.PROCESS_MODE_DISABLED
+	
 	if !Game.is_playing_solo():
 		cursor_arrows.visible = false
 	
@@ -76,7 +80,12 @@ func css_scene_transition():
 	else:
 		selected_stage = Lists.battle_stages[$MAPSELECT/StageSelect.selected]
 	
-	SceneChanger.change_scene_to_file("res://levels/%s/%s.tscn" % [selected_stage, selected_stage])
+	# find a way to store the list of selected stanges temprarily
+	# for now, just pick the first one from the list for testing
+	
+	var selected_stage_list = map_select.selected_stages
+	
+	SceneChanger.change_scene_to_file("res://levels/%s/%s.tscn" % [selected_stage_list[0], selected_stage_list[0]])
 
 func css_check_for_players_ready():
 	#this function needs to iterate when fired across all the players
@@ -111,6 +120,7 @@ func play_cursor_anim(anim):
 
 func _on_map_select_button_pressed() -> void:
 	$CSS.process_mode = Node.PROCESS_MODE_DISABLED
+	$MAPSELECT.process_mode = Node.PROCESS_MODE_INHERIT
 	$MAPSELECT.visible = true
 	$MapSelectButton.visible = false
 	$CSSSelectButton.visible = true
@@ -121,6 +131,7 @@ func _on_map_select_button_pressed() -> void:
 
 func _on_rule_select_button_pressed() -> void:
 	$CSS.process_mode = Node.PROCESS_MODE_DISABLED
+	$MAPSELECT.process_mode = Node.PROCESS_MODE_DISABLED
 	$MAPSELECT.visible = false
 	$RuleSelectButton.visible = false
 	$CSSSelectButton.visible = true
@@ -131,6 +142,7 @@ func _on_rule_select_button_pressed() -> void:
 
 func _on_css_select_button_pressed() -> void:
 	$CSS.process_mode = Node.PROCESS_MODE_INHERIT
+	$MAPSELECT.process_mode = Node.PROCESS_MODE_DISABLED
 	$MAPSELECT.visible = false
 	$RuleSelectButton.visible = true
 	$MapSelectButton.visible = true
