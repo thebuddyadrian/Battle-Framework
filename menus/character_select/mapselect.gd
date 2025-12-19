@@ -10,7 +10,7 @@ var max_selected_stages : int = 5
 var selected_stages = []
 
 func _ready() -> void:
-	stages = Lists.battle_stages
+	stages = GameData.battle_stages
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("right1"):

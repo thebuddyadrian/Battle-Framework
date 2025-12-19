@@ -36,10 +36,10 @@ func _ready() -> void:
 		player.selection_finished.connect(_on_player_selection_finished)
 		player.request_cursor_anim.connect(play_cursor_anim)
 	
-	for stage in Lists.battle_stages:
+	for stage in GameData.battle_stages:
 		$MAPSELECT/StageSelect.add_item(stage)
 
-	for stage in Lists.modded_battle_stages:
+	for stage in GameData.modded_battle_stages:
 		$MAPSELECT/StageSelect.add_item(stage + " (MOD)")
 
 func _on_player_selection_finished(plrnum):
@@ -75,10 +75,10 @@ func css_iterate_cpu_players(node, num):
 func css_scene_transition():
 	var selected_stage: String
 	# If the current selected index is greater than the amount of base stages, it must be a modded stage
-	if $MAPSELECT/StageSelect.selected > Lists.battle_stages.size() - 1:
-		selected_stage = Lists.modded_battle_stages[$MAPSELECT/StageSelect.selected - Lists.battle_stages.size()]
+	if $MAPSELECT/StageSelect.selected > GameData.battle_stages.size() - 1:
+		selected_stage = GameData.modded_battle_stages[$MAPSELECT/StageSelect.selected - GameData.battle_stages.size()]
 	else:
-		selected_stage = Lists.battle_stages[$MAPSELECT/StageSelect.selected]
+		selected_stage = GameData.battle_stages[$MAPSELECT/StageSelect.selected]
 	
 	# Store stage list
 	MatchSetup.stage_list = map_select.selected_stages
