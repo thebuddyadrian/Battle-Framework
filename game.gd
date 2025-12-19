@@ -10,14 +10,11 @@ var mouse_mode_stack := {}
 
 var delayed_calls := {}
 
-var human_players: int = 0
-var cpu_players: int = 0
-var character_choices := {}
+# Stores the player ranking for the victory screen
 var match_results = {
 	#<player_id>: <ranking number>
-} # Stores the player ranking for the victory screen
-var stage_list: Array = []
-var current_stage_index: int = 0
+} 
+
 
 enum ERR {
 	OK,
@@ -26,14 +23,6 @@ enum ERR {
 	NOT_FOUND,
 	DUPLICATE,
 }
-
-
-func get_total_players() -> int:
-	return (human_players + cpu_players)
-
-
-func is_playing_solo() -> bool:
-	return (human_players == 1)
 
 
 func begin_mouse_mode_override(mouse_mode: Input.MouseMode) -> int:

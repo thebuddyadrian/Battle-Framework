@@ -31,7 +31,7 @@ func _ready() -> void:
 	# Make sure the shader material isn't shared between characters
 	character_portrait.material = character_portrait.material.duplicate()
 
-	if Game.is_playing_solo() or is_cpu:
+	if MatchSetup.is_playing_solo() or is_cpu:
 		cursor_arrows.visible = false
 
 
@@ -57,7 +57,7 @@ func get_input(action: String) -> bool:
 
 
 func play_cursor_anim(anim):
-	if Game.is_playing_solo():
+	if MatchSetup.is_playing_solo():
 		request_cursor_anim.emit(anim)
 	else:
 		var animplayer = cursor_arrows.get_node("AnimationPlayer")

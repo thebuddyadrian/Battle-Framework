@@ -26,18 +26,18 @@ func _ready() -> void:
 
 func initialize_match():
 	# If no characters have been selected, use test characters
-	if Game.character_choices.is_empty():
-		Game.human_players = test_characters.size()
+	if MatchSetup.character_choices.is_empty():
+		MatchSetup.human_players = test_characters.size()
 		for i in range(test_characters.size()):
-			Game.character_choices[i + 1] = test_characters[i]
+			MatchSetup.character_choices[i + 1] = test_characters[i]
 	
 	# If no stages have been selected, use test stage
-	if Game.stage_list.is_empty():
-		Game.current_stage_index = 0
-		Game.stage_list.append(test_stage)
+	if MatchSetup.stage_list.is_empty():
+		MatchSetup.current_stage_index = 0
+		MatchSetup.stage_list.append(test_stage)
 
 	# Load Stage
-	var current_stage: String = Game.stage_list[Game.current_stage_index]
+	var current_stage: String = MatchSetup.stage_list[MatchSetup.current_stage_index]
 	print("Loading stage \"%s\"" % current_stage)
 	var stage_scene: PackedScene = load("res://levels/%s/%s.tscn" % [current_stage, current_stage])
 	stage = stage_scene.instantiate()
@@ -50,7 +50,7 @@ func initialize_match():
 			MusicPlayer.play_track(load(stage.stage_info.music_file_path))
 
 	# Spawn cameras
-	for i in range(Game.get_total_players()):
+	for i in range(MatchSetup.get_total_players()):
 		var camera_root = CAMERA_ROOT.instantiate()
 		# For players 2-4, spawn a separate window
 		if i > 0:
@@ -70,8 +70,8 @@ func initialize_match():
 	assert(stage.player_spawn_2, "No spawn position has been placed for player 2")
 	assert(stage.player_spawn_3, "No spawn position has been placed for player 3")
 	assert(stage.player_spawn_4, "No spawn position has been placed for player 4")
-	for i in range(Game.get_total_players()):
-		var character = Game.character_choices[i + 1]
+	for i in range(MatchSetup.get_total_players()):
+		var character = MatchSetup.character_choices[i + 1]
 		var player: BattleCharacter = ResourceLoader.load("res://characters/%s/%s.tscn" % [character, character]).instantiate()
 		# Get the player_spawn_<x> variable, which holds a node reference to the spawn position
 		var spawn_position: Node3D = stage.get("player_spawn_%s" % str(i + 1))
