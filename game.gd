@@ -16,6 +16,8 @@ var character_choices := {}
 var match_results = {
 	#<player_id>: <ranking number>
 } # Stores the player ranking for the victory screen
+var stage_list: Array = []
+var current_stage_index: int = 0
 
 enum ERR {
 	OK,

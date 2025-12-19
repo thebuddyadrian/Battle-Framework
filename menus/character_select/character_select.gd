@@ -80,12 +80,11 @@ func css_scene_transition():
 	else:
 		selected_stage = Lists.battle_stages[$MAPSELECT/StageSelect.selected]
 	
-	# find a way to store the list of selected stanges temprarily
-	# for now, just pick the first one from the list for testing
+	# Store stage list
+	Game.stage_list = map_select.selected_stages
 	
-	var selected_stage_list = map_select.selected_stages
-	
-	SceneChanger.change_scene_to_file("res://levels/%s/%s.tscn" % [selected_stage_list[0], selected_stage_list[0]])
+	SceneChanger.change_scene_to_file("res://match_scene/match_scene.tscn")
+
 
 func css_check_for_players_ready():
 	#this function needs to iterate when fired across all the players
@@ -127,6 +126,8 @@ func _on_map_select_button_pressed() -> void:
 	$CSSSelectButton.position = $MapSelectButton.position
 	$RULESELECT.visible = false
 	$CSS.visible = false
+	# Reset stage index when entering map select like in the original
+	Game.current_stage_index = 0
 
 
 func _on_rule_select_button_pressed() -> void:

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ck27muptncsc5"]
+
+[ext_resource type="Script" uid="uid://dvpv5r8m73cr2" path="res://match_scene/match_scene.gd" id="1_wwbcy"]
+
+[node name="MatchScene" type="Node3D"]
+script = ExtResource("1_wwbcy")
+test_stage = "emeraldbeach"
