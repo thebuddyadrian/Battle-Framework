@@ -39,7 +39,7 @@ func _ready() -> void:
 		var rank: int = Game.match_results[player_id]
 		var rank_string: String
 		var character = MatchSetup.character_choices[player_id]
-		var character_display_name = Lists.character_display_names[character]
+		var character_display_name =  GameData.get_character_info(character).display_name
 		if rank == 2:
 			rank_string = "2nd"
 		elif rank == 3:
