@@ -8,6 +8,8 @@ var is_cpu: bool = false
 var character_index: int = 0 : set = set_character_index
 var character: String : set = set_character
 
+var css_ready : bool = false
+
 
 @export var player_number: int = 1
 
@@ -19,7 +21,7 @@ var character: String : set = set_character
 @onready var cursor_arrows: Control = $CursorArrows
 @onready var cursor_arrows_animplayer: AnimationPlayer = $CursorArrows/AnimationPlayer
 
-signal selection_finished
+signal selection_finished(plrnum)
 
 
 func _ready() -> void:
@@ -29,7 +31,7 @@ func _ready() -> void:
 	# Make sure the shader material isn't shared between characters
 	character_portrait.material = character_portrait.material.duplicate()
 
-	if Game.is_playing_solo():
+	if Game.is_playing_solo() or is_cpu:
 		cursor_arrows.visible = false
 
 
@@ -43,7 +45,7 @@ func _process(delta: float) -> void:
 		character_index += 1
 		play_cursor_anim("ArrowRightBump")
 	if get_input("attack"):
-		selection_finished.emit()
+		selection_finished.emit(player_number)
 		confirm_sprite.visible = true
 		cursor_arrows.visible = false
 

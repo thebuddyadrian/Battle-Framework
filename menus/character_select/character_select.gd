@@ -5,11 +5,15 @@ const PLAYER_CHARACTER_SCENE := preload("res://menus/character_select/player_cha
 @onready var player_container: GridContainer = $CSS/PlayerContainer
 # Arrows for selecting characters in solo play and selecting CPU characters
 @onready var cursor_arrows : Control = $CSS/CursorArrows
+@onready var map_select : Control = $MAPSELECT
+
 var current_player = 1
 
-
+var active_player_nodes = []
 
 func _ready() -> void:
+	map_select.process_mode = Node.PROCESS_MODE_DISABLED
+	
 	if !Game.is_playing_solo():
 		cursor_arrows.visible = false
 	
@@ -24,7 +28,8 @@ func _ready() -> void:
 		player_container.add_child(player_character)
 		if i == 0 and Game.is_playing_solo():
 			player_character.active = true
-		elif !Game.is_playing_solo():
+			css_cursor_tween_to_player(player_character.global_position)
+		elif !Game.is_playing_solo() and i < Game.human_players:
 			player_character.active = true
 	
 	for player in player_container.get_children():
@@ -37,27 +42,65 @@ func _ready() -> void:
 	for stage in Lists.modded_battle_stages:
 		$MAPSELECT/StageSelect.add_item(stage + " (MOD)")
 
-func _on_player_selection_finished():
-	var current_player_node = player_container.get_child(current_player - 1)
-	Game.character_choices[current_player] = current_player_node.character
+func _on_player_selection_finished(plrnum):
+	var current_player_node = player_container.get_child(plrnum - 1)
+	Game.character_choices[plrnum] = current_player_node.character
 	current_player_node.active = false
+	current_player_node.css_ready = true
+	
+	#changed how it works, i apologize
+	
+	css_check_for_players_ready()
+	
+	css_iterate_cpu_players(current_player_node, plrnum)
 
+func css_iterate_cpu_players(node, num):
+	print(node, num)
+	
+	num += 1
+	await get_tree().process_frame
+	
+	if num > Game.human_players + Game.cpu_players:
+		pass
+	else:
+		node = player_container.get_child(num - 1)
+		#assume that if it is already active, it's another player, not cpu
+		if node.active == true:
+			# iterate again until you get OOB for the player count.
+			css_iterate_cpu_players(node, num)
+		else:
+			node.active = true
+			css_cursor_tween_to_player(node.global_position)
+
+func css_scene_transition():
 	var selected_stage: String
 	# If the current selected index is greater than the amount of base stages, it must be a modded stage
 	if $MAPSELECT/StageSelect.selected > Lists.battle_stages.size() - 1:
 		selected_stage = Lists.modded_battle_stages[$MAPSELECT/StageSelect.selected - Lists.battle_stages.size()]
 	else:
 		selected_stage = Lists.battle_stages[$MAPSELECT/StageSelect.selected]
+	
+	# find a way to store the list of selected stanges temprarily
+	# for now, just pick the first one from the list for testing
+	
+	var selected_stage_list = map_select.selected_stages
+	
+	SceneChanger.change_scene_to_file("res://levels/%s/%s.tscn" % [selected_stage_list[0], selected_stage_list[0]])
 
-	if current_player == Game.human_players + Game.cpu_players:
-		SceneChanger.change_scene_to_file("res://levels/%s/%s.tscn" % [selected_stage, selected_stage])
-		return
-	current_player += 1
-	await get_tree().process_frame
-	current_player_node = player_container.get_child(current_player - 1)
-	current_player_node.active = true
-	css_cursor_tween_to_player(current_player_node.global_position)
-	print(current_player)
+func css_check_for_players_ready():
+	#this function needs to iterate when fired across all the players
+	#then determine if there is still an active player. 
+	#if there are no active players, return true for transition.
+	#if there isn't, dont do anything. we'll check again when a player gets selected.
+	var player_nodes = player_container.get_children()
+	for i in player_nodes:
+		if i.css_ready:
+			active_player_nodes.append(i)
+			if active_player_nodes.size() == player_nodes.size():
+				css_scene_transition()
+			else:
+				print("not enough players")
+				return false
 
 func css_cursor_tween_to_player(playerposition):
 	var newTween = get_tree().create_tween()
@@ -77,6 +120,7 @@ func play_cursor_anim(anim):
 
 func _on_map_select_button_pressed() -> void:
 	$CSS.process_mode = Node.PROCESS_MODE_DISABLED
+	$MAPSELECT.process_mode = Node.PROCESS_MODE_INHERIT
 	$MAPSELECT.visible = true
 	$MapSelectButton.visible = false
 	$CSSSelectButton.visible = true
@@ -87,6 +131,7 @@ func _on_map_select_button_pressed() -> void:
 
 func _on_rule_select_button_pressed() -> void:
 	$CSS.process_mode = Node.PROCESS_MODE_DISABLED
+	$MAPSELECT.process_mode = Node.PROCESS_MODE_DISABLED
 	$MAPSELECT.visible = false
 	$RuleSelectButton.visible = false
 	$CSSSelectButton.visible = true
@@ -97,6 +142,7 @@ func _on_rule_select_button_pressed() -> void:
 
 func _on_css_select_button_pressed() -> void:
 	$CSS.process_mode = Node.PROCESS_MODE_INHERIT
+	$MAPSELECT.process_mode = Node.PROCESS_MODE_DISABLED
 	$MAPSELECT.visible = false
 	$RuleSelectButton.visible = true
 	$MapSelectButton.visible = true

@@ -1,9 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://kulyqmhcf2k2"]
+[gd_scene load_steps=8 format=3 uid="uid://kulyqmhcf2k2"]
 
 [ext_resource type="Script" uid="uid://bl12xr1kfvop2" path="res://menus/character_select/character_select.gd" id="1_xptye"]
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_kxvnc"]
 [ext_resource type="Shader" uid="uid://b7frwxe5glvvi" path="res://menus/background.gdshader" id="3_xarbf"]
+[ext_resource type="Script" uid="uid://dkvj5h5bvohkv" path="res://menus/character_select/mapselect.gd" id="4_pprmj"]
 [ext_resource type="PackedScene" uid="uid://bu74bh1pcju6h" path="res://menus/character_select/cursor_arrows.tscn" id="4_xarbf"]
+[ext_resource type="Texture2D" uid="uid://dlpflfbgbkx5f" path="res://icon.png" id="5_3f6ee"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pprmj"]
 shader = ExtResource("3_xarbf")
@@ -29,10 +31,11 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+script = ExtResource("4_pprmj")
 
 [node name="StageSelect" type="OptionButton" parent="MAPSELECT"]
-layout_mode = 1
-anchors_preset = -1
+visible = false
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 0.083
 offset_left = 104.0
@@ -42,6 +45,49 @@ offset_bottom = 89.72
 grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
+
+[node name="CenterContainer" type="CenterContainer" parent="MAPSELECT"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 144.0
+offset_bottom = 120.0
+
+[node name="TextureRect" type="TextureRect" parent="MAPSELECT/CenterContainer"]
+layout_mode = 2
+texture = ExtResource("5_3f6ee")
+
+[node name="Label" type="Label" parent="MAPSELECT"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 136.0
+offset_right = 109.0
+offset_bottom = 159.0
+text = "nametag"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MAPSELECT"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 112.0
+offset_top = 24.0
+offset_right = 200.0
+offset_bottom = 136.0
+grow_horizontal = 0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MAPSELECT/ScrollContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="MAPSELECT"]
+layout_mode = 0
+offset_left = 40.0
+offset_top = 32.0
+offset_right = 104.0
+offset_bottom = 81.0
+text = "Image 
+Preview"
+horizontal_alignment = 1
 
 [node name="CSS" type="Control" parent="."]
 anchors_preset = 0

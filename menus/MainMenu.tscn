@@ -1,7 +1,6 @@
-[gd_scene load_steps=26 format=3 uid="uid://3yefhhhajnqk"]
+[gd_scene load_steps=25 format=3 uid="uid://3yefhhhajnqk"]
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_ot3ob"]
-[ext_resource type="AudioStream" uid="uid://casknkjtb2gsj" path="res://assets/audio/bgm/SUPER-REFLEX.mp3" id="2_e2awe"]
 [ext_resource type="Texture2D" uid="uid://cdaxr0wjdfxxw" path="res://assets/ui/BattleEmblem.png" id="2_rmsp1"]
 [ext_resource type="Script" uid="uid://d2luikke1goi4" path="res://levels/hologram/Boxspin.tres.gd" id="3_218cn"]
 [ext_resource type="Texture2D" uid="uid://47og8hxik4d0" path="res://assets/ui/twoDriver.png" id="4_218cn"]
@@ -428,7 +427,6 @@ shader_parameter/edge_fade = 0.01
 
 [node name="MainMenu" type="Node3D" node_paths=PackedStringArray("camera_root_parent")]
 script = ExtResource("1_ot3ob")
-music = ExtResource("2_e2awe")
 camera_root_parent = NodePath(".")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
