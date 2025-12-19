@@ -21,7 +21,7 @@ config/windows_native_icon="res://icon.ico"
 [autoload]
 
 Game="*res://game.gd"
-Lists="*res://autoload/lists.gd"
+MatchSetup="*res://autoload/match_setup.gd"
 GameData="*res://autoload/game_data.gd"
 MusicPlayer="*res://autoload/music_player.gd"
 SceneChanger="*res://autoload/scene_changer.tscn"
