@@ -9,7 +9,7 @@ var character_choices: Dictionary[int, String]= {}
 var stage_list: Array = ["battlehwy"]
 # The current stage in the list that will be used
 var current_stage_index: int = 0
-
+var single_window: bool = true
 
 # Helper function to get total amount of players (human + cpu)
 func get_total_players() -> int:

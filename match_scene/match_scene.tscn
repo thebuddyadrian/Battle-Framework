@@ -4,4 +4,36 @@
 
 [node name="MatchScene" type="Node3D"]
 script = ExtResource("1_wwbcy")
-test_stage = "emeraldbeach"
+test_characters = Array[String](["shadow", "tails"])
+test_stage = "holysummit"
+
+[node name="SubViewportGridContainer" type="GridContainer" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(480, 320)
+offset_right = 40.0
+offset_bottom = 40.0
+columns = 2
+
+[node name="SubViewportContainer1" type="SubViewportContainer" parent="SubViewportGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="SubViewportGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="SubViewportGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="SubViewportContainer4" type="SubViewportContainer" parent="SubViewportGridContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

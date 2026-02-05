@@ -16,8 +16,13 @@ var cameras: Dictionary[int, Camera3D]
 
 
 func _ready() -> void:
-	# Make sure subwindows aren't embedded, or else multiple windows wont spawn
-	get_viewport().gui_embed_subwindows = false
+	if MatchSetup.single_window:
+		# Double the content size to allow split screen
+		get_window().content_scale_size = Vector2i(240*2, 160*2)
+	else:
+		# Make sure subwindows aren't embedded, or else multiple windows wont spawn
+		get_viewport().gui_embed_subwindows = false
+	
 	ControlsSettings.load_controls()
 	Game.match_results.clear()
 	initialize_match()
@@ -30,11 +35,8 @@ func initialize_match():
 		MatchSetup.human_players = test_characters.size()
 		for i in range(test_characters.size()):
 			MatchSetup.character_choices[i + 1] = test_characters[i]
-	
-	# If no stages have been selected, use test stage
-	if MatchSetup.stage_list.is_empty():
-		MatchSetup.current_stage_index = 0
-		MatchSetup.stage_list.append(test_stage)
+			MatchSetup.current_stage_index = 0
+			MatchSetup.stage_list = [test_stage]
 
 	# Load Stage
 	var current_stage: String = MatchSetup.stage_list[MatchSetup.current_stage_index]
@@ -52,13 +54,21 @@ func initialize_match():
 	# Spawn cameras
 	for i in range(MatchSetup.get_total_players()):
 		var camera_root = CAMERA_ROOT.instantiate()
-		# For players 2-4, spawn a separate window
-		if i > 0:
-			var window = PLAYER_WINDOW.instantiate()
-			stage.camera_root_parent.add_child(window)
-			window.add_child(camera_root)
+		if MatchSetup.single_window:
+			var viewport = SubViewport.new()
+			viewport.size = Vector2(240,160)
+			viewport.audio_listener_enable_3d = true
+			var subviewport_container = get_node("%SubViewportContainer" + str(i + 1))
+			subviewport_container.add_child(viewport)
+			viewport.add_child(camera_root)
 		else:
-			stage.camera_root_parent.add_child(camera_root)
+			# For players 2-4, spawn a separate window
+			if i > 0 or MatchSetup.single_window:
+				var window = PLAYER_WINDOW.instantiate()
+				stage.camera_root_parent.add_child(window)
+				window.add_child(camera_root)
+			else:
+				stage.camera_root_parent.add_child(camera_root)
 		camera_root.name = "CameraRoot" + str(i + 1)
 		var camera_pivot = camera_root.get_node("Pivot")
 		var camera = camera_root.get_node("Pivot/Camera")
