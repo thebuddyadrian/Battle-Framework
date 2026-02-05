@@ -3,6 +3,7 @@ extends BaseAttack
 const GRND_SHOT_PROJ_PATH = "res://spawnables/Sonic_GrndShot.tscn"
 
 
+
 func _phase_changed():
 	if get_current_phase() == active_phase:
 		var data = {
@@ -20,6 +21,13 @@ func _phase_changed():
 
 func _step():
 	super._step()
+	if parent.state_time == 16:
+		root.play_voice_clip("sonic/sonic_grnd_shot")
+	if parent.state_time == 8:
+		apply_hit_data()
+		root.hitbox.active = true
+	if parent.state_time == 16:
+		root.hitbox.active = false
 	if get_current_phase() == active_phase or get_current_phase() == recovery_phase:
 		if root.is_on_floor() and root.velocity.y < 0:
 			parent.change_state("Land")

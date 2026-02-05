@@ -467,6 +467,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [150, 151, 152, 153, 154, 155, 156, 157]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.11271715]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.057599984, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_41aki"]
 resource_name = "GrndShotFwd"
@@ -493,6 +517,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [134, 135, 136, 137, 138, 139, 140, 141]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.057599984, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.11271715]
+}
 
 [sub_resource type="Animation" id="Animation_fqyed"]
 resource_name = "GrndShotUp"
@@ -518,6 +566,30 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [142, 143, 144, 145, 146, 147, 148, 149]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Hitbox/CollisionShape3D:shape:radius")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.11271715]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Hitbox/CollisionShape3D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.057599984, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_jn2r6"]
@@ -1364,51 +1436,24 @@ _data = {
 [sub_resource type="Resource" id="Resource_t5h5i"]
 script = ExtResource("21_tfamv")
 animation = "AirPowFwd"
-air_animation = ""
 animation_down = "AirPowDown"
 animation_up = "AirPowUp"
 animation_down_start_frame = 214
 animation_up_start_frame = 218
-animation_flip_offset_frame_start = 0
-change_anim_in_air = false
-play_animation = true
 use_anim_markers = false
 use_sections = false
 startup_frames = 4
 active_frames = 20
 recovery_frames = 8
-attack_sound = "punch"
-attack_voice = ""
 damage = 6
-knockback_power = 4
+knockback_power = 10
 knockback_angle = 80
-knockback_type = 0
-hit_stun = 30
+knockback_type = 2
 hit_sound = "punch"
-can_charge = false
-max_charge = 30
-max_hold = 30
-knockback_charge_scale = 180
-damage_charge_scale = 150
-knockback_scaling_charge_scale = 180
-use_hitbox = true
-land_on_touched_ground = false
-stop_on_left_ground = false
-landing_lag = 6
-dash_cancel_on_hit = false
-dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("21_tfamv")
 
 [sub_resource type="Resource" id="Resource_tfamv"]
 script = ExtResource("2_a2uvc")
-damage = 0.0
-knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
-unblockable = false
-hit_freeze_override = -1
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_nx0o7"]
 radius = 0.129537

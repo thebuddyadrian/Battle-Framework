@@ -1,0 +1,130 @@
+[gd_scene load_steps=17 format=3 uid="uid://vrp1w05vidw8"]
+
+[ext_resource type="Script" uid="uid://c6iiv4jkglfm7" path="res://effects/sonic_air_pow_afterimage.gd" id="1_d1fi0"]
+[ext_resource type="Texture2D" uid="uid://cwafv2nn1axdn" path="res://characters/sonic/sprites/sonic_effects.png" id="2_vfjiq"]
+[ext_resource type="Script" uid="uid://d0127k12xvws" path="res://components/battle_sprite/battle_animated_sprite.gd" id="3_vfjiq"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_d1fi0"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(0, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vfjiq"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(64, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_51x44"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(128, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l28h8"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(192, 192, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpevn"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(0, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0pje3"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(64, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trsq1"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(128, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yusv1"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(192, 128, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uqx4d"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(0, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_u83n0"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(64, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kysyc"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(128, 256, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4lbny"]
+atlas = ExtResource("2_vfjiq")
+region = Rect2(192, 256, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qpevn"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_d1fi0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vfjiq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_51x44")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l28h8")
+}],
+"loop": true,
+"name": &"Down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpevn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0pje3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trsq1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yusv1")
+}],
+"loop": true,
+"name": &"Fwd",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uqx4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_u83n0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kysyc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4lbny")
+}],
+"loop": false,
+"name": &"Up",
+"speed": 5.0
+}]
+
+[node name="SonicAirPowAfterimage" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_d1fi0")
+destroy_on_animation_finish = false
+animated_sprite = NodePath("BattleAnimatedSprite3D")
+metadata/_custom_type_script = "uid://dw8sbuf2itowu"
+
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+render_priority = 1
+sprite_frames = SubResource("SpriteFrames_qpevn")
+animation = &"Fwd"
+script = ExtResource("3_vfjiq")
+metadata/_custom_type_script = "uid://d0127k12xvws"
+
+[node name="DestroyTimer" type="Timer" parent="."]
+process_callback = 0
+wait_time = 0.16
+one_shot = true
+
+[connection signal="timeout" from="DestroyTimer" to="." method="_on_destroy_timer_timeout"]
