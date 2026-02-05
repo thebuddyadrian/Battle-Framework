@@ -81,7 +81,8 @@ func css_scene_transition():
 		selected_stage = GameData.battle_stages[$MAPSELECT/StageSelect.selected]
 	
 	# Store stage list
-	MatchSetup.stage_list = map_select.selected_stages
+	if map_select.selected_stages.size() == 0:
+		MatchSetup.stage_list = [selected_stage]
 	
 	SceneChanger.change_scene_to_file("res://match_scene/match_scene.tscn")
 
