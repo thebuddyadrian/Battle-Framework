@@ -99,6 +99,12 @@ func _ready() -> void:
 	current_stocks = 3
 
 
+func _process(delta: float) -> void:
+	# When running in editor, load stats periodically so stat changes show in realtime
+	if !OS.has_feature("standalone") and Engine.get_process_frames() % 4 == 0:
+		_load_stats()
+
+
 func _load_stats():
 	assert(character_info != null, "This character doesn't have a CharacterInfo resource! Make sure to set one in the inspector.")
 	max_hp = float(character_info.max_hp)
