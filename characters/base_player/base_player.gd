@@ -115,6 +115,10 @@ func _load_stats():
 
 
 func _physics_process(delta: float) -> void:
+	# Call _step_frozen even in freeze frames
+	if state_machine.active_state.has_method("_step_frozen"):
+		state_machine.active_state.call("_step_frozen")
+	
 	if freeze_frames > 0:
 		_process_actions()
 		freeze_frames = max(freeze_frames - 1, 0)
