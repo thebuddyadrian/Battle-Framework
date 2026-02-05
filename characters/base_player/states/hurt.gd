@@ -11,7 +11,13 @@ func _enter(data = {}) -> void:
 	root.animplayer.stop()
 	hit_data = data["hit_data"]
 
-	root.animplayer.play("Hurt")
+	# Play initial animation frame
+	if hit_data.knockback_type == HitData.KNOCKBACK_TYPE.LAUNCH:
+		root.animplayer.play("Launch")
+	elif hit_data.knockback_type == HitData.KNOCKBACK_TYPE.UP:
+		root.animplayer.play("HitUp")
+	else:
+		root.animplayer.play("Hurt")
 
 	# When the player is at 0 health, force a knockdown
 	if root.current_hp <= 0:
