@@ -333,10 +333,7 @@ func _step():
 			if parent.state_time >= dash_cancel_frames and _dash_cancel_buffered:
 				change_state("HomingDash", {"opponent": root.last_hit_player})
 				return
-		
-		# Jab Buffer
-		if parent.state_time > 2 and root.input("attack", "just_pressed"):
-			_attack_cancel_buffered = true
+
 
 		# OLD JAB CODE
 		# # Jabs
@@ -393,6 +390,10 @@ func _step_frozen():
 	
 	if move_contact > 0:
 		move_contact += 1
+	
+	# Jab Buffer
+	if parent.state_time > 1 and root.input("attack", "just_pressed"):
+		_attack_cancel_buffered = true
 
 	#root.attack_trail.trail_state = {}
 	#if root.is_in_group("fighter"):
