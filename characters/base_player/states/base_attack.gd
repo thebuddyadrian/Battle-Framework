@@ -408,25 +408,17 @@ func _step_frozen():
 func _phase_changed_internal(phase_index: int, previous_phase_index: int):
 	if attack_info:
 		if get_current_phase() == active_phase:
-			get_hit_data().damage = attack_info.damage
-			get_hit_data().knockback_power = attack_info.knockback_power
-			get_hit_data().knockback_angle = attack_info.knockback_angle
-			get_hit_data().knockback_type = attack_info.knockback_type
-			get_hit_data().hit_stun = attack_info.hit_stun
-			#get_hit_data().knockback_direction = knockback_direction
-			#get_hit_data().knockback_scaling = knockback_scaling
-			#get_hit_data().damage_charge_scale = damage_charge_scale
-			#get_hit_data().knockback_charge_scale = knockback_charge_scale
-			#get_hit_data().knockback_scaling_charge_scale = knockback_scaling_charge_scale
-			#get_hit_data().sound = hit_sound
+			apply_hit_data()
 
 		# Player can cancel into other attacks when recovery phase starts
 		if get_current_phase() == recovery_phase:
 			root.set_action_enabled("attack", true)
 	
+
 # Virtual method to run logic right when the phase is changed, including at the beginning when startup phase is entered
 func _phase_changed():
 	pass
+
 
 #
 #func _spawn_charge_effect():
@@ -742,6 +734,15 @@ func add_phase_set(phase_set: PhaseSet, charge: bool = false):
 	add_phase(phase_set.startup)
 	add_phase(phase_set.active)
 	add_phase(phase_set.recovery)
+
+
+# Applies attack info to the root Hitbox's HitData
+func apply_hit_data():
+	get_hit_data().damage = attack_info.damage
+	get_hit_data().knockback_power = attack_info.knockback_power
+	get_hit_data().knockback_angle = attack_info.knockback_angle
+	get_hit_data().knockback_type = attack_info.knockback_type
+	get_hit_data().hit_stun = attack_info.hit_stun
 
 
 ## When the player hits an opponent, the hitbox deactivates automatically, use this to reactivate it for a multi-hitting attack
