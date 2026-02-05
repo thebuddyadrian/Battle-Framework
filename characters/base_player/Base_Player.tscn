@@ -46,14 +46,6 @@ cap_bottom = false
 
 [sub_resource type="Resource" id="Resource_wyd30"]
 script = ExtResource("16_32b4s")
-damage = 0.0
-knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
-unblockable = false
-hit_freeze_override = -1
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
 radius = 0.295955
@@ -227,6 +219,7 @@ root_node_path = NodePath("..")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127428, 0.000781778, 0)
 shape = SubResource("SphereShape3D_3twb4")
+debug_color = Color(1, 0, 0.45882353, 1)
 
 [node name="Hurtbox" type="Area3D" parent="."]
 script = ExtResource("16_obb2v")
