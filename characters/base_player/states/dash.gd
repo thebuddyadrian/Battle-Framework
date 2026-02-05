@@ -17,7 +17,7 @@ func _enter(data = {}):
 func _step():
 	var data = {"dir": root.facing_direction_2d}
 	if !spawned_dash_effect:
-		var proj = root.spawn_scene("GrndShot", DashEffect, root.global_position, null, data)
+		var proj = root.spawn_scene("DashEffect", DashEffect, root.global_position, null, data)
 		proj.position = root.position
 		spawned_dash_effect = true
 	root.velocity.x = dash_direction.x * 12.5
