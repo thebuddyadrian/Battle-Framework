@@ -1,15 +1,15 @@
-[gd_scene load_steps=44 format=3 uid="uid://lyfnd6of6efn"]
+[gd_scene load_steps=45 format=3 uid="uid://lyfnd6of6efn"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_qnw3q"]
 [ext_resource type="Script" uid="uid://c2lv0otitxe6m" path="res://characters/shadow/shadow.gd" id="2_h1jln"]
 [ext_resource type="Texture2D" uid="uid://dhbyatb3lkkct" path="res://characters/shadow/sprites/shadow .png" id="2_pfypo"]
 [ext_resource type="Resource" uid="uid://d1yjnnlayrwwa" path="res://characters/shadow/shadow.tres" id="3_djkpe"]
 [ext_resource type="AnimationLibrary" uid="uid://2fxpsp06qdso" path="res://characters/shadow/shadow_animation.res" id="3_pfypo"]
-[ext_resource type="Script" uid="uid://m57d41j6ing0" path="res://characters/knuckles/states/dash.tres.gd" id="4_h2on0"]
 [ext_resource type="Texture2D" uid="uid://dx66rsqklws" path="res://characters/shadow/sprites/shadows_effects-Sheet.png" id="4_xq7wv"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="6_73oq7"]
 [ext_resource type="Script" uid="uid://cyjpv2h7kqytk" path="res://components/battle_sprite/battle_sprite.gd" id="7_73oq7"]
 [ext_resource type="Script" uid="uid://ueqal43akv04" path="res://characters/shadow/states/air_action.gd" id="7_xq7wv"]
+[ext_resource type="Script" uid="uid://dws30apkdovyk" path="res://characters/shadow/states/dash.gd" id="9_3o4s2"]
 [ext_resource type="Script" uid="uid://b0fwnp3c7icpp" path="res://characters/shadow/states/jab_1.gd" id="10_73oq7"]
 [ext_resource type="Script" uid="uid://52cyo3vp73rr" path="res://characters/shadow/states/jab_2.gd" id="11_73oq7"]
 [ext_resource type="Script" uid="uid://blfv8c5qkube3" path="res://characters/shadow/states/jab_3.gd" id="12_73oq7"]
@@ -37,172 +37,56 @@
 [ext_resource type="Script" uid="uid://bi0hhacwa7lh3" path="res://characters/shadow/states/air_trap.gd" id="27_uak6g"]
 [ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="29_vj6v6"]
 [ext_resource type="Script" uid="uid://chagy48ap6251" path="res://characters/shadow/states/air_pow.gd" id="29_w40b4"]
+[ext_resource type="Script" uid="uid://c8usb7fvv7mmk" path="res://characters/shadow/states/homing_dash.gd" id="30_3o4s2"]
 
 [sub_resource type="Resource" id="Resource_73oq7"]
 script = ExtResource("29_vj6v6")
 animation = "Punch1"
-air_animation = ""
-animation_down = ""
-animation_up = ""
-animation_down_start_frame = -1
-animation_up_start_frame = -1
-animation_flip_offset_frame_start = 0
-change_anim_in_air = false
-play_animation = true
-use_anim_markers = true
-use_sections = true
 startup_frames = 9
 active_frames = 3
 recovery_frames = 15
-attack_sound = "punch"
-attack_voice = ""
 damage = 12
 knockback_power = 1
-knockback_angle = 0
-knockback_type = 0
 hit_stun = 12
-hit_sound = "hit"
-can_charge = false
-max_charge = 30
-max_hold = 30
-knockback_charge_scale = 180
-damage_charge_scale = 150
-knockback_scaling_charge_scale = 180
-use_hitbox = true
-land_on_touched_ground = false
-stop_on_left_ground = false
-landing_lag = 6
-dash_cancel_on_hit = false
-dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("29_vj6v6")
 
 [sub_resource type="Resource" id="Resource_djkpe"]
 script = ExtResource("29_vj6v6")
 animation = "kick1"
-air_animation = ""
-animation_down = ""
-animation_up = ""
-animation_down_start_frame = -1
-animation_up_start_frame = -1
-animation_flip_offset_frame_start = 0
-change_anim_in_air = false
-play_animation = true
-use_anim_markers = true
-use_sections = true
 startup_frames = 9
 active_frames = 3
 recovery_frames = 15
-attack_sound = "punch"
-attack_voice = ""
 damage = 12
 knockback_power = 1
-knockback_angle = 0
-knockback_type = 0
 hit_stun = 12
 hit_sound = "punch"
-can_charge = false
-max_charge = 30
-max_hold = 30
-knockback_charge_scale = 180
-damage_charge_scale = 150
-knockback_scaling_charge_scale = 180
-use_hitbox = true
-land_on_touched_ground = false
-stop_on_left_ground = false
-landing_lag = 6
-dash_cancel_on_hit = false
-dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("29_vj6v6")
 
 [sub_resource type="Resource" id="Resource_3o4s2"]
 script = ExtResource("29_vj6v6")
 animation = "Airpow"
-air_animation = ""
-animation_down = ""
-animation_up = ""
-animation_down_start_frame = -1
-animation_up_start_frame = -1
-animation_flip_offset_frame_start = 0
-change_anim_in_air = false
-play_animation = true
-use_anim_markers = true
-use_sections = true
 startup_frames = 12
 active_frames = 30
 recovery_frames = 12
-attack_sound = "punch"
-attack_voice = ""
+attack_sound = ""
+attack_voice = "shadow/shadow_air_pow"
 damage = 10
 knockback_power = 12
 knockback_angle = 90
 knockback_type = 2
-hit_stun = 30
 hit_sound = "punch"
-can_charge = false
-max_charge = 30
-max_hold = 30
-knockback_charge_scale = 180
-damage_charge_scale = 150
-knockback_scaling_charge_scale = 180
-use_hitbox = true
-land_on_touched_ground = false
-stop_on_left_ground = false
-landing_lag = 6
-dash_cancel_on_hit = false
-dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
 [sub_resource type="Resource" id="Resource_gjr3y"]
 script = ExtResource("29_vj6v6")
 animation = "AirTrap"
-air_animation = ""
-animation_down = ""
-animation_up = ""
-animation_down_start_frame = -1
-animation_up_start_frame = -1
-animation_flip_offset_frame_start = 0
-change_anim_in_air = false
-play_animation = true
-use_anim_markers = true
-use_sections = true
-startup_frames = 2
-active_frames = 2
-recovery_frames = 10
-attack_sound = "punch"
-attack_voice = ""
-damage = 15
-knockback_power = 25
-knockback_angle = 0
-knockback_type = 0
-hit_stun = 30
-hit_sound = "hit"
-can_charge = false
-max_charge = 30
-max_hold = 30
-knockback_charge_scale = 180
-damage_charge_scale = 150
-knockback_scaling_charge_scale = 180
-use_hitbox = true
-land_on_touched_ground = false
-stop_on_left_ground = false
-landing_lag = 6
-dash_cancel_on_hit = false
-dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
 [sub_resource type="Resource" id="Resource_w40b4"]
 script = ExtResource("23_0nker")
-damage = 0.0
-knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
-unblockable = false
-hit_freeze_override = -1
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.120461
+radius = 0.12046101
 
 [node name="Shadow" instance=ExtResource("1_qnw3q")]
 script = ExtResource("2_h1jln")
@@ -221,7 +105,7 @@ libraries = {
 
 [node name="Effects" parent="PlayerSprite" index="1"]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-offset = Vector2(-4, -1)
+offset = Vector2(-4, 0)
 billboard = 1
 render_priority = 1
 texture = ExtResource("4_xq7wv")
@@ -244,7 +128,7 @@ script = ExtResource("7_73oq7")
 transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0)
 
 [node name="Dash" parent="StateMachine" index="6"]
-script = ExtResource("4_h2on0")
+script = ExtResource("9_3o4s2")
 
 [node name="AirAction" parent="StateMachine" index="7"]
 script = ExtResource("7_xq7wv")
@@ -293,7 +177,8 @@ script = ExtResource("29_w40b4")
 attack_info = SubResource("Resource_3o4s2")
 
 [node name="HomingDash" parent="StateMachine" index="31"]
-y_velocity = 20
+script = ExtResource("30_3o4s2")
+y_velocity = 18
 
 [node name="GrndTrap" type="Node" parent="StateMachine" index="32"]
 script = ExtResource("26_mtehn")

@@ -6,9 +6,9 @@ func _enter(data = {}):
 	super._enter(data)
 	# Dash in the facing direction (relative to the camera)
 	dash_direction = root.facing_direction
-	
+	root.spawn_scene("ShadowAirActionEffect", "res://effects/shadow_air_action_effect.tscn", root.global_position)
 	root.animplayer.play("AirAction")
-	root.play_sound_effect("sonic_ballet")
+	root.play_sound_effect("shadow/shadow_air_action")
 	# Shadow dashes in the facing their direction
 	root.velocity.y = 0
 	root.velocity.x = dash_direction.x * 22

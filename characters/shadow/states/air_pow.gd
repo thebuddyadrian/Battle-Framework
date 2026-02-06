@@ -3,7 +3,7 @@ extends BaseAttack
 
 func _move_setup():
 	var disappear_phase = add_new_phase("disappear", 1)
-	disappear_phase.frames = 10
+	disappear_phase.frames = 20
 
 func _enter(data := {}):
 	super._enter(data)
@@ -20,10 +20,11 @@ func _phase_changed():
 
 func _step():
 	super._step()
-	if get_current_phase_name() == "disappear":
+	get_hit_data().hit_freeze_override = 4
+	if get_current_phase_name() == "disappear" and get_current_phase_time() > 10:
 		root.velocity = Vector3(0, -50, 0)
 	elif get_current_phase() == active_phase:
-		if parent.state_time % 4 == 0:
+		if parent.state_time % 2 == 0:
 			reactivate_hitbox()
 
 func _exit(next_state):

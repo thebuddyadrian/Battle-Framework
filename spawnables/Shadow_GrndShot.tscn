@@ -101,7 +101,7 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_8mw8r"]
 script = ExtResource("4_11vx8")
-damage = 55.0
+damage = 35.0
 knockback_power = 13.0
 knockback_angle = 90.0
 knockback_type = 2

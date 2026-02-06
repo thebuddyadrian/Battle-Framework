@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://bxcyijbbpfmar"]
+
+[ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_dvrau"]
+[ext_resource type="Script" uid="uid://d0127k12xvws" path="res://components/battle_sprite/battle_animated_sprite.gd" id="2_6i8ko"]
+[ext_resource type="Texture2D" uid="uid://dhbyatb3lkkct" path="res://characters/shadow/sprites/shadow .png" id="2_cweee"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jm1w5"]
+atlas = ExtResource("2_cweee")
+region = Rect2(384, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cweee"]
+atlas = ExtResource("2_cweee")
+region = Rect2(448, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_273em"]
+atlas = ExtResource("2_cweee")
+region = Rect2(512, 320, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5u0j7"]
+atlas = ExtResource("2_cweee")
+region = Rect2(576, 320, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_667dh"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jm1w5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cweee")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_273em")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5u0j7")
+}],
+"loop": false,
+"name": &"default",
+"speed": 15.0
+}]
+
+[node name="ShadowAirActionEffect" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_dvrau")
+animated_sprite = NodePath("BattleAnimatedSprite3D")
+
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_667dh")
+autoplay = "default"
+frame = 3
+frame_progress = 1.0
+script = ExtResource("2_6i8ko")
+metadata/_custom_type_script = "uid://d0127k12xvws"
