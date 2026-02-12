@@ -13,12 +13,14 @@ const PAUSE_MENU = preload("uid://cifkfj62fb1ho")
 var stage: Level
 var camera_pivots: Dictionary[int, Node3D]
 var cameras: Dictionary[int, Camera3D]
+var original_content_scale_size: Vector2i
 
 
 func _ready() -> void:
 	if MatchSetup.single_window:
+		original_content_scale_size = get_window().content_scale_size
 		# Double the content size to allow split screen
-		get_window().content_scale_size = Vector2i(240*2, 160*2)
+		get_window().content_scale_size *= 2
 	else:
 		# Make sure subwindows aren't embedded, or else multiple windows wont spawn
 		get_viewport().gui_embed_subwindows = false
@@ -201,3 +203,7 @@ func _on_player_kod(player: BattleCharacter):
 
 func _go_to_results_screen():
 	SceneChanger.change_scene_to_file("res://menus/results_screen/results_screen.tscn")
+
+func _exit_tree() -> void:
+	# Restore original content scale size
+	get_window().content_scale_size = original_content_scale_size
