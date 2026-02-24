@@ -1,7 +1,5 @@
 extends BaseState
 
-const STOP_THRESHOLD = 6.0
-
 var turn: bool = false
 
 func _enter(data = {}):
@@ -17,7 +15,7 @@ func _step():
 		root.animplayer.play("Moving")
 	# Stopping
 	if root.get_input_vector() == Vector2.ZERO:
-		if root.velocity.length() >= STOP_THRESHOLD:
+		if root.velocity.length() >= root.move_speed * 0.75:
 			parent.change_state("Stopping")
 		else:
 			parent.change_state("Idle")
