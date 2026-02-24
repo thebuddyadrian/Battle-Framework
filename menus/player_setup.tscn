@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://buw0m6frm5qum"]
+[gd_scene format=3 uid="uid://buw0m6frm5qum"]
 
 [ext_resource type="Script" uid="uid://qrppfjmk8qd7" path="res://menus/player_setup.gd" id="1_xwnrc"]
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_7oubm"]
@@ -10,7 +10,7 @@ shader_parameter/h = 0.0
 shader_parameter/s = 0.788
 shader_parameter/v = 1.0
 
-[node name="PlayerSetup" type="Control"]
+[node name="PlayerSetup" type="Control" unique_id=1034371918]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,10 +19,10 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_xwnrc")
 
-[node name="Background" parent="." instance=ExtResource("2_7oubm")]
+[node name="Background" parent="." unique_id=1483897854 instance=ExtResource("2_7oubm")]
 material = SubResource("ShaderMaterial_mqmvs")
 
-[node name="TitleLabel" type="Label" parent="."]
+[node name="TitleLabel" type="Label" parent="." unique_id=575597664]
 layout_mode = 0
 offset_left = 69.0
 offset_top = 10.0
@@ -30,7 +30,7 @@ offset_right = 166.0
 offset_bottom = 33.0
 text = "Player Setup"
 
-[node name="GridContainer" type="GridContainer" parent="."]
+[node name="GridContainer" type="GridContainer" parent="." unique_id=181704826]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 45.0
@@ -38,24 +38,24 @@ offset_right = 232.0
 offset_bottom = 111.0
 columns = 2
 
-[node name="HumanLabel" type="Label" parent="GridContainer"]
+[node name="HumanLabel" type="Label" parent="GridContainer" unique_id=315381806]
 layout_mode = 2
 text = "Players"
 
-[node name="HumanSpinBox" type="SpinBox" parent="GridContainer"]
+[node name="HumanSpinBox" type="SpinBox" parent="GridContainer" unique_id=945423833]
 layout_mode = 2
 max_value = 4.0
 value = 2.0
 
-[node name="CPULabel" type="Label" parent="GridContainer"]
+[node name="CPULabel" type="Label" parent="GridContainer" unique_id=442801643]
 layout_mode = 2
 text = "How many CPUs?"
 
-[node name="CPUSpinBox" type="SpinBox" parent="GridContainer"]
+[node name="CPUSpinBox" type="SpinBox" parent="GridContainer" unique_id=35284776]
 layout_mode = 2
 max_value = 2.0
 
-[node name="ChangeControlsButton" type="Button" parent="."]
+[node name="ChangeControlsButton" type="Button" parent="." unique_id=948563980]
 layout_mode = 0
 offset_left = 7.0
 offset_top = 107.0
@@ -63,7 +63,7 @@ offset_right = 143.0
 offset_bottom = 138.0
 text = "Change Controls"
 
-[node name="OKLabel" type="Label" parent="."]
+[node name="OKLabel" type="Label" parent="." unique_id=399283075]
 layout_mode = 1
 anchors_preset = 3
 anchor_left = 1.0
@@ -78,7 +78,7 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "CHAR SELECT(Press Enter)"
 
-[node name="ChangeControlsLabel" type="Label" parent="."]
+[node name="ChangeControlsLabel" type="Label" parent="." unique_id=1935778931]
 visible = false
 layout_mode = 1
 anchors_preset = 3
@@ -94,7 +94,7 @@ grow_horizontal = 0
 grow_vertical = 0
 text = "Remap Controls (BUTTON)"
 
-[node name="OKButton" type="Button" parent="."]
+[node name="OKButton" type="Button" parent="." unique_id=1870612340]
 visible = false
 layout_mode = 0
 offset_left = 134.0

@@ -1,38 +1,38 @@
-[gd_scene load_steps=2 format=3 uid="uid://ck27muptncsc5"]
+[gd_scene format=3 uid="uid://ck27muptncsc5"]
 
 [ext_resource type="Script" uid="uid://dvpv5r8m73cr2" path="res://match_scene/match_scene.gd" id="1_wwbcy"]
 
-[node name="MatchScene" type="Node3D"]
+[node name="MatchScene" type="Node3D" unique_id=494511853]
 script = ExtResource("1_wwbcy")
-test_characters = Array[String](["shadow", "tails"])
-test_stage = "holysummit"
+test_characters = Array[String](["sonic", "sonic"])
+test_stage = "emeraldbeach"
 
-[node name="SubViewportGridContainer" type="GridContainer" parent="."]
+[node name="SubViewportGridContainer" type="GridContainer" parent="." unique_id=10805103]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(480, 320)
 offset_right = 40.0
 offset_bottom = 40.0
 columns = 2
 
-[node name="SubViewportContainer1" type="SubViewportContainer" parent="SubViewportGridContainer"]
+[node name="SubViewportContainer1" type="SubViewportContainer" parent="SubViewportGridContainer" unique_id=656556]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="SubViewportContainer2" type="SubViewportContainer" parent="SubViewportGridContainer"]
+[node name="SubViewportContainer2" type="SubViewportContainer" parent="SubViewportGridContainer" unique_id=125936519]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="SubViewportContainer3" type="SubViewportContainer" parent="SubViewportGridContainer"]
+[node name="SubViewportContainer3" type="SubViewportContainer" parent="SubViewportGridContainer" unique_id=1136714344]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="SubViewportContainer4" type="SubViewportContainer" parent="SubViewportGridContainer"]
+[node name="SubViewportContainer4" type="SubViewportContainer" parent="SubViewportGridContainer" unique_id=862188222]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://bijt4rf2282sm"]
+[gd_scene format=3 uid="uid://bijt4rf2282sm"]
 
 [ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_whqsn"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="2_j3fcx"]
@@ -61,12 +61,12 @@ animations = [{
 "speed": 18.0
 }]
 
-[node name="HeavyHitEffect" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+[node name="HeavyHitEffect" type="Node3D" unique_id=41505423 node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_whqsn")
 animated_sprite = NodePath("BattleAnimatedSprite3D")
 metadata/_custom_type_script = "uid://dw8sbuf2itowu"
 
-[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1824860286]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 billboard = 1
 texture_filter = 0

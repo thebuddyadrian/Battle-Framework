@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://dhl6gvecygwbc"]
+[gd_scene format=3 uid="uid://dhl6gvecygwbc"]
 
 [ext_resource type="Script" uid="uid://bpjjhnx3q5um0" path="res://menus/character_select/player_character/player_character.gd" id="1_gu884"]
 [ext_resource type="PackedScene" uid="uid://15coxxqw12kr" path="res://menus/character_select/portraits/portrait_manager.tscn" id="2_fq4xj"]
 [ext_resource type="Texture2D" uid="uid://c1gqehpccugqc" path="res://assets/ui/spriteOK!.png" id="3_816r1"]
 [ext_resource type="PackedScene" uid="uid://bu74bh1pcju6h" path="res://menus/character_select/cursor_arrows.tscn" id="4_ofnyx"]
 
-[node name="PlayerCharacter" type="Control"]
+[node name="PlayerCharacter" type="Control" unique_id=2068380282]
 custom_minimum_size = Vector2(120, 80)
 layout_mode = 3
 anchor_right = 0.5375
@@ -17,7 +17,7 @@ script = ExtResource("1_gu884")
 player_number = null
 metadata/_edit_use_anchors_ = true
 
-[node name="Portrait_Manager" parent="." instance=ExtResource("2_fq4xj")]
+[node name="Portrait_Manager" parent="." unique_id=1147158144 instance=ExtResource("2_fq4xj")]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -27,7 +27,7 @@ offset_bottom = 0.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ReferenceRect" type="ReferenceRect" parent="."]
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=79688122]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -35,7 +35,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="CharacterSelected" type="Label" parent="."]
+[node name="CharacterSelected" type="Label" parent="." unique_id=1165230931]
 visible = false
 layout_mode = 1
 anchors_preset = 15
@@ -48,7 +48,7 @@ Sonic"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ConfirmSprite" type="TextureRect" parent="."]
+[node name="ConfirmSprite" type="TextureRect" parent="." unique_id=1626120570]
 visible = false
 layout_mode = 0
 offset_left = 9.0
@@ -57,7 +57,7 @@ offset_right = 59.0
 offset_bottom = 78.0
 texture = ExtResource("3_816r1")
 
-[node name="CursorArrows" parent="." instance=ExtResource("4_ofnyx")]
+[node name="CursorArrows" parent="." unique_id=336277503 instance=ExtResource("4_ofnyx")]
 layout_mode = 0
 
 [editable path="CursorArrows"]

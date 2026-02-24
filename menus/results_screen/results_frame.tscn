@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://05h8siy11cn"]
+[gd_scene format=3 uid="uid://05h8siy11cn"]
 
 [ext_resource type="Texture2D" uid="uid://lu8c8h4rqvnb" path="res://assets/ui/results/results.png" id="1_jum1d"]
-[ext_resource type="Script" uid="uid://crsnh8m8y8le2" path="res://menus/results_screen/results_frame.gd" id="2_na8yj"]
+[ext_resource type="Script" path="res://menus/results_screen/results_frame.gd" id="2_na8yj"]
 
-[node name="results_frame" type="TextureRect"]
+[node name="results_frame" type="TextureRect" unique_id=794582302]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0

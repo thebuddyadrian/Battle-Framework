@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://cl6g6ymkhjven"]
+[gd_scene format=3 uid="uid://cl6g6ymkhjven"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Background/DefaultBackgroundScene/default_background.gd" id="1_nkdrp"]
+[ext_resource type="Script" uid="uid://vi0quens6fjc" path="res://addons/dialogic/Modules/Background/DefaultBackgroundScene/default_background.gd" id="1_nkdrp"]
 
-[node name="DefaultBackground" type="Control"]
+[node name="DefaultBackground" type="Control" unique_id=993975807]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nkdrp")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=2050363244]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -19,7 +19,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Image" type="TextureRect" parent="."]
+[node name="Image" type="TextureRect" parent="." unique_id=855327085]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

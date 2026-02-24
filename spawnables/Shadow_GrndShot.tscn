@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dnsctse6ueqn2"]
+[gd_scene format=3 uid="uid://dnsctse6ueqn2"]
 
 [ext_resource type="Script" uid="uid://bbnnqyvvf0jkv" path="res://spawnables/shadow_grnd_shot.gd" id="1_jjt70"]
 [ext_resource type="Resource" uid="uid://bryx7fjbw1pr2" path="res://spawnables/ShotData/ShadowGrndSht.tres" id="2_l5o0q"]
@@ -228,12 +228,12 @@ _data = {
 &"Start": SubResource("Animation_561xu")
 }
 
-[node name="ShadowGrndShot" type="CharacterBody3D"]
+[node name="ShadowGrndShot" type="CharacterBody3D" unique_id=1825121500]
 collision_layer = 0
 script = ExtResource("1_jjt70")
 spawnable_info = ExtResource("2_l5o0q")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="."]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=733375550]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.00755633, -0.697512, 0)
 offset = Vector2(0, 20)
 billboard = 1
@@ -242,28 +242,26 @@ sprite_frames = SubResource("SpriteFrames_5bbic")
 animation = &"Side"
 autoplay = "Side"
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=112106361]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 script = ExtResource("3_l5o0q")
 hit_data = SubResource("Resource_8mw8r")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
-[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hitbox" unique_id=1281926278]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
 shape = SubResource("SphereShape3D_f2pd6")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1470956943]
 visible = false
 script = ExtResource("5_hk728")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
-[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox" unique_id=918047906]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
 shape = SubResource("SphereShape3D_yq6br")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0scby")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1413545742]
+libraries/ = SubResource("AnimationLibrary_0scby")

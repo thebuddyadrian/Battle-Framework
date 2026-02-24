@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://bxcyijbbpfmar"]
+[gd_scene format=3 uid="uid://bxcyijbbpfmar"]
 
 [ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_dvrau"]
 [ext_resource type="Script" uid="uid://d0127k12xvws" path="res://components/battle_sprite/battle_animated_sprite.gd" id="2_6i8ko"]
@@ -40,11 +40,11 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="ShadowAirActionEffect" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+[node name="ShadowAirActionEffect" type="Node3D" unique_id=1570352824 node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_dvrau")
 animated_sprite = NodePath("BattleAnimatedSprite3D")
 
-[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=865631291]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 billboard = 1
 texture_filter = 0

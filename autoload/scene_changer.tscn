@@ -1,15 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://c7oowes0v0tnw"]
+[gd_scene format=3 uid="uid://c7oowes0v0tnw"]
 
 [ext_resource type="Script" uid="uid://dj8su8dq5cr38" path="res://autoload/scene_changer.gd" id="1_l546c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o001a"]
 bg_color = Color(0, 0, 0, 1)
 
-[node name="SceneChanger" type="CanvasLayer"]
+[node name="SceneChanger" type="CanvasLayer" unique_id=465434427]
 layer = 3
 script = ExtResource("1_l546c")
 
-[node name="Black" type="Panel" parent="."]
+[node name="Black" type="Panel" parent="." unique_id=1191715041]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 15
 anchor_right = 1.0

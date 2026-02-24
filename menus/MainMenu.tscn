@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://3yefhhhajnqk"]
+[gd_scene format=3 uid="uid://3yefhhhajnqk"]
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_ot3ob"]
 [ext_resource type="Texture2D" uid="uid://cdaxr0wjdfxxw" path="res://assets/ui/BattleEmblem.png" id="2_rmsp1"]
@@ -206,9 +206,9 @@ offset = Vector3(571.43, 0, 0)
 domain_warp_enabled = true
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_vp83o"]
-in_3d_space = true
-color_ramp = SubResource("Gradient_lb38e")
 noise = SubResource("FastNoiseLite_7fxis")
+color_ramp = SubResource("Gradient_lb38e")
+in_3d_space = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_4yyw3"]
 render_priority = 0
@@ -409,8 +409,8 @@ seed = 400
 frequency = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_7fxis"]
-in_3d_space = true
 noise = SubResource("FastNoiseLite_vp83o")
+in_3d_space = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_lb38e"]
 render_priority = 0
@@ -425,11 +425,11 @@ shader_parameter/clouds_fuzziness = 0.35
 shader_parameter/clouds_color = Color(1, 1, 1, 1)
 shader_parameter/edge_fade = 0.01
 
-[node name="MainMenu" type="Node3D" node_paths=PackedStringArray("camera_root_parent")]
+[node name="MainMenu" type="Node3D" unique_id=527138709 node_paths=PackedStringArray("camera_root_parent")]
 script = ExtResource("1_ot3ob")
 camera_root_parent = NodePath(".")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="Sprite3D" type="Sprite3D" parent="." unique_id=2144381008]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
 no_depth_test = true
 texture_filter = 4
@@ -437,7 +437,7 @@ texture = ExtResource("2_rmsp1")
 script = SubResource("GDScript_vp83o")
 spinspeed = 2
 
-[node name="Sprite3D2" type="Sprite3D" parent="."]
+[node name="Sprite3D2" type="Sprite3D" parent="." unique_id=145919760]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, -0.0240467, 0)
 modulate = Color(0, 0, 0, 1)
 no_depth_test = true
@@ -446,11 +446,11 @@ texture = ExtResource("2_rmsp1")
 script = SubResource("GDScript_vp83o")
 spinspeed = 2
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="Camera3D" type="Camera3D" parent="." unique_id=1171873123]
 transform = Transform3D(1, 0, 0, 0, 0.990816, 0.135214, 0, -0.135214, 0.990816, -0.0140379, 0.225645, 0.762764)
 keep_aspect = 0
 
-[node name="Cube1" type="MeshInstance3D" parent="."]
+[node name="Cube1" type="MeshInstance3D" parent="." unique_id=556874777]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.73348, 1.81769, -6.98987)
 cast_shadow = 0
 ignore_occlusion_culling = true
@@ -458,7 +458,7 @@ gi_mode = 0
 mesh = SubResource("BoxMesh_lb38e")
 script = ExtResource("3_218cn")
 
-[node name="Cube2" type="MeshInstance3D" parent="."]
+[node name="Cube2" type="MeshInstance3D" parent="." unique_id=2056174822]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.87421, -0.111284, -7.20806)
 cast_shadow = 0
 ignore_occlusion_culling = true
@@ -467,7 +467,7 @@ mesh = SubResource("BoxMesh_lb38e")
 script = ExtResource("3_218cn")
 hori = -1
 
-[node name="Cube3" type="MeshInstance3D" parent="."]
+[node name="Cube3" type="MeshInstance3D" parent="." unique_id=1892759266]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.09206, -0.499802, -3.9605)
 cast_shadow = 0
 ignore_occlusion_culling = true
@@ -477,7 +477,7 @@ script = ExtResource("3_218cn")
 vert = -1
 hori = -1
 
-[node name="Cube4" type="MeshInstance3D" parent="."]
+[node name="Cube4" type="MeshInstance3D" parent="." unique_id=1889744877]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.30547, 1.05208, -5.36364)
 cast_shadow = 0
 ignore_occlusion_culling = true
@@ -486,22 +486,22 @@ mesh = SubResource("BoxMesh_lb38e")
 script = ExtResource("3_218cn")
 vert = -1
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1052988043]
 environment = SubResource("Environment_218cn")
 
-[node name="Bottom" type="MeshInstance3D" parent="."]
+[node name="Bottom" type="MeshInstance3D" parent="." unique_id=1899802965]
 transform = Transform3D(81.113, 0, 0, 0, 1, 0, 0, 0, 27.5445, 0, -3.78441, -23.7734)
 mesh = SubResource("PlaneMesh_vp83o")
 surface_material_override/0 = SubResource("ShaderMaterial_4yyw3")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2135803187]
 transform = Transform3D(60.7235, 0, 0, 0, -4.37114e-08, -50.1487, 0, 1, -2.19207e-06, 0, 12.8713, -47.5401)
 mesh = SubResource("PlaneMesh_ahxlq")
 surface_material_override/0 = SubResource("ShaderMaterial_ih3s6")
 
-[node name="Sky" type="MeshInstance3D" parent="."]
+[node name="Sky" type="MeshInstance3D" parent="." unique_id=1178328011]
 transform = Transform3D(-99.9808, 0.838933, -1.77318, -1.22475, -97.3067, 23.0196, -1.5323, 23.0369, 97.2983, -10.1813, 10.2365, -58.1516)
 mesh = SubResource("PlaneMesh_rmsp1")
 surface_material_override/0 = SubResource("ShaderMaterial_lb38e")
 
-[node name="ModeSelect" parent="." instance=ExtResource("6_lb38e")]
+[node name="ModeSelect" parent="." unique_id=1111586296 instance=ExtResource("6_lb38e")]

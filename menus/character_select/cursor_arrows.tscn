@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bu74bh1pcju6h"]
+[gd_scene format=3 uid="uid://bu74bh1pcju6h"]
 
 [ext_resource type="Texture2D" uid="uid://ct67yxep3jie0" path="res://assets/ui/menus/arrow_left.png" id="1_3svkt"]
 [ext_resource type="Texture2D" uid="uid://coos7u8xni8mu" path="res://assets/ui/menus/arrow_right.png" id="2_5u6ae"]
@@ -152,11 +152,11 @@ _data = {
 &"RESET": SubResource("Animation_3515l")
 }
 
-[node name="CursorArrows" type="Control"]
+[node name="CursorArrows" type="Control" unique_id=164803946]
 layout_mode = 3
 anchors_preset = 0
 
-[node name="ArrowLeft" type="TextureRect" parent="."]
+[node name="ArrowLeft" type="TextureRect" parent="." unique_id=248405332]
 layout_mode = 0
 offset_left = 16.0
 offset_top = 48.0
@@ -165,7 +165,7 @@ offset_bottom = 80.0
 texture = ExtResource("1_3svkt")
 expand_mode = 1
 
-[node name="ArrowRight" type="TextureRect" parent="."]
+[node name="ArrowRight" type="TextureRect" parent="." unique_id=943194542]
 layout_mode = 0
 offset_left = 88.0
 offset_top = 48.0
@@ -174,10 +174,8 @@ offset_bottom = 80.0
 texture = ExtResource("2_5u6ae")
 expand_mode = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_5lsro")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1698488693]
+libraries/ = SubResource("AnimationLibrary_5lsro")
 
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2035779324]
 stream = ExtResource("3_kkhke")

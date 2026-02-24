@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://bk8l31xotv0uh"]
+[gd_scene format=3 uid="uid://bk8l31xotv0uh"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_rh622"]
 [ext_resource type="Texture2D" uid="uid://cunqr1diarnpg" path="res://characters/kid_goku/sprites/goku.png" id="2_5o8ea"]
@@ -516,154 +516,73 @@ _data = {
 [sub_resource type="Resource" id="Resource_fauqd"]
 script = ExtResource("5_f36mb")
 animation = "Jab1"
-air_animation = ""
-animation_down = ""
-animation_up = ""
-change_anim_in_air = false
-play_animation = true
-use_anim_markers = true
-use_sections = true
 startup_frames = 6
 active_frames = 4
-recovery_frames = 10
-attack_sound = "punch"
 damage = 10
 knockback_power = 2
-knockback_angle = 0
-knockback_type = 0
-hit_stun = 30
-hit_sound = "hit"
-can_charge = false
-max_charge = 30
-max_hold = 30
-knockback_charge_scale = 180
-damage_charge_scale = 150
-knockback_scaling_charge_scale = 180
-use_hitbox = true
-land_on_touched_ground = false
-stop_on_left_ground = false
-landing_lag = 6
-dash_cancel_on_hit = false
-dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("5_f36mb")
 
 [sub_resource type="Resource" id="Resource_vu3g6"]
 script = ExtResource("5_f36mb")
 animation = "Jab2"
-air_animation = ""
-animation_down = ""
-animation_up = ""
-change_anim_in_air = false
-play_animation = true
-use_anim_markers = true
-use_sections = true
 startup_frames = 6
 active_frames = 3
 recovery_frames = 15
-attack_sound = "punch"
 damage = 10
 knockback_power = 2
-knockback_angle = 0
-knockback_type = 0
-hit_stun = 30
 hit_sound = "punch"
-can_charge = false
-max_charge = 30
-max_hold = 30
-knockback_charge_scale = 180
-damage_charge_scale = 150
-knockback_scaling_charge_scale = 180
-use_hitbox = true
-land_on_touched_ground = false
-stop_on_left_ground = false
-landing_lag = 6
-dash_cancel_on_hit = false
-dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("5_f36mb")
 
 [sub_resource type="Resource" id="Resource_xjpqm"]
 script = ExtResource("5_f36mb")
 animation = "Jab3"
-air_animation = ""
-animation_down = ""
-animation_up = ""
-change_anim_in_air = false
-play_animation = true
-use_anim_markers = true
-use_sections = true
 startup_frames = 6
 active_frames = 6
 recovery_frames = 24
-attack_sound = "punch"
 damage = 12
 knockback_power = 2
-knockback_angle = 0
-knockback_type = 0
-hit_stun = 30
 hit_sound = "punch"
-can_charge = false
-max_charge = 30
-max_hold = 30
-knockback_charge_scale = 180
-damage_charge_scale = 150
-knockback_scaling_charge_scale = 180
-use_hitbox = true
-land_on_touched_ground = false
-stop_on_left_ground = false
-landing_lag = 6
-dash_cancel_on_hit = false
-dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("5_f36mb")
 
 [sub_resource type="Resource" id="Resource_f36mb"]
 script = ExtResource("3_cf8eq")
-damage = 0.0
-knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
-unblockable = false
-hit_freeze = 5
-hit_stun = 30
 
-[node name="KidGoku" instance=ExtResource("1_rh622")]
+[node name="KidGoku" unique_id=1122409714 instance=ExtResource("1_rh622")]
 
-[node name="PlayerSprite" parent="." index="1"]
+[node name="PlayerSprite" parent="." index="1" unique_id=193447772]
 texture = ExtResource("2_5o8ea")
 vframes = 5
 frame = 6
 
-[node name="AnimationPlayer" parent="PlayerSprite" index="0"]
-libraries = {
-&"": SubResource("AnimationLibrary_cf8eq")
-}
+[node name="AnimationPlayer" parent="PlayerSprite" index="0" unique_id=1902147849]
+libraries/ = SubResource("AnimationLibrary_cf8eq")
 
-[node name="Dash" parent="StateMachine" index="6"]
+[node name="Dash" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="6" unique_id=500218446]
 script = ExtResource("3_i6jmp")
 
-[node name="AirAction" parent="StateMachine" index="7"]
+[node name="AirAction" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="7" unique_id=1637163508]
 script = ExtResource("3_5o8ea")
 
-[node name="Jab1" parent="StateMachine" index="19"]
+[node name="Jab1" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="19" unique_id=523789546]
 attack_info = SubResource("Resource_fauqd")
 
-[node name="Jab2" parent="StateMachine" index="20"]
+[node name="Jab2" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="20" unique_id=981136779]
 attack_info = SubResource("Resource_vu3g6")
 
-[node name="Jab3" parent="StateMachine" index="21"]
+[node name="Jab3" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="21" unique_id=1484192293]
 attack_info = SubResource("Resource_xjpqm")
 
-[node name="Heavy" parent="StateMachine" index="22"]
+[node name="Heavy" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="22" unique_id=1197192703]
 attack_info = ExtResource("5_i6jmp")
 
-[node name="AimAttack" parent="StateMachine" index="26"]
+[node name="AimAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="26" unique_id=241173427]
 attack_info = ExtResource("7_f36mb")
 
-[node name="Hitbox" parent="." index="5"]
+[node name="Hitbox" parent="." index="5" unique_id=223441001]
 hit_data = SubResource("Resource_f36mb")
 
-[node name="CollisionShape3D" parent="Hitbox" index="0"]
+[node name="CollisionShape3D" parent="Hitbox" index="0" unique_id=452238123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.115967, 0.0198834, 0)
 
-[node name="TestLabel" parent="." index="7"]
+[node name="TestLabel" parent="." index="7" unique_id=419573788]
 visible = false

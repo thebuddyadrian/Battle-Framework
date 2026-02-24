@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dtcnkbj4yen56"]
+[gd_scene format=3 uid="uid://dtcnkbj4yen56"]
 
 [ext_resource type="Script" uid="uid://dosixkvssd3n1" path="res://spawnables/base_spawnable.gd" id="1_0xo2e"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="2_gicut"]
@@ -10,40 +10,32 @@
 
 [sub_resource type="Resource" id="Resource_kmo64"]
 script = ExtResource("3_kmo64")
-damage = 0.0
-knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
-unblockable = false
-hit_freeze_override = -1
-hit_stun = 30
 
-[node name="BaseSpawnable" type="CharacterBody3D"]
+[node name="BaseSpawnable" type="CharacterBody3D" unique_id=988763838]
 collision_layer = 0
 script = ExtResource("1_0xo2e")
 spawnable_info = ExtResource("2_kmo64")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="."]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=2055061596]
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_mdu81")
 autoplay = "default"
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=943565358]
 script = ExtResource("2_gicut")
 hit_data = SubResource("Resource_kmo64")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
-[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hitbox" unique_id=1293264211]
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1464499451]
 script = ExtResource("4_xl7by")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
-[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox" unique_id=953891566]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1841698907]
 
 [connection signal="hit" from="Hitbox" to="." method="_on_hit"]

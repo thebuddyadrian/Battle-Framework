@@ -1,14 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://dhk6j6eb6e3q"]
+[gd_scene format=3 uid="uid://dhk6j6eb6e3q"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.gd" id="1_kurgw"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="1_w632k"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/node_button_sound.gd" id="2_mgko6"]
+[ext_resource type="Script" uid="uid://dft4nc33st8ia" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Choices/vn_choice_layer.gd" id="1_kurgw"]
+[ext_resource type="Script" uid="uid://puqacit33hs7" path="res://addons/dialogic/Modules/Choice/node_choice_button.gd" id="1_w632k"]
+[ext_resource type="Script" uid="uid://dttyf6vqiwsy" path="res://addons/dialogic/Modules/Choice/node_button_sound.gd" id="2_mgko6"]
 [ext_resource type="AudioStream" uid="uid://b6c1p14bc20p1" path="res://addons/dialogic/Example Assets/sound-effects/typing1.wav" id="3_mql8i"]
 [ext_resource type="AudioStream" uid="uid://c2viukvbub6v6" path="res://addons/dialogic/Example Assets/sound-effects/typing4.wav" id="4_420fr"]
 
 [sub_resource type="AudioStream" id="AudioStream_pe27w"]
 
-[node name="VN_ChoiceLayer" type="Control"]
+[node name="VN_ChoiceLayer" type="Control" unique_id=669123898]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -18,7 +18,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_kurgw")
 
-[node name="Choices" type="VBoxContainer" parent="."]
+[node name="Choices" type="VBoxContainer" parent="." unique_id=394564605]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -35,62 +35,62 @@ mouse_filter = 2
 alignment = 1
 metadata/_edit_layout_mode = 1
 
-[node name="DialogicNode_ChoiceButton1" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton1" type="Button" parent="Choices" unique_id=107484984]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton2" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton2" type="Button" parent="Choices" unique_id=1535003753]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton3" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton3" type="Button" parent="Choices" unique_id=715038318]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton4" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton4" type="Button" parent="Choices" unique_id=1827936504]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton5" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton5" type="Button" parent="Choices" unique_id=563912290]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton6" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton6" type="Button" parent="Choices" unique_id=185723712]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton7" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton7" type="Button" parent="Choices" unique_id=619838206]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton8" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton8" type="Button" parent="Choices" unique_id=185166209]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton9" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton9" type="Button" parent="Choices" unique_id=2069961930]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton10" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton10" type="Button" parent="Choices" unique_id=643196520]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ChoiceButton11" type="Button" parent="Choices"]
+[node name="DialogicNode_ChoiceButton11" type="Button" parent="Choices" unique_id=1576414038]
 layout_mode = 2
 text = "Some text"
 script = ExtResource("1_w632k")
 
-[node name="DialogicNode_ButtonSound" type="AudioStreamPlayer" parent="Choices"]
+[node name="DialogicNode_ButtonSound" type="AudioStreamPlayer" parent="Choices" unique_id=1618621544]
 unique_name_in_owner = true
 script = ExtResource("2_mgko6")
 sound_pressed = ExtResource("3_mql8i")

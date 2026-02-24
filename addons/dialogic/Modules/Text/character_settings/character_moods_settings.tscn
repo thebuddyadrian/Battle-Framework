@@ -1,9 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://8ad1pwbjuqpt"]
+[gd_scene format=3 uid="uid://8ad1pwbjuqpt"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/character_settings/character_moods_settings.gd" id="1_3px07"]
+[ext_resource type="Script" uid="uid://yg5dc8bm3gcu" path="res://addons/dialogic/Modules/Text/character_settings/character_moods_settings.gd" id="1_3px07"]
 [ext_resource type="PackedScene" uid="uid://7mvxuaulctcq" path="res://addons/dialogic/Editor/Events/Fields/field_file.tscn" id="2_e1vyd"]
 [ext_resource type="PackedScene" uid="uid://kdpp3mibml33" path="res://addons/dialogic/Editor/Events/Fields/field_number.tscn" id="3_yjcns"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="5_yscws"]
+[ext_resource type="Script" uid="uid://bcao73fcgxbjx" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="5_yscws"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7t05"]
 content_margin_left = 10.0
@@ -14,17 +14,9 @@ bg_color = Color(1, 1, 1, 1)
 corner_radius_top_left = 20
 corner_radius_top_right = 20
 
-[sub_resource type="Image" id="Image_ylh4a"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_drtd2"]
-image = SubResource("Image_ylh4a")
+[sub_resource type="DPITexture" id="DPITexture_2j4b6"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#ff5d5d\" d=\"M2 1v8.586l1.293-1.293a1 1 0 0 1 1.414 0L7 10.587l2.293-2.293a1 1 0 0 1 1.414 0L13 10.586l1-1V6H9V1H2zm8 0v4h4zm-6 9.414-2 2V15h12v-2.586l-.293.293a1 1 0 0 1-1.414 0L10 10.414l-2.293 2.293a1 1 0 0 1-1.414 0L4 10.414z\"/></svg>
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_40fkd"]
 content_margin_top = 10.0
@@ -36,81 +28,81 @@ border_width_bottom = 1
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="Typing Sounds" type="VBoxContainer"]
+[node name="Typing Sounds" type="VBoxContainer" unique_id=1540160024]
 offset_right = 443.0
 offset_bottom = 144.0
 script = ExtResource("1_3px07")
 
-[node name="VBox" type="VBoxContainer" parent="."]
+[node name="VBox" type="VBoxContainer" parent="." unique_id=105046033]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="ListPanel" type="PanelContainer" parent="VBox"]
+[node name="ListPanel" type="PanelContainer" parent="VBox" unique_id=2006893948]
 unique_name_in_owner = true
 self_modulate = Color(0, 0, 0, 1)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_y7t05")
 
-[node name="Vbox" type="VBoxContainer" parent="VBox/ListPanel"]
+[node name="Vbox" type="VBoxContainer" parent="VBox/ListPanel" unique_id=942853092]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="VBox/ListPanel/Vbox"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBox/ListPanel/Vbox" unique_id=1051746003]
 layout_mode = 2
 alignment = 2
 
-[node name="Add" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer"]
+[node name="Add" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer" unique_id=2034063621]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Add type sound mood"
-icon = SubResource("ImageTexture_drtd2")
+icon = SubResource("DPITexture_2j4b6")
 
-[node name="Duplicate" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer"]
+[node name="Duplicate" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer" unique_id=1663997015]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Duplicate"
-icon = SubResource("ImageTexture_drtd2")
+icon = SubResource("DPITexture_2j4b6")
 
-[node name="Delete" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer"]
+[node name="Delete" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer" unique_id=555952166]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Delete mood"
-icon = SubResource("ImageTexture_drtd2")
+icon = SubResource("DPITexture_2j4b6")
 
-[node name="VSeparator" type="VSeparator" parent="VBox/ListPanel/Vbox/HBoxContainer"]
+[node name="VSeparator" type="VSeparator" parent="VBox/ListPanel/Vbox/HBoxContainer" unique_id=559933303]
 layout_mode = 2
 
-[node name="Play" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer"]
+[node name="Play" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer" unique_id=805059183]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Preview"
-icon = SubResource("ImageTexture_drtd2")
+icon = SubResource("DPITexture_2j4b6")
 
-[node name="Default" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer"]
+[node name="Default" type="Button" parent="VBox/ListPanel/Vbox/HBoxContainer" unique_id=299197374]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Default"
 toggle_mode = true
-icon = SubResource("ImageTexture_drtd2")
+icon = SubResource("DPITexture_2j4b6")
 
-[node name="MoodList" type="ItemList" parent="VBox/ListPanel/Vbox"]
+[node name="MoodList" type="ItemList" parent="VBox/ListPanel/Vbox" unique_id=201949488]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 
-[node name="Settings" type="PanelContainer" parent="VBox"]
+[node name="Settings" type="PanelContainer" parent="VBox" unique_id=1397079303]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_40fkd")
 
-[node name="Grid" type="GridContainer" parent="VBox/Settings"]
+[node name="Grid" type="GridContainer" parent="VBox/Settings" unique_id=1508866748]
 layout_mode = 2
 columns = 2
 
-[node name="Label" type="Label" parent="VBox/Settings/Grid"]
+[node name="Label" type="Label" parent="VBox/Settings/Grid" unique_id=1461125817]
 layout_mode = 2
 text = "Name:"
 
-[node name="Name" type="LineEdit" parent="VBox/Settings/Grid"]
+[node name="Name" type="LineEdit" parent="VBox/Settings/Grid" unique_id=1905307725]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -119,7 +111,7 @@ text = "New Mood"
 placeholder_text = "Enter Mood Name"
 caret_blink = true
 
-[node name="NameWarning" type="TextureRect" parent="VBox/Settings/Grid/Name"]
+[node name="NameWarning" type="TextureRect" parent="VBox/Settings/Grid/Name" unique_id=31568079]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 11
@@ -129,21 +121,21 @@ anchor_bottom = 1.0
 offset_left = -31.0
 grow_horizontal = 0
 grow_vertical = 2
-texture = SubResource("ImageTexture_drtd2")
+texture = SubResource("DPITexture_2j4b6")
 stretch_mode = 3
 
-[node name="Label6" type="Label" parent="VBox/Settings/Grid"]
+[node name="Label6" type="Label" parent="VBox/Settings/Grid" unique_id=304759859]
 layout_mode = 2
 text = "Mode:"
 
-[node name="Mode" type="OptionButton" parent="VBox/Settings/Grid"]
+[node name="Mode" type="OptionButton" parent="VBox/Settings/Grid" unique_id=1746853928]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Interrupt = The next sound will stop the previous
 Overlap = Multiple sounds may play at once
 Await = A sound will only be played if the previous has finished"
-item_count = 3
 selected = 0
+item_count = 3
 popup/item_0/text = "Interrupt"
 popup/item_0/id = 0
 popup/item_1/text = "Overlap"
@@ -151,11 +143,11 @@ popup/item_1/id = 1
 popup/item_2/text = "Await"
 popup/item_2/id = 2
 
-[node name="Label4" type="Label" parent="VBox/Settings/Grid"]
+[node name="Label4" type="Label" parent="VBox/Settings/Grid" unique_id=2110784172]
 layout_mode = 2
 text = "File/Folder:"
 
-[node name="SoundFolder" parent="VBox/Settings/Grid" instance=ExtResource("2_e1vyd")]
+[node name="SoundFolder" parent="VBox/Settings/Grid" unique_id=1431519335 instance=ExtResource("2_e1vyd")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
@@ -163,64 +155,64 @@ size_flags_horizontal = 3
 file_filter = "*.ogg, *.mp3, *.wav"
 file_mode = 3
 
-[node name="Label2" type="Label" parent="VBox/Settings/Grid"]
+[node name="Label2" type="Label" parent="VBox/Settings/Grid" unique_id=581118032]
 layout_mode = 2
 text = "Pitch:"
 
-[node name="Pitch" type="HBoxContainer" parent="VBox/Settings/Grid"]
+[node name="Pitch" type="HBoxContainer" parent="VBox/Settings/Grid" unique_id=378315690]
 layout_mode = 2
 theme_override_constants/separation = -6
 alignment = 2
 
-[node name="PitchBase" parent="VBox/Settings/Grid/Pitch" instance=ExtResource("3_yjcns")]
+[node name="PitchBase" parent="VBox/Settings/Grid/Pitch" unique_id=2034095475 instance=ExtResource("3_yjcns")]
 unique_name_in_owner = true
 layout_mode = 2
 enforce_step = false
 max = 4.0
 
-[node name="Label4" type="Label" parent="VBox/Settings/Grid/Pitch"]
+[node name="Label4" type="Label" parent="VBox/Settings/Grid/Pitch" unique_id=455808916]
 layout_mode = 2
 text = "+/-  "
 
-[node name="PitchVariance" parent="VBox/Settings/Grid/Pitch" instance=ExtResource("3_yjcns")]
+[node name="PitchVariance" parent="VBox/Settings/Grid/Pitch" unique_id=643032393 instance=ExtResource("3_yjcns")]
 unique_name_in_owner = true
 layout_mode = 2
 enforce_step = false
 
-[node name="Label3" type="Label" parent="VBox/Settings/Grid"]
+[node name="Label3" type="Label" parent="VBox/Settings/Grid" unique_id=1884502030]
 layout_mode = 2
 text = "Volume:"
 
-[node name="Volume" type="HBoxContainer" parent="VBox/Settings/Grid"]
+[node name="Volume" type="HBoxContainer" parent="VBox/Settings/Grid" unique_id=476352827]
 layout_mode = 2
 theme_override_constants/separation = -6
 alignment = 2
 
-[node name="VolumeBase" parent="VBox/Settings/Grid/Volume" instance=ExtResource("3_yjcns")]
+[node name="VolumeBase" parent="VBox/Settings/Grid/Volume" unique_id=91005408 instance=ExtResource("3_yjcns")]
 unique_name_in_owner = true
 layout_mode = 2
 min = -60.0
 max = 30.0
 
-[node name="Label4" type="Label" parent="VBox/Settings/Grid/Volume"]
+[node name="Label4" type="Label" parent="VBox/Settings/Grid/Volume" unique_id=470294166]
 layout_mode = 2
 text = "+/-  "
 
-[node name="VolumeVariance" parent="VBox/Settings/Grid/Volume" instance=ExtResource("3_yjcns")]
+[node name="VolumeVariance" parent="VBox/Settings/Grid/Volume" unique_id=1072624423 instance=ExtResource("3_yjcns")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Label5" type="Label" parent="VBox/Settings/Grid"]
+[node name="Label5" type="Label" parent="VBox/Settings/Grid" unique_id=1066618455]
 layout_mode = 2
 text = "Skip:"
 
-[node name="Skip" parent="VBox/Settings/Grid" instance=ExtResource("3_yjcns")]
+[node name="Skip" parent="VBox/Settings/Grid" unique_id=1057085313 instance=ExtResource("3_yjcns")]
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 2
 step = 1.0
 
-[node name="Preview" type="AudioStreamPlayer" parent="."]
+[node name="Preview" type="AudioStreamPlayer" parent="." unique_id=1304683991]
 script = ExtResource("5_yscws")
 play_every_character = 0
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://cek62pjs5d0tg"]
+[gd_scene format=3 uid="uid://cek62pjs5d0tg"]
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_h6std"]
 [ext_resource type="Resource" uid="uid://dgt30oe8ecklk" path="res://levels/hologram/hologram.tres" id="2_261r3"]
@@ -13,7 +13,7 @@ size = Vector3(1, 0.676758, 2.18701)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ewg0a"]
 
-[node name="LevelMain" type="Node3D" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent")]
+[node name="LevelMain" type="Node3D" unique_id=1979682513 node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent")]
 script = ExtResource("1_h6std")
 stage_info = ExtResource("2_261r3")
 player_spawn_1 = NodePath("SubViewportContainer/Level/LevelRoot/PlayerSpawn1")
@@ -22,99 +22,99 @@ player_spawn_3 = NodePath("SubViewportContainer/Level/LevelRoot/PlayerSpawn3")
 player_spawn_4 = NodePath("SubViewportContainer/Level/LevelRoot/PlayerSpawn4")
 camera_root_parent = NodePath("SubViewportContainer/Level/LevelRoot")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1371023901]
 layer = -128
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer" unique_id=2052406002]
 visible = false
 offset_right = 512.0
 offset_bottom = 512.0
 
-[node name="BG" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+[node name="BG" type="SubViewport" parent="CanvasLayer/SubViewportContainer" unique_id=2082160223]
 handle_input_locally = false
 size = Vector2i(240, 160)
 render_target_update_mode = 0
 
-[node name="HologramSkybox" parent="CanvasLayer/SubViewportContainer/BG" instance=ExtResource("8_4yqvt")]
+[node name="HologramSkybox" parent="CanvasLayer/SubViewportContainer/BG" unique_id=1129942680 instance=ExtResource("8_4yqvt")]
 unique_name_in_owner = true
 transform = Transform3D(80, 0, 0, 0, 80, 0, 0, 0, 80, 1467.46, 839.249, -38.8656)
 script = ExtResource("9_ici1a")
 
-[node name="HologramSkybox2" parent="CanvasLayer/SubViewportContainer/BG" instance=ExtResource("9_tscyp")]
+[node name="HologramSkybox2" parent="CanvasLayer/SubViewportContainer/BG" unique_id=79456594 instance=ExtResource("9_tscyp")]
 unique_name_in_owner = true
 transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 1467.46, 839.249, -38.8656)
 script = ExtResource("9_ici1a")
 vert = -1
 
-[node name="HologramSkybox3" parent="CanvasLayer/SubViewportContainer/BG" instance=ExtResource("10_ici1a")]
+[node name="HologramSkybox3" parent="CanvasLayer/SubViewportContainer/BG" unique_id=385212403 instance=ExtResource("10_ici1a")]
 unique_name_in_owner = true
 transform = Transform3D(120, 0, 0, 0, 120, 0, 0, 0, 120, 1467.46, 839.249, -38.8656)
 script = ExtResource("9_ici1a")
 hori = -1
 
-[node name="Camera3D" type="Camera3D" parent="CanvasLayer/SubViewportContainer/BG"]
+[node name="Camera3D" type="Camera3D" parent="CanvasLayer/SubViewportContainer/BG" unique_id=391101860]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1467.68, 850.672, -20.5472)
 projection = 2
 size = 4.846
 
-[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="." unique_id=785201130]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Level" type="SubViewport" parent="SubViewportContainer"]
+[node name="Level" type="SubViewport" parent="SubViewportContainer" unique_id=876052447]
 transparent_bg = true
 handle_input_locally = false
 audio_listener_enable_3d = true
 size = Vector2i(240, 160)
 render_target_update_mode = 4
 
-[node name="LevelRoot" type="Node3D" parent="SubViewportContainer/Level"]
+[node name="LevelRoot" type="Node3D" parent="SubViewportContainer/Level" unique_id=1898735021]
 
-[node name="PlayerSpawn1" type="Node3D" parent="SubViewportContainer/Level/LevelRoot"]
+[node name="PlayerSpawn1" type="Node3D" parent="SubViewportContainer/Level/LevelRoot" unique_id=2141506884]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4.42207, 7.67822, -7.80998)
 
-[node name="PlayerSpawn2" type="Node3D" parent="SubViewportContainer/Level/LevelRoot"]
+[node name="PlayerSpawn2" type="Node3D" parent="SubViewportContainer/Level/LevelRoot" unique_id=2022431377]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 4.22732, 0.968994, -7.80998)
 
-[node name="PlayerSpawn3" type="Node3D" parent="SubViewportContainer/Level/LevelRoot"]
+[node name="PlayerSpawn3" type="Node3D" parent="SubViewportContainer/Level/LevelRoot" unique_id=1860568175]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 6.41946, 0.968994, 6.66571)
 
-[node name="PlayerSpawn4" type="Node3D" parent="SubViewportContainer/Level/LevelRoot"]
+[node name="PlayerSpawn4" type="Node3D" parent="SubViewportContainer/Level/LevelRoot" unique_id=1236220330]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -4.69242, 0.968994, 6.66571)
 
-[node name="blockbench_export" parent="SubViewportContainer/Level/LevelRoot" instance=ExtResource("6_ca42s")]
+[node name="blockbench_export" parent="SubViewportContainer/Level/LevelRoot" unique_id=907288137 instance=ExtResource("6_ca42s")]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
-[node name="WallRight" type="StaticBody3D" parent="SubViewportContainer/Level/LevelRoot"]
+[node name="WallRight" type="StaticBody3D" parent="SubViewportContainer/Level/LevelRoot" unique_id=1463443085]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/Level/LevelRoot/WallRight"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/Level/LevelRoot/WallRight" unique_id=1832540425]
 transform = Transform3D(1, 0, 0, 0, 17.8076, 0, 0, 0, 11.3163, 12.1868, 4.8997, -0.451286)
 shape = SubResource("BoxShape3D_ici1a")
 
-[node name="WallUp" type="StaticBody3D" parent="SubViewportContainer/Level/LevelRoot"]
+[node name="WallUp" type="StaticBody3D" parent="SubViewportContainer/Level/LevelRoot" unique_id=729780905]
 transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/Level/LevelRoot/WallUp"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/Level/LevelRoot/WallUp" unique_id=1577354054]
 transform = Transform3D(1, 0, 0, 0, 17.8076, 0, 0, 0, 12.3804, 12.0552, 4.8997, -0.451286)
 shape = SubResource("BoxShape3D_ici1a")
 
-[node name="WallLeft" type="StaticBody3D" parent="SubViewportContainer/Level/LevelRoot"]
+[node name="WallLeft" type="StaticBody3D" parent="SubViewportContainer/Level/LevelRoot" unique_id=1537708638]
 transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/Level/LevelRoot/WallLeft"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/Level/LevelRoot/WallLeft" unique_id=1094209177]
 transform = Transform3D(1, 0, 0, 0, 17.8076, 0, 0, 0, 12.4121, 12.1454, 4.8997, -0.451286)
 shape = SubResource("BoxShape3D_ici1a")
 
-[node name="WallBack" type="StaticBody3D" parent="SubViewportContainer/Level/LevelRoot"]
+[node name="WallBack" type="StaticBody3D" parent="SubViewportContainer/Level/LevelRoot" unique_id=346343493]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/Level/LevelRoot/WallBack"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/Level/LevelRoot/WallBack" unique_id=2029647649]
 transform = Transform3D(1, 0, 5.68434e-14, 0, 17.8076, 0, 0, 0, 12.9019, 12.3771, 4.8997, -0.451286)
 shape = SubResource("BoxShape3D_ici1a")
 
-[node name="Floor" type="StaticBody3D" parent="SubViewportContainer/Level/LevelRoot"]
+[node name="Floor" type="StaticBody3D" parent="SubViewportContainer/Level/LevelRoot" unique_id=1734449168]
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/Level/LevelRoot/Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/Level/LevelRoot/Floor" unique_id=1076943306]
 transform = Transform3D(23.1712, 0, 0, 0, 0.876795, 0, 0, 0, 25.8494, 0, -0.448711, 0)
 shape = SubResource("BoxShape3D_ewg0a")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=4 uid="uid://ccfm4n0hl4le4"]
+[gd_scene format=4 uid="uid://ccfm4n0hl4le4"]
 
 [ext_resource type="Texture2D" uid="uid://kvwnnmtrtmen" path="res://assets/mesh library(temp)/Mesh library test improved_Beach basic text.png" id="1_rrkhn"]
 [ext_resource type="Texture2D" uid="uid://kjsnbfc5y5j6" path="res://assets/mesh library(temp)/Mesh library test improved_Clipboard.png" id="2_hh6oc"]
@@ -440,109 +440,102 @@ data = PackedVector3Array(1.02274, -1, -1, 1.02274, 1, 1, 1.02274, 1, -1, 1.0227
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tp4nc"]
 data = PackedVector3Array(1, -1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, 1, -1, 1, 1, 1, 1, 1, 1, -1, -1, 1, 1, -1, 1, -1, 1, 1, -1, 1, 1, 1, -1, 1, 1, -1, -1, -1, -1, 1, 1, -1, 1, -1, -1, -1, -1, -1, -1, 1, -1, 1, 1, -1, -1, -1, 1, 1, -1, -1, 1, -1, -1, -1, -1, 1, -1, -1, 1, 1, -1, -1, -1, 1, 1, 1, 1, -1, 1, 1, -1, -1, 1, 1, -1, 1, 1, 1, 1, 1, -1, 1, -1, -1, -1, -1, -1, 1, 1, -1, 1, 1, -1, -1, -1, -1, -1)
 
-[node name="Mesh library test improved" type="Node3D"]
+[node name="Mesh library test improved" type="Node3D" unique_id=1735624381]
 
-[node name="Sandy block 1" type="MeshInstance3D" parent="."]
+[node name="Sandy block 1" type="MeshInstance3D" parent="." unique_id=864415098]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8125, 0, 0)
 mesh = SubResource("ArrayMesh_ojkt5")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Sandy block 1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Sandy block 1" unique_id=916283755]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sandy block 1/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sandy block 1/StaticBody3D" unique_id=401534387]
 shape = SubResource("ConcavePolygonShape3D_wrxm0")
 
-[node name="Grassy 1" type="MeshInstance3D" parent="."]
+[node name="Grassy 1" type="MeshInstance3D" parent="." unique_id=1030296622]
 mesh = SubResource("ArrayMesh_tka8a")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Grassy 1"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Grassy 1" unique_id=300821658]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grassy 1/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grassy 1/StaticBody3D" unique_id=86176784]
 shape = SubResource("ConcavePolygonShape3D_xsmmr")
 
-[node name="Tile 2" type="MeshInstance3D" parent="."]
+[node name="Tile 2" type="MeshInstance3D" parent="." unique_id=1134354951]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.625, 0, 0)
 mesh = SubResource("ArrayMesh_k516s")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Tile 2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Tile 2" unique_id=804630265]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile 2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile 2/StaticBody3D" unique_id=932434247]
 shape = SubResource("ConcavePolygonShape3D_7omw1")
 
-[node name="Sandy block 1 " type="StaticBody3D" parent="."]
+[node name="Sandy block 1 " type="StaticBody3D" parent="." unique_id=210457903]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.8125, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Sandy block 1 "]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Sandy block 1 " unique_id=827623059]
 shape = SubResource("ConcavePolygonShape3D_2vcn8")
 
-[node name="Tile 2 " type="StaticBody3D" parent="."]
+[node name="Tile 2 " type="StaticBody3D" parent="." unique_id=825446124]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.625, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile 2 "]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Tile 2 " unique_id=1169292634]
 shape = SubResource("ConcavePolygonShape3D_v3a8i")
 
-[node name="Grassy 1 " type="StaticBody3D" parent="."]
+[node name="Grassy 1 " type="StaticBody3D" parent="." unique_id=2119048016]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grassy 1 "]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grassy 1 " unique_id=1331200547]
 shape = SubResource("ConcavePolygonShape3D_i0fq6")
 
-[node name="Rocky Slope" type="MeshInstance3D" parent="."]
+[node name="Rocky Slope" type="MeshInstance3D" parent="." unique_id=1477151001]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4375, 0, 0)
 mesh = SubResource("ArrayMesh_8m7tl")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Rocky Slope"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocky Slope" unique_id=2044176667]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocky Slope/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocky Slope/StaticBody3D" unique_id=1503259115]
 shape = SubResource("ConcavePolygonShape3D_e7dp3")
 
-[node name="Grassy 2" type="MeshInstance3D" parent="."]
+[node name="Grassy 2" type="MeshInstance3D" parent="." unique_id=1220388583]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8125, 0, 0)
 mesh = SubResource("ArrayMesh_5700f")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Grassy 2"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Grassy 2" unique_id=1525469556]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grassy 2/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grassy 2/StaticBody3D" unique_id=1974791633]
 shape = SubResource("ConcavePolygonShape3D_4xxvm")
 
-[node name="Grassy 2 " type="StaticBody3D" parent="."]
+[node name="Grassy 2 " type="StaticBody3D" parent="." unique_id=284397733]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8125, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grassy 2 "]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grassy 2 " unique_id=1418763401]
 shape = SubResource("ConcavePolygonShape3D_bsink")
 
-[node name="Rocky Slope " type="StaticBody3D" parent="."]
+[node name="Rocky Slope " type="StaticBody3D" parent="." unique_id=1015615089]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.4375, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocky Slope "]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocky Slope " unique_id=1286738624]
 shape = SubResource("ConcavePolygonShape3D_ix0s4")
 
-[node name="Grassy 3" type="MeshInstance3D" parent="."]
+[node name="Grassy 3" type="MeshInstance3D" parent="." unique_id=167324955]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.625, 0, 0)
 mesh = SubResource("ArrayMesh_3bsmd")
-skeleton = NodePath("")
 
-[node name="Rocky Slope Long" type="MeshInstance3D" parent="."]
+[node name="Rocky Slope Long" type="MeshInstance3D" parent="." unique_id=136356615]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, 0)
 mesh = SubResource("ArrayMesh_r7fae")
-skeleton = NodePath("")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Rocky Slope Long"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Rocky Slope Long" unique_id=500398960]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocky Slope Long/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocky Slope Long/StaticBody3D" unique_id=605674577]
 shape = SubResource("ConcavePolygonShape3D_4ta5j")
 
-[node name="Rocky Slope Long " type="StaticBody3D" parent="."]
+[node name="Rocky Slope Long " type="StaticBody3D" parent="." unique_id=615383767]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.5, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocky Slope Long "]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Rocky Slope Long " unique_id=924897074]
 shape = SubResource("ConcavePolygonShape3D_6rnhw")
 
-[node name="Grassy 3 " type="StaticBody3D" parent="."]
+[node name="Grassy 3 " type="StaticBody3D" parent="." unique_id=1506029107]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.625, 0, 0)
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Grassy 3 "]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Grassy 3 " unique_id=171221877]
 shape = SubResource("ConcavePolygonShape3D_tp4nc")

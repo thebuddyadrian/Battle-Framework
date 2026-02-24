@@ -1,4 +1,4 @@
-[gd_scene load_steps=53 format=3 uid="uid://n177e47wa4y"]
+[gd_scene format=3 uid="uid://n177e47wa4y"]
 
 [ext_resource type="PackedScene" uid="uid://cu07nmnpv8bt" path="res://levels/battlehwy/Finalized/BattleHighwayFinal.gltf" id="1_oqdom"]
 [ext_resource type="Texture2D" uid="uid://bqm41vxhfbbj3" path="res://levels/battlehwy/FloorFrames/Mainfloor3.png" id="2_xcbdd"]
@@ -154,105 +154,103 @@ _data = {
 &"RESET": SubResource("Animation_ybyvl")
 }
 
-[node name="blockbench_export" instance=ExtResource("1_oqdom")]
+[node name="blockbench_export" unique_id=528845170 instance=ExtResource("1_oqdom")]
 
-[node name="plane" parent="Node" index="0"]
+[node name="plane" parent="Node" parent_id_path=PackedInt32Array(965659485) index="0" unique_id=531601498]
 mesh = SubResource("ArrayMesh_odyug")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/plane" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/plane" index="0" unique_id=1735760001]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/plane/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/plane/StaticBody3D" index="0" unique_id=1477095074]
 transform = Transform3D(1, 0, 0, 0, 1.30998, 0, 0, 0, 1, 0, 0.00546169, 0)
 shape = SubResource("ConcavePolygonShape3D_dq7pq")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Boxes/cube" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Boxes/cube" parent_id_path=PackedInt32Array(1556178861) index="0" unique_id=1699209052]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Boxes/cube/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Boxes/cube/StaticBody3D" index="0" unique_id=276947959]
 shape = SubResource("ConcavePolygonShape3D_d83d2")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Boxes/cube2" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Boxes/cube2" parent_id_path=PackedInt32Array(1912859568) index="0" unique_id=837510407]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Boxes/cube2/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Boxes/cube2/StaticBody3D" index="0" unique_id=309024959]
 shape = SubResource("ConcavePolygonShape3D_q50yt")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Boxes/cube3" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Boxes/cube3" parent_id_path=PackedInt32Array(708321221) index="0" unique_id=649248023]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Boxes/cube3/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Boxes/cube3/StaticBody3D" index="0" unique_id=831081485]
 shape = SubResource("ConcavePolygonShape3D_63iac")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Boxes/cube4" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Boxes/cube4" parent_id_path=PackedInt32Array(2104174335) index="0" unique_id=485074721]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Boxes/cube4/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Boxes/cube4/StaticBody3D" index="0" unique_id=1030483596]
 shape = SubResource("ConcavePolygonShape3D_e1mt5")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube5" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube5" parent_id_path=PackedInt32Array(1408485355) index="0" unique_id=177873100]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube5/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube5/StaticBody3D" index="0" unique_id=584567876]
 shape = SubResource("ConcavePolygonShape3D_p7ii2")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube6" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube6" parent_id_path=PackedInt32Array(1016886893) index="0" unique_id=33398077]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube6/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube6/StaticBody3D" index="0" unique_id=138051912]
 shape = SubResource("ConcavePolygonShape3D_lu0cn")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube7" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube7" parent_id_path=PackedInt32Array(1268215205) index="0" unique_id=929250892]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube7/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube7/StaticBody3D" index="0" unique_id=449707710]
 shape = SubResource("ConcavePolygonShape3D_qj77v")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube8" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube8" parent_id_path=PackedInt32Array(1794592321) index="0" unique_id=1058563470]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube8/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube8/StaticBody3D" index="0" unique_id=1217048747]
 shape = SubResource("ConcavePolygonShape3D_smkon")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube9" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube9" parent_id_path=PackedInt32Array(386190974) index="0" unique_id=1843399191]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube9/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube9/StaticBody3D" index="0" unique_id=419150242]
 shape = SubResource("ConcavePolygonShape3D_kh45y")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube10" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube10" parent_id_path=PackedInt32Array(1405754494) index="0" unique_id=1664351550]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube10/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube10/StaticBody3D" index="0" unique_id=794696352]
 shape = SubResource("ConcavePolygonShape3D_a5qoj")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube11" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube11" parent_id_path=PackedInt32Array(962880448) index="0" unique_id=1552992318]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube11/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube11/StaticBody3D" index="0" unique_id=720757480]
 shape = SubResource("ConcavePolygonShape3D_et6nw")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube12" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/Walls/cube12" parent_id_path=PackedInt32Array(1490708122) index="0" unique_id=1314077944]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube12/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/Walls/cube12/StaticBody3D" index="0" unique_id=989040836]
 shape = SubResource("ConcavePolygonShape3D_pxrc4")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1"]
-libraries = {
-&"": SubResource("AnimationLibrary_k6d31")
-}
-autoplay = "Anim"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=2135977512]
+libraries/ = SubResource("AnimationLibrary_k6d31")
+autoplay = &"Anim"

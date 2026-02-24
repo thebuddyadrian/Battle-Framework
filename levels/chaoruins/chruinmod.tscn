@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=4 uid="uid://pg54ibma84i0"]
+[gd_scene format=4 uid="uid://pg54ibma84i0"]
 
 [ext_resource type="PackedScene" uid="uid://cdmc782mih0pe" path="res://levels/chaoruins/ChaoRuins.fbx" id="1_jrgrk"]
 [ext_resource type="Texture2D" uid="uid://cxwq1cth2gh8s" path="res://levels/chaoruins/10803.png" id="2_l5fbb"]
@@ -6,7 +6,6 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kic8m"]
 resource_name = "10803.png"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_l5fbb")
 emission_enabled = true
 texture_filter = 4
@@ -49,7 +48,6 @@ data = PackedVector3Array(-0.0625, 0.4375, -0.0625, -0.0625, 0, -0.0625, 0.4375,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44pgq"]
 resource_name = "10803.png"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_l5fbb")
 emission_enabled = true
 texture_filter = 4
@@ -92,7 +90,6 @@ data = PackedVector3Array(-0.0625, 0.4375, -0.0625, -0.0625, 0, -0.0625, 0.4375,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0k0pa"]
 resource_name = "10803.png"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_l5fbb")
 emission_enabled = true
 texture_filter = 4
@@ -135,7 +132,6 @@ data = PackedVector3Array(-0.0625, 0.4375, -0.0625, -0.0625, 0, -0.0625, 0.4375,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kyndb"]
 resource_name = "10803.png"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_l5fbb")
 emission_enabled = true
 texture_filter = 4
@@ -179,7 +175,6 @@ data = PackedVector3Array(-0.0625, 0.4375, -0.0625, -0.0625, 0, -0.0625, 0.4375,
 resource_name = "10803.png"
 shading_mode = 0
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_l5fbb")
 texture_filter = 4
 
@@ -221,7 +216,6 @@ data = PackedVector3Array(-0.0625, 0.4375, -0.0625, -0.0625, 0, -0.0625, 0.4375,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_h6yx3"]
 resource_name = "10803.png"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_l5fbb")
 emission_enabled = true
 texture_filter = 4
@@ -264,7 +258,6 @@ data = PackedVector3Array(-0.0625, 0.4375, -0.0625, -0.0625, 0, -0.0625, 0.4375,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xbbaa"]
 resource_name = "10803.png"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_l5fbb")
 emission_enabled = true
 texture_filter = 4
@@ -307,7 +300,6 @@ data = PackedVector3Array(-0.0625, 0.4375, -0.0625, -0.0625, 0, -0.0625, 0.4375,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hb7ey"]
 resource_name = "10803.png"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_l5fbb")
 emission_enabled = true
 texture_filter = 4
@@ -350,7 +342,6 @@ data = PackedVector3Array(-0.0625, 0.4375, -0.0625, -0.0625, 0, -0.0625, 0.4375,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k77il"]
 resource_name = "10803.png"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_l5fbb")
 emission_enabled = true
 texture_filter = 4
@@ -393,7 +384,6 @@ data = PackedVector3Array(-0.0625, 0.4375, -0.0625, -0.0625, 0, -0.0625, 0.4375,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qrnfm"]
 resource_name = "10803.png"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_l5fbb")
 emission_enabled = true
 texture_filter = 4
@@ -436,7 +426,6 @@ data = PackedVector3Array(-0.0625, 0.4375, -0.0625, -0.0625, 0, -0.0625, 0.4375,
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4r7jf"]
 resource_name = "10803.png"
 vertex_color_use_as_albedo = true
-albedo_color = Color(1, 1, 1, 1)
 albedo_texture = ExtResource("2_l5fbb")
 emission_enabled = true
 texture_filter = 4
@@ -476,114 +465,114 @@ shadow_mesh = SubResource("ArrayMesh_cla6d")
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ud3xl"]
 data = PackedVector3Array(-2, 0, -2, 2, 0, -2, 2, 0, 2, 2, 0, 2, -2, 0, 2, -2, 0, -2)
 
-[node name="ChaoRuins" instance=ExtResource("1_jrgrk")]
+[node name="ChaoRuins" unique_id=1122934568 instance=ExtResource("1_jrgrk")]
 
-[node name="cube" parent="Blocks" index="0"]
+[node name="cube" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="0" unique_id=317581306]
 mesh = SubResource("ArrayMesh_cgjob")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube" index="0" unique_id=1268732277]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube/StaticBody3D" index="0" unique_id=1849692085]
 shape = SubResource("ConcavePolygonShape3D_jrgrk")
 
-[node name="cube_1" parent="Blocks" index="1"]
+[node name="cube_1" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="1" unique_id=1085608163]
 mesh = SubResource("ArrayMesh_gmbmy")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_1" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_1" index="0" unique_id=1456634885]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_1/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_1/StaticBody3D" index="0" unique_id=160729224]
 shape = SubResource("ConcavePolygonShape3D_l5fbb")
 
-[node name="cube_2" parent="Blocks" index="2"]
+[node name="cube_2" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="2" unique_id=1563878135]
 mesh = SubResource("ArrayMesh_pcvc0")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_2" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_2" index="0" unique_id=1216010661]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_2/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_2/StaticBody3D" index="0" unique_id=472398838]
 shape = SubResource("ConcavePolygonShape3D_kic8m")
 
-[node name="cube_3" parent="Blocks" index="3"]
+[node name="cube_3" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="3" unique_id=513215621]
 mesh = SubResource("ArrayMesh_3g5qm")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_3" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_3" index="0" unique_id=1781930788]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_3/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_3/StaticBody3D" index="0" unique_id=1211548348]
 shape = SubResource("ConcavePolygonShape3D_cgjob")
 
-[node name="cube_4" parent="Blocks" index="4"]
+[node name="cube_4" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="4" unique_id=1236419005]
 mesh = SubResource("ArrayMesh_0f6tj")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_4" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_4" index="0" unique_id=368246093]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_4/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_4/StaticBody3D" index="0" unique_id=638821299]
 shape = SubResource("ConcavePolygonShape3D_44pgq")
 
-[node name="cube_5" parent="Blocks" index="5"]
+[node name="cube_5" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="5" unique_id=1671552910]
 mesh = SubResource("ArrayMesh_k8qlj")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_5" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_5" index="0" unique_id=2100224799]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_5/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_5/StaticBody3D" index="0" unique_id=2022029981]
 shape = SubResource("ConcavePolygonShape3D_gmbmy")
 
-[node name="cube_6" parent="Blocks" index="6"]
+[node name="cube_6" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="6" unique_id=671338120]
 mesh = SubResource("ArrayMesh_w86np")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_6" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_6" index="0" unique_id=920670678]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_6/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_6/StaticBody3D" index="0" unique_id=424503486]
 shape = SubResource("ConcavePolygonShape3D_0k0pa")
 
-[node name="cube_7" parent="Blocks" index="7"]
+[node name="cube_7" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="7" unique_id=1562707012]
 mesh = SubResource("ArrayMesh_y70db")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_7" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_7" index="0" unique_id=884502820]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_7/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_7/StaticBody3D" index="0" unique_id=566583163]
 shape = SubResource("ConcavePolygonShape3D_pcvc0")
 
-[node name="cube_8" parent="Blocks" index="8"]
+[node name="cube_8" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="8" unique_id=1394309805]
 mesh = SubResource("ArrayMesh_82bum")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_8" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_8" index="0" unique_id=1653606877]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_8/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_8/StaticBody3D" index="0" unique_id=1362221832]
 shape = SubResource("ConcavePolygonShape3D_kyndb")
 
-[node name="cube_9" parent="Blocks" index="9"]
+[node name="cube_9" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="9" unique_id=1876334597]
 mesh = SubResource("ArrayMesh_dpawf")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_9" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_9" index="0" unique_id=539605178]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_9/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_9/StaticBody3D" index="0" unique_id=2025268714]
 shape = SubResource("ConcavePolygonShape3D_3g5qm")
 
-[node name="plane" parent="." index="1"]
+[node name="plane" parent="." index="1" unique_id=786575725]
 mesh = SubResource("ArrayMesh_p4kxk")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="plane" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="plane" index="0" unique_id=678315002]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="plane/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plane/StaticBody3D" index="0" unique_id=19101092]
 shape = SubResource("ConcavePolygonShape3D_ud3xl")

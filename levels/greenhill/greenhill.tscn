@@ -1,10 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://csyxqjepcm26t"]
+[gd_scene format=3 uid="uid://csyxqjepcm26t"]
 
 [ext_resource type="PackedScene" uid="uid://bnhp0im0m7jn4" path="res://levels/greenhill/greenhill.glb" id="1_lo584"]
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="2_w524a"]
 [ext_resource type="Resource" uid="uid://bmxbk0ljq4rcw" path="res://levels/greenhill/greenhill.tres" id="3_x2y4a"]
 
-[node name="greenhill" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent") instance=ExtResource("1_lo584")]
+[node name="greenhill" unique_id=1764640166 node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent") instance=ExtResource("1_lo584")]
 script = ExtResource("2_w524a")
 stage_info = ExtResource("3_x2y4a")
 player_spawn_1 = NodePath("PlayerSpawn1")
@@ -13,21 +13,21 @@ player_spawn_3 = NodePath("PlayerSpawn3")
 player_spawn_4 = NodePath("PlayerSpawn4")
 camera_root_parent = NodePath(".")
 
-[node name="Stage" parent="." index="0"]
+[node name="Stage" parent="." index="0" unique_id=1951703053]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
-[node name="Cube" parent="Stage" index="0"]
+[node name="Cube" parent="Stage" index="0" unique_id=730621363]
 collision_layer = 3
 collision_mask = 3
 
-[node name="PlayerSpawn1" type="Node3D" parent="." index="1"]
+[node name="PlayerSpawn1" type="Node3D" parent="." index="1" unique_id=907599693]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.68931, 1.89115, -7.29632)
 
-[node name="PlayerSpawn2" type="Node3D" parent="." index="2"]
+[node name="PlayerSpawn2" type="Node3D" parent="." index="2" unique_id=1356922780]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.67914, 1.89115, -8.18214)
 
-[node name="PlayerSpawn3" type="Node3D" parent="." index="3"]
+[node name="PlayerSpawn3" type="Node3D" parent="." index="3" unique_id=1599406774]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.91482, 1.89115, 5.78095)
 
-[node name="PlayerSpawn4" type="Node3D" parent="." index="4"]
+[node name="PlayerSpawn4" type="Node3D" parent="." index="4" unique_id=704325559]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.91479, 1.89115, 5.40834)

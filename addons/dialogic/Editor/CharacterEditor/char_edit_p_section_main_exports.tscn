@@ -1,13 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://ba5w02lm3ewkj"]
+[gd_scene format=3 uid="uid://ba5w02lm3ewkj"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Editor/CharacterEditor/char_edit_p_section_main_exports.gd" id="1_mttrr"]
+[ext_resource type="Script" uid="uid://cnfiydhl115k3" path="res://addons/dialogic/Editor/CharacterEditor/char_edit_p_section_main_exports.gd" id="1_mttrr"]
 
-[node name="MainExports" type="VBoxContainer"]
+[node name="MainExports" type="VBoxContainer" unique_id=432666321]
 offset_right = 374.0
 offset_bottom = 82.0
 script = ExtResource("1_mttrr")
 
-[node name="Grid" type="GridContainer" parent="."]
+[node name="Grid" type="GridContainer" parent="." unique_id=1121459053]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

@@ -1,21 +1,21 @@
-[gd_scene load_steps=18 format=3 uid="uid://de6yhw4r8jqb3"]
+[gd_scene format=3 uid="uid://de6yhw4r8jqb3"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Editor/editor_main.gd" id="1_x88ov"]
-[ext_resource type="Script" path="res://addons/dialogic/Editor/editors_manager.gd" id="2_pe2tl"]
+[ext_resource type="Script" uid="uid://45yde5deiwpb" path="res://addons/dialogic/Editor/editor_main.gd" id="1_x88ov"]
+[ext_resource type="Script" uid="uid://cij84t0xkwrfa" path="res://addons/dialogic/Editor/editors_manager.gd" id="2_pe2tl"]
 [ext_resource type="Texture2D" uid="uid://dybg3l5pwetne" path="res://addons/dialogic/Editor/Images/plugin-icon.svg" id="2_scwcl"]
 [ext_resource type="PackedScene" uid="uid://cwe3r2tbh2og1" path="res://addons/dialogic/Editor/Common/side_bar.tscn" id="3_lp6hj"]
-[ext_resource type="Script" path="res://addons/dialogic/Editor/Common/toolbar.gd" id="4_6cx8s"]
+[ext_resource type="Script" uid="uid://dkkje8yorl87" path="res://addons/dialogic/Editor/Common/toolbar.gd" id="4_6cx8s"]
 [ext_resource type="Texture2D" uid="uid://bbea0efx0ybu7" path="res://addons/dialogic/Editor/Images/Resources/character.svg" id="6_8yp76"]
 [ext_resource type="Texture2D" uid="uid://b5xwnxdb7064n" path="res://addons/dialogic/Modules/Glossary/icon.svg" id="7_45ytg"]
 [ext_resource type="Texture2D" uid="uid://1mccycya6eua" path="res://addons/dialogic/Modules/StyleEditor/styles_icon.svg" id="8_jj1i6"]
 [ext_resource type="Texture2D" uid="uid://ckilxvwc34s84" path="res://addons/dialogic/Modules/Variable/variable.svg" id="9_k4reh"]
 [ext_resource type="PackedScene" uid="uid://c7lmt5cp7bxcm" path="res://addons/dialogic/Editor/Common/reference_manager.tscn" id="10_l1rf8"]
-[ext_resource type="Script" path="res://addons/dialogic/Editor/Common/reference_manager_window.gd" id="10_xbkrt"]
-[ext_resource type="Script" path="res://addons/dialogic/Editor/TimelineEditor/TextEditor/CodeCompletionHelper.gd" id="11_fyce4"]
-[ext_resource type="Script" path="res://addons/dialogic/Editor/Common/update_manager.gd" id="14_l6b1p"]
+[ext_resource type="Script" uid="uid://bgkfpdbnvwkw7" path="res://addons/dialogic/Editor/Common/reference_manager_window.gd" id="10_xbkrt"]
+[ext_resource type="Script" uid="uid://bnf7rconur3mh" path="res://addons/dialogic/Editor/TimelineEditor/TextEditor/CodeCompletionHelper.gd" id="11_fyce4"]
+[ext_resource type="Script" uid="uid://dlvwgo61an3fh" path="res://addons/dialogic/Editor/Common/update_manager.gd" id="14_l6b1p"]
 [ext_resource type="PackedScene" uid="uid://vv3m5m68fwg7" path="res://addons/dialogic/Editor/Common/update_install_window.tscn" id="15_cu4xj"]
 
-[sub_resource type="Image" id="Image_uqxml"]
+[sub_resource type="Image" id="Image_4esak"]
 data = {
 "data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
 "format": "RGBA8",
@@ -25,18 +25,22 @@ data = {
 }
 
 [sub_resource type="ImageTexture" id="ImageTexture_drcn6"]
-image = SubResource("Image_uqxml")
+image = SubResource("Image_4esak")
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5bs7k"]
-content_margin_left = 8.0
-content_margin_top = 8.0
-content_margin_right = 8.0
-content_margin_bottom = 8.0
-bg_color = Color(0.1155, 0.132, 0.1595, 1)
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mevaw"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(1, 0.365, 0.365, 1)
+draw_center = false
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
 corner_detail = 1
-anti_aliasing = false
 
-[node name="EditorView" type="ScrollContainer"]
+[node name="EditorView" type="ScrollContainer" unique_id=357857678]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -46,13 +50,13 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_x88ov")
 
-[node name="EditorsManager" type="Control" parent="."]
+[node name="EditorsManager" type="Control" parent="." unique_id=1993617725]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("2_pe2tl")
 
-[node name="HSplit" type="HSplitContainer" parent="EditorsManager"]
+[node name="HSplit" type="HSplitContainer" parent="EditorsManager" unique_id=828113976]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -62,29 +66,31 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 theme_override_constants/separation = 0
+split_offsets = PackedInt32Array(150)
 split_offset = 150
 
-[node name="Sidebar" parent="EditorsManager/HSplit" instance=ExtResource("3_lp6hj")]
+[node name="Sidebar" parent="EditorsManager/HSplit" unique_id=1123702785 instance=ExtResource("3_lp6hj")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(20, 0)
 layout_mode = 2
 split_offset = 0
 
-[node name="VBox" type="VBoxContainer" parent="EditorsManager/HSplit"]
+[node name="VBox" type="VBoxContainer" parent="EditorsManager/HSplit" unique_id=892900496]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Toolbar" type="HBoxContainer" parent="EditorsManager/HSplit/VBox"]
+[node name="Toolbar" type="HBoxContainer" parent="EditorsManager/HSplit/VBox" unique_id=1844933427]
 layout_mode = 2
 size_flags_vertical = 0
 mouse_filter = 2
 alignment = 2
 script = ExtResource("4_6cx8s")
 
-[node name="EditorTabBar" type="TabBar" parent="EditorsManager/HSplit/VBox/Toolbar"]
+[node name="EditorTabBar" type="TabBar" parent="EditorsManager/HSplit/VBox/Toolbar" unique_id=101747951]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
+current_tab = 0
 tab_count = 7
 tab_0/icon = ExtResource("2_scwcl")
 tab_1/title = "Timeline"
@@ -100,21 +106,21 @@ tab_5/icon = ExtResource("9_k4reh")
 tab_6/title = "Settings"
 tab_6/icon = SubResource("ImageTexture_drcn6")
 
-[node name="CustomButtons" type="HBoxContainer" parent="EditorsManager/HSplit/VBox/Toolbar"]
+[node name="CustomButtons" type="HBoxContainer" parent="EditorsManager/HSplit/VBox/Toolbar" unique_id=1200639164]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Editors" type="PanelContainer" parent="EditorsManager/HSplit/VBox"]
+[node name="Editors" type="PanelContainer" parent="EditorsManager/HSplit/VBox" unique_id=888327576]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="CodeCompletionHelper" type="Node" parent="EditorsManager"]
+[node name="CodeCompletionHelper" type="Node" parent="EditorsManager" unique_id=1353051534]
 script = ExtResource("11_fyce4")
 
-[node name="SaveConfirmationDialog" type="AcceptDialog" parent="."]
+[node name="SaveConfirmationDialog" type="AcceptDialog" parent="." unique_id=1458643451]
 size = Vector2i(207, 100)
 
-[node name="ResourceRenameWarning" type="AcceptDialog" parent="."]
+[node name="ResourceRenameWarning" type="AcceptDialog" parent="." unique_id=581700447]
 title = "Dialogic resource renamed!"
 initial_position = 5
 size = Vector2i(494, 135)
@@ -122,7 +128,7 @@ ok_button_text = "Show Unique Identifiers"
 dialog_text = "You renamed a dialogic resource. This does NOT automatically rename the unique identifier for this resource. Consider checking in the Reference Manager if the identifiers are still the way you want them."
 dialog_autowrap = true
 
-[node name="ReferenceManager" type="Window" parent="."]
+[node name="ReferenceManager" type="Window" parent="." unique_id=954239779]
 disable_3d = true
 title = "Reference Manager"
 initial_position = 2
@@ -133,25 +139,25 @@ content_scale_mode = 1
 content_scale_aspect = 4
 script = ExtResource("10_xbkrt")
 
-[node name="Manager" parent="ReferenceManager" instance=ExtResource("10_l1rf8")]
-theme_override_styles/panel = SubResource("StyleBoxFlat_5bs7k")
+[node name="Manager" parent="ReferenceManager" unique_id=1590056369 instance=ExtResource("10_l1rf8")]
+theme_override_styles/panel = SubResource("StyleBoxFlat_mevaw")
 
-[node name="UpdateManager" type="Node" parent="."]
+[node name="UpdateManager" type="Node" parent="." unique_id=1842335654]
 script = ExtResource("14_l6b1p")
 
-[node name="Window" type="Window" parent="UpdateManager"]
+[node name="Window" type="Window" parent="UpdateManager" unique_id=1144474313]
 title = "Dialogic Update Checker"
 initial_position = 2
 size = Vector2i(600, 400)
 visible = false
 wrap_controls = true
 
-[node name="UpdateInstallWindow" parent="UpdateManager/Window" instance=ExtResource("15_cu4xj")]
+[node name="UpdateInstallWindow" parent="UpdateManager/Window" unique_id=1234118849 instance=ExtResource("15_cu4xj")]
 
-[node name="UpdateCheckRequest" type="HTTPRequest" parent="UpdateManager"]
+[node name="UpdateCheckRequest" type="HTTPRequest" parent="UpdateManager" unique_id=2104404426]
 timeout = 5.0
 
-[node name="DownloadRequest" type="HTTPRequest" parent="UpdateManager"]
+[node name="DownloadRequest" type="HTTPRequest" parent="UpdateManager" unique_id=1360585344]
 
 [connection signal="close_requested" from="ReferenceManager" to="ReferenceManager" method="_on_close_requested"]
 [connection signal="downdload_completed" from="UpdateManager" to="UpdateManager/Window/UpdateInstallWindow" method="_on_update_manager_downdload_completed"]

@@ -1,5 +1,5 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlng0xdv3e5nc"]
+[gd_scene format=3 uid="uid://dlng0xdv3e5nc"]
 
 [ext_resource type="PackedScene" uid="uid://dhu2e2e3k0x4m" path="res://levels/hub_world_test/Sonic battle freedome hq.glb" id="1_x0ge2"]
 
-[node name="Sonic battle freedome hq" instance=ExtResource("1_x0ge2")]
+[node name="Sonic battle freedome hq" unique_id=315473028 instance=ExtResource("1_x0ge2")]

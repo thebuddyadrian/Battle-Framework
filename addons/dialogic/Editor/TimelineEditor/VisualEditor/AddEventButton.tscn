@@ -1,6 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://depcrpeh3f4rv"]
+[gd_scene format=3 uid="uid://depcrpeh3f4rv"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Editor/TimelineEditor/VisualEditor/AddEventButton.gd" id="1_s43sc"]
+[ext_resource type="Script" uid="uid://dby7sg4euaep1" path="res://addons/dialogic/Editor/TimelineEditor/VisualEditor/AddEventButton.gd" id="1_s43sc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qx31r"]
 content_margin_left = 4.0
@@ -30,8 +30,8 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[node name="AddEventButton" type="Button"]
-custom_minimum_size = Vector2(44, 30)
+[node name="AddEventButton" type="Button" unique_id=1809590308]
+custom_minimum_size = Vector2(61.25, 52.5)
 offset_right = 97.0
 offset_bottom = 42.0
 tooltip_text = "S"

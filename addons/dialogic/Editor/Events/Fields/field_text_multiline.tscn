@@ -1,12 +1,12 @@
-[gd_scene load_steps=4 format=3 uid="uid://dyp7m2nvab1aj"]
+[gd_scene format=3 uid="uid://dyp7m2nvab1aj"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Editor/TimelineEditor/TextEditor/syntax_highlighter.gd" id="2_ww6ga"]
-[ext_resource type="Script" path="res://addons/dialogic/Editor/Events/Fields/field_text_multiline.gd" id="3_q7600"]
+[ext_resource type="Script" uid="uid://brhbgxu8rlhmd" path="res://addons/dialogic/Editor/TimelineEditor/TextEditor/syntax_highlighter.gd" id="2_ww6ga"]
+[ext_resource type="Script" uid="uid://dni0mrhfoexi4" path="res://addons/dialogic/Editor/Events/Fields/field_text_multiline.gd" id="3_q7600"]
 
 [sub_resource type="SyntaxHighlighter" id="SyntaxHighlighter_2q5dk"]
 script = ExtResource("2_ww6ga")
 
-[node name="Field_Text_Multiline" type="CodeEdit"]
+[node name="Field_Text_Multiline" type="CodeEdit" unique_id=249940681]
 offset_right = 413.0
 offset_bottom = 15.0
 size_flags_horizontal = 3

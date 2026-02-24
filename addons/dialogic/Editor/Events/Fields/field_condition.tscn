@@ -1,84 +1,76 @@
-[gd_scene load_steps=9 format=3 uid="uid://ir6334lqtuwt"]
+[gd_scene format=3 uid="uid://ir6334lqtuwt"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Editor/Events/Fields/field_condition.gd" id="1_owjj0"]
+[ext_resource type="Script" uid="uid://bayi8dngrkreb" path="res://addons/dialogic/Editor/Events/Fields/field_condition.gd" id="1_owjj0"]
 [ext_resource type="PackedScene" uid="uid://d3bhehatwoio" path="res://addons/dialogic/Editor/Events/Fields/field_options_fixed.tscn" id="2_f6v80"]
 [ext_resource type="PackedScene" uid="uid://c0vkcehgjsjy" path="res://addons/dialogic/Editor/Events/Fields/field_text_singleline.tscn" id="3_3kfwc"]
 [ext_resource type="PackedScene" uid="uid://kdpp3mibml33" path="res://addons/dialogic/Editor/Events/Fields/field_number.tscn" id="4_6q3a6"]
 [ext_resource type="PackedScene" uid="uid://dm5hxmhyyxgq" path="res://addons/dialogic/Editor/Events/Fields/field_bool_check.tscn" id="5_1x02a"]
 [ext_resource type="PackedScene" uid="uid://dpwhshre1n4t6" path="res://addons/dialogic/Editor/Events/Fields/field_options_dynamic.tscn" id="6_5a2xd"]
 
-[sub_resource type="Image" id="Image_je1w7"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
+[sub_resource type="DPITexture" id="DPITexture_2j4b6"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#ff5d5d\" d=\"M2 1v8.586l1.293-1.293a1 1 0 0 1 1.414 0L7 10.587l2.293-2.293a1 1 0 0 1 1.414 0L13 10.586l1-1V6H9V1H2zm8 0v4h4zm-6 9.414-2 2V15h12v-2.586l-.293.293a1 1 0 0 1-1.414 0L10 10.414l-2.293 2.293a1 1 0 0 1-1.414 0L4 10.414z\"/></svg>
+"
 
-[sub_resource type="ImageTexture" id="ImageTexture_81s3d"]
-image = SubResource("Image_je1w7")
-
-[node name="Field_Condition" type="HBoxContainer"]
+[node name="Field_Condition" type="HBoxContainer" unique_id=689776666]
 offset_right = 77.0
 offset_bottom = 31.0
 script = ExtResource("1_owjj0")
 
-[node name="SimpleEditor" type="HBoxContainer" parent="."]
+[node name="SimpleEditor" type="HBoxContainer" parent="." unique_id=2129123887]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Value1Type" parent="SimpleEditor" instance=ExtResource("2_f6v80")]
-unique_name_in_owner = true
-layout_mode = 2
-tooltip_text = "Change type"
-text = ""
-
-[node name="Value1Text" parent="SimpleEditor" instance=ExtResource("3_3kfwc")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="Value1Number" parent="SimpleEditor" instance=ExtResource("4_6q3a6")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="Value1Bool" parent="SimpleEditor" instance=ExtResource("5_1x02a")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="Value1Variable" parent="SimpleEditor" instance=ExtResource("6_5a2xd")]
-unique_name_in_owner = true
-layout_mode = 2
-placeholder_text = "Variable"
-
-[node name="Operator" parent="SimpleEditor" instance=ExtResource("2_f6v80")]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="Value2Type" parent="SimpleEditor" instance=ExtResource("2_f6v80")]
+[node name="Value1Type" parent="SimpleEditor" unique_id=377133688 instance=ExtResource("2_f6v80")]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Change type"
 text = ""
 
-[node name="Value2Text" parent="SimpleEditor" instance=ExtResource("3_3kfwc")]
+[node name="Value1Text" parent="SimpleEditor" unique_id=772512845 instance=ExtResource("3_3kfwc")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Value2Number" parent="SimpleEditor" instance=ExtResource("4_6q3a6")]
+[node name="Value1Number" parent="SimpleEditor" unique_id=746123895 instance=ExtResource("4_6q3a6")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="Value2Variable" parent="SimpleEditor" instance=ExtResource("6_5a2xd")]
+[node name="Value1Bool" parent="SimpleEditor" unique_id=1750521381 instance=ExtResource("5_1x02a")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Value1Variable" parent="SimpleEditor" unique_id=605200859 instance=ExtResource("6_5a2xd")]
 unique_name_in_owner = true
 layout_mode = 2
 placeholder_text = "Variable"
 
-[node name="Value2Bool" parent="SimpleEditor" instance=ExtResource("5_1x02a")]
+[node name="Operator" parent="SimpleEditor" unique_id=496614805 instance=ExtResource("2_f6v80")]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="ComplexEditor" type="LineEdit" parent="."]
+[node name="Value2Type" parent="SimpleEditor" unique_id=440643387 instance=ExtResource("2_f6v80")]
+unique_name_in_owner = true
+layout_mode = 2
+tooltip_text = "Change type"
+text = ""
+
+[node name="Value2Text" parent="SimpleEditor" unique_id=464637605 instance=ExtResource("3_3kfwc")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Value2Number" parent="SimpleEditor" unique_id=1521807605 instance=ExtResource("4_6q3a6")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="Value2Variable" parent="SimpleEditor" unique_id=1952124399 instance=ExtResource("6_5a2xd")]
+unique_name_in_owner = true
+layout_mode = 2
+placeholder_text = "Variable"
+
+[node name="Value2Bool" parent="SimpleEditor" unique_id=1484681595 instance=ExtResource("5_1x02a")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ComplexEditor" type="LineEdit" parent="." unique_id=774325951]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(150, 0)
@@ -89,12 +81,12 @@ text = "VAR.Player.Health > 20 and VAR.Counter < 3 and randi()%3 == 2"
 placeholder_text = "Enter condition"
 expand_to_text_length = true
 
-[node name="ToggleComplex" type="Button" parent="."]
+[node name="ToggleComplex" type="Button" parent="." unique_id=1994366141]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Use complex expression"
 toggle_mode = true
-icon = SubResource("ImageTexture_81s3d")
+icon = SubResource("DPITexture_2j4b6")
 
 [connection signal="value_changed" from="SimpleEditor/Value1Variable" to="." method="_on_value_1_variable_value_changed"]
 [connection signal="text_changed" from="ComplexEditor" to="." method="_on_complex_editor_text_changed"]

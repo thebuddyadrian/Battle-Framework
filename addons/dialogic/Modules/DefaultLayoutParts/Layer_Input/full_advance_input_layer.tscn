@@ -1,9 +1,9 @@
-[gd_scene load_steps=3 format=3 uid="uid://cn674foxwedqu"]
+[gd_scene format=3 uid="uid://cn674foxwedqu"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.gd" id="1_3cmha"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_input.gd" id="2_dxpjw"]
+[ext_resource type="Script" uid="uid://g0xryly1ksi1" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Input/full_advance_input_layer.gd" id="1_3cmha"]
+[ext_resource type="Script" uid="uid://cr2uwfrso43co" path="res://addons/dialogic/Modules/Text/node_input.gd" id="2_dxpjw"]
 
-[node name="FullAdvanceInputLayer" type="Control"]
+[node name="FullAdvanceInputLayer" type="Control" unique_id=1945977242]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -13,7 +13,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_3cmha")
 
-[node name="DialogicNode_Input" type="Control" parent="."]
+[node name="DialogicNode_Input" type="Control" parent="." unique_id=910931594]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

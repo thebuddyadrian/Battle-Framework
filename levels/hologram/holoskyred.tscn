@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://bwa2xmdqtwx6m"]
+[gd_scene format=3 uid="uid://bwa2xmdqtwx6m"]
 
 [ext_resource type="PackedScene" uid="uid://ca0cdvtdo4vjs" path="res://levels/hologram/HologramSkybox.gltf" id="1_sjxao"]
 
@@ -7,7 +7,7 @@ shading_mode = 0
 diffuse_mode = 3
 albedo_color = Color(1, 0, 0, 1)
 
-[node name="HologramSkybox" instance=ExtResource("1_sjxao")]
+[node name="HologramSkybox" unique_id=675496562 instance=ExtResource("1_sjxao")]
 
-[node name="Cube" parent="." index="0"]
+[node name="Cube" parent="." index="0" unique_id=747257769]
 surface_material_override/0 = SubResource("StandardMaterial3D_l6xwu")

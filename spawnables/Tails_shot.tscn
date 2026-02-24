@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://bnyptutmascsn"]
+[gd_scene format=3 uid="uid://bnyptutmascsn"]
 
 [ext_resource type="Script" uid="uid://8adxvp4028ys" path="res://spawnables/tails_shot.gd" id="1_8v1gd"]
 [ext_resource type="Resource" uid="uid://fitdjiy0i02v" path="res://spawnables/ShotData/TailsGrndSht.tres" id="2_18bq4"]
@@ -10,13 +10,9 @@
 [sub_resource type="Resource" id="Resource_3u4pc"]
 script = ExtResource("5_fauv4")
 damage = 10.0
-knockback_direction = Vector2(0, 0)
 knockback_power = 10.0
 knockback_angle = 45.0
 knockback_type = 2
-unblockable = false
-hit_freeze_override = -1
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fc865"]
 radius = 0.51228
@@ -273,48 +269,46 @@ _data = {
 &"Start": SubResource("Animation_561xu")
 }
 
-[node name="TailsShot" type="CharacterBody3D"]
+[node name="TailsShot" type="CharacterBody3D" unique_id=1008202738]
 collision_layer = 0
 script = ExtResource("1_8v1gd")
 spawnable_info = ExtResource("2_18bq4")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=1551848340]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 script = ExtResource("4_y8id4")
 hit_data = SubResource("Resource_3u4pc")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
-[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hitbox" unique_id=1546254074]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
 shape = SubResource("SphereShape3D_fc865")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1287619863]
 script = ExtResource("6_125df")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
-[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox" unique_id=752801235]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
 shape = SubResource("SphereShape3D_kpalt")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1803728652]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
 shape = SubResource("BoxShape3D_voyo2")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="."]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1116141847]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_dub66")
 animation = &"Start"
 autoplay = "Loop"
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0scby")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=500606817]
+libraries/ = SubResource("AnimationLibrary_0scby")
 
-[node name="MultiHitTimer" type="Timer" parent="."]
+[node name="MultiHitTimer" type="Timer" parent="." unique_id=875402765]
 process_callback = 0
 wait_time = 0.096
 autostart = true

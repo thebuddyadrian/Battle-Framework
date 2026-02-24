@@ -1,11 +1,11 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgo5wk5qgm4co"]
+[gd_scene format=3 uid="uid://bgo5wk5qgm4co"]
 
 [ext_resource type="Script" uid="uid://bx7yck6inujd7" path="res://menus/results_screen/results_screen.gd" id="1_im8n6"]
 [ext_resource type="Texture2D" uid="uid://doi3o74wjlh3u" path="res://characters/sonic/sprites/Sonic Portrait.png" id="2_t68mw"]
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_u448v"]
-[ext_resource type="PackedScene" path="res://menus/results_screen/results_frame.tscn" id="3_ot5hy"]
+[ext_resource type="PackedScene" uid="uid://05h8siy11cn" path="res://menus/results_screen/results_frame.tscn" id="3_ot5hy"]
 
-[node name="ResultsScreen" type="Control"]
+[node name="ResultsScreen" type="Control" unique_id=1738022975]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,23 +14,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_im8n6")
 
-[node name="Background" parent="." instance=ExtResource("2_u448v")]
+[node name="Background" parent="." unique_id=798195680 instance=ExtResource("2_u448v")]
 visible = false
 
-[node name="results_frame" parent="." instance=ExtResource("3_ot5hy")]
+[node name="results_frame" parent="." unique_id=1645936999 instance=ExtResource("3_ot5hy")]
 visible = false
 layout_mode = 1
 offset_left = 48.0
 offset_right = 0.0
 
-[node name="Winner" type="Label" parent="."]
+[node name="Winner" type="Label" parent="." unique_id=797422334]
 layout_mode = 0
 offset_right = 240.0
 offset_bottom = 23.0
 text = "Winner"
 metadata/_edit_lock_ = true
 
-[node name="BackButton" type="Button" parent="."]
+[node name="BackButton" type="Button" parent="." unique_id=2132804295]
 layout_mode = 0
 offset_left = 151.0
 offset_top = 134.0
@@ -40,7 +40,7 @@ theme_override_font_sizes/font_size = 12
 text = "Back to Menu"
 metadata/_edit_lock_ = true
 
-[node name="WinnerPortrait" type="TextureRect" parent="."]
+[node name="WinnerPortrait" type="TextureRect" parent="." unique_id=218554916]
 layout_mode = 0
 offset_top = 23.0
 offset_right = 87.0
@@ -48,14 +48,14 @@ offset_bottom = 94.0
 texture = ExtResource("2_t68mw")
 metadata/_edit_lock_ = true
 
-[node name="WinnerInfo" type="Label" parent="."]
+[node name="WinnerInfo" type="Label" parent="." unique_id=211592813]
 layout_mode = 0
 offset_left = 120.0
 offset_right = 232.0
 offset_bottom = 40.0
 text = "text"
 
-[node name="OtherPlayerInfo" type="Label" parent="."]
+[node name="OtherPlayerInfo" type="Label" parent="." unique_id=1509073813]
 layout_mode = 0
 offset_top = 98.0
 offset_right = 240.0

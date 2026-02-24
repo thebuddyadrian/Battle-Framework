@@ -1,4 +1,4 @@
-[gd_resource type="MeshLibrary" load_steps=35 format=4 uid="uid://dccikpmoddo4b"]
+[gd_resource type="MeshLibrary" format=4 uid="uid://dccikpmoddo4b"]
 
 [ext_resource type="Texture2D" uid="uid://cdspxvypc7bpx" path="res://assets/mesh library(temp)/Mesh library test_Beach basic text.png" id="1_vk2a2"]
 [ext_resource type="Texture2D" uid="uid://w37fviu1hj0c" path="res://assets/mesh library(temp)/Mesh library test_Clipboard.png" id="2_s2vfi"]

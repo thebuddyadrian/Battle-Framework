@@ -1,22 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://fgplvp0f3giu"]
+[gd_scene format=3 uid="uid://fgplvp0f3giu"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Style/character_settings_style.gd" id="2"]
+[ext_resource type="Script" uid="uid://bkl5tw30k81ef" path="res://addons/dialogic/Modules/Style/character_settings_style.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://dpwhshre1n4t6" path="res://addons/dialogic/Editor/Events/Fields/field_options_dynamic.tscn" id="2_a46q0"]
 
-[node name="Style" type="VBoxContainer"]
+[node name="Style" type="VBoxContainer" unique_id=1894237292]
 offset_right = 280.0
 offset_bottom = 79.0
 script = ExtResource("2")
 
-[node name="Style" type="HBoxContainer" parent="."]
+[node name="Style" type="HBoxContainer" parent="." unique_id=339076678]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="Style"]
+[node name="Label" type="Label" parent="Style" unique_id=814171861]
 layout_mode = 2
 size_flags_vertical = 0
 text = "Style:"
 
-[node name="StyleName" parent="Style" instance=ExtResource("2_a46q0")]
+[node name="StyleName" parent="Style" unique_id=1060790032 instance=ExtResource("2_a46q0")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c0lnrit4vdctn"]
+[gd_scene format=3 uid="uid://c0lnrit4vdctn"]
 
 [ext_resource type="Script" uid="uid://ci1lobemlhneg" path="res://spawnables/shadow_grnd_trap.gd" id="1_c02ij"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_ana3j"]
@@ -9,13 +9,9 @@
 [sub_resource type="Resource" id="Resource_c02ij"]
 script = ExtResource("4_30uhr")
 damage = 10.0
-knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
 knockback_angle = 45.0
 knockback_type = 4
-unblockable = false
-hit_freeze = 5
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_f2pd6"]
 radius = 0.51228
@@ -277,46 +273,44 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="ShadowGrndTrap" type="CharacterBody3D"]
+[node name="ShadowGrndTrap" type="CharacterBody3D" unique_id=2037785086]
 script = ExtResource("1_c02ij")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=1466778861]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 script = ExtResource("3_ana3j")
 hit_data = SubResource("Resource_c02ij")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
-[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hitbox" unique_id=359756319]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
 shape = SubResource("SphereShape3D_f2pd6")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1989173205]
 visible = false
 script = ExtResource("5_e5bp5")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
-[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox" unique_id=456400964]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
 shape = SubResource("SphereShape3D_yq6br")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=406632620]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
 shape = SubResource("BoxShape3D_1t67f")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_w88ea")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=95083840]
+libraries/ = SubResource("AnimationLibrary_w88ea")
 
-[node name="Effect" type="Sprite3D" parent="."]
+[node name="Effect" type="Sprite3D" parent="." unique_id=2030217049]
 texture_filter = 2
 texture = ExtResource("6_1ofr1")
 hframes = 11
 vframes = 10
 frame = 78
 
-[node name="Sprite" type="AnimatedSprite3D" parent="."]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1271640355]
 visible = false
 sprite_frames = SubResource("SpriteFrames_yoq21")

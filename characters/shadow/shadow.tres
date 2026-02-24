@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="CharacterInfo" load_steps=2 format=3 uid="uid://d1yjnnlayrwwa"]
+[gd_resource type="Resource" script_class="CharacterInfo" format=3 uid="uid://d1yjnnlayrwwa"]
 
 [ext_resource type="Script" uid="uid://2a2htk5lwmcm" path="res://characters/base_player/character_info.gd" id="1_8t3cr"]
 

@@ -1,11 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://11vd21yw7fe7"]
+[gd_scene format=3 uid="uid://11vd21yw7fe7"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_37tig"]
 [ext_resource type="Texture2D" uid="uid://cgq063pwiouqa" path="res://characters/knuckles/sprites/knuckles.png" id="2_5e7ij"]
 [ext_resource type="Script" uid="uid://bephn00c3mpgq" path="res://characters/knuckles/knuckles.gd" id="2_5tkrs"]
 [ext_resource type="Resource" uid="uid://dhippg1pyutqc" path="res://characters/knuckles/knuckles.tres" id="3_5tkrs"]
 [ext_resource type="AnimationLibrary" uid="uid://caicco3rl6eej" path="res://characters/knuckles/knuckles_animation.res" id="3_opinu"]
-[ext_resource type="Script" uid="uid://m57d41j6ing0" path="res://characters/knuckles/states/dash.tres.gd" id="4_lh63m"]
+[ext_resource type="Script" uid="uid://m57d41j6ing0" path="res://characters/knuckles/states/dash.gd" id="4_lh63m"]
 [ext_resource type="Texture2D" uid="uid://cubjp7dxe8bi8" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="4_xt1s0"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="5_j7ou5"]
 [ext_resource type="Script" uid="uid://dlb2r74f5rqx2" path="res://characters/knuckles/states/air_action.gd" id="8_psdtg"]
@@ -41,35 +41,25 @@
 
 [sub_resource type="Resource" id="Resource_5tkrs"]
 script = ExtResource("21_s1n3o")
-damage = 0.0
-knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
-unblockable = false
-hit_freeze_override = -1
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.175755
+radius = 0.1757549
 
-[node name="Knuckles" instance=ExtResource("1_37tig")]
+[node name="Knuckles" unique_id=1975966865 instance=ExtResource("1_37tig")]
 script = ExtResource("2_5tkrs")
 character_info = ExtResource("3_5tkrs")
 
-[node name="PlayerSprite" parent="." index="1"]
+[node name="PlayerSprite" parent="." index="1" unique_id=193447772]
 texture = ExtResource("2_5e7ij")
 vframes = 17
 frame = 2
 
-[node name="AnimationPlayer" parent="PlayerSprite" index="0"]
-libraries = {
-&"": ExtResource("3_opinu"),
-&"GrndShotFwd": SubResource("AnimationLibrary_lh63m")
-}
-autoplay = "knuckles_animation/Idle"
+[node name="AnimationPlayer" parent="PlayerSprite" index="0" unique_id=1902147849]
+libraries/ = ExtResource("3_opinu")
+libraries/GrndShotFwd = SubResource("AnimationLibrary_lh63m")
+autoplay = &"knuckles_animation/Idle"
 
-[node name="Effects" parent="PlayerSprite" index="1"]
+[node name="Effects" parent="PlayerSprite" index="1" unique_id=1140993298]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.177041, 0.368336, 0)
 offset = Vector2(0.26, -0.11)
 texture = ExtResource("4_xt1s0")
@@ -78,7 +68,7 @@ vframes = 6
 frame = 34
 effect_offset = Vector2(0.26, -0.11)
 
-[node name="Misc_Effects" type="Sprite3D" parent="PlayerSprite" index="2"]
+[node name="Misc_Effects" type="Sprite3D" parent="PlayerSprite" index="2" unique_id=995473587]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.25736, 0.164879, 0)
 visible = false
 texture_filter = 2
@@ -87,79 +77,69 @@ hframes = 10
 vframes = 11
 frame = 26
 
-[node name="Dash" parent="StateMachine" index="6"]
+[node name="Dash" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="6" unique_id=500218446]
 script = ExtResource("4_lh63m")
 
-[node name="AirAction" parent="StateMachine" index="7"]
+[node name="AirAction" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="7" unique_id=1637163508]
 script = ExtResource("8_psdtg")
 
-[node name="Jab1" parent="StateMachine" index="19"]
+[node name="Jab1" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="19" unique_id=523789546]
 script = ExtResource("9_j7ou5")
 attack_info = ExtResource("10_0sn45")
 
-[node name="Jab2" parent="StateMachine" index="20"]
+[node name="Jab2" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="20" unique_id=981136779]
 script = ExtResource("11_0sn45")
 attack_info = ExtResource("12_psdtg")
 
-[node name="Jab3" parent="StateMachine" index="21"]
+[node name="Jab3" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="21" unique_id=1484192293]
 script = ExtResource("12_ay8m5")
 attack_info = ExtResource("14_5tkrs")
 
-[node name="Heavy" parent="StateMachine" index="22"]
+[node name="Heavy" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="22" unique_id=1197192703]
 script = ExtResource("16_5tkrs")
 attack_info = ExtResource("17_wham0")
 
-[node name="Upper" parent="StateMachine" index="23"]
+[node name="Upper" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="23" unique_id=1007129074]
 script = ExtResource("10_1ooqa")
 attack_info = ExtResource("11_qawlg")
 
-[node name="DashAttack" parent="StateMachine" index="24"]
+[node name="DashAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="24" unique_id=2079405750]
 attack_info = ExtResource("12_6etpd")
 
-[node name="AirAttack" parent="StateMachine" index="25"]
+[node name="AirAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="25" unique_id=686574562]
 script = ExtResource("20_ay8m5")
 attack_info = ExtResource("21_psdtg")
 
-[node name="AimAttack" parent="StateMachine" index="26"]
+[node name="AimAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="26" unique_id=241173427]
 attack_info = ExtResource("22_psdtg")
 
-[node name="GrndShot" parent="StateMachine" index="27"]
+[node name="GrndShot" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="27" unique_id=1543150220]
 script = ExtResource("23_psdtg")
 attack_info = ExtResource("24_5tkrs")
 
-[node name="AirShot" parent="StateMachine" index="28"]
+[node name="AirShot" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="28" unique_id=722076224]
 script = ExtResource("21_c10jq")
 attack_info = ExtResource("26_psdtg")
 
-[node name="GrndPow" parent="StateMachine" index="29"]
+[node name="GrndPow" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="29" unique_id=1655889037]
 script = ExtResource("21_xt1s0")
 attack_info = ExtResource("22_1kwib")
 
-[node name="AirPow" parent="StateMachine" index="30"]
+[node name="AirPow" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="30" unique_id=1461058612]
 script = ExtResource("28_0sn45")
 attack_info = ExtResource("24_1kwib")
 
-[node name="Hitbox" parent="." index="5"]
+[node name="Hitbox" parent="." index="5" unique_id=223441001]
 hit_data = SubResource("Resource_5tkrs")
-active = false
-is_static = false
-total_area = 0.0
 
-[node name="CollisionShape3D" parent="Hitbox" index="0"]
+[node name="CollisionShape3D" parent="Hitbox" index="0" unique_id=452238123]
 shape = SubResource("SphereShape3D_3twb4")
 
-[node name="Hurtbox" parent="." index="6"]
-mode = 0
-can_be_grabbed = true
-can_be_hit = true
-hit_pause_override = -1
-is_reflector = false
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7" unique_id=1917061641]
 layer = 128
 visible = false
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" node_paths=PackedStringArray("character")]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" unique_id=858221317 node_paths=PackedStringArray("character")]
 offset_left = 21.0
 offset_top = 4.0
 offset_right = 77.0
@@ -170,10 +150,10 @@ texture_progress = ExtResource("25_0st36")
 script = ExtResource("26_xt1s0")
 character = NodePath("../..")
 
-[node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
+[node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0" unique_id=517727221]
 position = Vector2(-12, 5)
 texture = ExtResource("27_0st36")
 
-[node name="TestLabel" parent="." index="8"]
+[node name="TestLabel" parent="." index="8" unique_id=419573788]
 visible = false
 texture_filter = 0

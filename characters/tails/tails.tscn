@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://cy4wfekiel3v1"]
+[gd_scene format=3 uid="uid://cy4wfekiel3v1"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_b5y1r"]
 [ext_resource type="Texture2D" uid="uid://bmenap3og50iv" path="res://characters/tails/sprites/TailsSpritesheet.png" id="2_cps4t"]
@@ -35,138 +35,100 @@
 [sub_resource type="Resource" id="Resource_phocd"]
 script = ExtResource("7_eakuc")
 animation = "Punch1"
-air_animation = ""
-animation_down = ""
-animation_up = ""
-animation_down_start_frame = -1
-animation_up_start_frame = -1
-animation_flip_offset_frame_start = 0
-change_anim_in_air = false
-play_animation = true
-use_anim_markers = true
-use_sections = true
 startup_frames = 4
 active_frames = 6
-recovery_frames = 10
-attack_sound = "punch"
-attack_voice = ""
 damage = 10
 knockback_power = 2
-knockback_angle = 0
-knockback_type = 0
 hit_stun = 10
-hit_sound = "hit"
-can_charge = false
-max_charge = 30
-max_hold = 30
-knockback_charge_scale = 180
-damage_charge_scale = 150
-knockback_scaling_charge_scale = 180
-use_hitbox = true
-land_on_touched_ground = false
-stop_on_left_ground = false
-landing_lag = 6
-dash_cancel_on_hit = false
-dash_cancel_frames = 24
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
 [sub_resource type="Resource" id="Resource_dlpnr"]
 script = ExtResource("2_uaadi")
-damage = 0.0
-knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
-unblockable = false
-hit_freeze_override = -1
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
-radius = 0.180334
+radius = 0.18033385
 
-[node name="Tails" instance=ExtResource("1_b5y1r")]
+[node name="Tails" unique_id=719232836 instance=ExtResource("1_b5y1r")]
 character_info = ExtResource("2_weptr")
 
-[node name="PlayerSprite" parent="." index="1"]
+[node name="PlayerSprite" parent="." index="1" unique_id=193447772]
 texture = ExtResource("2_cps4t")
 hframes = 15
 vframes = 21
 frame = 27
 
-[node name="AnimationPlayer" parent="PlayerSprite" index="0"]
-libraries = {
-&"": ExtResource("3_ppohl")
-}
+[node name="AnimationPlayer" parent="PlayerSprite" index="0" unique_id=1902147849]
+libraries/ = ExtResource("3_ppohl")
 
-[node name="Effects" parent="PlayerSprite" index="1"]
+[node name="Effects" parent="PlayerSprite" index="1" unique_id=1140993298]
 texture = ExtResource("4_my705")
 hframes = 7
 vframes = 6
 
-[node name="Dash" parent="StateMachine" index="6"]
+[node name="Dash" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="6" unique_id=500218446]
 script = ExtResource("5_eakuc")
 
-[node name="AirAction" parent="StateMachine" index="7"]
+[node name="AirAction" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="7" unique_id=1637163508]
 script = ExtResource("4_qf74s")
 
-[node name="Jab1" parent="StateMachine" index="19"]
+[node name="Jab1" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="19" unique_id=523789546]
 attack_info = SubResource("Resource_phocd")
 
-[node name="Jab2" parent="StateMachine" index="20"]
+[node name="Jab2" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="20" unique_id=981136779]
 script = ExtResource("8_eakuc")
 attack_info = ExtResource("9_phocd")
 
-[node name="Jab3" parent="StateMachine" index="21"]
+[node name="Jab3" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="21" unique_id=1484192293]
 attack_info = ExtResource("7_rdag6")
 
-[node name="Heavy" parent="StateMachine" index="22"]
+[node name="Heavy" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="22" unique_id=1197192703]
 script = ExtResource("12_weptr")
 attack_info = ExtResource("6_asitg")
 
-[node name="Upper" parent="StateMachine" index="23"]
+[node name="Upper" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="23" unique_id=1007129074]
 attack_info = ExtResource("9_rdag6")
 
-[node name="DashAttack" parent="StateMachine" index="24"]
+[node name="DashAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="24" unique_id=2079405750]
 attack_info = ExtResource("10_cps4t")
 
-[node name="AirAttack" parent="StateMachine" index="25"]
+[node name="AirAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="25" unique_id=686574562]
 script = ExtResource("11_iyier")
 attack_info = ExtResource("12_5541g")
 
-[node name="AimAttack" parent="StateMachine" index="26"]
+[node name="AimAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="26" unique_id=241173427]
 attack_info = ExtResource("13_jrwva")
 
-[node name="GrndShot" parent="StateMachine" index="27"]
+[node name="GrndShot" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="27" unique_id=1543150220]
 script = ExtResource("14_infaa")
 attack_info = ExtResource("15_jrwva")
 
-[node name="AirShot" parent="StateMachine" index="28"]
+[node name="AirShot" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="28" unique_id=722076224]
 script = ExtResource("15_infaa")
 attack_info = ExtResource("16_jrwva")
 
-[node name="GrndPow" parent="StateMachine" index="29"]
+[node name="GrndPow" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="29" unique_id=1655889037]
 script = ExtResource("13_cps4t")
 attack_info = ExtResource("12_lg3ej")
 
-[node name="AirPow" parent="StateMachine" index="30"]
+[node name="AirPow" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="30" unique_id=1461058612]
 script = ExtResource("21_wv4dc")
 attack_info = ExtResource("22_6dfm6")
 
-[node name="Hitbox" parent="." index="5"]
+[node name="Hitbox" parent="." index="5" unique_id=223441001]
 hit_data = SubResource("Resource_dlpnr")
 
-[node name="CollisionShape3D" parent="Hitbox" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.172591, -0.139195, 0)
+[node name="CollisionShape3D" parent="Hitbox" index="0" unique_id=452238123]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.1725913, -0.13919544, 0)
 shape = SubResource("SphereShape3D_3twb4")
 
-[node name="TestLabel" parent="." index="7"]
+[node name="TestLabel" parent="." index="7" unique_id=419573788]
 visible = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8" unique_id=1524835791]
 layer = 128
 visible = false
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" node_paths=PackedStringArray("character")]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" unique_id=1482644559 node_paths=PackedStringArray("character")]
 offset_left = 21.0
 offset_top = 4.0
 offset_right = 77.0
@@ -178,6 +140,6 @@ script = ExtResource("23_wv4dc")
 character = NodePath("../..")
 metadata/_edit_use_anchors_ = true
 
-[node name="TailsLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
+[node name="TailsLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0" unique_id=666336088]
 position = Vector2(-12, 5)
 texture = ExtResource("24_6dfm6")

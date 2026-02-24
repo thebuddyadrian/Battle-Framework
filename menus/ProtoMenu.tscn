@@ -1,8 +1,8 @@
 [gd_scene format=3 uid="uid://h1bub5xoa4rh"]
 
-[node name="ProtoMenu" type="Node2D"]
+[node name="ProtoMenu" type="Node2D" unique_id=2022179436]
 
-[node name="ItemList" type="ItemList" parent="."]
+[node name="ItemList" type="ItemList" parent="." unique_id=18148489]
 offset_left = 3.0
 offset_top = 20.0
 offset_right = 92.0

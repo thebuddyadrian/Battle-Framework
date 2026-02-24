@@ -1,10 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://by6waso0mjpjp"]
+[gd_scene format=3 uid="uid://by6waso0mjpjp"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="1_4jxq7"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/speaker_portrait_textbox_layer.gd" id="1_7jt4d"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="2_y0h34"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="3_11puy"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="5_sr2qw"]
+[ext_resource type="Script" uid="uid://bg7jaea7j2iin" path="res://addons/dialogic/Modules/Character/node_portrait_container.gd" id="1_4jxq7"]
+[ext_resource type="Script" uid="uid://bb71vmjiidjpq" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/speaker_portrait_textbox_layer.gd" id="1_7jt4d"]
+[ext_resource type="Script" uid="uid://dpc0d15ha6rej" path="res://addons/dialogic/Modules/Text/node_name_label.gd" id="2_y0h34"]
+[ext_resource type="Script" uid="uid://dixmrecdn7cjd" path="res://addons/dialogic/Modules/Text/node_dialog_text.gd" id="3_11puy"]
+[ext_resource type="Script" uid="uid://bcao73fcgxbjx" path="res://addons/dialogic/Modules/Text/node_type_sound.gd" id="5_sr2qw"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_dmg1w"]
 bg_color = Color(0.254902, 0.254902, 0.254902, 1)
@@ -14,7 +14,7 @@ corner_radius_top_right = 3
 corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 
-[node name="TextboxWithSpeakerPortrait" type="Control"]
+[node name="TextboxWithSpeakerPortrait" type="Control" unique_id=61607877]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,7 +25,7 @@ mouse_filter = 2
 script = ExtResource("1_7jt4d")
 box_panel = "res://addons/dialogic/Modules/DefaultLayoutParts/Layer_SpeakerPortraitTextbox/default_stylebox.tres"
 
-[node name="Anchor" type="Control" parent="."]
+[node name="Anchor" type="Control" parent="." unique_id=1217062217]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -36,7 +36,7 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="Panel" type="PanelContainer" parent="Anchor"]
+[node name="Panel" type="PanelContainer" parent="Anchor" unique_id=1965879016]
 unique_name_in_owner = true
 self_modulate = Color(0.533333, 0.376471, 0.176471, 1)
 layout_mode = 1
@@ -53,12 +53,12 @@ grow_horizontal = 2
 grow_vertical = 0
 mouse_filter = 2
 
-[node name="HBox" type="HBoxContainer" parent="Anchor/Panel"]
+[node name="HBox" type="HBoxContainer" parent="Anchor/Panel" unique_id=389521763]
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 15
 
-[node name="PortraitPanel" type="Panel" parent="Anchor/Panel/HBox"]
+[node name="PortraitPanel" type="Panel" parent="Anchor/Panel/HBox" unique_id=1064030355]
 unique_name_in_owner = true
 clip_children = 1
 layout_mode = 2
@@ -67,7 +67,7 @@ size_flags_stretch_ratio = 0.3
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dmg1w")
 
-[node name="PortraitBackgroundColor" type="ColorRect" parent="Anchor/Panel/HBox/PortraitPanel"]
+[node name="PortraitBackgroundColor" type="ColorRect" parent="Anchor/Panel/HBox/PortraitPanel" unique_id=1601994523]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -82,7 +82,7 @@ grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0.231373)
 
-[node name="DialogicNode_PortraitContainer" type="Control" parent="Anchor/Panel/HBox/PortraitPanel/PortraitBackgroundColor"]
+[node name="DialogicNode_PortraitContainer" type="Control" parent="Anchor/Panel/HBox/PortraitPanel/PortraitBackgroundColor" unique_id=78634254]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,19 +96,19 @@ mode = 1
 container_ids = PackedStringArray("1")
 debug_character_portrait = "speaker"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Anchor/Panel/HBox"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Anchor/Panel/HBox" unique_id=496097504]
 layout_mode = 2
 size_flags_horizontal = 3
 mouse_filter = 2
 
-[node name="DialogicNode_NameLabel" type="Label" parent="Anchor/Panel/HBox/VBoxContainer"]
+[node name="DialogicNode_NameLabel" type="Label" parent="Anchor/Panel/HBox/VBoxContainer" unique_id=682409228]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Name"
 script = ExtResource("2_y0h34")
 
-[node name="DialogicNode_DialogText" type="RichTextLabel" parent="Anchor/Panel/HBox/VBoxContainer" node_paths=PackedStringArray("textbox_root")]
+[node name="DialogicNode_DialogText" type="RichTextLabel" parent="Anchor/Panel/HBox/VBoxContainer" unique_id=2023563043 node_paths=PackedStringArray("textbox_root")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
@@ -120,5 +120,5 @@ visible_characters_behavior = 1
 script = ExtResource("3_11puy")
 textbox_root = NodePath("../../..")
 
-[node name="DialogicNode_TypeSounds" type="AudioStreamPlayer" parent="Anchor/Panel/HBox/VBoxContainer/DialogicNode_DialogText"]
+[node name="DialogicNode_TypeSounds" type="AudioStreamPlayer" parent="Anchor/Panel/HBox/VBoxContainer/DialogicNode_DialogText" unique_id=117388840]
 script = ExtResource("5_sr2qw")

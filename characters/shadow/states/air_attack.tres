@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AttackInfo" load_steps=2 format=3 uid="uid://divyauv3t0y7w"]
+[gd_resource type="Resource" script_class="AttackInfo" format=3 uid="uid://divyauv3t0y7w"]
 
 [ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_7oh0a"]
 

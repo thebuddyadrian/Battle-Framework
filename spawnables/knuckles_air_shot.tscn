@@ -1,22 +1,18 @@
-[gd_scene load_steps=25 format=3 uid="uid://dqiwnnx0jhnfd"]
+[gd_scene format=3 uid="uid://dqiwnnx0jhnfd"]
 
 [ext_resource type="Script" uid="uid://cl833632lmg4c" path="res://spawnables/knuckles_air_shot.gd" id="1_lvdyp"]
 [ext_resource type="Resource" uid="uid://st1e57gi8n5w" path="res://spawnables/ShotData/KnucklesAirSht.tres" id="2_fm5q5"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_tn2q5"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_lrq10"]
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_sfbvu"]
-[ext_resource type="Texture2D" uid="uid://ds3c6j0olh44r" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="6_i5uho"]
+[ext_resource type="Texture2D" uid="uid://cubjp7dxe8bi8" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="6_i5uho"]
 
 [sub_resource type="Resource" id="Resource_fm5q5"]
 script = ExtResource("4_lrq10")
 damage = 35.0
-knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
 knockback_angle = 45.0
 knockback_type = 4
-unblockable = false
-hit_freeze = 5
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_fm5q5"]
 radius = 1.05141
@@ -208,42 +204,40 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="KnucklesGrndShot" type="CharacterBody3D"]
+[node name="KnucklesGrndShot" type="CharacterBody3D" unique_id=502534253]
 collision_layer = 0
 script = ExtResource("1_lvdyp")
 spawnable_info = ExtResource("2_fm5q5")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=11250066]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 script = ExtResource("3_tn2q5")
 hit_data = SubResource("Resource_fm5q5")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
-[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hitbox" unique_id=449433819]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
 shape = SubResource("SphereShape3D_fm5q5")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=776313252]
 visible = false
 script = ExtResource("5_sfbvu")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
-[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox" unique_id=768358975]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
 shape = SubResource("SphereShape3D_r25py")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0scby")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1062631893]
+libraries/ = SubResource("AnimationLibrary_0scby")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1803762364]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
 shape = SubResource("BoxShape3D_wbvwd")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="."]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=1277601241]
 transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
 billboard = 1
 texture_filter = 2

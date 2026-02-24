@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://jseasb0ow6dq"]
+[gd_scene format=3 uid="uid://jseasb0ow6dq"]
 
 [ext_resource type="PackedScene" uid="uid://b04qs7t4jd40o" path="res://levels/bigmaptest/bigmaptest.glb" id="1_5hbee"]
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="2_fvee5"]
@@ -8,10 +8,9 @@
 [sub_resource type="Resource" id="Resource_4cr6r"]
 script = ExtResource("3_jms62")
 display_name = "Big Map Test"
-music_file_path = ""
 metadata/_custom_type_script = "uid://bh7hc4po624b3"
 
-[node name="bigmaptest" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent") instance=ExtResource("1_5hbee")]
+[node name="bigmaptest" unique_id=1377012247 node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent") instance=ExtResource("1_5hbee")]
 script = ExtResource("2_fvee5")
 stage_info = SubResource("Resource_4cr6r")
 player_spawn_1 = NodePath("PlayerSpawn1")
@@ -19,24 +18,23 @@ player_spawn_2 = NodePath("PlayerSpawn2")
 player_spawn_3 = NodePath("PlayerSpawn3")
 player_spawn_4 = NodePath("PlayerSpawn4")
 camera_root_parent = NodePath(".")
-test_characters = Array[String](["sonic", "tails", "knuckles", "shadow"])
 
-[node name="Stage" parent="." index="0"]
+[node name="Stage" parent="." index="0" unique_id=434795627]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
-[node name="PlayerSpawn1" type="Node3D" parent="." index="1"]
+[node name="PlayerSpawn1" type="Node3D" parent="." index="1" unique_id=491162167]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.9108, 0.92334, -21.3684)
 
-[node name="PlayerSpawn2" type="Node3D" parent="." index="2"]
+[node name="PlayerSpawn2" type="Node3D" parent="." index="2" unique_id=1079464432]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6287, 0.92334, -13.0373)
 
-[node name="PlayerSpawn3" type="Node3D" parent="." index="3"]
+[node name="PlayerSpawn3" type="Node3D" parent="." index="3" unique_id=1720067298]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.9508, 0.92334, 10.8566)
 
-[node name="PlayerSpawn4" type="Node3D" parent="." index="4"]
+[node name="PlayerSpawn4" type="Node3D" parent="." index="4" unique_id=1932916424]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.15428, 0.92334, 8.02917)
 
-[node name="Sprite3D" type="Sprite3D" parent="." index="5"]
+[node name="Sprite3D" type="Sprite3D" parent="." index="5" unique_id=1591847749]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.00415, 0)
 visible = false
 texture = ExtResource("4_jms62")

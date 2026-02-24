@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://lyfnd6of6efn"]
+[gd_scene format=3 uid="uid://lyfnd6of6efn"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_qnw3q"]
 [ext_resource type="Script" uid="uid://c2lv0otitxe6m" path="res://characters/shadow/shadow.gd" id="2_h1jln"]
@@ -88,24 +88,22 @@ script = ExtResource("23_0nker")
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
 radius = 0.12046101
 
-[node name="Shadow" instance=ExtResource("1_qnw3q")]
+[node name="Shadow" unique_id=1614317954 instance=ExtResource("1_qnw3q")]
 script = ExtResource("2_h1jln")
 character_info = ExtResource("3_djkpe")
 
-[node name="PlayerSprite" parent="." index="1"]
+[node name="PlayerSprite" parent="." index="1" unique_id=193447772]
 texture = ExtResource("2_pfypo")
 hframes = 15
 vframes = 20
 frame = 0
 
-[node name="AnimationPlayer" parent="PlayerSprite" index="0"]
-libraries = {
-&"": ExtResource("3_pfypo")
-}
+[node name="AnimationPlayer" parent="PlayerSprite" index="0" unique_id=1902147849]
+libraries/ = ExtResource("3_pfypo")
 
-[node name="Effects" parent="PlayerSprite" index="1"]
+[node name="Effects" parent="PlayerSprite" index="1" unique_id=1140993298]
 transform = Transform3D(-1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-offset = Vector2(-4, 0)
+offset = Vector2(-4, -1)
 billboard = 1
 render_priority = 1
 texture = ExtResource("4_xq7wv")
@@ -114,7 +112,7 @@ vframes = 10
 frame = 59
 effect_offset = Vector2(-4, -1)
 
-[node name="Misc_Effects" type="Sprite3D" parent="PlayerSprite" index="2"]
+[node name="Misc_Effects" type="Sprite3D" parent="PlayerSprite" index="2" unique_id=781390531]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.08, 0.168, 0.171)
 visible = false
 texture_filter = 2
@@ -124,77 +122,77 @@ vframes = 11
 frame = 109
 script = ExtResource("7_73oq7")
 
-[node name="FlippedComponents" parent="." index="2"]
+[node name="FlippedComponents" parent="." index="2" unique_id=1625337011]
 transform = Transform3D(-1, 0, 0, 0, -1, 0, 0, 0, -1, 0, 0, 0)
 
-[node name="Dash" parent="StateMachine" index="6"]
+[node name="Dash" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="6" unique_id=500218446]
 script = ExtResource("9_3o4s2")
 
-[node name="AirAction" parent="StateMachine" index="7"]
+[node name="AirAction" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="7" unique_id=1637163508]
 script = ExtResource("7_xq7wv")
 
-[node name="Jab1" parent="StateMachine" index="19"]
+[node name="Jab1" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="19" unique_id=523789546]
 script = ExtResource("10_73oq7")
 attack_info = SubResource("Resource_73oq7")
 
-[node name="Jab2" parent="StateMachine" index="20"]
+[node name="Jab2" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="20" unique_id=981136779]
 script = ExtResource("11_73oq7")
 attack_info = SubResource("Resource_djkpe")
 
-[node name="Jab3" parent="StateMachine" index="21"]
+[node name="Jab3" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="21" unique_id=1484192293]
 script = ExtResource("12_73oq7")
 attack_info = ExtResource("13_vj6v6")
 
-[node name="Heavy" parent="StateMachine" index="22"]
+[node name="Heavy" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="22" unique_id=1197192703]
 script = ExtResource("12_gjr3y")
 attack_info = ExtResource("13_cyjvw")
 
-[node name="Upper" parent="StateMachine" index="23"]
+[node name="Upper" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="23" unique_id=1007129074]
 script = ExtResource("14_gjr3y")
 attack_info = ExtResource("15_h1jln")
 
-[node name="DashAttack" parent="StateMachine" index="24"]
+[node name="DashAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="24" unique_id=2079405750]
 attack_info = ExtResource("15_xq7wv")
 
-[node name="AirAttack" parent="StateMachine" index="25"]
+[node name="AirAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="25" unique_id=686574562]
 script = ExtResource("21_3o4s2")
 attack_info = ExtResource("18_h1jln")
 
-[node name="AimAttack" parent="StateMachine" index="26"]
+[node name="AimAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="26" unique_id=241173427]
 script = ExtResource("18_hh2a4")
 attack_info = ExtResource("19_gjr3y")
 
-[node name="GrndShot" parent="StateMachine" index="27"]
+[node name="GrndShot" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="27" unique_id=1543150220]
 script = ExtResource("25_w40b4")
 attack_info = ExtResource("20_gjr3y")
 
-[node name="GrndPow" parent="StateMachine" index="29"]
+[node name="GrndPow" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="29" unique_id=1655889037]
 script = ExtResource("22_cyjvw")
 attack_info = ExtResource("23_mtehn")
 
-[node name="AirPow" parent="StateMachine" index="30"]
+[node name="AirPow" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="30" unique_id=1461058612]
 script = ExtResource("29_w40b4")
 attack_info = SubResource("Resource_3o4s2")
 
-[node name="HomingDash" parent="StateMachine" index="31"]
+[node name="HomingDash" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="31" unique_id=613146347]
 script = ExtResource("30_3o4s2")
 y_velocity = 18
 
-[node name="GrndTrap" type="Node" parent="StateMachine" index="32"]
+[node name="GrndTrap" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="32" unique_id=821069370]
 script = ExtResource("26_mtehn")
 attack_info = ExtResource("27_gjr3y")
 
-[node name="AirTrap" type="Node" parent="StateMachine" index="33"]
+[node name="AirTrap" type="Node" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="33" unique_id=290243882]
 script = ExtResource("27_uak6g")
 attack_info = SubResource("Resource_gjr3y")
 
-[node name="Hitbox" parent="." index="5"]
+[node name="Hitbox" parent="." index="5" unique_id=223441001]
 hit_data = SubResource("Resource_w40b4")
 
-[node name="CollisionShape3D" parent="Hitbox" index="0"]
+[node name="CollisionShape3D" parent="Hitbox" index="0" unique_id=452238123]
 shape = SubResource("SphereShape3D_3twb4")
 
-[node name="TestLabel2" type="Label3D" parent="." index="6"]
+[node name="TestLabel2" type="Label3D" parent="." index="6" unique_id=2053503653]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.272035, 0)
 visible = false
 billboard = 1
@@ -203,11 +201,11 @@ outline_render_priority = 3
 text = "HP: 200"
 font_size = 16
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8" unique_id=1760505616]
 layer = 128
 visible = false
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" node_paths=PackedStringArray("character")]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" unique_id=1722070615 node_paths=PackedStringArray("character")]
 offset_left = 21.0
 offset_top = 4.0
 offset_right = 77.0
@@ -219,9 +217,9 @@ script = ExtResource("26_h1jln")
 character = NodePath("../..")
 metadata/_edit_use_anchors_ = true
 
-[node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
+[node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0" unique_id=1909152010]
 position = Vector2(-12, 5)
 texture = ExtResource("27_cyjvw")
 
-[node name="TestLabel" parent="." index="9"]
+[node name="TestLabel" parent="." index="9" unique_id=419573788]
 visible = false

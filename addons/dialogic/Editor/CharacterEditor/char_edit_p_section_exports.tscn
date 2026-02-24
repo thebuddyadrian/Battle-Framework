@@ -1,14 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://cfcs7lb6gqnmd"]
+[gd_scene format=3 uid="uid://cfcs7lb6gqnmd"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Editor/CharacterEditor/char_edit_p_section_exports.gd" id="1_isys8"]
+[ext_resource type="Script" uid="uid://coggl7hlnkbf2" path="res://addons/dialogic/Editor/CharacterEditor/char_edit_p_section_exports.gd" id="1_isys8"]
 
-[node name="Settings" type="VBoxContainer"]
+[node name="Settings" type="VBoxContainer" unique_id=2053106286]
 custom_minimum_size = Vector2(0, 35)
 offset_right = 367.0
 offset_bottom = 82.0
 script = ExtResource("1_isys8")
 
-[node name="Grid" type="GridContainer" parent="."]
+[node name="Grid" type="GridContainer" parent="." unique_id=1010368120]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

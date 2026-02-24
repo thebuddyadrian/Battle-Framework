@@ -1,21 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://uarvgnbrcltm"]
+[gd_scene format=3 uid="uid://uarvgnbrcltm"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Choice/settings_choices.gd" id="2"]
+[ext_resource type="Script" uid="uid://dny72ores36rn" path="res://addons/dialogic/Modules/Choice/settings_choices.gd" id="2"]
 [ext_resource type="PackedScene" uid="uid://dbpkta2tjsqim" path="res://addons/dialogic/Editor/Common/hint_tooltip_icon.tscn" id="2_nxutt"]
 
-[sub_resource type="Image" id="Image_2imc3"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_udy8i"]
-image = SubResource("Image_2imc3")
-
-[node name="Choices" type="VBoxContainer"]
+[node name="Choices" type="VBoxContainer" unique_id=1477210921]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -24,54 +12,54 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2")
 
-[node name="VBoxContainer2" type="HBoxContainer" parent="."]
+[node name="VBoxContainer2" type="HBoxContainer" parent="." unique_id=686790673]
 layout_mode = 2
 
-[node name="Title" type="Label" parent="VBoxContainer2"]
+[node name="Title" type="Label" parent="VBoxContainer2" unique_id=1981076209]
 layout_mode = 2
 theme_type_variation = &"DialogicSettingsSection"
 text = "Behaviour"
 
-[node name="VBoxContainer" type="GridContainer" parent="."]
+[node name="VBoxContainer" type="GridContainer" parent="." unique_id=553685349]
 layout_mode = 2
 size_flags_horizontal = 3
 columns = 2
 
-[node name="AutofocusLabel" type="HBoxContainer" parent="VBoxContainer"]
+[node name="AutofocusLabel" type="HBoxContainer" parent="VBoxContainer" unique_id=1656263824]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/AutofocusLabel"]
+[node name="Label" type="Label" parent="VBoxContainer/AutofocusLabel" unique_id=1306217010]
 layout_mode = 2
 text = "Autofocus first choice"
 
-[node name="Autofocus" type="CheckBox" parent="VBoxContainer"]
+[node name="Autofocus" type="CheckBox" parent="VBoxContainer" unique_id=1026253519]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AppearModeLabel" type="HBoxContainer" parent="VBoxContainer"]
+[node name="AppearModeLabel" type="HBoxContainer" parent="VBoxContainer" unique_id=1345094765]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/AppearModeLabel"]
+[node name="Label2" type="Label" parent="VBoxContainer/AppearModeLabel" unique_id=614379562]
 layout_mode = 2
 text = "Choices appear"
 
-[node name="HintTooltip" parent="VBoxContainer/AppearModeLabel" instance=ExtResource("2_nxutt")]
+[node name="HintTooltip" parent="VBoxContainer/AppearModeLabel" unique_id=690101890 instance=ExtResource("2_nxutt")]
 layout_mode = 2
 tooltip_text = "Choices can appear either instantly when the text finished, after a delay, a click or either."
-texture = SubResource("ImageTexture_udy8i")
+texture = null
 hint_text = "Choices can appear either instantly when the text finished, after a delay, a click or either."
 
-[node name="RevealDelayLabel" type="HBoxContainer" parent="VBoxContainer"]
+[node name="RevealDelayLabel" type="HBoxContainer" parent="VBoxContainer" unique_id=2025038650]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="AppearMode" type="OptionButton" parent="VBoxContainer/RevealDelayLabel"]
+[node name="AppearMode" type="OptionButton" parent="VBoxContainer/RevealDelayLabel" unique_id=1397557529]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-item_count = 4
 selected = 0
 fit_to_longest_item = false
+item_count = 4
 popup/item_0/text = "Instantly"
 popup/item_0/id = 0
 popup/item_1/text = "After delay"
@@ -81,88 +69,88 @@ popup/item_2/id = 2
 popup/item_3/text = "After delay or click"
 popup/item_3/id = 3
 
-[node name="RevealDelay" type="SpinBox" parent="VBoxContainer/RevealDelayLabel"]
+[node name="RevealDelay" type="SpinBox" parent="VBoxContainer/RevealDelayLabel" unique_id=668679128]
 unique_name_in_owner = true
 layout_mode = 2
 tooltip_text = "Delay after which choices will appear (in seconds)."
 step = 0.01
 
-[node name="DelayLabel" type="HBoxContainer" parent="VBoxContainer"]
+[node name="DelayLabel" type="HBoxContainer" parent="VBoxContainer" unique_id=269506103]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/DelayLabel"]
+[node name="Label2" type="Label" parent="VBoxContainer/DelayLabel" unique_id=1046166864]
 layout_mode = 2
 text = "Delay before choices can be pressed"
 
-[node name="HintTooltip2" parent="VBoxContainer/DelayLabel" instance=ExtResource("2_nxutt")]
+[node name="HintTooltip2" parent="VBoxContainer/DelayLabel" unique_id=1068297346 instance=ExtResource("2_nxutt")]
 layout_mode = 2
 tooltip_text = "Adding a small delay before choices can be activated can prevent accidentally choosing an option."
-texture = SubResource("ImageTexture_udy8i")
+texture = null
 hint_text = "Adding a small delay before choices can be activated can prevent accidentally choosing an option."
 
-[node name="Delay" type="SpinBox" parent="VBoxContainer"]
+[node name="Delay" type="SpinBox" parent="VBoxContainer" unique_id=1626607875]
 unique_name_in_owner = true
 layout_mode = 2
 step = 0.01
 
-[node name="DefaultFalseBehaviourLabel" type="HBoxContainer" parent="VBoxContainer"]
+[node name="DefaultFalseBehaviourLabel" type="HBoxContainer" parent="VBoxContainer" unique_id=68767712]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="VBoxContainer/DefaultFalseBehaviourLabel"]
+[node name="Label3" type="Label" parent="VBoxContainer/DefaultFalseBehaviourLabel" unique_id=560735214]
 layout_mode = 2
 text = "Default behaviour for false choices"
 
-[node name="HintTooltip3" parent="VBoxContainer/DefaultFalseBehaviourLabel" instance=ExtResource("2_nxutt")]
+[node name="HintTooltip3" parent="VBoxContainer/DefaultFalseBehaviourLabel" unique_id=638936714 instance=ExtResource("2_nxutt")]
 layout_mode = 2
 tooltip_text = "Define the default behaviour (hide or disable) for choices that have a condition that isn't met.
 
 Choices can overwrite this setting individually."
-texture = SubResource("ImageTexture_udy8i")
+texture = null
 hint_text = "Define the default behaviour (hide or disable) for choices that have a condition that isn't met.
 
 Choices can overwrite this setting individually."
 
-[node name="FalseBehaviour" type="OptionButton" parent="VBoxContainer"]
+[node name="FalseBehaviour" type="OptionButton" parent="VBoxContainer" unique_id=690114764]
 unique_name_in_owner = true
 layout_mode = 2
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "Hide"
 popup/item_0/id = 0
 popup/item_1/text = "Disable"
 popup/item_1/id = 1
 
-[node name="HSeparator" type="HSeparator" parent="."]
+[node name="HSeparator" type="HSeparator" parent="." unique_id=779817899]
 layout_mode = 2
 
-[node name="HotkeySelection" type="HBoxContainer" parent="."]
+[node name="HotkeySelection" type="HBoxContainer" parent="." unique_id=430181284]
 layout_mode = 2
 
-[node name="Title2" type="Label" parent="HotkeySelection"]
+[node name="Title2" type="Label" parent="HotkeySelection" unique_id=1190594434]
 layout_mode = 2
 theme_type_variation = &"DialogicSettingsSection"
 text = "Choice Hotkeys"
 
-[node name="HintTooltip4" parent="HotkeySelection" instance=ExtResource("2_nxutt")]
+[node name="HintTooltip4" parent="HotkeySelection" unique_id=605963892 instance=ExtResource("2_nxutt")]
 layout_mode = 2
 tooltip_text = "You can add more complex hotkeys (or individual ones) by editing the choice buttons of your layout scene."
-texture = SubResource("ImageTexture_udy8i")
+texture = null
 hint_text = "You can add more complex hotkeys (or individual ones) by editing the choice buttons of your layout scene."
 
-[node name="VBoxContainer3" type="HBoxContainer" parent="."]
+[node name="VBoxContainer3" type="HBoxContainer" parent="." unique_id=385806641]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Label4" type="Label" parent="VBoxContainer3"]
+[node name="Label4" type="Label" parent="VBoxContainer3" unique_id=801727216]
 layout_mode = 2
 text = "Hotkey type"
 
-[node name="HotkeyType" type="OptionButton" parent="VBoxContainer3"]
+[node name="HotkeyType" type="OptionButton" parent="VBoxContainer3" unique_id=762187043]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 4
-item_count = 2
 selected = 0
+item_count = 2
 popup/item_0/text = "No Hotkeys"
 popup/item_0/id = 0
 popup/item_1/text = "Default (1-9)"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://v0ldh5ndu30u"]
+[gd_scene format=3 uid="uid://v0ldh5ndu30u"]
 
 [ext_resource type="PackedScene" uid="uid://bobp2n2ihwqhr" path="res://levels/holysummit/untitled.glb" id="1_qxv7e"]
 
@@ -11,48 +11,48 @@ size = Vector3(2.78979, 2.2677, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_esbc3"]
 size = Vector3(1.77063, 0.844727, 1)
 
-[node name="untitled" instance=ExtResource("1_qxv7e")]
+[node name="untitled" unique_id=1275892480 instance=ExtResource("1_qxv7e")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="plane" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="plane" parent_id_path=PackedInt32Array(1578181927) index="0" unique_id=1750573763]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="plane/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plane/StaticBody3D" index="0" unique_id=808402562]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0208225)
 shape = SubResource("ConcavePolygonShape3D_2k5n1")
 
-[node name="CollisionShape3D2" type="CollisionShape3D" parent="plane/StaticBody3D" index="1"]
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="plane/StaticBody3D" index="1" unique_id=340357014]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.86183, 1.13408, 0.520281)
 shape = SubResource("BoxShape3D_sl68w")
 
-[node name="CollisionShape3D4" type="CollisionShape3D" parent="plane/StaticBody3D" index="2"]
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="plane/StaticBody3D" index="2" unique_id=722297366]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92598, -0.553649, 0.520281)
 shape = SubResource("BoxShape3D_sl68w")
 
-[node name="CollisionShape3D5" type="CollisionShape3D" parent="plane/StaticBody3D" index="3"]
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="plane/StaticBody3D" index="3" unique_id=412680349]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.92598, 2.60662, 0.520281)
 shape = SubResource("BoxShape3D_sl68w")
 
-[node name="CollisionShape3D9" type="CollisionShape3D" parent="plane/StaticBody3D" index="4"]
+[node name="CollisionShape3D9" type="CollisionShape3D" parent="plane/StaticBody3D" index="4" unique_id=1575120690]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.080623, 1.08365, 0.85916)
 shape = SubResource("BoxShape3D_sl68w")
 
-[node name="CollisionShape3D10" type="CollisionShape3D" parent="plane/StaticBody3D" index="5"]
+[node name="CollisionShape3D10" type="CollisionShape3D" parent="plane/StaticBody3D" index="5" unique_id=1218429907]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.329311, -1.10172, 0.85916)
 shape = SubResource("BoxShape3D_sl68w")
 
-[node name="CollisionShape3D6" type="CollisionShape3D" parent="plane/StaticBody3D" index="6"]
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="plane/StaticBody3D" index="6" unique_id=1124340848]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.87406, 1.54567, 0.520281)
 shape = SubResource("BoxShape3D_sl68w")
 
-[node name="CollisionShape3D7" type="CollisionShape3D" parent="plane/StaticBody3D" index="7"]
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="plane/StaticBody3D" index="7" unique_id=157252723]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.613523, -2.6304, 0.520281)
 shape = SubResource("BoxShape3D_sl68w")
 
-[node name="CollisionShape3D8" type="CollisionShape3D" parent="plane/StaticBody3D" index="8"]
+[node name="CollisionShape3D8" type="CollisionShape3D" parent="plane/StaticBody3D" index="8" unique_id=307354799]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.89343, -0.677802, 0.520281)
 shape = SubResource("BoxShape3D_sl68w")
 
-[node name="CollisionShape3D3" type="CollisionShape3D" parent="plane/StaticBody3D" index="9"]
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="plane/StaticBody3D" index="9" unique_id=904823967]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.40928, 1.82767, 0.474855)
 shape = SubResource("BoxShape3D_esbc3")

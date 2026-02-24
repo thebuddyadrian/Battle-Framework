@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://dmqtdie76rgi8"]
+[gd_scene format=3 uid="uid://dmqtdie76rgi8"]
 
 [ext_resource type="Texture2D" uid="uid://d4lutni0ndopo" path="res://assets/ui/menus/background.png" id="1_8khw4"]
 [ext_resource type="Shader" uid="uid://b7frwxe5glvvi" path="res://menus/background.gdshader" id="1_87heu"]
@@ -10,14 +10,14 @@ shader_parameter/h = 1.0
 shader_parameter/s = 1.0
 shader_parameter/v = 1.0
 
-[node name="Background" type="Node2D"]
+[node name="Background" type="Node2D" unique_id=1686064984]
 material = SubResource("ShaderMaterial_2ahkr")
 script = ExtResource("1_mi1uc")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=502453350]
 texture_repeat = 2
 use_parent_material = true
 position = Vector2(120, 80)
 texture = ExtResource("1_8khw4")
 region_enabled = true
-region_rect = Rect2(0, -6131.263, 240, 160)
+region_rect = Rect2(0, -10.32204, 240, 160)

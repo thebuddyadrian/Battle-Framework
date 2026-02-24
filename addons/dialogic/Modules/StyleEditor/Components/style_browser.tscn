@@ -1,6 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cs381i3h7sveq"]
+[gd_scene format=3 uid="uid://cs381i3h7sveq"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/StyleEditor/Components/style_browser.gd" id="1_3sdb0"]
+[ext_resource type="Script" uid="uid://cd03kwooya6v7" path="res://addons/dialogic/Modules/StyleEditor/Components/style_browser.gd" id="1_3sdb0"]
 
 [sub_resource type="Gradient" id="Gradient_0o1u0"]
 colors = PackedColorArray(0.296448, 0.231485, 0.52887, 1, 0.100572, 0.303996, 0.476999, 1)
@@ -45,17 +45,9 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="Image" id="Image_tg5pd"]
-data = {
-"data": PackedByteArray(255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 94, 94, 127, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 231, 255, 94, 94, 54, 255, 94, 94, 57, 255, 93, 93, 233, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 93, 93, 41, 255, 255, 255, 0, 255, 255, 255, 0, 255, 97, 97, 42, 255, 93, 93, 233, 255, 93, 93, 232, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 44, 255, 255, 255, 0, 255, 97, 97, 42, 255, 97, 97, 42, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 96, 96, 45, 255, 93, 93, 235, 255, 94, 94, 234, 255, 95, 95, 43, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 93, 93, 235, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 233, 255, 95, 95, 59, 255, 96, 96, 61, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 93, 93, 255, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0, 255, 255, 255, 0),
-"format": "RGBA8",
-"height": 16,
-"mipmaps": false,
-"width": 16
-}
-
-[sub_resource type="ImageTexture" id="ImageTexture_f5xt2"]
-image = SubResource("Image_tg5pd")
+[sub_resource type="DPITexture" id="DPITexture_2j4b6"]
+_source = "<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"16\" height=\"16\"><path fill=\"#ff5d5d\" d=\"M2 1v8.586l1.293-1.293a1 1 0 0 1 1.414 0L7 10.587l2.293-2.293a1 1 0 0 1 1.414 0L13 10.586l1-1V6H9V1H2zm8 0v4h4zm-6 9.414-2 2V15h12v-2.586l-.293.293a1 1 0 0 1-1.414 0L10 10.414l-2.293 2.293a1 1 0 0 1-1.414 0L4 10.414z\"/></svg>
+"
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_mavtr"]
 bg_color = Color(0.0588235, 0.0313726, 0.0980392, 1)
@@ -78,7 +70,7 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[node name="StyleBrowser" type="Control"]
+[node name="StyleBrowser" type="Control" unique_id=1631996990]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -87,7 +79,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_3sdb0")
 
-[node name="BGColor" type="TextureRect" parent="."]
+[node name="BGColor" type="TextureRect" parent="." unique_id=1120850800]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -96,7 +88,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_vd6co")
 
-[node name="HSplitContainer" type="HSplitContainer" parent="."]
+[node name="HSplitContainer" type="HSplitContainer" parent="." unique_id=502596622]
 clip_contents = true
 layout_mode = 1
 anchors_preset = 15
@@ -106,7 +98,7 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
 
-[node name="Margin" type="MarginContainer" parent="HSplitContainer"]
+[node name="Margin" type="MarginContainer" parent="HSplitContainer" unique_id=653276247]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 1.5
@@ -115,57 +107,57 @@ theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="HSplitContainer/Margin"]
+[node name="VBox" type="VBoxContainer" parent="HSplitContainer/Margin" unique_id=1736644963]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BrowserTitle" type="Label" parent="HSplitContainer/Margin/VBox"]
+[node name="BrowserTitle" type="Label" parent="HSplitContainer/Margin/VBox" unique_id=1863267133]
 layout_mode = 2
 theme_type_variation = &"DialogicSubTitle"
 theme_override_font_sizes/font_size = 25
 text = "Dialogic Style Browser"
 
-[node name="HBox" type="HBoxContainer" parent="HSplitContainer/Margin/VBox"]
+[node name="HBox" type="HBoxContainer" parent="HSplitContainer/Margin/VBox" unique_id=1086758651]
 layout_mode = 2
 
-[node name="Search" type="LineEdit" parent="HSplitContainer/Margin/VBox/HBox"]
+[node name="Search" type="LineEdit" parent="HSplitContainer/Margin/VBox/HBox" unique_id=53958517]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/normal = SubResource("StyleBoxFlat_4e858")
 theme_override_styles/focus = SubResource("StyleBoxFlat_t3eoa")
 placeholder_text = "Search"
-right_icon = SubResource("ImageTexture_f5xt2")
+right_icon = SubResource("DPITexture_2j4b6")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/Margin/VBox"]
+[node name="ScrollContainer" type="ScrollContainer" parent="HSplitContainer/Margin/VBox" unique_id=1492214385]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="PartGrid" type="HFlowContainer" parent="HSplitContainer/Margin/VBox/ScrollContainer"]
+[node name="PartGrid" type="HFlowContainer" parent="HSplitContainer/Margin/VBox/ScrollContainer" unique_id=579450832]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="Buttons" type="HBoxContainer" parent="HSplitContainer/Margin/VBox"]
+[node name="Buttons" type="HBoxContainer" parent="HSplitContainer/Margin/VBox" unique_id=1562114387]
 layout_mode = 2
 alignment = 1
 
-[node name="CloseButton" type="Button" parent="HSplitContainer/Margin/VBox/Buttons"]
+[node name="CloseButton" type="Button" parent="HSplitContainer/Margin/VBox/Buttons" unique_id=1802846342]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Close"
-icon = SubResource("ImageTexture_f5xt2")
+icon = SubResource("DPITexture_2j4b6")
 
-[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer"]
+[node name="PanelContainer" type="PanelContainer" parent="HSplitContainer" unique_id=1772141335]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_mavtr")
 
-[node name="Control" type="Control" parent="HSplitContainer/PanelContainer"]
+[node name="Control" type="Control" parent="HSplitContainer/PanelContainer" unique_id=916449957]
 layout_mode = 2
 
-[node name="Panel" type="Panel" parent="HSplitContainer/PanelContainer/Control"]
+[node name="Panel" type="Panel" parent="HSplitContainer/PanelContainer/Control" unique_id=893746011]
 layout_mode = 1
 anchors_preset = 9
 anchor_bottom = 1.0
@@ -176,64 +168,64 @@ grow_vertical = 2
 rotation = 0.0349066
 theme_override_styles/panel = SubResource("StyleBoxFlat_mavtr")
 
-[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="HSplitContainer/PanelContainer" unique_id=98486268]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 10
 theme_override_constants/margin_right = 10
 theme_override_constants/margin_bottom = 10
 
-[node name="VBox" type="VBoxContainer" parent="HSplitContainer/PanelContainer/MarginContainer"]
+[node name="VBox" type="VBoxContainer" parent="HSplitContainer/PanelContainer/MarginContainer" unique_id=1132264113]
 layout_mode = 2
 alignment = 1
 
-[node name="Panel" type="PanelContainer" parent="HSplitContainer/PanelContainer/MarginContainer/VBox"]
+[node name="Panel" type="PanelContainer" parent="HSplitContainer/PanelContainer/MarginContainer/VBox" unique_id=1000975337]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_dqdat")
 
-[node name="Panel" type="PanelContainer" parent="HSplitContainer/PanelContainer/MarginContainer/VBox/Panel"]
+[node name="Panel" type="PanelContainer" parent="HSplitContainer/PanelContainer/MarginContainer/VBox/Panel" unique_id=2074354490]
 clip_children = 1
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_otau4")
 
-[node name="PreviewImage" type="TextureRect" parent="HSplitContainer/PanelContainer/MarginContainer/VBox/Panel/Panel"]
+[node name="PreviewImage" type="TextureRect" parent="HSplitContainer/PanelContainer/MarginContainer/VBox/Panel/Panel" unique_id=153119806]
 unique_name_in_owner = true
 layout_mode = 2
 expand_mode = 5
 stretch_mode = 6
 
-[node name="HFlowContainer" type="HFlowContainer" parent="HSplitContainer/PanelContainer/MarginContainer/VBox"]
+[node name="HFlowContainer" type="HFlowContainer" parent="HSplitContainer/PanelContainer/MarginContainer/VBox" unique_id=1009197242]
 layout_mode = 2
 
-[node name="PartTitle" type="Label" parent="HSplitContainer/PanelContainer/MarginContainer/VBox/HFlowContainer"]
+[node name="PartTitle" type="Label" parent="HSplitContainer/PanelContainer/MarginContainer/VBox/HFlowContainer" unique_id=1231408843]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"DialogicTitle"
 text = "Cool Style Part"
 
-[node name="PartAuthor" type="Label" parent="HSplitContainer/PanelContainer/MarginContainer/VBox/HFlowContainer"]
+[node name="PartAuthor" type="Label" parent="HSplitContainer/PanelContainer/MarginContainer/VBox/HFlowContainer" unique_id=1580486289]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"DialogicHintText"
 text = "by Jowan"
 
-[node name="PartType" type="Label" parent="HSplitContainer/PanelContainer/MarginContainer/VBox/HFlowContainer"]
+[node name="PartType" type="Label" parent="HSplitContainer/PanelContainer/MarginContainer/VBox/HFlowContainer" unique_id=2139775707]
 visible = false
 layout_mode = 2
 size_flags_vertical = 8
 theme_type_variation = &"DialogicHintText"
 text = "a style"
 
-[node name="PartDescription" type="Label" parent="HSplitContainer/PanelContainer/MarginContainer/VBox"]
+[node name="PartDescription" type="Label" parent="HSplitContainer/PanelContainer/MarginContainer/VBox" unique_id=846203134]
 unique_name_in_owner = true
 layout_mode = 2
 theme_type_variation = &"DialogicHintText2"
 text = "A cool textbox layer"
 autowrap_mode = 3
 
-[node name="ActivateButton" type="Button" parent="HSplitContainer/PanelContainer/MarginContainer/VBox"]
+[node name="ActivateButton" type="Button" parent="HSplitContainer/PanelContainer/MarginContainer/VBox" unique_id=737746834]
 unique_name_in_owner = true
 layout_mode = 2
 text = "Use"

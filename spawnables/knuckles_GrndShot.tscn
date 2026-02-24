@@ -1,22 +1,18 @@
-[gd_scene load_steps=25 format=3 uid="uid://bnvrcptq1ybrb"]
+[gd_scene format=3 uid="uid://bnvrcptq1ybrb"]
 
 [ext_resource type="Script" uid="uid://ctiobp6w5h2ib" path="res://spawnables/Knuckles_grndpow.gd" id="1_n410g"]
 [ext_resource type="Resource" uid="uid://oig8kf8mq7cb" path="res://spawnables/ShotData/KnucklesGrndSht.tres" id="2_1ds30"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_bgp5q"]
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_3pn0n"]
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_ximta"]
-[ext_resource type="Texture2D" uid="uid://ds3c6j0olh44r" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="6_6a5te"]
+[ext_resource type="Texture2D" uid="uid://cubjp7dxe8bi8" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="6_6a5te"]
 
 [sub_resource type="Resource" id="Resource_n410g"]
 script = ExtResource("4_3pn0n")
 damage = 35.0
-knockback_direction = Vector2(0, 0)
 knockback_power = 13.0
 knockback_angle = 45.0
 knockback_type = 4
-unblockable = false
-hit_freeze = 5
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_n410g"]
 radius = 1.05522
@@ -208,13 +204,13 @@ animations = [{
 "speed": 14.0
 }]
 
-[node name="KnucklesGrndShot" type="CharacterBody3D"]
+[node name="KnucklesGrndShot" type="CharacterBody3D" unique_id=185655376]
 collision_layer = 0
 collision_mask = 0
 script = ExtResource("1_n410g")
 spawnable_info = ExtResource("2_1ds30")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=1722889040]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 monitoring = false
 monitorable = false
@@ -223,31 +219,29 @@ hit_data = SubResource("Resource_n410g")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
-[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hitbox" unique_id=1575713957]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00137547, -0.191332, 0)
 shape = SubResource("SphereShape3D_n410g")
 disabled = true
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=640005204]
 visible = false
 script = ExtResource("5_ximta")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
-[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox" unique_id=1534285901]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.206324, 0)
 shape = SubResource("SphereShape3D_r25py")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_0scby")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=604988285]
+libraries/ = SubResource("AnimationLibrary_0scby")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=368345370]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00204468, 0, -0.00158691)
 shape = SubResource("BoxShape3D_wbvwd")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="."]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=52272899]
 transform = Transform3D(4.2, 0, 0, 0, 4.2, 0, 0, 0, 4.2, 0, 0, 0)
 texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_3iuyc")

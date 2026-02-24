@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://c2tqnyliq0dwg"]
+[gd_scene format=3 uid="uid://c2tqnyliq0dwg"]
 
 [ext_resource type="Script" uid="uid://cseybjtb7aloj" path="res://menus/mode_select.gd" id="1_5ovjn"]
 [ext_resource type="Texture2D" uid="uid://dqijbbv7qnwjo" path="res://sonic battle menu.png" id="2_ki0r6"]
@@ -20,7 +20,7 @@
 [sub_resource type="LabelSettings" id="LabelSettings_tfsul"]
 font_size = 24
 
-[node name="ModeSelect" type="Control"]
+[node name="ModeSelect" type="Control" unique_id=455206667]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -29,16 +29,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_5ovjn")
 
-[node name="Background" parent="." instance=ExtResource("2_p6y4n")]
+[node name="Background" parent="." unique_id=1749404921 instance=ExtResource("2_p6y4n")]
 
-[node name="SonicBattleMenu" type="Sprite2D" parent="."]
+[node name="SonicBattleMenu" type="Sprite2D" parent="." unique_id=1964367248]
 visible = false
 modulate = Color(1, 1, 1, 0.368627)
 position = Vector2(0, -1)
 texture = ExtResource("2_ki0r6")
 centered = false
 
-[node name="CurrentMode" type="Label" parent="."]
+[node name="CurrentMode" type="Label" parent="." unique_id=1059671164]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -56,54 +56,54 @@ label_settings = SubResource("LabelSettings_tfsul")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Foreground" type="Sprite2D" parent="."]
+[node name="Foreground" type="Sprite2D" parent="." unique_id=629982919]
 position = Vector2(120, 79)
 texture = ExtResource("4_cne22")
 
-[node name="ArrowLeft" type="Sprite2D" parent="."]
+[node name="ArrowLeft" type="Sprite2D" parent="." unique_id=413627681]
 position = Vector2(33, 107)
 texture = ExtResource("4_4lvc0")
 
-[node name="ArrowRight" type="Sprite2D" parent="."]
+[node name="ArrowRight" type="Sprite2D" parent="." unique_id=636039226]
 position = Vector2(144, 79)
 texture = ExtResource("6_h5q80")
 
-[node name="ModeSprites" type="Node2D" parent="."]
+[node name="ModeSprites" type="Node2D" parent="." unique_id=1015370136]
 position = Vector2(84, 94)
 
-[node name="Story" type="Sprite2D" parent="ModeSprites"]
+[node name="Story" type="Sprite2D" parent="ModeSprites" unique_id=698327509]
 position = Vector2(4, 1)
 texture = ExtResource("3_ij2dm")
 
-[node name="Battle" type="Sprite2D" parent="ModeSprites"]
+[node name="Battle" type="Sprite2D" parent="ModeSprites" unique_id=15277156]
 visible = false
 texture = ExtResource("4_nuuvt")
 
-[node name="Challenge" type="Sprite2D" parent="ModeSprites"]
+[node name="Challenge" type="Sprite2D" parent="ModeSprites" unique_id=622487204]
 visible = false
 texture = ExtResource("6_4lvc0")
 
-[node name="Training" type="Sprite2D" parent="ModeSprites"]
+[node name="Training" type="Sprite2D" parent="ModeSprites" unique_id=143081826]
 visible = false
 texture = ExtResource("7_5b7xw")
 
-[node name="MiniGames" type="Sprite2D" parent="ModeSprites"]
+[node name="MiniGames" type="Sprite2D" parent="ModeSprites" unique_id=1397718]
 visible = false
 texture = ExtResource("8_cne22")
 
-[node name="Record" type="Sprite2D" parent="ModeSprites"]
+[node name="Record" type="Sprite2D" parent="ModeSprites" unique_id=1782472968]
 visible = false
 texture = ExtResource("9_h5q80")
 
-[node name="Options" type="Sprite2D" parent="ModeSprites"]
+[node name="Options" type="Sprite2D" parent="ModeSprites" unique_id=489808833]
 visible = false
 texture = ExtResource("5_c4hpj")
 
-[node name="ModeSelect" type="Sprite2D" parent="."]
+[node name="ModeSelect" type="Sprite2D" parent="." unique_id=1909928261]
 position = Vector2(64, 30)
 texture = ExtResource("14_h5q80")
 
-[node name="NotReadyYet" type="Label" parent="."]
+[node name="NotReadyYet" type="Label" parent="." unique_id=1546042605]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -119,10 +119,10 @@ grow_vertical = 2
 text = "Not Ready Yet"
 horizontal_alignment = 1
 
-[node name="FlameLogo" parent="." instance=ExtResource("15_j86my")]
+[node name="FlameLogo" parent="." unique_id=2068681831 instance=ExtResource("15_j86my")]
 position = Vector2(200, 84)
 frame_progress = 0.140587
 
-[node name="ModeChangeSound" type="AudioStreamPlayer" parent="."]
+[node name="ModeChangeSound" type="AudioStreamPlayer" parent="." unique_id=1267208545]
 stream = ExtResource("16_4rtil")
 bus = &"SFX"

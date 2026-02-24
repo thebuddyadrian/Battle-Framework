@@ -1,54 +1,54 @@
-[gd_scene load_steps=3 format=3 uid="uid://c2qgetjc3mfo3"]
+[gd_scene format=3 uid="uid://c2qgetjc3mfo3"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/Audio/settings_audio.gd" id="1_2iyyr"]
+[ext_resource type="Script" uid="uid://bpiosn45oblj0" path="res://addons/dialogic/Modules/Audio/settings_audio.gd" id="1_2iyyr"]
 [ext_resource type="PackedScene" uid="uid://dbpkta2tjsqim" path="res://addons/dialogic/Editor/Common/hint_tooltip_icon.tscn" id="2_o1ban"]
 
-[node name="Audio" type="VBoxContainer"]
+[node name="Audio" type="VBoxContainer" unique_id=754790350]
 offset_right = 121.0
 offset_bottom = 58.0
 script = ExtResource("1_2iyyr")
 
-[node name="Label" type="Label" parent="."]
+[node name="Label" type="Label" parent="." unique_id=153752509]
 layout_mode = 2
 theme_type_variation = &"DialogicSettingsSection"
 text = "Music Channels"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=407932671]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="HBoxContainer" unique_id=1123969593]
 layout_mode = 2
 text = "Max music channels"
 
-[node name="HintTooltip" parent="HBoxContainer" instance=ExtResource("2_o1ban")]
+[node name="HintTooltip" parent="HBoxContainer" unique_id=1661761387 instance=ExtResource("2_o1ban")]
 layout_mode = 2
 texture = null
 hint_text = "Lowering this value may invalidate existing music events!"
 
-[node name="MusicChannelCount" type="SpinBox" parent="HBoxContainer"]
+[node name="MusicChannelCount" type="SpinBox" parent="HBoxContainer" unique_id=1096362058]
 unique_name_in_owner = true
 layout_mode = 2
 min_value = 1.0
 value = 1.0
 
-[node name="TypingSoundsTitle" type="Label" parent="."]
+[node name="TypingSoundsTitle" type="Label" parent="." unique_id=907983396]
 layout_mode = 2
 theme_type_variation = &"DialogicSettingsSection"
 text = "Typing Sounds"
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+[node name="HBoxContainer2" type="HBoxContainer" parent="." unique_id=1674028564]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="HBoxContainer2"]
+[node name="Label" type="Label" parent="HBoxContainer2" unique_id=1934804027]
 layout_mode = 2
 text = "Audio Bus"
 
-[node name="HintTooltip" parent="HBoxContainer2" instance=ExtResource("2_o1ban")]
+[node name="HintTooltip" parent="HBoxContainer2" unique_id=1280865199 instance=ExtResource("2_o1ban")]
 layout_mode = 2
 tooltip_text = "Lowering this value may invalidate existing music events!"
 texture = null
 hint_text = "The default audio bus used by TypeSound nodes."
 
-[node name="TypeSoundBus" type="OptionButton" parent="HBoxContainer2"]
+[node name="TypeSoundBus" type="OptionButton" parent="HBoxContainer2" unique_id=1960863183]
 unique_name_in_owner = true
 layout_mode = 2

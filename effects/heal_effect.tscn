@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dd7f8xa8a44kg"]
+[gd_scene format=3 uid="uid://dd7f8xa8a44kg"]
 
 [ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_od4s4"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="2_cih4y"]
@@ -68,13 +68,13 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="HealEffect" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+[node name="HealEffect" type="Node3D" unique_id=783532033 node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_od4s4")
 destroy_on_animation_finish = false
 animated_sprite = NodePath("BattleAnimatedSprite3D")
 use_player_direction = false
 
-[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1143221953]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 billboard = 1
 texture_filter = 0

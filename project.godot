@@ -12,12 +12,16 @@ config_version=5
 
 general/accessibility_support=2
 
+[animation]
+
+compatibility/default_parent_skeleton_in_mesh_instance_3d=true
+
 [application]
 
 config/name="Sonic Battle Framework"
 config/description="No Description"
 run/main_scene="res://menus/mode_select.tscn"
-config/features=PackedStringArray("4.5", "Forward Plus")
+config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=60
 config/icon="uid://dlpflfbgbkx5f"
 config/windows_native_icon="res://icon.ico"
@@ -33,8 +37,8 @@ Globals="*res://autoload/Globals.gd"
 ControlsSettings="*res://autoload/controls_settings.gd"
 Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SoundEffectPlayer="*res://autoload/sound_effect_player.gd"
-PhantomCameraManager="*res://addons/phantom_camera/scripts/managers/phantom_camera_manager.gd"
 PlayerInput="*res://autoload/player_input.gd"
+PhantomCameraManager="*uid://duq6jhf6unyis"
 
 [dialogic]
 

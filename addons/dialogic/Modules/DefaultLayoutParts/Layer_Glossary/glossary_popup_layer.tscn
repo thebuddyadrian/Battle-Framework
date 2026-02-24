@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dsbwnp5hegnu3"]
+[gd_scene format=3 uid="uid://dsbwnp5hegnu3"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.gd" id="1_3nmfj"]
+[ext_resource type="Script" uid="uid://bds6l6bynub7a" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Glossary/glossary_popup_layer.gd" id="1_3nmfj"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a3cyk"]
 bg_color = Color(0.12549, 0.12549, 0.12549, 1)
@@ -17,16 +17,16 @@ expand_margin_top = 5.0
 expand_margin_right = 5.0
 expand_margin_bottom = 5.0
 
-[node name="Glossary" type="Control"]
+[node name="Glossary" type="Control" unique_id=88326686]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2
 script = ExtResource("1_3nmfj")
 
-[node name="Pointer" type="Control" parent="."]
+[node name="Pointer" type="Control" parent="." unique_id=1307876710]
 anchors_preset = 0
 
-[node name="Panel" type="PanelContainer" parent="Pointer"]
+[node name="Panel" type="PanelContainer" parent="Pointer" unique_id=1346510619]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 7
@@ -44,37 +44,37 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_a3cyk")
 metadata/_edit_use_custom_anchors = true
 metadata/_edit_layout_mode = 1
 
-[node name="VBox" type="VBoxContainer" parent="Pointer/Panel"]
+[node name="VBox" type="VBoxContainer" parent="Pointer/Panel" unique_id=1929805651]
 layout_mode = 2
 theme_override_constants/separation = 0
 
-[node name="Title" type="Label" parent="Pointer/Panel/VBox"]
+[node name="Title" type="Label" parent="Pointer/Panel/VBox" unique_id=225106844]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HSeparator" type="HSeparator" parent="Pointer/Panel/VBox"]
+[node name="HSeparator" type="HSeparator" parent="Pointer/Panel/VBox" unique_id=1315432262]
 layout_mode = 2
 
-[node name="Text" type="RichTextLabel" parent="Pointer/Panel/VBox"]
+[node name="Text" type="RichTextLabel" parent="Pointer/Panel/VBox" unique_id=780070942]
 unique_name_in_owner = true
 layout_mode = 2
 bbcode_enabled = true
 fit_content = true
 
-[node name="Extra" type="RichTextLabel" parent="Pointer/Panel/VBox"]
+[node name="Extra" type="RichTextLabel" parent="Pointer/Panel/VBox" unique_id=1481033244]
 unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 15
 bbcode_enabled = true
 fit_content = true
 
-[node name="Control" type="Control" parent="Pointer/Panel"]
+[node name="Control" type="Control" parent="Pointer/Panel" unique_id=2086131515]
 show_behind_parent = true
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 8
 
-[node name="PanelPoint" type="PanelContainer" parent="Pointer/Panel/Control"]
+[node name="PanelPoint" type="PanelContainer" parent="Pointer/Panel/Control" unique_id=510035263]
 unique_name_in_owner = true
 layout_mode = 0
 offset_left = -0.999999

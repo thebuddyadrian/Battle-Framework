@@ -6,6 +6,6 @@ func _on_spawn(data: = {}):
 	if direction == Vector2.UP:
 		$Sprite.animation = "Up"
 	if direction == Vector2.LEFT:
-		$Sprite.flip_h = true
+		$Sprite.flipped = true
 	if direction == Vector2.DOWN:
 		$Sprite.animation = "Down"

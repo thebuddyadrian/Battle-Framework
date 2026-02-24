@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://bp6yn1c38y144"]
+[gd_scene format=3 uid="uid://bp6yn1c38y144"]
 
 [ext_resource type="PackedScene" uid="uid://2momowfny57p" path="res://levels/amysroom/mdl/amyroom2.gltf" id="1_dvr8b"]
 [ext_resource type="Texture2D" uid="uid://bys24411yxpx1" path="res://levels/amysroom/mdl/amyroom2_1.png" id="2_qa1h7"]
@@ -222,107 +222,107 @@ points = PackedVector3Array(-0.256172, 2.77556e-17, -0.25, 0.25, 0.498375, 0.248
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0lquc"]
 points = PackedVector3Array(-0.256172, 2.77556e-17, -0.25, 0.25, 0.498375, 0.248375, 0.249887, 2.77556e-17, 0.248263, -0.2563, 0.49839, 0.24839, 0.249887, 0.498263, -0.25, -0.256172, 2.77556e-17, 0.248263, -0.256172, 0.498263, -0.25, 0.249887, 2.77556e-17, -0.25)
 
-[node name="blockbench_export" instance=ExtResource("1_dvr8b")]
+[node name="blockbench_export" unique_id=660650432 instance=ExtResource("1_dvr8b")]
 
-[node name="Node" parent="." index="0"]
+[node name="Node" parent="." index="0" unique_id=486376972]
 unique_name_in_owner = true
 
-[node name="plane" parent="Node" index="0"]
+[node name="plane" parent="Node" index="0" unique_id=26958901]
 unique_name_in_owner = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/plane" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/plane" index="0" unique_id=1470789675]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/plane/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/plane/StaticBody3D" index="0" unique_id=97058207]
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_dvr8b")
 
-[node name="cube" parent="Node" index="1"]
+[node name="cube" parent="Node" index="1" unique_id=961996327]
 unique_name_in_owner = true
 mesh = SubResource("ArrayMesh_cdo5q")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube" index="0" unique_id=505881959]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube/StaticBody3D" index="0" unique_id=386207977]
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_7p5gw")
 
-[node name="cube2" parent="Node" index="2"]
+[node name="cube2" parent="Node" index="2" unique_id=759693047]
 unique_name_in_owner = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube2" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube2" index="0" unique_id=1382701506]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube2/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube2/StaticBody3D" index="0" unique_id=425320178]
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_woaj0")
 
-[node name="cube3" parent="Node" index="3"]
+[node name="cube3" parent="Node" index="3" unique_id=636890509]
 unique_name_in_owner = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube3" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube3" index="0" unique_id=1247526610]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube3/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube3/StaticBody3D" index="0" unique_id=393689786]
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_bp732")
 
-[node name="cube4" parent="Node" index="4"]
+[node name="cube4" parent="Node" index="4" unique_id=323074980]
 unique_name_in_owner = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube4" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube4" index="0" unique_id=1830173375]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube4/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube4/StaticBody3D" index="0" unique_id=1084669383]
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_exhd0")
 
-[node name="cube5" parent="Node" index="5"]
+[node name="cube5" parent="Node" index="5" unique_id=2038702957]
 unique_name_in_owner = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube5" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube5" index="0" unique_id=1291791236]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube5/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube5/StaticBody3D" index="0" unique_id=857845326]
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_adjsx")
 
-[node name="cube6" parent="Node" index="6"]
+[node name="cube6" parent="Node" index="6" unique_id=1063173035]
 unique_name_in_owner = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube6" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube6" index="0" unique_id=265820514]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube6/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube6/StaticBody3D" index="0" unique_id=141315089]
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_5ets3")
 
-[node name="cube7" parent="Node" index="7"]
+[node name="cube7" parent="Node" index="7" unique_id=661771334]
 unique_name_in_owner = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube7" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube7" index="0" unique_id=953978293]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube7/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube7/StaticBody3D" index="0" unique_id=311157552]
 transform = Transform3D(1, 0, 0, 0, 0.760627, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_qa1h7")
 
-[node name="cube8" parent="Node" index="8"]
+[node name="cube8" parent="Node" index="8" unique_id=752787203]
 unique_name_in_owner = true
 
-[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube8" index="0"]
+[node name="StaticBody3D" type="StaticBody3D" parent="Node/cube8" index="0" unique_id=1945265905]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube8/StaticBody3D" index="0"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node/cube8/StaticBody3D" index="0" unique_id=1649279078]
 transform = Transform3D(1, 0, 0, 0, 0.756343, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_0lquc")

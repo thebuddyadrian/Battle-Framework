@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdxfk31w51e67"]
+[gd_scene format=3 uid="uid://bdxfk31w51e67"]
 
 [ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_0omtl"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="2_uev4b"]
@@ -82,12 +82,12 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="DashEffect" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+[node name="DashEffect" type="Node3D" unique_id=371197460 node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_0omtl")
 animated_sprite = NodePath("BattleAnimatedSprite3D")
 metadata/_custom_type_script = "uid://dw8sbuf2itowu"
 
-[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=543478694]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 billboard = 1
 texture_filter = 0

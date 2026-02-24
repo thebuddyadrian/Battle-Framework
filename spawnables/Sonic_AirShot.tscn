@@ -1,6 +1,6 @@
-[gd_scene load_steps=43 format=3 uid="uid://yoerojshfurr"]
+[gd_scene format=3 uid="uid://yoerojshfurr"]
 
-[ext_resource type="Script" uid="uid://drxyik5332cmo" path="res://spawnables/base_spawnable.gd" id="1_er6qp"]
+[ext_resource type="Script" uid="uid://dosixkvssd3n1" path="res://spawnables/base_spawnable.gd" id="1_er6qp"]
 [ext_resource type="Resource" uid="uid://bn1sbxgcbm82q" path="res://spawnables/base_spawnable_info.tres" id="2_731od"]
 [ext_resource type="Script" uid="uid://cm6korv2sfd" path="res://components/hitbox/hitbox.gd" id="3_4n316"]
 [ext_resource type="Texture2D" uid="uid://jo8g5wkh717o" path="res://assets/Sub/SonicAirShot.png" id="3_731od"]
@@ -258,41 +258,33 @@ animations = [{
 
 [sub_resource type="Resource" id="Resource_731od"]
 script = ExtResource("4_nxwts")
-damage = 0.0
-knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
-unblockable = false
-hit_freeze = 5
-hit_stun = 30
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_gicut"]
 radius = 0.254871
 
-[node name="BaseSpawnable" type="Node3D"]
+[node name="BaseSpawnable" type="Node3D" unique_id=1753086828]
 script = ExtResource("1_er6qp")
 spawnable_info = ExtResource("2_731od")
 
-[node name="Sprite" type="AnimatedSprite3D" parent="."]
+[node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=547224983]
 billboard = 1
 sprite_frames = SubResource("SpriteFrames_mdu81")
 animation = &"Back"
 autoplay = "Side"
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=885151533]
 script = ExtResource("3_4n316")
 hit_data = SubResource("Resource_731od")
 root_node_path = NodePath("..")
-metadata/_custom_type_script = ExtResource("3_4n316")
+metadata/_custom_type_script = "uid://cm6korv2sfd"
 
-[node name="Shape" type="CollisionShape3D" parent="Hitbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hitbox" unique_id=2015552920]
 shape = SubResource("SphereShape3D_gicut")
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1411338387]
 script = ExtResource("5_psovn")
 root_node_path = NodePath("..")
-metadata/_custom_type_script = ExtResource("5_psovn")
+metadata/_custom_type_script = "uid://jk40g84p8nlf"
 
-[node name="Shape" type="CollisionShape3D" parent="Hurtbox"]
+[node name="Shape" type="CollisionShape3D" parent="Hurtbox" unique_id=1460479086]
 shape = SubResource("SphereShape3D_gicut")

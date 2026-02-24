@@ -1,8 +1,8 @@
-[gd_scene load_steps=2 format=3 uid="uid://d2it0xiap3gnt"]
+[gd_scene format=3 uid="uid://d2it0xiap3gnt"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Textbubble/text_bubble_layer.gd" id="1_b37je"]
+[ext_resource type="Script" uid="uid://3bp3hhr2ir7e" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_Textbubble/text_bubble_layer.gd" id="1_b37je"]
 
-[node name="TextBubbleLayer" type="Control"]
+[node name="TextBubbleLayer" type="Control" unique_id=1561735433]
 layout_mode = 3
 anchors_preset = 0
 mouse_filter = 2

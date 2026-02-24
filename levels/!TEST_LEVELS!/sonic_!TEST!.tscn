@@ -1,8 +1,8 @@
-[gd_scene load_steps=70 format=3 uid="uid://qvurw8lipdcn"]
+[gd_scene format=3 uid="uid://qvurw8lipdcn"]
 
 [ext_resource type="PackedScene" uid="uid://bgasgno6lr6x3" path="res://characters/base_player/Base_Player.tscn" id="1_256kv"]
 [ext_resource type="Script" uid="uid://cjaejb7dt1sp8" path="res://levels/!TEST_LEVELS!/base_player_!TEST!.gd" id="2_tpur8"]
-[ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://assets/sonic/Sonic.png" id="2_y21vi"]
+[ext_resource type="Texture2D" uid="uid://da2kchrno01ui" path="res://characters/sonic/sprites/Sonic.png" id="2_y21vi"]
 [ext_resource type="Texture2D" uid="uid://dbk1gpee8yf45" path="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png" id="3_a7fn7"]
 [ext_resource type="Script" uid="uid://8epbl8qro76f" path="res://characters/sonic/states/air_action.gd" id="4_irg3l"]
 [ext_resource type="Resource" uid="uid://dttk12fa38yx0" path="res://characters/sonic/states/jab_1.tres" id="5_klge4"]
@@ -25,7 +25,7 @@
 [ext_resource type="Texture2D" uid="uid://0a05iynurnt2" path="res://assets/ui/MainHealth1.png" id="22_3d8hr"]
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="23_c2bnm"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="24_q0416"]
-[ext_resource type="Texture2D" uid="uid://b4e72gl5uqhpv" path="res://assets/ui/SonicLife.png" id="25_p14mh"]
+[ext_resource type="Texture2D" uid="uid://b4e72gl5uqhpv" path="res://characters/sonic/sprites/SonicLife.png" id="25_p14mh"]
 
 [sub_resource type="Animation" id="Animation_lq7el"]
 resource_name = "AimAttack"
@@ -1286,64 +1286,51 @@ _data = {
 [sub_resource type="Resource" id="Resource_t5h5i"]
 script = ExtResource("20_l8v5v")
 animation = "AirPowFwd"
-air_animation = ""
 animation_down = "AirPowDown"
 animation_up = "AirPowUp"
-change_anim_in_air = false
-play_animation = true
 use_anim_markers = false
 use_sections = false
 startup_frames = 4
 active_frames = 20
 recovery_frames = 8
-attack_sound = "punch"
 damage = 6
 knockback_power = 4
 knockback_angle = 80
-knockback_type = 0
-hit_stun = 30
 hit_sound = "punch"
-can_charge = false
-max_charge = 30
-max_hold = 30
-knockback_charge_scale = 180
-damage_charge_scale = 150
-knockback_scaling_charge_scale = 180
-use_hitbox = true
-land_on_touched_ground = false
-stop_on_left_ground = false
-landing_lag = 6
-dash_cancel_on_hit = false
-dash_cancel_frames = 24
 metadata/_custom_type_script = ExtResource("20_l8v5v")
 
-[sub_resource type="Resource" id="Resource_5gmht"]
+[sub_resource type="Resource" id="Resource_tpur8"]
 script = ExtResource("21_pp54b")
-damage = 0.0
-knockback_direction = Vector2(0, 0)
-knockback_power = 20.0
-knockback_angle = 30.0
-knockback_type = 0
-unblockable = false
-hit_freeze = 5
-hit_stun = 30
 
-[node name="Sonic_!TEST!" instance=ExtResource("1_256kv")]
+[node name="Sonic_!TEST!" unique_id=1187678216 instance=ExtResource("1_256kv")]
 script = ExtResource("2_tpur8")
+SPEED = 8.0
+JUMP_VELOCITY = 14.0
+DASH_SPEED = 12.5
+STOCKS = 3
+HP = 300
+MP = 300
+player_id = 1
+GRAVITY = 0.65
+FALL_SPEED = 12
+JUMPFROMGROUND = false
+DECELERATION = 0.75
+ACCELERATION = 0.8
+AIR_DECELERATION = 0.15
+AIR_ACCELERATION = 0.5
+MAX_AIR_ACTION = 1
 
-[node name="PlayerSprite" parent="." index="1"]
+[node name="PlayerSprite" parent="." index="1" unique_id=193447772]
 texture = ExtResource("2_y21vi")
 frame = 2
 
-[node name="AnimationPlayer" parent="PlayerSprite" index="0"]
-libraries = {
-&"": SubResource("AnimationLibrary_axwkh")
-}
+[node name="AnimationPlayer" parent="PlayerSprite" index="0" unique_id=1902147849]
+libraries/ = SubResource("AnimationLibrary_axwkh")
 
-[node name="Effects" parent="PlayerSprite" index="1"]
+[node name="Effects" parent="PlayerSprite" index="1" unique_id=1140993298]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.26, -0.11, 0)
 
-[node name="Misc Effects" type="Sprite3D" parent="PlayerSprite" index="2"]
+[node name="Misc Effects" type="Sprite3D" parent="PlayerSprite" index="2" unique_id=1765196704]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0389612, 0.137251, 0)
 visible = false
 texture_filter = 2
@@ -1352,54 +1339,54 @@ hframes = 10
 vframes = 11
 frame = 36
 
-[node name="AirAction" parent="StateMachine" index="7"]
+[node name="AirAction" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="7" unique_id=1637163508]
 script = ExtResource("4_irg3l")
 
-[node name="Jab1" parent="StateMachine" index="18"]
+[node name="Jab1" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="19" unique_id=523789546]
 attack_info = ExtResource("5_klge4")
 
-[node name="Jab2" parent="StateMachine" index="19"]
+[node name="Jab2" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="20" unique_id=981136779]
 attack_info = ExtResource("6_jv8fs")
 
-[node name="Jab3" parent="StateMachine" index="20"]
+[node name="Jab3" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="21" unique_id=1484192293]
 attack_info = ExtResource("7_4dmi1")
 
-[node name="Heavy" parent="StateMachine" index="21"]
+[node name="Heavy" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="22" unique_id=1197192703]
 script = ExtResource("8_ulijo")
 attack_info = ExtResource("9_dftor")
 
-[node name="Upper" parent="StateMachine" index="22"]
+[node name="Upper" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="23" unique_id=1007129074]
 script = ExtResource("10_ilxfj")
 attack_info = ExtResource("11_xjcby")
 
-[node name="DashAttack" parent="StateMachine" index="23"]
+[node name="DashAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="24" unique_id=2079405750]
 attack_info = ExtResource("12_aasg1")
 
-[node name="AirAttack" parent="StateMachine" index="24"]
+[node name="AirAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="25" unique_id=686574562]
 script = ExtResource("13_v631j")
 attack_info = ExtResource("14_p3v2i")
 
-[node name="AimAttack" parent="StateMachine" index="25"]
+[node name="AimAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="26" unique_id=241173427]
 attack_info = ExtResource("15_c73gc")
 
-[node name="GrndShot" parent="StateMachine" index="26"]
+[node name="GrndShot" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="27" unique_id=1543150220]
 script = ExtResource("16_g25c5")
 attack_info = ExtResource("17_q84ko")
 
-[node name="GrndPow" parent="StateMachine" index="28"]
+[node name="GrndPow" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="29" unique_id=1655889037]
 attack_info = ExtResource("18_2ihlf")
 
-[node name="AirPow" parent="StateMachine" index="29"]
+[node name="AirPow" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="30" unique_id=1461058612]
 script = ExtResource("19_ytuto")
 attack_info = SubResource("Resource_t5h5i")
 
-[node name="Hitbox" parent="." index="5"]
-hit_data = SubResource("Resource_5gmht")
+[node name="Hitbox" parent="." index="5" unique_id=223441001]
+hit_data = SubResource("Resource_tpur8")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7" unique_id=1853566314]
 layer = 128
 
-[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" node_paths=PackedStringArray("character")]
+[node name="TextureProgressBar" type="TextureProgressBar" parent="CanvasLayer" index="0" unique_id=710614427 node_paths=PackedStringArray("character")]
 offset_left = 21.0
 offset_top = 4.0
 offset_right = 77.0
@@ -1411,10 +1398,10 @@ script = ExtResource("24_q0416")
 character = NodePath("../..")
 metadata/_edit_use_anchors_ = true
 
-[node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0"]
+[node name="KnucklesLife" type="Sprite2D" parent="CanvasLayer/TextureProgressBar" index="0" unique_id=1691483773]
 position = Vector2(-12, 5)
 texture = ExtResource("25_p14mh")
 
-[node name="TestLabel" parent="." index="8"]
+[node name="TestLabel" parent="." index="8" unique_id=419573788]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.247459, 0)
 text = "HP:230"

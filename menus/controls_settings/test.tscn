@@ -1,20 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://c4msubmob6im5"]
+[gd_scene format=3 uid="uid://c4msubmob6im5"]
 
 [ext_resource type="Texture2D" uid="uid://bisatn2ox7ndn" path="res://sonic_idle.png" id="1_qfk2h"]
 [ext_resource type="Texture2D" uid="uid://dlpflfbgbkx5f" path="res://icon.png" id="2_qmdfm"]
 
-[node name="Test" type="Node2D"]
+[node name="Test" type="Node2D" unique_id=1807167101]
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=2047283359]
 position = Vector2(119, 75)
 texture = ExtResource("1_qfk2h")
 
-[node name="Window" type="Window" parent="."]
+[node name="Window" type="Window" parent="." unique_id=1621005019]
 auto_translate_mode = 1
 initial_position = 1
 size = Vector2i(240, 160)
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="Window"]
+[node name="Sprite2D" type="Sprite2D" parent="Window" unique_id=1043198117]
 position = Vector2(118, 75)
 texture = ExtResource("2_qmdfm")

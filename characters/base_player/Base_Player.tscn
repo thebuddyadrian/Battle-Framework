@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://bgasgno6lr6x3"]
+[gd_scene format=3 uid="uid://bgasgno6lr6x3"]
 
 [ext_resource type="Script" uid="uid://mhfes0qawdck" path="res://characters/base_player/base_player.gd" id="1_7xl6k"]
 [ext_resource type="Script" uid="uid://cyjpv2h7kqytk" path="res://components/battle_sprite/battle_sprite.gd" id="2_b01px"]
@@ -53,7 +53,7 @@ radius = 0.295955
 [sub_resource type="BoxShape3D" id="BoxShape3D_3twb4"]
 size = Vector3(0.188656, 0.317568, 0.231695)
 
-[node name="BasePlayer" type="CharacterBody3D" groups=["characters"]]
+[node name="BasePlayer" type="CharacterBody3D" unique_id=1499964594 groups=["characters"]]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 collision_layer = 0
 slide_on_ceiling = false
@@ -61,10 +61,10 @@ floor_snap_length = 0.16
 safe_margin = 0.016
 script = ExtResource("1_7xl6k")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1814795435]
 shape = SubResource("CapsuleShape3D_ajxej")
 
-[node name="PlayerSprite" type="Sprite3D" parent="."]
+[node name="PlayerSprite" type="Sprite3D" parent="." unique_id=193447772]
 layers = 4
 texture_filter = 0
 hframes = 16
@@ -72,171 +72,169 @@ vframes = 14
 frame = 36
 script = ExtResource("2_b01px")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="PlayerSprite" unique_id=1902147849]
 callback_mode_process = 2
-autoplay = "Idle"
+autoplay = &"Idle"
 
-[node name="Effects" type="Sprite3D" parent="PlayerSprite"]
+[node name="Effects" type="Sprite3D" parent="PlayerSprite" unique_id=1140993298]
 visible = false
 texture_filter = 0
 script = ExtResource("2_uam5m")
 
-[node name="FlippedComponents" type="Node3D" parent="."]
+[node name="FlippedComponents" type="Node3D" parent="." unique_id=1625337011]
 
-[node name="ShadowRayCast" type="RayCast3D" parent="."]
+[node name="ShadowRayCast" type="RayCast3D" parent="." unique_id=1715973709]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.182536, 0)
 target_position = Vector3(0, -5, 0)
 collision_mask = 3
 script = ExtResource("2_s2flu")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="ShadowRayCast"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ShadowRayCast" unique_id=2007469671]
 
-[node name="Shadow" type="MeshInstance3D" parent="ShadowRayCast"]
+[node name="Shadow" type="MeshInstance3D" parent="ShadowRayCast" unique_id=153048874]
 material_override = SubResource("StandardMaterial3D_ppowo")
 mesh = SubResource("CylinderMesh_ddqn7")
 
-[node name="StateMachine" type="Node" parent="." groups=["network_sync"]]
+[node name="StateMachine" type="Node" parent="." unique_id=806784247 groups=["network_sync"]]
 script = ExtResource("4_dnwcv")
 root_node_path = NodePath("..")
 
-[node name="Idle" type="Node" parent="StateMachine"]
+[node name="Idle" type="Node" parent="StateMachine" unique_id=806791865]
 script = ExtResource("5_6wnxk")
 metadata/_custom_type_script = "uid://d01c6yqqbrjws"
 
-[node name="Move" type="Node" parent="StateMachine"]
+[node name="Move" type="Node" parent="StateMachine" unique_id=1068073136]
 script = ExtResource("7_wtpgs")
 
-[node name="Stopping" type="Node" parent="StateMachine"]
+[node name="Stopping" type="Node" parent="StateMachine" unique_id=570810351]
 script = ExtResource("10_fv82v")
 
-[node name="Turn" type="Node" parent="StateMachine"]
+[node name="Turn" type="Node" parent="StateMachine" unique_id=1077866430]
 script = ExtResource("11_uaf3e")
 
-[node name="JumpSquat" type="Node" parent="StateMachine"]
+[node name="JumpSquat" type="Node" parent="StateMachine" unique_id=933421113]
 script = ExtResource("11_m6gva")
 
-[node name="Land" type="Node" parent="StateMachine"]
+[node name="Land" type="Node" parent="StateMachine" unique_id=679596714]
 script = ExtResource("12_tg5qw")
 
-[node name="Dash" type="Node" parent="StateMachine"]
+[node name="Dash" type="Node" parent="StateMachine" unique_id=500218446]
 script = ExtResource("10_0nphp")
 
-[node name="AirAction" type="Node" parent="StateMachine"]
+[node name="AirAction" type="Node" parent="StateMachine" unique_id=1637163508]
 
-[node name="Jump" type="Node" parent="StateMachine"]
+[node name="Jump" type="Node" parent="StateMachine" unique_id=885854164]
 script = ExtResource("8_pfkrf")
 
-[node name="Fall" type="Node" parent="StateMachine"]
+[node name="Fall" type="Node" parent="StateMachine" unique_id=620186488]
 script = ExtResource("9_qxn4b")
 
-[node name="Guard" type="Node" parent="StateMachine"]
+[node name="Guard" type="Node" parent="StateMachine" unique_id=689990020]
 script = ExtResource("21_kvwve")
 
-[node name="Heal" type="Node" parent="StateMachine"]
+[node name="Heal" type="Node" parent="StateMachine" unique_id=1796077676]
 script = ExtResource("17_b01px")
 
-[node name="Blocked" type="Node" parent="StateMachine"]
+[node name="Blocked" type="Node" parent="StateMachine" unique_id=60283041]
 script = ExtResource("16_kvwve")
 
-[node name="Hurt" type="Node" parent="StateMachine"]
+[node name="Hurt" type="Node" parent="StateMachine" unique_id=1899117156]
 script = ExtResource("15_ddqn7")
 
-[node name="WallBounce" type="Node" parent="StateMachine"]
+[node name="WallBounce" type="Node" parent="StateMachine" unique_id=283577264]
 script = ExtResource("21_do57j")
 
-[node name="WallTech" type="Node" parent="StateMachine"]
+[node name="WallTech" type="Node" parent="StateMachine" unique_id=1070908555]
 script = ExtResource("20_wyd30")
 
-[node name="FloorBounce" type="Node" parent="StateMachine"]
+[node name="FloorBounce" type="Node" parent="StateMachine" unique_id=1756920426]
 script = ExtResource("19_uam5m")
 
-[node name="Down" type="Node" parent="StateMachine"]
+[node name="Down" type="Node" parent="StateMachine" unique_id=2082457418]
 script = ExtResource("22_h6gly")
 
-[node name="GetUp" type="Node" parent="StateMachine"]
+[node name="GetUp" type="Node" parent="StateMachine" unique_id=604207920]
 script = ExtResource("23_uxs3k")
 
-[node name="Jab1" type="Node" parent="StateMachine"]
+[node name="Jab1" type="Node" parent="StateMachine" unique_id=523789546]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="Jab2" type="Node" parent="StateMachine"]
+[node name="Jab2" type="Node" parent="StateMachine" unique_id=981136779]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="Jab3" type="Node" parent="StateMachine"]
+[node name="Jab3" type="Node" parent="StateMachine" unique_id=1484192293]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="Heavy" type="Node" parent="StateMachine"]
+[node name="Heavy" type="Node" parent="StateMachine" unique_id=1197192703]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="Upper" type="Node" parent="StateMachine"]
+[node name="Upper" type="Node" parent="StateMachine" unique_id=1007129074]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="DashAttack" type="Node" parent="StateMachine"]
+[node name="DashAttack" type="Node" parent="StateMachine" unique_id=2079405750]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="AirAttack" type="Node" parent="StateMachine"]
+[node name="AirAttack" type="Node" parent="StateMachine" unique_id=686574562]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="AimAttack" type="Node" parent="StateMachine"]
+[node name="AimAttack" type="Node" parent="StateMachine" unique_id=241173427]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="GrndShot" type="Node" parent="StateMachine"]
+[node name="GrndShot" type="Node" parent="StateMachine" unique_id=1543150220]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="AirShot" type="Node" parent="StateMachine"]
+[node name="AirShot" type="Node" parent="StateMachine" unique_id=722076224]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="GrndPow" type="Node" parent="StateMachine"]
+[node name="GrndPow" type="Node" parent="StateMachine" unique_id=1655889037]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="AirPow" type="Node" parent="StateMachine"]
+[node name="AirPow" type="Node" parent="StateMachine" unique_id=1461058612]
 script = ExtResource("17_r8feo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="HomingDash" type="Node" parent="StateMachine"]
+[node name="HomingDash" type="Node" parent="StateMachine" unique_id=613146347]
 script = ExtResource("22_ppowo")
 metadata/_custom_type_script = "uid://cftg53g7j8had"
 
-[node name="Respawn" type="Node" parent="StateMachine"]
+[node name="Respawn" type="Node" parent="StateMachine" unique_id=1314830839]
 script = ExtResource("23_uam5m")
 
-[node name="Hitbox" type="Area3D" parent="."]
+[node name="Hitbox" type="Area3D" parent="." unique_id=223441001]
 script = ExtResource("15_0nphp")
 hit_data = SubResource("Resource_wyd30")
 root_node_path = NodePath("..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=452238123]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.127428, 0.000781778, 0)
 shape = SubResource("SphereShape3D_3twb4")
 debug_color = Color(1, 0, 0.45882353, 1)
 
-[node name="Hurtbox" type="Area3D" parent="."]
+[node name="Hurtbox" type="Area3D" parent="." unique_id=1001795168]
 script = ExtResource("16_obb2v")
 active = true
 root_node_path = NodePath("..")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Hurtbox" unique_id=455780572]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00156888, -0.0120921, -0.000830427)
 shape = SubResource("BoxShape3D_3twb4")
 
-[node name="TestLabel" type="Label3D" parent="."]
+[node name="TestLabel" type="Label3D" parent="." unique_id=419573788]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.250755, 0)
 text = "HP: 100"
 font_size = 16
 
-[connection signal="frame_changed" from="PlayerSprite" to="PlayerSprite" method="_on_frame_changed"]
-[connection signal="texture_changed" from="PlayerSprite" to="PlayerSprite" method="_on_texture_changed"]
 [connection signal="blocked" from="Hitbox" to="." method="_on_hitbox_blocked"]
 [connection signal="hit" from="Hitbox" to="." method="_on_hitbox_hit"]
 [connection signal="hurt" from="Hurtbox" to="." method="_on_hurtbox_hurt"]

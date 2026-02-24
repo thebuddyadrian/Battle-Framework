@@ -1,7 +1,7 @@
-[gd_resource type="Resource" script_class="DialogicStyle" load_steps=20 format=3 uid="uid://8t1mr302tmqs"]
+[gd_resource type="Resource" script_class="DialogicStyle" format=3 uid="uid://8t1mr302tmqs"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style.gd" id="1_mvpc0"]
-[ext_resource type="Script" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_3b8ue"]
+[ext_resource type="Script" uid="uid://d1yipq0y26yud" path="res://addons/dialogic/Resources/dialogic_style.gd" id="1_mvpc0"]
+[ext_resource type="Script" uid="uid://ccs652hpm8bpv" path="res://addons/dialogic/Resources/dialogic_style_layer.gd" id="2_3b8ue"]
 [ext_resource type="PackedScene" uid="uid://c1k5m0w3r40xf" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_FullBackground/full_background_layer.tscn" id="2_dtgi6"]
 [ext_resource type="PackedScene" uid="uid://cy1y14inwkplb" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Portraits/vn_portrait_layer.tscn" id="4_q1t5h"]
 [ext_resource type="PackedScene" uid="uid://bquja8jyk8kbr" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_VN_Textbox/vn_textbox_layer.tscn" id="5_o6sv8"]
@@ -13,47 +13,38 @@
 
 [sub_resource type="Resource" id="Resource_3dixn"]
 script = ExtResource("2_3b8ue")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_gen8e"]
 script = ExtResource("2_3b8ue")
 scene = ExtResource("2_dtgi6")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_nit0s"]
 script = ExtResource("2_3b8ue")
 scene = ExtResource("4_q1t5h")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_1ak3n"]
 script = ExtResource("2_3b8ue")
 scene = ExtResource("6_j6olx")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_05bhv"]
 script = ExtResource("2_3b8ue")
 scene = ExtResource("5_o6sv8")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_pvwog"]
 script = ExtResource("2_3b8ue")
 scene = ExtResource("7_vw5f4")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_spe5r"]
 script = ExtResource("2_3b8ue")
 scene = ExtResource("8_tc6v1")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_jf1ol"]
 script = ExtResource("2_3b8ue")
 scene = ExtResource("9_tufw5")
-overrides = {}
 
 [sub_resource type="Resource" id="Resource_gs5pl"]
 script = ExtResource("2_3b8ue")
 scene = ExtResource("10_8v8jj")
-overrides = {}
 
 [resource]
 script = ExtResource("1_mvpc0")
@@ -70,6 +61,4 @@ layer_info = {
 "16": SubResource("Resource_jf1ol"),
 "17": SubResource("Resource_gs5pl")
 }
-base_overrides = {}
-layers = Array[ExtResource("2_3b8ue")]([])
 metadata/_latest_layer = "17"

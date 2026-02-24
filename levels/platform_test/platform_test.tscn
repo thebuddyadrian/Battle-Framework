@@ -1,28 +1,28 @@
-[gd_scene load_steps=3 format=3 uid="uid://dakk5v3hdky83"]
+[gd_scene format=3 uid="uid://dakk5v3hdky83"]
 
 [ext_resource type="PackedScene" uid="uid://cwre4gm3j5hmq" path="res://levels/platform_test/platform_test.glb" id="1_7x1rp"]
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="2_voa7f"]
 
-[node name="platform_test" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "camera_root_parent") instance=ExtResource("1_7x1rp")]
+[node name="platform_test" unique_id=1933834722 node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "camera_root_parent") instance=ExtResource("1_7x1rp")]
 script = ExtResource("2_voa7f")
 player_spawn_1 = NodePath("PlayerSpawn1")
 player_spawn_2 = NodePath("PlayerSpawn2")
 camera_follows_player = true
 camera_root_parent = NodePath(".")
 
-[node name="Floor" parent="." index="0"]
+[node name="Floor" parent="." index="0" unique_id=269637581]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
-[node name="StaticBody3D" parent="Floor" index="0"]
+[node name="StaticBody3D" parent="Floor" index="0" unique_id=2061727768]
 collision_layer = 3
 collision_mask = 3
 
-[node name="Plane" parent="." index="1"]
+[node name="Plane" parent="." index="1" unique_id=453116290]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 visible = false
 
-[node name="PlayerSpawn1" type="Node3D" parent="." index="2"]
+[node name="PlayerSpawn1" type="Node3D" parent="." index="2" unique_id=1904886108]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.4965, 4.01054, -0.791757)
 
-[node name="PlayerSpawn2" type="Node3D" parent="." index="3"]
+[node name="PlayerSpawn2" type="Node3D" parent="." index="3" unique_id=1578470431]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -16.3184, 3.43652, 1.45925)

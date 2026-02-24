@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cvgf4c6gg0tsy"]
+[gd_scene format=3 uid="uid://cvgf4c6gg0tsy"]
 
-[ext_resource type="Script" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.gd" id="1_7ahrn"]
-[ext_resource type="Script" path="res://addons/dialogic/Modules/TextInput/node_text_input.gd" id="1_mxdep"]
+[ext_resource type="Script" uid="uid://um2vahq6fvn0" path="res://addons/dialogic/Modules/DefaultLayoutParts/Layer_TextInput/text_input_layer.gd" id="1_7ahrn"]
+[ext_resource type="Script" uid="uid://bqa3w7d6xsgje" path="res://addons/dialogic/Modules/TextInput/node_text_input.gd" id="1_mxdep"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_3dpjm"]
 content_margin_left = 15.0
@@ -16,7 +16,7 @@ corner_radius_bottom_left = 5
 
 [sub_resource type="Theme" id="Theme_8xwp1"]
 
-[node name="TextInputLayer" type="Control"]
+[node name="TextInputLayer" type="Control" unique_id=499046011]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,7 +26,7 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_7ahrn")
 
-[node name="DialogicNode_TextInput" type="Control" parent="."]
+[node name="DialogicNode_TextInput" type="Control" parent="." unique_id=495195628]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -46,7 +46,7 @@ text_label = NodePath("TextInputPanel/VBoxContainer/TextLabel")
 confirmation_button = NodePath("TextInputPanel/VBoxContainer/ConfirmationButton")
 metadata/_edit_layout_mode = 1
 
-[node name="TextInputPanel" type="PanelContainer" parent="DialogicNode_TextInput"]
+[node name="TextInputPanel" type="PanelContainer" parent="DialogicNode_TextInput" unique_id=530606869]
 unique_name_in_owner = true
 self_modulate = Color(0, 0, 0, 0.780392)
 layout_mode = 1
@@ -57,20 +57,20 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_3dpjm")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="DialogicNode_TextInput/TextInputPanel"]
+[node name="VBoxContainer" type="VBoxContainer" parent="DialogicNode_TextInput/TextInputPanel" unique_id=1342549312]
 layout_mode = 2
 
-[node name="TextLabel" type="Label" parent="DialogicNode_TextInput/TextInputPanel/VBoxContainer"]
+[node name="TextLabel" type="Label" parent="DialogicNode_TextInput/TextInputPanel/VBoxContainer" unique_id=1191146091]
 unique_name_in_owner = true
 layout_mode = 2
 theme = SubResource("Theme_8xwp1")
 text = "Please enter some text:"
 autowrap_mode = 3
 
-[node name="InputField" type="LineEdit" parent="DialogicNode_TextInput/TextInputPanel/VBoxContainer"]
+[node name="InputField" type="LineEdit" parent="DialogicNode_TextInput/TextInputPanel/VBoxContainer" unique_id=515016008]
 layout_mode = 2
 
-[node name="ConfirmationButton" type="Button" parent="DialogicNode_TextInput/TextInputPanel/VBoxContainer"]
+[node name="ConfirmationButton" type="Button" parent="DialogicNode_TextInput/TextInputPanel/VBoxContainer" unique_id=21074698]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "Confirm"

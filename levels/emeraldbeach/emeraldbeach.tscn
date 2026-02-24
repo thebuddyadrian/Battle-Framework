@@ -1,4 +1,4 @@
-[gd_scene load_steps=55 format=4 uid="uid://bm8hg8jvdgnfp"]
+[gd_scene format=4 uid="uid://bm8hg8jvdgnfp"]
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_gesyx"]
 [ext_resource type="Resource" uid="uid://yry7jkk7gd33" path="res://levels/emeraldbeach/emeraldbeach.tres" id="2_424l1"]
@@ -804,7 +804,7 @@ _data = {
 &"RESET": SubResource("Animation_277la")
 }
 
-[node name="Level" type="Node3D" node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent")]
+[node name="Level" type="Node3D" unique_id=1562973704 node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent")]
 script = ExtResource("1_gesyx")
 stage_info = ExtResource("2_424l1")
 player_spawn_1 = NodePath("PlayerSpawn1")
@@ -813,102 +813,100 @@ player_spawn_3 = NodePath("PlayerSpawn3")
 player_spawn_4 = NodePath("PlayerSpawn4")
 camera_root_parent = NodePath(".")
 
-[node name="PlayerSpawn1" type="Node3D" parent="."]
+[node name="PlayerSpawn1" type="Node3D" parent="." unique_id=1389710060]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -8.92693, 2.69922, -9.65395)
 
-[node name="PlayerSpawn2" type="Node3D" parent="."]
+[node name="PlayerSpawn2" type="Node3D" parent="." unique_id=2117566888]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 9.30635, 5.66534, -10.2118)
 
-[node name="PlayerSpawn3" type="Node3D" parent="."]
+[node name="PlayerSpawn3" type="Node3D" parent="." unique_id=1307237385]
 transform = Transform3D(3.20217, 2.3971, 0, -2.3971, 3.20217, 0, 0, 0, 4, -8.70595, 2.26496, 8.39971)
 
-[node name="PlayerSpawn4" type="Node3D" parent="."]
+[node name="PlayerSpawn4" type="Node3D" parent="." unique_id=1198809894]
 transform = Transform3D(3.20217, 2.3971, 0, -2.3971, 3.20217, 0, 0, 0, 4, 10.0738, 2.26496, 8.72588)
 
-[node name="Floor" type="StaticBody3D" parent="."]
+[node name="Floor" type="StaticBody3D" parent="." unique_id=1978865970]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Floor" unique_id=34207022]
 transform = Transform3D(23.1712, 0, 0, 0, 0.876795, 0, 0, 0, 25.8494, 0, -0.419659, 0)
 shape = SubResource("BoxShape3D_safpt")
 
-[node name="WallRight" type="StaticBody3D" parent="."]
+[node name="WallRight" type="StaticBody3D" parent="." unique_id=1630817227]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallRight" unique_id=319030262]
 transform = Transform3D(1, 0, 0, 0, 17.8076, 0, 0, 0, 9.6959, 3.06621, 4.8997, -0.451286)
 shape = SubResource("BoxShape3D_gjl0y")
 
-[node name="WallUp" type="StaticBody3D" parent="."]
+[node name="WallUp" type="StaticBody3D" parent="." unique_id=1802721919]
 transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 0, 0, 0)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WallUp"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallUp" unique_id=1039642679]
 transform = Transform3D(1, 0, 0, 0, 17.8076, 0, -3.55271e-15, 0, 9.6959, 2.89078, 4.8997, -0.451286)
 shape = SubResource("BoxShape3D_gjl0y")
 
-[node name="WallLeft" type="StaticBody3D" parent="."]
+[node name="WallLeft" type="StaticBody3D" parent="." unique_id=384307640]
 transform = Transform3D(-5, 0, -7.54979e-07, 0, 5, 0, 7.54979e-07, 0, -5, 0, 0, 0)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallLeft" unique_id=1619534916]
 transform = Transform3D(1, 0, 0, 0, 17.8076, 0, 0, 0, 9.6959, 3.02917, 4.8997, -0.451287)
 shape = SubResource("BoxShape3D_gjl0y")
 
-[node name="WallBack" type="StaticBody3D" parent="."]
+[node name="WallBack" type="StaticBody3D" parent="." unique_id=1249747530]
 transform = Transform3D(-2.18557e-07, 0, -5, 0, 5, 0, 5, 0, -2.18557e-07, 0, 0, 0)
 metadata/_edit_lock_ = true
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBack"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="WallBack" unique_id=1513368447]
 transform = Transform3D(1, 0, 0, 0, 17.8076, 0, 3.55271e-15, 0, 9.6959, 3.07702, 4.8997, -0.451286)
 shape = SubResource("BoxShape3D_gjl0y")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=834907959]
 visible = false
 
-[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer"]
+[node name="Sprite2D" type="Sprite2D" parent="CanvasLayer" unique_id=1746920699]
 position = Vector2(248, 447)
 texture = SubResource("ImageTexture_d5x7l")
 
-[node name="Bottom" type="MeshInstance3D" parent="."]
+[node name="Bottom" type="MeshInstance3D" parent="." unique_id=1642189534]
 transform = Transform3D(81.113, 0, 0, 0, 1, 0, 0, 0, 27.5445, 0, -1.89626, 0.162338)
 visible = false
 mesh = SubResource("PlaneMesh_mxp4k")
 surface_material_override/0 = SubResource("ShaderMaterial_ta7ci")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1136713740]
 transform = Transform3D(60.7235, 0, 0, 0, -4.37114e-08, -50.1487, 0, 1, -2.19207e-06, 0, 12.8713, -47.5401)
 visible = false
 mesh = SubResource("PlaneMesh_lh335")
 surface_material_override/0 = SubResource("ShaderMaterial_u6cys")
 
-[node name="SkyPivot" type="Node3D" parent="."]
+[node name="SkyPivot" type="Node3D" parent="." unique_id=928032162]
 visible = false
 script = ExtResource("6_r6hsw")
 
-[node name="Sky" type="MeshInstance3D" parent="SkyPivot"]
+[node name="Sky" type="MeshInstance3D" parent="SkyPivot" unique_id=895892731]
 transform = Transform3D(39.171, 0, 0, 0, -44.1429, 18.6525, 0, -30.4703, -27.0221, -5.52117, 0.893673, -52.8232)
 gi_mode = 0
 mesh = SubResource("PlaneMesh_368ro")
 skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_kogck")
 
-[node name="EmeraldBeach" type="MeshInstance3D" parent="."]
+[node name="EmeraldBeach" type="MeshInstance3D" parent="." unique_id=561602056]
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, 0, 0, 0)
 mesh = SubResource("ArrayMesh_h7kjp")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="EmeraldBeach"]
+[node name="StaticBody3D" type="StaticBody3D" parent="EmeraldBeach" unique_id=247665176]
 collision_layer = 3
 collision_mask = 3
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="EmeraldBeach/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EmeraldBeach/StaticBody3D" unique_id=329811745]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0148489, 0)
 shape = SubResource("ConcavePolygonShape3D_pb8y7")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="EmeraldBeach"]
-libraries = {
-&"": SubResource("AnimationLibrary_cg1b4")
-}
-autoplay = "Animation"
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EmeraldBeach" unique_id=1318397058]
+libraries/ = SubResource("AnimationLibrary_cg1b4")
+autoplay = &"Animation"

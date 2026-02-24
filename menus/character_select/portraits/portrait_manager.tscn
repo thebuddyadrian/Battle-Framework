@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://15coxxqw12kr"]
+[gd_scene format=3 uid="uid://15coxxqw12kr"]
 
 [ext_resource type="Shader" uid="uid://cog3k73gsqffj" path="res://pixelate.gdshader" id="1_pq8p7"]
 [ext_resource type="PackedScene" uid="uid://r8ajlj5l5ifb" path="res://UI/battlemode_hud_bg.tscn" id="1_xectl"]
@@ -71,13 +71,13 @@ _data = {
 &"pixelate": SubResource("Animation_pq8p7")
 }
 
-[node name="Portrait_Manager" type="Control"]
+[node name="Portrait_Manager" type="Control" unique_id=65656141]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 120.0
 offset_bottom = 80.0
 
-[node name="battlemode_HUD_BG" parent="." instance=ExtResource("1_xectl")]
+[node name="battlemode_HUD_BG" parent="." unique_id=1967644893 instance=ExtResource("1_xectl")]
 layout_mode = 1
 anchors_preset = -1
 anchor_right = 0.0
@@ -88,7 +88,7 @@ offset_bottom = 14.0
 grow_horizontal = 1
 grow_vertical = 1
 
-[node name="Characters" type="TextureRect" parent="."]
+[node name="Characters" type="TextureRect" parent="." unique_id=79931342]
 material = SubResource("ShaderMaterial_cl634")
 layout_mode = 1
 anchors_preset = -1
@@ -99,7 +99,5 @@ offset_bottom = 77.0
 texture = ExtResource("2_pq8p7")
 flip_h = true
 
-[node name="pixelate" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_cl634")
-}
+[node name="pixelate" type="AnimationPlayer" parent="." unique_id=2075075622]
+libraries/ = SubResource("AnimationLibrary_cl634")

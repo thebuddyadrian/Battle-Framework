@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://vrp1w05vidw8"]
+[gd_scene format=3 uid="uid://vrp1w05vidw8"]
 
 [ext_resource type="Script" uid="uid://c6iiv4jkglfm7" path="res://effects/sonic_air_pow_afterimage.gd" id="1_d1fi0"]
 [ext_resource type="Texture2D" uid="uid://cwafv2nn1axdn" path="res://characters/sonic/sprites/sonic_effects.png" id="2_vfjiq"]
@@ -106,13 +106,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[node name="SonicAirPowAfterimage" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+[node name="SonicAirPowAfterimage" type="Node3D" unique_id=707037278 node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_d1fi0")
 destroy_on_animation_finish = false
 animated_sprite = NodePath("BattleAnimatedSprite3D")
 metadata/_custom_type_script = "uid://dw8sbuf2itowu"
 
-[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1133627740]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 billboard = 1
 texture_filter = 0
@@ -122,7 +122,7 @@ animation = &"Fwd"
 script = ExtResource("3_vfjiq")
 metadata/_custom_type_script = "uid://d0127k12xvws"
 
-[node name="DestroyTimer" type="Timer" parent="."]
+[node name="DestroyTimer" type="Timer" parent="." unique_id=1319471246]
 process_callback = 0
 wait_time = 0.16
 one_shot = true

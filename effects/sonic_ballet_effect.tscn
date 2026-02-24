@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dn8nklxvky8rh"]
+[gd_scene format=3 uid="uid://dn8nklxvky8rh"]
 
 [ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_3oj36"]
 [ext_resource type="Texture2D" uid="uid://cwafv2nn1axdn" path="res://characters/sonic/sprites/sonic_effects.png" id="2_3oj36"]
@@ -61,12 +61,12 @@ animations = [{
 "speed": 15.0
 }]
 
-[node name="SonicBalletEffect" type="Node3D" node_paths=PackedStringArray("animated_sprite")]
+[node name="SonicBalletEffect" type="Node3D" unique_id=1289605034 node_paths=PackedStringArray("animated_sprite")]
 script = ExtResource("1_3oj36")
 animated_sprite = NodePath("BattleAnimatedSprite3D")
 metadata/_custom_type_script = "uid://dw8sbuf2itowu"
 
-[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="."]
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=2016019949]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0.13775635)
 billboard = 1
 texture_filter = 0
