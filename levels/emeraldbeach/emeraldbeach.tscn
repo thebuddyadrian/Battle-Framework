@@ -846,7 +846,7 @@ transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, 0, 0, 
 metadata/_edit_lock_ = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="WallUp" unique_id=1039642679]
-transform = Transform3D(1, 0, 0, 0, 17.8076, 0, -3.55271e-15, 0, 9.6959, 2.89078, 4.8997, -0.451286)
+transform = Transform3D(1, 0, 0, 0, 17.8076, 0, -3.5527137e-15, 0, 9.6959, 3.0437245, 4.8997, -0.45128602)
 shape = SubResource("BoxShape3D_gjl0y")
 
 [node name="WallLeft" type="StaticBody3D" parent="." unique_id=384307640]
