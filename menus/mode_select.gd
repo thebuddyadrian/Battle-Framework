@@ -37,9 +37,16 @@ func _process(delta: float) -> void:
 		
 
 
-func _next_menu():
+func _next_menu(): 
 	if selected_mode == MODE.BATTLE:
 		SceneChanger.change_scene_to_file("res://menus/player_setup.tscn")
+	if selected_mode == MODE.STORY:
+		MatchSetup.stage_list = ["emeraldbeach"]
+		MatchSetup.cpu_players = 0
+		MatchSetup.human_players = 1
+		MatchSetup.character_choices = {1:"sonic"}  
+		
+		SceneChanger.change_scene_to_file("res://match_scene/match_scene.tscn")
 
 
 func change_mode(p_mode):

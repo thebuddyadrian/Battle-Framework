@@ -1,0 +1,34 @@
+[gd_scene format=3 uid="uid://d4ludqjotijq2"]
+
+[ext_resource type="PackedScene" uid="uid://c6epltatnawp7" path="res://levels/tails_gigalab/moyaiplane.glb" id="1_dmhg4"]
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_rr1lj"]
+[ext_resource type="Script" uid="uid://bh7hc4po624b3" path="res://levels/stage_info.gd" id="2_6sdnt"]
+
+[sub_resource type="Resource" id="Resource_3inwn"]
+script = ExtResource("2_6sdnt")
+display_name = "tails GigaLab"
+metadata/_custom_type_script = "uid://bh7hc4po624b3"
+
+[node name="TailsGigalab" type="Node3D" unique_id=1814219964 node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent")]
+script = ExtResource("1_rr1lj")
+stage_info = SubResource("Resource_3inwn")
+player_spawn_1 = NodePath("Node3D")
+player_spawn_2 = NodePath("Node3D2")
+player_spawn_3 = NodePath("Node3D3")
+player_spawn_4 = NodePath("Node3D4")
+camera_root_parent = NodePath(".")
+
+[node name="moyaiplane" parent="." unique_id=1397143913 instance=ExtResource("1_dmhg4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.5215995, 0)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1689032089]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.789403, 0, 1.0263667)
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=1270758467]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7717941, 0.57171667, -1.746711)
+
+[node name="Node3D3" type="Node3D" parent="." unique_id=399610137]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.8580644, 0.5695256, 0.74207973)
+
+[node name="Node3D4" type="Node3D" parent="." unique_id=1496967523]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.614244, 0)

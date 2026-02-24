@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bsqn8iw042bk4"]
+
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_u4oop"]
+[ext_resource type="Script" uid="uid://bh7hc4po624b3" path="res://levels/stage_info.gd" id="2_dqj15"]
+[ext_resource type="PackedScene" uid="uid://cspdgkn2g4d1t" path="res://levels/TEST2/sb2t1.glb" id="3_gfw1x"]
+
+[sub_resource type="Resource" id="Resource_jpidd"]
+script = ExtResource("2_dqj15")
+display_name = "TEST2"
+metadata/_custom_type_script = "uid://bh7hc4po624b3"
+
+[node name="Test2" type="Node3D" unique_id=1693145443 node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent")]
+script = ExtResource("1_u4oop")
+stage_info = SubResource("Resource_jpidd")
+player_spawn_1 = NodePath("Node3D")
+player_spawn_2 = NodePath("Node3D2")
+player_spawn_3 = NodePath("Node3D3")
+player_spawn_4 = NodePath("Node3D4")
+camera_root_parent = NodePath(".")
+
+[node name="sb2t1" parent="." unique_id=885489858 instance=ExtResource("3_gfw1x")]
+
+[node name="Node3D" type="Node3D" parent="." unique_id=496500522]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5692878, 3.4003077, -4.0775633)
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=827843392]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.023944855, 2.9674993, 5.241933)
+
+[node name="Node3D3" type="Node3D" parent="." unique_id=1590765243]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.267074, 2.605914, 6.6149554)
+
+[node name="Node3D4" type="Node3D" parent="." unique_id=1081496729]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.184047, 2.5250673, -2.2156868)
