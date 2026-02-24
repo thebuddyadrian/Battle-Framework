@@ -248,19 +248,19 @@ func _process_movement():
 	var deceleration_current = deceleration if is_on_floor() else air_deceleration
 	deceleration_current *= deceleration_scale
 
-	var speed_current = move_speed * max_speed_scale
+	var current_speed_vector: Vector2 = movement_dir * move_speed * max_speed_scale
 	
 	if !is_zero_approx(input_dir.x) and is_action_enabled("move"):
 		velocity.x += acceleration_vector.x
 		if limit_speed:
-			velocity.x = clamp(velocity.x, -speed_current, speed_current)
+			velocity.x = clamp(velocity.x, -abs(current_speed_vector.x), abs(current_speed_vector.x))
 	elif deceleration_enabled:
 		velocity.x = move_toward(velocity.x, 0, deceleration_current)
 	
 	if !is_zero_approx(input_dir.y) and is_action_enabled("move"):
 		velocity.z += acceleration_vector.y
 		if limit_speed:
-			velocity.z = clamp(velocity.z, -speed_current, speed_current)
+			velocity.z = clamp(velocity.z, -abs(current_speed_vector.y), abs(current_speed_vector.y))
 	elif deceleration_enabled:
 		velocity.z = move_toward(velocity.z, 0, deceleration_current)
 
@@ -542,7 +542,7 @@ func get_input_vector() -> Vector2:
 ## Movement vector is the input but rotated relative to the camera
 ## This allows the player to move in the correct direction no matter how the camera is rotated
 func get_movement_vector() -> Vector2:
-	return get_input_vector().rotated(camera.rotation.y).normalized()
+	return get_input_vector().normalized().rotated(camera.rotation.y)
 
 
 ## Spawns a scene given the filepath, useful for projectiles, traps, and other spawable objects
