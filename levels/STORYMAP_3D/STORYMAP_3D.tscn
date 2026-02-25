@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://gxx4wy2hajht"]
+
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_owfqe"]
+[ext_resource type="Script" uid="uid://bh7hc4po624b3" path="res://levels/stage_info.gd" id="2_xh8qi"]
+
+[sub_resource type="Resource" id="Resource_881gh"]
+script = ExtResource("2_xh8qi")
+display_name = "STORY MODE"
+music_file_path = "uid://cco6bisoiwv8a"
+metadata/_custom_type_script = "uid://bh7hc4po624b3"
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_o0to3"]
+size = Vector3(16, 0.2109375, 19.870605)
+
+[sub_resource type="BoxMesh" id="BoxMesh_xvlff"]
+
+[node name="Node3D5" type="Node3D" unique_id=1988815531 node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent")]
+script = ExtResource("1_owfqe")
+stage_info = SubResource("Resource_881gh")
+player_spawn_1 = NodePath("Node3D")
+player_spawn_2 = NodePath("Node3D2")
+player_spawn_3 = NodePath("Node3D3")
+player_spawn_4 = NodePath("Node3D4")
+camera_root_parent = NodePath(".")
+
+[node name="Node3D" type="Node3D" parent="." unique_id=1859493501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2013836, 0.89649343, 0.9125109)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Node3D" unique_id=1703372352]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Node3D/StaticBody3D" unique_id=823168863]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.513033, -1.1253918, -6.052002)
+shape = SubResource("BoxShape3D_o0to3")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D/StaticBody3D" unique_id=467598680]
+transform = Transform3D(16.32, 0, 0, 0, 1, 0, 0, 0, 14.2560005, 1, -1.441664, -3)
+mesh = SubResource("BoxMesh_xvlff")
+
+[node name="Node3D2" type="Node3D" parent="." unique_id=877301553]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.660641, 0.90656525, 0.04729843)
+
+[node name="Node3D3" type="Node3D" parent="." unique_id=1014191456]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.5705752, 0.93204004, 1.797709)
+
+[node name="Node3D4" type="Node3D" parent="." unique_id=28872612]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.4177697, 0.9365427, -1.6846395)
