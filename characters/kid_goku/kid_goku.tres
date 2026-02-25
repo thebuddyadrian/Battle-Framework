@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterInfo" format=3 uid="uid://bw0pnycmfl7qt"]
+
+[ext_resource type="Script" uid="uid://2a2htk5lwmcm" path="res://characters/base_player/character_info.gd" id="1_46jof"]
+
+[resource]
+resource_name = "kid_goku"
+script = ExtResource("1_46jof")
+display_name = "Kid Goku"
+portrait_path = "uid://lnxeeqqfd7kl"
+life_icon_path = "uid://lnxeeqqfd7kl"
+metadata/_custom_type_script = "uid://2a2htk5lwmcm"
