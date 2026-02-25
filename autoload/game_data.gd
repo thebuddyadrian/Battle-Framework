@@ -7,7 +7,7 @@ var characters: Array[String] = [
 	"tails", 
 	"knuckles", 
 	"shadow",
-	# "kid_goku",
+	#"kid_goku",
 	#"rouge",
 	#"amy",
 	#"cream",
