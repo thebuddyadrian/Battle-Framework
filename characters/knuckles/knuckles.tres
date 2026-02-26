@@ -1,10 +1,11 @@
-[gd_resource type="Resource" script_class="CharacterInfo" load_steps=2 format=3 uid="uid://dhippg1pyutqc"]
+[gd_resource type="Resource" script_class="CharacterInfo" format=3 uid="uid://dhippg1pyutqc"]
 
 [ext_resource type="Script" uid="uid://2a2htk5lwmcm" path="res://characters/base_player/character_info.gd" id="1_7sg41"]
 
 [resource]
 script = ExtResource("1_7sg41")
 display_name = "Knuckles"
+enabled = true
 portrait_path = "uid://ciu2eda5yyu62"
 life_icon_path = "uid://dvuedhl2ul52y"
 max_hp = 300
