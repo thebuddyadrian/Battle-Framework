@@ -2,6 +2,9 @@ extends Resource
 class_name CharacterInfo
 
 @export var display_name: String
+@export_group("Debug parameters (PLEASE DO NOT EXPLODE)")
+## determines if this character is enabled or not
+@export var enabled: bool
 @export_group("File Paths")
 @export_file var portrait_path: String
 @export_file var life_icon_path: String
