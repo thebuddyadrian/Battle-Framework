@@ -104,6 +104,7 @@ position = Vector2(64, 30)
 texture = ExtResource("14_h5q80")
 
 [node name="NotReadyYet" type="Label" parent="." unique_id=1003177113]
+visible = false
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://b6ggvkuuvk5s3"]
+
+[ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="1_wig11"]
+[ext_resource type="Texture2D" uid="uid://bisatn2ox7ndn" path="res://sonic_idle.png" id="2_tuccw"]
+[ext_resource type="Texture2D" uid="uid://ciu2eda5yyu62" path="res://characters/knuckles/sprites/Knuckles Portrait.png" id="3_sctus"]
+
+[node name="CharacterSelectStoryMode" type="Control" unique_id=178090483]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Background" parent="." unique_id=836822553 instance=ExtResource("1_wig11")]
+
+[node name="TextureRect" type="TextureRect" parent="." unique_id=535644758]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 4.0
+offset_right = 47.0
+offset_bottom = 104.0
+texture = ExtResource("2_tuccw")
+
+[node name="Label" type="Label" parent="TextureRect" unique_id=1660387573]
+layout_mode = 0
+offset_left = -9.0
+offset_top = 116.0
+offset_right = 33.0
+offset_bottom = 139.0
+text = "Sonic"
+
+[node name="TextureRect2" type="TextureRect" parent="." unique_id=1750274039]
+layout_mode = 0
+offset_left = 146.0
+offset_top = 5.0
+offset_right = 233.0
+offset_bottom = 105.0
+texture = ExtResource("3_sctus")
