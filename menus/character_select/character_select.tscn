@@ -1,9 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://kulyqmhcf2k2"]
+[gd_scene format=3 uid="uid://kulyqmhcf2k2"]
 
 [ext_resource type="Script" uid="uid://bl12xr1kfvop2" path="res://menus/character_select/character_select.gd" id="1_xptye"]
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_kxvnc"]
 [ext_resource type="Shader" uid="uid://b7frwxe5glvvi" path="res://menus/background.gdshader" id="3_xarbf"]
-[ext_resource type="Script" uid="uid://dkvj5h5bvohkv" path="res://menus/character_select/mapselect.gd" id="4_pprmj"]
+[ext_resource type="Script" path="res://menus/character_select/mapselect.gd" id="4_pprmj"]
 [ext_resource type="PackedScene" uid="uid://bu74bh1pcju6h" path="res://menus/character_select/cursor_arrows.tscn" id="4_xarbf"]
 [ext_resource type="Texture2D" uid="uid://dlpflfbgbkx5f" path="res://icon.png" id="5_3f6ee"]
 
@@ -13,7 +13,7 @@ shader_parameter/h = 0.0
 shader_parameter/s = 0.788
 shader_parameter/v = 1.0
 
-[node name="CharacterSelect" type="Control"]
+[node name="CharacterSelect" type="Control" unique_id=619093734]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,17 +23,17 @@ grow_vertical = 2
 mouse_filter = 2
 script = ExtResource("1_xptye")
 
-[node name="Background" parent="." instance=ExtResource("2_kxvnc")]
+[node name="Background" parent="." unique_id=514256388 instance=ExtResource("2_kxvnc")]
 material = SubResource("ShaderMaterial_pprmj")
 
-[node name="MAPSELECT" type="Control" parent="."]
+[node name="MAPSELECT" type="Control" parent="." unique_id=999903333]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_pprmj")
 
-[node name="StageSelect" type="OptionButton" parent="MAPSELECT"]
+[node name="StageSelect" type="OptionButton" parent="MAPSELECT" unique_id=1728786388]
 visible = false
 layout_mode = 0
 anchor_right = 1.0
@@ -46,18 +46,18 @@ grow_horizontal = 2
 grow_vertical = 2
 focus_mode = 0
 
-[node name="CenterContainer" type="CenterContainer" parent="MAPSELECT"]
+[node name="CenterContainer" type="CenterContainer" parent="MAPSELECT" unique_id=1762137890]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 8.0
 offset_right = 144.0
 offset_bottom = 120.0
 
-[node name="TextureRect" type="TextureRect" parent="MAPSELECT/CenterContainer"]
+[node name="TextureRect" type="TextureRect" parent="MAPSELECT/CenterContainer" unique_id=747526603]
 layout_mode = 2
 texture = ExtResource("5_3f6ee")
 
-[node name="Label" type="Label" parent="MAPSELECT"]
+[node name="Label" type="Label" parent="MAPSELECT" unique_id=1399495427]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 136.0
@@ -65,7 +65,7 @@ offset_right = 109.0
 offset_bottom = 159.0
 text = "nametag"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MAPSELECT"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MAPSELECT" unique_id=1206516043]
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
@@ -76,10 +76,10 @@ offset_right = 200.0
 offset_bottom = 136.0
 grow_horizontal = 0
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MAPSELECT/ScrollContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MAPSELECT/ScrollContainer" unique_id=2121463459]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="MAPSELECT"]
+[node name="Label2" type="Label" parent="MAPSELECT" unique_id=1994109036]
 layout_mode = 0
 offset_left = 40.0
 offset_top = 32.0
@@ -89,12 +89,12 @@ text = "Image
 Preview"
 horizontal_alignment = 1
 
-[node name="CSS" type="Control" parent="."]
+[node name="CSS" type="Control" parent="." unique_id=1281746508]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="PlayerContainer" type="GridContainer" parent="CSS"]
+[node name="PlayerContainer" type="GridContainer" parent="CSS" unique_id=853177849]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -111,18 +111,18 @@ theme_override_constants/h_separation = 0
 theme_override_constants/v_separation = 0
 columns = 2
 
-[node name="CursorArrows" parent="CSS" instance=ExtResource("4_xarbf")]
+[node name="CursorArrows" parent="CSS" unique_id=1499034612 instance=ExtResource("4_xarbf")]
 layout_mode = 0
 offset_top = 39.0
 offset_bottom = 39.0
 
-[node name="RULESELECT" type="Control" parent="."]
+[node name="RULESELECT" type="Control" parent="." unique_id=1817152412]
 visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Label" type="Label" parent="RULESELECT"]
+[node name="Label" type="Label" parent="RULESELECT" unique_id=1542052394]
 layout_mode = 0
 offset_left = 56.0
 offset_top = 64.0
@@ -131,14 +131,14 @@ offset_bottom = 113.0
 text = "Placeholder!
 Check back later!"
 
-[node name="MapSelectButton" type="Button" parent="."]
+[node name="MapSelectButton" type="Button" parent="." unique_id=627968339]
 layout_mode = 0
 offset_right = 52.0
 offset_bottom = 31.0
 focus_mode = 0
 text = "MAPS"
 
-[node name="RuleSelectButton" type="Button" parent="."]
+[node name="RuleSelectButton" type="Button" parent="." unique_id=550625982]
 layout_mode = 0
 offset_left = 184.0
 offset_right = 241.0
@@ -146,7 +146,7 @@ offset_bottom = 31.0
 focus_mode = 0
 text = "RULES"
 
-[node name="CSSSelectButton" type="Button" parent="."]
+[node name="CSSSelectButton" type="Button" parent="." unique_id=170498341]
 visible = false
 layout_mode = 0
 offset_right = 60.0
@@ -156,3 +156,5 @@ text = "CHARS"
 [connection signal="pressed" from="MapSelectButton" to="." method="_on_map_select_button_pressed"]
 [connection signal="pressed" from="RuleSelectButton" to="." method="_on_rule_select_button_pressed"]
 [connection signal="pressed" from="CSSSelectButton" to="." method="_on_css_select_button_pressed"]
+
+[editable path="CSS/CursorArrows"]
