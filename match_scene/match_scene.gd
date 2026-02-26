@@ -1,6 +1,10 @@
 extends Node3D
 class_name MatchScene
 
+# This scene hosts a match. Whatever level was selected will be loaded for it,
+# and the match will provide the level with whatever it needs 
+# (player data, input, scripts, etc.)
+
 const CAMERA_ROOT = preload("res://components/camera_root/camera_root.tscn")
 const PLAYER_WINDOW = preload("res://components/player_window/player_window.tscn")
 const PLAYER_HUD = preload("res://components/player_hud/player_hud.tscn")
