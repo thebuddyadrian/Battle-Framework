@@ -8,7 +8,9 @@ var characters: Array[String] = [
 	"knuckles", 
 	"shadow",
 	#"kid_goku",
-	#"rouge",
+	"silver",
+	"amy",
+	"rouge",
 	#"amy",
 	#"cream",
 	#"emerl"
