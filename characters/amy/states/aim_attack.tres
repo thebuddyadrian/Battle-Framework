@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AttackInfo" format=3 uid="uid://rgp4sgxq4y5g"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_bmbst"]
+
+[resource]
+script = ExtResource("1_bmbst")
+animation = "AimAttack"
+startup_frames = 12
+active_frames = 3
+recovery_frames = 9
+damage = 22
+knockback_power = 20
+knockback_angle = -90
+knockback_type = 3
+hit_sound = "punch"
+metadata/_custom_type_script = ExtResource("1_bmbst")

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="AttackInfo" format=3 uid="uid://dxdkgf8ewskys"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_qaqjg"]
+
+[resource]
+script = ExtResource("1_qaqjg")
+animation = "GrndShotFwd"
+animation_down = "GrndShotDown"
+animation_up = "GrndShotUp"
+animation_down_start_frame = 150
+animation_up_start_frame = 142
+startup_frames = 35
+active_frames = 20
+attack_sound = ""
+damage = 8
+knockback_power = 6
+hit_stun = 25
+hit_sound = "punch"
+use_hitbox = false
+metadata/_custom_type_script = "uid://c4gg51mb7ji23"

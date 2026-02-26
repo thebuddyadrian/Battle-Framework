@@ -1,0 +1,16 @@
+[gd_resource type="Resource" script_class="AttackInfo" format=3 uid="uid://ncn4l0hy2fgu"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_ndwym"]
+
+[resource]
+script = ExtResource("1_ndwym")
+animation = "Upper"
+startup_frames = 6
+active_frames = 6
+recovery_frames = 28
+knockback_power = 14
+knockback_angle = 90
+knockback_type = 2
+hit_stun = 40
+hit_sound = "punch"
+metadata/_custom_type_script = ExtResource("1_ndwym")

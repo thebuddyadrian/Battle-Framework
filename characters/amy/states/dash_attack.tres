@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AttackInfo" format=3 uid="uid://dv2r68r3siuto"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_rx0ck"]
+
+[resource]
+script = ExtResource("1_rx0ck")
+animation = "DashAttack"
+startup_frames = 6
+active_frames = 6
+damage = 10
+knockback_power = 10
+knockback_angle = 35
+hit_stun = 18
+hit_sound = "punch"
+metadata/_custom_type_script = ExtResource("1_rx0ck")

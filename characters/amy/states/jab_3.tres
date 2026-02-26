@@ -1,0 +1,14 @@
+[gd_resource type="Resource" script_class="AttackInfo" format=3 uid="uid://cyr5ogdxkmi3b"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_16upl"]
+
+[resource]
+script = ExtResource("1_16upl")
+animation = "kick2"
+startup_frames = 6
+active_frames = 3
+recovery_frames = 24
+damage = 12
+knockback_power = 2
+hit_sound = "punch"
+metadata/_custom_type_script = ExtResource("1_16upl")
