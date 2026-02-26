@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="AttackInfo" format=3 uid="uid://cxp1dn0rrsf04"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_17k4h"]
+
+[resource]
+script = ExtResource("1_17k4h")
+animation = "AirAttack"
+startup_frames = 6
+active_frames = 6
+recovery_frames = 16
+damage = 12
+knockback_power = 8
+knockback_angle = -80
+hit_sound = "punch"
+metadata/_custom_type_script = "uid://c4gg51mb7ji23"

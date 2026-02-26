@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AttackInfo" format=3 uid="uid://gqt2ydu3j27s"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_70alc"]
+
+[resource]
+script = ExtResource("1_70alc")
+animation = "Heavy"
+startup_frames = 18
+active_frames = 6
+recovery_frames = 30
+damage = 25
+knockback_angle = 20
+knockback_type = 1
+hit_stun = 45
+hit_sound = "punch"
+dash_cancel_on_hit = true
+metadata/_custom_type_script = ExtResource("1_70alc")

@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="AttackInfo" format=3 uid="uid://dxfjg05235kwh"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_dvyyf"]
+
+[resource]
+script = ExtResource("1_dvyyf")
+animation = "AirPowFwd"
+animation_down = "AirPowDown"
+animation_up = "AirPowUp"
+use_anim_markers = false
+use_sections = false
+startup_frames = 4
+active_frames = 20
+recovery_frames = 8
+damage = 4
+knockback_power = 4
+knockback_angle = 80
+hit_sound = "punch"
+metadata/_custom_type_script = ExtResource("1_dvyyf")

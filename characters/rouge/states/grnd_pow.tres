@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AttackInfo" format=3 uid="uid://bboxt4c1hjyas"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_lad3w"]
+
+[resource]
+script = ExtResource("1_lad3w")
+animation = "GrndPow"
+startup_frames = 16
+recovery_frames = 14
+hit_sound = "punch"
+use_hitbox = false
+metadata/_custom_type_script = ExtResource("1_lad3w")

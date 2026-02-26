@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="CharacterInfo" format=3 uid="uid://capra6aaae4p4"]
+
+[ext_resource type="Script" uid="uid://2a2htk5lwmcm" path="res://characters/base_player/character_info.gd" id="1_4cms3"]
+
+[resource]
+script = ExtResource("1_4cms3")
+display_name = "Silver"
+portrait_path = "res://characters/silver/sprites/Silver Portrait.png"
+life_icon_path = "uid://cehncf2rx1to3"
+metadata/_custom_type_script = "uid://2a2htk5lwmcm"

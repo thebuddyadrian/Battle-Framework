@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="AttackInfo" format=3 uid="uid://c25erv23ivclw"]
+
+[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="1_w80eg"]
+
+[resource]
+script = ExtResource("1_w80eg")
+animation = "Punch1"
+startup_frames = 6
+active_frames = 4
+damage = 10
+knockback_power = 2
+metadata/_custom_type_script = ExtResource("1_w80eg")

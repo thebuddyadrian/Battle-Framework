@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="CharacterInfo" format=3 uid="uid://rkoa072ss0me"]
+
+[ext_resource type="Script" uid="uid://2a2htk5lwmcm" path="res://characters/base_player/character_info.gd" id="1_hqm6o"]
+
+[resource]
+script = ExtResource("1_hqm6o")
+display_name = "Rouge"
+enabled = true
+portrait_path = "uid://d3ee1n2ow1anq"
+life_icon_path = "uid://sflsvt0o3uoh"
+metadata/_custom_type_script = "uid://2a2htk5lwmcm"
