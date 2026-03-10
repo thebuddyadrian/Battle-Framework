@@ -5,6 +5,9 @@ class_name MatchScene
 # and the match will provide the level with whatever it needs 
 # (player data, input, scripts, etc.)
 
+
+# For some unknown reason, these nodes are loaded from the script instead of
+# being included on the scene definition itself.
 const CAMERA_ROOT = preload("res://components/camera_root/camera_root.tscn")
 const PLAYER_WINDOW = preload("res://components/player_window/player_window.tscn")
 const PLAYER_HUD = preload("res://components/player_hud/player_hud.tscn")
