@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://b6ggvkuuvk5s3"]
 
+[ext_resource type="Script" uid="uid://bo6hl7su24xmp" path="res://menus/character_select/character_select_story_mode.gd" id="1_sctus"]
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="1_wig11"]
-[ext_resource type="Texture2D" uid="uid://bisatn2ox7ndn" path="res://sonic_idle.png" id="2_tuccw"]
+[ext_resource type="Texture2D" uid="uid://doi3o74wjlh3u" path="res://characters/sonic/sprites/Sonic Portrait.png" id="3_1maxx"]
 [ext_resource type="Texture2D" uid="uid://ciu2eda5yyu62" path="res://characters/knuckles/sprites/Knuckles Portrait.png" id="3_sctus"]
 
 [node name="CharacterSelectStoryMode" type="Control" unique_id=178090483]
@@ -11,29 +12,43 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("1_sctus")
 
 [node name="Background" parent="." unique_id=836822553 instance=ExtResource("1_wig11")]
 
-[node name="TextureRect" type="TextureRect" parent="." unique_id=535644758]
+[node name="Sonic" type="Button" parent="." unique_id=825060362]
 layout_mode = 0
-offset_left = 25.0
-offset_top = 4.0
-offset_right = 47.0
-offset_bottom = 104.0
-texture = ExtResource("2_tuccw")
+offset_left = 10.0
+offset_top = 30.0
+offset_right = 105.0
+offset_bottom = 109.0
+focus_neighbor_right = NodePath("../Knuckles")
+icon = ExtResource("3_1maxx")
 
-[node name="Label" type="Label" parent="TextureRect" unique_id=1660387573]
+[node name="Label" type="Label" parent="Sonic" unique_id=1660387573]
 layout_mode = 0
-offset_left = -9.0
-offset_top = 116.0
-offset_right = 33.0
-offset_bottom = 139.0
+offset_left = 23.0
+offset_top = 78.0
+offset_right = 65.0
+offset_bottom = 101.0
 text = "Sonic"
 
-[node name="TextureRect2" type="TextureRect" parent="." unique_id=1750274039]
+[node name="Knuckles" type="Button" parent="." unique_id=865678797]
 layout_mode = 0
-offset_left = 146.0
-offset_top = 5.0
-offset_right = 233.0
-offset_bottom = 105.0
-texture = ExtResource("3_sctus")
+offset_left = 142.0
+offset_top = 30.0
+offset_right = 237.0
+offset_bottom = 109.0
+focus_neighbor_left = NodePath("../Sonic")
+icon = ExtResource("3_sctus")
+
+[node name="Label" type="Label" parent="Knuckles" unique_id=9877584]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 79.0
+offset_right = 82.0
+offset_bottom = 102.0
+text = "Knuckles"
+
+[connection signal="pressed" from="Sonic" to="." method="_on_sonic_pressed"]
+[connection signal="pressed" from="Knuckles" to="." method="_on_knuckles_pressed"]
