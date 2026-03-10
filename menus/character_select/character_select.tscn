@@ -6,6 +6,7 @@
 [ext_resource type="Script" path="res://menus/character_select/mapselect.gd" id="4_pprmj"]
 [ext_resource type="PackedScene" uid="uid://bu74bh1pcju6h" path="res://menus/character_select/cursor_arrows.tscn" id="4_xarbf"]
 [ext_resource type="Texture2D" uid="uid://dlpflfbgbkx5f" path="res://icon.png" id="5_3f6ee"]
+[ext_resource type="PackedScene" uid="uid://dq0bod7i80a2u" path="res://UI/touchscreen gamepad/touchscreen_gamepad.tscn" id="7_jc553"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pprmj"]
 shader = ExtResource("3_xarbf")
@@ -152,6 +153,9 @@ layout_mode = 0
 offset_right = 60.0
 offset_bottom = 31.0
 text = "CHARS"
+
+[node name="touchscreen gamepad" parent="." unique_id=1223920270 instance=ExtResource("7_jc553")]
+layout_mode = 1
 
 [connection signal="pressed" from="MapSelectButton" to="." method="_on_map_select_button_pressed"]
 [connection signal="pressed" from="RuleSelectButton" to="." method="_on_rule_select_button_pressed"]
