@@ -1,0 +1,42 @@
+[gd_scene format=3 uid="uid://dq0bod7i80a2u"]
+
+[ext_resource type="Script" uid="uid://clopblbk7pxwd" path="res://UI/touchscreen gamepad/touchscreen_gamepad.gd" id="1_q383e"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_q383e"]
+size = Vector2(20, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_q383e"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nmla8"]
+size = Vector2(20, 20)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nmla8"]
+
+[node name="touchscreen gamepad" type="Control" unique_id=1223920270]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_q383e")
+
+[node name="D-pad" type="Control" parent="." unique_id=1583387246]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Left" type="TouchScreenButton" parent="D-pad" unique_id=148350281]
+position = Vector2(16, 126)
+texture_normal = SubResource("PlaceholderTexture2D_q383e")
+shape = SubResource("CircleShape2D_q383e")
+
+[node name="Right" type="TouchScreenButton" parent="D-pad" unique_id=934740398]
+position = Vector2(47, 126)
+texture_normal = SubResource("PlaceholderTexture2D_nmla8")
+shape = SubResource("CircleShape2D_nmla8")
+
+[connection signal="pressed" from="D-pad/Left" to="." method="_on_left_pressed"]
+[connection signal="released" from="D-pad/Left" to="." method="_on_left_released"]
+[connection signal="pressed" from="D-pad/Right" to="." method="_on_right_pressed"]
+[connection signal="released" from="D-pad/Right" to="." method="_on_right_released"]
