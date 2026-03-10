@@ -1,4 +1,4 @@
-[gd_scene load_steps=69 format=3 uid="uid://bgrinwd5mmw30"]
+[gd_scene format=3 uid="uid://bgrinwd5mmw30"]
 
 [ext_resource type="Script" uid="uid://bw7bdawjib2mc" path="res://menus/TitleScreen/title_screen.gd" id="1_yngg5"]
 [ext_resource type="Texture2D" uid="uid://18ccaswlus40" path="res://assets/opening/Cutins.png" id="2_s146n"]
@@ -7,11 +7,16 @@
 [ext_resource type="Texture2D" uid="uid://b7yen7hjxbrmp" path="res://assets/opening/Character3.png" id="5_5punh"]
 [ext_resource type="Texture2D" uid="uid://7rimslh0hm05" path="res://assets/opening/Character4.png" id="6_kqnf8"]
 [ext_resource type="Texture2D" uid="uid://bpp30t26fut2w" path="res://assets/opening/Character5.png" id="7_le5n5"]
-[ext_resource type="PackedScene" uid="uid://bdxoanh00d4h4" path="res://menus/flame_logo.tscn" id="8_yubun"]
+[ext_resource type="Texture2D" uid="uid://chm74lghuyaej" path="res://assets/ui/menus/flame_icon/flame1.png" id="8_eoxhm"]
 [ext_resource type="AudioStream" uid="uid://ok2nyhj2xieo" path="res://assets/audio/bgm/01. Title.mp3" id="9_p5s4k"]
+[ext_resource type="Texture2D" uid="uid://b2wgrlcttjty8" path="res://assets/ui/menus/flame_icon/flame2.png" id="9_s71wy"]
 [ext_resource type="Texture2D" uid="uid://q6xlagepcaxa" path="res://assets/opening/Scene01BG.png" id="10_saqug"]
+[ext_resource type="Texture2D" uid="uid://jcbvu2lakf5y" path="res://assets/ui/menus/flame_icon/flame3.png" id="10_yyvsb"]
 [ext_resource type="Texture2D" uid="uid://sh1axjkuy0x2" path="res://assets/opening/SonicScene01.png" id="11_4y71n"]
+[ext_resource type="Texture2D" uid="uid://edkp2s1swomf" path="res://assets/ui/menus/flame_icon/flame4.png" id="11_e4kol"]
 [ext_resource type="Texture2D" uid="uid://bt2hqk4gmyxdr" path="res://assets/opening/AmyScene01.png" id="12_6b2vh"]
+[ext_resource type="Texture2D" uid="uid://cl7iswl6b7iug" path="res://assets/ui/menus/flame_icon/flame5.png" id="12_qgvk1"]
+[ext_resource type="Texture2D" uid="uid://dk7x2l2pkw6rx" path="res://assets/ui/menus/flame_icon/flame6.png" id="13_ga3w5"]
 [ext_resource type="Shader" uid="uid://cpmq66edu6d6o" path="res://menus/TitleScreen/TitleScreen.gdshader" id="13_scd31"]
 [ext_resource type="Texture2D" uid="uid://bs778i2xfpspo" path="res://assets/opening/5.png" id="14_fbxrp"]
 [ext_resource type="Shader" uid="uid://c33oj3ntnnvie" path="res://menus/TitleScreen/Scene2.gdshader" id="15_bky4q"]
@@ -302,6 +307,20 @@ tracks/22/keys = {
 "update": 0,
 "values": [Vector2(50, 90), Vector2(127, 90)]
 }
+tracks/23/type = "method"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath(".")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(8.28),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"animation_done_transition"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_lu27h"]
 length = 0.001
@@ -587,6 +606,32 @@ _data = {
 &"Opening": SubResource("Animation_sh0fa"),
 &"RESET": SubResource("Animation_lu27h")
 }
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hyn34"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_eoxhm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_s71wy")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_yyvsb")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_e4kol")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_qgvk1")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_ga3w5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 12.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lr8cf"]
 atlas = ExtResource("10_saqug")
@@ -895,101 +940,101 @@ animations = [{
 "speed": 20.0
 }]
 
-[node name="TitleScreen" type="Node2D"]
+[node name="TitleScreen" type="Node2D" unique_id=472030796]
 script = ExtResource("1_yngg5")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-&"": SubResource("AnimationLibrary_h4r8u")
-}
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1665803898]
+libraries/ = SubResource("AnimationLibrary_h4r8u")
 
-[node name="CutinsScene" type="Node2D" parent="."]
+[node name="CutinsScene" type="Node2D" parent="." unique_id=1654888671]
 
-[node name="Cutins" type="Sprite2D" parent="CutinsScene"]
+[node name="Cutins" type="Sprite2D" parent="CutinsScene" unique_id=85761578]
 z_index = 110
 position = Vector2(111, 119)
 texture = ExtResource("2_s146n")
 hframes = 5
 frame = 1
 
-[node name="SonicCutin" type="Sprite2D" parent="CutinsScene"]
+[node name="SonicCutin" type="Sprite2D" parent="CutinsScene" unique_id=1991983798]
 visible = false
 position = Vector2(208, 183)
 texture = ExtResource("3_0jsmq")
 
-[node name="Character3" type="Sprite2D" parent="CutinsScene/SonicCutin"]
+[node name="Character3" type="Sprite2D" parent="CutinsScene/SonicCutin" unique_id=2007587541]
 z_index = -1
 position = Vector2(-94, -4)
 texture = ExtResource("3_0jsmq")
 flip_h = true
 
-[node name="TailsCutin" type="Sprite2D" parent="CutinsScene"]
+[node name="TailsCutin" type="Sprite2D" parent="CutinsScene" unique_id=992856739]
 visible = false
 z_index = 3
 position = Vector2(84, 186)
 texture = ExtResource("4_xdfig")
 
-[node name="Character3" type="Sprite2D" parent="CutinsScene/TailsCutin"]
+[node name="Character3" type="Sprite2D" parent="CutinsScene/TailsCutin" unique_id=1288352435]
 z_index = -1
 position = Vector2(94, -189)
 texture = ExtResource("4_xdfig")
 
-[node name="KnucklesCutin" type="Sprite2D" parent="CutinsScene"]
+[node name="KnucklesCutin" type="Sprite2D" parent="CutinsScene" unique_id=1439856880]
 position = Vector2(125, 167)
 texture = ExtResource("5_5punh")
 
-[node name="Character4" type="Sprite2D" parent="CutinsScene/KnucklesCutin"]
+[node name="Character4" type="Sprite2D" parent="CutinsScene/KnucklesCutin" unique_id=658737166]
 position = Vector2(-246, 2)
 rotation = 1.5708
 texture = ExtResource("5_5punh")
 flip_v = true
 
-[node name="ShadowCutin" type="Sprite2D" parent="CutinsScene"]
+[node name="ShadowCutin" type="Sprite2D" parent="CutinsScene" unique_id=1503401700]
 position = Vector2(73, 128)
 texture = ExtResource("6_kqnf8")
 
-[node name="Character5" type="Sprite2D" parent="CutinsScene/ShadowCutin"]
+[node name="Character5" type="Sprite2D" parent="CutinsScene/ShadowCutin" unique_id=1083808251]
 position = Vector2(212, -88)
 texture = ExtResource("6_kqnf8")
 
-[node name="EmerlCutin" type="Sprite2D" parent="CutinsScene"]
+[node name="EmerlCutin" type="Sprite2D" parent="CutinsScene" unique_id=106091200]
 position = Vector2(126, 161)
 texture = ExtResource("7_le5n5")
 
-[node name="FlameScene" type="Node2D" parent="."]
+[node name="FlameScene" type="Node2D" parent="." unique_id=1968355079]
 
-[node name="FlameLogo" parent="FlameScene" instance=ExtResource("8_yubun")]
+[node name="FlameLogo" type="AnimatedSprite2D" parent="FlameScene" unique_id=66711674]
 position = Vector2(119, 80)
+sprite_frames = SubResource("SpriteFrames_hyn34")
+autoplay = "default"
 frame_progress = 0.140587
 
-[node name="ColorRect" type="ColorRect" parent="FlameScene"]
+[node name="ColorRect" type="ColorRect" parent="FlameScene" unique_id=1857081245]
 offset_right = 241.0
 offset_bottom = 163.0
 
-[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1002949690]
 stream = ExtResource("9_p5s4k")
 
-[node name="Scene01" type="Node2D" parent="."]
+[node name="Scene01" type="Node2D" parent="." unique_id=1991961444]
 
-[node name="BG" type="AnimatedSprite2D" parent="Scene01"]
+[node name="BG" type="AnimatedSprite2D" parent="Scene01" unique_id=1720127913]
 position = Vector2(120, 43)
 sprite_frames = SubResource("SpriteFrames_x8q5w")
 autoplay = "default"
 frame_progress = 0.441972
 
-[node name="Sonic" type="AnimatedSprite2D" parent="Scene01"]
+[node name="Sonic" type="AnimatedSprite2D" parent="Scene01" unique_id=1621102578]
 position = Vector2(202, 82)
 sprite_frames = SubResource("SpriteFrames_vkagw")
 autoplay = "default"
 frame_progress = 0.393146
 
-[node name="Amy" type="AnimatedSprite2D" parent="Scene01"]
+[node name="Amy" type="AnimatedSprite2D" parent="Scene01" unique_id=1491948636]
 position = Vector2(127, 90)
 sprite_frames = SubResource("SpriteFrames_4fq3i")
 autoplay = "default"
 frame_progress = 0.388156
 
-[node name="Ground" type="TextureRect" parent="Scene01"]
+[node name="Ground" type="TextureRect" parent="Scene01" unique_id=1682029964]
 material = SubResource("ShaderMaterial_tgskt")
 offset_left = -1.0
 offset_top = 66.0
@@ -998,42 +1043,43 @@ offset_bottom = 162.0
 texture = ExtResource("14_fbxrp")
 stretch_mode = 1
 
-[node name="White" type="ColorRect" parent="Scene01"]
+[node name="White" type="ColorRect" parent="Scene01" unique_id=710321986]
 offset_right = 241.0
 offset_bottom = 163.0
 
-[node name="Scene02" type="Node2D" parent="."]
+[node name="Scene02" type="Node2D" parent="." unique_id=529794168]
 visible = false
 
-[node name="ColorRect" type="ColorRect" parent="Scene02"]
+[node name="ColorRect" type="ColorRect" parent="Scene02" unique_id=677192617]
 material = SubResource("ShaderMaterial_lr8cf")
 offset_right = 240.0
 offset_bottom = 160.0
 
-[node name="IntroSlide2" type="Sprite2D" parent="Scene02"]
+[node name="IntroSlide2" type="Sprite2D" parent="Scene02" unique_id=1281478617]
 position = Vector2(51, 62)
 texture = ExtResource("16_b4ght")
 
-[node name="IntroSlide1" type="Sprite2D" parent="Scene02"]
+[node name="IntroSlide1" type="Sprite2D" parent="Scene02" unique_id=702672380]
 position = Vector2(179, 100)
 texture = ExtResource("17_myec0")
 
-[node name="Scene03" type="Node2D" parent="."]
+[node name="Scene03" type="Node2D" parent="." unique_id=1795110080]
+visible = false
 
-[node name="Scene03bg" type="Sprite2D" parent="Scene03"]
+[node name="Scene03bg" type="Sprite2D" parent="Scene03" unique_id=915706006]
 position = Vector2(120, 88)
 texture = ExtResource("18_ttuns")
 
-[node name="Scene03Framing" type="Sprite2D" parent="Scene03"]
+[node name="Scene03Framing" type="Sprite2D" parent="Scene03" unique_id=845026229]
 position = Vector2(120, 49)
 texture = ExtResource("19_j41sv")
 
-[node name="Scene03Framing2" type="Sprite2D" parent="Scene03"]
+[node name="Scene03Framing2" type="Sprite2D" parent="Scene03" unique_id=327515443]
 position = Vector2(120, 145)
 texture = ExtResource("19_j41sv")
 flip_v = true
 
-[node name="TextureRect" type="TextureRect" parent="Scene03"]
+[node name="TextureRect" type="TextureRect" parent="Scene03" unique_id=278441195]
 offset_left = -10.0
 offset_top = 118.0
 offset_right = 249.0
@@ -1041,7 +1087,7 @@ offset_bottom = 214.0
 texture = ExtResource("20_ibri6")
 stretch_mode = 1
 
-[node name="Computer" type="AnimatedSprite2D" parent="Scene03"]
+[node name="Computer" type="AnimatedSprite2D" parent="Scene03" unique_id=1515161143]
 position = Vector2(213, 89)
 sprite_frames = SubResource("SpriteFrames_q0c4l")
 autoplay = "default"
