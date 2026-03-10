@@ -16,6 +16,7 @@
 [ext_resource type="Texture2D" uid="uid://b63yx57cgh47o" path="res://assets/ui/menus/mode_select/mode_select.png" id="14_h5q80"]
 [ext_resource type="PackedScene" uid="uid://bdxoanh00d4h4" path="res://menus/flame_logo.tscn" id="15_j86my"]
 [ext_resource type="AudioStream" uid="uid://dl8ljyjfruc5e" path="res://assets/audio/sfx/menu/mode_change.wav" id="16_4rtil"]
+[ext_resource type="PackedScene" uid="uid://dq0bod7i80a2u" path="res://UI/touchscreen gamepad/touchscreen_gamepad.tscn" id="17_rufb7"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_tfsul"]
 font_size = 24
@@ -123,6 +124,9 @@ horizontal_alignment = 1
 [node name="FlameLogo" parent="." unique_id=1697363820 instance=ExtResource("15_j86my")]
 position = Vector2(200, 84)
 frame_progress = 0.140587
+
+[node name="touchscreen gamepad" parent="." unique_id=1223920270 instance=ExtResource("17_rufb7")]
+layout_mode = 1
 
 [node name="ModeChangeSound" type="AudioStreamPlayer" parent="." unique_id=1684953712]
 stream = ExtResource("16_4rtil")
