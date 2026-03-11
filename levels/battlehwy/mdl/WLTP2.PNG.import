@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d3hmajfiesubl"
 path.s3tc="res://.godot/imported/WLTP2.PNG-c2b8092fe71254482672d5e6cc90736e.s3tc.ctex"
+path.etc2="res://.godot/imported/WLTP2.PNG-c2b8092fe71254482672d5e6cc90736e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/battlehwy/mdl/WLTP2.PNG"
-dest_files=["res://.godot/imported/WLTP2.PNG-c2b8092fe71254482672d5e6cc90736e.s3tc.ctex"]
+dest_files=["res://.godot/imported/WLTP2.PNG-c2b8092fe71254482672d5e6cc90736e.s3tc.ctex", "res://.godot/imported/WLTP2.PNG-c2b8092fe71254482672d5e6cc90736e.etc2.ctex"]
 
 [params]
 

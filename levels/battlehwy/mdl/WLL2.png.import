@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ddds8dweaglak"
 path.s3tc="res://.godot/imported/WLL2.png-0179008183b8afb77ecd3bd199812b09.s3tc.ctex"
+path.etc2="res://.godot/imported/WLL2.png-0179008183b8afb77ecd3bd199812b09.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/battlehwy/mdl/WLL2.png"
-dest_files=["res://.godot/imported/WLL2.png-0179008183b8afb77ecd3bd199812b09.s3tc.ctex"]
+dest_files=["res://.godot/imported/WLL2.png-0179008183b8afb77ecd3bd199812b09.s3tc.ctex", "res://.godot/imported/WLL2.png-0179008183b8afb77ecd3bd199812b09.etc2.ctex"]
 
 [params]
 

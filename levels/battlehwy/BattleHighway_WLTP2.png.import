@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://djkwqb8c7gh6u"
 path.s3tc="res://.godot/imported/BattleHighway_WLTP2.png-3135c7b0a14e23cb3be6a80b9a4532ed.s3tc.ctex"
+path.etc2="res://.godot/imported/BattleHighway_WLTP2.png-3135c7b0a14e23cb3be6a80b9a4532ed.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://levels/battlehwy/BattleHighway_WLTP2.png"
-dest_files=["res://.godot/imported/BattleHighway_WLTP2.png-3135c7b0a14e23cb3be6a80b9a4532ed.s3tc.ctex"]
+dest_files=["res://.godot/imported/BattleHighway_WLTP2.png-3135c7b0a14e23cb3be6a80b9a4532ed.s3tc.ctex", "res://.godot/imported/BattleHighway_WLTP2.png-3135c7b0a14e23cb3be6a80b9a4532ed.etc2.ctex"]
 
 [params]
 

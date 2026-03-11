@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://47og8hxik4d0"
 path.s3tc="res://.godot/imported/twoDriver.png-bc81c10558d84f967e6dd57392504618.s3tc.ctex"
+path.etc2="res://.godot/imported/twoDriver.png-bc81c10558d84f967e6dd57392504618.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/ui/twoDriver.png"
-dest_files=["res://.godot/imported/twoDriver.png-bc81c10558d84f967e6dd57392504618.s3tc.ctex"]
+dest_files=["res://.godot/imported/twoDriver.png-bc81c10558d84f967e6dd57392504618.s3tc.ctex", "res://.godot/imported/twoDriver.png-bc81c10558d84f967e6dd57392504618.etc2.ctex"]
 
 [params]
 

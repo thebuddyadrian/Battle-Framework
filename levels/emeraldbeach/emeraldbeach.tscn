@@ -1,7 +1,7 @@
-[gd_scene load_steps=55 format=4 uid="uid://bm8hg8jvdgnfp"]
+[gd_scene format=4 uid="uid://bm8hg8jvdgnfp"]
 
 [ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_gesyx"]
-[ext_resource type="Resource" uid="uid://yry7jkk7gd33" path="res://levels/emeraldbeach/emeraldbeach.tres" id="2_424l1"]
+[ext_resource type="Resource" uid="uid://yry7jkk7gd33" path="res://levels/scrap_brain/scrap_brain.tres" id="2_424l1"]
 [ext_resource type="Texture2D" uid="uid://47og8hxik4d0" path="res://assets/ui/twoDriver.png" id="5_f0yuc"]
 [ext_resource type="Texture2D" uid="uid://cddq5bqxspqpb" path="res://levels/emeraldbeach/eb2.bmp" id="5_opuox"]
 [ext_resource type="Script" uid="uid://ltyn74o4ixti" path="res://levels/sky_pivot.gd" id="6_r6hsw"]

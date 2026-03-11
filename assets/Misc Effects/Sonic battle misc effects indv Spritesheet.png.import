@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dbk1gpee8yf45"
 path.s3tc="res://.godot/imported/Sonic battle misc effects indv Spritesheet.png-121a5822632e07b6ab52bd8d267ed249.s3tc.ctex"
+path.etc2="res://.godot/imported/Sonic battle misc effects indv Spritesheet.png-121a5822632e07b6ab52bd8d267ed249.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/Misc Effects/Sonic battle misc effects indv Spritesheet.png"
-dest_files=["res://.godot/imported/Sonic battle misc effects indv Spritesheet.png-121a5822632e07b6ab52bd8d267ed249.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sonic battle misc effects indv Spritesheet.png-121a5822632e07b6ab52bd8d267ed249.s3tc.ctex", "res://.godot/imported/Sonic battle misc effects indv Spritesheet.png-121a5822632e07b6ab52bd8d267ed249.etc2.ctex"]
 
 [params]
 
