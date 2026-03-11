@@ -275,6 +275,7 @@ rendering_device/fallback_to_vulkan=false
 rendering_device/fallback_to_opengl3=false
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+textures/vram_compression/import_etc2_astc=true
 textures/vram_compression/compress_with_gpu=false
 textures/vram_compression/cache_gpu_compressor=false
 textures/lossless_compression/force_png=true

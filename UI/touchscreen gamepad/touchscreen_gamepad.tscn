@@ -117,16 +117,14 @@ shape = SubResource("CircleShape2D_q383e")
 
 [node name="overlay controls" type="Control" parent="." unique_id=1249848551]
 layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -10.5
-offset_right = 10.5
-offset_bottom = 21.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
+grow_vertical = 2
 
 [node name="Toggle hide show" type="TouchScreenButton" parent="overlay controls" unique_id=996479870]
-position = Vector2(-0.5, 6)
+position = Vector2(106, 5)
 texture_normal = SubResource("PlaceholderTexture2D_q383e")
 shape = SubResource("CircleShape2D_q383e")
 
