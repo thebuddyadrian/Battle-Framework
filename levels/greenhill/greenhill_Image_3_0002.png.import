@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://d0gyeyqsp45y5"
 path.s3tc="res://.godot/imported/greenhill_Image_3_0002.png-caa01c06d827723e6fb404df45672fc8.s3tc.ctex"
+path.etc2="res://.godot/imported/greenhill_Image_3_0002.png-caa01c06d827723e6fb404df45672fc8.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://levels/greenhill/greenhill_Image_3_0002.png"
-dest_files=["res://.godot/imported/greenhill_Image_3_0002.png-caa01c06d827723e6fb404df45672fc8.s3tc.ctex"]
+dest_files=["res://.godot/imported/greenhill_Image_3_0002.png-caa01c06d827723e6fb404df45672fc8.s3tc.ctex", "res://.godot/imported/greenhill_Image_3_0002.png-caa01c06d827723e6fb404df45672fc8.etc2.ctex"]
 
 [params]
 

@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://duwdpg2mu5skc"
 path.s3tc="res://.godot/imported/Sonic battle freedome hq_Freedom hq Flag hd.png-5cde8c2015e16e1f16fe3e3a263367a5.s3tc.ctex"
+path.etc2="res://.godot/imported/Sonic battle freedome hq_Freedom hq Flag hd.png-5cde8c2015e16e1f16fe3e3a263367a5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://levels/hub_world_test/Sonic battle freedome hq_Freedom hq Flag hd.png"
-dest_files=["res://.godot/imported/Sonic battle freedome hq_Freedom hq Flag hd.png-5cde8c2015e16e1f16fe3e3a263367a5.s3tc.ctex"]
+dest_files=["res://.godot/imported/Sonic battle freedome hq_Freedom hq Flag hd.png-5cde8c2015e16e1f16fe3e3a263367a5.s3tc.ctex", "res://.godot/imported/Sonic battle freedome hq_Freedom hq Flag hd.png-5cde8c2015e16e1f16fe3e3a263367a5.etc2.ctex"]
 
 [params]
 

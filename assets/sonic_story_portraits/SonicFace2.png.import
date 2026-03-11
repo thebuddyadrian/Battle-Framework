@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dd1qepmj4id5r"
 path.s3tc="res://.godot/imported/SonicFace2.png-0ab347cec77b722c27595b0f3cbc9435.s3tc.ctex"
+path.etc2="res://.godot/imported/SonicFace2.png-0ab347cec77b722c27595b0f3cbc9435.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/sonic_story_portraits/SonicFace2.png"
-dest_files=["res://.godot/imported/SonicFace2.png-0ab347cec77b722c27595b0f3cbc9435.s3tc.ctex"]
+dest_files=["res://.godot/imported/SonicFace2.png-0ab347cec77b722c27595b0f3cbc9435.s3tc.ctex", "res://.godot/imported/SonicFace2.png-0ab347cec77b722c27595b0f3cbc9435.etc2.ctex"]
 
 [params]
 

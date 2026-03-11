@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://bm8hg8jvdgnfp"]
+
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_gesyx"]
+[ext_resource type="Resource" uid="uid://yry7jkk7gd33" path="res://levels/scrap_brain/scrap_brain.tres" id="2_424l1"]
+[ext_resource type="PackedScene" uid="uid://b34015rpoebb" path="res://levels/scrap_brain/scrap brain.gltf" id="3_f4on4"]
+
+[node name="Level" type="Node3D" unique_id=178844663 node_paths=PackedStringArray("player_spawn_1", "player_spawn_2", "player_spawn_3", "player_spawn_4", "camera_root_parent")]
+script = ExtResource("1_gesyx")
+stage_info = ExtResource("2_424l1")
+player_spawn_1 = NodePath("PlayerSpawn1")
+player_spawn_2 = NodePath("PlayerSpawn2")
+player_spawn_3 = NodePath("PlayerSpawn3")
+player_spawn_4 = NodePath("PlayerSpawn4")
+camera_root_parent = NodePath(".")
+
+[node name="scrap_brain" parent="." unique_id=497774689 instance=ExtResource("3_f4on4")]
+transform = Transform3D(-1.3113416e-07, 0, -3, 0, 3, 0, 3, 0, -1.3113416e-07, 0, 0, 0)
+
+[node name="PlayerSpawn1" type="Node3D" parent="." unique_id=2087006242]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -7.458753, 1.6512444, -1.5725894)
+
+[node name="PlayerSpawn2" type="Node3D" parent="." unique_id=626116961]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.68483305, 2.548118, 3.4851446)
+
+[node name="PlayerSpawn3" type="Node3D" parent="." unique_id=1338666612]
+transform = Transform3D(3.20217, 2.3971, 0, -2.3971, 3.20217, 0, 0, 0, 4, 7.8908215, 2.3816557, 2.535275)
+
+[node name="PlayerSpawn4" type="Node3D" parent="." unique_id=965520271]
+transform = Transform3D(3.20217, 2.3971, 0, -2.3971, 3.20217, 0, 0, 0, 4, 4.892292, 1.2903659, -3.7619042)

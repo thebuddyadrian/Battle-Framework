@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://g3np87ggycsa"
 path.s3tc="res://.godot/imported/06.PNG-3c147eb370c3c7a1b0e2b701dd019b41.s3tc.ctex"
+path.etc2="res://.godot/imported/06.PNG-3c147eb370c3c7a1b0e2b701dd019b41.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/battlehwy/mdl/06.PNG"
-dest_files=["res://.godot/imported/06.PNG-3c147eb370c3c7a1b0e2b701dd019b41.s3tc.ctex"]
+dest_files=["res://.godot/imported/06.PNG-3c147eb370c3c7a1b0e2b701dd019b41.s3tc.ctex", "res://.godot/imported/06.PNG-3c147eb370c3c7a1b0e2b701dd019b41.etc2.ctex"]
 
 [params]
 

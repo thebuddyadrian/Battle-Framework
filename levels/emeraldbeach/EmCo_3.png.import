@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://b0l8yp055du61"
 path.s3tc="res://.godot/imported/EmCo_3.png-342b3a52925e5c2d88701a71f87a0c65.s3tc.ctex"
+path.etc2="res://.godot/imported/EmCo_3.png-342b3a52925e5c2d88701a71f87a0c65.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://levels/emeraldbeach/EmCo_3.png"
-dest_files=["res://.godot/imported/EmCo_3.png-342b3a52925e5c2d88701a71f87a0c65.s3tc.ctex"]
+dest_files=["res://.godot/imported/EmCo_3.png-342b3a52925e5c2d88701a71f87a0c65.s3tc.ctex", "res://.godot/imported/EmCo_3.png-342b3a52925e5c2d88701a71f87a0c65.etc2.ctex"]
 
 [params]
 

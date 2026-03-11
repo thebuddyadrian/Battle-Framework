@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bl45pj2rfuo7u"
 path.s3tc="res://.godot/imported/Manabarback.png-6c411ecb8620d68543023ed151694dd9.s3tc.ctex"
+path.etc2="res://.godot/imported/Manabarback.png-6c411ecb8620d68543023ed151694dd9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/ui/Manabarback.png"
-dest_files=["res://.godot/imported/Manabarback.png-6c411ecb8620d68543023ed151694dd9.s3tc.ctex"]
+dest_files=["res://.godot/imported/Manabarback.png-6c411ecb8620d68543023ed151694dd9.s3tc.ctex", "res://.godot/imported/Manabarback.png-6c411ecb8620d68543023ed151694dd9.etc2.ctex"]
 
 [params]
 

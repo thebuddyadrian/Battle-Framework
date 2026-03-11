@@ -23,7 +23,8 @@ var battle_stages: Array[String] = [
 	"chaoruins",
 	"hologram",
 	"holysummit",
-	"greenhill"
+	"greenhill",
+	"scrap_brain"
 ]
 
 var modded_battle_stages: Array[String]

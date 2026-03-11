@@ -8,7 +8,7 @@ const PLAYER_CHARACTER_SCENE := preload("res://menus/character_select/player_cha
 @onready var map_select : Control = $MAPSELECT
 
 var current_player = 1
-
+ 
 var active_player_nodes = []
 
 func _ready() -> void:
@@ -83,7 +83,9 @@ func css_scene_transition():
 	# Store stage list
 	if map_select.selected_stages.size() == 0:
 		MatchSetup.stage_list = [selected_stage]
-	
+	else:
+		MatchSetup.stage_list = map_select.selected_stages
+		pass
 	SceneChanger.change_scene_to_file("res://match_scene/match_scene.tscn")
 
 

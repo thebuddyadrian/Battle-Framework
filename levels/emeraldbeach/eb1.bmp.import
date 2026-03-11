@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://jtwy4gppp5u"
 path.s3tc="res://.godot/imported/eb1.bmp-87da98d9d05bc9e2f22edc6103ea6947.s3tc.ctex"
+path.etc2="res://.godot/imported/eb1.bmp-87da98d9d05bc9e2f22edc6103ea6947.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://levels/emeraldbeach/eb1.bmp"
-dest_files=["res://.godot/imported/eb1.bmp-87da98d9d05bc9e2f22edc6103ea6947.s3tc.ctex"]
+dest_files=["res://.godot/imported/eb1.bmp-87da98d9d05bc9e2f22edc6103ea6947.s3tc.ctex", "res://.godot/imported/eb1.bmp-87da98d9d05bc9e2f22edc6103ea6947.etc2.ctex"]
 
 [params]
 

@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://wxx3mr3dque4"
 path.s3tc="res://.godot/imported/SkillCursor.png-e17c1768d96457dd3e9a81e594d62dd9.s3tc.ctex"
+path.etc2="res://.godot/imported/SkillCursor.png-e17c1768d96457dd3e9a81e594d62dd9.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://assets/ui/SkillCursor.png"
-dest_files=["res://.godot/imported/SkillCursor.png-e17c1768d96457dd3e9a81e594d62dd9.s3tc.ctex"]
+dest_files=["res://.godot/imported/SkillCursor.png-e17c1768d96457dd3e9a81e594d62dd9.s3tc.ctex", "res://.godot/imported/SkillCursor.png-e17c1768d96457dd3e9a81e594d62dd9.etc2.ctex"]
 
 [params]
 
