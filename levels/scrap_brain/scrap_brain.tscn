@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://bm8hg8jvdgnfp"]
+
+[ext_resource type="Script" uid="uid://dpsy1u0t5ei1o" path="res://levels/level.gd" id="1_gesyx"]
+[ext_resource type="Resource" uid="uid://yry7jkk7gd33" path="res://levels/scrap_brain/scrap_brain.tres" id="2_424l1"]
+[ext_resource type="PackedScene" uid="uid://b34015rpoebb" path="res://levels/scrap_brain/scrap brain.gltf" id="3_f4on4"]
+
+[node name="Level" type="Node3D" unique_id=178844663 node_paths=PackedStringArray("camera_root_parent")]
+script = ExtResource("1_gesyx")
+stage_info = ExtResource("2_424l1")
+camera_root_parent = NodePath(".")
+
+[node name="blockbench_export" parent="." unique_id=23762277 instance=ExtResource("3_f4on4")]
