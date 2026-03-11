@@ -21,22 +21,136 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_q383e")
 
-[node name="D-pad" type="Control" parent="." unique_id=1583387246]
+[node name="gamepad" type="Control" parent="." unique_id=134839899]
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Left" type="TouchScreenButton" parent="D-pad" unique_id=148350281]
-position = Vector2(16, 126)
+[node name="D-pad" type="Control" parent="gamepad" unique_id=1583387246]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = 80.0
+offset_right = 40.0
+offset_bottom = 120.0
+grow_vertical = 0
+
+[node name="Left" type="TouchScreenButton" parent="gamepad/D-pad" unique_id=148350281]
+position = Vector2(13, -7)
 texture_normal = SubResource("PlaceholderTexture2D_q383e")
 shape = SubResource("CircleShape2D_q383e")
 
-[node name="Right" type="TouchScreenButton" parent="D-pad" unique_id=934740398]
-position = Vector2(47, 126)
+[node name="Right" type="TouchScreenButton" parent="gamepad/D-pad" unique_id=934740398]
+position = Vector2(52, -7)
 texture_normal = SubResource("PlaceholderTexture2D_nmla8")
 shape = SubResource("CircleShape2D_nmla8")
 
-[connection signal="pressed" from="D-pad/Left" to="." method="_on_left_pressed"]
-[connection signal="released" from="D-pad/Left" to="." method="_on_left_released"]
-[connection signal="pressed" from="D-pad/Right" to="." method="_on_right_pressed"]
-[connection signal="released" from="D-pad/Right" to="." method="_on_right_released"]
+[node name="Up" type="TouchScreenButton" parent="gamepad/D-pad" unique_id=219414459]
+position = Vector2(33, -27)
+texture_normal = SubResource("PlaceholderTexture2D_nmla8")
+shape = SubResource("CircleShape2D_nmla8")
+
+[node name="Down" type="TouchScreenButton" parent="gamepad/D-pad" unique_id=2138193196]
+position = Vector2(33, 15)
+texture_normal = SubResource("PlaceholderTexture2D_nmla8")
+shape = SubResource("CircleShape2D_nmla8")
+
+[node name="Actions" type="Control" parent="gamepad" unique_id=150242537]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 160.0
+offset_top = 80.0
+offset_right = 200.0
+offset_bottom = 120.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="A" type="TouchScreenButton" parent="gamepad/Actions" unique_id=1594082000]
+position = Vector2(-31, -9)
+texture_normal = SubResource("PlaceholderTexture2D_q383e")
+shape = SubResource("CircleShape2D_q383e")
+
+[node name="B" type="TouchScreenButton" parent="gamepad/Actions" unique_id=1783592547]
+position = Vector2(-7, -8)
+texture_normal = SubResource("PlaceholderTexture2D_q383e")
+shape = SubResource("CircleShape2D_q383e")
+
+[node name="C" type="TouchScreenButton" parent="gamepad/Actions" unique_id=816772533]
+position = Vector2(-36, -36)
+texture_normal = SubResource("PlaceholderTexture2D_q383e")
+shape = SubResource("CircleShape2D_q383e")
+
+[node name="D" type="TouchScreenButton" parent="gamepad/Actions" unique_id=1433052248]
+position = Vector2(-12, -36)
+texture_normal = SubResource("PlaceholderTexture2D_q383e")
+shape = SubResource("CircleShape2D_q383e")
+
+[node name="E" type="TouchScreenButton" parent="gamepad/Actions" unique_id=1617453606]
+position = Vector2(-9, -64)
+texture_normal = SubResource("PlaceholderTexture2D_q383e")
+shape = SubResource("CircleShape2D_q383e")
+
+[node name="Header" type="Control" parent="gamepad" unique_id=1008024417]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = 160.0
+offset_right = 200.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="start" type="TouchScreenButton" parent="gamepad/Header" unique_id=59036084]
+position = Vector2(7, 6)
+texture_normal = SubResource("PlaceholderTexture2D_q383e")
+shape = SubResource("CircleShape2D_q383e")
+
+[node name="select" type="TouchScreenButton" parent="gamepad/Header" unique_id=82586459]
+position = Vector2(-17, 6)
+texture_normal = SubResource("PlaceholderTexture2D_q383e")
+shape = SubResource("CircleShape2D_q383e")
+
+[node name="overlay controls" type="Control" parent="." unique_id=1249848551]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -10.5
+offset_right = 10.5
+offset_bottom = 21.0
+grow_horizontal = 2
+
+[node name="Toggle hide show" type="TouchScreenButton" parent="overlay controls" unique_id=996479870]
+position = Vector2(-0.5, 6)
+texture_normal = SubResource("PlaceholderTexture2D_q383e")
+shape = SubResource("CircleShape2D_q383e")
+
+[connection signal="pressed" from="gamepad/D-pad/Left" to="." method="_on_left_pressed"]
+[connection signal="released" from="gamepad/D-pad/Left" to="." method="_on_left_released"]
+[connection signal="pressed" from="gamepad/D-pad/Right" to="." method="_on_right_pressed"]
+[connection signal="released" from="gamepad/D-pad/Right" to="." method="_on_right_released"]
+[connection signal="pressed" from="gamepad/D-pad/Up" to="." method="_on_up_pressed"]
+[connection signal="released" from="gamepad/D-pad/Up" to="." method="_on_up_released"]
+[connection signal="pressed" from="gamepad/D-pad/Down" to="." method="_on_down_pressed"]
+[connection signal="released" from="gamepad/D-pad/Down" to="." method="_on_down_released"]
+[connection signal="pressed" from="gamepad/Actions/A" to="." method="_on_a_pressed"]
+[connection signal="released" from="gamepad/Actions/A" to="." method="_on_a_released"]
+[connection signal="pressed" from="gamepad/Actions/B" to="." method="_on_b_pressed"]
+[connection signal="released" from="gamepad/Actions/B" to="." method="_on_b_released"]
+[connection signal="pressed" from="gamepad/Actions/C" to="." method="_on_c_pressed"]
+[connection signal="released" from="gamepad/Actions/C" to="." method="_on_c_released"]
+[connection signal="pressed" from="gamepad/Actions/D" to="." method="_on_d_pressed"]
+[connection signal="released" from="gamepad/Actions/D" to="." method="_on_d_released"]
+[connection signal="pressed" from="gamepad/Actions/E" to="." method="_on_e_pressed"]
+[connection signal="released" from="gamepad/Actions/E" to="." method="_on_e_released"]
+[connection signal="pressed" from="gamepad/Header/start" to="." method="_on_start_pressed"]
+[connection signal="released" from="gamepad/Header/start" to="." method="_on_start_released"]
+[connection signal="pressed" from="gamepad/Header/select" to="." method="_on_select_pressed"]
+[connection signal="released" from="gamepad/Header/select" to="." method="_on_select_released"]
+[connection signal="pressed" from="overlay controls/Toggle hide show" to="." method="_on_toggle_hide_show_pressed"]
+[connection signal="released" from="overlay controls/Toggle hide show" to="." method="_on_toggle_hide_show_released"]
