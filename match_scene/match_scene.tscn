@@ -40,33 +40,15 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="touchscreen gamepad" parent="." unique_id=1223920270 instance=ExtResource("2_a222u")]
-anchors_preset = -1
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_top = -1.0
-offset_right = 481.0
-offset_bottom = 319.0
-
-[node name="D-pad" parent="touchscreen gamepad/gamepad" parent_id_path=PackedInt32Array(1223920270, 134839899) index="0" unique_id=1583387246]
-offset_left = 1.0
-offset_top = 177.0
-offset_right = 540.0
-offset_bottom = 545.0
-
-[node name="Actions" parent="touchscreen gamepad/gamepad" parent_id_path=PackedInt32Array(1223920270, 134839899) index="1" unique_id=150242537]
-offset_left = 358.0
-offset_top = 216.0
-offset_right = 398.0
-offset_bottom = 256.0
-
-[node name="Header" parent="touchscreen gamepad/gamepad" parent_id_path=PackedInt32Array(1223920270, 134839899) index="2" unique_id=1008024417]
-offset_left = 335.0
-offset_top = 7.0
-offset_right = 375.0
-offset_bottom = 47.0
-
 [node name="Input Router" type="Node" parent="." unique_id=629555751]
 script = ExtResource("2_qxr2g")
 
-[editable path="touchscreen gamepad"]
+[node name="Control" type="Control" parent="." unique_id=1548067884]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 480.0
+offset_bottom = 320.0
+scale = Vector2(2, 2)
+
+[node name="touchscreen gamepad" parent="Control" unique_id=1223920270 instance=ExtResource("2_a222u")]
+layout_mode = 1
