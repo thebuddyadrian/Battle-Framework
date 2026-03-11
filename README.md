@@ -22,7 +22,7 @@ This project is currently in a very rough "proof-of-concept" state. It contains 
  - CPU character behaviour
 
 ### BACKLOG (coarse-grained, not yet scheduled)
- - 2.5D sidscroller sequences for story mode
+ - 2.5D sidescroller sequences for story mode
  - Story mode chapter select with per-chapter animated backgrounds.
  - environmental hazard props (cacti, jagged walls, poison clouds, speed pads, etc.)
  - themed UI
