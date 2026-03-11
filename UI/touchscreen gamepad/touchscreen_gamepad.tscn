@@ -14,17 +14,14 @@ size = Vector2(20, 20)
 
 [node name="touchscreen gamepad" type="Control" unique_id=1223920270]
 layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+anchors_preset = 0
+offset_right = 240.0
+offset_bottom = 160.0
+mouse_filter = 1
 script = ExtResource("1_q383e")
 
 [node name="gamepad" type="Control" parent="." unique_id=134839899]
 anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
 
 [node name="D-pad" type="Control" parent="gamepad" unique_id=1583387246]
 layout_mode = 1
@@ -32,66 +29,64 @@ anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_top = 80.0
-offset_right = 40.0
-offset_bottom = 120.0
+offset_bottom = 80.0
 grow_vertical = 0
 
 [node name="Left" type="TouchScreenButton" parent="gamepad/D-pad" unique_id=148350281]
-position = Vector2(13, -7)
+position = Vector2(17, 10)
 texture_normal = SubResource("PlaceholderTexture2D_q383e")
 shape = SubResource("CircleShape2D_q383e")
 
 [node name="Right" type="TouchScreenButton" parent="gamepad/D-pad" unique_id=934740398]
-position = Vector2(52, -7)
+position = Vector2(56, 10)
 texture_normal = SubResource("PlaceholderTexture2D_nmla8")
 shape = SubResource("CircleShape2D_nmla8")
 
 [node name="Up" type="TouchScreenButton" parent="gamepad/D-pad" unique_id=219414459]
-position = Vector2(33, -27)
+position = Vector2(37, -10)
 texture_normal = SubResource("PlaceholderTexture2D_nmla8")
 shape = SubResource("CircleShape2D_nmla8")
 
 [node name="Down" type="TouchScreenButton" parent="gamepad/D-pad" unique_id=2138193196]
-position = Vector2(33, 15)
+position = Vector2(37, 32)
 texture_normal = SubResource("PlaceholderTexture2D_nmla8")
 shape = SubResource("CircleShape2D_nmla8")
 
 [node name="Actions" type="Control" parent="gamepad" unique_id=150242537]
 layout_mode = 1
-anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 160.0
-offset_top = 80.0
-offset_right = 200.0
-offset_bottom = 120.0
+offset_left = 239.0
+offset_top = 161.0
+offset_right = 239.0
+offset_bottom = 161.0
 grow_horizontal = 0
 grow_vertical = 0
 
 [node name="A" type="TouchScreenButton" parent="gamepad/Actions" unique_id=1594082000]
-position = Vector2(-31, -9)
+position = Vector2(-75, -42)
 texture_normal = SubResource("PlaceholderTexture2D_q383e")
 shape = SubResource("CircleShape2D_q383e")
 
 [node name="B" type="TouchScreenButton" parent="gamepad/Actions" unique_id=1783592547]
-position = Vector2(-7, -8)
+position = Vector2(-51, -41)
 texture_normal = SubResource("PlaceholderTexture2D_q383e")
 shape = SubResource("CircleShape2D_q383e")
 
 [node name="C" type="TouchScreenButton" parent="gamepad/Actions" unique_id=816772533]
-position = Vector2(-36, -36)
+position = Vector2(-80, -69)
 texture_normal = SubResource("PlaceholderTexture2D_q383e")
 shape = SubResource("CircleShape2D_q383e")
 
 [node name="D" type="TouchScreenButton" parent="gamepad/Actions" unique_id=1433052248]
-position = Vector2(-12, -36)
+position = Vector2(-56, -69)
 texture_normal = SubResource("PlaceholderTexture2D_q383e")
 shape = SubResource("CircleShape2D_q383e")
 
 [node name="E" type="TouchScreenButton" parent="gamepad/Actions" unique_id=1617453606]
-position = Vector2(-9, -64)
+position = Vector2(-53, -97)
 texture_normal = SubResource("PlaceholderTexture2D_q383e")
 shape = SubResource("CircleShape2D_q383e")
 
@@ -100,18 +95,18 @@ layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = 160.0
-offset_right = 200.0
-offset_bottom = 40.0
+offset_left = 233.0
+offset_right = 239.0
+offset_bottom = 6.0
 grow_horizontal = 0
 
 [node name="start" type="TouchScreenButton" parent="gamepad/Header" unique_id=59036084]
-position = Vector2(7, 6)
+position = Vector2(-27, 6)
 texture_normal = SubResource("PlaceholderTexture2D_q383e")
 shape = SubResource("CircleShape2D_q383e")
 
 [node name="select" type="TouchScreenButton" parent="gamepad/Header" unique_id=82586459]
-position = Vector2(-17, 6)
+position = Vector2(-51, 6)
 texture_normal = SubResource("PlaceholderTexture2D_q383e")
 shape = SubResource("CircleShape2D_q383e")
 
@@ -120,6 +115,8 @@ layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_right = -240.0
+offset_bottom = -160.0
 grow_horizontal = 2
 grow_vertical = 2
 
