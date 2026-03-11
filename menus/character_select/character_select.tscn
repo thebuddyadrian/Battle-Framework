@@ -32,6 +32,7 @@ visible = false
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+focus_mode = 1
 script = ExtResource("4_pprmj")
 
 [node name="StageSelect" type="OptionButton" parent="MAPSELECT" unique_id=1728786388]
@@ -156,6 +157,8 @@ text = "CHARS"
 
 [node name="touchscreen gamepad" parent="." unique_id=1223920270 instance=ExtResource("7_jc553")]
 layout_mode = 1
+focus_mode = 1
+mouse_filter = 2
 
 [connection signal="pressed" from="MapSelectButton" to="." method="_on_map_select_button_pressed"]
 [connection signal="pressed" from="RuleSelectButton" to="." method="_on_rule_select_button_pressed"]
