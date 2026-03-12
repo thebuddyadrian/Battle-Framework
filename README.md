@@ -11,12 +11,14 @@ This project runs on godot 4.6.
 This project is currently in a very rough "proof-of-concept" state. It contains 4 playable characters and the basic Sonic Battle gameplay loop. It is currently not suitable to be used as a framework and we're working on reworking the codebase to be cleaner and easier to work with.
 
 ### TODO (march 2026)
- - Full touch gamepad overlay with all ingame controls
- - Toggle in options menu to enable/disable touchscreen overlay
- - Android export config
- - Emerald town 3D sketch
+ - Full touch gamepad overlay with all ingame controls (Done)
+ - Toggle in options menu to enable/disable touchscreen overlay (Done)
+ - Android export config (Done)
+ - Emerald town 3D sketch for story mode
+ - Fix pause mode
 
 ### TODO (april 2026)
+ - Fix scaling and positioning issues on ingame split-screen UI
  - Character mod system (external files, metadata format, etc.)
  - Dialogue sequence system with avatars
  - CPU character behaviour
