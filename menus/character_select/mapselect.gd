@@ -11,6 +11,7 @@ var selected_stages = []
 
 func _ready() -> void:
 	stages = GameData.battle_stages
+	pass
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("right1"):
@@ -37,5 +38,8 @@ func _process(delta: float) -> void:
 func Update_UI_Visuals(nametag : String, stage_image):
 	#for now, i'm skipping the image
 	StageNameTag.text = nametag
-	if stage_image != null:
-		ImagePreview.texture = stage_image
+	var stage_data: StageInfo = ResourceLoader.load( "res://levels/%s/%s.tres" % [nametag, nametag] )
+	#var stage_preview: Texture2D = stage_data.preview
+	var stage_preview: CompressedTexture2D = load("res://levels/%s/preview.png" % [nametag])
+	if stage_preview != null:
+		ImagePreview.texture = stage_preview
