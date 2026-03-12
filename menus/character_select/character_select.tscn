@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://bl12xr1kfvop2" path="res://menus/character_select/character_select.gd" id="1_xptye"]
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_kxvnc"]
 [ext_resource type="Shader" uid="uid://b7frwxe5glvvi" path="res://menus/background.gdshader" id="3_xarbf"]
-[ext_resource type="Script" path="res://menus/character_select/mapselect.gd" id="4_pprmj"]
+[ext_resource type="Script" uid="uid://dkvj5h5bvohkv" path="res://menus/character_select/mapselect.gd" id="4_pprmj"]
 [ext_resource type="PackedScene" uid="uid://bu74bh1pcju6h" path="res://menus/character_select/cursor_arrows.tscn" id="4_xarbf"]
 [ext_resource type="Texture2D" uid="uid://dlpflfbgbkx5f" path="res://icon.png" id="5_3f6ee"]
 [ext_resource type="PackedScene" uid="uid://dq0bod7i80a2u" path="res://UI/touchscreen gamepad/touchscreen_gamepad.tscn" id="7_jc553"]
@@ -37,27 +37,38 @@ script = ExtResource("4_pprmj")
 
 [node name="StageSelect" type="OptionButton" parent="MAPSELECT" unique_id=1728786388]
 visible = false
-layout_mode = 0
+layout_mode = 1
+anchors_preset = -1
 anchor_right = 1.0
 anchor_bottom = 0.083
-offset_left = 104.0
-offset_top = 72.0
-offset_right = 104.0
-offset_bottom = 89.72
-grow_horizontal = 2
-grow_vertical = 2
+offset_left = 56.0
+offset_top = 137.0
+offset_right = 56.0
+offset_bottom = 154.72
 focus_mode = 0
 
-[node name="CenterContainer" type="CenterContainer" parent="MAPSELECT" unique_id=1762137890]
+[node name="Label2" type="Label" parent="MAPSELECT" unique_id=1994109036]
 layout_mode = 0
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 144.0
-offset_bottom = 120.0
+offset_left = 43.0
+offset_top = 67.0
+offset_right = 107.0
+offset_bottom = 116.0
+text = "Image 
+Preview"
+horizontal_alignment = 1
+
+[node name="CenterContainer" type="AspectRatioContainer" parent="MAPSELECT" unique_id=1618579499]
+layout_mode = 0
+offset_left = 9.0
+offset_top = 28.0
+offset_right = 145.0
+offset_bottom = 140.0
 
 [node name="TextureRect" type="TextureRect" parent="MAPSELECT/CenterContainer" unique_id=747526603]
 layout_mode = 2
 texture = ExtResource("5_3f6ee")
+expand_mode = 2
+stretch_mode = 4
 
 [node name="Label" type="Label" parent="MAPSELECT" unique_id=1399495427]
 layout_mode = 0
@@ -80,16 +91,6 @@ grow_horizontal = 0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MAPSELECT/ScrollContainer" unique_id=2121463459]
 layout_mode = 2
-
-[node name="Label2" type="Label" parent="MAPSELECT" unique_id=1994109036]
-layout_mode = 0
-offset_left = 40.0
-offset_top = 32.0
-offset_right = 104.0
-offset_bottom = 81.0
-text = "Image 
-Preview"
-horizontal_alignment = 1
 
 [node name="CSS" type="Control" parent="." unique_id=1281746508]
 anchors_preset = 0

@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="StageInfo" load_steps=2 format=3 uid="uid://c604bw522othc"]
+[gd_resource type="Resource" script_class="StageInfo" format=3 uid="uid://c604bw522othc"]
 
 [ext_resource type="Script" uid="uid://bh7hc4po624b3" path="res://levels/stage_info.gd" id="1_2rewn"]
+[ext_resource type="Texture2D" uid="uid://cyy2dv35fggrw" path="res://levels/amysroom/preview.png" id="1_cob73"]
 
 [resource]
 script = ExtResource("1_2rewn")
 display_name = "Amy's Room"
 music_file_path = "uid://16nyrnonjdyo"
+preview = ExtResource("1_cob73")
 metadata/_custom_type_script = "uid://bh7hc4po624b3"
