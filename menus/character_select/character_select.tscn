@@ -157,7 +157,6 @@ offset_bottom = 31.0
 text = "CHARS"
 
 [node name="touchscreen gamepad" parent="." unique_id=1223920270 instance=ExtResource("7_jc553")]
-visible = false
 layout_mode = 1
 focus_mode = 1
 mouse_filter = 2
