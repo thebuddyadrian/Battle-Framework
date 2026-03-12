@@ -54,6 +54,7 @@ shape = SubResource("CircleShape2D_nmla8")
 
 [node name="Actions" type="Control" parent="gamepad" unique_id=150242537]
 layout_mode = 1
+anchors_preset = 3
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
