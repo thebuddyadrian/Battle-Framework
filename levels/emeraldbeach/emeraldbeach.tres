@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="StageInfo" load_steps=2 format=3 uid="uid://yry7jkk7gd33"]
+[gd_resource type="Resource" script_class="StageInfo" format=3 uid="uid://yry7jkk7gd33"]
 
 [ext_resource type="Script" uid="uid://bh7hc4po624b3" path="res://levels/stage_info.gd" id="1_3gwv3"]
+[ext_resource type="Texture2D" uid="uid://phyycw612qbf" path="res://levels/emeraldbeach/preview.png" id="1_w5ygr"]
 
 [resource]
 script = ExtResource("1_3gwv3")
 display_name = "Emerald Beach"
 music_file_path = "uid://bfvbtkmvhxwqr"
+preview = ExtResource("1_w5ygr")
 metadata/_custom_type_script = "uid://bh7hc4po624b3"
