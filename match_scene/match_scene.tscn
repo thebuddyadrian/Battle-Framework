@@ -49,4 +49,5 @@ anchors_preset = 0
 scale = Vector2(2, 2)
 
 [node name="touchscreen gamepad" parent="Control" unique_id=1223920270 instance=ExtResource("2_a222u")]
+process_mode = 3
 layout_mode = 1
