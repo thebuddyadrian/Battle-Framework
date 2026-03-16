@@ -9,10 +9,16 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	#if Input.is_action_just_pressed("ui_accept"):
-		#$AnimationPlayer.play("Opening")
+	if Input.is_action_just_pressed("ui_accept"):
+#		$AnimationPlayer.play("Opening")
+		animation_done_transition()
 	pass
 	
 func animation_done_transition() -> void:
 	SceneChanger.change_scene_to_file("res://menus/mode_select.tscn")
 	pass
+
+
+func _on_button_pressed() -> void:
+	animation_done_transition()
+	pass # Replace with function body.
