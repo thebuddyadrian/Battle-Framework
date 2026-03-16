@@ -20,7 +20,7 @@ compatibility/default_parent_skeleton_in_mesh_instance_3d=true
 
 config/name="Sonic Battle 2 New Mobius"
 config/description="No Description"
-run/main_scene="res://menus/mode_select.tscn"
+run/main_scene="uid://bgrinwd5mmw30"
 config/features=PackedStringArray("4.6", "Forward Plus")
 run/max_fps=60
 config/icon="uid://dlpflfbgbkx5f"
