@@ -14,8 +14,9 @@ This project is currently in a very rough "proof-of-concept" state. It contains 
  - Full touch gamepad overlay with all ingame controls (Done)
  - Toggle in options menu to enable/disable touchscreen overlay (Done)
  - Android export config (Done)
+ - Fix pause menu freezing code of touch overlay(Done)
+ - Restore intro sequence (Done)
  - Emerald town 3D sketch for story mode
- - Fix pause menu freezing code of touch overlay
 
 ### TODO (april 2026)
  - Fix scaling and positioning issues on ingame split-screen UI
