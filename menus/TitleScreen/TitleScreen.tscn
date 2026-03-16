@@ -8,7 +8,6 @@
 [ext_resource type="Texture2D" uid="uid://7rimslh0hm05" path="res://assets/opening/Character4.png" id="6_kqnf8"]
 [ext_resource type="Texture2D" uid="uid://bpp30t26fut2w" path="res://assets/opening/Character5.png" id="7_le5n5"]
 [ext_resource type="Texture2D" uid="uid://chm74lghuyaej" path="res://assets/ui/menus/flame_icon/flame1.png" id="8_eoxhm"]
-[ext_resource type="AudioStream" uid="uid://ok2nyhj2xieo" path="res://assets/audio/bgm/01. Title.mp3" id="9_p5s4k"]
 [ext_resource type="Texture2D" uid="uid://b2wgrlcttjty8" path="res://assets/ui/menus/flame_icon/flame2.png" id="9_s71wy"]
 [ext_resource type="Texture2D" uid="uid://q6xlagepcaxa" path="res://assets/opening/Scene01BG.png" id="10_saqug"]
 [ext_resource type="Texture2D" uid="uid://jcbvu2lakf5y" path="res://assets/ui/menus/flame_icon/flame3.png" id="10_yyvsb"]
@@ -18,18 +17,22 @@
 [ext_resource type="Texture2D" uid="uid://cl7iswl6b7iug" path="res://assets/ui/menus/flame_icon/flame5.png" id="12_qgvk1"]
 [ext_resource type="Texture2D" uid="uid://dk7x2l2pkw6rx" path="res://assets/ui/menus/flame_icon/flame6.png" id="13_ga3w5"]
 [ext_resource type="Shader" uid="uid://cpmq66edu6d6o" path="res://menus/TitleScreen/TitleScreen.gdshader" id="13_scd31"]
+[ext_resource type="AudioStream" uid="uid://mxaycokewdwu" path="res://menus/TitleScreen/battle new mobius title theme 2.mp3" id="14_e4kol"]
 [ext_resource type="Texture2D" uid="uid://bs778i2xfpspo" path="res://assets/opening/5.png" id="14_fbxrp"]
 [ext_resource type="Shader" uid="uid://c33oj3ntnnvie" path="res://menus/TitleScreen/Scene2.gdshader" id="15_bky4q"]
+[ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="15_yyvsb"]
 [ext_resource type="Texture2D" uid="uid://bhwjpimj8k23v" path="res://assets/opening/IntroSlide2.png" id="16_b4ght"]
+[ext_resource type="Texture2D" uid="uid://ch4hdjd0umxcy" path="res://menus/TitleScreen/titlescreen banner treated.png" id="16_e4kol"]
 [ext_resource type="Texture2D" uid="uid://xbnpjh3vqv0m" path="res://assets/opening/IntroSlide1.png" id="17_myec0"]
 [ext_resource type="Texture2D" uid="uid://cgeldp27htyho" path="res://assets/opening/Scene03BG.png" id="18_ttuns"]
 [ext_resource type="Texture2D" uid="uid://dfd4knhta40cv" path="res://assets/opening/Scene03Framing.png" id="19_j41sv"]
 [ext_resource type="Texture2D" uid="uid://cbmob6uuo0v7q" path="res://assets/opening/Scene03Floor.png" id="20_ibri6"]
 [ext_resource type="Texture2D" uid="uid://dgnmwef6unyyo" path="res://assets/opening/Scene03cpu.png" id="21_da6ep"]
+[ext_resource type="Script" uid="uid://dagxrr111bmmu" path="res://menus/TitleScreen/flashing_button_prompt.gd" id="29_e4kol"]
 
 [sub_resource type="Animation" id="Animation_sh0fa"]
 resource_name = "Opening"
-length = 60.0
+length = 120.0
 step = 0.04
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -38,7 +41,7 @@ tracks/0/path = NodePath("CutinsScene/SonicCutin:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.24),
+"times": PackedFloat32Array(0, 0.1944),
 "transitions": PackedFloat32Array(0.3, 3),
 "update": 0,
 "values": [Vector2(222, 170), Vector2(208, 183)]
@@ -50,7 +53,7 @@ tracks/1/path = NodePath("CutinsScene/SonicCutin:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.24),
+"times": PackedFloat32Array(0, 0.1944),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -62,7 +65,7 @@ tracks/2/path = NodePath("CutinsScene/Cutins:frame")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 0.24, 0.52, 0.84, 1.16),
+"times": PackedFloat32Array(0, 0.1944, 0.42119998, 0.68039995, 0.9396),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4]
@@ -74,7 +77,7 @@ tracks/3/path = NodePath("CutinsScene/TailsCutin:visible")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.24, 0.52),
+"times": PackedFloat32Array(0, 0.1944, 0.42119998),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -86,7 +89,7 @@ tracks/4/path = NodePath("CutinsScene/TailsCutin:position")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.24, 0.518076),
+"times": PackedFloat32Array(0.1944, 0.41964155),
 "transitions": PackedFloat32Array(0.3, 3),
 "update": 0,
 "values": [Vector2(84, 186), Vector2(128, 161)]
@@ -98,7 +101,7 @@ tracks/5/path = NodePath("CutinsScene/KnucklesCutin:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 0.52, 0.84),
+"times": PackedFloat32Array(0, 0.42119998, 0.68039995),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -110,7 +113,7 @@ tracks/6/path = NodePath("CutinsScene/ShadowCutin:visible")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0, 0.84, 1.16),
+"times": PackedFloat32Array(0, 0.68039995, 0.9396),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -122,7 +125,7 @@ tracks/7/path = NodePath("CutinsScene/EmerlCutin:visible")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0, 1.16021),
+"times": PackedFloat32Array(0, 0.9397701),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -134,7 +137,7 @@ tracks/8/path = NodePath("CutinsScene/KnucklesCutin:position")
 tracks/8/interp = 1
 tracks/8/loop_wrap = true
 tracks/8/keys = {
-"times": PackedFloat32Array(0.52, 0.840317),
+"times": PackedFloat32Array(0.42119998, 0.6806568),
 "transitions": PackedFloat32Array(0.3, 3),
 "update": 0,
 "values": [Vector2(189, 153), Vector2(125, 167)]
@@ -146,7 +149,7 @@ tracks/9/path = NodePath("CutinsScene/ShadowCutin:position")
 tracks/9/interp = 1
 tracks/9/loop_wrap = true
 tracks/9/keys = {
-"times": PackedFloat32Array(0.841677, 1.1594),
+"times": PackedFloat32Array(0.6817584, 0.939114),
 "transitions": PackedFloat32Array(0.3, 3),
 "update": 0,
 "values": [Vector2(20, 120), Vector2(73, 128)]
@@ -158,7 +161,7 @@ tracks/10/path = NodePath("CutinsScene/EmerlCutin:position")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
-"times": PackedFloat32Array(1.16021, 1.44),
+"times": PackedFloat32Array(0.9397701, 1.1664001),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(127, 136), Vector2(126, 161)]
@@ -170,7 +173,7 @@ tracks/11/path = NodePath("CutinsScene/Cutins:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
-"times": PackedFloat32Array(1.16, 1.44),
+"times": PackedFloat32Array(0.9396, 1.1664001),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(112, 128), Vector2(111, 119)]
@@ -182,7 +185,7 @@ tracks/12/path = NodePath("AudioStreamPlayer2D:playing")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.24),
+"times": PackedFloat32Array(0, 0.03999999),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
@@ -194,7 +197,7 @@ tracks/13/path = NodePath("CutinsScene:visible")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
-"times": PackedFloat32Array(0, 1.44),
+"times": PackedFloat32Array(0, 1.1664001),
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
@@ -206,7 +209,7 @@ tracks/14/path = NodePath("FlameScene:visible")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0, 1.44, 3.52),
+"times": PackedFloat32Array(0, 1.1664001, 4.24),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -218,22 +221,22 @@ tracks/15/path = NodePath("FlameScene/FlameLogo:scale")
 tracks/15/interp = 1
 tracks/15/loop_wrap = true
 tracks/15/keys = {
-"times": PackedFloat32Array(1.44, 2.96),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.1664001, 1.7496, 2.3976),
+"transitions": PackedFloat32Array(1, 0.12940818, 2.0000007),
 "update": 0,
-"values": [Vector2(0.2, 0.2), Vector2(1, 1)]
+"values": [Vector2(0.2, 0.2), Vector2(0.82, 0.82), Vector2(1, 1)]
 }
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("FlameScene/ColorRect:color")
+tracks/16/path = NodePath("ColorRect:color")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
-"times": PackedFloat32Array(2.76, 2.96),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(2.64, 3.12, 3.52, 4.44),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0.7097771), Color(1, 1, 1, 0)]
 }
 tracks/17/type = "value"
 tracks/17/imported = false
@@ -242,7 +245,7 @@ tracks/17/path = NodePath("Scene01:visible")
 tracks/17/interp = 1
 tracks/17/loop_wrap = true
 tracks/17/keys = {
-"times": PackedFloat32Array(0, 3.52, 6.19921),
+"times": PackedFloat32Array(0, 109.16, 112.11922),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
@@ -254,7 +257,7 @@ tracks/18/path = NodePath("Scene01/White:color")
 tracks/18/interp = 1
 tracks/18/loop_wrap = true
 tracks/18/keys = {
-"times": PackedFloat32Array(3.52, 3.76),
+"times": PackedFloat32Array(3.52, 5.24),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
@@ -266,10 +269,10 @@ tracks/19/path = NodePath("Scene02:visible")
 tracks/19/interp = 1
 tracks/19/loop_wrap = true
 tracks/19/keys = {
-"times": PackedFloat32Array(0, 6.19921),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 109.76001, 112.11922),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [false, true]
+"values": [false, true, true]
 }
 tracks/20/type = "value"
 tracks/20/imported = false
@@ -278,7 +281,7 @@ tracks/20/path = NodePath("Scene02/IntroSlide1:position")
 tracks/20/interp = 1
 tracks/20/loop_wrap = true
 tracks/20/keys = {
-"times": PackedFloat32Array(6.2, 6.4, 8.04),
+"times": PackedFloat32Array(112.12001, 112.32001, 113.96001),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(179, 252), Vector2(179, 100), Vector2(178, 80)]
@@ -290,7 +293,7 @@ tracks/21/path = NodePath("Scene02/IntroSlide2:position")
 tracks/21/interp = 1
 tracks/21/loop_wrap = true
 tracks/21/keys = {
-"times": PackedFloat32Array(7.18261, 7.32, 8.04),
+"times": PackedFloat32Array(113.102615, 113.240005, 113.96001),
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector2(35, -88), Vector2(51, 62), Vector2(51, 79)]
@@ -302,7 +305,7 @@ tracks/22/path = NodePath("Scene01/Amy:position")
 tracks/22/interp = 1
 tracks/22/loop_wrap = true
 tracks/22/keys = {
-"times": PackedFloat32Array(3.84805, 6.24),
+"times": PackedFloat32Array(109.76806, 112.16),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(50, 90), Vector2(127, 90)]
@@ -314,12 +317,47 @@ tracks/23/path = NodePath(".")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
-"times": PackedFloat32Array(8.28),
+"times": PackedFloat32Array(108.44),
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [],
 "method": &"animation_done_transition"
 }]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Title banner:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(-3.2799997, 3.24),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
+}
+tracks/25/type = "method"
+tracks/25/imported = false
+tracks/25/enabled = true
+tracks/25/path = NodePath("Flashing button prompt")
+tracks/25/interp = 1
+tracks/25/loop_wrap = true
+tracks/25/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"values": []
+}
+tracks/26/type = "value"
+tracks/26/imported = false
+tracks/26/enabled = true
+tracks/26/path = NodePath("Flashing button prompt:visible")
+tracks/26/interp = 1
+tracks/26/loop_wrap = true
+tracks/26/keys = {
+"times": PackedFloat32Array(0, 3.28),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [false, true]
 }
 
 [sub_resource type="Animation" id="Animation_lu27h"]
@@ -519,7 +557,7 @@ tracks/15/keys = {
 tracks/16/type = "value"
 tracks/16/imported = false
 tracks/16/enabled = true
-tracks/16/path = NodePath("FlameScene/ColorRect:color")
+tracks/16/path = NodePath("ColorRect:color")
 tracks/16/interp = 1
 tracks/16/loop_wrap = true
 tracks/16/keys = {
@@ -600,6 +638,30 @@ tracks/22/keys = {
 "update": 0,
 "values": [Vector2(127, 90)]
 }
+tracks/23/type = "value"
+tracks/23/imported = false
+tracks/23/enabled = true
+tracks/23/path = NodePath("Title banner:visible")
+tracks/23/interp = 1
+tracks/23/loop_wrap = true
+tracks/23/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/24/type = "value"
+tracks/24/imported = false
+tracks/24/enabled = true
+tracks/24/path = NodePath("Flashing button prompt:visible")
+tracks/24/interp = 1
+tracks/24/loop_wrap = true
+tracks/24/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_h4r8u"]
 _data = {
@@ -630,7 +692,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"default",
-"speed": 12.0
+"speed": 32.0
 }]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_lr8cf"]
@@ -940,6 +1002,14 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e4kol"]
+bg_color = Color(0.012183833, 0.012183833, 0.012183833, 0.6431373)
+corner_radius_top_left = 9
+corner_radius_top_right = 9
+corner_radius_bottom_right = 9
+corner_radius_bottom_left = 9
+corner_detail = 20
+
 [node name="TitleScreen" type="Node2D" unique_id=472030796]
 script = ExtResource("1_yngg5")
 
@@ -1007,12 +1077,23 @@ sprite_frames = SubResource("SpriteFrames_hyn34")
 autoplay = "default"
 frame_progress = 0.140587
 
-[node name="ColorRect" type="ColorRect" parent="FlameScene" unique_id=1857081245]
-offset_right = 241.0
-offset_bottom = 163.0
-
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1002949690]
-stream = ExtResource("9_p5s4k")
+visible = false
+stream = ExtResource("14_e4kol")
+
+[node name="Title banner" type="Node2D" parent="." unique_id=1776331150]
+visible = false
+
+[node name="Background" parent="Title banner" unique_id=1119402756 instance=ExtResource("15_yyvsb")]
+
+[node name="TextureRect" type="TextureRect" parent="Title banner" unique_id=1380014304]
+texture_filter = 2
+offset_left = -0.9999995
+offset_top = 7.000001
+offset_right = 1101.0
+offset_bottom = 528.0
+scale = Vector2(0.219, 0.219)
+texture = ExtResource("16_e4kol")
 
 [node name="Scene01" type="Node2D" parent="." unique_id=1991961444]
 
@@ -1093,3 +1174,47 @@ sprite_frames = SubResource("SpriteFrames_q0c4l")
 autoplay = "default"
 frame_progress = 0.114706
 flip_h = true
+
+[node name="Flashing button prompt" type="Control" parent="." unique_id=1865953452]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("29_e4kol")
+
+[node name="elements" type="Control" parent="Flashing button prompt" unique_id=1921890139]
+anchors_preset = 0
+offset_right = 1.0
+offset_bottom = 1.0
+
+[node name="Button" type="Button" parent="Flashing button prompt/elements" unique_id=1613989405]
+layout_mode = 0
+offset_left = 62.0
+offset_top = 137.0
+offset_right = 173.0
+offset_bottom = 158.0
+theme_override_styles/normal = SubResource("StyleBoxFlat_e4kol")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Flashing button prompt/elements" unique_id=1603032986]
+layout_mode = 0
+offset_top = 112.0
+offset_right = 237.0
+offset_bottom = 158.0
+mouse_filter = 2
+bbcode_enabled = true
+text = "[font name=\"/assets/fonts/LiberationSans_Bold.ttf\"]
+PRESS START
+[/font]"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Timer" type="Timer" parent="Flashing button prompt" unique_id=187909502]
+wait_time = 0.582
+autostart = true
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1857081245]
+offset_right = 241.0
+offset_bottom = 163.0
+mouse_filter = 2
+
+[connection signal="pressed" from="Flashing button prompt/elements/Button" to="." method="_on_button_pressed"]
+[connection signal="timeout" from="Flashing button prompt/Timer" to="Flashing button prompt" method="toggle_visible"]
