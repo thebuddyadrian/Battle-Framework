@@ -1,0 +1,112 @@
+[gd_scene format=3 uid="uid://ivfy1nbpdsfh"]
+
+[ext_resource type="Script" uid="uid://dw8sbuf2itowu" path="res://effects/base_effect.gd" id="1_p8axw"]
+[ext_resource type="Texture2D" uid="uid://cubjp7dxe8bi8" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="2_puirc"]
+[ext_resource type="Script" uid="uid://d0127k12xvws" path="res://components/battle_sprite/battle_animated_sprite.gd" id="3_kj0l7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gckls"]
+atlas = ExtResource("2_puirc")
+region = Rect2(0, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wwdgt"]
+atlas = ExtResource("2_puirc")
+region = Rect2(144, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_236gd"]
+atlas = ExtResource("2_puirc")
+region = Rect2(288, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8hqt5"]
+atlas = ExtResource("2_puirc")
+region = Rect2(432, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_m2vv5"]
+atlas = ExtResource("2_puirc")
+region = Rect2(576, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bbd6a"]
+atlas = ExtResource("2_puirc")
+region = Rect2(720, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ppr38"]
+atlas = ExtResource("2_puirc")
+region = Rect2(864, 288, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k0cnr"]
+atlas = ExtResource("2_puirc")
+region = Rect2(0, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_obkn3"]
+atlas = ExtResource("2_puirc")
+region = Rect2(144, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p0e2f"]
+atlas = ExtResource("2_puirc")
+region = Rect2(288, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hb3tg"]
+atlas = ExtResource("2_puirc")
+region = Rect2(432, 432, 144, 144)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_a1h50"]
+atlas = ExtResource("2_puirc")
+region = Rect2(576, 432, 144, 144)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_gb8c5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gckls")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wwdgt")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_236gd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8hqt5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_m2vv5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bbd6a")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ppr38")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k0cnr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_obkn3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p0e2f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hb3tg")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a1h50")
+}],
+"loop": false,
+"name": &"Default",
+"speed": 12.0
+}]
+
+[node name="KnucklesGrndPowEffect" type="Node3D" unique_id=2145242710 node_paths=PackedStringArray("animated_sprite")]
+script = ExtResource("1_p8axw")
+animated_sprite = NodePath("BattleAnimatedSprite3D")
+metadata/_custom_type_script = "uid://dw8sbuf2itowu"
+
+[node name="BattleAnimatedSprite3D" type="AnimatedSprite3D" parent="." unique_id=1926991717]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0.26914942, 0)
+billboard = 1
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_gb8c5")
+animation = &"Default"
+autoplay = "Default"
+script = ExtResource("3_kj0l7")
+metadata/_custom_type_script = "uid://d0127k12xvws"
