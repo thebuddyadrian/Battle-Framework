@@ -7,5 +7,5 @@ script = ExtResource("1_7sg41")
 display_name = "Knuckles"
 portrait_path = "uid://ciu2eda5yyu62"
 life_icon_path = "uid://dvuedhl2ul52y"
-move_speed = 5000
+move_speed = 5500
 metadata/_custom_type_script = "uid://2a2htk5lwmcm"
