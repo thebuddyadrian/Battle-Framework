@@ -6,8 +6,9 @@
 [ext_resource type="Script" uid="uid://csae2nyvo6aiw" path="res://components/hitbox/hit_data.gd" id="4_lrq10"]
 [ext_resource type="Script" uid="uid://jk40g84p8nlf" path="res://components/hurtbox/hurtbox.gd" id="5_sfbvu"]
 [ext_resource type="Texture2D" uid="uid://cubjp7dxe8bi8" path="res://characters/knuckles/sprites/Knuckles spritesheet.png" id="6_i5uho"]
+[ext_resource type="AudioStream" uid="uid://c7tv62dcm8nbm" path="res://assets/audio/sfx/battle/knuckles/rock_break.wav" id="7_h6pcy"]
 
-[sub_resource type="Resource" id="Resource_fm5q5"]
+[sub_resource type="Resource" id="Resource_tn2q5"]
 script = ExtResource("4_lrq10")
 damage = 35.0
 knockback_power = 13.0
@@ -212,7 +213,7 @@ spawnable_info = ExtResource("2_fm5q5")
 [node name="Hitbox" type="Area3D" parent="." unique_id=11250066]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 script = ExtResource("3_tn2q5")
-hit_data = SubResource("Resource_fm5q5")
+hit_data = SubResource("Resource_tn2q5")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
@@ -244,5 +245,8 @@ texture_filter = 2
 sprite_frames = SubResource("SpriteFrames_w7ndj")
 animation = &"Side"
 autoplay = "Throw"
+
+[node name="RockBreakSFX" type="AudioStreamPlayer3D" parent="." unique_id=2016757785]
+stream = ExtResource("7_h6pcy")
 
 [connection signal="animation_finished" from="Sprite" to="." method="_on_sprite_animation_finished"]

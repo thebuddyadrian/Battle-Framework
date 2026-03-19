@@ -8,5 +8,4 @@ has_animation = true
 has_hitbox = true
 has_hurtbox = false
 hurt_start_millis = 150
-lifetime_millis = 600
-metadata/_custom_type_script = ExtResource("1_cllbq")
+metadata/_custom_type_script = "uid://b2bes5un3i2yl"

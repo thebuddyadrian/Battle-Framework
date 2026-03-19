@@ -1,21 +1,24 @@
 extends BaseSpawnable
 
+@onready var rock_break_sfx: AudioStreamPlayer3D = $RockBreakSFX
+
 func _on_spawn(data: = {}):
-	$Sprite.show()
+	sprite.show()
 	direction = data["direction"]
 	sprite.play("Throw")
 	if direction == Vector2.LEFT:
-		$Sprite.flip_h = true
+		sprite.flip_h = true
 	elif direction == Vector2.RIGHT:
-		$Sprite.flip_h = false
+		sprite.flip_h = false
 
 
 func _do_behavior(delta):
-	if is_on_floor():
+	if is_on_floor() and !sprite.animation == "Break":
 		velocity = Vector3.ZERO
 		sprite.play("Break")
-		
+		if !rock_break_sfx.playing:
+			rock_break_sfx.play()
 
-# func _on_sprite_animation_finished() -> void:
-# 	if sprite.animation == "Break":
-# 		queue_free()
+func _on_sprite_animation_finished():
+	if sprite.animation == "Break":
+		queue_free()
