@@ -24,7 +24,7 @@ func _step():
 			proj.position.x =  root.position.x + 1 * root.facing_direction.x
 			proj.position.z = root.position.z
 		elif (attack_direction == Vector2.UP):
-			proj.velocity.z =  6 
+			proj.velocity.z =  -6 
 			proj.velocity.y =  -25
 			proj.position.y =  root.position.y + 6
 			proj.position.x =  root.position.x
