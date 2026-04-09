@@ -158,7 +158,10 @@ class AttackPhase:
 	var hitbox_active: bool = false
 	
 	# Charge
+	# Max amount of frames the move can be charged. If held for longer, the "charge_time" variable
+	# will no longer count up.
 	var max_charge: int = 30
+	# Max amount of time charge can be held. If -1, can be held indefinitely.
 	var max_hold: int = 30
 	var use_charge_effect: bool = false
 	
@@ -222,7 +225,6 @@ func _enter(data := {}):
 	root.hitbox.rotation.y = -attack_direction.angle()
 	root.facing_direction = attack_direction
 	root.update_facing_direction_2d()
-	#root.hitbox.hit_data.charge_percent = 0
 	num_hits = 0
 	num_contacts = 0
 	move_contact = 0
@@ -262,7 +264,6 @@ func _setup_from_resource():
 		charge_phase.phase_type = AttackPhase.PHASE_TYPE.CHARGE
 		charge_phase.max_charge = attack_info.max_charge
 		charge_phase.max_hold = attack_info.max_hold
-		charge_phase.use_charge_effect = true
 		add_phase(charge_phase)
 	
 	startup_phase = AttackPhase.new("startup")
@@ -317,14 +318,14 @@ func _step():
 			parent.change_state("Land", {landing_frames = max(get_current_phase().landing_frames, landing_lag)})
 			return
 		
-		# Charging - WIP
-		#if get_current_phase().phase_type == AttackPhase.PHASE_TYPE.CHARGE:
-			#charge_time = min(charge_time + 1, 
-					#get_current_phase().max_charge)
-			#if charge_time >= get_current_phase().max_hold:
-				#release_charge()
-			#if !root.input_attack("pressed"):
-				#release_charge()
+		# Charging
+		if get_current_phase().phase_type == AttackPhase.PHASE_TYPE.CHARGE:
+			charge_time = min(charge_time + 1, get_current_phase().max_charge)
+			# Release charge automatically if max_hold is reached
+			if charge_time >= get_current_phase().max_hold and get_current_phase().max_hold > 0:
+				release_charge()
+			elif !root.input("skill", "pressed") and !root.input("attack", "pressed"):
+				release_charge()
 		
 		# Dash Cancel
 		if move_hit and dash_cancel_on_hit:
@@ -509,18 +510,14 @@ func change_phase(phase_index: int) -> void:
 	
 	if use_hitbox:
 		root.hitbox.active = current_phase.hitbox_active
-	#root.animsprite.offset = Vector2(0,0)
 	
-	# Charging - WIP
+	# TO-DO, ADD a "charge_percent" value to HitData
 	#if previous_phase_index > -1:
 		#if previous_phase.phase_type == AttackPhase.PHASE_TYPE.CHARGE:
 			#if charge_time >= 8:
 				#get_hit_data().charge_percent = Functions.fixed_to_hundred(SGFixed.div(
 						#charge_time * 65536, previous_phase.max_charge * 65536))
 			#_despawn_charge_effect()
-	
-	#if current_phase.use_charge_effect:
-		#_spawn_charge_effect()
 	
 	# Decide phase duration
 	# If the move missed, make phase longer
@@ -591,7 +588,11 @@ func change_phase(phase_index: int) -> void:
 			var section_length = section_end - section_start
 			# Dont slow down animation if using loop
 			if not is_equal_approx(section_length, current_phase.frames * tick_time) and not loop:
-				speed = section_length/float(current_phase.frames * 0.016)
+				if current_phase.phase_type == AttackPhase.PHASE_TYPE.CHARGE:
+					# For charge attacks, stretch animation using max_charge
+					speed = section_length/float(current_phase.max_charge * 0.016)
+				else:
+					speed = section_length/float(current_phase.frames * 0.016)
 			if use_sections:
 				root.animplayer.play_section(animation_name, section_start, section_end, -1, speed)
 			
@@ -635,7 +636,7 @@ func next_phase() -> void:
 	change_phase(current_phase_index + 1)
 
 
-## WIP - Call this to stop charging a charge attack
+## Call this to manually stop charging a charge attack
 func release_charge() -> void:
 	if get_current_phase().phase_type == AttackPhase.PHASE_TYPE.CHARGE:
 		next_phase()
