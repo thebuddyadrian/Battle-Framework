@@ -5,10 +5,13 @@
 [resource]
 script = ExtResource("1_c8w4r")
 animation = "GrndShotFwd"
-startup_frames = 20
+startup_frames = 4
 active_frames = 24
 recovery_frames = 20
 attack_sound = "shadow/shadow_grnd_shot"
 hit_sound = "punch"
+can_charge = true
+max_charge = 60
+max_hold = -1
 use_hitbox = false
-metadata/_custom_type_script = ExtResource("1_c8w4r")
+metadata/_custom_type_script = "uid://c4gg51mb7ji23"

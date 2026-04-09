@@ -16,8 +16,13 @@ func _phase_changed():
 		}
 		var proj = root.spawn_scene("GrndShot", GRND_SHOT_PROJ_PATH, root.global_position, null, data)
 		proj.direction = attack_direction
+		# Spawn projectile further the longer the move is charged
+		var charge_time_offset: int = max(0, charge_time - 6)
+		var spawn_distance: float = 1.0 + 4.0 * (float(charge_time) / charge_phase.max_charge)
+
 		# Spawn projectile in front of Shadow using the attack direction
-		var proj_spawn_offset: Vector3 = Vector3(attack_direction.x * 1.25, 0, attack_direction.y * 1.25)		
+		var proj_spawn_offset: Vector3 = Vector3(attack_direction.x * spawn_distance, 0, 
+				attack_direction.y * spawn_distance)
 		proj.global_position = root.global_position + proj_spawn_offset
 		
 		# Check for collision in front of shadow, moving the raycast upward to check for any platforms
