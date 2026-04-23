@@ -13,10 +13,10 @@ player_spawn_3 = NodePath("PlayerSpawn3")
 player_spawn_4 = NodePath("PlayerSpawn4")
 camera_root_parent = NodePath(".")
 
-[node name="Stage" parent="." index="0" unique_id=1951703053]
+[node name="Stage" parent="." index="0" unique_id=1435364772]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
-[node name="Cube" parent="Stage" index="0" unique_id=730621363]
+[node name="Cube" parent="Stage" index="0" unique_id=1400592902]
 collision_layer = 3
 collision_mask = 3
 

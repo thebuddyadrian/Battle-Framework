@@ -19,7 +19,7 @@ player_spawn_3 = NodePath("PlayerSpawn3")
 player_spawn_4 = NodePath("PlayerSpawn4")
 camera_root_parent = NodePath(".")
 
-[node name="Stage" parent="." index="0" unique_id=434795627]
+[node name="Stage" parent="." index="0" unique_id=90591033]
 transform = Transform3D(8, 0, 0, 0, 8, 0, 0, 0, 8, 0, 0, 0)
 
 [node name="PlayerSpawn1" type="Node3D" parent="." index="1" unique_id=491162167]

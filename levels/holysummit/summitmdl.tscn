@@ -13,7 +13,7 @@ size = Vector3(1.77063, 0.844727, 1)
 
 [node name="untitled" unique_id=1275892480 instance=ExtResource("1_qxv7e")]
 
-[node name="StaticBody3D" type="StaticBody3D" parent="plane" parent_id_path=PackedInt32Array(1578181927) index="0" unique_id=1750573763]
+[node name="StaticBody3D" type="StaticBody3D" parent="plane" parent_id_path=PackedInt32Array(1142861162) index="0" unique_id=1750573763]
 collision_layer = 3
 collision_mask = 3
 

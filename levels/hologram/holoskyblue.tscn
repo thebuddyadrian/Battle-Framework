@@ -9,5 +9,5 @@ albedo_color = Color(0, 0.1, 1, 1)
 
 [node name="HologramSkybox" unique_id=13957223 instance=ExtResource("1_bc7pb")]
 
-[node name="Cube" parent="." index="0" unique_id=747257769]
+[node name="Cube" parent="." index="0" unique_id=1307548412]
 surface_material_override/0 = SubResource("StandardMaterial3D_bc7pb")

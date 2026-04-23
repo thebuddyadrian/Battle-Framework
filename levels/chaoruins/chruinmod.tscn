@@ -467,7 +467,7 @@ data = PackedVector3Array(-2, 0, -2, 2, 0, -2, 2, 0, 2, 2, 0, 2, -2, 0, 2, -2, 0
 
 [node name="ChaoRuins" unique_id=1122934568 instance=ExtResource("1_jrgrk")]
 
-[node name="cube" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="0" unique_id=317581306]
+[node name="cube" parent="Blocks" parent_id_path=PackedInt32Array(1964386967) index="0" unique_id=2109212045]
 mesh = SubResource("ArrayMesh_cgjob")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube" index="0" unique_id=1268732277]
@@ -477,7 +477,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube/StaticBody3D" index="0" unique_id=1849692085]
 shape = SubResource("ConcavePolygonShape3D_jrgrk")
 
-[node name="cube_1" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="1" unique_id=1085608163]
+[node name="cube_1" parent="Blocks" parent_id_path=PackedInt32Array(1964386967) index="1" unique_id=2035750319]
 mesh = SubResource("ArrayMesh_gmbmy")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_1" index="0" unique_id=1456634885]
@@ -487,7 +487,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_1/StaticBody3D" index="0" unique_id=160729224]
 shape = SubResource("ConcavePolygonShape3D_l5fbb")
 
-[node name="cube_2" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="2" unique_id=1563878135]
+[node name="cube_2" parent="Blocks" parent_id_path=PackedInt32Array(1964386967) index="2" unique_id=766192948]
 mesh = SubResource("ArrayMesh_pcvc0")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_2" index="0" unique_id=1216010661]
@@ -497,7 +497,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_2/StaticBody3D" index="0" unique_id=472398838]
 shape = SubResource("ConcavePolygonShape3D_kic8m")
 
-[node name="cube_3" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="3" unique_id=513215621]
+[node name="cube_3" parent="Blocks" parent_id_path=PackedInt32Array(1964386967) index="3" unique_id=521116006]
 mesh = SubResource("ArrayMesh_3g5qm")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_3" index="0" unique_id=1781930788]
@@ -507,7 +507,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_3/StaticBody3D" index="0" unique_id=1211548348]
 shape = SubResource("ConcavePolygonShape3D_cgjob")
 
-[node name="cube_4" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="4" unique_id=1236419005]
+[node name="cube_4" parent="Blocks" parent_id_path=PackedInt32Array(1964386967) index="4" unique_id=1215125959]
 mesh = SubResource("ArrayMesh_0f6tj")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_4" index="0" unique_id=368246093]
@@ -517,7 +517,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_4/StaticBody3D" index="0" unique_id=638821299]
 shape = SubResource("ConcavePolygonShape3D_44pgq")
 
-[node name="cube_5" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="5" unique_id=1671552910]
+[node name="cube_5" parent="Blocks" parent_id_path=PackedInt32Array(1964386967) index="5" unique_id=622325980]
 mesh = SubResource("ArrayMesh_k8qlj")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_5" index="0" unique_id=2100224799]
@@ -527,7 +527,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_5/StaticBody3D" index="0" unique_id=2022029981]
 shape = SubResource("ConcavePolygonShape3D_gmbmy")
 
-[node name="cube_6" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="6" unique_id=671338120]
+[node name="cube_6" parent="Blocks" parent_id_path=PackedInt32Array(1964386967) index="6" unique_id=1188042562]
 mesh = SubResource("ArrayMesh_w86np")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_6" index="0" unique_id=920670678]
@@ -537,7 +537,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_6/StaticBody3D" index="0" unique_id=424503486]
 shape = SubResource("ConcavePolygonShape3D_0k0pa")
 
-[node name="cube_7" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="7" unique_id=1562707012]
+[node name="cube_7" parent="Blocks" parent_id_path=PackedInt32Array(1964386967) index="7" unique_id=153729477]
 mesh = SubResource("ArrayMesh_y70db")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_7" index="0" unique_id=884502820]
@@ -547,7 +547,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_7/StaticBody3D" index="0" unique_id=566583163]
 shape = SubResource("ConcavePolygonShape3D_pcvc0")
 
-[node name="cube_8" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="8" unique_id=1394309805]
+[node name="cube_8" parent="Blocks" parent_id_path=PackedInt32Array(1964386967) index="8" unique_id=883641510]
 mesh = SubResource("ArrayMesh_82bum")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_8" index="0" unique_id=1653606877]
@@ -557,7 +557,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_8/StaticBody3D" index="0" unique_id=1362221832]
 shape = SubResource("ConcavePolygonShape3D_kyndb")
 
-[node name="cube_9" parent="Blocks" parent_id_path=PackedInt32Array(2008489390) index="9" unique_id=1876334597]
+[node name="cube_9" parent="Blocks" parent_id_path=PackedInt32Array(1964386967) index="9" unique_id=1733354178]
 mesh = SubResource("ArrayMesh_dpawf")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Blocks/cube_9" index="0" unique_id=539605178]
@@ -567,7 +567,7 @@ collision_mask = 3
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Blocks/cube_9/StaticBody3D" index="0" unique_id=2025268714]
 shape = SubResource("ConcavePolygonShape3D_3g5qm")
 
-[node name="plane" parent="." index="1" unique_id=786575725]
+[node name="plane" parent="." index="1" unique_id=1020205247]
 mesh = SubResource("ArrayMesh_p4kxk")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="plane" index="0" unique_id=678315002]

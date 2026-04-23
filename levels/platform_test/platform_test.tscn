@@ -10,14 +10,14 @@ player_spawn_2 = NodePath("PlayerSpawn2")
 camera_follows_player = true
 camera_root_parent = NodePath(".")
 
-[node name="Floor" parent="." index="0" unique_id=269637581]
+[node name="Floor" parent="." index="0" unique_id=1467298588]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 
-[node name="StaticBody3D" parent="Floor" index="0" unique_id=2061727768]
+[node name="StaticBody3D" parent="Floor" index="0" unique_id=1223241466]
 collision_layer = 3
 collision_mask = 3
 
-[node name="Plane" parent="." index="1" unique_id=453116290]
+[node name="Plane" parent="." index="1" unique_id=1676900375]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 0, 0)
 visible = false
 

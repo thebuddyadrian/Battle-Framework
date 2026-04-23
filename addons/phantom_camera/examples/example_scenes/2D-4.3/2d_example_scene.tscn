@@ -215,7 +215,7 @@ text = "[WASD] to move
 [Space] to jump"
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2080521009]
-physics_interpolation_mode = 1
+physics_interpolation_mode = 2
 position = Vector2(227, -28)
 zoom = Vector2(1.5, 1.5)
 editor_draw_limits = true

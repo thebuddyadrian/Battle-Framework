@@ -205,7 +205,7 @@ unique_name_in_owner = true
 visible = false
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=2053290787]
-physics_interpolation_mode = 1
+physics_interpolation_mode = 2
 position = Vector2(215, -73)
 zoom = Vector2(2, 2)
 editor_draw_limits = true

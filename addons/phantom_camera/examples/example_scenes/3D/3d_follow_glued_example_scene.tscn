@@ -63,7 +63,7 @@ follow_damping_value = Vector3(0.3, 0.3, 0.3)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 6.39, 7)
 enable_gravity = false
 
-[node name="PlayerVisual" parent="Player/PlayerCharacterBody3D" index="2"]
+[node name="PlayerVisual" parent="Player/PlayerCharacterBody3D" index="2" unique_id=146542486]
 visible = false
 
 [node name="NPCs" type="Node" parent="." unique_id=1125915354]

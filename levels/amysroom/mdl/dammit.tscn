@@ -224,10 +224,10 @@ points = PackedVector3Array(-0.256172, 2.77556e-17, -0.25, 0.25, 0.498375, 0.248
 
 [node name="blockbench_export" unique_id=660650432 instance=ExtResource("1_dvr8b")]
 
-[node name="Node" parent="." index="0" unique_id=486376972]
+[node name="Node" parent="." index="0" unique_id=1993440333]
 unique_name_in_owner = true
 
-[node name="plane" parent="Node" index="0" unique_id=26958901]
+[node name="plane" parent="Node" index="0" unique_id=1028509267]
 unique_name_in_owner = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node/plane" index="0" unique_id=1470789675]
@@ -238,7 +238,7 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_dvr8b")
 
-[node name="cube" parent="Node" index="1" unique_id=961996327]
+[node name="cube" parent="Node" index="1" unique_id=364509269]
 unique_name_in_owner = true
 mesh = SubResource("ArrayMesh_cdo5q")
 
@@ -250,7 +250,7 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_7p5gw")
 
-[node name="cube2" parent="Node" index="2" unique_id=759693047]
+[node name="cube2" parent="Node" index="2" unique_id=1680613028]
 unique_name_in_owner = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node/cube2" index="0" unique_id=1382701506]
@@ -261,7 +261,7 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_woaj0")
 
-[node name="cube3" parent="Node" index="3" unique_id=636890509]
+[node name="cube3" parent="Node" index="3" unique_id=664438360]
 unique_name_in_owner = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node/cube3" index="0" unique_id=1247526610]
@@ -272,7 +272,7 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_bp732")
 
-[node name="cube4" parent="Node" index="4" unique_id=323074980]
+[node name="cube4" parent="Node" index="4" unique_id=761752339]
 unique_name_in_owner = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node/cube4" index="0" unique_id=1830173375]
@@ -283,7 +283,7 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_exhd0")
 
-[node name="cube5" parent="Node" index="5" unique_id=2038702957]
+[node name="cube5" parent="Node" index="5" unique_id=1755336344]
 unique_name_in_owner = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node/cube5" index="0" unique_id=1291791236]
@@ -294,7 +294,7 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_adjsx")
 
-[node name="cube6" parent="Node" index="6" unique_id=1063173035]
+[node name="cube6" parent="Node" index="6" unique_id=1119987211]
 unique_name_in_owner = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node/cube6" index="0" unique_id=265820514]
@@ -305,7 +305,7 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 0.767604, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_5ets3")
 
-[node name="cube7" parent="Node" index="7" unique_id=661771334]
+[node name="cube7" parent="Node" index="7" unique_id=1103554499]
 unique_name_in_owner = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node/cube7" index="0" unique_id=953978293]
@@ -316,7 +316,7 @@ collision_mask = 3
 transform = Transform3D(1, 0, 0, 0, 0.760627, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_qa1h7")
 
-[node name="cube8" parent="Node" index="8" unique_id=752787203]
+[node name="cube8" parent="Node" index="8" unique_id=87645268]
 unique_name_in_owner = true
 
 [node name="StaticBody3D" type="StaticBody3D" parent="Node/cube8" index="0" unique_id=1945265905]

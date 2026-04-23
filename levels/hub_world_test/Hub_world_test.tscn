@@ -31,7 +31,7 @@ collision_layer = 32768
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=853888932]
 physics_interpolation_mode = 1
-transform = Transform3D(1, 0, 0, 0, 0.9975993, 0.06925024, 0, -0.06925024, 0.9975993, 26.9917, 15.9875, 18.6653)
+transform = Transform3D(1, 0, 0, 0, 0.9975993, 0.069250226, 0, -0.069250226, 0.9975993, 26.9917, 15.9875, 18.6653)
 environment = ExtResource("3_bu418")
 fov = 60.6
 size = 10.1137

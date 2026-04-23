@@ -10,7 +10,7 @@ player_spawn_2 = NodePath("PlayerSpawn2")
 camera_follows_player = true
 camera_root_parent = NodePath(".")
 
-[node name="Plane" parent="." index="0" unique_id=85229973]
+[node name="Plane" parent="." index="0" unique_id=402281840]
 transform = Transform3D(7.45058e-08, 0, -0.7, 0, 0.7, 0, 0.7, 0, 7.45058e-08, -9.34501, 0, -9.17062)
 
 [node name="PlayerSpawn1" type="Node3D" parent="." index="1" unique_id=1457307687]

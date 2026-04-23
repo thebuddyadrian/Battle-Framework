@@ -163,21 +163,6 @@ shape = SubResource("ConcavePolygonShape3D_c7emf")
 
 [node name="Sonic_!TEST!" parent="." unique_id=1439751780 instance=ExtResource("1_1e57j")]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, -6.28565, 4.37192, -7.86543)
-SPEED = 8.0
-JUMP_VELOCITY = 14.0
-DASH_SPEED = 12.5
-STOCKS = 3
-HP = 300
-MP = 300
-player_id = 1
-GRAVITY = 0.65
-FALL_SPEED = 12
-JUMPFROMGROUND = false
-DECELERATION = 0.75
-ACCELERATION = 0.8
-AIR_DECELERATION = 0.15
-AIR_ACCELERATION = 0.5
-MAX_AIR_ACTION = 1
 
 [node name="Camera" type="Camera3D" parent="Sonic_!TEST!" unique_id=1850819347]
 transform = Transform3D(0.25, 0, 0, 0, 0.198059, 0.152554, 0, -0.152554, 0.198059, -0.00562334, 0.90241, 1.33827)

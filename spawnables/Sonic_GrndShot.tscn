@@ -320,7 +320,7 @@ animations = [{
 "speed": 18.0
 }]
 
-[sub_resource type="Resource" id="Resource_8jstf"]
+[sub_resource type="Resource" id="Resource_561xu"]
 script = ExtResource("4_8jstf")
 damage = 40.0
 knockback_power = 13.0
@@ -467,6 +467,7 @@ spawnable_info = ExtResource("2_j3baa")
 [node name="Sprite" type="AnimatedSprite3D" parent="." unique_id=777867490]
 transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0.00755633, -0.168776, 0)
 offset = Vector2(0, 20)
+billboard = 1
 sprite_frames = SubResource("SpriteFrames_mdu81")
 animation = &"Start"
 autoplay = "Side"
@@ -475,7 +476,7 @@ script = ExtResource("4_561xu")
 [node name="Hitbox" type="Area3D" parent="." unique_id=650100716]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.204105, 0)
 script = ExtResource("3_561xu")
-hit_data = SubResource("Resource_8jstf")
+hit_data = SubResource("Resource_561xu")
 root_node_path = NodePath("..")
 metadata/_custom_type_script = "uid://cm6korv2sfd"
 
