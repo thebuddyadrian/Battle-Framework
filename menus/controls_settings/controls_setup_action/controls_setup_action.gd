@@ -80,7 +80,7 @@ func convert_joypad_motion_to_digital(joypad_motion: InputEventJoypadMotion, dea
 
 func input_event_to_text(event) -> String:
 	if event is InputEventKey:
-		return event.as_text()
+		return event.as_text().replace(" - Physical", "")
 	
 	if event is InputEventJoypadButton:
 		return "Pad Button " + str(event.button_index)
