@@ -159,24 +159,25 @@ func _physics_process(delta: float) -> void:
 	
 	if input("guard", "just_pressed"):
 		taps += 1
-		print_debug(taps)
 		
 		match taps:
 			1:
 				taptime = 20
+			# Double tap guard to flip camera
 			2:
-				if camera.rotation_degrees.y == 0:
-					var rottween = create_tween()
-					rottween.set_trans(Tween.TRANS_CUBIC)
-					rottween.set_ease(Tween.EASE_OUT)
-					rottween.tween_property(camera,"rotation_degrees:y",180,.5)
-				if camera.rotation_degrees.y == 180:
-					var rottween = create_tween()
-					rottween.set_trans(Tween.TRANS_CUBIC)
-					rottween.set_ease(Tween.EASE_OUT)
-					rottween.tween_property(camera,"rotation_degrees:y",0,.5)
-				taptime = 0
-				taps = 0
+				if !MatchSetup.single_window:
+					if camera.rotation_degrees.y == 0:
+						var rottween = create_tween()
+						rottween.set_trans(Tween.TRANS_CUBIC)
+						rottween.set_ease(Tween.EASE_OUT)
+						rottween.tween_property(camera,"rotation_degrees:y",180,.5)
+					if camera.rotation_degrees.y == 180:
+						var rottween = create_tween()
+						rottween.set_trans(Tween.TRANS_CUBIC)
+						rottween.set_ease(Tween.EASE_OUT)
+						rottween.tween_property(camera,"rotation_degrees:y",0,.5)
+					taptime = 0
+					taps = 0
 	
 	# Add the gravity.
 	if velocity.y >  -fall_speed:
