@@ -1,5 +1,6 @@
 extends Node
 
+const MAX_PLAYERS: int = 4
 const KEYBOARD_DEVICE_INDEX = 999
 
 var CONTROLS_FILE_PATH = "user://controls.dat"
@@ -10,8 +11,8 @@ var action_list = ["left", "right", "up", "down", "jump", "attack", "upper", "sk
 
 func save_controls():
 	for action in action_list:
-		for i in range(1, 5): #1 - 4
-			var player_action = action + str(i)
+		for i in range(MAX_PLAYERS):
+			var player_action = action + str(i + 1)
 			saved_input_map[player_action] = InputMap.action_get_events(player_action)
 	
 	var controls_file = FileAccess.open(CONTROLS_FILE_PATH, FileAccess.WRITE)
