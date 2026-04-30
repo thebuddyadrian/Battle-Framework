@@ -1,16 +1,25 @@
 extends Node
+## Autoload class that manages custom controls for each player.
 
 const MAX_PLAYERS: int = 4
-const KEYBOARD_DEVICE_INDEX = 999
-const CONTROLS_FILE_PATH = "user://controls.dat"
-const ACTION_LIST = ["left", "right", "up", "down", "jump", "attack", "upper", 
+## Defines which device ID will be read as the keyboard. Set to a high number to not conflict
+## with gamepad device IDs.
+const KEYBOARD_DEVICE_INDEX: int = 999
+## File path where controls will be stored.
+const CONTROLS_FILE_PATH: String = "user://controls.dat"
+## List of actions used in gameplay.
+const ACTION_LIST: Array = ["left", "right", "up", "down", "jump", "attack", "upper", 
 		"skill", "guard", "dash", "pause"]
 
+## Stores the inputs for all players as a Dictionary.
+## Maps action name [String] -> event [InputEvent]
+var saved_input_map: Dictionary = {}
+## Stores which device each player is using.
+var player_device_indicies: Dictionary = {}
 
-var saved_input_map := {}
-var player_device_indicies := {} # -1 is the keyboard, anything else is a gamepad index
 
 
+## Saves controls settings to disk.
 func save_controls():
 	for action in ACTION_LIST:
 		for i in range(MAX_PLAYERS):
@@ -22,6 +31,7 @@ func save_controls():
 	controls_file.store_var(player_device_indicies, true)
 
 
+# Loads controls settings from disk if they weren't loaded already
 func load_controls():
 	if saved_input_map.is_empty():
 		if FileAccess.file_exists(CONTROLS_FILE_PATH):
