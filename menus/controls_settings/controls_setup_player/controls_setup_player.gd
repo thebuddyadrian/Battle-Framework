@@ -84,7 +84,7 @@ func update_device_dropdown():
 	device_dropdown.clear()
 
 	# Add "Keyboard" option first, make the ID a high number so it doesn't conflict with gamepads
-	device_dropdown.add_item("Keyboard", ControlsSettings.KEYBOARD_DEVICE_INDEX)
+	device_dropdown.add_item("Keyboard", ControlsSettings.KEYBOARD_DEVICE_ID)
 
 	# Add gamepads
 	for joypad in Input.get_connected_joypads():
@@ -96,9 +96,9 @@ func update_device_dropdown():
 
 func update_device_index():
 	# Load the currently selected device index
-	device_index = ControlsSettings.player_device_indicies.get(player_no, ControlsSettings.KEYBOARD_DEVICE_INDEX)
+	device_index = ControlsSettings.player_device_ids.get(player_no, ControlsSettings.KEYBOARD_DEVICE_ID)
 	device_dropdown.select(device_dropdown.get_item_index(device_index))
-	device_type = "keyboard" if device_index == ControlsSettings.KEYBOARD_DEVICE_INDEX else "gamepad"
+	device_type = "keyboard" if device_index == ControlsSettings.KEYBOARD_DEVICE_ID else "gamepad"
 
 	load_from_input_map()
 
@@ -135,5 +135,5 @@ func _on_device_dropdown_pressed() -> void:
 
 
 func _on_device_dropdown_item_selected(index:int) -> void:
-	ControlsSettings.player_device_indicies[player_no] = device_dropdown.get_item_id(index)
+	ControlsSettings.player_device_ids[player_no] = device_dropdown.get_item_id(index)
 	update_device_index()
