@@ -3,14 +3,16 @@ extends Node
 const MAX_PLAYERS: int = 4
 const KEYBOARD_DEVICE_INDEX = 999
 const CONTROLS_FILE_PATH = "user://controls.dat"
+const ACTION_LIST = ["left", "right", "up", "down", "jump", "attack", "upper", 
+		"skill", "guard", "dash", "pause"]
+
 
 var saved_input_map := {}
 var player_device_indicies := {} # -1 is the keyboard, anything else is a gamepad index
-var action_list = ["left", "right", "up", "down", "jump", "attack", "upper", "skill", "guard", "dash", "pause"]
 
 
 func save_controls():
-	for action in action_list:
+	for action in ACTION_LIST:
 		for i in range(MAX_PLAYERS):
 			var player_action = action + str(i + 1)
 			saved_input_map[player_action] = InputMap.action_get_events(player_action)
