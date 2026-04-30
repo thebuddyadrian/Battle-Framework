@@ -107,6 +107,36 @@ layout_mode = 2
 action = "pause"
 text = "Pause"
 
+[node name="UILeft" parent="ScrollContainer/ActionContainer" unique_id=495224781 instance=ExtResource("1_8cmok")]
+layout_mode = 2
+action = "ui_left"
+text = "Menu Left"
+
+[node name="UIRight" parent="ScrollContainer/ActionContainer" unique_id=1839346255 instance=ExtResource("1_8cmok")]
+layout_mode = 2
+action = "ui_right"
+text = "Menu Right"
+
+[node name="UIUp" parent="ScrollContainer/ActionContainer" unique_id=271834065 instance=ExtResource("1_8cmok")]
+layout_mode = 2
+action = "ui_up"
+text = "Menu Up"
+
+[node name="UIDown" parent="ScrollContainer/ActionContainer" unique_id=1886126788 instance=ExtResource("1_8cmok")]
+layout_mode = 2
+action = "ui_down"
+text = "Menu Down"
+
+[node name="UIAccept" parent="ScrollContainer/ActionContainer" unique_id=1427323466 instance=ExtResource("1_8cmok")]
+layout_mode = 2
+action = "ui_accept"
+text = "Menu Accept"
+
+[node name="UICancel" parent="ScrollContainer/ActionContainer" unique_id=1773868283 instance=ExtResource("1_8cmok")]
+layout_mode = 2
+action = "ui_cancel"
+text = "Menu Cancel"
+
 [connection signal="item_selected" from="ScrollContainer/ActionContainer/InputDevice/DeviceDropdown" to="." method="_on_device_dropdown_item_selected"]
 [connection signal="pressed" from="ScrollContainer/ActionContainer/InputDevice/DeviceDropdown" to="." method="_on_device_dropdown_pressed"]
 [connection signal="pressed" from="ScrollContainer/ActionContainer/InputDevice/DetectButton" to="." method="_on_detect_button_pressed"]

@@ -38,13 +38,13 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if !active:
 		return
-	if get_input("left"):
+	if get_input("ui_left"):
 		character_index -= 1
 		play_cursor_anim("ArrowBumpLeft")
-	if get_input("right"):
+	if get_input("ui_right"):
 		character_index += 1
 		play_cursor_anim("ArrowRightBump")
-	if get_input("attack"):
+	if get_input("ui_accept"):
 		selection_finished.emit(player_number)
 		confirm_sprite.visible = true
 		cursor_arrows.visible = false

@@ -10,6 +10,8 @@ const CONTROLS_FILE_PATH: String = "user://controls.dat"
 ## List of actions used in gameplay.
 const ACTION_LIST: Array = ["left", "right", "up", "down", "jump", "attack", "upper", 
 		"skill", "guard", "dash", "pause"]
+## List of actions used in the UI.
+const UI_ACTION_LIST: Array = ["ui_left", "ui_right", "ui_up", "ui_down", "ui_accept", "ui_cancel"]
 
 ## Stores the inputs for all players as a Dictionary.
 ## Maps action name [String] -> event [InputEvent]
@@ -18,10 +20,23 @@ var saved_input_map: Dictionary = {}
 var player_device_ids: Dictionary = {}
 
 
+func _ready() -> void:
+	ensure_actions_exist()
+	load_controls()
+
+
+## Adds all gameplay actions and UI actions for all players to the InputMap if they don't exist.
+func ensure_actions_exist() -> void:
+	for action in ACTION_LIST + UI_ACTION_LIST:
+		for i in range(MAX_PLAYERS):
+			var player_action: String = action + str(i + 1)
+			if !InputMap.has_action(player_action):
+				InputMap.add_action(player_action)
+
 
 ## Saves controls settings to disk.
 func save_controls():
-	for action in ACTION_LIST:
+	for action in ACTION_LIST + UI_ACTION_LIST:
 		for i in range(MAX_PLAYERS):
 			var player_action = action + str(i + 1)
 			saved_input_map[player_action] = InputMap.action_get_events(player_action)
