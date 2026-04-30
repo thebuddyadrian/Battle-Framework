@@ -2,8 +2,8 @@ extends Node
 
 const MAX_PLAYERS: int = 4
 const KEYBOARD_DEVICE_INDEX = 999
+const CONTROLS_FILE_PATH = "user://controls.dat"
 
-var CONTROLS_FILE_PATH = "user://controls.dat"
 var saved_input_map := {}
 var player_device_indicies := {} # -1 is the keyboard, anything else is a gamepad index
 var action_list = ["left", "right", "up", "down", "jump", "attack", "upper", "skill", "guard", "dash", "pause"]
