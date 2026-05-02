@@ -6,7 +6,7 @@ We’re making an open-source remake of Sonic Battle in Godot. Our goal is not o
 
 This project is both a **game** and a **framework**. The game can be downloaded as a standalone build to be played like normal. The source code will also be available for modders/fangame creators. 
 
-The game will include mod support to allow players to add mods to their standalone build of the game without needing the source code. The Godot project will include editor tools to export characters/stages as standalone PCK archives that can be distributed to players to include in their build of the game. Users can also fork this project intirely
+The game will include mod support to allow players to add mods to their standalone build of the game without needing the source code. The Godot project will include editor tools to export characters/stages as standalone PCK archives that can be distributed to players to include in their build of the game. Users can also fork this project entirely for their own fangame projects.
 
 ### Engine
 This project is currently using Godot 4.6 Stable.
