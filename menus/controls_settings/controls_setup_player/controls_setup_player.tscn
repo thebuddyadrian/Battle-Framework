@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://5xfk0ysf13j4" path="res://menus/controls_settings/controls_setup_action/controls_setup_action.tscn" id="1_8cmok"]
 [ext_resource type="Script" uid="uid://1jkn8ui2ioae" path="res://menus/controls_settings/controls_setup_player/controls_setup_player.gd" id="1_bcllm"]
+[ext_resource type="Theme" uid="uid://by533c5jnqvoi" path="res://menus/controls_settings/controls_settings_theme.tres" id="1_ekfr2"]
 
 [node name="ControlsSetupPlayer" type="Control" unique_id=1009609581]
 layout_mode = 3
@@ -10,6 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ekfr2")
 script = ExtResource("1_bcllm")
 
 [node name="ScrollContainer" type="ScrollContainer" parent="." unique_id=1637701104]
@@ -31,7 +33,6 @@ layout_mode = 2
 [node name="Label" type="Label" parent="ScrollContainer/ActionContainer/InputDevice" unique_id=1607917321]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_font_sizes/font_size = 8
 text = "Input Device"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -40,7 +41,6 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 3
 focus_mode = 0
-theme_override_font_sizes/font_size = 8
 selected = 0
 item_count = 1
 popup/item_0/text = "Keyboard"
