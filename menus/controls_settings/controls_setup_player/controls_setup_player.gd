@@ -1,13 +1,16 @@
 extends Control
 
-
+## Defines which device ID will be read as the keyboard. Set to a high number to not conflict
+## with gamepad device IDs.
+const KEYBOARD_DEVICE_ID: int = 999
 
 @export var player_no: int = 1
 @onready var action_container: VBoxContainer = $ScrollContainer/ActionContainer
 @onready var device_dropdown: OptionButton = $ScrollContainer/ActionContainer/InputDevice/DeviceDropdown
+@onready var set_as_default_button: Button = $ScrollContainer/ActionContainer/SetAsDefault
 
-var device_type = "keyboard" #or "gamepad"
-var device_index: int = 0
+var input_type: ControlsSettings.INPUT_TYPE
+var device_id: int = 0
 # A dictionary that maps the indices of the DeviceDropdown node to the devices indicies of the connected devices
 # They will always be off from the actual indices since the "Keyboard" option is first then the gamepads
 var dropdown_index_to_device_index = {}
@@ -18,14 +21,18 @@ signal input_pressed
 func _ready() -> void:
 	initialize()
 	Input.joy_connection_changed.connect(_on_joy_connection_changed)
+	if !OS.has_feature("standalone"):
+		# Allow setting a button layout as default in debugger only, not in exported builds
+		set_as_default_button.show()
 
 
 func initialize():
 	update_device_dropdown()
-	load_from_input_map()
+	load_from_controls_settings()
 	for controls_setup_action in action_container.get_children():
 		if controls_setup_action.is_in_group("controls_setup_action"):
 			controls_setup_action.connect("request_input_event", _input_event_requested)
+
 
 func _set_all_event_buttons_disabled(p_disabled: bool):
 	for controls_setup_action in get_all_control_setup_nodes():
@@ -51,10 +58,11 @@ func _input(event: InputEvent) -> void:
 		if event.keycode == KEY_DELETE:
 			input_pressed.emit(null)
 			return
-	if event is InputEventKey and event.is_pressed() and device_type == "keyboard":
-		input_pressed.emit(event)
-	if device_type == "gamepad":
-		if event.device != device_index:
+	if input_type == ControlsSettings.INPUT_TYPE.KEYBOARD:
+		if event is InputEventKey and event.is_pressed():
+			input_pressed.emit(event)
+	if input_type == ControlsSettings.INPUT_TYPE.GAMEPAD:
+		if event.device != device_id:
 			return
 		if event is InputEventJoypadMotion:
 			if abs(event.axis_value) > 0.75:
@@ -69,22 +77,11 @@ func _on_joy_connection_changed(_device, _connected):
 	update_device_dropdown()
 
 
-func load_from_input_map():
-	for controls_setup_action in get_all_control_setup_nodes():
-		var valid_events = []
-		for event in InputMap.action_get_events(controls_setup_action.action + str(player_no)):
-			if device_type == "gamepad" and (event is InputEventJoypadButton or event is InputEventJoypadMotion):
-				valid_events.append(event)
-			elif device_type == "keyboard" and event is InputEventKey:
-				valid_events.append(event)
-		controls_setup_action.set_input_events(valid_events)
-
-
 func update_device_dropdown():
 	device_dropdown.clear()
 
 	# Add "Keyboard" option first, make the ID a high number so it doesn't conflict with gamepads
-	device_dropdown.add_item("Keyboard", ControlsSettings.KEYBOARD_DEVICE_ID)
+	device_dropdown.add_item("Keyboard", KEYBOARD_DEVICE_ID)
 
 	# Add gamepads
 	for joypad in Input.get_connected_joypads():
@@ -96,27 +93,38 @@ func update_device_dropdown():
 
 func update_device_index():
 	# Load the currently selected device index
-	device_index = ControlsSettings.player_device_ids.get(player_no, ControlsSettings.KEYBOARD_DEVICE_ID)
-	device_dropdown.select(device_dropdown.get_item_index(device_index))
-	device_type = "keyboard" if device_index == ControlsSettings.KEYBOARD_DEVICE_ID else "gamepad"
+	device_id = ControlsSettings.player_device_ids.get(player_no, 0)
+	device_dropdown.select(device_dropdown.get_item_index(device_id))
+	if device_id == KEYBOARD_DEVICE_ID:
+		input_type = ControlsSettings.INPUT_TYPE.KEYBOARD
+	else:
+		input_type = ControlsSettings.INPUT_TYPE.GAMEPAD
+	load_from_controls_settings()
 
-	load_from_input_map()
 
-
-func apply_to_input_map():
+func load_from_controls_settings():
 	for controls_setup_action in get_all_control_setup_nodes():
-		var player_action = controls_setup_action.action + str(player_no)
-		if !InputMap.has_action(player_action):
-			InputMap.add_action(player_action)
-		InputMap.action_erase_events(player_action)
+		var action: String = controls_setup_action.action
+		controls_setup_action.set_input_events(
+				ControlsSettings.get_button_layout_events(player_no, input_type, action))
+
+
+func apply_to_controls_settings():
+	var layout: Dictionary[String, Array]
+	for controls_setup_action in get_all_control_setup_nodes():
+		var action: String = controls_setup_action.action
+		layout[action] = []
 		for event in controls_setup_action.input_events:
 			if event != null:
-				var modified_event = event.duplicate()
+				var modified_event: InputEvent = event.duplicate()
 				# Force the device index of the event to be the correct one selected by the dropdown
 				if modified_event is InputEventJoypadButton or modified_event is InputEventJoypadMotion:
-					modified_event.device = device_index
-				InputMap.action_add_event(player_action, modified_event)
-
+					modified_event.device = device_id
+				layout[action].append(modified_event)
+	ControlsSettings.set_button_layout(player_no, input_type, layout)
+	ControlsSettings.player_input_types[player_no] = input_type
+	ControlsSettings.player_device_ids[player_no] = device_id
+				
 
 func get_all_control_setup_nodes() -> Array:
 	var nodes := []
@@ -130,10 +138,15 @@ func _on_detect_button_pressed() -> void:
 	pass # Replace with function body.
 
 
-func _on_device_dropdown_pressed() -> void:
-	pass # Replace with function body.
-
-
 func _on_device_dropdown_item_selected(index:int) -> void:
 	ControlsSettings.player_device_ids[player_no] = device_dropdown.get_item_id(index)
 	update_device_index()
+
+
+func _on_reset_to_default_pressed() -> void:
+	ControlsSettings.load_default_button_layout(player_no, input_type)
+	initialize()
+
+
+func _on_set_as_default_pressed() -> void:
+	ControlsSettings.save_button_layout_as_default(player_no, input_type)

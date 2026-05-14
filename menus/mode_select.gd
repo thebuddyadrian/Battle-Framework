@@ -17,7 +17,8 @@ var current_sprite: Sprite2D
 func _ready() -> void:
 	# The game might have been changed to disable embedding subwindows in-game, this will change it back
 	get_viewport().gui_embed_subwindows = true
-	ControlsSettings.load_controls()
+	ControlsSettings.load_all_button_layouts()
+	ControlsSettings.load_controls_settings()
 	change_mode(selected_mode)
 	flame_logo.play("default")
 	MusicPlayer.play_track(MusicPlayer.MAIN_MENU)

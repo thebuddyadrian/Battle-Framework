@@ -12,6 +12,7 @@ var current_player = 1
 var active_player_nodes = []
 
 func _ready() -> void:
+	ControlsSettings.apply_button_layouts()
 	map_select.process_mode = Node.PROCESS_MODE_DISABLED
 	
 	if !MatchSetup.is_playing_solo():

@@ -52,6 +52,15 @@ layout_mode = 2
 theme_override_font_sizes/font_size = 8
 text = "Detect"
 
+[node name="ResetToDefault" type="Button" parent="ScrollContainer/ActionContainer" unique_id=1204312323]
+layout_mode = 2
+text = "RESET TO DEFAULT"
+
+[node name="SetAsDefault" type="Button" parent="ScrollContainer/ActionContainer" unique_id=513216245]
+visible = false
+layout_mode = 2
+text = "SET AS DEFAULT (DEBUG ONLY)"
+
 [node name="Left" parent="ScrollContainer/ActionContainer" unique_id=1650126041 instance=ExtResource("1_8cmok")]
 layout_mode = 2
 action = "left"
@@ -140,3 +149,5 @@ text = "Menu Cancel"
 [connection signal="item_selected" from="ScrollContainer/ActionContainer/InputDevice/DeviceDropdown" to="." method="_on_device_dropdown_item_selected"]
 [connection signal="pressed" from="ScrollContainer/ActionContainer/InputDevice/DeviceDropdown" to="." method="_on_device_dropdown_pressed"]
 [connection signal="pressed" from="ScrollContainer/ActionContainer/InputDevice/DetectButton" to="." method="_on_detect_button_pressed"]
+[connection signal="pressed" from="ScrollContainer/ActionContainer/ResetToDefault" to="." method="_on_reset_to_default_pressed"]
+[connection signal="pressed" from="ScrollContainer/ActionContainer/SetAsDefault" to="." method="_on_set_as_default_pressed"]
