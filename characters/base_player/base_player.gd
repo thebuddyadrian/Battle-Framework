@@ -4,6 +4,9 @@ class_name BattleCharacter
 @export var character_info: CharacterInfo
 @export var IS_CLIENTSIDE = false
 
+# Input device used for referencing Inputs for AI and Players
+var Input_Device:PL_Input_Device = null
+
 # Character stats, will be set from character_info resource
 var max_hp: float
 var move_speed: float 
@@ -97,6 +100,9 @@ func _ready() -> void:
 	current_hp = max_hp
 	# TO-DO there should be 
 	current_stocks = 3
+	
+	# Input device
+	Input_Device = get_node("PL_Input_Device")
 
 
 func _process(delta: float) -> void:
@@ -519,22 +525,17 @@ func is_action_enabled(action: String):
 	return actions_enabled.has(action)
 
 
-## Input helper function to get input for the current player
-## In the future this will also retrieve inputs received over the network (for online play)
+## Input helper function to get input for the current player or AI (moved to PL_inputdevice.gd)
+## In the future this will also retrieve inputs received over the network (for online play, also moved to PL_inputdevice.gd)
+## Make a better comment once this has been sorted out a bit more
 func input(action: StringName, type: String = "pressed") -> bool:
-	# Gets the correct action based on the player number (ex: attack1, attack2, attack3, etc.)
-	var player_action = action + str(player_id)
-	if !InputMap.has_action(player_action):
-		push_error("Action %s doesn't exist" % player_action)
-		return false
-	if type == "pressed":
-		return Input.is_action_pressed(player_action)
-	if type == "just_pressed":
-		return Input.is_action_just_pressed(player_action)
-	if type == "just_released":
-		return Input.is_action_just_released(player_action)
-	return false
-	
+	if(Input_Device != null):
+		# Dynamic input return based on device preference or choice ai included
+		return Input_Device.input(action, type)
+	else:
+		# Static Input return based on character
+		return Input_Device.inputfrom(player_id, action, type)
+		
 
 func get_input_vector() -> Vector2:
 	return Vector2(int(input("right")) - int(input("left")), int(input("down")) - int(input("up")))

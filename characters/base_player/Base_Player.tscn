@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://mhfes0qawdck" path="res://characters/base_player/base_player.gd" id="1_7xl6k"]
 [ext_resource type="Script" uid="uid://cyjpv2h7kqytk" path="res://components/battle_sprite/battle_sprite.gd" id="2_b01px"]
+[ext_resource type="Script" uid="uid://ctxyhxfcasoek" path="res://components/player_input/PL_inputdevice.gd" id="2_qebik"]
 [ext_resource type="Script" uid="uid://c8deswq6muu7v" path="res://characters/raycast.gd" id="2_s2flu"]
 [ext_resource type="Script" uid="uid://ddgg8e7k4c0pd" path="res://characters/base_player/effects.gd" id="2_uam5m"]
 [ext_resource type="Script" uid="uid://clqptntgy8bjs" path="res://components/state_machine/state_machine.gd" id="4_dnwcv"]
@@ -44,7 +45,7 @@ height = 0.001
 radial_segments = 16
 cap_bottom = false
 
-[sub_resource type="Resource" id="Resource_wyd30"]
+[sub_resource type="Resource" id="Resource_6nib5"]
 script = ExtResource("16_32b4s")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
@@ -60,9 +61,14 @@ slide_on_ceiling = false
 floor_snap_length = 0.16
 safe_margin = 0.016
 script = ExtResource("1_7xl6k")
+IS_CLIENTSIDE = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1814795435]
 shape = SubResource("CapsuleShape3D_ajxej")
+
+[node name="PL_Input_Device" type="Node" parent="." unique_id=794638370]
+script = ExtResource("2_qebik")
+metadata/_custom_type_script = "uid://ctxyhxfcasoek"
 
 [node name="PlayerSprite" type="Sprite3D" parent="." unique_id=193447772]
 layers = 4
@@ -213,7 +219,7 @@ script = ExtResource("23_uam5m")
 
 [node name="Hitbox" type="Area3D" parent="." unique_id=223441001]
 script = ExtResource("15_0nphp")
-hit_data = SubResource("Resource_wyd30")
+hit_data = SubResource("Resource_6nib5")
 root_node_path = NodePath("..")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Hitbox" unique_id=452238123]
