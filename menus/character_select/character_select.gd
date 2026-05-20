@@ -24,6 +24,8 @@ func _ready() -> void:
 		# If this index is above the amount of human players, it must be a CPU
 		if i >= MatchSetup.human_players:
 			player_character.is_cpu = true
+			#Add type set here
+			
 		player_character.name = "PlayerContainer" + str(i + 1)
 		player_character.player_number = i + 1
 		player_container.add_child(player_character)

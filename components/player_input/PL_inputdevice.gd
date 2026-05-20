@@ -66,7 +66,8 @@ func input(action: StringName, type: String = "pressed") -> bool:
 		return inputfrom(ID,action,type)
 	#Localized controls
 	return inputOverrides(action,type)
-	
+
+# we include here rather than an override class or node because it adds a single frame of latency which if we're not careful can add up
 ## Input helper function to get input for the current player
 ## In the future this will also retrieve inputs received over the network (for online play)
 static func inputfrom(ID:int, action: StringName, type: String = "pressed") -> bool:
