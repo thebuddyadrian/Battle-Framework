@@ -84,6 +84,9 @@ func initialize_match():
 	assert(stage.player_spawn_4, "No spawn position has been placed for player 4")
 	for i in range(MatchSetup.get_total_players()):
 		var character = MatchSetup.character_choices[i + 1]
+		#AI, network, ext.. type of input or control device 
+		var character_mode = MatchSetup.character_types[i + 1]
+		
 		var player: BattleCharacter = ResourceLoader.load("res://characters/%s/%s.tscn" % [character, character]).instantiate()
 		# Get the player_spawn_<x> variable, which holds a node reference to the spawn position
 		var spawn_position: Node3D = stage.get("player_spawn_%s" % str(i + 1))
@@ -96,6 +99,18 @@ func initialize_match():
 		player.char_name = character
 		player.kod.connect(_on_player_kod)
 		spawn_position.get_parent().add_child(player)
+		
+		# Add player Input override spawning here
+		if(player.Input_Device != null):
+			# enable default inputs
+			if(character_mode == MatchSetup.character_type.PLAYER):
+				player.Input_Device.Auto_Assign = true
+			# AI control spawn
+			if(character_mode == MatchSetup.character_type.CPU):
+				var NavAI_Spawn = AI_Navigation_Behaviour_Base.new()
+				player.add_child(NavAI_Spawn)
+				print("AI Player added")
+			# Add network input alternative override node spawn here, e.g. Net_Control_Behaviour_Base !
 
 		# Spawn HUD
 		var player_hud = PLAYER_HUD.instantiate()

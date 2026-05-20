@@ -46,6 +46,10 @@ func _ready() -> void:
 func _on_player_selection_finished(plrnum):
 	var current_player_node = player_container.get_child(plrnum - 1)
 	MatchSetup.character_choices[plrnum] = current_player_node.character
+	MatchSetup.character_types[plrnum] = MatchSetup.character_type.PLAYER
+	if(plrnum > MatchSetup.human_players):
+		MatchSetup.character_types[plrnum] = MatchSetup.character_type.CPU
+	
 	current_player_node.active = false
 	current_player_node.css_ready = true
 	

@@ -6,6 +6,7 @@ signal request_cursor_anim(anim_name)
 var active: bool = false: set = set_active
 var is_cpu: bool = false
 var character_index: int = 0 : set = set_character_index
+var character_type: MatchSetup.character_type = MatchSetup.character_type.PLAYER : set = set_character_type
 var character: String : set = set_character
 
 var css_ready : bool = false
@@ -20,6 +21,7 @@ var css_ready : bool = false
 @onready var confirm_sprite : TextureRect = $ConfirmSprite
 @onready var cursor_arrows: Control = $CursorArrows
 @onready var cursor_arrows_animplayer: AnimationPlayer = $CursorArrows/AnimationPlayer
+@onready var type_lavel : Label = $Type
 
 signal selection_finished(plrnum)
 
@@ -44,6 +46,12 @@ func _process(delta: float) -> void:
 	if get_input("ui_right"):
 		character_index += 1
 		play_cursor_anim("ArrowRightBump")
+	# Per player slecet type
+	#if get_input("ui_up"):
+		#character_type += 1
+	#if get_input("ui_down"):
+		#character_type -= 1
+		
 	if get_input("ui_accept"):
 		selection_finished.emit(player_number)
 		confirm_sprite.visible = true
@@ -77,6 +85,17 @@ func set_character_index(p_index: int):
 	if character_index >= GameData.characters.size():
 		character_index = 0
 	set_character(GameData.characters[character_index])
+
+# Set type player cpu ext..
+func set_character_type(p_type:int):
+	var Type_Values = MatchSetup.character_type.keys()
+	#Loop value (poor but eh will do for now)
+	if(p_type >= Type_Values.size()): p_type -= Type_Values.size()
+	if(p_type < 0): p_type += Type_Values.size()
+	
+	var RawType = Type_Values[p_type]
+	character_type = MatchSetup.character_type.get(RawType,MatchSetup.character_type.PLAYER)
+	type_lavel.text = RawType
 
 
 func set_character(p_character: String):

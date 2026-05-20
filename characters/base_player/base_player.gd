@@ -102,7 +102,7 @@ func _ready() -> void:
 	current_stocks = 3
 	
 	# Input device
-	Input_Device = get_node("PL_Input_Device")
+	if(Input_Device == null): Input_Device = get_node("PL_Input_Device")
 
 
 func _process(delta: float) -> void:

@@ -1,10 +1,19 @@
 ## Autoload script that stores the match configuration, or the info needed to set up a match in MatchScene
 extends Node
 
+enum character_type{
+	PLAYER,
+	CPU,
+	#ONLINE, # Online should be predetermined by later systems
+}
+
 var human_players: int = 0
+# slighlty redundant just because we use the dict to lookup cpu types for players
 var cpu_players: int = 0
 # Stores each player's character choice (maps Player Number -> Character Name)
 var character_choices: Dictionary[int, String]= {}
+# Stores player types for AI an no direct player types based on index of character from the choices
+var character_types: Dictionary[int,character_type] = {}
 # Stores the stages selected in the Map Select screen
 var stage_list: Array = ["battlehwy"]
 # The current stage in the list that will be used

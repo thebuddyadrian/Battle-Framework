@@ -14,7 +14,6 @@ offset_right = -9.0
 offset_bottom = 27.0
 size_flags_horizontal = 3
 script = ExtResource("1_gu884")
-player_number = null
 metadata/_edit_use_anchors_ = true
 
 [node name="Portrait_Manager" parent="." unique_id=1147158144 instance=ExtResource("2_fq4xj")]
@@ -59,5 +58,13 @@ texture = ExtResource("3_816r1")
 
 [node name="CursorArrows" parent="." unique_id=336277503 instance=ExtResource("4_ofnyx")]
 layout_mode = 0
+
+[node name="Type" type="Label" parent="." unique_id=1629587922]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 25.0
+text = "PLAYER"
 
 [editable path="CursorArrows"]

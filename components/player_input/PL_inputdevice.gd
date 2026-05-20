@@ -2,8 +2,10 @@ extends Node
 ## New input recieve implmented for online and AI overrides for player controls
 class_name PL_Input_Device
 
+# not needed long term just temp, use player where possible
 var ID:int = -1
-var Auto_Assign:bool = true
+# Uses the input method to retrive inputs, otherwise local overrides take hold
+var Auto_Assign:bool = false
 
 const IDToInputType:Dictionary[int,String] = {
 	0:"none",
@@ -12,7 +14,12 @@ const IDToInputType:Dictionary[int,String] = {
 	3:"just_released"
 }
 
-#Assign override inputs here for actions here rather call input check with id on end
+# Add input overrides as needed
+var LocalOverridedPressedInputs:Dictionary ={
+	
+}
+
+# Assign override inputs here for actions here rather call input check with id on end
 var LocalOverridedInputs:Dictionary = {
 	"left":0,
 	"right":0,
@@ -29,7 +36,27 @@ var LocalOverridedInputs:Dictionary = {
 func _ready() -> void:
 	var Parent = get_parent()
 	if(Parent != null):
-		ID = (Parent as BattleCharacter).player_id
+		var Character = (Parent as BattleCharacter)
+		ID = Character.player_id
+		Character.Input_Device = self
+		
+func _process(delta: float) -> void:
+	
+	# Only used for Override input options or manual control
+	if(!Auto_Assign): 
+		for Override in LocalOverridedPressedInputs.keys():
+			if(LocalOverridedPressedInputs[Override] == true):
+				#reset inputs if pressed
+				if(LocalOverridedInputs[Override] > 0): LocalOverridedInputs[Override] = 1
+				else: LocalOverridedInputs[Override] = 2
+			else:
+				#Switch states for input if not pressed
+				if(LocalOverridedInputs[Override] == 3 && LocalOverridedInputs[Override] > 0): LocalOverridedInputs[Override] = 0
+				else: LocalOverridedInputs[Override] = 3
+				
+			# Deactive unless call_input is called each frame
+			LocalOverridedPressedInputs[Override] = false
+	
 	
 ## Auto assigned input based on player ID or AI device
 func input(action: StringName, type: String = "pressed") -> bool:
@@ -63,5 +90,8 @@ func inputOverrides(action: StringName, type: String = "pressed") -> bool:
 	return false
 
 ## Non Static function to call localized input fields overiding default input methods out
-func Call_Input(action: StringName) -> void:
-	pass
+func Call_Input(action: StringName, OverrideState: int = -1) -> void:
+	# kill if input isnt real
+	if(!LocalOverridedInputs.has(action)): return
+	if(OverrideState >= 0): LocalOverridedPressedInputs[action] = OverrideState
+	else: LocalOverridedPressedInputs[action] = true

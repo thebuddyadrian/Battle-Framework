@@ -61,7 +61,6 @@ slide_on_ceiling = false
 floor_snap_length = 0.16
 safe_margin = 0.016
 script = ExtResource("1_7xl6k")
-IS_CLIENTSIDE = null
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1814795435]
 shape = SubResource("CapsuleShape3D_ajxej")
