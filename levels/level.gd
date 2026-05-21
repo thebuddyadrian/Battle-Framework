@@ -15,6 +15,11 @@ const PAUSE_MENU = preload("uid://cifkfj62fb1ho")
 @export var player_spawn_4: Node3D
 @export var camera_follows_player: bool = false # For beat-em-up levels
 @export var camera_root_parent: Node = self
+# Ai Navigation
+@export var nav_area:Node3D = null
+@onready var pre_area = preload("res://ai_cpu/ai_navigation_basis.tres")
+# Ai Navigation
+@export_tool_button("Generate Nav Mesh","NavigationRegion3D") var call_generate_navigation = generate_from_nav_node
 
 @export_tool_button("Export as Mod PCK") var export_as_mod_pck = do_export_as_mod_pck
 
@@ -47,6 +52,36 @@ func get_file_list(folder_path):
 	else:
 		print("An error occurred when trying to access the path.")
 	return file_paths
+	
+# Use for buttons and deffered calls
+func generate_from_nav_node():
+	if(nav_area != null): generate_navigation(nav_area)
+	else: printerr("Please select nav_area child node")
+
+# Navigation generate pre baked
+func generate_navigation(Target:Node3D):
+	var Region:NavigationRegion3D = null
+	
+	#if already selected nav area
+	if(Target is NavigationRegion3D):
+		Region = Target
+	
+	var Parent = Target.get_parent()
+	if(Parent is NavigationRegion3D):
+		Region = Parent as NavigationRegion3D
+	else:
+		var New_region = NavigationRegion3D.new()
+		Parent.add_child(New_region)
+		New_region.owner = get_tree().edited_scene_root
+		Target.reparent(New_region)
+		
+		Region = New_region
+	
+	#Add mesh preference unless there already there
+	if(Region.navigation_mesh == null):	
+		Region.navigation_mesh = pre_area.duplicate()
+	
+	Region.bake_navigation_mesh()
 
 
 func do_export_as_mod_pck():

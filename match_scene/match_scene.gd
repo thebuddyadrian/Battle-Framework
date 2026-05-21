@@ -46,6 +46,9 @@ func initialize_match():
 	var stage_scene: PackedScene = load("res://levels/%s/%s.tscn" % [current_stage, current_stage])
 	stage = stage_scene.instantiate()
 	add_child(stage)
+	
+	# Auto Nav generation (moved in favour of prebake)
+	#stage.generate_navigation()
 
 	# Get music track
 	if stage and stage.stage_info:
