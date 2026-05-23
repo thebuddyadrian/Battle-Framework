@@ -538,6 +538,7 @@ func input(action: StringName, type: String = "pressed") -> bool:
 		
 
 func get_input_vector() -> Vector2:
+	if(Input_Device != null): return Input_Device.LeftStick
 	return Vector2(int(input("right")) - int(input("left")), int(input("down")) - int(input("up")))
 
 

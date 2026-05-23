@@ -55,7 +55,8 @@ func get_file_list(folder_path):
 	
 # Use for buttons and deffered calls
 func generate_from_nav_node():
-	if(nav_area != null): generate_navigation(nav_area)
+	if(nav_area != null): 
+		nav_area = generate_navigation(nav_area)
 	else: printerr("Please select nav_area child node")
 
 # Navigation generate pre baked
@@ -67,21 +68,25 @@ func generate_navigation(Target:Node3D):
 		Region = Target
 	
 	var Parent = Target.get_parent()
-	if(Parent is NavigationRegion3D):
-		Region = Parent as NavigationRegion3D
-	else:
-		var New_region = NavigationRegion3D.new()
-		Parent.add_child(New_region)
-		New_region.owner = get_tree().edited_scene_root
-		Target.reparent(New_region)
-		
-		Region = New_region
+	if(Region == null):
+		if(Parent is NavigationRegion3D):
+			Region = Parent as NavigationRegion3D
+		else:
+			var New_region = NavigationRegion3D.new()
+			New_region.name = "Navigation_Region"
+			Parent.add_child(New_region)
+			New_region.owner = Parent
+			Target.reparent(New_region)
+			
+			Region = New_region
 	
 	#Add mesh preference unless there already there
-	if(Region.navigation_mesh == null):	
-		Region.navigation_mesh = pre_area.duplicate()
+	#if(Region.navigation_mesh != null):	
+		#Region.navigation_mesh.free()
+	Region.navigation_mesh = pre_area.duplicate()
 	
 	Region.bake_navigation_mesh()
+	return Region
 
 
 func do_export_as_mod_pck():

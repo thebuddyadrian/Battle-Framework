@@ -18,6 +18,7 @@ var character_types: Dictionary[int,character_type] = {}
 var stage_list: Array = ["battlehwy"]
 # The current stage in the list that will be used
 var current_stage_index: int = 0
+var current_stage_node:Level = null
 var single_window: bool = true
 
 # Helper function to get total amount of players (human + cpu)

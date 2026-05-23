@@ -40,6 +40,10 @@ SoundEffectPlayer="*res://autoload/sound_effect_player.gd"
 PlayerInput="*res://autoload/player_input.gd"
 PhantomCameraManager="*uid://duq6jhf6unyis"
 
+[debug_draw_3d]
+
+settings/addon_root_folder="res://addons/debug_draw_3d"
+
 [dialogic]
 
 directories/dch_directory={

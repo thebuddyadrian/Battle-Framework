@@ -45,6 +45,7 @@ func initialize_match():
 	print("Loading stage \"%s\"" % current_stage)
 	var stage_scene: PackedScene = load("res://levels/%s/%s.tscn" % [current_stage, current_stage])
 	stage = stage_scene.instantiate()
+	if(stage is Level): MatchSetup.current_stage_node = stage
 	add_child(stage)
 	
 	# Auto Nav generation (moved in favour of prebake)

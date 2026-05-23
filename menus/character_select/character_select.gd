@@ -48,6 +48,8 @@ func _ready() -> void:
 func _on_player_selection_finished(plrnum):
 	var current_player_node = player_container.get_child(plrnum - 1)
 	MatchSetup.character_choices[plrnum] = current_player_node.character
+	
+	# Set player type, player, cpu, network
 	MatchSetup.character_types[plrnum] = MatchSetup.character_type.PLAYER
 	if(plrnum > MatchSetup.human_players):
 		MatchSetup.character_types[plrnum] = MatchSetup.character_type.CPU

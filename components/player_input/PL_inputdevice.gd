@@ -32,6 +32,12 @@ var LocalOverridedInputs:Dictionary = {
 	"dash":0,
 }
 
+# Representation of inputs for up down left right as vector with overrides
+var LeftStick:Vector2 = Vector2(0,0)
+
+@export var OverrideLeftStick:bool = false
+var LocalOverrideLeftStick:Vector2 = Vector2(0,0)
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	var Parent = get_parent()
@@ -51,12 +57,21 @@ func _process(delta: float) -> void:
 				else: LocalOverridedInputs[Override] = 2
 			else:
 				#Switch states for input if not pressed
-				if(LocalOverridedInputs[Override] == 3 && LocalOverridedInputs[Override] > 0): LocalOverridedInputs[Override] = 0
+				if(LocalOverridedInputs[Override] == 1): LocalOverridedInputs[Override] = 2
+				elif(LocalOverridedInputs[Override] == 3 || LocalOverridedInputs[Override] == 2): LocalOverridedInputs[Override] = 0
 				else: LocalOverridedInputs[Override] = 3
 				
 			# Deactive unless call_input is called each frame
 			LocalOverridedPressedInputs[Override] = false
 	
+		# Left Stick caluclations
+		if(OverrideLeftStick): 
+			LeftStick = LocalOverrideLeftStick
+		else:
+			LeftStick = Vector2(int(LocalOverridedInputs["right"]>0)-int(LocalOverridedInputs["left"]>0),int(LocalOverridedInputs["up"]>0)-int(LocalOverridedInputs["down"]>0))
+	else:
+		# Joystick direct axis
+		LeftStick = inputvec(ID)
 	
 ## Auto assigned input based on player ID or AI device
 func input(action: StringName, type: String = "pressed") -> bool:
@@ -66,6 +81,9 @@ func input(action: StringName, type: String = "pressed") -> bool:
 		return inputfrom(ID,action,type)
 	#Localized controls
 	return inputOverrides(action,type)
+
+static func inputvec(ID:int) -> Vector2:
+	return Input.get_vector("left"+str(ID),"right"+str(ID),"up"+str(ID),"down"+str(ID))
 
 # we include here rather than an override class or node because it adds a single frame of latency which if we're not careful can add up
 ## Input helper function to get input for the current player
