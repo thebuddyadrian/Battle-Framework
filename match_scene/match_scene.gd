@@ -14,6 +14,8 @@ var stage: Level
 var camera_pivots: Dictionary[int, Node3D]
 var cameras: Dictionary[int, Camera3D]
 var original_content_scale_size: Vector2i
+# Used to keep track of kos intnerally rather than using player count which has issues on the same frame
+var player_internal_count:int = 2
 
 
 func _ready() -> void:
@@ -57,6 +59,8 @@ func initialize_match():
 			print("Loading music track %s" % stage.stage_info.music_file_path)
 			MusicPlayer.play_track(load(stage.stage_info.music_file_path))
 
+	# Set player count
+	player_internal_count = MatchSetup.get_total_players()
 	# Spawn cameras
 	for i in range(MatchSetup.get_total_players()):
 		var camera_root = CAMERA_ROOT.instantiate()
@@ -210,7 +214,9 @@ func _get_alive_player_count():
 
 func _on_player_kod(player: BattleCharacter):
 	# Your placement depends on how many players were alive when you got KO'd
-	Game.match_results[player.player_id] = _get_alive_player_count() + 1
+	Game.match_results[player.player_id] = player_internal_count
+	player_internal_count -= 1
+	
 	if _get_alive_player_count() <= 1:
 		# Add the winner player
 		for remaining_player in get_tree().get_nodes_in_group("characters"):
