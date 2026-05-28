@@ -10,7 +10,8 @@ const MAX_LOCAL_PLAYERS: int = 4
 const GAMEPLAY_ACTIONS: Array = ["left", "right", "up", "down", "jump", "attack", "upper", 
 		"skill", "guard", "dash", "pause"]
 ## List of actions used in the UI.
-const UI_ACTIONS: Array = ["ui_left", "ui_right", "ui_up", "ui_down", "ui_accept", "ui_cancel"]
+const UI_ACTIONS: Array = ["ui_left", "ui_right", "ui_up", "ui_down", "ui_accept", "ui_cancel",
+		"ui_left_corner", "ui_right_corner"]
 const USER_BUTTON_LAYOUTS_DIR: String = "user://button_layouts/"
 const DEFAULT_GAMEPAD_BUTTON_LAYOUT_PATH: String = "res://data/default_gamepad_button_layout.dat"
 const DEFAULT_KEYBOARD_BUTTON_LAYOUT_PATH: String = "res://data/default_keyboard_button_layout.dat"
