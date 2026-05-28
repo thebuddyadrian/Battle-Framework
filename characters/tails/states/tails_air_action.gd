@@ -16,6 +16,8 @@ func _enter(data = {}):
 	root.velocity.x = 5 * root.facing_direction.x
 	root.velocity.z = 5 * root.facing_direction.y
 	root.play_sound_effect("tails/tails_air_action")
+	root.set_action_enabled("attack", true)
+	root.set_action_enabled("skill", true)
 
 
 func _step():
@@ -36,4 +38,5 @@ func _exit(next_state):
 	root.animplayer.stop()
 	root.gravity_scale = 1
 	root.deceleration_enabled = true
+	root.disable_all_actions()
 	super._exit(next_state)
