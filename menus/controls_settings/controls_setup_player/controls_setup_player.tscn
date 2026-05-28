@@ -61,7 +61,7 @@ text = "RESET TO DEFAULT"
 [node name="SetAsDefault" type="Button" parent="ScrollContainer/ActionContainer" unique_id=513216245]
 visible = false
 layout_mode = 2
-text = "SET AS DEFAULT (DEBUG ONLY)"
+text = "SET AS DEFAULT (DEV ONLY)"
 
 [node name="Left" parent="ScrollContainer/ActionContainer" unique_id=1650126041 instance=ExtResource("1_8cmok")]
 layout_mode = 2
