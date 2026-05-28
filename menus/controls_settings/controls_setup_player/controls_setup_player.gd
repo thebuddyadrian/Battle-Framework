@@ -149,4 +149,5 @@ func _on_reset_to_default_pressed() -> void:
 
 
 func _on_set_as_default_pressed() -> void:
+	apply_to_controls_settings()
 	ControlsSettings.save_button_layout_as_default(player_no, input_type)
