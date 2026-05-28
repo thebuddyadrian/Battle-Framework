@@ -18,4 +18,5 @@ knockback_power = 35
 knockback_angle = 20
 knockback_type = 1
 hit_sound = ""
+dash_cancel_on_hit = true
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
