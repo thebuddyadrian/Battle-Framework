@@ -6,19 +6,23 @@
 [sub_resource type="LabelSettings" id="LabelSettings_x08qh"]
 
 [node name="ControlsSetupAction" type="Control" unique_id=495224781 groups=["controls_setup_action"]]
-custom_minimum_size = Vector2(240, 24)
+custom_minimum_size = Vector2(200, 21)
 layout_mode = 3
 anchors_preset = 0
-offset_right = 240.0
-offset_bottom = 24.0
+offset_right = 200.0
+offset_bottom = 16.0
+size_flags_horizontal = 3
 theme = ExtResource("1_irsqg")
 script = ExtResource("1_x08qh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=1947312390]
 layout_mode = 1
-offset_right = 240.0
-offset_bottom = 23.0
-theme_override_constants/separation = 5
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 2
 alignment = 1
 
 [node name="ActionLabel" type="Label" parent="HBoxContainer" unique_id=980831693]
