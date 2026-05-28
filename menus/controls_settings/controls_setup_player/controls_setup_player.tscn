@@ -22,6 +22,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 follow_focus = true
+horizontal_scroll_mode = 0
 
 [node name="ActionContainer" type="VBoxContainer" parent="ScrollContainer" unique_id=913811574]
 layout_mode = 2
