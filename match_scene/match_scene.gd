@@ -24,7 +24,7 @@ func _ready() -> void:
 	else:
 		# Make sure subwindows aren't embedded, or else multiple windows wont spawn
 		get_viewport().gui_embed_subwindows = false
-	
+	ControlsSettings.load_all_button_layouts()
 	ControlsSettings.apply_button_layouts()
 	Game.match_results.clear()
 	initialize_match()
