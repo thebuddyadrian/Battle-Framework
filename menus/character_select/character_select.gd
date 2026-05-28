@@ -74,17 +74,9 @@ func css_iterate_cpu_players(node, num):
 			css_cursor_tween_to_player(node.global_position)
 
 func css_scene_transition():
-	var selected_stage: String
-	# If the current selected index is greater than the amount of base stages, it must be a modded stage
-	if $MAPSELECT/StageSelect.selected > GameData.battle_stages.size() - 1:
-		selected_stage = GameData.modded_battle_stages[$MAPSELECT/StageSelect.selected - GameData.battle_stages.size()]
-	else:
-		selected_stage = GameData.battle_stages[$MAPSELECT/StageSelect.selected]
-	
 	# Store stage list
-	if map_select.selected_stages.size() == 0:
-		MatchSetup.stage_list = [selected_stage]
-	
+	if map_select.selected_stages.size() > 0:
+		MatchSetup.stage_list = map_select.selected_stages
 	SceneChanger.change_scene_to_file("res://match_scene/match_scene.tscn")
 
 
