@@ -58,4 +58,20 @@ grow_vertical = 0
 focus_mode = 0
 text = "Save and Exit"
 
+[node name="Instructions" type="Label" parent="." unique_id=1839188965]
+visible = false
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -136.0
+offset_top = -15.0
+offset_right = -18.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+text = "(DEL to Unbind, ESC to Cancel)"
+
 [connection signal="pressed" from="ExitButton" to="." method="_on_exit_button_pressed"]

@@ -8,6 +8,7 @@ const KEYBOARD_DEVICE_ID: int = 999
 @onready var action_container: VBoxContainer = $ScrollContainer/ActionContainer
 @onready var device_dropdown: OptionButton = $ScrollContainer/ActionContainer/InputDevice/DeviceDropdown
 @onready var set_as_default_button: Button = $ScrollContainer/ActionContainer/SetAsDefault
+@onready var reset_to_default_button: Button = $ScrollContainer/ActionContainer/ResetToDefault
 
 var input_type: ControlsSettings.INPUT_TYPE
 var device_id: int = 0
@@ -16,6 +17,8 @@ var device_id: int = 0
 var dropdown_index_to_device_index = {}
 
 signal input_pressed
+signal started_listening
+signal stopped_listening
 
 
 func _ready() -> void:
@@ -37,6 +40,8 @@ func initialize():
 func _set_all_event_buttons_disabled(p_disabled: bool):
 	for controls_setup_action in get_all_control_setup_nodes():
 		controls_setup_action.set_event_buttons_disabled(p_disabled)
+	reset_to_default_button.disabled = p_disabled
+	device_dropdown.disabled = p_disabled
 
 
 func _input_event_requested(controls_setup_node, event_index):
@@ -44,10 +49,14 @@ func _input_event_requested(controls_setup_node, event_index):
 	_set_all_event_buttons_disabled(true)
 			
 	# Wait for an input to be pressed
-	controls_setup_node.get_event_button(event_index).text = "Listening... (DEL to Clear)"
+	controls_setup_node.get_event_button(event_index).text = "..."
+	controls_setup_node.get_event_icon(event_index).texture = null
+	started_listening.emit()
 	var input_event = await input_pressed
-	controls_setup_node.set_input_event(input_event, event_index)
-	
+	# Use ESC to cancel
+	if !(input_event is InputEventKey and input_event.keycode == KEY_ESCAPE):
+		controls_setup_node.set_input_event(input_event, event_index)
+	stopped_listening.emit()
 	# Re-enable all other buttons
 	_set_all_event_buttons_disabled(false)
 	

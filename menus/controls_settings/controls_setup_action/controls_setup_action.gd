@@ -14,6 +14,8 @@ var input_events = [null, null] : set = set_input_events
 #@onready var action_pressed_display = $ActionPressedDisplay
 @onready var event_button_1 = $HBoxContainer/EventButton1
 @onready var event_button_2 = $HBoxContainer/EventButton2
+@onready var event_icon_1: TextureRect = %EventIcon1
+@onready var event_icon_2: TextureRect = %EventIcon2
 
 signal request_input_event (self_node, index)
 signal description_hint (desc)
@@ -29,10 +31,6 @@ func _ready():
 func _process(delta):
 	if Engine.is_editor_hint():
 		_update_text()
-	
-	#Highlight this action if one of the events is pressed
-#	if InputMap.has_action(get_temp_action(action)):
-#		action_pressed_display.visible = Input.is_action_pressed(get_temp_action(action))
 
 
 func _update_text():
@@ -56,12 +54,22 @@ func set_input_events(p_events):
 		update_input_icons()
 
 
-func get_event_button(button_index: int):
+func get_event_button(button_index: int) -> Button:
 	assert(button_index == 0 or button_index == 1, "Invalid event button index. Must be 0 or 1")
 	if button_index == 0:
 		return event_button_1
 	if button_index == 1:
 		return event_button_2
+	return null
+	
+
+func get_event_icon(button_index: int) -> TextureRect:
+	assert(button_index == 0 or button_index == 1, "Invalid event button index. Must be 0 or 1")
+	if button_index == 0:
+		return event_icon_1
+	if button_index == 1:
+		return event_icon_2
+	return null
 
 
 #Converts an analog joypad motion into a digital one by either making it zero
@@ -99,20 +107,17 @@ func get_temp_action(action: String) -> String:
 func update_input_icons():
 	input_events.resize(2)
 	if input_events[0]:
-		event_button_1.text = input_event_to_text(input_events[0])
-		#event_button_1.icon = ControllerIcons.parse_event(input_events[0])
+		event_button_1.text = ""
+		event_icon_1.texture = ControllerIcons.parse_event(input_events[0])
 	else:
-		event_button_1.text = "---"
-		#event_button_1.icon = null
+		event_button_1.text = "-"
+		event_icon_1.texture = null
 	if input_events[1]:
-		event_button_2.text = input_event_to_text(input_events[1])
-		#event_button_2.icon = ControllerIcons.parse_event(input_events[1])
+		event_button_2.text = ""
+		event_icon_2.texture = ControllerIcons.parse_event(input_events[1])
 	else:
-		event_button_2.text = "---"
-		event_button_2.icon = null
-#	event_icon_1.path = ["joypad/left", "joypad/right"]
-#	event_icon_2.path = get_temp_action(action)
-#	ControllerIcons.refresh()
+		event_button_2.text = "-"
+		event_icon_2.texture = null
 
 
 func set_event_buttons_disabled(p_disabled: bool):
@@ -123,13 +128,11 @@ func set_event_buttons_disabled(p_disabled: bool):
 #Show a description on the main ControlsSetup scene when mouse over
 func _on_SetActionButton_mouse_entered():
 	emit_signal("description_hint", description)
-	pass # Replace with function body.
 
 
 #Clear the description on the main ControlsSetup scene when mouse exit
 func _on_SetActionButton_mouse_exited():
 	emit_signal("description_hint", "")
-	pass # Replace with function body.
 
 
 func _on_event_button_1_pressed() -> void:

@@ -26,25 +26,56 @@ theme_override_constants/separation = 2
 alignment = 1
 
 [node name="ActionLabel" type="Label" parent="HBoxContainer" unique_id=980831693]
-custom_minimum_size = Vector2(50, 0)
+custom_minimum_size = Vector2(72, 0)
 layout_mode = 2
-size_flags_horizontal = 3
 size_flags_vertical = 1
 label_settings = SubResource("LabelSettings_x08qh")
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="EventButton1" type="Button" parent="HBoxContainer" unique_id=1121786007]
-custom_minimum_size = Vector2(70, 0)
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 focus_mode = 0
-text = "---"
+text = "-"
+icon_alignment = 1
+expand_icon = true
+
+[node name="EventIcon1" type="TextureRect" parent="HBoxContainer/EventButton1" unique_id=1938816857]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="EventButton2" type="Button" parent="HBoxContainer" unique_id=323612034]
-custom_minimum_size = Vector2(70, 0)
+custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
 focus_mode = 0
-text = "---"
+text = "-"
+
+[node name="EventIcon2" type="TextureRect" parent="HBoxContainer/EventButton2" unique_id=808357660]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -8.0
+offset_top = -8.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="pressed" from="HBoxContainer/EventButton1" to="." method="_on_event_button_1_pressed"]
 [connection signal="pressed" from="HBoxContainer/EventButton2" to="." method="_on_event_button_2_pressed"]
