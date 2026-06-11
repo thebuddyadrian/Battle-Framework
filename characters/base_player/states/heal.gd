@@ -25,7 +25,7 @@ func _step():
 			in_recovery = true
 			parent.make_timer("go_to_idle", recovery, self)
 			return
-	
+	root.set_action_enabled("dash", true)
 	if parent.state_time == startup:
 		# Spawn Heal Effect
 		effect_instance = root.spawn_scene("HealEffect", "res://effects/heal_effect.tscn", root.global_position)
@@ -36,6 +36,7 @@ func go_to_idle():
 
 
 func _exit(next_state):
+	root.disable_all_actions()
 	if effect_instance:
 		effect_instance.queue_free()
 		effect_instance = null
