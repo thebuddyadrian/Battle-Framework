@@ -9,18 +9,18 @@
 [ext_resource type="Script" uid="uid://cfasn3us7ol01" path="res://characters/tails/states/tails_air_action.gd" id="4_qf74s"]
 [ext_resource type="Script" uid="uid://13qemgrco1g7" path="res://characters/tails/states/dash.gd" id="5_eakuc"]
 [ext_resource type="Resource" uid="uid://ju0slbcssgkw" path="res://characters/tails/states/heavy.tres" id="6_asitg"]
-[ext_resource type="Script" uid="uid://c4gg51mb7ji23" path="res://characters/base_player/states/attack_info.gd" id="7_eakuc"]
-[ext_resource type="Resource" uid="uid://dcg0w2804wsk7" path="res://characters/shadow/states/jab_3.tres" id="7_rdag6"]
+[ext_resource type="Resource" uid="uid://bocq8pdsey1xc" path="res://characters/tails/states/jab_1.tres" id="8_dlpnr"]
 [ext_resource type="Script" uid="uid://vt7nkvkcml5e" path="res://characters/tails/states/jab_2.gd" id="8_eakuc"]
-[ext_resource type="Resource" uid="uid://cxhfdw2scc7u" path="res://characters/sonic/states/jab_2.tres" id="9_phocd"]
-[ext_resource type="Resource" uid="uid://dan5rlht4k6p5" path="res://characters/shadow/states/upper.tres" id="9_rdag6"]
 [ext_resource type="Resource" uid="uid://c511ksyj83jh1" path="res://characters/tails/states/dash_attack.tres" id="10_cps4t"]
+[ext_resource type="Resource" uid="uid://c7ar4foj551in" path="res://characters/tails/states/jab_2.tres" id="10_dlpnr"]
+[ext_resource type="Resource" uid="uid://cciol0feieiui" path="res://characters/tails/states/jab_3.tres" id="11_dlpnr"]
 [ext_resource type="Script" uid="uid://c88giv4vr1pxp" path="res://characters/tails/states/air_attack.gd" id="11_iyier"]
 [ext_resource type="Resource" uid="uid://kwraw6lnyxic" path="res://characters/tails/states/air_attack.tres" id="12_5541g"]
 [ext_resource type="Resource" uid="uid://d64hbxhpdsat" path="res://characters/tails/states/grnd_pow.tres" id="12_lg3ej"]
 [ext_resource type="Script" uid="uid://mmdglfkn35bj" path="res://characters/tails/states/heavy.gd" id="12_weptr"]
 [ext_resource type="Script" uid="uid://c4dc5gm7yxf0q" path="res://characters/tails/states/grnd_pow.gd" id="13_cps4t"]
 [ext_resource type="Resource" uid="uid://bd4rncwvb76vi" path="res://characters/tails/states/aim_attack.tres" id="13_jrwva"]
+[ext_resource type="Resource" uid="uid://s8wgsn3o883p" path="res://characters/tails/states/upper.tres" id="14_dlpnr"]
 [ext_resource type="Script" uid="uid://drbk80synbgat" path="res://characters/tails/states/grnd_shot.gd" id="14_infaa"]
 [ext_resource type="Script" uid="uid://bbmt3n2ued7n0" path="res://characters/tails/states/air_shot.gd" id="15_infaa"]
 [ext_resource type="Resource" uid="uid://c1reyexjipb6f" path="res://characters/tails/states/grnd_shot.tres" id="15_jrwva"]
@@ -31,16 +31,6 @@
 [ext_resource type="Texture2D" uid="uid://cnyqiftdlqdoq" path="res://assets/ui/MainHealth2.png" id="22_gueqa"]
 [ext_resource type="Script" uid="uid://h8ft0cu86t5q" path="res://characters/mini_bar.gd" id="23_wv4dc"]
 [ext_resource type="Texture2D" uid="uid://bsdjsrfloxkgh" path="res://characters/tails/sprites/TailsLife.png" id="24_6dfm6"]
-
-[sub_resource type="Resource" id="Resource_phocd"]
-script = ExtResource("7_eakuc")
-animation = "Punch1"
-startup_frames = 4
-active_frames = 6
-damage = 10
-knockback_power = 2
-hit_stun = 10
-metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
 [sub_resource type="Resource" id="Resource_dlpnr"]
 script = ExtResource("2_uaadi")
@@ -72,21 +62,21 @@ script = ExtResource("5_eakuc")
 script = ExtResource("4_qf74s")
 
 [node name="Jab1" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="19" unique_id=523789546]
-attack_info = SubResource("Resource_phocd")
+attack_info = ExtResource("8_dlpnr")
 
 [node name="Jab2" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="20" unique_id=981136779]
 script = ExtResource("8_eakuc")
-attack_info = ExtResource("9_phocd")
+attack_info = ExtResource("10_dlpnr")
 
 [node name="Jab3" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="21" unique_id=1484192293]
-attack_info = ExtResource("7_rdag6")
+attack_info = ExtResource("11_dlpnr")
 
 [node name="Heavy" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="22" unique_id=1197192703]
 script = ExtResource("12_weptr")
 attack_info = ExtResource("6_asitg")
 
 [node name="Upper" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="23" unique_id=1007129074]
-attack_info = ExtResource("9_rdag6")
+attack_info = ExtResource("14_dlpnr")
 
 [node name="DashAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="24" unique_id=2079405750]
 attack_info = ExtResource("10_cps4t")
