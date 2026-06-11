@@ -39,6 +39,7 @@ Dialogic="*res://addons/dialogic/Core/DialogicGameHandler.gd"
 SoundEffectPlayer="*res://autoload/sound_effect_player.gd"
 PlayerInput="*res://autoload/player_input.gd"
 PhantomCameraManager="*uid://duq6jhf6unyis"
+ControllerIcons="*uid://m6bitx0l42j5"
 
 [dialogic]
 
@@ -88,7 +89,7 @@ project/assembly_name="Sonic Battle Framework"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/abfi/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
+enabled=PackedStringArray("res://addons/abfi/plugin.cfg", "res://addons/anthonyec.camera_preview/plugin.cfg", "res://addons/controller_icons/plugin.cfg", "res://addons/dialogic/plugin.cfg", "res://addons/phantom_camera/plugin.cfg")
 
 [gui]
 
