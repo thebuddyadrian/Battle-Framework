@@ -3,9 +3,12 @@ extends Node
 class_name PL_Input_Device
 
 # not needed long term just temp, use player where possible
-var ID:int = -1
+@export var ID:int = -1
 # Uses the input method to retrive inputs, otherwise local overrides take hold
-var Auto_Assign:bool = false
+@export var Auto_Assign:bool = false
+
+# Used to clear input on this frame, used to make setting also clear inputs so it doesnt isnta start
+var ClearThisFrame:bool = false
 
 const IDToInputType:Dictionary[int,String] = {
 	0:"none",
@@ -43,11 +46,12 @@ func _ready() -> void:
 	var Parent = get_parent()
 	if(Parent != null):
 		var Character = (Parent as BattleCharacter)
-		ID = Character.player_id
-		Character.Input_Device = self
+		if(Character != null):
+			ID = Character.player_id
+			Character.Input_Device = self
 		
 func _process(delta: float) -> void:
-	
+	ClearThisFrame = false
 	# Only used for Override input options or manual control
 	if(!Auto_Assign): 
 		for Override in LocalOverridedPressedInputs.keys():
@@ -75,7 +79,7 @@ func _process(delta: float) -> void:
 	
 ## Auto assigned input based on player ID or AI device
 func input(action: StringName, type: String = "pressed") -> bool:
-	if(ID < 0): return false
+	if(ID < 0 || ClearThisFrame): return false
 	if(Auto_Assign): # Player based input
 		#Static return for inputs based on ID, disabled for Ai
 		return inputfrom(ID,action,type)
@@ -83,6 +87,7 @@ func input(action: StringName, type: String = "pressed") -> bool:
 	return inputOverrides(action,type)
 
 static func inputvec(ID:int) -> Vector2:
+	if(ID < 0): return Vector2(0,0)
 	return Input.get_vector("left"+str(ID),"right"+str(ID),"up"+str(ID),"down"+str(ID))
 
 # we include here rather than an override class or node because it adds a single frame of latency which if we're not careful can add up
@@ -114,3 +119,9 @@ func Call_Input(action: StringName, OverrideState: int = -1) -> void:
 	if(!LocalOverridedInputs.has(action)): return
 	if(OverrideState >= 0): LocalOverridedPressedInputs[action] = OverrideState
 	else: LocalOverridedPressedInputs[action] = true
+	
+## Call when you need to quickly deffer an ID set
+func Set_ID(T_ID:int) -> void:
+	ID = T_ID
+	ClearThisFrame = true
+	

@@ -21,19 +21,28 @@ func _ready() -> void:
 	MusicPlayer.play_track(MusicPlayer.CHALLENGE_BATTLE_MODE)
 	for i in range(MatchSetup.get_total_players()):
 		var player_character = PLAYER_CHARACTER_SCENE.instantiate()
+		# Set input for character to be relevant
+		var input_device = player_character.get_node("PL_Input_Device")
 		# If this index is above the amount of human players, it must be a CPU
 		if i >= MatchSetup.human_players:
-			player_character.is_cpu = true
-			#Add type set here
+			player_character.set_character_type(MatchSetup.character_type.CPU)
+		else:
+			input_device.ID = i+1
+		
+		# Network character types
+		#if i >= MatchSetup.human_players + MatchSetup.cpu_players:
+			#player_character.current_type = MatchSetup.character_type.CPU
+		
 			
 		player_character.name = "PlayerContainer" + str(i + 1)
 		player_character.player_number = i + 1
 		player_container.add_child(player_character)
 		if i == 0 and MatchSetup.is_playing_solo():
-			player_character.active = true
+			#player_character.active = true
 			css_cursor_tween_to_player(player_character.global_position)
 		elif !MatchSetup.is_playing_solo() and i < MatchSetup.human_players:
-			player_character.active = true
+			#player_character.active = true
+			pass
 	
 	for player in player_container.get_children():
 		player.selection_finished.connect(_on_player_selection_finished)
@@ -53,33 +62,18 @@ func _on_player_selection_finished(plrnum):
 	MatchSetup.character_types[plrnum] = MatchSetup.character_type.PLAYER
 	if(plrnum > MatchSetup.human_players):
 		MatchSetup.character_types[plrnum] = MatchSetup.character_type.CPU
+		
+	# If player one then move to next target, that being cpu
+	if(current_player_node.input_device.ID == 1):
+		var Next = player_container.get_child(clamp(plrnum,MatchSetup.human_players,MatchSetup.get_total_players()-1))
+		print("DO DO ",plrnum," ", Next)
+		Next.input_device.Set_ID(1)
 	
-	current_player_node.active = false
 	current_player_node.css_ready = true
-	
-	#changed how it works, i apologize
+	current_player_node.input_device.Set_ID(-1)
 	
 	css_check_for_players_ready()
 	
-	css_iterate_cpu_players(current_player_node, plrnum)
-
-func css_iterate_cpu_players(node, num):
-	print(node, num)
-	
-	num += 1
-	await get_tree().process_frame
-	
-	if num > MatchSetup.human_players + MatchSetup.cpu_players:
-		pass
-	else:
-		node = player_container.get_child(num - 1)
-		#assume that if it is already active, it's another player, not cpu
-		if node.active == true:
-			# iterate again until you get OOB for the player count.
-			css_iterate_cpu_players(node, num)
-		else:
-			node.active = true
-			css_cursor_tween_to_player(node.global_position)
 
 func css_scene_transition():
 	var selected_stage: String

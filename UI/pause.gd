@@ -57,10 +57,4 @@ func _physics_process(delta: float) -> void:
 
 ## Input helper function to get input for the current player
 func input(action: StringName, type: String = "pressed") -> bool:
-	if type == "pressed":
-		return PlayerInput.player_action_pressed(action, player_id)
-	if type == "just_pressed":
-		return PlayerInput.player_action_just_pressed(action, player_id)
-	if type == "just_released":
-		return PlayerInput.player_action_just_released(action, player_id)
-	return false
+	return PL_Input_Device.inputfrom(player_id,action,type)

@@ -19,13 +19,19 @@ var player_internal_count:int = 2
 
 
 func _ready() -> void:
-	if MatchSetup.single_window:
-		original_content_scale_size = get_window().content_scale_size
-		# Double the content size to allow split screen
-		get_window().content_scale_size *= 2
-	else:
-		# Make sure subwindows aren't embedded, or else multiple windows wont spawn
-		get_viewport().gui_embed_subwindows = false
+	
+	var Vwindows = %SubViewportGridContainer.get_children()
+	for c in range(MatchSetup.human_players,Vwindows.size()):
+		Vwindows[c].visible = false
+	
+	if(MatchSetup.human_players > 1):
+		if MatchSetup.single_window:
+			original_content_scale_size = get_window().content_scale_size
+			# Double the content size to allow split screen
+			get_window().content_scale_size *= 2
+		else:
+			# Make sure subwindows aren't embedded, or else multiple windows wont spawn
+			get_viewport().gui_embed_subwindows = false
 	
 	ControlsSettings.apply_button_layouts()
 	Game.match_results.clear()
@@ -91,6 +97,7 @@ func initialize_match():
 	assert(stage.player_spawn_3, "No spawn position has been placed for player 3")
 	assert(stage.player_spawn_4, "No spawn position has been placed for player 4")
 	for i in range(MatchSetup.get_total_players()):
+
 		var character = MatchSetup.character_choices[i + 1]
 		#AI, network, ext.. type of input or control device 
 		var character_mode = MatchSetup.character_types[i + 1]

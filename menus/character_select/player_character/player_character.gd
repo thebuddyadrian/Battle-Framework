@@ -3,8 +3,6 @@ extends Control
 signal request_cursor_anim(anim_name)
 
 # If there's a player selecting a character using this node
-var active: bool = false: set = set_active
-var is_cpu: bool = false
 var character_index: int = 0 : set = set_character_index
 var character_type: MatchSetup.character_type = MatchSetup.character_type.PLAYER : set = set_character_type
 var character: String : set = set_character
@@ -23,46 +21,36 @@ var css_ready : bool = false
 @onready var cursor_arrows_animplayer: AnimationPlayer = $CursorArrows/AnimationPlayer
 @onready var type_lavel : Label = $Type
 
+var input_device:PL_Input_Device = null
+
 signal selection_finished(plrnum)
 
 
 func _ready() -> void:
+	
+	input_device = get_node("PL_Input_Device")
+	
 	#player_name.text = "Player " + str(player_number)
-	set_active(active)
 	set_character_index(character_index)
 	# Make sure the shader material isn't shared between characters
 	character_portrait.material = character_portrait.material.duplicate()
 
-	if MatchSetup.is_playing_solo() or is_cpu:
+	if MatchSetup.is_playing_solo() or character_type != MatchSetup.character_type.PLAYER:
 		cursor_arrows.visible = false
 
 
 func _process(delta: float) -> void:
-	if !active:
-		return
-	if get_input("ui_left"):
+	if input_device.input("ui_left","just_pressed"):
 		character_index -= 1
 		play_cursor_anim("ArrowBumpLeft")
-	if get_input("ui_right"):
+	if input_device.input("ui_right","just_pressed"):
 		character_index += 1
 		play_cursor_anim("ArrowRightBump")
-	# Per player slecet type
-	#if get_input("ui_up"):
-		#character_type += 1
-	#if get_input("ui_down"):
-		#character_type -= 1
 		
-	if get_input("ui_accept"):
+	if input_device.input("ui_accept","just_pressed"):
 		selection_finished.emit(player_number)
 		confirm_sprite.visible = true
 		cursor_arrows.visible = false
-
-
-func get_input(action: String) -> bool:
-	# If this is a CPU player, use player 1 controls
-	var input_player_number: int = player_number if !is_cpu else 1
-	return PlayerInput.player_action_just_pressed(action, input_player_number)
-
 
 func play_cursor_anim(anim):
 	if MatchSetup.is_playing_solo():
@@ -73,9 +61,6 @@ func play_cursor_anim(anim):
 		animplayer.play(anim)
 
 
-func set_active(p_active: bool):
-	active = p_active
-	reference_rect.visible = active
 
 
 func set_character_index(p_index: int):
@@ -95,7 +80,7 @@ func set_character_type(p_type:int):
 	
 	var RawType = Type_Values[p_type]
 	character_type = MatchSetup.character_type.get(RawType,MatchSetup.character_type.PLAYER)
-	type_lavel.text = RawType
+	get_node("Type").text = RawType
 
 
 func set_character(p_character: String):

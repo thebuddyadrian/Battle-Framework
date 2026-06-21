@@ -49,7 +49,7 @@ radius = 0.1757549
 script = ExtResource("2_5tkrs")
 character_info = ExtResource("3_5tkrs")
 
-[node name="PlayerSprite" parent="." index="1" unique_id=193447772]
+[node name="PlayerSprite" parent="." index="2" unique_id=193447772]
 texture = ExtResource("2_5e7ij")
 vframes = 17
 frame = 2
@@ -129,7 +129,7 @@ attack_info = ExtResource("22_1kwib")
 script = ExtResource("28_0sn45")
 attack_info = ExtResource("24_1kwib")
 
-[node name="Hitbox" parent="." index="5" unique_id=223441001]
+[node name="Hitbox" parent="." index="6" unique_id=223441001]
 hit_data = SubResource("Resource_5tkrs")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0" unique_id=452238123]
@@ -154,6 +154,6 @@ character = NodePath("../..")
 position = Vector2(-12, 5)
 texture = ExtResource("27_0st36")
 
-[node name="TestLabel" parent="." index="8" unique_id=419573788]
+[node name="TestLabel" parent="." index="9" unique_id=419573788]
 visible = false
 texture_filter = 0
