@@ -64,7 +64,7 @@ func _on_player_selection_finished(plrnum):
 		MatchSetup.character_types[plrnum] = MatchSetup.character_type.CPU
 		
 	# If player one then move to next target, that being cpu
-	if(current_player_node.input_device.ID == 1):
+	if(current_player_node.input_device.ID == 1 && MatchSetup.cpu_players > 0):
 		var Next = player_container.get_child(clamp(plrnum,MatchSetup.human_players,MatchSetup.get_total_players()-1))
 		print("DO DO ",plrnum," ", Next)
 		Next.input_device.Set_ID(1)
