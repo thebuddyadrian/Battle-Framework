@@ -12,6 +12,7 @@ var current_player = 1
 var active_player_nodes = []
 
 func _ready() -> void:
+	
 	ControlsSettings.apply_button_layouts()
 	map_select.process_mode = Node.PROCESS_MODE_DISABLED
 	
@@ -37,12 +38,8 @@ func _ready() -> void:
 		player_character.name = "PlayerContainer" + str(i + 1)
 		player_character.player_number = i + 1
 		player_container.add_child(player_character)
-		if i == 0 and MatchSetup.is_playing_solo():
-			#player_character.active = true
+		if i <= 0:
 			css_cursor_tween_to_player(player_character.global_position)
-		elif !MatchSetup.is_playing_solo() and i < MatchSetup.human_players:
-			#player_character.active = true
-			pass
 	
 	for player in player_container.get_children():
 		player.selection_finished.connect(_on_player_selection_finished)
@@ -66,6 +63,7 @@ func _on_player_selection_finished(plrnum):
 	# If player one then move to next target, that being cpu
 	if(current_player_node.input_device.ID == 1 && MatchSetup.cpu_players > 0):
 		var Next = player_container.get_child(clamp(plrnum,MatchSetup.human_players,MatchSetup.get_total_players()-1))
+		css_cursor_tween_to_player(Next.global_position)
 		print("DO DO ",plrnum," ", Next)
 		Next.input_device.Set_ID(1)
 	

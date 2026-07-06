@@ -49,7 +49,7 @@ func _process(delta: float) -> void:
 			current_path_time += delta
 			
 			# Generate path when cooldown is complete
-			if(current_path_time >= 2.0 || (path_reset && Grounded)): 
+			if(current_path_time >= .5 || (path_reset && Grounded)): 
 				current_path_idx = 0
 				calculate_path_to(current_target.global_position)
 				current_path_time = 0.0
