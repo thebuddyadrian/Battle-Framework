@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="AI_NAV_Pref" format=3 uid="uid://dlh1ls1wml8v3"]
+
+[ext_resource type="Script" uid="uid://ebo0i4f3hcm6" path="res://ai_cpu/AI_Nav_Pref.gd" id="1_7x2e8"]
+
+[resource]
+script = ExtResource("1_7x2e8")
+metadata/_custom_type_script = "uid://ebo0i4f3hcm6"
