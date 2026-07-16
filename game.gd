@@ -1,9 +1,9 @@
 extends Node
 
 
-var debug_mode := true
+var debug_mode := false
 var debug_options := {
-	"esc_quit": true,
+	"esc_quit": false,
 }
 
 var mouse_mode_stack := {}
