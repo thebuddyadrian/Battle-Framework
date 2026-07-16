@@ -22,7 +22,7 @@ func _enter(data = {}):
 
 
 func _step():
-	if parent.state_time > 30:
+	if parent.state_time > 20:
 		parent.change_state("Fall")
 	if root.is_on_floor():
 		parent.change_state("Land")
