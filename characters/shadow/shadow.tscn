@@ -18,11 +18,11 @@
 [ext_resource type="Resource" uid="uid://di838klmp6a00" path="res://characters/shadow/states/heavy.tres" id="13_cyjvw"]
 [ext_resource type="Resource" uid="uid://cciol0feieiui" path="res://characters/tails/states/jab_3.tres" id="13_vj6v6"]
 [ext_resource type="Resource" uid="uid://cxynbelygy8qr" path="res://characters/shadow/states/jab_2.tres" id="14_8dlyq"]
-[ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/sonic/states/upper.gd" id="14_gjr3y"]
 [ext_resource type="Resource" uid="uid://dan5rlht4k6p5" path="res://characters/shadow/states/upper.tres" id="15_h1jln"]
 [ext_resource type="Resource" uid="uid://bpahn2gxlkad6" path="res://characters/shadow/states/dash_attack.tres" id="15_xq7wv"]
 [ext_resource type="Resource" uid="uid://divyauv3t0y7w" path="res://characters/shadow/states/air_attack.tres" id="18_h1jln"]
 [ext_resource type="Script" uid="uid://vvecxl4rir4j" path="res://characters/shadow/states/aim_attack.gd" id="18_hh2a4"]
+[ext_resource type="Script" uid="uid://csihltpx6f413" path="res://characters/shadow/states/upper.gd" id="19_0kqp1"]
 [ext_resource type="Resource" uid="uid://kwn0emw6navq" path="res://characters/shadow/states/aim_attack.tres" id="19_gjr3y"]
 [ext_resource type="Resource" uid="uid://bsj8rns8lh1rx" path="res://characters/shadow/states/grnd_shot.tres" id="20_gjr3y"]
 [ext_resource type="Script" uid="uid://34rxkjo524gs" path="res://characters/shadow/states/air_attack.gd" id="21_3o4s2"]
@@ -127,7 +127,7 @@ script = ExtResource("12_gjr3y")
 attack_info = ExtResource("13_cyjvw")
 
 [node name="Upper" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="23" unique_id=1007129074]
-script = ExtResource("14_gjr3y")
+script = ExtResource("19_0kqp1")
 attack_info = ExtResource("15_h1jln")
 
 [node name="DashAttack" parent="StateMachine" parent_id_path=PackedInt32Array(806784247) index="24" unique_id=2079405750]
