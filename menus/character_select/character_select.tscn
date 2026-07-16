@@ -13,6 +13,20 @@ shader_parameter/h = 0.0
 shader_parameter/s = 0.788
 shader_parameter/v = 1.0
 
+[sub_resource type="InputEventAction" id="InputEventAction_3f6ee"]
+action = &"ui_left_corner1"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_jc553"]
+events = [SubResource("InputEventAction_3f6ee")]
+
+[sub_resource type="InputEventAction" id="InputEventAction_jc553"]
+action = &"ui_right_corner1"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_26efp"]
+events = [SubResource("InputEventAction_jc553")]
+
 [node name="CharacterSelect" type="Control" unique_id=1178985155]
 layout_mode = 3
 anchors_preset = 15
@@ -133,23 +147,27 @@ Check back later!"
 
 [node name="MapSelectButton" type="Button" parent="." unique_id=355685157]
 layout_mode = 0
-offset_right = 52.0
+offset_right = 72.0
 offset_bottom = 31.0
 focus_mode = 0
-text = "MAPS"
+shortcut = SubResource("Shortcut_jc553")
+shortcut_in_tooltip = false
+text = "MAPS (L)"
 
 [node name="RuleSelectButton" type="Button" parent="." unique_id=135965139]
 layout_mode = 0
-offset_left = 184.0
-offset_right = 241.0
+offset_left = 158.0
+offset_right = 240.0
 offset_bottom = 31.0
 focus_mode = 0
-text = "RULES"
+shortcut = SubResource("Shortcut_26efp")
+shortcut_in_tooltip = false
+text = "(R) RULES"
 
 [node name="CSSSelectButton" type="Button" parent="." unique_id=2102311742]
 visible = false
 layout_mode = 0
-offset_right = 60.0
+offset_right = 75.0
 offset_bottom = 31.0
 text = "CHARS"
 

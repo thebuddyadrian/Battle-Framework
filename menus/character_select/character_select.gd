@@ -116,9 +116,13 @@ func _on_map_select_button_pressed() -> void:
 	$MAPSELECT.process_mode = Node.PROCESS_MODE_INHERIT
 	$MAPSELECT.visible = true
 	$MapSelectButton.visible = false
+	$MapSelectButton.disabled = true
 	$CSSSelectButton.visible = true
 	$CSSSelectButton.position = $MapSelectButton.position
+	$CSSSelectButton.shortcut = $MapSelectButton.shortcut
+	$CSSSelectButton.text = "CHARS (L)"
 	$RULESELECT.visible = false
+	$RuleSelectButton.disabled = false
 	$CSS.visible = false
 	# Reset stage index when entering map select like in the original
 	MatchSetup.current_stage_index = 0
@@ -129,9 +133,13 @@ func _on_rule_select_button_pressed() -> void:
 	$MAPSELECT.process_mode = Node.PROCESS_MODE_DISABLED
 	$MAPSELECT.visible = false
 	$RuleSelectButton.visible = false
+	$RuleSelectButton.disabled = true
 	$CSSSelectButton.visible = true
 	$MapSelectButton.visible = true
+	$MapSelectButton.disabled = false
 	$CSSSelectButton.position = $RuleSelectButton.position
+	$CSSSelectButton.shortcut = $RuleSelectButton.shortcut
+	$CSSSelectButton.text = "CHARS (R)"
 	$RULESELECT.visible = true
 	$CSS.visible = false
 
@@ -139,8 +147,11 @@ func _on_css_select_button_pressed() -> void:
 	$CSS.process_mode = Node.PROCESS_MODE_INHERIT
 	$MAPSELECT.process_mode = Node.PROCESS_MODE_DISABLED
 	$MAPSELECT.visible = false
+	$RuleSelectButton.disabled = false
 	$RuleSelectButton.visible = true
 	$MapSelectButton.visible = true
+	$MapSelectButton.disabled = false
 	$CSSSelectButton.visible = false
+	$CSSSelectButton.shortcut = null
 	$RULESELECT.visible = false
 	$CSS.visible = true
