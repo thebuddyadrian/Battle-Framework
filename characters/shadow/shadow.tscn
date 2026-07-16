@@ -61,7 +61,7 @@ script = ExtResource("29_vj6v6")
 animation = "AirTrap"
 metadata/_custom_type_script = "uid://c4gg51mb7ji23"
 
-[sub_resource type="Resource" id="Resource_8gof5"]
+[sub_resource type="Resource" id="Resource_0kqp1"]
 script = ExtResource("23_0nker")
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_3twb4"]
@@ -166,7 +166,7 @@ script = ExtResource("27_uak6g")
 attack_info = SubResource("Resource_gjr3y")
 
 [node name="Hitbox" parent="." index="5" unique_id=223441001]
-hit_data = SubResource("Resource_8gof5")
+hit_data = SubResource("Resource_0kqp1")
 
 [node name="CollisionShape3D" parent="Hitbox" index="0" unique_id=452238123]
 shape = SubResource("SphereShape3D_3twb4")

@@ -11,6 +11,7 @@ recovery_frames = 20
 attack_sound = "shadow/shadow_grnd_shot"
 hit_sound = "punch"
 can_charge = true
+min_charge = 12
 max_charge = 60
 max_hold = -1
 use_hitbox = false

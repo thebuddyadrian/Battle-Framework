@@ -18,7 +18,7 @@ func _phase_changed():
 		proj.direction = attack_direction
 		# Spawn projectile further the longer the move is charged
 		var charge_time_offset: int = max(0, charge_time - 6)
-		var spawn_distance: float = 1.0 + 4.0 * (float(charge_time) / charge_phase.max_charge)
+		var spawn_distance: float = 0.5 + 4.0 * (float(charge_time) / charge_phase.max_charge)
 
 		# Spawn projectile in front of Shadow using the attack direction
 		var proj_spawn_offset: Vector3 = Vector3(attack_direction.x * spawn_distance, 0, 
