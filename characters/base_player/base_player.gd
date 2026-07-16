@@ -101,6 +101,9 @@ func _ready() -> void:
 	# TO-DO there should be 
 	current_stocks = 3
 	
+	if(camera == null):
+		camera = get_tree().current_scene
+	
 	# Input device
 	if(Input_Device == null): Input_Device = get_node("PL_Input_Device")
 

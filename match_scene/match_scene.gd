@@ -68,7 +68,7 @@ func initialize_match():
 	# Set player count
 	player_internal_count = MatchSetup.get_total_players()
 	# Spawn cameras
-	for i in range(MatchSetup.get_total_players()):
+	for i in range(MatchSetup.human_players):
 		var camera_root = CAMERA_ROOT.instantiate()
 		if MatchSetup.single_window:
 			var viewport = SubViewport.new()
@@ -106,10 +106,13 @@ func initialize_match():
 		# Get the player_spawn_<x> variable, which holds a node reference to the spawn position
 		var spawn_position: Node3D = stage.get("player_spawn_%s" % str(i + 1))
 		player.global_position = spawn_position.global_position
-		player.camera = camera_pivots[i]
 		player.scale = Vector3(4, 4, 4)
 		player.player_id = i + 1
-		cameras[i].player_id_to_track = i + 1
+		
+		if(character_mode == MatchSetup.character_type.PLAYER):
+			player.camera = camera_pivots[i]
+			cameras[i].player_id_to_track = i + 1
+		
 		player.name = str(player.player_id)
 		player.char_name = character
 		player.kod.connect(_on_player_kod)
@@ -127,10 +130,11 @@ func initialize_match():
 				print("AI Player added")
 			# Add network input alternative override node spawn here, e.g. Net_Control_Behaviour_Base !
 
-		# Spawn HUD
-		var player_hud = PLAYER_HUD.instantiate()
-		cameras[i].add_child(player_hud)
-		player_hud.track_player(player)
+		if(character_mode == MatchSetup.character_type.PLAYER):
+			# Spawn HUD
+			var player_hud = PLAYER_HUD.instantiate()
+			cameras[i].add_child(player_hud)
+			player_hud.track_player(player)
 
 
 func _physics_process(delta: float) -> void:
