@@ -158,6 +158,8 @@ class AttackPhase:
 	var hitbox_active: bool = false
 	
 	# Charge
+	# Min amount of frames this move must be charged.
+	var min_charge: int = 0
 	# Max amount of frames the move can be charged. If held for longer, the "charge_time" variable
 	# will no longer count up.
 	var max_charge: int = 30
@@ -263,6 +265,7 @@ func _setup_from_resource():
 		charge_phase = AttackPhase.new("charge")
 		charge_phase.phase_type = AttackPhase.PHASE_TYPE.CHARGE
 		charge_phase.max_charge = attack_info.max_charge
+		charge_phase.min_charge = attack_info.min_charge
 		charge_phase.max_hold = attack_info.max_hold
 		add_phase(charge_phase)
 	
@@ -324,7 +327,8 @@ func _step():
 			# Release charge automatically if max_hold is reached
 			if charge_time >= get_current_phase().max_hold and get_current_phase().max_hold > 0:
 				release_charge()
-			elif !root.input("skill", "pressed") and !root.input("attack", "pressed"):
+			elif !root.input("skill", "pressed") and !root.input("attack", "pressed") and \
+					charge_time > get_current_phase().min_charge:
 				release_charge()
 		
 		# Dash Cancel

@@ -36,6 +36,8 @@ class_name AttackInfo
 @export var hit_stun: int = 30
 @export var hit_sound: String = "hit"
 @export var can_charge: bool = false
+# Min amount of frames this move must be charged.
+@export var min_charge: int = 0
 # Max amount of frames the move can be charged. If held for longer, the "charge_time" variable
 # will no longer count up.
 @export var max_charge: int = 30
