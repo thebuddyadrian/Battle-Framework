@@ -9,6 +9,7 @@ use_anim_markers = false
 use_sections = false
 startup_frames = 10
 active_frames = 40
+attack_sound = ""
 damage = 4
 knockback_power = 4
 knockback_angle = 80
