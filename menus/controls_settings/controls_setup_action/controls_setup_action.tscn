@@ -36,7 +36,6 @@ vertical_alignment = 1
 [node name="EventButton1" type="Button" parent="HBoxContainer" unique_id=1121786007]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
-focus_mode = 0
 text = "-"
 icon_alignment = 1
 expand_icon = true
@@ -59,7 +58,6 @@ grow_vertical = 2
 [node name="EventButton2" type="Button" parent="HBoxContainer" unique_id=323612034]
 custom_minimum_size = Vector2(30, 0)
 layout_mode = 2
-focus_mode = 0
 text = "-"
 
 [node name="EventIcon2" type="TextureRect" parent="HBoxContainer/EventButton2" unique_id=808357660]

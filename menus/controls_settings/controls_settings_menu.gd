@@ -1,10 +1,12 @@
 extends Control
 @onready var tab_container: TabContainer = $TabContainer
 @onready var instructions: Label = $Instructions
+@onready var exit_button: Button = $ExitButton
 
 func _ready() -> void:
 	ControlsSettings.load_all_button_layouts()
 	ControlsSettings.load_controls_settings()
+	tab_container.get_tab_bar().grab_focus()
 	for controls_setup_player in tab_container.get_children():
 		controls_setup_player.started_listening.connect(_on_controls_setup_player_started_listening)
 		controls_setup_player.stopped_listening.connect(_on_controls_setup_player_stopped_listening)
@@ -24,8 +26,11 @@ func _on_controls_setup_player_started_listening() -> void:
 		if i == tab_container.current_tab:
 			continue
 		tab_container.set_tab_disabled(i, true)
+	exit_button.disabled = true
+
 
 func _on_controls_setup_player_stopped_listening() -> void:
 	instructions.hide()
 	for i in range(tab_container.get_tab_count()):
 		tab_container.set_tab_disabled(i, false)
+	exit_button.disabled = false

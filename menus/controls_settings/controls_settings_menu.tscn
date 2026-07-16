@@ -4,6 +4,13 @@
 [ext_resource type="Theme" uid="uid://by533c5jnqvoi" path="res://menus/controls_settings/controls_settings_theme.tres" id="1_ww2ec"]
 [ext_resource type="PackedScene" uid="uid://cbkk1ut6e81c0" path="res://menus/controls_settings/controls_setup_player/controls_setup_player.tscn" id="1_y3qyo"]
 
+[sub_resource type="InputEventAction" id="InputEventAction_ww2ec"]
+action = &"ui_cancel"
+pressed = true
+
+[sub_resource type="Shortcut" id="Shortcut_q4m64"]
+events = [SubResource("InputEventAction_ww2ec")]
+
 [node name="ControlsSettingsMenu" type="Control" unique_id=1398146051]
 layout_mode = 3
 anchors_preset = 15
@@ -23,7 +30,6 @@ offset_bottom = -21.0
 grow_horizontal = 2
 grow_vertical = 2
 current_tab = 0
-tab_focus_mode = 0
 
 [node name="Player 1" parent="TabContainer" unique_id=89584303 instance=ExtResource("1_y3qyo")]
 layout_mode = 2
@@ -55,7 +61,7 @@ anchor_bottom = 1.0
 offset_top = -21.0
 offset_right = 60.0
 grow_vertical = 0
-focus_mode = 0
+shortcut = SubResource("Shortcut_q4m64")
 text = "Save and Exit"
 
 [node name="Instructions" type="Label" parent="." unique_id=1839188965]

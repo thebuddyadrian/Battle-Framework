@@ -50,13 +50,18 @@ func _input_event_requested(controls_setup_node, event_index):
 			
 	# Wait for an input to be pressed
 	controls_setup_node.get_event_button(event_index).text = "..."
+	controls_setup_node.get_event_button(event_index).release_focus()
 	controls_setup_node.get_event_icon(event_index).texture = null
 	started_listening.emit()
 	var input_event = await input_pressed
+	# Make sure input doesn't affect UI
+	await get_tree().process_frame
 	# Use ESC to cancel
 	if !(input_event is InputEventKey and input_event.keycode == KEY_ESCAPE):
 		controls_setup_node.set_input_event(input_event, event_index)
 	stopped_listening.emit()
+	controls_setup_node.update_input_icons()
+	controls_setup_node.get_event_button(event_index).grab_focus()
 	# Re-enable all other buttons
 	_set_all_event_buttons_disabled(false)
 	
