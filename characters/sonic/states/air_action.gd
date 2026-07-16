@@ -11,7 +11,7 @@ func _enter(data = {}):
 	root.spawn_scene("SonicBalletEffect", "res://effects/sonic_ballet_effect.tscn", root.global_position)
 	
 	root.animplayer.play("AirAction")
-	root.play_sound_effect("sonic_ballet")
+	root.play_sound_effect("sonic/sonic_ballet")
 	# Sonic dashes in the facing their direction
 	root.velocity.y = 9
 	root.velocity.x = dash_direction.x * 14
