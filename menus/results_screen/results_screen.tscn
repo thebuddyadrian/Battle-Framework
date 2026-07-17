@@ -4,6 +4,20 @@
 [ext_resource type="Texture2D" uid="uid://doi3o74wjlh3u" path="res://characters/sonic/sprites/Sonic Portrait.png" id="2_t68mw"]
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_u448v"]
 [ext_resource type="PackedScene" uid="uid://05h8siy11cn" path="res://menus/results_screen/results_frame.tscn" id="3_ot5hy"]
+[ext_resource type="Script" uid="uid://cfnkcdlftlrta" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="4_oldbo"]
+
+[sub_resource type="InputEventAction" id="InputEventAction_oldbo"]
+action = &"ui_accept1"
+
+[sub_resource type="Shortcut" id="Shortcut_kj6br"]
+events = [SubResource("InputEventAction_oldbo")]
+
+[sub_resource type="Texture2D" id="Texture2D_kj6br"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("4_oldbo")
+path = "ui_accept1"
+metadata/_custom_type_script = "uid://cfnkcdlftlrta"
 
 [node name="ResultsScreen" type="Control" unique_id=1738022975]
 layout_mode = 3
@@ -31,14 +45,20 @@ text = "Winner"
 metadata/_edit_lock_ = true
 
 [node name="BackButton" type="Button" parent="." unique_id=2132804295]
-layout_mode = 0
-offset_left = 151.0
-offset_top = 134.0
-offset_right = 239.0
-offset_bottom = 159.0
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -94.0
+offset_top = -25.0
+grow_horizontal = 0
+grow_vertical = 0
 theme_override_font_sizes/font_size = 12
+shortcut = SubResource("Shortcut_kj6br")
 text = "Back to Menu"
-metadata/_edit_lock_ = true
+icon = SubResource("Texture2D_kj6br")
 
 [node name="WinnerPortrait" type="TextureRect" parent="." unique_id=218554916]
 layout_mode = 0
