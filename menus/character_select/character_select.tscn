@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dkvj5h5bvohkv" path="res://menus/character_select/mapselect.gd" id="4_pprmj"]
 [ext_resource type="PackedScene" uid="uid://bu74bh1pcju6h" path="res://menus/character_select/cursor_arrows.tscn" id="4_xarbf"]
 [ext_resource type="Texture2D" uid="uid://dlpflfbgbkx5f" path="res://icon.png" id="5_3f6ee"]
+[ext_resource type="Script" uid="uid://cfnkcdlftlrta" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="7_jc553"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pprmj"]
 shader = ExtResource("3_xarbf")
@@ -20,12 +21,26 @@ pressed = true
 [sub_resource type="Shortcut" id="Shortcut_jc553"]
 events = [SubResource("InputEventAction_3f6ee")]
 
+[sub_resource type="Texture2D" id="Texture2D_26efp"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_jc553")
+path = "ui_left_corner1"
+metadata/_custom_type_script = "uid://cfnkcdlftlrta"
+
 [sub_resource type="InputEventAction" id="InputEventAction_jc553"]
 action = &"ui_right_corner1"
 pressed = true
 
 [sub_resource type="Shortcut" id="Shortcut_26efp"]
 events = [SubResource("InputEventAction_jc553")]
+
+[sub_resource type="Texture2D" id="Texture2D_4skbe"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_jc553")
+path = "ui_right_corner1"
+metadata/_custom_type_script = "uid://cfnkcdlftlrta"
 
 [node name="CharacterSelect" type="Control" unique_id=1178985155]
 layout_mode = 3
@@ -152,7 +167,10 @@ offset_bottom = 31.0
 focus_mode = 0
 shortcut = SubResource("Shortcut_jc553")
 shortcut_in_tooltip = false
-text = "MAPS (L)"
+text = "MAPS"
+icon = SubResource("Texture2D_26efp")
+alignment = 0
+icon_alignment = 2
 
 [node name="RuleSelectButton" type="Button" parent="." unique_id=135965139]
 layout_mode = 0
@@ -162,7 +180,9 @@ offset_bottom = 31.0
 focus_mode = 0
 shortcut = SubResource("Shortcut_26efp")
 shortcut_in_tooltip = false
-text = "(R) RULES"
+text = "RULES"
+icon = SubResource("Texture2D_4skbe")
+alignment = 2
 
 [node name="CSSSelectButton" type="Button" parent="." unique_id=2102311742]
 visible = false

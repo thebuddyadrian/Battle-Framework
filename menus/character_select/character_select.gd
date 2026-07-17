@@ -14,6 +14,13 @@ var active_player_nodes = []
 func _ready() -> void:
 	ControlsSettings.apply_button_layouts()
 	map_select.process_mode = Node.PROCESS_MODE_DISABLED
+	# Make sure icons are correct
+	if ControlsSettings.player_input_types[1] == ControlsSettings.INPUT_TYPE.KEYBOARD:
+		($MapSelectButton.icon as ControllerIconTexture).force_type = ControllerIconTexture.ForceType.KEYBOARD_MOUSE
+		($RuleSelectButton.icon as ControllerIconTexture).force_type = ControllerIconTexture.ForceType.KEYBOARD_MOUSE
+	elif ControlsSettings.player_input_types[1] == ControlsSettings.INPUT_TYPE.GAMEPAD:
+		($MapSelectButton.icon as ControllerIconTexture).force_type = ControllerIconTexture.ForceType.CONTROLLER
+		($RuleSelectButton.icon as ControllerIconTexture).force_type = ControllerIconTexture.ForceType.CONTROLLER
 	
 	if !MatchSetup.is_playing_solo():
 		cursor_arrows.visible = false
@@ -120,7 +127,8 @@ func _on_map_select_button_pressed() -> void:
 	$CSSSelectButton.visible = true
 	$CSSSelectButton.position = $MapSelectButton.position
 	$CSSSelectButton.shortcut = $MapSelectButton.shortcut
-	$CSSSelectButton.text = "CHARS (L)"
+	$CSSSelectButton.icon = $MapSelectButton.icon
+	$CSSSelectButton.icon_alignment = HorizontalAlignment.HORIZONTAL_ALIGNMENT_RIGHT
 	$RULESELECT.visible = false
 	$RuleSelectButton.disabled = false
 	$CSS.visible = false
@@ -139,7 +147,8 @@ func _on_rule_select_button_pressed() -> void:
 	$MapSelectButton.disabled = false
 	$CSSSelectButton.position = $RuleSelectButton.position
 	$CSSSelectButton.shortcut = $RuleSelectButton.shortcut
-	$CSSSelectButton.text = "CHARS (R)"
+	$CSSSelectButton.icon = $RuleSelectButton.icon
+	$CSSSelectButton.icon_alignment = HorizontalAlignment.HORIZONTAL_ALIGNMENT_LEFT
 	$RULESELECT.visible = true
 	$CSS.visible = false
 
