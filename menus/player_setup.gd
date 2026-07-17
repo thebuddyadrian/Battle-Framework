@@ -64,3 +64,7 @@ func _on_ok_button_pressed() -> void:
 
 func _on_change_controls_button_pressed() -> void:
 	SceneChanger.change_scene_to_file("res://menus/controls_settings/controls_settings_menu.tscn")
+
+
+func _on_back_button_pressed() -> void:
+	SceneChanger.change_scene_to_file("uid://c2tqnyliq0dwg") # mode_select.tscn

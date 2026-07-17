@@ -4,6 +4,7 @@
 [ext_resource type="Script" uid="uid://qrppfjmk8qd7" path="res://menus/player_setup.gd" id="1_xwnrc"]
 [ext_resource type="PackedScene" uid="uid://dmqtdie76rgi8" path="res://menus/background.tscn" id="2_7oubm"]
 [ext_resource type="Shader" uid="uid://b7frwxe5glvvi" path="res://menus/background.gdshader" id="3_vlvyf"]
+[ext_resource type="Script" uid="uid://cfnkcdlftlrta" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="5_vjbgp"]
 
 [sub_resource type="Theme" id="Theme_vjbgp"]
 default_font = ExtResource("1_mqmvs")
@@ -13,6 +14,19 @@ shader = ExtResource("3_vlvyf")
 shader_parameter/h = 0.0
 shader_parameter/s = 0.788
 shader_parameter/v = 1.0
+
+[sub_resource type="InputEventAction" id="InputEventAction_vjbgp"]
+action = &"ui_cancel1"
+
+[sub_resource type="Shortcut" id="Shortcut_tj6kl"]
+events = [SubResource("InputEventAction_vjbgp")]
+
+[sub_resource type="Texture2D" id="Texture2D_vjbgp"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("5_vjbgp")
+path = "ui_cancel1"
+metadata/_custom_type_script = "uid://cfnkcdlftlrta"
 
 [node name="PlayerSetup" type="Control" unique_id=1034371918]
 layout_mode = 3
@@ -93,7 +107,16 @@ layout_mode = 2
 text = "Continue
 "
 
+[node name="BackButton" type="Button" parent="." unique_id=1175018991]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+shortcut = SubResource("Shortcut_tj6kl")
+text = "Back"
+icon = SubResource("Texture2D_vjbgp")
+
 [connection signal="value_changed" from="VBoxContainer/GridContainer/HumanSpinBox" to="." method="_on_human_spin_box_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/GridContainer/CPUSpinBox" to="." method="_on_cpu_spin_box_value_changed"]
 [connection signal="pressed" from="VBoxContainer/ChangeControlsButton" to="." method="_on_change_controls_button_pressed"]
 [connection signal="pressed" from="VBoxContainer/OKButton" to="." method="_on_ok_button_pressed"]
+[connection signal="pressed" from="BackButton" to="." method="_on_back_button_pressed"]
