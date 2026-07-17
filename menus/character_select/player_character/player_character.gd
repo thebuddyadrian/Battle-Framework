@@ -22,6 +22,7 @@ var css_ready : bool = false
 @onready var cursor_arrows_animplayer: AnimationPlayer = $CursorArrows/AnimationPlayer
 
 signal selection_finished(plrnum)
+signal selection_cancelled(plrnum)
 
 
 func _ready() -> void:
@@ -48,6 +49,10 @@ func _process(delta: float) -> void:
 		selection_finished.emit(player_number)
 		confirm_sprite.visible = true
 		cursor_arrows.visible = false
+	if get_input("ui_cancel"):
+		selection_cancelled.emit(player_number)
+		confirm_sprite.visible = false
+		cursor_arrows.visible = true
 
 
 func get_input(action: String) -> bool:

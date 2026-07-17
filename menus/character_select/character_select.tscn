@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://dkvj5h5bvohkv" path="res://menus/character_select/mapselect.gd" id="4_pprmj"]
 [ext_resource type="PackedScene" uid="uid://bu74bh1pcju6h" path="res://menus/character_select/cursor_arrows.tscn" id="4_xarbf"]
 [ext_resource type="Texture2D" uid="uid://dlpflfbgbkx5f" path="res://icon.png" id="5_3f6ee"]
+[ext_resource type="FontFile" uid="uid://dq6gt5wl6xywx" path="res://assets/fonts/m3x6.ttf" id="7_26efp"]
 [ext_resource type="Script" uid="uid://cfnkcdlftlrta" path="res://addons/controller_icons/objects/ControllerIconTexture.gd" id="7_jc553"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_pprmj"]
@@ -41,6 +42,16 @@ resource_name = ""
 script = ExtResource("7_jc553")
 path = "ui_right_corner1"
 metadata/_custom_type_script = "uid://cfnkcdlftlrta"
+
+[sub_resource type="Texture2D" id="Texture2D_qenn8"]
+resource_local_to_scene = false
+resource_name = ""
+script = ExtResource("7_jc553")
+path = "ui_cancel1"
+metadata/_custom_type_script = "uid://cfnkcdlftlrta"
+
+[sub_resource type="LabelSettings" id="LabelSettings_kthgr"]
+font = ExtResource("7_26efp")
 
 [node name="CharacterSelect" type="Control" unique_id=1178985155]
 layout_mode = 3
@@ -162,9 +173,10 @@ Check back later!"
 
 [node name="MapSelectButton" type="Button" parent="." unique_id=355685157]
 layout_mode = 0
-offset_right = 72.0
-offset_bottom = 31.0
+offset_right = 50.0
+offset_bottom = 21.0
 focus_mode = 0
+theme_override_fonts/font = ExtResource("7_26efp")
 shortcut = SubResource("Shortcut_jc553")
 shortcut_in_tooltip = false
 text = "MAPS"
@@ -174,10 +186,11 @@ icon_alignment = 2
 
 [node name="RuleSelectButton" type="Button" parent="." unique_id=135965139]
 layout_mode = 0
-offset_left = 158.0
+offset_left = 190.0
 offset_right = 240.0
-offset_bottom = 31.0
+offset_bottom = 21.0
 focus_mode = 0
+theme_override_fonts/font = ExtResource("7_26efp")
 shortcut = SubResource("Shortcut_26efp")
 shortcut_in_tooltip = false
 text = "RULES"
@@ -187,9 +200,29 @@ alignment = 2
 [node name="CSSSelectButton" type="Button" parent="." unique_id=2102311742]
 visible = false
 layout_mode = 0
-offset_right = 75.0
-offset_bottom = 31.0
+offset_right = 50.0
+offset_bottom = 21.0
+theme_override_fonts/font = ExtResource("7_26efp")
 text = "CHARS"
+
+[node name="BackButtonPrompt" type="HBoxContainer" parent="." unique_id=852144680]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -16.0
+offset_right = 63.0
+grow_vertical = 0
+
+[node name="BackButtonIcon" type="TextureRect" parent="BackButtonPrompt" unique_id=1235977998]
+unique_name_in_owner = true
+layout_mode = 2
+texture = SubResource("Texture2D_qenn8")
+
+[node name="Label" type="Label" parent="BackButtonPrompt" unique_id=38095687]
+layout_mode = 2
+text = "Cancel/Back"
+label_settings = SubResource("LabelSettings_kthgr")
 
 [connection signal="pressed" from="MapSelectButton" to="." method="_on_map_select_button_pressed"]
 [connection signal="pressed" from="RuleSelectButton" to="." method="_on_rule_select_button_pressed"]

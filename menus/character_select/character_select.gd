@@ -18,9 +18,11 @@ func _ready() -> void:
 	if ControlsSettings.player_input_types[1] == ControlsSettings.INPUT_TYPE.KEYBOARD:
 		($MapSelectButton.icon as ControllerIconTexture).force_type = ControllerIconTexture.ForceType.KEYBOARD_MOUSE
 		($RuleSelectButton.icon as ControllerIconTexture).force_type = ControllerIconTexture.ForceType.KEYBOARD_MOUSE
+		%BackButtonIcon.texture.force_type = ControllerIconTexture.ForceType.KEYBOARD_MOUSE
 	elif ControlsSettings.player_input_types[1] == ControlsSettings.INPUT_TYPE.GAMEPAD:
 		($MapSelectButton.icon as ControllerIconTexture).force_type = ControllerIconTexture.ForceType.CONTROLLER
 		($RuleSelectButton.icon as ControllerIconTexture).force_type = ControllerIconTexture.ForceType.CONTROLLER
+		%BackButtonIcon.texture.force_type = ControllerIconTexture.ForceType.CONTROLLER
 	
 	if !MatchSetup.is_playing_solo():
 		cursor_arrows.visible = false
@@ -42,6 +44,7 @@ func _ready() -> void:
 	
 	for player in player_container.get_children():
 		player.selection_finished.connect(_on_player_selection_finished)
+		player.selection_cancelled.connect(_on_player_selection_cancelled)
 		player.request_cursor_anim.connect(play_cursor_anim)
 	
 	for stage in GameData.battle_stages:
@@ -52,15 +55,34 @@ func _ready() -> void:
 
 func _on_player_selection_finished(plrnum):
 	var current_player_node = player_container.get_child(plrnum - 1)
+	if current_player_node.css_ready:
+		return
 	MatchSetup.character_choices[plrnum] = current_player_node.character
-	current_player_node.active = false
+	if (plrnum == 1 or current_player_node.is_cpu) and MatchSetup.cpu_players > 0:
+		current_player_node.active = false
 	current_player_node.css_ready = true
 	
 	#changed how it works, i apologize
 	
 	css_check_for_players_ready()
-	
 	css_iterate_cpu_players(current_player_node, plrnum)
+
+
+func _on_player_selection_cancelled(plrnum):
+	var current_player_node = player_container.get_child(plrnum - 1)
+	# Go back to player setup if 
+	if plrnum == 1 and !current_player_node.css_ready:
+		SceneChanger.change_scene_to_file("uid://buw0m6frm5qum")
+		return
+	current_player_node.active = true
+	current_player_node.css_ready = false
+	
+	#changed how it works, i apologize
+	
+	css_check_for_players_ready()
+	css_reverse_iterate_cpu_players(current_player_node, plrnum)
+	
+
 
 func css_iterate_cpu_players(node, num):
 	print(node, num)
@@ -73,9 +95,28 @@ func css_iterate_cpu_players(node, num):
 	else:
 		node = player_container.get_child(num - 1)
 		#assume that if it is already active, it's another player, not cpu
-		if node.active == true:
+		if node.active == true or !node.is_cpu:
 			# iterate again until you get OOB for the player count.
 			css_iterate_cpu_players(node, num)
+		else:
+			node.active = true
+			css_cursor_tween_to_player(node.global_position)
+
+
+func css_reverse_iterate_cpu_players(node, num):
+	print(node, num)
+	
+	num -= 1
+	await get_tree().process_frame
+	
+	if num < 0:
+		pass
+	else:
+		node = player_container.get_child(num - 1)
+		#assume that if it is already active, it's another player, not cpu
+		if node.active == true:
+			# iterate again until you get OOB for the player count.
+			css_reverse_iterate_cpu_players(node, num)
 		else:
 			node.active = true
 			css_cursor_tween_to_player(node.global_position)
@@ -92,15 +133,17 @@ func css_check_for_players_ready():
 	#then determine if there is still an active player. 
 	#if there are no active players, return true for transition.
 	#if there isn't, dont do anything. we'll check again when a player gets selected.
+	active_player_nodes.clear()
 	var player_nodes = player_container.get_children()
 	for i in player_nodes:
 		if i.css_ready:
+			print("Player %s is ready" % i)
 			active_player_nodes.append(i)
-			if active_player_nodes.size() == player_nodes.size():
-				css_scene_transition()
-			else:
-				print("not enough players")
-				return false
+	if active_player_nodes.size() == player_nodes.size():
+		css_scene_transition()
+	else:
+		print("not enough players")
+		return false
 
 func css_cursor_tween_to_player(playerposition):
 	var newTween = get_tree().create_tween()
